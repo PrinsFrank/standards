@@ -34,7 +34,7 @@ enum ISO639_2_Terminology: string
 
     public function toLanguage(): Language
     {
-        return Enum::fromKey(Language::class, $this->name) ?? throw new RuntimeException('Every item in ISO_639_1 should have a valid language reference in Language class');
+        return Enum::fromKey(Language::class, $this->name) ?? throw new RuntimeException('Every item in ISO_639_2_Terminology should have a valid language reference in Language class, none for "' . $this->name . '" given.');
     }
 
     public function toISO639_2_Bibliographic(): ISO639_2_Common|ISO639_2_Terminology|null
