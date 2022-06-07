@@ -1,0 +1,11 @@
+{
+    "name": "prinsfrank/standards",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Prinsfrank\\Standards\\": "src/"
+        }
+    },
+    "require": {}
+}
