@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Language;
 
+use PrinsFrank\Standards\Enum;
+use RuntimeException;
+
 /**
  * @source https://www.loc.gov/standards/iso639-2/php/code_list.php
  */
@@ -191,4 +194,19 @@ enum ISO639_1: string
     case Yoruba                                                                       = 'yo';
     case Zhuang_Chuang                                                                = 'za';
     case Zulu                                                                         = 'zu';
+
+    public function toLanguage(): Language
+    {
+        return Enum::fromKey(Language::class, $this->name) ?? throw new RuntimeException('Every item in ISO_639_1 should have a valid language reference in Language class');
+    }
+
+    public function toISO639_2_Bibliographic(): ISO639_2_Common|ISO639_2_Bibliographic|null
+    {
+        return $this->toLanguage()->toISO639_2_Bibliographic();
+    }
+
+    public function toISO639_2_Terminology(): ISO639_2_Common|ISO639_2_Terminology|null
+    {
+        return $this->toLanguage()->toISO639_2_Terminology();
+    }
 }
