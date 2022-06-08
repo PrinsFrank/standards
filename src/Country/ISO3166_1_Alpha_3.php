@@ -1,8 +1,12 @@
 <?php
 declare(strict_types=1);
 
+namespace PrinsFrank\Standards\Country;
+
+use PrinsFrank\Standards\Enum;
+
 /**
- * https://www.iso.org/obp/ui/#search/code/
+ * @source https://www.iso.org/obp/ui/#search/code/
  */
 enum ISO3166_1_Alpha_3: string
 {
@@ -255,4 +259,14 @@ enum ISO3166_1_Alpha_3: string
     case Yemen                                                = 'YEM';
     case Zambia                                               = 'ZMB';
     case Zimbabwe                                             = 'ZWE';
+
+    public function toISO3166_1_Alpha_2(): ISO3166_1_Alpha_2
+    {
+        return Enum::fromKey(ISO3166_1_Alpha_2::class, $this->name);
+    }
+
+    public function toISO3166_1_Numeric(): ISO3166_1_Numeric
+    {
+        return Enum::fromKey(ISO3166_1_Numeric::class, $this->name);
+    }
 }
