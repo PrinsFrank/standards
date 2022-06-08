@@ -6,7 +6,7 @@ namespace PrinsFrank\Standards;
 class Enum
 {
     /**
-     * @template T
+     * @template T of Enum
      * @param class-string<T> $fqn
      * @return T|null
      */

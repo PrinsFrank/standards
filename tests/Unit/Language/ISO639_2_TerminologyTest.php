@@ -19,8 +19,7 @@ class ISO639_2_TerminologyTest extends TestCase
         $cases = ISO639_2_Terminology::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            $case->toLanguage();
-            $this->addToAssertionCount(1);
+            static::assertNotNull($case->toLanguage());
         }
     }
 }

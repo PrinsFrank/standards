@@ -19,8 +19,7 @@ class ISO639_2_BibliographicTest extends TestCase
         $cases = ISO639_2_Bibliographic::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            $case->toLanguage();
-            $this->addToAssertionCount(1);
+            static::assertNotNull($case->toLanguage());
         }
     }
 }
