@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Language;
 
 use PrinsFrank\Standards\Enum;
-use RuntimeException;
 
 /**
  * @source https://www.loc.gov/standards/iso639-2/php/code_list.php
@@ -32,18 +31,13 @@ enum ISO639_2_Terminology: string
     case Tibetan                     = 'bod';
     case Welsh                       = 'cym';
 
-    public function toLanguage(): Language
+    public function toISO639_2_Bibliographic(): ISO639_2_Common|ISO639_2_Bibliographic|null
     {
-        return Enum::fromKey(Language::class, $this->name) ?? throw new RuntimeException('Every item in ISO_639_2_Terminology should have a valid language reference in Language class, none for "' . $this->name . '" given.');
-    }
-
-    public function toISO639_2_Bibliographic(): ISO639_2_Common|ISO639_2_Terminology|null
-    {
-        return $this->toLanguage()->toISO639_2_Bibliographic();
+        return Enum::fromKey(ISO639_2_Common::class, $this->name) ?? Enum::fromKey(ISO639_2_Bibliographic::class, $this->name) ?? null;
     }
 
     public function toISO639_1(): ISO639_1|null
     {
-        return $this->toLanguage()->toISO639_1();
+        return Enum::fromKey(ISO639_1::class, $this->name);
     }
 }

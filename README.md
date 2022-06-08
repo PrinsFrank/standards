@@ -1,4 +1,4 @@
-# standards
+# Standards
 
 A collection of standards as PHP Enums
 

@@ -12,14 +12,15 @@ use PrinsFrank\Standards\Language\ISO639_2_Common;
 class ISO639_2_CommonTest extends TestCase
 {
     /**
-     * @covers ::toLanguage
+     * @covers ::toISO639_1
      */
-    public function testAllCasesCanBeConvertedToLanguage(): void
+    public function testSomeCasesCanBeConvertedToISO639_1(): void
     {
         $cases = ISO639_2_Common::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toLanguage());
+            $case->toISO639_1();
+            $this->addToAssertionCount(1);
         }
     }
 }

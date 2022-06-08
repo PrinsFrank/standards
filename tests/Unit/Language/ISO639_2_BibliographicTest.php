@@ -12,14 +12,26 @@ use PrinsFrank\Standards\Language\ISO639_2_Bibliographic;
 class ISO639_2_BibliographicTest extends TestCase
 {
     /**
-     * @covers ::toLanguage
+     * @covers ::toISO639_1
      */
-    public function testAllCasesCanBeConvertedToLanguage(): void
+    public function testAllCasesCanBeConvertedToISO639_1(): void
     {
         $cases = ISO639_2_Bibliographic::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toLanguage());
+            static::assertNotNull($case->toISO639_1());
+        }
+    }
+
+    /**
+     * @covers ::toISO639_2_Terminology
+     */
+    public function testAllCasesCanBeConvertedToISO639_2_Terminology(): void
+    {
+        $cases = ISO639_2_Bibliographic::cases();
+        static::assertNotEmpty($cases);
+        foreach ($cases as $case) {
+            static::assertNotNull($case->toISO639_2_Terminology());
         }
     }
 }
