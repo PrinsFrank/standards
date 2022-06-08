@@ -260,6 +260,16 @@ enum ISO3166_1_Numeric: string
     case Zambia                                               = '894';
     case Zimbabwe                                             = '716';
 
+    public static function fromInt(int $from): self
+    {
+        return self::from(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
+    }
+
+    public static function tryFromInt(int $from): ?self
+    {
+        return self::tryFrom(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
+    }
+
     public function toISO3166_1_Alpha_2(): ISO3166_1_Alpha_2
     {
         return Enum::fromKey(ISO3166_1_Alpha_2::class, $this->name);

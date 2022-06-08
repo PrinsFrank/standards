@@ -187,6 +187,16 @@ enum ISO4217_Numeric: string
     case Zambian_kwacha                          = '967';
     case Zimbabwean_dollar                       = '932';
 
+    public static function fromInt(int $from): self
+    {
+        return self::from(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
+    }
+
+    public static function tryFromInt(int $from): ?self
+    {
+        return self::tryFrom(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
+    }
+
     public function toISO4217_Alpha3(): ISO4217_Alpha3
     {
         return Enum::fromKey(ISO4217_Alpha3::class, $this->name);
