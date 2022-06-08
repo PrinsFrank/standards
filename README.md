@@ -2,10 +2,6 @@
 
 A collection of standards:
 
-## Area
-
-### UN M49
-
 ## Country
 
 ### ISO 3166-1 Alpha-2
@@ -23,5 +19,3 @@ A collection of standards:
 ### ISO 639-1
 
 ### ISO 639-2 (Common, Bibliographic and Terminology)
-
-### IETF
