@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Currency;
+namespace PrinsFrank\Standards\Tests\Unit\Currency;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Currency\ISO4217_Numeric;
