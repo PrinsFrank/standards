@@ -1,6 +1,6 @@
 # standards
 
-A collection of standards:
+A collection of standards as PHP Enums
 
 ## Country
 
