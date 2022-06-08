@@ -8,7 +8,7 @@ A collection of standards as PHP Enums
 
 ```php
 $valueAlpha2 = ISO3166_1_Alpha_2::from('NL');        // ISO3166_1_Alpha_2::Netherlands
-$value = $valueAlpha2->value;                        // 'NLD'
+$value = $valueAlpha2->value;                        // 'NL'
 $valueName = $valueAlpha2->name;                     // 'Netherlands'
 $valueAlpha3 = $valueAlpha2->toISO3166_1_Alpha_3();  // ISO3166_1_Alpha_3::Netherlands
 $valueNumeric = $valueAlpha2->toISO3166_1_Numeric(); // ISO3166_1_Numeric::Netherlands
@@ -29,7 +29,7 @@ $valueNumeric = $valueAlpha3->toISO3166_1_Numeric(); // ISO3166_1_Numeric::Nethe
 ```php
 $valueNumeric = ISO3166_1_Numeric::from('528');       // ISO3166_1_Numeric::Netherlands
 $valueNumeric = ISO3166_1_Numeric::fromInt(528);      // ISO3166_1_Numeric::Netherlands
-$value = $valueNumeric->value;                        // 'NLD'
+$value = $valueNumeric->value;                        // '528'
 $valueName = $valueNumeric->name;                     // 'Netherlands'
 $valueAlpha2 = $valueNumeric->toISO3166_1_Alpha_2();  // ISO3166_1_Alpha_2::Netherlands
 $valueAlpha3 = $valueNumeric->toISO3166_1_Alpha_3();  // ISO3166_1_Alpha_3::Netherlands
