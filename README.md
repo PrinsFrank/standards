@@ -2,6 +2,18 @@
 
 A collection of standards as PHP Enums
 
+## Setup
+
+> Make sure you are running PHP 8.1 or higher to use this package
+
+To start right away, run the following command in your composer project;
+
+```composer require prinsfrank/standards```
+
+Or for development only;
+
+```composer require prinsfrank/standards --dev```
+
 ## Country
 
 ### ISO 3166-1 Alpha-2
