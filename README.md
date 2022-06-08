@@ -40,20 +40,20 @@ $valueAlpha3 = $valueNumeric->toISO3166_1_Alpha_3();  // ISO3166_1_Alpha_3::Neth
 ### ISO 4217 Alpha-3
 
 ```php
-$valueAlpha3 = ISO4217_Alpha3::from('EUR');       // ISO4217_Alpha3::Euro
-$value = $valueAlpha3->value;                     // 'EUR'
-$valueName = $valueAlpha3->name;                  // 'Euro'
-$valueAlpha2 = $valueAlpha3->toISO4217_Numeric(); // ISO4217_Numeric::Euro
+$valueAlpha3 = ISO4217_Alpha3::from('EUR');        // ISO4217_Alpha3::Euro
+$value = $valueAlpha3->value;                      // 'EUR'
+$valueName = $valueAlpha3->name;                   // 'Euro'
+$valueNumeric = $valueAlpha3->toISO4217_Numeric(); // ISO4217_Numeric::Euro
 ```
 
 ### ISO 4217 Numeric
 
 ```php
-$valueNumeric = ISO4217_Numeric::from('978');        // ISO4217_Numeric::Euro
-$valueNumeric = ISO4217_Numeric::fromInt(978);       // ISO4217_Numeric::Euro
-$value = $valueNumeric->value;                       // '978'
-$valueName = $valueNumeric->name;                    // 'Euro'
-$valueAlpha2 = $valueNumeric->toISO4217_Alpha3();    // ISO4217_Alpha3::Euro
+$valueNumeric = ISO4217_Numeric::from('978');     // ISO4217_Numeric::Euro
+$valueNumeric = ISO4217_Numeric::fromInt(978);    // ISO4217_Numeric::Euro
+$value = $valueNumeric->value;                    // '978'
+$valueName = $valueNumeric->name;                 // 'Euro'
+$valueAlpha3 = $valueNumeric->toISO4217_Alpha3(); // ISO4217_Alpha3::Euro
 ```
 
 ## Language
@@ -74,12 +74,12 @@ $valueAlpha3Terminology = $valueAlpha2->toISO639_2_Alpha_3_Terminology();     //
 $valueAlpha2 = ISO639_2_Alpha_3_Bibliographic::from('dut');               // ISO639_1_Alpha_2::Dutch_Flemish
 $value = $valueAlpha2->value;                                             // 'dut'
 $valueName = $valueAlpha2->name;                                          // 'Dutch_Flemish'
-$valueAlpha3Bibliographic = $valueAlpha2->toISO639_1_Alpha_2();           // ISO639_1_Alpha_2::Dutch_Flemish
+$valueAlpha2 = $valueAlpha2->toISO639_1_Alpha_2();                        // ISO639_1_Alpha_2::Dutch_Flemish
 $valueAlpha3Terminology = $valueAlpha2->toISO639_2_Alpha_3_Terminology(); // ISO639_2_Alpha_3_Terminology::Dutch_Flemish
 
-$valueAlpha2 = ISO639_2_Alpha_3_Terminology::from('nld');                   // ISO639_1_Alpha_2::Dutch_Flemish
-$value = $valueAlpha2->value;                                               // 'nld'
-$valueName = $valueAlpha2->name;                                            // 'Dutch_Flemish'
-$valueAlpha3Bibliographic = $valueAlpha2->toISO639_1_Alpha_2();             // ISO639_1_Alpha_2::Dutch_Flemish
-$valueAlpha3Terminology = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); // ISO639_2_Alpha_3_Bibliographic::Dutch_Flemish
+$valueAlpha2 = ISO639_2_Alpha_3_Terminology::from('nld');                     // ISO639_1_Alpha_2::Dutch_Flemish
+$value = $valueAlpha2->value;                                                 // 'nld'
+$valueName = $valueAlpha2->name;                                              // 'Dutch_Flemish'
+$valueAlpha2 = $valueAlpha2->toISO639_1_Alpha_2();                            // ISO639_1_Alpha_2::Dutch_Flemish
+$valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); // ISO639_2_Alpha_3_Bibliographic::Dutch_Flemish
 ```
