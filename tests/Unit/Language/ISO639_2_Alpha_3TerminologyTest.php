@@ -19,19 +19,19 @@ class ISO639_2_Alpha_3TerminologyTest extends TestCase
         $cases = ISO639_2_Alpha_3_Terminology::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO639_1());
+            static::assertNotNull($case->toISO639_1_Alpha_2());
         }
     }
 
     /**
-     * @covers ::toISO639_2_Bibliographic
+     * @covers ::toISO639_2_Alpha_3_Bibliographic
      */
     public function testAllCasesCanBeConvertedToBibiliographical(): void
     {
         $cases = ISO639_2_Alpha_3_Terminology::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO639_2_Bibliographic());
+            static::assertNotNull($case->toISO639_2_Alpha_3_Bibliographic());
         }
     }
 }

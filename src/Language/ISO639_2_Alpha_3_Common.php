@@ -476,7 +476,7 @@ enum ISO639_2_Alpha_3_Common: string
     case Zulu                                                                         = 'zul';
     case Zuni                                                                         = 'zun';
 
-    public function toISO639_1(): ISO639_1_Alpha_2|null
+    public function toISO639_1_Alpha_2(): ISO639_1_Alpha_2|null
     {
         return Enum::fromKey(ISO639_1_Alpha_2::class, $this->name);
     }

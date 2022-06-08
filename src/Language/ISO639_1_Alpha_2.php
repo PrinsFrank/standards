@@ -194,12 +194,12 @@ enum ISO639_1_Alpha_2: string
     case Zhuang_Chuang                                                                = 'za';
     case Zulu                                                                         = 'zu';
 
-    public function toISO639_2_Bibliographic(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Bibliographic|null
+    public function toISO639_2_Alpha_3_Bibliographic(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Bibliographic|null
     {
         return Enum::fromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? Enum::fromKey(ISO639_2_Alpha_3_Bibliographic::class, $this->name) ?? null;
     }
 
-    public function toISO639_2_Terminology(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Terminology|null
+    public function toISO639_2_Alpha_3_Terminology(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Terminology|null
     {
         return Enum::fromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? Enum::fromKey(ISO639_2_Alpha_3_Terminology::class, $this->name) ?? null;
     }

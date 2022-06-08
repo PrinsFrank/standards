@@ -31,12 +31,12 @@ enum ISO639_2_Alpha_3_Bibliographic: string
     case Tibetan                     = 'tib';
     case Welsh                       = 'wel';
 
-    public function toISO639_2_Terminology(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Terminology|null
+    public function toISO639_2_Alpha_3_Terminology(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Terminology|null
     {
         return Enum::fromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? Enum::fromKey(ISO639_2_Alpha_3_Terminology::class, $this->name) ?? null;
     }
 
-    public function toISO639_1(): ISO639_1_Alpha_2|null
+    public function toISO639_1_Alpha_2(): ISO639_1_Alpha_2|null
     {
         return Enum::fromKey(ISO639_1_Alpha_2::class, $this->name);
     }
