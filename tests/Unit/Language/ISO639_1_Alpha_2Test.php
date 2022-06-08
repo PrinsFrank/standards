@@ -4,19 +4,19 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Tests\Unit\Language;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\Language\ISO639_1;
+use PrinsFrank\Standards\Language\ISO639_1_Alpha_2;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Language\ISO639_1
+ * @coversDefaultClass \PrinsFrank\Standards\Language\ISO639_1_Alpha_2
  */
-class ISO639_1Test extends TestCase
+class ISO639_1_Alpha_2Test extends TestCase
 {
     /**
      * @covers ::toISO639_2_Bibliographic
      */
     public function testAllCasesCanBeConvertedToToISO392_2Bibliographic(): void
     {
-        $cases = ISO639_1::cases();
+        $cases = ISO639_1_Alpha_2::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             static::assertNotNull($case->toISO639_2_Bibliographic());
@@ -28,7 +28,7 @@ class ISO639_1Test extends TestCase
      */
     public function testAllCasesCanBeConvertedToISO392_2Terminology(): void
     {
-        $cases = ISO639_1::cases();
+        $cases = ISO639_1_Alpha_2::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             static::assertNotNull($case->toISO639_2_Terminology());

@@ -8,7 +8,7 @@ use PrinsFrank\Standards\Enum;
 /**
  * @source https://www.loc.gov/standards/iso639-2/php/code_list.php
  */
-enum ISO639_2_Common: string
+enum ISO639_2_Alpha_3_Common: string
 {
     case Abkhazian                                                                    = 'abk';
     case Achinese                                                                     = 'ace';
@@ -476,8 +476,8 @@ enum ISO639_2_Common: string
     case Zulu                                                                         = 'zul';
     case Zuni                                                                         = 'zun';
 
-    public function toISO639_1(): ISO639_1|null
+    public function toISO639_1(): ISO639_1_Alpha_2|null
     {
-        return Enum::fromKey(ISO639_1::class, $this->name);
+        return Enum::fromKey(ISO639_1_Alpha_2::class, $this->name);
     }
 }

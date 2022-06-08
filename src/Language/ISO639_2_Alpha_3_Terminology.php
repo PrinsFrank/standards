@@ -8,7 +8,7 @@ use PrinsFrank\Standards\Enum;
 /**
  * @source https://www.loc.gov/standards/iso639-2/php/code_list.php
  */
-enum ISO639_2_Terminology: string
+enum ISO639_2_Alpha_3_Terminology: string
 {
     case Albanian                    = 'sqi';
     case Armenian                    = 'hye';
@@ -31,13 +31,13 @@ enum ISO639_2_Terminology: string
     case Tibetan                     = 'bod';
     case Welsh                       = 'cym';
 
-    public function toISO639_2_Bibliographic(): ISO639_2_Common|ISO639_2_Bibliographic|null
+    public function toISO639_2_Bibliographic(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Bibliographic|null
     {
-        return Enum::fromKey(ISO639_2_Common::class, $this->name) ?? Enum::fromKey(ISO639_2_Bibliographic::class, $this->name) ?? null;
+        return Enum::fromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? Enum::fromKey(ISO639_2_Alpha_3_Bibliographic::class, $this->name) ?? null;
     }
 
-    public function toISO639_1(): ISO639_1|null
+    public function toISO639_1(): ISO639_1_Alpha_2|null
     {
-        return Enum::fromKey(ISO639_1::class, $this->name);
+        return Enum::fromKey(ISO639_1_Alpha_2::class, $this->name);
     }
 }
