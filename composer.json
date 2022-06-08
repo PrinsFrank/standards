@@ -1,6 +1,7 @@
 {
     "name": "prinsfrank/standards",
     "type": "library",
+    "description": "A collection of standards as PHP Enums: ISO3166, ISO4217, ISO639...",
     "license": "MIT",
     "autoload": {
         "psr-4": {
