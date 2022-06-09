@@ -1,6 +1,14 @@
+![Banner](docs/images/banner.png)
+
 # Standards
 
-A collection of standards as PHP Enums
+![GitHub](https://img.shields.io/github/license/prinsfrank/standards)
+[![Build Status](https://scrutinizer-ci.com/g/PrinsFrank/standards/badges/build.png?b=main)](https://scrutinizer-ci.com/g/PrinsFrank/standards/build-status/main)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/PrinsFrank/standards/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/PrinsFrank/standards/?branch=main)
+[![Code Coverage](https://scrutinizer-ci.com/g/PrinsFrank/standards/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/PrinsFrank/standards/?branch=main)
+![PHP Version Support](https://img.shields.io/packagist/php-v/prinsfrank/standards)
+
+**A collection of standards as PHP Enums**
 
 ## Setup
 
