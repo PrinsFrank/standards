@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\ISO3166_1_Alpha_3;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Currency\ISO4217_Alpha3
+ * @coversDefaultClass \PrinsFrank\Standards\Currency\ISO4217_Alpha_3
  */
 class ISO3166_1_Alpha_3Test extends TestCase
 {

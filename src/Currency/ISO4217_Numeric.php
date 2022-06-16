@@ -197,8 +197,8 @@ enum ISO4217_Numeric: string
         return self::tryFrom(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
     }
 
-    public function toISO4217_Alpha3(): ISO4217_Alpha3
+    public function toISO4217_Alpha_3(): ISO4217_Alpha_3
     {
-        return Enum::fromKey(ISO4217_Alpha3::class, $this->name);
+        return Enum::fromKey(ISO4217_Alpha_3::class, $this->name);
     }
 }
