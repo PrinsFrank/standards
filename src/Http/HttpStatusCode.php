@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Http;
 
 /**
- * @source https://www.loc.gov/standards/iso639-2/php/code_list.php
+ * @source https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
  */
 enum HttpStatusCode: int
 {
