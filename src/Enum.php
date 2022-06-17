@@ -6,17 +6,19 @@ namespace PrinsFrank\Standards;
 class Enum
 {
     /**
-     * @template T of Enum
+     * @template T of \BackedEnum
      * @param class-string<T> $fqn
      * @return T|null
      */
-    public static function fromKey(string $fqn, string $keyName)
+    public static function fromKey(string $fqn, string $keyName): ?\BackedEnum
     {
-        $matchingItems = array_values(array_filter($fqn::cases(), static function ($language) use ($keyName) {return $language->name === $keyName;}));
-        if (array_key_exists(0, $matchingItems) === false || count($matchingItems) !== 1) {
-            return null;
+        foreach ($fqn::cases() as $case) {
+            if ($case->name === $keyName) {
+                // stop at first case found
+                return $case;
+            }
         }
 
-        return $matchingItems[0];
+        return null;
     }
 }
