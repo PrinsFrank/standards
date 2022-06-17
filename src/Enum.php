@@ -12,7 +12,9 @@ class Enum
      */
     public static function fromKey(string $fqn, string $keyName)
     {
-        $matchingItems = array_values(array_filter($fqn::cases(), static function ($language) use ($keyName) {return $language->name === $keyName;}));
+        $matchingItems = array_values(array_filter($fqn::cases(), static function ($language) use ($keyName) {
+            return $language->name === $keyName;
+        }));
         if (array_key_exists(0, $matchingItems) === false || count($matchingItems) !== 1) {
             return null;
         }
