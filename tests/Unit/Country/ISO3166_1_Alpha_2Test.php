@@ -19,7 +19,11 @@ class ISO3166_1_Alpha_2Test extends TestCase
         $cases = ISO3166_1_Alpha_2::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO3166_1_Alpha_3());
+            try {
+                $case->toISO3166_1_Alpha_3();
+            } catch (\TypeError) {
+                $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Alpha_3', $case->name));
+            }
         }
     }
 
@@ -31,7 +35,11 @@ class ISO3166_1_Alpha_2Test extends TestCase
         $cases = ISO3166_1_Alpha_2::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO3166_1_Numeric());
+            try {
+                $case->toISO3166_1_Numeric();
+            } catch (\TypeError) {
+                $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Numeric', $case->name));
+            }
         }
     }
 }
