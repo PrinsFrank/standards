@@ -103,3 +103,12 @@ $valueName = $valueAlpha2->name;                                              //
 $valueAlpha2 = $valueAlpha2->toISO639_1_Alpha_2();                            // ISO639_1_Alpha_2::Dutch_Flemish
 $valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); // ISO639_2_Alpha_3_Bibliographic::Dutch_Flemish
 ```
+
+
+## HTTP Status Codes
+
+```php
+$code = HttpStatusCode::from(404);                                     // HttpStatusCode::NotFound
+$value = $code->value;                                                 // 404
+$valueName = $code->name;                                              // NotFound
+```
