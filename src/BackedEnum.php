@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards;
 
-class Enum
+class BackedEnum
 {
     /**
      * @template T of \BackedEnum
