@@ -279,13 +279,6 @@ enum HttpStatusCode: int
     case ExpectationFailed = 417;
 
     /**
-     * Used by the Laravel Framework when a CSRF Token is missing or expired.
-     *
-     * @note Laravel
-     */
-    case PageExpired = 419;
-
-    /**
      * The request was directed at a server that is not able to produce a response.
      * This can be sent by a server that is not configured to produce responses
      * for the combination of scheme and authority that are included in the request URI.
