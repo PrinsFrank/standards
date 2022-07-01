@@ -13,14 +13,18 @@ use ValueError;
 class ISO4217_NumericTest extends TestCase
 {
     /**
-     * @covers ::toISO4217_Alpha3
+     * @covers ::toISO4217_Alpha_3
      */
     public function testAllCasesCanBeConvertedToISO4217Numeric(): void
     {
         $cases = ISO4217_Numeric::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO4217_Alpha3());
+            try {
+                $case->toISO4217_Alpha_3();
+            } catch (\TypeError) {
+                $this->fail(sprintf('Case %s could not be converted to ISO4217_Alpha3', $case->name));
+            }
         }
     }
 

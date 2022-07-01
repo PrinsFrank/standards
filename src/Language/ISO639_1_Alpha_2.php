@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Language;
 
-use PrinsFrank\Standards\Enum;
+use PrinsFrank\Standards\BackedEnum;
 
 /**
  * @source https://www.loc.gov/standards/iso639-2/php/code_list.php
@@ -196,11 +196,11 @@ enum ISO639_1_Alpha_2: string
 
     public function toISO639_2_Alpha_3_Bibliographic(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Bibliographic|null
     {
-        return Enum::fromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? Enum::fromKey(ISO639_2_Alpha_3_Bibliographic::class, $this->name) ?? null;
+        return BackedEnum::fromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? BackedEnum::fromKey(ISO639_2_Alpha_3_Bibliographic::class, $this->name) ?? null;
     }
 
     public function toISO639_2_Alpha_3_Terminology(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Terminology|null
     {
-        return Enum::fromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? Enum::fromKey(ISO639_2_Alpha_3_Terminology::class, $this->name) ?? null;
+        return BackedEnum::fromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? BackedEnum::fromKey(ISO639_2_Alpha_3_Terminology::class, $this->name) ?? null;
     }
 }

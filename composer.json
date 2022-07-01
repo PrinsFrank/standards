@@ -25,7 +25,7 @@
         "fix": [
             "@fix:csfixer"
         ],
-        "test:unit": "vendor/bin/phpunit --testsuite=unit",
+        "test:unit": "vendor/bin/phpunit --testsuite=Unit",
         "test": [
             "@test:unit"
         ]
