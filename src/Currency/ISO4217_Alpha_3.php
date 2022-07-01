@@ -5,7 +5,7 @@ namespace PrinsFrank\Standards\Currency;
 
 use PrinsFrank\Standards\BackedEnum;
 
-enum ISO4217_Alpha3: string
+enum ISO4217_Alpha_3: string
 {
     case ADB_Unit_of_Account                     = 'XUA';
     case Afghan_afghani                          = 'AFN';

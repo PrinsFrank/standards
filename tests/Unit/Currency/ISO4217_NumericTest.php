@@ -13,7 +13,7 @@ use ValueError;
 class ISO4217_NumericTest extends TestCase
 {
     /**
-     * @covers ::toISO4217_Alpha3
+     * @covers ::toISO4217_Alpha_3
      */
     public function testAllCasesCanBeConvertedToISO4217Numeric(): void
     {
@@ -21,7 +21,7 @@ class ISO4217_NumericTest extends TestCase
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toISO4217_Alpha3();
+                $case->toISO4217_Alpha_3();
             } catch (\TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO4217_Alpha3', $case->name));
             }
