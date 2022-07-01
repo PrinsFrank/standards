@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Tests\Unit\Country;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\ISO3166_1_Alpha_3;
+use TypeError;
 
 /**
  * @coversDefaultClass \PrinsFrank\Standards\Currency\ISO4217_Alpha_3
@@ -21,7 +22,7 @@ class ISO3166_1_Alpha_3Test extends TestCase
         foreach ($cases as $case) {
             try {
                 $case->toISO3166_1_Alpha_2();
-            } catch (\TypeError) {
+            } catch (TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Alpha_2', $case->name));
             }
         }
@@ -37,7 +38,7 @@ class ISO3166_1_Alpha_3Test extends TestCase
         foreach ($cases as $case) {
             try {
                 $case->toISO3166_1_Numeric();
-            } catch (\TypeError) {
+            } catch (TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Numeric', $case->name));
             }
         }

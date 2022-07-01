@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Tests\Unit\Country;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\ISO3166_1_Numeric;
+use TypeError;
 use ValueError;
 
 /**
@@ -22,7 +23,7 @@ class ISO3166_1_NumericTest extends TestCase
         foreach ($cases as $case) {
             try {
                 $case->toISO3166_1_Alpha_2();
-            } catch (\TypeError) {
+            } catch (TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Alpha_2', $case->name));
             }
         }
@@ -38,7 +39,7 @@ class ISO3166_1_NumericTest extends TestCase
         foreach ($cases as $case) {
             try {
                 $case->toISO3166_1_Alpha_3();
-            } catch (\TypeError) {
+            } catch (TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Alpha_3', $case->name));
             }
         }

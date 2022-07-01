@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Tests\Unit\Currency;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Currency\ISO4217_Alpha_3;
+use TypeError;
 
 /**
  * @coversDefaultClass \PrinsFrank\Standards\Currency\ISO4217_Alpha_3
@@ -21,7 +22,7 @@ class ISO4217_Alpha_3Test extends TestCase
         foreach ($cases as $case) {
             try {
                 $case->toISO4217_Numeric();
-            } catch (\TypeError) {
+            } catch (TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO4217_Numeric', $case->name));
             }
         }
