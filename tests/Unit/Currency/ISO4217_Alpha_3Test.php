@@ -19,7 +19,11 @@ class ISO4217_Alpha_3Test extends TestCase
         $cases = ISO4217_Alpha_3::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO4217_Numeric());
+            try {
+                $case->toISO4217_Numeric();
+            } catch (\TypeError) {
+                $this->fail(sprintf('Case %s could not be converted to ISO4217_Numeric', $case->name));
+            }
         }
     }
 }
