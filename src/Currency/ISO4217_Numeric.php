@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Currency;
 
-use PrinsFrank\Standards\Enum;
+use PrinsFrank\Standards\BackedEnum;
 
 enum ISO4217_Numeric: string
 {
@@ -199,6 +199,6 @@ enum ISO4217_Numeric: string
 
     public function toISO4217_Alpha3(): ISO4217_Alpha3
     {
-        return Enum::fromKey(ISO4217_Alpha3::class, $this->name);
+        return BackedEnum::fromKey(ISO4217_Alpha3::class, $this->name);
     }
 }

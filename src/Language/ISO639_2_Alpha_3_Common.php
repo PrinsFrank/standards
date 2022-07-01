@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Language;
 
-use PrinsFrank\Standards\Enum;
+use PrinsFrank\Standards\BackedEnum;
 
 /**
  * @source https://www.loc.gov/standards/iso639-2/php/code_list.php
@@ -478,6 +478,6 @@ enum ISO639_2_Alpha_3_Common: string
 
     public function toISO639_1_Alpha_2(): ISO639_1_Alpha_2|null
     {
-        return Enum::fromKey(ISO639_1_Alpha_2::class, $this->name);
+        return BackedEnum::fromKey(ISO639_1_Alpha_2::class, $this->name);
     }
 }

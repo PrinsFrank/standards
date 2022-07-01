@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Country;
 
-use PrinsFrank\Standards\Enum;
+use PrinsFrank\Standards\BackedEnum;
 
 /**
  * @source https://www.iso.org/obp/ui/#search/code/
@@ -272,11 +272,11 @@ enum ISO3166_1_Numeric: string
 
     public function toISO3166_1_Alpha_2(): ISO3166_1_Alpha_2
     {
-        return Enum::fromKey(ISO3166_1_Alpha_2::class, $this->name);
+        return BackedEnum::fromKey(ISO3166_1_Alpha_2::class, $this->name);
     }
 
     public function toISO3166_1_Alpha_3(): ISO3166_1_Alpha_3
     {
-        return Enum::fromKey(ISO3166_1_Alpha_3::class, $this->name);
+        return BackedEnum::fromKey(ISO3166_1_Alpha_3::class, $this->name);
     }
 }
