@@ -9,7 +9,7 @@ use PrinsFrank\Standards\Currency\ISO4217_Alpha_3;
 /**
  * @coversDefaultClass \PrinsFrank\Standards\Currency\ISO4217_Alpha_3
  */
-class ISO4217_Alpha3Test extends TestCase
+class ISO4217_Alpha_3Test extends TestCase
 {
     /**
      * @covers ::toISO4217_Numeric
