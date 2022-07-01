@@ -8,6 +8,5 @@ composer.lock
 # PHPUnit
 .phpunit.result.cache
 
-
 # JetBrains
 .idea
