@@ -25,6 +25,10 @@
         "fix": [
             "@fix:csfixer"
         ],
+        "check:csfixer": "vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run",
+        "check": [
+            "@check:csfixer"
+        ],
         "test:unit": "vendor/bin/phpunit --testsuite=Unit",
         "test": [
             "@test:unit"
