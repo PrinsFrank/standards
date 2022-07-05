@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+use PrinsFrank\Standards\Dev\SpecUpdater;
+
+require __DIR__.'/vendor/autoload.php';
+
+(new SpecUpdater())();
