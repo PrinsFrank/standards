@@ -8,3 +8,4 @@
 /.gitignore         export-ignore
 /.php-cs-fixer      export-ignore
 /phpunit.xml.dist   export-ignore
+/.github            export-ignore
