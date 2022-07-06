@@ -9,3 +9,5 @@
 /.php-cs-fixer      export-ignore
 /phpunit.xml.dist   export-ignore
 /.github            export-ignore
+/dev                export-ignore
+/update-spec        export-ignore

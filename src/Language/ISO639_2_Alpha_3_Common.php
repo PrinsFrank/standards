@@ -349,6 +349,7 @@ enum ISO639_2_Alpha_3_Common: string
     case Prakrit_languages                                                            = 'pra';
     case Provencal_Old_to_1500_Occitan_Old_to_1500                                    = 'pro';
     case Pushto_Pashto                                                                = 'pus';
+    case Quechua                                                                      = 'que';
     case Rajasthani                                                                   = 'raj';
     case Rapanui                                                                      = 'rap';
     case Rarotongan_Cook_Islands_Maori                                                = 'rar';

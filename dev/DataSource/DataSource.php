@@ -14,4 +14,7 @@ interface DataSource
     public static function transformKey(string $key): ?string;
 
     public static function transformValue(string $value): ?string;
+
+    /** @return class-string */
+    public static function getSpecFQN(): string;
 }

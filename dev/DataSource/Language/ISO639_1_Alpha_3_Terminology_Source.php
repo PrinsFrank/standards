@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Language;
 
 use PrinsFrank\Standards\Dev\DataSource\DataSource;
+use PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Terminology;
 
 class ISO639_1_Alpha_3_Terminology_Source implements DataSource
 {
@@ -14,12 +15,12 @@ class ISO639_1_Alpha_3_Terminology_Source implements DataSource
 
     public static function xPathIdentifierKey(): string
     {
-        return '//table[@width="100%"]/tr/td[1]';
+        return '//table[@width="100%"]/tbody/tr/td[1]';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//table[@width="100%"]/tr/td[3]';
+        return '//table[@width="100%"]/tbody/tr/td[3]';
     }
 
     public static function transformKey(string $key): ?string
@@ -36,5 +37,10 @@ class ISO639_1_Alpha_3_Terminology_Source implements DataSource
 
         $value = substr($value, $terminologyMarkerPos - 4, 3);
         return strtolower(str_replace(' ', '', trim($value)));
+    }
+
+    public static function getSpecFQN(): string
+    {
+        return ISO639_2_Alpha_3_Terminology::class;
     }
 }
