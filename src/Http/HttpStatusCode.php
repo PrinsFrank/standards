@@ -346,7 +346,6 @@ enum HttpStatusCode: int
      */
     case UnavailableForLegalReasons = 451;
 
-
     /*
     |--------------------------------------------------------------------------
     | Server Error Codes

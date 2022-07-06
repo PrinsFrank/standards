@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource;
 
+use Symfony\Component\Panther\Client;
+use Symfony\Component\Panther\DomCrawler\Crawler;
+
 interface DataSource
 {
     public static function url(): string;
@@ -17,4 +20,6 @@ interface DataSource
 
     /** @return class-string */
     public static function getSpecFQN(): string;
+
+    public static function afterPageLoad(Client $client, Crawler $crawler): void;
 }

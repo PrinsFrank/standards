@@ -3,17 +3,15 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev;
 
-use DOMDocument;
-use DOMNode;
-use DOMXPath;
 use Facebook\WebDriver\Remote\RemoteWebElement;
+use PrinsFrank\Standards\Dev\DataSource\Country\ISO3166_1_Alpha_2_Source;
+use PrinsFrank\Standards\Dev\DataSource\Country\ISO3166_1_Alpha_3_Source;
 use PrinsFrank\Standards\Dev\DataSource\Country\ISO3166_1_Numeric_Source;
 use PrinsFrank\Standards\Dev\DataSource\DataSource;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_2_Source;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_3_Bibliographic_Source;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_3_Common_Source;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_3_Terminology_Source;
-use RuntimeException;
 use Symfony\Component\Panther\Client;
 
 class SpecUpdater
@@ -24,7 +22,9 @@ class SpecUpdater
         ISO639_1_Alpha_3_Bibliographic_Source::class,
         ISO639_1_Alpha_3_Terminology_Source::class,
         ISO639_1_Alpha_3_Common_Source::class,
-        ISO3166_1_Numeric_Source::class
+        ISO3166_1_Numeric_Source::class,
+        ISO3166_1_Alpha_2_Source::class,
+        ISO3166_1_Alpha_3_Source::class,
     ];
 
     public function __invoke(): void
@@ -38,13 +38,14 @@ class SpecUpdater
                 $crawlers[$sourceFQN::url()] = $client->request('GET', $sourceFQN::url());
             }
             $crawler = $crawlers[$sourceFQN::url()];
+            $sourceFQN::afterPageLoad($client, $crawler);
             var_dump($crawler->getText());
 
             $keyValuePairs = array_combine(
                 array_map(
                     static function (RemoteWebElement $remoteWebElement) use ($sourceFQN) {
                         $key = transliterator_transliterate('Any-Latin; Latin-ASCII;', $remoteWebElement->getText() ?? '');
-                        $key = str_replace([' ', ';', ',', '(', ')', '-', '.', '\''], '_', $key);
+                        $key = str_replace([' ', ';', ',', '(', ')', '-', '.', '\'', '*', '[', ']'], '_', $key);
                         $key = trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
 
                         return $sourceFQN::transformKey($key);

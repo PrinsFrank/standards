@@ -4,12 +4,13 @@ namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
 namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
-use PrinsFrank\Standards\Country\ISO3166_1_Numeric;
+use PrinsFrank\Standards\Country\ISO3166_1_Alpha_2;
+use PrinsFrank\Standards\Country\ISO3166_1_Alpha_3;
 use PrinsFrank\Standards\Dev\DataSource\DataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class ISO3166_1_Numeric_Source implements DataSource
+class ISO3166_1_Alpha_3_Source implements DataSource
 {
     public static function url(): string
     {
@@ -18,7 +19,7 @@ class ISO3166_1_Numeric_Source implements DataSource
 
     public static function xPathIdentifierKey(): string
     {
-        return '//tbody[@class="v-grid-body"]/tr/td[5]';
+        return '//tbody[@class="v-grid-body"]/tr/td[4]';
     }
 
     public static function xPathIdentifierValue(): string
@@ -38,7 +39,7 @@ class ISO3166_1_Numeric_Source implements DataSource
 
     public static function getSpecFQN(): string
     {
-        return ISO3166_1_Numeric::class;
+        return ISO3166_1_Alpha_3::class;
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

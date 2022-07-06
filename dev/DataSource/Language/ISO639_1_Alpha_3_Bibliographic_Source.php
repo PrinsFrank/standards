@@ -5,6 +5,8 @@ namespace PrinsFrank\Standards\Dev\DataSource\Language;
 
 use PrinsFrank\Standards\Dev\DataSource\DataSource;
 use PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Bibliographic;
+use Symfony\Component\Panther\Client;
+use Symfony\Component\Panther\DomCrawler\Crawler;
 
 class ISO639_1_Alpha_3_Bibliographic_Source implements DataSource
 {
@@ -42,5 +44,9 @@ class ISO639_1_Alpha_3_Bibliographic_Source implements DataSource
     public static function getSpecFQN(): string
     {
         return ISO639_2_Alpha_3_Bibliographic::class;
+    }
+
+    public static function afterPageLoad(Client $client, Crawler $crawler): void
+    {
     }
 }
