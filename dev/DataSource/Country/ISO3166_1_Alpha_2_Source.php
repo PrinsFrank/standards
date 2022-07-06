@@ -44,6 +44,7 @@ class ISO3166_1_Alpha_2_Source implements DataSource
     public static function afterPageLoad(Client $client, Crawler $crawler): void
     {
         $client->waitFor('.v-select-select');
+        $client->waitForInvisibility('.v-loading-indicator');
         $perPageDropdown = $crawler->filterXPath(".//select[@class='v-select-select']//option[last()]");
         $perPageDropdown->click();
     }

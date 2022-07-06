@@ -39,7 +39,6 @@ class SpecUpdater
             }
             $crawler = $crawlers[$sourceFQN::url()];
             $sourceFQN::afterPageLoad($client, $crawler);
-            var_dump($crawler->getText());
 
             $keyValuePairs = array_combine(
                 array_map(

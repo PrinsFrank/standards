@@ -4,7 +4,6 @@ namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
 namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
-use PrinsFrank\Standards\Country\ISO3166_1_Alpha_2;
 use PrinsFrank\Standards\Country\ISO3166_1_Alpha_3;
 use PrinsFrank\Standards\Dev\DataSource\DataSource;
 use Symfony\Component\Panther\Client;
@@ -45,6 +44,7 @@ class ISO3166_1_Alpha_3_Source implements DataSource
     public static function afterPageLoad(Client $client, Crawler $crawler): void
     {
         $client->waitFor('.v-select-select');
+        $client->waitForInvisibility('.v-loading-indicator');
         $perPageDropdown = $crawler->filterXPath(".//select[@class='v-select-select']//option[last()]");
         $perPageDropdown->click();
     }
