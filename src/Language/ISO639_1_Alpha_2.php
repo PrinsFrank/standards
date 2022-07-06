@@ -140,6 +140,7 @@ enum ISO639_1_Alpha_2: string
     case Polish                                                                       = 'pl';
     case Portuguese                                                                   = 'pt';
     case Pushto_Pashto                                                                = 'ps';
+    case Quechua                                                                      = 'qu';
     case Romanian_Moldavian_Moldovan                                                  = 'ro';
     case Romansh                                                                      = 'rm';
     case Rundi                                                                        = 'rn';
