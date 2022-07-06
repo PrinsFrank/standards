@@ -21,7 +21,8 @@
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpunit/phpunit": "^9.5",
         "ext-dom": "*",
-        "ext-mbstring": "*"
+        "ext-mbstring": "*",
+        "ext-intl": "*"
     },
     "scripts": {
         "fix:csfixer": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
@@ -36,6 +37,9 @@
         "test": [
             "@test:unit"
         ],
-        "update-spec": "php update-spec"
+        "update-spec": [
+            "php update-spec",
+            "@fix:csfixer"
+        ]
     }
 }

@@ -11,7 +11,7 @@ interface DataSource
 
     public static function xPathIdentifierValue(): string;
 
-    public static function transformKey(string $key): string;
+    public static function transformKey(string $key): ?string;
 
-    public static function transformValue(string $value): string;
+    public static function transformValue(string $value): ?string;
 }

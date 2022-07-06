@@ -5,7 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Language;
 
 use PrinsFrank\Standards\Dev\DataSource\DataSource;
 
-class ISO639_1_Alpha_2_Source implements DataSource
+class ISO639_1_Alpha_3_Terminology_Source implements DataSource
 {
     public static function url(): string
     {
@@ -14,7 +14,7 @@ class ISO639_1_Alpha_2_Source implements DataSource
 
     public static function xPathIdentifierKey(): string
     {
-        return '//table[@width="100%"]/tr/td[2]';
+        return '//table[@width="100%"]/tr/td[1]';
     }
 
     public static function xPathIdentifierValue(): string
@@ -29,6 +29,12 @@ class ISO639_1_Alpha_2_Source implements DataSource
 
     public static function transformValue(string $value): ?string
     {
+        $terminologyMarkerPos = strpos($value, '(T)');
+        if ($terminologyMarkerPos === false) {
+            return null;
+        }
+
+        $value = substr($value, $terminologyMarkerPos - 4, 3);
         return strtolower(str_replace(' ', '', trim($value)));
     }
 }
