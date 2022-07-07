@@ -27,6 +27,7 @@ class SpecUpdater
         ISO3166_1_Numeric_Source::class,
         ISO3166_1_Alpha_2_Source::class,
         ISO3166_1_Alpha_3_Source::class,
+        ISO3166_1_Numeric_Source::class,
     ];
 
     public function __invoke(): void
@@ -36,13 +37,14 @@ class SpecUpdater
 
         /** @var DataSource $sourceFQN */
         foreach (self::SOURCES as $sourceFQN) {
+            echo date('Y-m-d H:i:s') . ' updating spec ' . $sourceFQN::getSpecFQN() . PHP_EOL;
             if (array_key_exists($sourceFQN::url(), $crawlers) === false) {
                 $crawlers[$sourceFQN::url()] = $client->request('GET', $sourceFQN::url());
             }
             $crawler = $crawlers[$sourceFQN::url()];
             $sourceFQN::afterPageLoad($client, $crawler);
 
-            $enumCases = [];
+            $enumCases     = [];
             $keyValuePairs = array_filter(
                 array_combine(
                     array_map(
