@@ -12,6 +12,8 @@ use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_2_Source;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_3_Bibliographic_Source;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_3_Common_Source;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_3_Terminology_Source;
+use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
+use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use Symfony\Component\Panther\Client;
 
 class SpecUpdater
@@ -40,39 +42,35 @@ class SpecUpdater
             $crawler = $crawlers[$sourceFQN::url()];
             $sourceFQN::afterPageLoad($client, $crawler);
 
-            $keyValuePairs = array_combine(
-                array_map(
-                    static function (RemoteWebElement $remoteWebElement) use ($sourceFQN) {
-                        $key = transliterator_transliterate('Any-Latin; Latin-ASCII;', $remoteWebElement->getText() ?? '');
-                        $key = str_replace([' ', ';', ',', '(', ')', '-', '.', '\'', '*', '[', ']'], '_', $key);
-                        $key = trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
+            $enumCases = [];
+            $keyValuePairs = array_filter(
+                array_combine(
+                    array_map(
+                        static function (RemoteWebElement $remoteWebElement) use ($sourceFQN) {
+                            $key = transliterator_transliterate('Any-Latin; Latin-ASCII;', $remoteWebElement->getText() ?? '');
+                            $key = str_replace([' ', ';', ',', '(', ')', '-', '.', '\'', '*', '[', ']'], '_', $key);
+                            $key = trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
 
-                        return $sourceFQN::transformKey($key);
-                    },
-                    iterator_to_array($crawler->filterXPath($sourceFQN::xPathIdentifierValue())->getIterator())
-                ),
-                array_map(
-                    static function (RemoteWebElement $remoteWebElement) use ($sourceFQN) {
-                        return $sourceFQN::transformValue($remoteWebElement->getText());
-                    },
-                    iterator_to_array($crawler->filterXPath($sourceFQN::xPathIdentifierKey())->getIterator())
-                ),
+                            return $sourceFQN::transformKey($key);
+                        },
+                        iterator_to_array($crawler->filterXPath($sourceFQN::xPathIdentifierValue())->getIterator())
+                    ),
+                    array_map(
+                        static function (RemoteWebElement $remoteWebElement) use ($sourceFQN) {
+                            return $sourceFQN::transformValue($remoteWebElement->getText());
+                        },
+                        iterator_to_array($crawler->filterXPath($sourceFQN::xPathIdentifierKey())->getIterator())
+                    ),
+                )
             );
-
-            $keyValuePairs = array_filter($keyValuePairs);
             ksort($keyValuePairs);
-
-            $enumFilePath   = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace(['PrinsFrank\\Standards\\', '\\'], ['', DIRECTORY_SEPARATOR], $sourceFQN::getSpecFQN()) . '.php';
-            $enumContent    = file_get_contents($enumFilePath);
-            $startEnum      = strpos($enumContent, '{');
-            $firstMethodPos = strpos($enumContent, ' public ');
-            $endEnumPos     = strrpos($enumContent, '}');
-            $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1) . PHP_EOL;
             foreach ($keyValuePairs as $key => $value) {
-                $newEnumContent .= '    case ' . $key . ' = \'' . $value . '\';' . PHP_EOL;
+                $enumCases[] = new EnumCase($key, $value);
             }
-            $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
-            file_put_contents($enumFilePath, $newEnumContent);
+
+            (new EnumFile($sourceFQN::getSpecFQN()))
+                ->setCases(...$enumCases)
+                ->writeCases();
         }
     }
 }
