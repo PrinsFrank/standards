@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Language;
 
-use PrinsFrank\Standards\Dev\DataSource\DataSource;
+use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Terminology;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class ISO639_1_Alpha_3_Terminology_Source implements DataSource
+class ISO639_1_Alpha_3_Terminology_Source implements HtmlDataSource
 {
     public static function url(): string
     {
