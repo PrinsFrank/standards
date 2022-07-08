@@ -40,7 +40,7 @@
             "@test:unit"
         ],
         "update-spec": [
-            "php update-spec",
+            "PrinsFrank\\Standards\\Dev\\SpecUpdater::update",
             "@fix:csfixer"
         ]
     }
