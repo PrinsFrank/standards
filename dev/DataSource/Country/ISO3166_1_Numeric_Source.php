@@ -5,11 +5,11 @@ namespace PrinsFrank\Standards\Dev\DataSource\Country;
 namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
 use PrinsFrank\Standards\Country\ISO3166_1_Numeric;
-use PrinsFrank\Standards\Dev\DataSource\DataSource;
+use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class ISO3166_1_Numeric_Source implements DataSource
+class ISO3166_1_Numeric_Source implements HtmlDataSource
 {
     public static function url(): string
     {
@@ -47,5 +47,6 @@ class ISO3166_1_Numeric_Source implements DataSource
         $client->waitForInvisibility('.v-loading-indicator');
         $perPageDropdown = $crawler->filterXPath(".//select[@class='v-select-select']//option[last()]");
         $perPageDropdown->click();
+        $client->waitForElementToContain('html', 'Zimbabwe');
     }
 }

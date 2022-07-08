@@ -18,11 +18,11 @@
         "php": "^8.1"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.8",
-        "phpunit/phpunit": "^9.5",
-        "ext-dom": "*",
         "ext-mbstring": "*",
         "ext-intl": "*",
+        "ext-dom": "*",
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "phpunit/phpunit": "^9.5",
         "symfony/panther": "^2.0",
         "dbrekelmans/bdi": "^1.0"
     },
