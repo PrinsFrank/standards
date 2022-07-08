@@ -70,4 +70,6 @@ enum HttpStatusCode: int
     case Loop_Detected                   = 508;
     case Not_Extended_OBSOLETED          = 510;
     case Network_Authentication_Required = 511;
+
+
 }
