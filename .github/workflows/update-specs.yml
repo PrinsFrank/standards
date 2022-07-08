@@ -1,11 +1,11 @@
-name: Update standards
+name: Daily specs update
 
 on:
   schedule:
-    - cron: '00 19 * * *'
+    - cron: '10 19 * * *'
 
 jobs:
-  update-standards:
+  update-specs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
