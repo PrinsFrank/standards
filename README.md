@@ -107,5 +107,5 @@ $valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); //
 ```php
 $code = HttpStatusCode::from(404);                                     // HttpStatusCode::Not_Found
 $value = $code->value;                                                 // 404
-$valueName = $code->name;                                              // NotFound
+$valueName = $code->name;                                              // Not_Found
 ```
