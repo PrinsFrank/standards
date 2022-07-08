@@ -5,6 +5,11 @@ namespace PrinsFrank\Standards\Currency;
 
 use PrinsFrank\Standards\BackedEnum;
 
+/**
+ * @source https://www.iso.org/iso-4217-currency-codes.html
+ * @source https://www.six-group.com/en/products-services/financial-information/data-standards.html
+ * @source https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list_one.xml
+ */
 enum ISO4217_Numeric: string
 {
     case ADB_Unit_of_Account                                               = '965';
