@@ -38,7 +38,7 @@ class SpecUpdater
         HttpStatusCodeSource::class,
     ];
 
-    public function __invoke(): void
+    public static function update(): void
     {
         /** @var DataSource $sourceFQN */
         foreach (self::SOURCES as $sourceFQN) {
