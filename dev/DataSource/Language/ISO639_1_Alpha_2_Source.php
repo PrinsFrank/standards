@@ -30,7 +30,7 @@ class ISO639_1_Alpha_2_Source implements HtmlDataSource
         return $key;
     }
 
-    public static function transformValue(string $value): ?string
+    public static function transformValue(string $value): string|int|null
     {
         return strtolower(str_replace(' ', '', trim($value)));
     }
@@ -42,5 +42,10 @@ class ISO639_1_Alpha_2_Source implements HtmlDataSource
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void
     {
+    }
+
+    public static function sort(): bool
+    {
+        return true;
     }
 }

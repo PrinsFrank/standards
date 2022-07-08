@@ -31,7 +31,7 @@ class ISO3166_1_Numeric_Source implements HtmlDataSource
         return $key;
     }
 
-    public static function transformValue(string $value): ?string
+    public static function transformValue(string $value): string|int|null
     {
         return $value;
     }
@@ -48,5 +48,10 @@ class ISO3166_1_Numeric_Source implements HtmlDataSource
         $perPageDropdown = $crawler->filterXPath(".//select[@class='v-select-select']//option[last()]");
         $perPageDropdown->click();
         $client->waitForElementToContain('html', 'Zimbabwe');
+    }
+
+    public static function sort(): bool
+    {
+        return true;
     }
 }

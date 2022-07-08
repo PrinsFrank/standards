@@ -6,7 +6,8 @@ namespace PrinsFrank\Standards\Language;
 use PrinsFrank\Standards\BackedEnum;
 
 /**
- * @source https://www.loc.gov/standards/iso639-2/php/code_list.php
+ * @source https://www.iso.org/iso-639-language-codes.html
+ * @source http://www.loc.gov/standards/iso639-2/php/code_list.php
  */
 enum ISO639_2_Alpha_3_Terminology: string
 {

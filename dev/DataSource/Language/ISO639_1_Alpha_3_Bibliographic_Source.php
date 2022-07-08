@@ -30,7 +30,7 @@ class ISO639_1_Alpha_3_Bibliographic_Source implements HtmlDataSource
         return $key;
     }
 
-    public static function transformValue(string $value): ?string
+    public static function transformValue(string $value): string|int|null
     {
         $bibliographicMarkerPos = strpos($value, '(B)');
         if ($bibliographicMarkerPos === false) {
@@ -48,5 +48,10 @@ class ISO639_1_Alpha_3_Bibliographic_Source implements HtmlDataSource
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void
     {
+    }
+
+    public static function sort(): bool
+    {
+        return true;
     }
 }

@@ -30,7 +30,7 @@ class ISO639_1_Alpha_3_Common_Source implements HtmlDataSource
         return $key;
     }
 
-    public static function transformValue(string $value): ?string
+    public static function transformValue(string $value): string|int|null
     {
         if (str_contains($value, '(T)') || str_contains($value, '(B)') || str_contains($value, '-')) {
             return null;
@@ -46,5 +46,10 @@ class ISO639_1_Alpha_3_Common_Source implements HtmlDataSource
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void
     {
+    }
+
+    public static function sort(): bool
+    {
+        return true;
     }
 }
