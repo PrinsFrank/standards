@@ -30,7 +30,7 @@ class ISO4217_Numeric_Source implements XmlDataSource
         return $key;
     }
 
-    public static function transformValue(string $value): ?string
+    public static function transformValue(string $value): string|int|null
     {
         return $value;
     }
@@ -42,5 +42,10 @@ class ISO4217_Numeric_Source implements XmlDataSource
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void
     {
+    }
+
+    public static function sort(): bool
+    {
+        return true;
     }
 }

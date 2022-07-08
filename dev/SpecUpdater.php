@@ -10,6 +10,7 @@ use PrinsFrank\Standards\Dev\DataSource\Currency\ISO4217_Alpha_3_Source;
 use PrinsFrank\Standards\Dev\DataSource\Currency\ISO4217_Numeric_Source;
 use PrinsFrank\Standards\Dev\DataSource\DataSource;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
+use PrinsFrank\Standards\Dev\DataSource\Http\HttpStatusCodeSource;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_2_Source;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_3_Bibliographic_Source;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_3_Common_Source;
@@ -34,6 +35,7 @@ class SpecUpdater
         ISO3166_1_Alpha_3_Source::class,
         ISO4217_Alpha_3_Source::class,
         ISO4217_Numeric_Source::class,
+        HttpStatusCodeSource::class,
     ];
 
     public function __invoke(): void
@@ -50,8 +52,11 @@ class SpecUpdater
                 throw new RuntimeException('Unsupported data type');
             }
 
+            if ($sourceFQN::sort() === true) {
+                ksort($keyValuePairs);
+            }
+
             $enumCases = [];
-            ksort($keyValuePairs);
             foreach ($keyValuePairs as $key => $value) {
                 $enumCases[] = new EnumCase($key, $value);
             }
