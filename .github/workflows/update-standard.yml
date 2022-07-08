@@ -5,7 +5,7 @@ on:
     - cron: '00 19 * * *'
 
 jobs:
-  code-style:
+  update-standards:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
