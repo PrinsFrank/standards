@@ -2,7 +2,7 @@ name: Daily specs update
 
 on:
   schedule:
-    - cron: '20 19 * * *'
+    - cron: '55 17 * * *'
 
 jobs:
   update-specs:
