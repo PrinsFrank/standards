@@ -2,7 +2,7 @@ name: Update standards
 
 on:
   schedule:
-    - cron: '00 21 * * *'
+    - cron: '00 19 * * *'
 
 jobs:
   code-style:
