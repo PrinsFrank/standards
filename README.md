@@ -8,6 +8,8 @@
 
 **A collection of standards as PHP Enums**
 
+Daily updated from their sources, whether it is ISO or IANA directly, or a maintaining party like the six group or the US library of congress.
+
 ## Setup
 
 > Make sure you are running PHP 8.1 or higher to use this package
