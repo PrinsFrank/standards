@@ -52,7 +52,7 @@ class ISO4217_NumericTest extends TestCase
      */
     public function testTryFromInt(): void
     {
-        static::assertEquals(ISO4217_Numeric::Albanian_lek, ISO4217_Numeric::tryFromInt(8));
+        static::assertEquals(ISO4217_Numeric::Lek, ISO4217_Numeric::tryFromInt(8));
         static::assertNull(ISO4217_Numeric::tryFromInt(1));
     }
 }
