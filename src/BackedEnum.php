@@ -7,11 +7,11 @@ class BackedEnum
 {
     /**
      * @template T of \BackedEnum
-     * @param class-string<T> $fqcn
+     * @param class-string<T> $fqn
      * @return T|null
      */
-    public static function fromKey(string $fqcn, string $keyName): ?\BackedEnum
+    public static function fromKey(string $fqn, string $keyName): ?\BackedEnum
     {
-        return defined("{$fqcn}::{$keyName}") ? constant("{$fqcn}::{$keyName}") : null;
+        return defined("{$fqn}::{$keyName}") ? constant("{$fqn}::{$keyName}") : null;
     }
 }
