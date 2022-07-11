@@ -12,6 +12,7 @@ Daily updated from their sources, whether it is ISO or IANA directly, or a maint
 
 ## Setup
 
+> **Note**
 > Make sure you are running PHP 8.1 or higher to use this package
 
 To start right away, run the following command in your composer project;
