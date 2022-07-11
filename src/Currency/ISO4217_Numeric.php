@@ -14,6 +14,7 @@ enum ISO4217_Numeric: string
 {
     case ADB_Unit_of_Account                                               = '965';
     case Afghani                                                           = '971';
+    case Albanian_Lek                                                      = '008';
     case Algerian_Dinar                                                    = '012';
     case Argentine_Peso                                                    = '032';
     case Armenian_Dram                                                     = '051';
