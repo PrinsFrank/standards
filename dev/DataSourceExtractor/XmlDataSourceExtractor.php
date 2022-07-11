@@ -13,7 +13,7 @@ class XmlDataSourceExtractor implements DataSourceExtractor
 {
     /**
      * @param class-string<XmlDataSource> $sourceFQN
-     * @return array
+     * @return array<string, string|int>
      */
     public static function extractForSource(string $sourceFQN): array
     {

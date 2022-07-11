@@ -13,7 +13,7 @@ class HtmlDataSourceExtractor implements DataSourceExtractor
 {
     /**
      * @param class-string<HtmlDataSource> $sourceFQN
-     * @return array
+     * @return array<string, string|int>
      */
     public static function extractForSource(string $sourceFQN): array
     {
