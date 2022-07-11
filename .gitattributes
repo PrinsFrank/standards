@@ -9,5 +9,5 @@
 /.gitattributes     export-ignore
 /.gitignore         export-ignore
 /.php-cs-fixer.php  export-ignore
-/phpstan.neon
+/phpstan.neon       export-ignore
 /phpunit.xml.dist   export-ignore
