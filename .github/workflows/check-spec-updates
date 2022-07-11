@@ -1,0 +1,20 @@
+name: One time specs update
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  update-specs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: composer install
+      - name: Run standard update command
+        run: composer update-spec
+      - name: Check diff
+        run: git diff --exit-code
