@@ -237,7 +237,7 @@ enum ISO3166_1_Alpha_3: string
     case Tonga                                                    = 'TON';
     case Trinidad_and_Tobago                                      = 'TTO';
     case Tunisia                                                  = 'TUN';
-    case Turkey                                                   = 'TUR';
+    case Turkiye                                                  = 'TUR';
     case Turkmenistan                                             = 'TKM';
     case Turks_and_Caicos_Islands_the                             = 'TCA';
     case Tuvalu                                                   = 'TUV';
