@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSourceExtractor;
 
-use Exception;
 use Facebook\WebDriver\Remote\RemoteWebElement;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use PrinsFrank\Standards\Dev\KeyNormalizer\KeyNormalizer;
+use PrinsFrank\Standards\Dev\TransliterationException;
 use Symfony\Component\Panther\Client;
 
 class HtmlDataSourceExtractor implements DataSourceExtractor
@@ -14,6 +14,7 @@ class HtmlDataSourceExtractor implements DataSourceExtractor
     /**
      * @param class-string<HtmlDataSource> $sourceFQN
      * @return array<string, string|int>
+     * @throws TransliterationException
      */
     public static function extractForSource(string $sourceFQN): array
     {

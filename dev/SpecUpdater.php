@@ -38,6 +38,11 @@ class SpecUpdater
         HttpStatusCodeSource::class,
     ];
 
+    /**
+     * @throws UnavailableSourceException
+     * @throws EnumNotFoundException
+     * @throws TransliterationException
+     */
     public static function update(): void
     {
         /** @var DataSource $sourceFQN */

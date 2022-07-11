@@ -8,16 +8,24 @@ use DOMElement;
 use DOMXPath;
 use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
 use PrinsFrank\Standards\Dev\KeyNormalizer\KeyNormalizer;
+use PrinsFrank\Standards\Dev\TransliterationException;
+use PrinsFrank\Standards\Dev\UnavailableSourceException;
 
 class XmlDataSourceExtractor implements DataSourceExtractor
 {
     /**
      * @param class-string<XmlDataSource> $sourceFQN
      * @return array<string, string|int>
+     * @throws UnavailableSourceException
+     * @throws TransliterationException
      */
     public static function extractForSource(string $sourceFQN): array
     {
         $sourceContents = file_get_contents($sourceFQN::url());
+        if ($sourceContents === false) {
+            throw new UnavailableSourceException();
+        }
+
         $domDocument    = new DOMDocument();
         $domDocument->loadXML($sourceContents);
 
