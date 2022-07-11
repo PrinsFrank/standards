@@ -34,11 +34,11 @@ enum ISO639_2_Alpha_3_Bibliographic: string
 
     public function toISO639_2_Alpha_3_Terminology(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Terminology|null
     {
-        return BackedEnum::fromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? BackedEnum::fromKey(ISO639_2_Alpha_3_Terminology::class, $this->name) ?? null;
+        return BackedEnum::tryFromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? BackedEnum::tryFromKey(ISO639_2_Alpha_3_Terminology::class, $this->name) ?? null;
     }
 
     public function toISO639_1_Alpha_2(): ISO639_1_Alpha_2|null
     {
-        return BackedEnum::fromKey(ISO639_1_Alpha_2::class, $this->name);
+        return BackedEnum::tryFromKey(ISO639_1_Alpha_2::class, $this->name);
     }
 }
