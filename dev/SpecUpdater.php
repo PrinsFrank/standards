@@ -24,7 +24,7 @@ use RuntimeException;
 
 class SpecUpdater
 {
-    /** @var array<class-string<DataSource>, class-string> */
+    /** @var array<class-string<DataSource>> */
     public const SOURCES = [
         ISO639_1_Alpha_2_Source::class,
         ISO639_1_Alpha_3_Bibliographic_Source::class,
@@ -45,7 +45,6 @@ class SpecUpdater
      */
     public static function update(): void
     {
-        /** @var DataSource $sourceFQN */
         foreach (self::SOURCES as $sourceFQN) {
             echo date('Y-m-d H:i:s') . ' updating spec ' . $sourceFQN::getSpecFQN() . PHP_EOL;
 
