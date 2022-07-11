@@ -7,18 +7,11 @@ class BackedEnum
 {
     /**
      * @template T of \BackedEnum
-     * @param class-string<T> $fqn
+     * @param class-string<T> $fqcn
      * @return T|null
      */
-    public static function fromKey(string $fqn, string $keyName): ?\BackedEnum
+    public static function fromKey(string $fqcn, string $keyName): ?\BackedEnum
     {
-        foreach ($fqn::cases() as $case) {
-            if ($case->name === $keyName) {
-                // stop at first case found
-                return $case;
-            }
-        }
-
-        return null;
+        return defined("{$fqcn}::{$keyName}") ? $fqcn::$keyName : null;
     }
 }
