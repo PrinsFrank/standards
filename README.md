@@ -11,7 +11,7 @@
 Daily updated from their sources, whether it is ISO or IANA directly, or a maintaining party like the six group or the US library of congress.
 
 > **Warning**
-> As this package follows changing standards, changes are occurring often and are sometimes breaking (Like "Turkey" renaming to "Turkiye")
+> As this package follows changing standards, changes are occurring often and are sometimes breaking (Like "Turkey" renaming to "Türkiye")
 > 
 > Most if not all these changes are breaking. If you have required this package, usually it is locked to a major version like "^1.0.0", which doesn't allow an upgrade to "2.0.0" as breaking changes have to be reviewed. Therefor, make sure to run ```composer outdated``` often to check for updates.
 
