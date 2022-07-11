@@ -22,21 +22,28 @@ class HtmlDataSourceExtractor implements DataSourceExtractor
         $crawler = $client->request('GET', $sourceFQN::url());
         $sourceFQN::afterPageLoad($client, $crawler);
 
-        return array_filter(
-            array_combine(
-                array_map(
-                    static function (RemoteWebElement $remoteWebElement) use ($sourceFQN) {
-                        return $sourceFQN::transformKey(KeyNormalizer::normalize($remoteWebElement->getText()));
-                    },
-                    iterator_to_array($crawler->filterXPath($sourceFQN::xPathIdentifierKey())->getIterator())
-                ),
-                array_map(
-                    static function (RemoteWebElement $remoteWebElement) use ($sourceFQN) {
-                        return $sourceFQN::transformValue($remoteWebElement->getText());
-                    },
-                    iterator_to_array($crawler->filterXPath($sourceFQN::xPathIdentifierValue())->getIterator())
-                ),
-            )
-        );
+        $keys = $indicesForEmptyKeys = [];
+        foreach ($crawler->filterXPath($sourceFQN::xPathIdentifierKey())->getIterator() as $index => $remoteWebElement) {
+            /** @var RemoteWebElement $remoteWebElement */
+            $transformedKey = $sourceFQN::transformKey(KeyNormalizer::normalize($remoteWebElement->getText()));
+            if ($transformedKey === null) {
+                $indicesForEmptyKeys[] = $index;
+                continue;
+            }
+
+            $keys[] = $transformedKey;
+        }
+
+        $values = [];
+        foreach ($crawler->filterXPath($sourceFQN::xPathIdentifierValue())->getIterator() as $index => $remoteWebElement) {
+            if (in_array($index, $indicesForEmptyKeys, true)) {
+                continue;
+            }
+
+            /** @var RemoteWebElement $remoteWebElement */
+            $values[] = $sourceFQN::transformValue($remoteWebElement->getText());
+        }
+
+        return array_filter(array_combine($keys, $values));
     }
 }

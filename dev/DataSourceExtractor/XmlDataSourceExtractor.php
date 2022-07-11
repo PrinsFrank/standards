@@ -28,31 +28,41 @@ class XmlDataSourceExtractor implements DataSourceExtractor
             throw new UnavailableSourceException();
         }
 
-        $domDocument    = new DOMDocument();
+        $domDocument = new DOMDocument();
         $domDocument->loadXML($sourceContents);
 
-        $xPath = new DOMXPath($domDocument);
-        $keyDOMList = $xPath->query($sourceFQN::xPathIdentifierKey());
+        $xPath        = new DOMXPath($domDocument);
+        $keyDOMList   = $xPath->query($sourceFQN::xPathIdentifierKey());
         $valueDOMList = $xPath->query($sourceFQN::xPathIdentifierValue());
         if ($valueDOMList === false || $keyDOMList === false) {
             throw new DomElementNotFoundException();
         }
 
-        return array_filter(
-            array_combine(
-                array_map(
-                    static function (DOMElement $DomElement) use ($sourceFQN) {
-                        return $sourceFQN::transformKey(KeyNormalizer::normalize($DomElement->nodeValue));
-                    },
-                    iterator_to_array($keyDOMList->getIterator())
-                ),
-                array_map(
-                    static function (DOMElement $DomElement) use ($sourceFQN) {
-                        return $sourceFQN::transformValue($DomElement->nodeValue);
-                    },
-                    iterator_to_array($valueDOMList->getIterator())
-                ),
-            )
-        );
+        $keys = $indicesForEmptyKeys = [];
+        foreach ($keyDOMList->getIterator() as $index => $DomElement) {
+            if ($DomElement->nodeValue === null) {
+                $indicesForEmptyKeys[] = $index;
+                continue;
+            }
+
+            $transformedKey = $sourceFQN::transformKey(KeyNormalizer::normalize($DomElement->nodeValue));
+            if ($transformedKey === null) {
+                $indicesForEmptyKeys[] = $index;
+                continue;
+            }
+
+            $keys[] = $transformedKey;
+        }
+
+        $values = [];
+        foreach ($valueDOMList->getIterator() as $index => $DomElement) {
+            if (in_array($index, $indicesForEmptyKeys, true)) {
+                continue;
+            }
+
+            $values[] = $DomElement->nodeValue !== null ? $sourceFQN::transformValue($DomElement->nodeValue) : null;
+        }
+
+        return array_filter(array_combine($keys, $values));
     }
 }
