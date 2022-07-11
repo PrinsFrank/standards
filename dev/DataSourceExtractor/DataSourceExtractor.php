@@ -5,5 +5,6 @@ namespace PrinsFrank\Standards\Dev\DataSourceExtractor;
 
 interface DataSourceExtractor
 {
+    /** @return array<string, string|int> */
     public static function extractForSource(string $sourceFQN): array;
 }

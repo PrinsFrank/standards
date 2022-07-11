@@ -3,9 +3,13 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
+use PrinsFrank\Standards\Dev\EnumNotFoundException;
+
 class EnumFile
 {
     private string $path;
+
+    /** @var EnumCase[] */
     private array $cases = [];
 
     public function __construct(string $fqn)
@@ -20,9 +24,17 @@ class EnumFile
         return $this;
     }
 
+    /**
+     * @throws EnumNotFoundException
+     */
     public function getContent(): string
     {
-        return file_get_contents($this->path);
+        $content = file_get_contents($this->path);
+        if ($content === false) {
+            throw new EnumNotFoundException();
+        }
+
+        return $content;
     }
 
     public function putContent(string $content): self
@@ -32,6 +44,9 @@ class EnumFile
         return $this;
     }
 
+    /**
+     * @throws EnumNotFoundException
+     */
     public function writeCases(): self
     {
         $enumContent    = $this->getContent();

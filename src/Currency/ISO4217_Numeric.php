@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Currency;
 
 use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Standards\Exception\MisConfiguredEnumException;
 
 /**
  * @source https://www.iso.org/iso-4217-currency-codes.html

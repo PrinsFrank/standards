@@ -480,6 +480,6 @@ enum ISO639_2_Alpha_3_Common: string
 
     public function toISO639_1_Alpha_2(): ISO639_1_Alpha_2|null
     {
-        return BackedEnum::fromKey(ISO639_1_Alpha_2::class, $this->name);
+        return BackedEnum::tryFromKey(ISO639_1_Alpha_2::class, $this->name);
     }
 }

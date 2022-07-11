@@ -18,12 +18,12 @@ class ISO3166_1_Numeric_Source implements HtmlDataSource
 
     public static function xPathIdentifierKey(): string
     {
-        return '//tbody[@class="v-grid-body"]/tr/td[5]';
+        return '//tbody[@class="v-grid-body"]/tr/td/button';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//tbody[@class="v-grid-body"]/tr/td/button';
+        return '//tbody[@class="v-grid-body"]/tr/td[5]';
     }
 
     public static function transformKey(string $key): ?string
