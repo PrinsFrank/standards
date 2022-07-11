@@ -12,6 +12,6 @@ class BackedEnum
      */
     public static function fromKey(string $fqcn, string $keyName): ?\BackedEnum
     {
-        return defined("{$fqcn}::{$keyName}") ? $fqcn::$keyName : null;
+        return enum_exists("{$fqcn}::{$keyName}") ? $fqcn::$keyName : null;
     }
 }
