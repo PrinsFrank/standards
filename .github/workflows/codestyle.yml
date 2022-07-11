@@ -15,4 +15,4 @@ jobs:
       - name: Install dependencies
         run: composer install
       - name: Run PHP CS Fixer
-        run: composer check
+        run: composer run cs
