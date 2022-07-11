@@ -36,12 +36,12 @@ class HttpStatusCodeSource implements HtmlDataSource
 
     public static function xPathIdentifierKey(): string
     {
-        return '//table[@id="table-http-status-codes-1"]/tbody/tr/td[1]';
+        return '//table[@id="table-http-status-codes-1"]/tbody/tr/td[2]';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//table[@id="table-http-status-codes-1"]/tbody/tr/td[2]';
+        return '//table[@id="table-http-status-codes-1"]/tbody/tr/td[1]';
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

@@ -17,12 +17,12 @@ class ISO639_1_Alpha_3_Common_Source implements HtmlDataSource
 
     public static function xPathIdentifierKey(): string
     {
-        return '//table[@width="100%"]/tbody/tr/td[1]';
+        return '//table[@width="100%"]/tbody/tr/td[3]';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//table[@width="100%"]/tbody/tr/td[3]';
+        return '//table[@width="100%"]/tbody/tr/td[1]';
     }
 
     public static function transformKey(string $key): ?string

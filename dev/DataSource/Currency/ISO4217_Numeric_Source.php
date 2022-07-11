@@ -17,12 +17,12 @@ class ISO4217_Numeric_Source implements XmlDataSource
 
     public static function xPathIdentifierKey(): string
     {
-        return '//ISO_4217/CcyTbl/CcyNtry/CcyNm//following-sibling::CcyNbr';
+        return '//ISO_4217/CcyTbl/CcyNtry/CcyNbr//preceding-sibling::CcyNm';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//ISO_4217/CcyTbl/CcyNtry/CcyNbr//preceding-sibling::CcyNm';
+        return '//ISO_4217/CcyTbl/CcyNtry/CcyNm//following-sibling::CcyNbr';
     }
 
     public static function transformKey(string $key): ?string

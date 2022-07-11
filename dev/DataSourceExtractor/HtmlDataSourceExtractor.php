@@ -28,13 +28,13 @@ class HtmlDataSourceExtractor implements DataSourceExtractor
                     static function (RemoteWebElement $remoteWebElement) use ($sourceFQN) {
                         return $sourceFQN::transformKey(KeyNormalizer::normalize($remoteWebElement->getText()));
                     },
-                    iterator_to_array($crawler->filterXPath($sourceFQN::xPathIdentifierValue())->getIterator())
+                    iterator_to_array($crawler->filterXPath($sourceFQN::xPathIdentifierKey())->getIterator())
                 ),
                 array_map(
                     static function (RemoteWebElement $remoteWebElement) use ($sourceFQN) {
                         return $sourceFQN::transformValue($remoteWebElement->getText());
                     },
-                    iterator_to_array($crawler->filterXPath($sourceFQN::xPathIdentifierKey())->getIterator())
+                    iterator_to_array($crawler->filterXPath($sourceFQN::xPathIdentifierValue())->getIterator())
                 ),
             )
         );
