@@ -4,11 +4,11 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Language;
 
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
-use PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Common;
+use PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Terminology;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class ISO639_1_Alpha_3_Common_Source implements HtmlDataSource
+class ISO639_2_Alpha_3_Terminology_Source implements HtmlDataSource
 {
     public static function url(): string
     {
@@ -32,16 +32,18 @@ class ISO639_1_Alpha_3_Common_Source implements HtmlDataSource
 
     public static function transformValue(string $value): string|int|null
     {
-        if (str_contains($value, '(T)') || str_contains($value, '(B)') || str_contains($value, '-')) {
+        $terminologyMarkerPos = strpos($value, '(T)');
+        if ($terminologyMarkerPos === false) {
             return null;
         }
 
+        $value = substr($value, $terminologyMarkerPos - 4, 3);
         return strtolower(str_replace(' ', '', trim($value)));
     }
 
     public static function getSpecFQN(): string
     {
-        return ISO639_2_Alpha_3_Common::class;
+        return ISO639_2_Alpha_3_Terminology::class;
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void
