@@ -237,7 +237,7 @@ enum ISO3166_1_Numeric: string
     case Tonga                                                    = '776';
     case Trinidad_and_Tobago                                      = '780';
     case Tunisia                                                  = '788';
-    case Turkiye                                                  = '792';
+    case Turkey                                                   = '792';
     case Turkmenistan                                             = '795';
     case Turks_and_Caicos_Islands_the                             = '796';
     case Tuvalu                                                   = '798';
