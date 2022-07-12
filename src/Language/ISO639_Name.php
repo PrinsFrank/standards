@@ -370,7 +370,6 @@ enum ISO639_Name: string
     case Rajasthani                                                                   = 'Rajasthani';
     case Rapanui                                                                      = 'Rapanui';
     case Rarotongan_Cook_Islands_Maori                                                = 'Rarotongan; Cook Islands Maori';
-    case Reserved_for_local_use                                                       = 'Reserved for local use';
     case Romance_languages                                                            = 'Romance languages';
     case Romanian_Moldavian_Moldovan                                                  = 'Romanian; Moldavian; Moldovan';
     case Romansh                                                                      = 'Romansh';

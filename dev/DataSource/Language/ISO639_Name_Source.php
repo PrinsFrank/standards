@@ -32,6 +32,10 @@ class ISO639_Name_Source implements HtmlDataSource
 
     public static function transformValue(string $value): string|int|null
     {
+        if (str_contains($value, 'Reserved')) {
+            return null;
+        }
+
         return $value;
     }
 
