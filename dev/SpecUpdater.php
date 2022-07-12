@@ -29,11 +29,6 @@ class SpecUpdater
 {
     /** @var array<class-string<DataSource>> */
     public const SOURCES = [
-        ISO639_1_Alpha_2_Source::class,
-        ISO639_2_Alpha_3_Bibliographic_Source::class,
-        ISO639_2_Alpha_3_Terminology_Source::class,
-        ISO639_2_Alpha_3_Common_Source::class,
-        ISO639_Name_Source::class,
         ISO3166_1_Numeric_Source::class,
         ISO3166_1_Alpha_2_Source::class,
         ISO3166_1_Alpha_3_Source::class,
@@ -42,6 +37,11 @@ class SpecUpdater
         ISO4217_Numeric_Source::class,
         ISO4217_Name_Source::class,
         HttpStatusCodeSource::class,
+        ISO639_1_Alpha_2_Source::class,
+        ISO639_2_Alpha_3_Bibliographic_Source::class,
+        ISO639_2_Alpha_3_Terminology_Source::class,
+        ISO639_2_Alpha_3_Common_Source::class,
+        ISO639_Name_Source::class,
     ];
 
     /**
