@@ -23,12 +23,13 @@ class BackedEnum
      */
     public static function tryFromKey(string $fqn, string $keyName): ?\BackedEnum
     {
-        foreach ($fqn::cases() as $case) {
-            if ($case->name === $keyName) {
-                return $case;
-            }
+        if (!defined("$fqn::$keyName")) {
+            return null;
         }
 
-        return null;
+        /** @var T $itemValue */
+        $itemValue = constant("$fqn::$keyName");
+
+        return $itemValue;
     }
 }
