@@ -23,9 +23,13 @@ class BackedEnum
      */
     public static function tryFromKey(string $fqn, string $keyName): ?\BackedEnum
     {
+        if (!defined("$fqn::$keyName")) {
+            return null;
+        }
+
         /** @var T $itemValue */
         $itemValue = constant("$fqn::$keyName");
 
-        return defined("$fqn::$keyName") ? $itemValue : null;
+        return $itemValue;
     }
 }
