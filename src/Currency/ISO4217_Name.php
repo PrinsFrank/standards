@@ -191,4 +191,14 @@ enum ISO4217_Name: string
     case Zambian_Kwacha                                                    = 'Zambian Kwacha';
     case Zimbabwe_Dollar                                                   = 'Zimbabwe Dollar';
     case Zloty                                                             = 'Zloty';
+
+    public function toISO4217_Alpha_3(): ISO4217_Alpha_3
+    {
+        return BackedEnum::fromKey(ISO4217_Alpha_3::class, $this->name);
+    }
+
+    public function toISO4217_Numeric(): ISO4217_Numeric
+    {
+        return BackedEnum::fromKey(ISO4217_Numeric::class, $this->name);
+    }
 }

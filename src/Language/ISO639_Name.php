@@ -497,4 +497,18 @@ enum ISO639_Name: string
     case Zhuang_Chuang                                                                = 'Zhuang; Chuang';
     case Zulu                                                                         = 'Zulu';
     case Zuni                                                                         = 'Zuni';
+    public function toISO639_1_Alpha_2(): ISO639_1_Alpha_2|null
+    {
+        return BackedEnum::tryFromKey(ISO639_1_Alpha_2::class, $this->name);
+    }
+
+    public function toISO639_2_Alpha_3_Bibliographic(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Bibliographic|null
+    {
+        return BackedEnum::tryFromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? BackedEnum::tryFromKey(ISO639_2_Alpha_3_Bibliographic::class, $this->name) ?? null;
+    }
+
+    public function toISO639_2_Alpha_3_Terminology(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Terminology|null
+    {
+        return BackedEnum::tryFromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? BackedEnum::tryFromKey(ISO639_2_Alpha_3_Terminology::class, $this->name) ?? null;
+    }
 }

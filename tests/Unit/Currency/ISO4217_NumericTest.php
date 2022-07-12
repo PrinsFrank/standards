@@ -16,7 +16,7 @@ class ISO4217_NumericTest extends TestCase
     /**
      * @covers ::toISO4217_Alpha_3
      */
-    public function testAllCasesCanBeConvertedToISO4217Numeric(): void
+    public function testAllCasesCanBeConvertedToISO4217Alpha3(): void
     {
         $cases = ISO4217_Numeric::cases();
         static::assertNotEmpty($cases);
@@ -25,6 +25,22 @@ class ISO4217_NumericTest extends TestCase
                 $case->toISO4217_Alpha_3();
             } catch (TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO4217_Alpha3', $case->name));
+            }
+        }
+    }
+
+    /**
+     * @covers ::toISO4217_Name
+     */
+    public function testAllCasesCanBeConvertedToISO4217Name(): void
+    {
+        $cases = ISO4217_Numeric::cases();
+        static::assertNotEmpty($cases);
+        foreach ($cases as $case) {
+            try {
+                $case->toISO4217_Name();
+            } catch (TypeError) {
+                $this->fail(sprintf('Case %s could not be converted to ISO4217_Name', $case->name));
             }
         }
     }

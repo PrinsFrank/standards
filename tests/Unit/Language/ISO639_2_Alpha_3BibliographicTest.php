@@ -34,4 +34,16 @@ class ISO639_2_Alpha_3BibliographicTest extends TestCase
             static::assertNotNull($case->toISO639_2_Alpha_3_Terminology());
         }
     }
+
+    /**
+     * @covers ::toISO639_Name
+     */
+    public function testAllCasesCanBeConvertedToISO639_Name(): void
+    {
+        $cases = ISO639_2_Alpha_3_Bibliographic::cases();
+        static::assertNotEmpty($cases);
+        foreach ($cases as $case) {
+            static::assertNotNull($case->toISO639_Name());
+        }
+    }
 }
