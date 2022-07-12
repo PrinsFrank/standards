@@ -5,16 +5,19 @@ namespace PrinsFrank\Standards\Dev;
 
 use PrinsFrank\Standards\Dev\DataSource\Country\ISO3166_1_Alpha_2_Source;
 use PrinsFrank\Standards\Dev\DataSource\Country\ISO3166_1_Alpha_3_Source;
+use PrinsFrank\Standards\Dev\DataSource\Country\ISO3166_1_Name_Source;
 use PrinsFrank\Standards\Dev\DataSource\Country\ISO3166_1_Numeric_Source;
 use PrinsFrank\Standards\Dev\DataSource\Currency\ISO4217_Alpha_3_Source;
+use PrinsFrank\Standards\Dev\DataSource\Currency\ISO4217_Name_Source;
 use PrinsFrank\Standards\Dev\DataSource\Currency\ISO4217_Numeric_Source;
 use PrinsFrank\Standards\Dev\DataSource\DataSource;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use PrinsFrank\Standards\Dev\DataSource\Http\HttpStatusCodeSource;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_2_Source;
-use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_3_Bibliographic_Source;
-use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_3_Common_Source;
-use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_3_Terminology_Source;
+use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_2_Alpha_3_Bibliographic_Source;
+use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_2_Alpha_3_Common_Source;
+use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_2_Alpha_3_Terminology_Source;
+use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_Name_Source;
 use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
 use PrinsFrank\Standards\Dev\DataSourceExtractor\HtmlDataSourceExtractor;
 use PrinsFrank\Standards\Dev\DataSourceExtractor\XmlDataSourceExtractor;
@@ -27,14 +30,17 @@ class SpecUpdater
     /** @var array<class-string<DataSource>> */
     public const SOURCES = [
         ISO639_1_Alpha_2_Source::class,
-        ISO639_1_Alpha_3_Bibliographic_Source::class,
-        ISO639_1_Alpha_3_Terminology_Source::class,
-        ISO639_1_Alpha_3_Common_Source::class,
+        ISO639_2_Alpha_3_Bibliographic_Source::class,
+        ISO639_2_Alpha_3_Terminology_Source::class,
+        ISO639_2_Alpha_3_Common_Source::class,
+        ISO639_Name_Source::class,
         ISO3166_1_Numeric_Source::class,
         ISO3166_1_Alpha_2_Source::class,
         ISO3166_1_Alpha_3_Source::class,
+        ISO3166_1_Name_Source::class,
         ISO4217_Alpha_3_Source::class,
         ISO4217_Numeric_Source::class,
+        ISO4217_Name_Source::class,
         HttpStatusCodeSource::class,
     ];
 

@@ -15,6 +15,6 @@ class EnumCase
             return 'case ' . $this->key . ' = ' . $this->value . ';';
         }
 
-        return 'case ' . $this->key . ' = \'' . $this->value . '\';';
+        return 'case ' . $this->key . ' = \'' . str_replace('\'', '\\\'', $this->value) . '\';';
     }
 }
