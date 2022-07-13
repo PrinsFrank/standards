@@ -10,9 +10,5 @@ interface HtmlDataSource extends DataSource
 {
     public static function url(): string;
 
-    public static function xPathIdentifierKey(): string;
-
-    public static function xPathIdentifierValue(): string;
-
     public static function afterPageLoad(Client $client, Crawler $crawler): void;
 }
