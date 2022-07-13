@@ -48,27 +48,35 @@ class SpecUpdater
      * @throws UnavailableSourceException
      * @throws EnumNotFoundException
      * @throws TransliterationException
+     * @throws DomElementNotFoundException
      */
     public static function update(): void
     {
+        /** @var class-string<DataSource> $sourceFQN */
         foreach (self::SOURCES as $sourceFQN) {
-            echo date('Y-m-d H:i:s') . ' updating spec ' . $sourceFQN::getSpecFQN() . PHP_EOL;
+            $specFQN = $sourceFQN::getSpecFQN();
+            echo date('Y-m-d H:i:s') . ' updating spec ' . $specFQN . PHP_EOL;
 
             if (is_a($sourceFQN, HtmlDataSource::class, true)) {
-                $keyValuePairs = HtmlDataSourceExtractor::extractForSource($sourceFQN);
+                $nameValuePairs = HtmlDataSourceExtractor::extractForSource($sourceFQN);
             } elseif (is_a($sourceFQN, XmlDataSource::class, true)) {
-                $keyValuePairs = XmlDataSourceExtractor::extractForSource($sourceFQN);
+                $nameValuePairs = XmlDataSourceExtractor::extractForSource($sourceFQN);
             } else {
                 throw new RuntimeException('Unsupported data type');
             }
 
             if ($sourceFQN::sort() === true) {
-                ksort($keyValuePairs);
+                ksort($nameValuePairs);
             }
 
             $enumCases = [];
-            foreach ($keyValuePairs as $key => $value) {
-                $enumCases[] = new EnumCase($key, $value);
+            foreach ($nameValuePairs as $name => $value) {
+                $existingCaseForValue = $specFQN::tryFrom($value);
+                if ($existingCaseForValue !== null) {
+                    $name = $existingCaseForValue->name;
+                }
+
+                $enumCases[] = new EnumCase($name, $value);
             }
 
             (new EnumFile($sourceFQN::getSpecFQN()))
