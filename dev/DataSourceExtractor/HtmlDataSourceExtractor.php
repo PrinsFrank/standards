@@ -44,6 +44,19 @@ class HtmlDataSourceExtractor implements DataSourceExtractor
             $values[] = $sourceFQN::transformValue($remoteWebElement->getText());
         }
 
+        foreach ($crawler->filterXPath($sourceFQN::xPathIdentifierKey())->getIterator() as $index => $remoteWebElement) {
+            /** @var RemoteWebElement $remoteWebElement */
+            $value = $sourceFQN::transformValue($remoteWebElement->getText());
+            if ($value === null || in_array($index, $indicesForEmptyNames, true)) {
+                continue;
+            }
+
+            $existingValue = $sourceFQN::getKeyEnumFQN()::tryFrom($value);
+            if ($existingValue !== null) {
+                $names[$index] = $existingValue->name;
+            }
+        }
+
         return array_filter(array_combine($names, $values));
     }
 }

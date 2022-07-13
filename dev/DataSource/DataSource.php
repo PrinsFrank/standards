@@ -14,6 +14,10 @@ interface DataSource
 
     public static function sort(): bool;
 
+    public static function xPathIdentifierKey(): string;
+
+    public static function getKeyEnumFQN(): string;
+
     public static function xPathIdentifierName(): string;
 
     public static function xPathIdentifierValue(): string;

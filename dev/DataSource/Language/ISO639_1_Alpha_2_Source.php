@@ -15,6 +15,11 @@ class ISO639_1_Alpha_2_Source implements HtmlDataSource
         return 'https://www.loc.gov/standards/iso639-2/php/code_list.php';
     }
 
+    public static function xPathIdentifierKey(): string
+    {
+        return self::xPathIdentifierName();
+    }
+
     public static function xPathIdentifierName(): string
     {
         return '//table[@width="100%"]/tbody/tr/td[3]';
@@ -38,6 +43,11 @@ class ISO639_1_Alpha_2_Source implements HtmlDataSource
     public static function getSpecFQN(): string
     {
         return ISO639_1_Alpha_2::class;
+    }
+
+    public static function getKeyEnumFQN(): string
+    {
+        return self::getSpecFQN();
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

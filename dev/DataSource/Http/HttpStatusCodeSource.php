@@ -10,6 +10,21 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
 
 class HttpStatusCodeSource implements HtmlDataSource
 {
+    public static function xPathIdentifierKey(): string
+    {
+        return self::xPathIdentifierName();
+    }
+
+    public static function xPathIdentifierName(): string
+    {
+        return '//table[@id="table-http-status-codes-1"]/tbody/tr/td[2]';
+    }
+
+    public static function xPathIdentifierValue(): string
+    {
+        return '//table[@id="table-http-status-codes-1"]/tbody/tr/td[1]';
+    }
+
     public static function transformName(string $key): ?string
     {
         return $key;
@@ -29,19 +44,14 @@ class HttpStatusCodeSource implements HtmlDataSource
         return HttpStatusCode::class;
     }
 
+    public static function getKeyEnumFQN(): string
+    {
+        return self::getSpecFQN();
+    }
+
     public static function url(): string
     {
         return 'https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml';
-    }
-
-    public static function xPathIdentifierName(): string
-    {
-        return '//table[@id="table-http-status-codes-1"]/tbody/tr/td[2]';
-    }
-
-    public static function xPathIdentifierValue(): string
-    {
-        return '//table[@id="table-http-status-codes-1"]/tbody/tr/td[1]';
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

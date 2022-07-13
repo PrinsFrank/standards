@@ -4,6 +4,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
 namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
+use PrinsFrank\Standards\Country\ISO3166_1_Alpha_2;
 use PrinsFrank\Standards\Country\ISO3166_1_Name;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use Symfony\Component\Panther\Client;
@@ -14,6 +15,11 @@ class ISO3166_1_Name_Source implements HtmlDataSource
     public static function url(): string
     {
         return 'https://www.iso.org/obp/ui/#search/code/';
+    }
+
+    public static function xPathIdentifierKey(): string
+    {
+        return '//tbody[@class="v-grid-body"]/tr/td[3]';
     }
 
     public static function xPathIdentifierName(): string
@@ -39,6 +45,11 @@ class ISO3166_1_Name_Source implements HtmlDataSource
     public static function getSpecFQN(): string
     {
         return ISO3166_1_Name::class;
+    }
+
+    public static function getKeyEnumFQN(): string
+    {
+        return ISO3166_1_Alpha_2::class;
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

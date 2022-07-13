@@ -15,6 +15,11 @@ class ISO4217_Alpha_3_Source implements XmlDataSource
         return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list_one.xml';
     }
 
+    public static function xPathIdentifierKey(): string
+    {
+        return self::xPathIdentifierName();
+    }
+
     public static function xPathIdentifierName(): string
     {
         return '//ISO_4217/CcyTbl/CcyNtry/Ccy//preceding-sibling::CcyNm';
@@ -38,6 +43,11 @@ class ISO4217_Alpha_3_Source implements XmlDataSource
     public static function getSpecFQN(): string
     {
         return ISO4217_Alpha_3::class;
+    }
+
+    public static function getKeyEnumFQN(): string
+    {
+        return self::getSpecFQN();
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void
