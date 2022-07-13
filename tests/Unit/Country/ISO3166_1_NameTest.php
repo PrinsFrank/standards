@@ -4,20 +4,20 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Tests\Unit\Country;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\Country\ISO3166_1_Alpha_3;
+use PrinsFrank\Standards\Country\ISO3166_1_Name;
 use TypeError;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Currency\ISO4217_Alpha_3
+ * @coversDefaultClass \PrinsFrank\Standards\Country\ISO3166_1_Name
  */
-class ISO3166_1_Alpha_3Test extends TestCase
+class ISO3166_1_NameTest extends TestCase
 {
     /**
      * @covers ::toISO3166_1_Alpha_2
      */
     public function testAllCasesCanBeConvertedToISO3166Alpha2(): void
     {
-        $cases = ISO3166_1_Alpha_3::cases();
+        $cases = ISO3166_1_Name::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
@@ -29,33 +29,33 @@ class ISO3166_1_Alpha_3Test extends TestCase
     }
 
     /**
+     * @covers ::toISO3166_1_Alpha_3
+     */
+    public function testAllCasesCanBeConvertedToISO3166Alpha3(): void
+    {
+        $cases = ISO3166_1_Name::cases();
+        static::assertNotEmpty($cases);
+        foreach ($cases as $case) {
+            try {
+                $case->toISO3166_1_Alpha_3();
+            } catch (TypeError) {
+                $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Alpha_3', $case->name));
+            }
+        }
+    }
+
+    /**
      * @covers ::toISO3166_1_Numeric
      */
     public function testAllCasesCanBeConvertedToISO3166Numeric(): void
     {
-        $cases = ISO3166_1_Alpha_3::cases();
+        $cases = ISO3166_1_Name::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
                 $case->toISO3166_1_Numeric();
             } catch (TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Numeric', $case->name));
-            }
-        }
-    }
-
-    /**
-     * @covers ::toISO3166_1_Name
-     */
-    public function testAllCasesCanBeConvertedToISO3166Name(): void
-    {
-        $cases = ISO3166_1_Alpha_3::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
-            try {
-                $case->toISO3166_Name();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Name', $case->name));
             }
         }
     }

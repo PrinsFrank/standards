@@ -18,6 +18,11 @@ class ISO3166_1_Alpha_3_Source implements HtmlDataSource
 
     public static function xPathIdentifierKey(): string
     {
+        return self::xPathIdentifierName();
+    }
+
+    public static function xPathIdentifierName(): string
+    {
         return '//tbody[@class="v-grid-body"]/tr/td/button';
     }
 
@@ -26,7 +31,7 @@ class ISO3166_1_Alpha_3_Source implements HtmlDataSource
         return '//tbody[@class="v-grid-body"]/tr/td[4]';
     }
 
-    public static function transformKey(string $key): ?string
+    public static function transformName(string $key): ?string
     {
         return $key;
     }
@@ -39,6 +44,11 @@ class ISO3166_1_Alpha_3_Source implements HtmlDataSource
     public static function getSpecFQN(): string
     {
         return ISO3166_1_Alpha_3::class;
+    }
+
+    public static function getKeyEnumFQN(): string
+    {
+        return self::getSpecFQN();
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

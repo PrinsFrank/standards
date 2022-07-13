@@ -12,7 +12,7 @@ use PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Terminology;
 class ISO639_2_Alpha_3TerminologyTest extends TestCase
 {
     /**
-     * @covers ::toLanguage
+     * @covers ::toISO639_1_Alpha_2
      */
     public function testAllCasesCanBeConvertedToISO639_1(): void
     {
@@ -32,6 +32,18 @@ class ISO639_2_Alpha_3TerminologyTest extends TestCase
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             static::assertNotNull($case->toISO639_2_Alpha_3_Bibliographic());
+        }
+    }
+
+    /**
+     * @covers ::toISO639_Name
+     */
+    public function testAllCasesCanBeConvertedToISO639_Name(): void
+    {
+        $cases = ISO639_2_Alpha_3_Terminology::cases();
+        static::assertNotEmpty($cases);
+        foreach ($cases as $case) {
+            static::assertNotNull($case->toISO639_Name());
         }
     }
 }

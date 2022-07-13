@@ -6,9 +6,10 @@ namespace PrinsFrank\Standards\Dev\DataSourceExtractor;
 use DOMDocument;
 use DOMElement;
 use DOMXPath;
+use Facebook\WebDriver\Remote\RemoteWebElement;
 use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;
-use PrinsFrank\Standards\Dev\KeyNormalizer\KeyNormalizer;
+use PrinsFrank\Standards\Dev\KeyNormalizer\NameNormalizer;
 use PrinsFrank\Standards\Dev\TransliterationException;
 use PrinsFrank\Standards\Dev\UnavailableSourceException;
 
@@ -31,38 +32,51 @@ class XmlDataSourceExtractor implements DataSourceExtractor
         $domDocument = new DOMDocument();
         $domDocument->loadXML($sourceContents);
 
-        $xPath        = new DOMXPath($domDocument);
-        $keyDOMList   = $xPath->query($sourceFQN::xPathIdentifierKey());
-        $valueDOMList = $xPath->query($sourceFQN::xPathIdentifierValue());
-        if ($valueDOMList === false || $keyDOMList === false) {
+        $xPath         = new DOMXPath($domDocument);
+        $keyDOMList    = $xPath->query($sourceFQN::xPathIdentifierKey());
+        $nameDOMList   = $xPath->query($sourceFQN::xPathIdentifierName());
+        $valueDOMList  = $xPath->query($sourceFQN::xPathIdentifierValue());
+        if ($keyDOMList === false || $valueDOMList === false || $nameDOMList === false) {
             throw new DomElementNotFoundException();
         }
 
-        $keys = $indicesForEmptyKeys = [];
-        foreach ($keyDOMList->getIterator() as $index => $DomElement) {
+        $names = $indicesForEmptyNames = [];
+        foreach ($nameDOMList->getIterator() as $index => $DomElement) {
             if ($DomElement->nodeValue === null) {
-                $indicesForEmptyKeys[] = $index;
+                $indicesForEmptyNames[] = $index;
                 continue;
             }
 
-            $transformedKey = $sourceFQN::transformKey(KeyNormalizer::normalize($DomElement->nodeValue));
-            if ($transformedKey === null) {
-                $indicesForEmptyKeys[] = $index;
+            $transformedName = $sourceFQN::transformName(NameNormalizer::normalize($DomElement->nodeValue));
+            if ($transformedName === null) {
+                $indicesForEmptyNames[] = $index;
                 continue;
             }
 
-            $keys[] = $transformedKey;
+            $names[] = $transformedName;
         }
 
         $values = [];
         foreach ($valueDOMList->getIterator() as $index => $DomElement) {
-            if (in_array($index, $indicesForEmptyKeys, true)) {
+            if (in_array($index, $indicesForEmptyNames, true)) {
                 continue;
             }
 
             $values[] = $DomElement->nodeValue !== null ? $sourceFQN::transformValue($DomElement->nodeValue) : null;
         }
 
-        return array_filter(array_combine($keys, $values));
+        foreach ($keyDOMList as $index => $DomElement) {
+            $value = $sourceFQN::transformValue($DomElement->nodeValue ?? '');
+            if ($value === null || in_array($index, $indicesForEmptyNames, true)) {
+                continue;
+            }
+
+            $existingValue = $sourceFQN::getKeyEnumFQN()::tryFrom($value);
+            if ($existingValue !== null) {
+                $names[$index] = $existingValue->name;
+            }
+        }
+
+        return array_filter(array_combine($names, $values));
     }
 }

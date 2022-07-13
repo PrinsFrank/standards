@@ -43,4 +43,20 @@ class ISO3166_1_Alpha_2Test extends TestCase
             }
         }
     }
+
+    /**
+     * @covers ::toISO3166_Name
+     */
+    public function testAllCasesCanBeConvertedToISO3166Name(): void
+    {
+        $cases = ISO3166_1_Alpha_2::cases();
+        static::assertNotEmpty($cases);
+        foreach ($cases as $case) {
+            try {
+                $case->toISO3166_Name();
+            } catch (TypeError) {
+                $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Name', $case->name));
+            }
+        }
+    }
 }

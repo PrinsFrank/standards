@@ -1,34 +1,34 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Country;
+namespace PrinsFrank\Standards\Dev\DataSource\Language;
 
-namespace PrinsFrank\Standards\Dev\DataSource\Country;
-
-use PrinsFrank\Standards\Country\ISO3166_1_Numeric;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
+use PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Common;
+use PrinsFrank\Standards\Language\ISO639_Name;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class ISO3166_1_Numeric_Source implements HtmlDataSource
+class ISO639_Name_Source implements HtmlDataSource
 {
     public static function url(): string
     {
-        return 'https://www.iso.org/obp/ui/#search/code/';
+        return 'https://www.loc.gov/standards/iso639-2/php/code_list.php';
     }
 
     public static function xPathIdentifierKey(): string
     {
-        return self::xPathIdentifierName();
+        return '//table[@width="100%"]/tbody/tr/td[1]';
     }
 
     public static function xPathIdentifierName(): string
     {
-        return '//tbody[@class="v-grid-body"]/tr/td/button';
+        return '//table[@width="100%"]/tbody/tr/td[3]';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//tbody[@class="v-grid-body"]/tr/td[5]';
+        return '//table[@width="100%"]/tbody/tr/td[3]';
     }
 
     public static function transformName(string $key): ?string
@@ -38,26 +38,25 @@ class ISO3166_1_Numeric_Source implements HtmlDataSource
 
     public static function transformValue(string $value): string|int|null
     {
+        if (str_contains($value, 'Reserved')) {
+            return null;
+        }
+
         return $value;
     }
 
     public static function getSpecFQN(): string
     {
-        return ISO3166_1_Numeric::class;
+        return ISO639_Name::class;
     }
 
     public static function getKeyEnumFQN(): string
     {
-        return self::getSpecFQN();
+        return ISO639_2_Alpha_3_Common::class;
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void
     {
-        $client->waitFor('.v-select-select');
-        $client->waitForInvisibility('.v-loading-indicator');
-        $perPageDropdown = $crawler->filterXPath(".//select[@class='v-select-select']//option[last()]");
-        $perPageDropdown->click();
-        $client->waitForElementToContain('html', 'Zimbabwe');
     }
 
     public static function sort(): bool

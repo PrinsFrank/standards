@@ -269,4 +269,9 @@ enum ISO3166_1_Alpha_2: string
     {
         return BackedEnum::fromKey(ISO3166_1_Numeric::class, $this->name);
     }
+
+    public function toISO3166_Name(): ISO3166_1_Name
+    {
+        return BackedEnum::fromKey(ISO3166_1_Name::class, $this->name);
+    }
 }

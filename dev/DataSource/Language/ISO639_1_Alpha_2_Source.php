@@ -17,6 +17,11 @@ class ISO639_1_Alpha_2_Source implements HtmlDataSource
 
     public static function xPathIdentifierKey(): string
     {
+        return self::xPathIdentifierName();
+    }
+
+    public static function xPathIdentifierName(): string
+    {
         return '//table[@width="100%"]/tbody/tr/td[3]';
     }
 
@@ -25,7 +30,7 @@ class ISO639_1_Alpha_2_Source implements HtmlDataSource
         return '//table[@width="100%"]/tbody/tr/td[2]';
     }
 
-    public static function transformKey(string $key): ?string
+    public static function transformName(string $key): ?string
     {
         return $key;
     }
@@ -38,6 +43,11 @@ class ISO639_1_Alpha_2_Source implements HtmlDataSource
     public static function getSpecFQN(): string
     {
         return ISO639_1_Alpha_2::class;
+    }
+
+    public static function getKeyEnumFQN(): string
+    {
+        return self::getSpecFQN();
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

@@ -41,4 +41,9 @@ enum ISO639_2_Alpha_3_Terminology: string
     {
         return BackedEnum::tryFromKey(ISO639_1_Alpha_2::class, $this->name);
     }
+
+    public function toISO639_Name(): ISO639_Name
+    {
+        return BackedEnum::fromKey(ISO639_Name::class, $this->name);
+    }
 }

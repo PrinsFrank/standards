@@ -196,4 +196,9 @@ enum ISO4217_Alpha_3: string
     {
         return BackedEnum::fromKey(ISO4217_Numeric::class, $this->name);
     }
+
+    public function toISO4217_Name(): ISO4217_Name
+    {
+        return BackedEnum::fromKey(ISO4217_Name::class, $this->name);
+    }
 }
