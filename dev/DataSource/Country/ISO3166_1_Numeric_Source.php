@@ -16,7 +16,7 @@ class ISO3166_1_Numeric_Source implements HtmlDataSource
         return 'https://www.iso.org/obp/ui/#search/code/';
     }
 
-    public static function xPathIdentifierKey(): string
+    public static function xPathIdentifierName(): string
     {
         return '//tbody[@class="v-grid-body"]/tr/td/button';
     }
@@ -26,7 +26,7 @@ class ISO3166_1_Numeric_Source implements HtmlDataSource
         return '//tbody[@class="v-grid-body"]/tr/td[5]';
     }
 
-    public static function transformKey(string $key): ?string
+    public static function transformName(string $key): ?string
     {
         return $key;
     }

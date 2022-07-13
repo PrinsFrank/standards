@@ -15,7 +15,7 @@ class ISO639_2_Alpha_3_Terminology_Source implements HtmlDataSource
         return 'https://www.loc.gov/standards/iso639-2/php/code_list.php';
     }
 
-    public static function xPathIdentifierKey(): string
+    public static function xPathIdentifierName(): string
     {
         return '//table[@width="100%"]/tbody/tr/td[3]';
     }
@@ -25,7 +25,7 @@ class ISO639_2_Alpha_3_Terminology_Source implements HtmlDataSource
         return '//table[@width="100%"]/tbody/tr/td[1]';
     }
 
-    public static function transformKey(string $key): ?string
+    public static function transformName(string $key): ?string
     {
         return $key;
     }

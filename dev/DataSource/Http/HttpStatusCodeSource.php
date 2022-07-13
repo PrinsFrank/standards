@@ -10,7 +10,7 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
 
 class HttpStatusCodeSource implements HtmlDataSource
 {
-    public static function transformKey(string $key): ?string
+    public static function transformName(string $key): ?string
     {
         return $key;
     }
@@ -34,7 +34,7 @@ class HttpStatusCodeSource implements HtmlDataSource
         return 'https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml';
     }
 
-    public static function xPathIdentifierKey(): string
+    public static function xPathIdentifierName(): string
     {
         return '//table[@id="table-http-status-codes-1"]/tbody/tr/td[2]';
     }

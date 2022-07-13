@@ -5,7 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataSourceExtractor;
 
 use Facebook\WebDriver\Remote\RemoteWebElement;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
-use PrinsFrank\Standards\Dev\KeyNormalizer\KeyNormalizer;
+use PrinsFrank\Standards\Dev\KeyNormalizer\NameNormalizer;
 use PrinsFrank\Standards\Dev\TransliterationException;
 use Symfony\Component\Panther\Client;
 
@@ -22,21 +22,21 @@ class HtmlDataSourceExtractor implements DataSourceExtractor
         $crawler = $client->request('GET', $sourceFQN::url());
         $sourceFQN::afterPageLoad($client, $crawler);
 
-        $keys = $indicesForEmptyKeys = [];
-        foreach ($crawler->filterXPath($sourceFQN::xPathIdentifierKey())->getIterator() as $index => $remoteWebElement) {
+        $names = $indicesForEmptyNames = [];
+        foreach ($crawler->filterXPath($sourceFQN::xPathIdentifierName())->getIterator() as $index => $remoteWebElement) {
             /** @var RemoteWebElement $remoteWebElement */
-            $transformedKey = $sourceFQN::transformKey(KeyNormalizer::normalize($remoteWebElement->getText()));
-            if ($transformedKey === null) {
-                $indicesForEmptyKeys[] = $index;
+            $transformedName = $sourceFQN::transformName(NameNormalizer::normalize($remoteWebElement->getText()));
+            if ($transformedName === null) {
+                $indicesForEmptyNames[] = $index;
                 continue;
             }
 
-            $keys[] = $transformedKey;
+            $names[] = $transformedName;
         }
 
         $values = [];
         foreach ($crawler->filterXPath($sourceFQN::xPathIdentifierValue())->getIterator() as $index => $remoteWebElement) {
-            if (in_array($index, $indicesForEmptyKeys, true)) {
+            if (in_array($index, $indicesForEmptyNames, true)) {
                 continue;
             }
 
@@ -44,6 +44,6 @@ class HtmlDataSourceExtractor implements DataSourceExtractor
             $values[] = $sourceFQN::transformValue($remoteWebElement->getText());
         }
 
-        return array_filter(array_combine($keys, $values));
+        return array_filter(array_combine($names, $values));
     }
 }

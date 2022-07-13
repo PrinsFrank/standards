@@ -5,7 +5,7 @@ namespace PrinsFrank\Standards\Dev\KeyNormalizer;
 
 use PrinsFrank\Standards\Dev\TransliterationException;
 
-class KeyNormalizer
+class NameNormalizer
 {
     /**
      * @throws TransliterationException

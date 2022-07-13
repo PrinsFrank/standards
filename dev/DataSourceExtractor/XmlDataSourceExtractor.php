@@ -8,7 +8,7 @@ use DOMElement;
 use DOMXPath;
 use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;
-use PrinsFrank\Standards\Dev\KeyNormalizer\KeyNormalizer;
+use PrinsFrank\Standards\Dev\KeyNormalizer\NameNormalizer;
 use PrinsFrank\Standards\Dev\TransliterationException;
 use PrinsFrank\Standards\Dev\UnavailableSourceException;
 
@@ -32,37 +32,37 @@ class XmlDataSourceExtractor implements DataSourceExtractor
         $domDocument->loadXML($sourceContents);
 
         $xPath        = new DOMXPath($domDocument);
-        $keyDOMList   = $xPath->query($sourceFQN::xPathIdentifierKey());
+        $nameDOMList   = $xPath->query($sourceFQN::xPathIdentifierName());
         $valueDOMList = $xPath->query($sourceFQN::xPathIdentifierValue());
-        if ($valueDOMList === false || $keyDOMList === false) {
+        if ($valueDOMList === false || $nameDOMList === false) {
             throw new DomElementNotFoundException();
         }
 
-        $keys = $indicesForEmptyKeys = [];
-        foreach ($keyDOMList->getIterator() as $index => $DomElement) {
+        $names = $indicesForEmptyNames = [];
+        foreach ($nameDOMList->getIterator() as $index => $DomElement) {
             if ($DomElement->nodeValue === null) {
-                $indicesForEmptyKeys[] = $index;
+                $indicesForEmptyNames[] = $index;
                 continue;
             }
 
-            $transformedKey = $sourceFQN::transformKey(KeyNormalizer::normalize($DomElement->nodeValue));
-            if ($transformedKey === null) {
-                $indicesForEmptyKeys[] = $index;
+            $transformedName = $sourceFQN::transformName(NameNormalizer::normalize($DomElement->nodeValue));
+            if ($transformedName === null) {
+                $indicesForEmptyNames[] = $index;
                 continue;
             }
 
-            $keys[] = $transformedKey;
+            $names[] = $transformedName;
         }
 
         $values = [];
         foreach ($valueDOMList->getIterator() as $index => $DomElement) {
-            if (in_array($index, $indicesForEmptyKeys, true)) {
+            if (in_array($index, $indicesForEmptyNames, true)) {
                 continue;
             }
 
             $values[] = $DomElement->nodeValue !== null ? $sourceFQN::transformValue($DomElement->nodeValue) : null;
         }
 
-        return array_filter(array_combine($keys, $values));
+        return array_filter(array_combine($names, $values));
     }
 }
