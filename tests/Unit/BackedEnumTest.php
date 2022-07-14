@@ -44,10 +44,12 @@ class BackedEnumTest extends TestCase
     }
 }
 
-enum TestEnumBackedByString: string {
+enum TestEnumBackedByString: string
+{
     case FOO = 'foo';
 }
 
-enum TestEnumBackedByInt: int {
+enum TestEnumBackedByInt: int
+{
     case FOO = 42;
 }
