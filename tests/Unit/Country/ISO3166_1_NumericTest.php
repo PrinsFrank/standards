@@ -46,7 +46,7 @@ class ISO3166_1_NumericTest extends TestCase
     }
 
     /**
-     * @covers ::toISO3166_1_Name
+     * @covers ::toISO3166_Name
      */
     public function testAllCasesCanBeConvertedToISO3166Name(): void
     {

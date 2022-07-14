@@ -4,13 +4,11 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Tests\Unit\Currency;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\Currency\ISO4217_Alpha_3;
 use PrinsFrank\Standards\Currency\ISO4217_Name;
-use PrinsFrank\Standards\Currency\ISO4217_Numeric;
 use TypeError;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Currency\ISO4217_Alpha_3
+ * @coversDefaultClass \PrinsFrank\Standards\Currency\ISO4217_Name
  */
 class ISO4217_NameTest extends TestCase
 {

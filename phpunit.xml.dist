@@ -10,7 +10,6 @@
          failOnIncomplete="true"
          failOnRisky="true"
          failOnSkipped="true"
-         beStrictAboutCoversAnnotation="true"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutChangesToGlobalState="true"
          beStrictAboutResourceUsageDuringSmallTests="true"
