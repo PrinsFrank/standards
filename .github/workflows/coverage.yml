@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          coverage: pcov
       - name: Install dependencies
         run: composer install
       - name: "Run test suite"
