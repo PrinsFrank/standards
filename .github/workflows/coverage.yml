@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Setup PHP with PCOV
+        uses: shivammathur/setup-php@v2
         with:
           coverage: pcov
       - name: Install dependencies
