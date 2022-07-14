@@ -24,7 +24,7 @@ class ISO639_1_Alpha_2Test extends TestCase
     }
 
     /**
-     * @covers ::toISO639_2_Alpha_3_Bibliographic
+     * @covers ::toISO639_2_Alpha_3_Terminology
      */
     public function testAllCasesCanBeConvertedToISO392_2Terminology(): void
     {

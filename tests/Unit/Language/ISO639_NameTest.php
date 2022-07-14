@@ -24,7 +24,7 @@ class ISO639_NameTest extends TestCase
     }
 
     /**
-     * @covers ::toISO639_2_Alpha_3_Bibliographic
+     * @covers ::toISO639_2_Alpha_3_Terminology
      */
     public function testAllCasesCanBeConvertedToISO392_2Terminology(): void
     {
@@ -32,6 +32,18 @@ class ISO639_NameTest extends TestCase
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             static::assertNotNull($case->toISO639_2_Alpha_3_Terminology());
+        }
+    }
+
+    /**
+     * @covers ::toISO639_1_Alpha_2
+     */
+    public function testSomeCasesCanBeConvertedToISO639_1_Alpha2(): void
+    {
+        $cases = ISO639_Name::cases();
+        static::assertNotEmpty($cases);
+        foreach ($cases as $case) {
+            $case->toISO639_1_Alpha_2();
         }
     }
 }
