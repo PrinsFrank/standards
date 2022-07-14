@@ -4,6 +4,7 @@
 
 ![GitHub](https://img.shields.io/github/license/prinsfrank/standards)
 ![PHP Version Support](https://img.shields.io/packagist/php-v/prinsfrank/standards)
+[![codecov](https://codecov.io/gh/PrinsFrank/standards/branch/main/graph/badge.svg?token=9O3VB563MU)](https://codecov.io/gh/PrinsFrank/standards)
 [![Daily specs update](https://github.com/PrinsFrank/standards/actions/workflows/update-specs.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-specs.yml)
 
 **A collection of standards as PHP Enums**
