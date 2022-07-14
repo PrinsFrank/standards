@@ -1,0 +1,27 @@
+name: Generate coverage
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup PHP with PCOV
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: pcov
+      - name: Install dependencies
+        run: composer install
+      - name: "Run test suite"
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: /coverage.xml
+          fail_ci_if_error: true
