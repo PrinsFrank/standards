@@ -8,6 +8,7 @@ return (new PhpCsFixer\Config())->setRules(
         'strict_param'                 => true,
         'blank_line_after_opening_tag' => false,
         'no_extra_blank_lines'         => true,
+        'class_attributes_separation'  => true,
         'array_syntax'                 => ['syntax' => 'short'],
         'binary_operator_spaces'       => ['default' => 'align_single_space']
     ]

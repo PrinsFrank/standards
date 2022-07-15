@@ -259,6 +259,7 @@ enum ISO3166_1_Name: string
     case Yemen                                                    = 'Yemen';
     case Zambia                                                   = 'Zambia';
     case Zimbabwe                                                 = 'Zimbabwe';
+
     public function toISO3166_1_Alpha_2(): ISO3166_1_Alpha_2
     {
         return BackedEnum::fromKey(ISO3166_1_Alpha_2::class, $this->name);

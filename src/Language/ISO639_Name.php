@@ -497,6 +497,7 @@ enum ISO639_Name: string
     case Zhuang_Chuang                                                                = 'Zhuang; Chuang';
     case Zulu                                                                         = 'Zulu';
     case Zuni                                                                         = 'Zuni';
+
     public function toISO639_1_Alpha_2(): ISO639_1_Alpha_2|null
     {
         return BackedEnum::tryFromKey(ISO639_1_Alpha_2::class, $this->name);
