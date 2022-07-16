@@ -34,6 +34,51 @@ class BackedEnumTest extends TestCase
     }
 
     /**
+     * @covers ::names
+     */
+    public function testNames(): void
+    {
+        static::assertSame(
+            BackedEnum::names(TestEnumBackedByString::class),
+            ['FOO', 'FIZ'],
+        );
+        static::assertSame(
+            BackedEnum::names(TestEnumBackedByInt::class),
+            ['FOO', 'FIZ'],
+        );
+    }
+
+    /**
+     * @covers ::values
+     */
+    public function testValues(): void
+    {
+        static::assertSame(
+            BackedEnum::values(TestEnumBackedByString::class),
+            ['foo', 'fiz'],
+        );
+        static::assertSame(
+            BackedEnum::values(TestEnumBackedByInt::class),
+            [42, 43],
+        );
+    }
+
+    /**
+     * @covers ::toArray
+     */
+    public function testToArray(): void
+    {
+        static::assertSame(
+            BackedEnum::toArray(TestEnumBackedByString::class),
+            ['FOO' => 'foo', 'FIZ' => 'fiz'],
+        );
+        static::assertSame(
+            BackedEnum::toArray(TestEnumBackedByInt::class),
+            ['FOO' => 42, 'FIZ' => 43],
+        );
+    }
+
+    /**
      * @covers ::fromKey
      */
     public function testFromKeyThrowsExceptionNonExistingKey(): void
@@ -47,9 +92,11 @@ class BackedEnumTest extends TestCase
 enum TestEnumBackedByString: string
 {
     case FOO = 'foo';
+    case FIZ = 'fiz';
 }
 
 enum TestEnumBackedByInt: int
 {
     case FOO = 42;
+    case FIZ = 43;
 }
