@@ -212,4 +212,9 @@ enum ISO4217_Numeric: string
     {
         return BackedEnum::fromKey(ISO4217_Name::class, $this->name);
     }
+
+    public function valueAsInt(): int
+    {
+        return (int) $this->value;
+    }
 }

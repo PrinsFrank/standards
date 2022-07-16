@@ -46,4 +46,12 @@ class ISO639_1_Alpha_2Test extends TestCase
             static::assertNotNull($case->toISO639_Name());
         }
     }
+
+    /**
+     * @covers ::upperCaseValue
+     */
+    public function testUpperCaseValue(): void
+    {
+        static::assertSame('AB', ISO639_1_Alpha_2::Abkhazian->upperCaseValue());
+    }
 }

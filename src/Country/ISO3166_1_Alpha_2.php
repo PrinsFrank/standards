@@ -274,4 +274,9 @@ enum ISO3166_1_Alpha_2: string
     {
         return BackedEnum::fromKey(ISO3166_1_Name::class, $this->name);
     }
+
+    public function lowerCaseValue(): string
+    {
+        return strtolower($this->value);
+    }
 }

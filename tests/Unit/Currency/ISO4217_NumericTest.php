@@ -71,4 +71,12 @@ class ISO4217_NumericTest extends TestCase
         static::assertEquals(ISO4217_Numeric::Lek, ISO4217_Numeric::tryFromInt(8));
         static::assertNull(ISO4217_Numeric::tryFromInt(1));
     }
+
+    /**
+     * @covers ::valueAsInt
+     */
+    public function testValueAsInt(): void
+    {
+        static::assertSame(965, ISO4217_Numeric::ADB_Unit_of_Account->valueAsInt());
+    }
 }

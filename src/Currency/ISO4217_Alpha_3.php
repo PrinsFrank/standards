@@ -201,4 +201,9 @@ enum ISO4217_Alpha_3: string
     {
         return BackedEnum::fromKey(ISO4217_Name::class, $this->name);
     }
+
+    public function lowerCaseValue(): string
+    {
+        return strtolower($this->value);
+    }
 }

@@ -210,4 +210,9 @@ enum ISO639_1_Alpha_2: string
     {
         return BackedEnum::fromKey(ISO639_Name::class, $this->name);
     }
+
+    public function upperCaseValue(): string
+    {
+        return strtoupper($this->value);
+    }
 }

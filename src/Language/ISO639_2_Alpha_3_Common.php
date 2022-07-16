@@ -487,4 +487,9 @@ enum ISO639_2_Alpha_3_Common: string
     {
         return BackedEnum::fromKey(ISO639_Name::class, $this->name);
     }
+
+    public function upperCaseValue(): string
+    {
+        return strtoupper($this->value);
+    }
 }

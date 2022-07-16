@@ -43,4 +43,12 @@ class ISO4217_Alpha_3Test extends TestCase
             }
         }
     }
+
+    /**
+     * @covers ::lowerCaseValue
+     */
+    public function testLowerCaseValue(): void
+    {
+        static::assertSame('xua', ISO4217_Alpha_3::ADB_Unit_of_Account->lowerCaseValue());
+    }
 }

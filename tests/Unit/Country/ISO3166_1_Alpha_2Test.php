@@ -59,4 +59,12 @@ class ISO3166_1_Alpha_2Test extends TestCase
             }
         }
     }
+
+    /**
+     * @covers ::lowerCaseValue
+     */
+    public function testLowerCaseValue(): void
+    {
+        static::assertSame('af', ISO3166_1_Alpha_2::Afghanistan->lowerCaseValue());
+    }
 }

@@ -46,4 +46,12 @@ class ISO639_2_Alpha_3BibliographicTest extends TestCase
             static::assertNotNull($case->toISO639_Name());
         }
     }
+
+    /**
+     * @covers ::upperCaseValue
+     */
+    public function testUpperCaseValue(): void
+    {
+        static::assertSame('ALB', ISO639_2_Alpha_3_Bibliographic::Albanian->upperCaseValue());
+    }
 }

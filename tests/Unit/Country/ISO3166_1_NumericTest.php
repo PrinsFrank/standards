@@ -87,4 +87,12 @@ class ISO3166_1_NumericTest extends TestCase
         static::assertEquals(ISO3166_1_Numeric::Albania, ISO3166_1_Numeric::tryFromInt(8));
         static::assertNull(ISO3166_1_Numeric::tryFromInt(1));
     }
+
+    /**
+     * @covers ::valueAsInt
+     */
+    public function testValueAsInt(): void
+    {
+        static::assertSame(4, ISO3166_1_Numeric::Afghanistan->valueAsInt());
+    }
 }

@@ -46,4 +46,12 @@ class ISO639_2_Alpha_3TerminologyTest extends TestCase
             static::assertNotNull($case->toISO639_Name());
         }
     }
+
+    /**
+     * @covers ::upperCaseValue
+     */
+    public function testUpperCaseValue(): void
+    {
+        static::assertSame('SQI', ISO639_2_Alpha_3_Terminology::Albanian->upperCaseValue());
+    }
 }
