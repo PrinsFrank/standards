@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace PrinsFrank\Standards\CountryCallingCode;
+
 /**
  * @source https://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-E.164D-2016-PDF-E.pdf
  */
