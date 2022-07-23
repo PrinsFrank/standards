@@ -110,16 +110,22 @@ classDiagram
     direction LR
     class ISO4217_Alpha_3 {
         +String value [EUR]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
         toISO4217_Name()
         toISO4217_Numeric()
     }
     class ISO4217_Name {
         +String value [Euro]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
         toISO4217_Alpha_3()
         toISO4217_Numeric()
     }
     class ISO4217_Numeric {
         +String value [978]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
         toISO4217_Alpha_3()
         toISO4217_Name()
     }
@@ -155,18 +161,28 @@ classDiagram
     direction LR
     class ISO639_Name {
         +String value [English]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
     }
     class ISO639_1_Alpha_2 {
         +String value [en]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
     }
     class ISO639_2_Alpha_3_Common {
         +String value [eng]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
     }
     class ISO639_2_Alpha_3_Terminology {
         N/A
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
     }
     class ISO639_2_Alpha_3_Bibliographic {
         N/A
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
     }
     
     ISO639_Name <--> ISO639_1_Alpha_2
@@ -184,18 +200,28 @@ classDiagram
     direction LR
     class ISO639_Name {
         +String value [Albanian]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
     }
     class ISO639_1_Alpha_2 {
         +String value [sq]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
     }
     class ISO639_2_Alpha_3_Common {
         N/A
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
     }
     class ISO639_2_Alpha_3_Terminology {
         +String value [alb]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
     }
     class ISO639_2_Alpha_3_Bibliographic {
         +String value [sqi]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
     }
     
     ISO639_Name <--> ISO639_1_Alpha_2
