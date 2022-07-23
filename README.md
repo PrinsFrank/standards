@@ -26,6 +26,52 @@ Or for development only;
 
 ## Country
 
+```mermaid
+classDiagram
+    direction LR
+    class ISO3166_1_Alpha_2 {
+        +String value [TR]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
+        toISO3166_1_Alpha_3()
+        toISO3166_1_Numeric()
+        toISO3166_1_Name()
+    }
+    class ISO3166_1_Alpha_3 {
+        +String value [TUR]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
+        toISO3166_1_Alpha_2()
+        toISO3166_1_Numeric()
+        toISO3166_1_Name()
+    }
+    class ISO3166_1_Numeric {
+        +String value [792]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
+        fromInt(int $value) self
+        tryFromInt(int $value) self|null
+        toISO3166_1_Alpha_2()
+        toISO3166_1_Alpha_3()
+        toISO3166_1_Name()
+    }
+    class ISO3166_1_Name {
+        +String value [Turkiye]
+        fromValue(string $value) self
+        tryFromValue(string $value) self|null
+        toISO3166_1_Alpha_2()
+        toISO3166_1_Alpha_3()
+        toISO3166_1_Numeric()
+    }
+    
+    ISO3166_1_Alpha_2 <--> ISO3166_1_Alpha_3
+    ISO3166_1_Alpha_2 <--> ISO3166_1_Numeric
+    ISO3166_1_Alpha_2 <--> ISO3166_1_Name
+    ISO3166_1_Alpha_3 <--> ISO3166_1_Numeric
+    ISO3166_1_Numeric <--> ISO3166_1_Name
+    ISO3166_1_Alpha_3 <--> ISO3166_1_Name
+```
+
 ### ISO 3166-1 Alpha-2
 
 ```php
@@ -59,6 +105,30 @@ $valueAlpha3 = $valueNumeric->toISO3166_1_Alpha_3();  // ISO3166_1_Alpha_3::Neth
 
 ## Currency
 
+```mermaid
+classDiagram
+    direction LR
+    class ISO4217_Alpha_3 {
+        +String value [EUR]
+        toISO4217_Name()
+        toISO4217_Numeric()
+    }
+    class ISO4217_Name {
+        +String value [Euro]
+        toISO4217_Alpha_3()
+        toISO4217_Numeric()
+    }
+    class ISO4217_Numeric {
+        +String value [978]
+        toISO4217_Alpha_3()
+        toISO4217_Name()
+    }
+    
+    ISO4217_Name <--> ISO4217_Numeric
+    ISO4217_Name <--> ISO4217_Alpha_3
+    ISO4217_Numeric <--> ISO4217_Alpha_3
+```
+
 ### ISO 4217 Alpha-3
 
 ```php
@@ -79,6 +149,64 @@ $valueAlpha3 = $valueNumeric->toISO4217_Alpha_3(); // ISO4217_Alpha_3::Euro
 ```
 
 ## Language
+
+```mermaid
+classDiagram
+    direction LR
+    class ISO639_Name {
+        +String value [English]
+    }
+    class ISO639_1_Alpha_2 {
+        +String value [en]
+    }
+    class ISO639_2_Alpha_3_Common {
+        +String value [eng]
+    }
+    class ISO639_2_Alpha_3_Terminology {
+        N/A
+    }
+    class ISO639_2_Alpha_3_Bibliographic {
+        N/A
+    }
+    
+    ISO639_Name <--> ISO639_1_Alpha_2
+    ISO639_Name <--> ISO639_2_Alpha_3_Common
+    ISO639_Name <--> ISO639_2_Alpha_3_Bibliographic
+    ISO639_Name <--> ISO639_2_Alpha_3_Terminology
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Bibliographic
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Terminology
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Common
+    ISO639_2_Alpha_3_Bibliographic <--> ISO639_2_Alpha_3_Terminology
+```
+
+```mermaid
+classDiagram
+    direction LR
+    class ISO639_Name {
+        +String value [Albanian]
+    }
+    class ISO639_1_Alpha_2 {
+        +String value [sq]
+    }
+    class ISO639_2_Alpha_3_Common {
+        N/A
+    }
+    class ISO639_2_Alpha_3_Terminology {
+        +String value [alb]
+    }
+    class ISO639_2_Alpha_3_Bibliographic {
+        +String value [sqi]
+    }
+    
+    ISO639_Name <--> ISO639_1_Alpha_2
+    ISO639_Name <--> ISO639_2_Alpha_3_Common
+    ISO639_Name <--> ISO639_2_Alpha_3_Terminology
+    ISO639_Name <--> ISO639_2_Alpha_3_Bibliographic
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Bibliographic
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Terminology
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Common
+    ISO639_2_Alpha_3_Bibliographic <--> ISO639_2_Alpha_3_Terminology
+```
 
 ### ISO 639-1
 
@@ -105,7 +233,6 @@ $valueName = $valueAlpha2->name;                                              //
 $valueAlpha2 = $valueAlpha2->toISO639_1_Alpha_2();                            // ISO639_1_Alpha_2::Dutch_Flemish
 $valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); // ISO639_2_Alpha_3_Bibliographic::Dutch_Flemish
 ```
-
 
 ## HTTP Status Codes
 
