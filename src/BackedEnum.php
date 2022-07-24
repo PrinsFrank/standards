@@ -32,4 +32,40 @@ class BackedEnum
 
         return $itemValue;
     }
+
+    /**
+     * @template T of \BackedEnum
+     * @param class-string<T> $fqn
+     * @return array
+     */
+    public static function names($fqn): array
+    {
+        return array_column($fqn::cases(), 'name');
+    }
+
+    /**
+     * @template T of \BackedEnum
+     * @param class-string<T> $fqn
+     * @return array
+     */
+    public static function values($fqn): array
+    {
+        return array_column($fqn::cases(), 'value');
+    }
+
+    /**
+     * @template T of \BackedEnum
+     * @param class-string<T> $fqn
+     * @return array
+     */
+    public static function toArray($fqn): array
+    {
+        $array = [];
+
+        foreach ($fqn::cases() as $case) {
+            $array[$case->name] = $case->value;
+        }
+
+        return $array;
+    }
 }
