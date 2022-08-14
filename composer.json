@@ -25,7 +25,8 @@
         "phpunit/phpunit": "^9.5",
         "symfony/panther": "^2.0",
         "dbrekelmans/bdi": "^1.0",
-        "phpstan/phpstan": "^1.8"
+        "phpstan/phpstan": "^1.8",
+        "composer/composer": "^2.3"
     },
     "scripts": {
         "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
@@ -36,7 +37,7 @@
             "@unit",
             "@cs"
         ],
-        "update-spec": [
+        "update-spec-country": [
             "PrinsFrank\\Standards\\Dev\\SpecUpdater::update",
             "@cs:fix"
         ]

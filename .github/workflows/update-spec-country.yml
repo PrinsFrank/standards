@@ -1,0 +1,29 @@
+name: Daily Country spec update
+
+on:
+  schedule:
+    - cron: '55 17 * * *'
+
+jobs:
+  update-specs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: composer install
+      - name: Run standard update command
+        run: composer update-spec -- --type=country
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: Automatic spec update from upstream changes
+          delete-branch: true
+          title: 'Automatic spec update'
+          body: |
+            This PR makes sure the content of this package is updated with upstream changes in the specs.
+          labels: |
+            spec-update
+            automated pr
+          reviewers: prinsfrank

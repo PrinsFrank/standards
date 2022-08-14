@@ -5,7 +5,6 @@
 ![GitHub](https://img.shields.io/github/license/prinsfrank/standards)
 ![PHP Version Support](https://img.shields.io/packagist/php-v/prinsfrank/standards)
 [![codecov](https://codecov.io/gh/PrinsFrank/standards/branch/main/graph/badge.svg?token=9O3VB563MU)](https://codecov.io/gh/PrinsFrank/standards)
-[![Daily specs update](https://github.com/PrinsFrank/standards/actions/workflows/update-specs.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-specs.yml)
 
 **A collection of standards as PHP Enums**
 
@@ -32,6 +31,8 @@ In the Country, Currency and language specifications, there is also a relation b
 
 ## Country
 
+[![Daily country spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
+
 All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the other country enums. [These can be converted using their corresponding methods](/docs/country.md). 
 
 | Key         | ISO3166_1_Alpha_2 | ISO3166_1_Alpha_3 | ISO3166_1_Numeric | ISO3166_1_Name    |
@@ -42,6 +43,8 @@ All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the
 
 ## Currency
 
+[![Daily currency spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
+
 All the Alpha3, Numeric and Name values have a corresponding enum in the other currency enums. [These can be converted using their corresponding methods](/docs/currency.md).
 
 | Key          | ISO4217_Alpha_3 | ISO4217_Numeric | ISO4217_Name |
@@ -51,6 +54,8 @@ All the Alpha3, Numeric and Name values have a corresponding enum in the other c
 | ...          | ...             | ...             | ...          |
 
 ## Language
+
+[![Daily language spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
 
 The language specification is a bit more complex, as there are 20 alpha3 codes that have both a Bibliographic and a Terminology code. All the other ones have a common one. So if you decide you want the alpha3 representation of an alpha2 code, you can convert it to either Terminology or Bibliographic, where if it is not available you will get an instance of the common enum. [More documentation can be found here](/docs/language.md).
 
@@ -70,6 +75,8 @@ Country calling codes are quite straight forward. One Exception is that the +1 p
 | Turkey                     | 90          |
 
 ## HTTP Status Codes
+
+[![Daily HTTP Status code spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http.yml)
 
 HTTP Status codes are quite straight forward. For some code examples [you can look in the documentation](/docs/http_status_code.md).
 

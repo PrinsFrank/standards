@@ -1,4 +1,4 @@
-name: Daily specs update
+name: Daily Language spec update
 
 on:
   schedule:
@@ -13,7 +13,7 @@ jobs:
       - name: Install dependencies
         run: composer install
       - name: Run standard update command
-        run: composer update-spec
+        run: composer update-spec -- --type=language
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
