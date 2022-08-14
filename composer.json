@@ -37,9 +37,6 @@
             "@unit",
             "@cs"
         ],
-        "update-spec-country": [
-            "PrinsFrank\\Standards\\Dev\\SpecUpdater::update",
-            "@cs:fix"
-        ]
+        "update-spec-country": "PrinsFrank\\Standards\\Dev\\SpecUpdater::update"
     }
 }

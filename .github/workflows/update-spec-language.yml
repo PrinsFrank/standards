@@ -15,6 +15,8 @@ jobs:
         run: composer install
       - name: Run standard update command
         run: composer update-spec -- --type=language
+      - name: Run CSFixer
+        run: composer cs:fix
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
