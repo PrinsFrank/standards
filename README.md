@@ -67,8 +67,6 @@ The language specification is a bit more complex, as there are 20 alpha3 codes t
 
 ## Country Calling Codes
 
-[![Daily Country calling codes spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country-calling-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country-calling-codes.yml)
-
 Country calling codes are quite straight forward. One Exception is that the +1 prefix is used across a lot of countries, and there is no standard for sub numbering plans. 
 
 | Key                        | ITU_T_E_164 |
