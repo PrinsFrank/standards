@@ -1,6 +1,7 @@
 name: Daily Currency spec update
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '55 17 * * *'
 
