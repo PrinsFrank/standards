@@ -60,6 +60,15 @@ The language specification is a bit more complex, as there are 20 alpha3 codes t
 | Turkish       | tr               |                                | tur                     |                              | Turkish        |
 | ...           | ...              | ...                            | ...                     | ...                          | ...            |
 
+## Country Calling Codes
+
+Country calling codes are quite straight forward. One Exception is that the +1 prefix is used across a lot of countries, and there is no standard for sub numbering plans. 
+
+| Key                        | ITU_T_E_164 |
+|----------------------------|-------------|
+| Netherlands_Kingdom_of_the | 31          |
+| Turkey                     | 90          |
+
 ## HTTP Status Codes
 
 HTTP Status codes are quite straight forward. For some code examples [you can look in the documentation](/docs/http_status_code.md).
