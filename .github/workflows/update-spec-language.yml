@@ -23,7 +23,7 @@ jobs:
         with:
           commit-message: Automatic spec update from upstream changes
           delete-branch: true
-          title: 'Automatic spec update'
+          title: 'Automatic Language spec update'
           body: |
             This PR makes sure the content of this package is updated with upstream changes in the specs.
           labels: |
