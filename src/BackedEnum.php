@@ -20,9 +20,14 @@ class BackedEnum
      * @template T of \BackedEnum
      * @param class-string<T> $fqn
      * @return T|null
+     * @throws InvalidArgumentException
      */
     public static function tryFromKey(string $fqn, string $keyName): ?\BackedEnum
     {
+        if (is_a($fqn, \BackedEnum::class, true) === false) {
+            throw new InvalidArgumentException('It is only possible to get names of backedEnums, "' . $fqn . '" provided');
+        }
+
         if (!defined("$fqn::$keyName")) {
             return null;
         }
@@ -37,9 +42,14 @@ class BackedEnum
      * @template T of \BackedEnum
      * @param class-string<T> $fqn
      * @return array<int, string>
+     * @throws InvalidArgumentException
      */
-    public static function names($fqn): array
+    public static function names(string $fqn): array
     {
+        if (is_a($fqn, \BackedEnum::class, true) === false) {
+            throw new InvalidArgumentException('It is only possible to get names of backedEnums, "' . $fqn . '" provided');
+        }
+
         return array_column($fqn::cases(), 'name');
     }
 
@@ -47,9 +57,14 @@ class BackedEnum
      * @template T of \BackedEnum
      * @param class-string<T> $fqn
      * @return array<int, int|string>
+     * @throws InvalidArgumentException
      */
-    public static function values($fqn): array
+    public static function values(string $fqn): array
     {
+        if (is_a($fqn, \BackedEnum::class, true) === false) {
+            throw new InvalidArgumentException('It is only possible to get values of backedEnums, "' . $fqn . '" provided');
+        }
+
         return array_column($fqn::cases(), 'value');
     }
 
@@ -57,11 +72,15 @@ class BackedEnum
      * @template T of \BackedEnum
      * @param class-string<T> $fqn
      * @return array<int|string, int|string>
+     * @throws InvalidArgumentException
      */
-    public static function toArray($fqn): array
+    public static function toArray(string $fqn): array
     {
-        $array = [];
+        if (is_a($fqn, \BackedEnum::class, true) === false) {
+            throw new InvalidArgumentException('It is only possible to get an array of key/value pairs for backedEnums, "' . $fqn . '" provided');
+        }
 
+        $array = [];
         foreach ($fqn::cases() as $case) {
             $array[$case->name] = $case->value;
         }

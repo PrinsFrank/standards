@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Tests;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\KeyNotFoundException;
 
 /**
@@ -22,6 +23,20 @@ class BackedEnumTest extends TestCase
 
         static::assertNull(BackedEnum::tryFromKey(TestEnumBackedByInt::class, 'BAR'));
         static::assertSame(TestEnumBackedByInt::FOO, BackedEnum::tryFromKey(TestEnumBackedByInt::class, 'FOO'));
+    }
+
+    /**
+     * @covers ::tryFromKey
+     */
+    public function testTryFromKeyThrowsExceptionOnNonEnumValue(): void
+    {
+        $testClass = new class {};
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('It is only possible to get names of backedEnums, "' . $testClass::class . '" provided');
+
+        /** @phpstan-ignore-next-line */
+        BackedEnum::tryFromKey($testClass::class, 'foo');
     }
 
     /**
@@ -49,6 +64,20 @@ class BackedEnumTest extends TestCase
     }
 
     /**
+     * @covers ::names
+     */
+    public function testNamesThrowsExceptionOnNonEnumValue(): void
+    {
+        $testClass = new class {};
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('It is only possible to get names of backedEnums, "' . $testClass::class . '" provided');
+
+        /** @phpstan-ignore-next-line */
+        BackedEnum::names($testClass::class);
+    }
+
+    /**
      * @covers ::values
      */
     public function testValues(): void
@@ -64,6 +93,20 @@ class BackedEnumTest extends TestCase
     }
 
     /**
+     * @covers ::values
+     */
+    public function testValuesThrowsExceptionOnNonEnumValue(): void
+    {
+        $testClass = new class {};
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('It is only possible to get values of backedEnums, "' . $testClass::class . '" provided');
+
+        /** @phpstan-ignore-next-line */
+        BackedEnum::values($testClass::class);
+    }
+
+    /**
      * @covers ::toArray
      */
     public function testToArray(): void
@@ -76,6 +119,20 @@ class BackedEnumTest extends TestCase
             BackedEnum::toArray(TestEnumBackedByInt::class),
             ['FOO' => 42, 'FIZ' => 43],
         );
+    }
+
+    /**
+     * @covers ::toArray
+     */
+    public function testToArrayThrowsExceptionOnNonEnumValue(): void
+    {
+        $testClass = new class {};
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('It is only possible to get an array of key/value pairs for backedEnums, "' . $testClass::class . '" provided');
+
+        /** @phpstan-ignore-next-line */
+        BackedEnum::toArray($testClass::class);
     }
 
     /**
