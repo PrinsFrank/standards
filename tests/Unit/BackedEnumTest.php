@@ -30,7 +30,7 @@ class BackedEnumTest extends TestCase
      */
     public function testTryFromKeyThrowsExceptionOnNonEnumValue(): void
     {
-        $testClass = new class {};
+        $testClass = new class () {};
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('It is only possible to get names of backedEnums, "' . $testClass::class . '" provided');
@@ -68,7 +68,7 @@ class BackedEnumTest extends TestCase
      */
     public function testNamesThrowsExceptionOnNonEnumValue(): void
     {
-        $testClass = new class {};
+        $testClass = new class () {};
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('It is only possible to get names of backedEnums, "' . $testClass::class . '" provided');
@@ -97,7 +97,7 @@ class BackedEnumTest extends TestCase
      */
     public function testValuesThrowsExceptionOnNonEnumValue(): void
     {
-        $testClass = new class {};
+        $testClass = new class () {};
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('It is only possible to get values of backedEnums, "' . $testClass::class . '" provided');
@@ -126,7 +126,7 @@ class BackedEnumTest extends TestCase
      */
     public function testToArrayThrowsExceptionOnNonEnumValue(): void
     {
-        $testClass = new class {};
+        $testClass = new class () {};
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('It is only possible to get an array of key/value pairs for backedEnums, "' . $testClass::class . '" provided');
