@@ -36,7 +36,7 @@ class BackedEnum
     /**
      * @template T of \BackedEnum
      * @param class-string<T> $fqn
-     * @return array
+     * @return array<positive-int, key-of<T>>
      */
     public static function names($fqn): array
     {
@@ -46,7 +46,7 @@ class BackedEnum
     /**
      * @template T of \BackedEnum
      * @param class-string<T> $fqn
-     * @return array
+     * @return array<positive-int, key-of<T>>
      */
     public static function values($fqn): array
     {
@@ -56,7 +56,7 @@ class BackedEnum
     /**
      * @template T of \BackedEnum
      * @param class-string<T> $fqn
-     * @return array
+     * @return array<positive-int, key-of<T>>
      */
     public static function toArray($fqn): array
     {
