@@ -265,13 +265,13 @@ enum ISO3166_1_Name: string
         return BackedEnum::fromKey(ISO3166_1_Alpha_2::class, $this->name);
     }
 
-        public function toISO3166_1_Alpha_3(): ISO3166_1_Alpha_3
-        {
-            return BackedEnum::fromKey(ISO3166_1_Alpha_3::class, $this->name);
-        }
+            public function toISO3166_1_Alpha_3(): ISO3166_1_Alpha_3
+            {
+                return BackedEnum::fromKey(ISO3166_1_Alpha_3::class, $this->name);
+            }
 
-        public function toISO3166_1_Numeric(): ISO3166_1_Numeric
-        {
-            return BackedEnum::fromKey(ISO3166_1_Numeric::class, $this->name);
-        }
+            public function toISO3166_1_Numeric(): ISO3166_1_Numeric
+            {
+                return BackedEnum::fromKey(ISO3166_1_Numeric::class, $this->name);
+            }
 }
