@@ -50,9 +50,9 @@ class EnumFile
     public function writeCases(): self
     {
         $enumContent    = $this->getContent();
-        $startEnum      = strpos($enumContent, '{');
-        $firstMethodPos = strpos($enumContent, ' public ');
-        $endEnumPos     = strrpos($enumContent, '}');
+        $startEnum      = mb_strpos($enumContent, '{');
+        $firstMethodPos = mb_strpos($enumContent, ' public ');
+        $endEnumPos     = mb_strrpos($enumContent, '}');
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1) . PHP_EOL;
         foreach ($this->cases as $case) {
             $newEnumContent .= '    ' . ((string) $case) . PHP_EOL;
