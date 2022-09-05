@@ -20,11 +20,13 @@ use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_2_Alpha_3_Bibliographic_
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_2_Alpha_3_Common_Source;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_2_Alpha_3_Terminology_Source;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_Name_Source;
+use PrinsFrank\Standards\Dev\DataSource\SpecType;
 use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
 use PrinsFrank\Standards\Dev\DataSourceExtractor\HtmlDataSourceExtractor;
 use PrinsFrank\Standards\Dev\DataSourceExtractor\XmlDataSourceExtractor;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\UnitEnum;
 use RuntimeException;
 
 class SpecUpdater
@@ -58,14 +60,6 @@ class SpecUpdater
         ISO639_Name_Source::class,
     ];
 
-    private const SPEC_COUNTRY  = 'country';
-
-    private const SPEC_CURRENCY = 'currency';
-
-    private const SPEC_HTTP     = 'http';
-
-    private const SPEC_LANGUAGE = 'language';
-
     /**
      * @throws UnavailableSourceException
      * @throws EnumNotFoundException
@@ -74,15 +68,15 @@ class SpecUpdater
      */
     public static function update(Event $event): void
     {
-        $type = $event->getArguments()[0] ?? throw new InvalidArgumentException('Please specify the type with "-- --type=country,http,language,currency"');
-        $type = str_starts_with($type, '--type=') === false ? throw new InvalidArgumentException('Please specify the type with "-- --type=country,http,language,currency"') : substr($type, 7);
+        $type = $event->getArguments()[0] ?? throw new InvalidArgumentException('Please specify the type with "-- --type=' . implode(',', UnitEnum::names(SpecType::class)) . '"');
+        $type = str_starts_with($type, '--type=') === false ? throw new InvalidArgumentException('Please specify the type with "-- --type=' . implode(',', UnitEnum::names(SpecType::class)) . '"') : substr($type, 7);
 
-        $sources = match ($type) {
-            self::SPEC_COUNTRY  => self::COUNTRY_SOURCES,
-            self::SPEC_CURRENCY => self::CURRENCY_SOURCES,
-            self::SPEC_HTTP     => self::HTTP_SOURCES,
-            self::SPEC_LANGUAGE => self::LANGUAGE_SOURCES,
-            default             => throw new InvalidArgumentException('Automatic spec updating for type "' . $type . '" not implemented'),
+        $sources = match (UnitEnum::tryFromKey(SpecType::class, strtoupper($type))) {
+            SpecType::COUNTRY  => self::COUNTRY_SOURCES,
+            SpecType::CURRENCY => self::CURRENCY_SOURCES,
+            SpecType::HTTP     => self::HTTP_SOURCES,
+            SpecType::LANGUAGE => self::LANGUAGE_SOURCES,
+            default            => throw new InvalidArgumentException('Automatic spec updating for type "' . $type . '" not implemented'),
         };
 
         /** @var class-string<DataSource> $sourceFQN */

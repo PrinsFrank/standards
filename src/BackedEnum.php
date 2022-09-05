@@ -10,6 +10,7 @@ class BackedEnum
      * @param class-string<T> $fqn
      * @return T
      * @throws KeyNotFoundException
+     * @throws InvalidArgumentException
      */
     public static function fromKey(string $fqn, string $keyName): \BackedEnum
     {
