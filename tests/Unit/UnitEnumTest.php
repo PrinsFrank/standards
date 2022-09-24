@@ -85,4 +85,3 @@ enum TestEnum
     case FOO;
     case FIZ;
 }
-
