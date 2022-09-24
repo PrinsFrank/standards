@@ -13,7 +13,7 @@ class ISO4217_Name_Source implements XmlDataSource
 {
     public static function url(): string
     {
-        return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list_one.xml';
+        return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml';
     }
 
     public static function xPathIdentifierKey(): string
