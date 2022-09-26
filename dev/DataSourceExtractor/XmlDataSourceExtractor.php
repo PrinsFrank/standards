@@ -4,9 +4,8 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSourceExtractor;
 
 use DOMDocument;
-use DOMElement;
 use DOMXPath;
-use Facebook\WebDriver\Remote\RemoteWebElement;
+use Exception;
 use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;
 use PrinsFrank\Standards\Dev\KeyNormalizer\NameNormalizer;
@@ -21,6 +20,7 @@ class XmlDataSourceExtractor implements DataSourceExtractor
      * @throws UnavailableSourceException
      * @throws TransliterationException
      * @throws DomElementNotFoundException
+     * @throws Exception
      */
     public static function extractForSource(string $sourceFQN): array
     {
@@ -75,6 +75,10 @@ class XmlDataSourceExtractor implements DataSourceExtractor
             if ($existingValue !== null) {
                 $names[$index] = $existingValue->name;
             }
+        }
+
+        if (count($values) === 0) {
+            throw new Exception('No items found');
         }
 
         return array_filter(array_combine($names, $values));

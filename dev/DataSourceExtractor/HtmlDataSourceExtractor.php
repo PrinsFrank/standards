@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSourceExtractor;
 
+use Exception;
 use Facebook\WebDriver\Remote\RemoteWebElement;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use PrinsFrank\Standards\Dev\KeyNormalizer\NameNormalizer;
@@ -15,6 +16,7 @@ class HtmlDataSourceExtractor implements DataSourceExtractor
      * @param class-string<HtmlDataSource> $sourceFQN
      * @return array<string, string|int>
      * @throws TransliterationException
+     * @throws Exception
      */
     public static function extractForSource(string $sourceFQN): array
     {
@@ -55,6 +57,10 @@ class HtmlDataSourceExtractor implements DataSourceExtractor
             if ($existingValue !== null) {
                 $names[$index] = $existingValue->name;
             }
+        }
+
+        if (count($values) === 0) {
+            throw new Exception('No items found');
         }
 
         return array_filter(array_combine($names, $values));

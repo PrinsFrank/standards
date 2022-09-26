@@ -28,6 +28,7 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\UnitEnum;
 use RuntimeException;
+use Throwable;
 
 class SpecUpdater
 {
@@ -60,6 +61,8 @@ class SpecUpdater
         ISO639_Name_Source::class,
     ];
 
+    private const MAX_TRIES = 5;
+
     /**
      * @throws UnavailableSourceException
      * @throws EnumNotFoundException
@@ -84,31 +87,47 @@ class SpecUpdater
             $specFQN = $sourceFQN::getSpecFQN();
             echo date('Y-m-d H:i:s') . ' updating spec ' . $specFQN . PHP_EOL;
 
-            if (is_a($sourceFQN, HtmlDataSource::class, true)) {
-                $nameValuePairs = HtmlDataSourceExtractor::extractForSource($sourceFQN);
-            } elseif (is_a($sourceFQN, XmlDataSource::class, true)) {
-                $nameValuePairs = XmlDataSourceExtractor::extractForSource($sourceFQN);
-            } else {
-                throw new RuntimeException('Unsupported data type');
-            }
+            $backOff = 60;
+            for ($i = 1; $i <= self::MAX_TRIES; $i++) {
+                echo 'Attempt ' . $i . ' of ' . self::MAX_TRIES . PHP_EOL;
+                try {
+                    if (is_a($sourceFQN, HtmlDataSource::class, true)) {
+                        $nameValuePairs = HtmlDataSourceExtractor::extractForSource($sourceFQN);
+                    } elseif (is_a($sourceFQN, XmlDataSource::class, true)) {
+                        $nameValuePairs = XmlDataSourceExtractor::extractForSource($sourceFQN);
+                    } else {
+                        throw new RuntimeException('Unsupported data type');
+                    }
 
-            if ($sourceFQN::sort() === true) {
-                ksort($nameValuePairs);
-            }
+                    if ($sourceFQN::sort() === true) {
+                        ksort($nameValuePairs);
+                    }
 
-            $enumCases = [];
-            foreach ($nameValuePairs as $name => $value) {
-                $existingCaseForValue = $specFQN::tryFrom($value);
-                if ($existingCaseForValue !== null) {
-                    $name = $existingCaseForValue->name;
+                    $enumCases = [];
+                    foreach ($nameValuePairs as $name => $value) {
+                        $existingCaseForValue = $specFQN::tryFrom($value);
+                        if ($existingCaseForValue !== null) {
+                            $name = $existingCaseForValue->name;
+                        }
+
+                        $enumCases[] = new EnumCase($name, $value);
+                    }
+
+                    (new EnumFile($sourceFQN::getSpecFQN()))
+                        ->setCases(...$enumCases)
+                        ->writeCases();
+
+                    return;
+                } catch(Throwable $throwable) {
+                    if ($i === self::MAX_TRIES) {
+                        throw $throwable;
+                    }
+
+                    $backOff *= $i;
+                    echo 'Updating spec failed, retrying in ' . $backOff . ' seconds' . PHP_EOL;
+                    sleep($backOff);
                 }
-
-                $enumCases[] = new EnumCase($name, $value);
             }
-
-            (new EnumFile($sourceFQN::getSpecFQN()))
-                ->setCases(...$enumCases)
-                ->writeCases();
         }
     }
 }
