@@ -64,10 +64,7 @@ class SpecUpdater
     private const MAX_TRIES = 5;
 
     /**
-     * @throws UnavailableSourceException
-     * @throws EnumNotFoundException
-     * @throws TransliterationException
-     * @throws DomElementNotFoundException
+     * @throws Throwable
      */
     public static function update(Event $event): void
     {
@@ -82,15 +79,15 @@ class SpecUpdater
             default            => throw new InvalidArgumentException('Automatic spec updating for type "' . $type . '" not implemented'),
         };
 
-        /** @var class-string<DataSource> $sourceFQN */
-        foreach ($sources as $sourceFQN) {
-            $specFQN = $sourceFQN::getSpecFQN();
-            echo date('Y-m-d H:i:s') . ' updating spec ' . $specFQN . PHP_EOL;
+        $backOffInSeconds = 60;
+        for ($i = 1; $i <= self::MAX_TRIES; $i++) {
+            echo 'Attempt ' . $i . ' of ' . self::MAX_TRIES . PHP_EOL;
+            try {
+                /** @var class-string<DataSource> $sourceFQN */
+                foreach ($sources as $sourceFQN) {
+                    $specFQN = $sourceFQN::getSpecFQN();
+                    echo date('Y-m-d H:i:s') . ' updating spec ' . $specFQN . PHP_EOL;
 
-            $backOff = 60;
-            for ($i = 1; $i <= self::MAX_TRIES; $i++) {
-                echo 'Attempt ' . $i . ' of ' . self::MAX_TRIES . PHP_EOL;
-                try {
                     if (is_a($sourceFQN, HtmlDataSource::class, true)) {
                         $nameValuePairs = HtmlDataSourceExtractor::extractForSource($sourceFQN);
                     } elseif (is_a($sourceFQN, XmlDataSource::class, true)) {
@@ -116,17 +113,17 @@ class SpecUpdater
                     (new EnumFile($sourceFQN::getSpecFQN()))
                         ->setCases(...$enumCases)
                         ->writeCases();
-
-                    return;
-                } catch(Throwable $throwable) {
-                    if ($i === self::MAX_TRIES) {
-                        throw $throwable;
-                    }
-
-                    $backOff *= $i;
-                    echo 'Updating spec failed, retrying in ' . $backOff . ' seconds' . PHP_EOL;
-                    sleep($backOff);
                 }
+
+                return;
+            } catch (Throwable $throwable) {
+                if ($i === self::MAX_TRIES) {
+                    throw $throwable;
+                }
+
+                $backOffInSeconds *= $i;
+                echo 'Updating spec failed, retrying in ' . $backOffInSeconds . ' seconds' . PHP_EOL;
+                sleep($backOffInSeconds);
             }
         }
     }
