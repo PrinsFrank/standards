@@ -60,7 +60,7 @@ class HtmlDataSourceExtractor implements DataSourceExtractor
         }
 
         if (count($values) === 0) {
-            throw new Exception('No items found');
+            throw new Exception('No items found (' . $crawler->getText() . ')');
         }
 
         return array_filter(array_combine($names, $values));
