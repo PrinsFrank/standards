@@ -122,7 +122,7 @@ class SpecUpdater
                 }
 
                 $backOffInSeconds *= $i;
-                echo 'Updating spec failed, retrying in ' . $backOffInSeconds . ' seconds' . PHP_EOL;
+                echo 'Updating spec failed with throwable "' . get_class($throwable) . '" and message "' . $throwable->getMessage() .'" in file "' . $throwable->getFile() . ':' . $throwable->getLine() . '", retrying in ' . $backOffInSeconds . ' seconds' . PHP_EOL;
                 sleep($backOffInSeconds);
             }
         }
