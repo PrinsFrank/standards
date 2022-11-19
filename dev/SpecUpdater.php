@@ -79,15 +79,16 @@ class SpecUpdater
             default            => throw new InvalidArgumentException('Automatic spec updating for type "' . $type . '" not implemented'),
         };
 
-        $backOffInSeconds = 60;
-        for ($i = 1; $i <= self::MAX_TRIES; $i++) {
-            echo 'Attempt ' . $i . ' of ' . self::MAX_TRIES . PHP_EOL;
-            try {
-                /** @var class-string<DataSource> $sourceFQN */
-                foreach ($sources as $sourceFQN) {
-                    $specFQN = $sourceFQN::getSpecFQN();
-                    echo date('Y-m-d H:i:s') . ' updating spec ' . $specFQN . PHP_EOL;
+        /** @var class-string<DataSource> $sourceFQN */
+        foreach ($sources as $sourceFQN) {
+            $specFQN = $sourceFQN::getSpecFQN();
+            echo date('Y-m-d H:i:s') . ' updating spec ' . $specFQN . PHP_EOL;
 
+            $nameValuePairs = null;
+            $backOffInSeconds = 60;
+            for ($i = 1; $i <= self::MAX_TRIES; $i++) {
+                echo 'Attempt ' . $i . ' of ' . self::MAX_TRIES . PHP_EOL;
+                try {
                     if (is_a($sourceFQN, HtmlDataSource::class, true)) {
                         $nameValuePairs = HtmlDataSourceExtractor::extractForSource($sourceFQN);
                     } elseif (is_a($sourceFQN, XmlDataSource::class, true)) {
@@ -95,36 +96,40 @@ class SpecUpdater
                     } else {
                         throw new RuntimeException('Unsupported data type');
                     }
-
-                    if ($sourceFQN::sort() === true) {
-                        ksort($nameValuePairs);
+                } catch (Throwable $throwable) {
+                    if ($i === self::MAX_TRIES) {
+                        throw $throwable;
                     }
 
-                    $enumCases = [];
-                    foreach ($nameValuePairs as $name => $value) {
-                        $existingCaseForValue = $specFQN::tryFrom($value);
-                        if ($existingCaseForValue !== null) {
-                            $name = $existingCaseForValue->name;
-                        }
-
-                        $enumCases[] = new EnumCase($name, $value);
-                    }
-
-                    (new EnumFile($sourceFQN::getSpecFQN()))
-                        ->setCases(...$enumCases)
-                        ->writeCases();
+                    $backOffInSeconds *= $i;
+                    echo 'Updating spec failed with throwable "' . get_class($throwable) . '" and message "' . $throwable->getMessage() . '" in file "' . $throwable->getFile() . ':' . $throwable->getLine() . '", retrying in ' . $backOffInSeconds . ' seconds' . PHP_EOL;
+                    sleep($backOffInSeconds);
+                    continue;
                 }
-
-                return;
-            } catch (Throwable $throwable) {
-                if ($i === self::MAX_TRIES) {
-                    throw $throwable;
-                }
-
-                $backOffInSeconds *= $i;
-                echo 'Updating spec failed with throwable "' . get_class($throwable) . '" and message "' . $throwable->getMessage() .'" in file "' . $throwable->getFile() . ':' . $throwable->getLine() . '", retrying in ' . $backOffInSeconds . ' seconds' . PHP_EOL;
-                sleep($backOffInSeconds);
+                break;
             }
+
+            if ($nameValuePairs === null) {
+                throw new RuntimeException('No specification values found');
+            }
+
+            if ($sourceFQN::sort() === true) {
+                ksort($nameValuePairs);
+            }
+
+            $enumCases = [];
+            foreach ($nameValuePairs as $name => $value) {
+                $existingCaseForValue = $specFQN::tryFrom($value);
+                if ($existingCaseForValue !== null) {
+                    $name = $existingCaseForValue->name;
+                }
+
+                $enumCases[] = new EnumCase($name, $value);
+            }
+
+            (new EnumFile($sourceFQN::getSpecFQN()))
+                ->setCases(...$enumCases)
+                ->writeCases();
         }
     }
 }
