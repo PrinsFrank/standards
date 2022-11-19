@@ -84,7 +84,7 @@ class SpecUpdater
             $specFQN = $sourceFQN::getSpecFQN();
             echo date('Y-m-d H:i:s') . ' updating spec ' . $specFQN . PHP_EOL;
 
-            $nameValuePairs = null;
+            $nameValuePairs   = null;
             $backOffInSeconds = 60;
             for ($i = 1; $i <= self::MAX_TRIES; $i++) {
                 echo 'Attempt ' . $i . ' of ' . self::MAX_TRIES . PHP_EOL;
