@@ -1,4 +1,4 @@
-name: Daily HTTP spec update
+name: Daily HTTP status code spec update
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: composer install
       - name: Run standard update command
-        run: composer update-spec -- --type=http
+        run: composer update-spec -- --type=http-status-codes
       - name: Run CSFixer
         run: composer cs:fix
       - name: Create Pull Request
@@ -23,7 +23,7 @@ jobs:
         with:
           commit-message: Automatic spec update from upstream changes
           delete-branch: true
-          title: 'Automatic Http spec update'
+          title: 'Automatic Http status code spec update'
           body: |
             This PR makes sure the content of this package is updated with upstream changes in the specs.
           labels: |

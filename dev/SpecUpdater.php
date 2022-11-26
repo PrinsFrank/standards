@@ -49,8 +49,12 @@ class SpecUpdater
     ];
 
     /** @var array<class-string<DataSource>> */
-    public const HTTP_SOURCES = [
+    public const HTTP_STATUS_CODE_SOURCES = [
         HttpStatusCodeSource::class,
+    ];
+
+    /** @var array<class-string<DataSource>> */
+    public const HTTP_METHOD_SOURCES = [
         HttpMethodSource::class,
     ];
 
@@ -73,12 +77,13 @@ class SpecUpdater
         $type = $event->getArguments()[0] ?? throw new InvalidArgumentException('Please specify the type with "-- --type=' . implode(',', UnitEnum::names(SpecType::class)) . '"');
         $type = str_starts_with($type, '--type=') === false ? throw new InvalidArgumentException('Please specify the type with "-- --type=' . implode(',', UnitEnum::names(SpecType::class)) . '"') : substr($type, 7);
 
-        $sources = match (UnitEnum::tryFromKey(SpecType::class, strtoupper($type))) {
-            SpecType::COUNTRY  => self::COUNTRY_SOURCES,
-            SpecType::CURRENCY => self::CURRENCY_SOURCES,
-            SpecType::HTTP     => self::HTTP_SOURCES,
-            SpecType::LANGUAGE => self::LANGUAGE_SOURCES,
-            default            => throw new InvalidArgumentException('Automatic spec updating for type "' . $type . '" not implemented'),
+        $sources = match (UnitEnum::tryFromKey(SpecType::class, strtoupper(str_replace('-', '_', $type)))) {
+            SpecType::COUNTRY           => self::COUNTRY_SOURCES,
+            SpecType::CURRENCY          => self::CURRENCY_SOURCES,
+            SpecType::HTTP_STATUS_CODES => self::HTTP_STATUS_CODE_SOURCES,
+            SpecType::HTTP_METHODS      => self::HTTP_METHOD_SOURCES,
+            SpecType::LANGUAGE          => self::LANGUAGE_SOURCES,
+            default                     => throw new InvalidArgumentException('Automatic spec updating for type "' . $type . '" not implemented'),
         };
 
         /** @var class-string<DataSource> $sourceFQN */

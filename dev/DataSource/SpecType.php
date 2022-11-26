@@ -7,6 +7,7 @@ enum SpecType
 {
     case COUNTRY;
     case CURRENCY;
-    case HTTP;
+    case HTTP_STATUS_CODES;
+    case HTTP_METHODS;
     case LANGUAGE;
 }
