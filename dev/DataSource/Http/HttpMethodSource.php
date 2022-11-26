@@ -16,7 +16,13 @@ class HttpMethodSource implements HtmlDataSource
             return null; // According to https://www.rfc-editor.org/rfc/rfc9110.html#name-method-registration, section 18.2, this is a reserved method
         }
 
-        return $key;
+        return preg_replace_callback(
+            '/_([a-z])/',
+            static function ($matches) {
+                return mb_convert_case($matches[1], MB_CASE_UPPER);
+            },
+            ucfirst(strtolower($key))
+        );
     }
 
     public static function transformValue(string $value): string|int|null

@@ -93,9 +93,9 @@ HTTP Status codes are quite straight forward. For some code examples [you can lo
 
 [![Daily HTTP method spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml)
 
-| Key              | Value            |
-|------------------|------------------|
-| POST             | POST             |
-| PUT              | PUT              |
-| BASELINE_CONTROL | BASELINE-CONTROL |
-| ...              | ...              |
+| Key             | Value            |
+|-----------------|------------------|
+| Post            | POST             |
+| Put             | PUT              |
+| BaselineControl | BASELINE-CONTROL |
+| ...             | ...              |
