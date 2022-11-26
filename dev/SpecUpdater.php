@@ -14,6 +14,7 @@ use PrinsFrank\Standards\Dev\DataSource\Currency\ISO4217_Name_Source;
 use PrinsFrank\Standards\Dev\DataSource\Currency\ISO4217_Numeric_Source;
 use PrinsFrank\Standards\Dev\DataSource\DataSource;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
+use PrinsFrank\Standards\Dev\DataSource\Http\HttpMethodSource;
 use PrinsFrank\Standards\Dev\DataSource\Http\HttpStatusCodeSource;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_1_Alpha_2_Source;
 use PrinsFrank\Standards\Dev\DataSource\Language\ISO639_2_Alpha_3_Bibliographic_Source;
@@ -50,6 +51,7 @@ class SpecUpdater
     /** @var array<class-string<DataSource>> */
     public const HTTP_SOURCES = [
         HttpStatusCodeSource::class,
+        HttpMethodSource::class,
     ];
 
     /** @var array<class-string<DataSource>> */
