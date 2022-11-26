@@ -79,7 +79,7 @@ Country calling codes are quite straight forward. One Exception is that the +1 p
 
 ## HTTP Status Codes
 
-[![Daily HTTP Status code spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http.yml)
+[![Daily HTTP Status code spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml)
 
 HTTP Status codes are quite straight forward. For some code examples [you can look in the documentation](/docs/http_status_code.md).
 
@@ -88,3 +88,14 @@ HTTP Status codes are quite straight forward. For some code examples [you can lo
 | Moved_Permanently | 301            |
 | Not_Found         | 404            |
 | ...               | ...            |
+
+## HTTP Methods
+
+[![Daily HTTP method spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml)
+
+| Key              | Value            |
+|------------------|------------------|
+| POST             | POST             |
+| PUT              | PUT              |
+| BASELINE_CONTROL | BASELINE-CONTROL |
+| ...              | ...              |
