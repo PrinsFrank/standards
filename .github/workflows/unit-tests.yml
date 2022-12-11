@@ -9,9 +9,17 @@ on:
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: [8.1, 8.2]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
       - name: Install dependencies
         run: composer install
       - name: Run unit tests
