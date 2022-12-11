@@ -59,7 +59,6 @@ class ISO4217_NumericTest extends TestCase
     public function testFromIntThrowsExceptionOnNonExistingValue(): void
     {
         $this->expectException(ValueError::class);
-        $this->expectExceptionMessage('"001" is not a valid backing value for enum "' . ISO4217_Numeric::class . '"');
         static::assertNull(ISO4217_Numeric::fromInt(1));
     }
 
