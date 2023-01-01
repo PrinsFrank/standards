@@ -86,7 +86,6 @@ enum ISO4217_Name: string
     case Jordanian_Dinar                                                   = 'Jordanian Dinar';
     case Kenyan_Shilling                                                   = 'Kenyan Shilling';
     case Kina                                                              = 'Kina';
-    case Kuna                                                              = 'Kuna';
     case Kuwaiti_Dinar                                                     = 'Kuwaiti Dinar';
     case Kwanza                                                            = 'Kwanza';
     case Kyat                                                              = 'Kyat';
