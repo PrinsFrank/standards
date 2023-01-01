@@ -86,7 +86,6 @@ enum ISO4217_Name: string
     case Jordanian_Dinar                                                   = 'Jordanian Dinar';
     case Kenyan_Shilling                                                   = 'Kenyan Shilling';
     case Kina                                                              = 'Kina';
-    case Kuna                                                              = 'Kuna';
     case Kuwaiti_Dinar                                                     = 'Kuwaiti Dinar';
     case Kwanza                                                            = 'Kwanza';
     case Kyat                                                              = 'Kyat';
@@ -191,6 +190,9 @@ enum ISO4217_Name: string
     case Zambian_Kwacha                                                    = 'Zambian Kwacha';
     case Zimbabwe_Dollar                                                   = 'Zimbabwe Dollar';
     case Zloty                                                             = 'Zloty';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Kuna = 'Kuna';
 
     public function toISO4217_Alpha_3(): ISO4217_Alpha_3
     {

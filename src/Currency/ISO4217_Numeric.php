@@ -86,7 +86,6 @@ enum ISO4217_Numeric: string
     case Jordanian_Dinar                                                   = '400';
     case Kenyan_Shilling                                                   = '404';
     case Kina                                                              = '598';
-    case Kuna                                                              = '191';
     case Kuwaiti_Dinar                                                     = '414';
     case Kwanza                                                            = '973';
     case Kyat                                                              = '104';
@@ -191,6 +190,9 @@ enum ISO4217_Numeric: string
     case Zambian_Kwacha                                                    = '967';
     case Zimbabwe_Dollar                                                   = '932';
     case Zloty                                                             = '985';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Kuna = '191';
 
     public static function fromInt(int $from): self
     {
