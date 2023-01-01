@@ -21,7 +21,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: Automatic spec update from upstream changes
+          commit-message: Automatic Country spec update from upstream changes
           delete-branch: true
           title: 'Automatic Country spec update'
           body: |
