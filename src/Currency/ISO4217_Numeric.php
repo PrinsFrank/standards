@@ -87,7 +87,6 @@ enum ISO4217_Numeric: string
     case Jordanian_Dinar                                                   = '400';
     case Kenyan_Shilling                                                   = '404';
     case Kina                                                              = '598';
-    case Kuna                                                              = '191';
     case Kuwaiti_Dinar                                                     = '414';
     case Kwanza                                                            = '973';
     case Kyat                                                              = '104';
