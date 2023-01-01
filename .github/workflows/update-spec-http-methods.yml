@@ -24,6 +24,7 @@ jobs:
           commit-message: Automatic HTTP method spec update from upstream changes
           delete-branch: true
           title: 'Automatic Http method spec update'
+          branch: update-spec/http-method
           body: |
             This PR makes sure the content of this package is updated with upstream changes in the specs.
           labels: |
