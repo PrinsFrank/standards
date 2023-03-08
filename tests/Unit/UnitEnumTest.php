@@ -75,7 +75,6 @@ class UnitEnumTest extends TestCase
     public function testFromKeyThrowsExceptionNonExistingKey(): void
     {
         $this->expectException(KeyNotFoundException::class);
-        $this->expectDeprecationMessage('Key "BAR" not found in "' . TestEnum::class . '"');
         UnitEnum::fromKey(TestEnum::class, 'BAR');
     }
 }

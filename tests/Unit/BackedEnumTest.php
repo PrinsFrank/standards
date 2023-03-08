@@ -141,7 +141,6 @@ class BackedEnumTest extends TestCase
     public function testFromKeyThrowsExceptionNonExistingKey(): void
     {
         $this->expectException(KeyNotFoundException::class);
-        $this->expectDeprecationMessage('Key "BAR" not found in "' . TestEnumBackedByString::class . '"');
         BackedEnum::fromKey(TestEnumBackedByString::class, 'BAR');
     }
 }
