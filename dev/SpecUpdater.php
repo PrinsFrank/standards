@@ -9,6 +9,10 @@ use PrinsFrank\Standards\Dev\DataSource\Country\ISO3166_1_Alpha_2_Source;
 use PrinsFrank\Standards\Dev\DataSource\Country\ISO3166_1_Alpha_3_Source;
 use PrinsFrank\Standards\Dev\DataSource\Country\ISO3166_1_Name_Source;
 use PrinsFrank\Standards\Dev\DataSource\Country\ISO3166_1_Numeric_Source;
+use PrinsFrank\Standards\Dev\DataSource\CountryShort\CountryAlpha2Source;
+use PrinsFrank\Standards\Dev\DataSource\CountryShort\CountryAlpha3Source;
+use PrinsFrank\Standards\Dev\DataSource\CountryShort\CountryNameSource;
+use PrinsFrank\Standards\Dev\DataSource\CountryShort\CountryNumericSource;
 use PrinsFrank\Standards\Dev\DataSource\Currency\ISO4217_Alpha_3_Source;
 use PrinsFrank\Standards\Dev\DataSource\Currency\ISO4217_Name_Source;
 use PrinsFrank\Standards\Dev\DataSource\Currency\ISO4217_Numeric_Source;
@@ -39,6 +43,14 @@ class SpecUpdater
         ISO3166_1_Alpha_2_Source::class,
         ISO3166_1_Alpha_3_Source::class,
         ISO3166_1_Name_Source::class,
+    ];
+
+    /** @var array<class-string<DataSource>> */
+    public const COUNTRY_SHORT_SOURCES = [
+        CountryNumericSource::class,
+        CountryAlpha2Source::class,
+        CountryAlpha3Source::class,
+        CountryNameSource::class,
     ];
 
     /** @var array<class-string<DataSource>> */
@@ -79,6 +91,7 @@ class SpecUpdater
 
         $sources = match (UnitEnum::tryFromKey(SpecType::class, strtoupper(str_replace('-', '_', $type)))) {
             SpecType::COUNTRY           => self::COUNTRY_SOURCES,
+            SpecType::COUNTRY_SHORT     => self::COUNTRY_SHORT_SOURCES,
             SpecType::CURRENCY          => self::CURRENCY_SOURCES,
             SpecType::HTTP_STATUS_CODES => self::HTTP_STATUS_CODE_SOURCES,
             SpecType::HTTP_METHODS      => self::HTTP_METHOD_SOURCES,

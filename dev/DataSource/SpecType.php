@@ -6,6 +6,7 @@ namespace PrinsFrank\Standards\Dev\DataSource;
 enum SpecType
 {
     case COUNTRY;
+    case COUNTRY_SHORT;
     case CURRENCY;
     case HTTP_STATUS_CODES;
     case HTTP_METHODS;
