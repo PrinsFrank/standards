@@ -8,28 +8,28 @@ use PrinsFrank\Standards\CountryShort\CountryName;
 use TypeError;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Country\ISO3166_1_Name
+ * @coversDefaultClass \PrinsFrank\Standards\CountryShort\CountryName
  */
 class CountryNameTest extends TestCase
 {
     /**
-     * @covers ::toISO3166_1_Alpha_2
+     * @covers ::toCountryAlpha2
      */
-    public function testAllCasesCanBeConvertedToISO3166Alpha2(): void
+    public function testAllCasesCanBeConvertedToCountryAlpha2(): void
     {
         $cases = CountryName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toISO3166_1_Alpha_2();
+                $case->toCountryAlpha2();
             } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Alpha_2', $case->name));
+                $this->fail(sprintf('Case %s could not be converted to CountryAlpha2', $case->name));
             }
         }
     }
 
     /**
-     * @covers ::toISO3166_1_Alpha_3
+     * @covers ::toCountryAlpha3
      */
     public function testAllCasesCanBeConvertedToISO3166Alpha3(): void
     {
@@ -37,15 +37,15 @@ class CountryNameTest extends TestCase
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toISO3166_1_Alpha_3();
+                $case->toCountryAlpha3();
             } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Alpha_3', $case->name));
+                $this->fail(sprintf('Case %s could not be converted to CountryAlpha3', $case->name));
             }
         }
     }
 
     /**
-     * @covers ::toISO3166_1_Numeric
+     * @covers ::toCountryNumeric
      */
     public function testAllCasesCanBeConvertedToISO3166Numeric(): void
     {
@@ -53,9 +53,9 @@ class CountryNameTest extends TestCase
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toISO3166_1_Numeric();
+                $case->toCountryNumeric();
             } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Numeric', $case->name));
+                $this->fail(sprintf('Case %s could not be converted to CountryNumeric', $case->name));
             }
         }
     }

@@ -270,17 +270,17 @@ enum CountryNumeric: string
         return self::tryFrom(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
     }
 
-    public function toISO3166_1_Alpha_2(): CountryAlpha2
+    public function toCountryAlpha2(): CountryAlpha2
     {
         return BackedEnum::fromKey(CountryAlpha2::class, $this->name);
     }
 
-    public function toISO3166_1_Alpha_3(): CountryAlpha3
+    public function toCountryAlpha3(): CountryAlpha3
     {
         return BackedEnum::fromKey(CountryAlpha3::class, $this->name);
     }
 
-    public function toISO3166_Name(): CountryName
+    public function toCountryName(): CountryName
     {
         return BackedEnum::fromKey(CountryName::class, $this->name);
     }

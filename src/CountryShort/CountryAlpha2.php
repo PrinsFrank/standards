@@ -260,17 +260,17 @@ enum CountryAlpha2: string
     case Zambia                                                              = 'ZM';
     case Zimbabwe                                                            = 'ZW';
 
-    public function toISO3166_1_Alpha_3(): CountryAlpha3
+    public function toCountryAlpha3(): CountryAlpha3
     {
         return BackedEnum::fromKey(CountryAlpha3::class, $this->name);
     }
 
-    public function toISO3166_1_Numeric(): CountryNumeric
+    public function toCountryNumeric(): CountryNumeric
     {
         return BackedEnum::fromKey(CountryNumeric::class, $this->name);
     }
 
-    public function toISO3166_Name(): CountryName
+    public function toCountryName(): CountryName
     {
         return BackedEnum::fromKey(CountryName::class, $this->name);
     }

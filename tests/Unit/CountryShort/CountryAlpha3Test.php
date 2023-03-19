@@ -13,49 +13,49 @@ use TypeError;
 class CountryAlpha3Test extends TestCase
 {
     /**
-     * @covers ::toISO3166_1_Alpha_2
+     * @covers ::toCountryAlpha2
      */
-    public function testAllCasesCanBeConvertedToISO3166Alpha2(): void
+    public function testAllCasesCanBeConvertedToCountryAlpha2(): void
     {
         $cases = CountryAlpha3::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toISO3166_1_Alpha_2();
+                $case->toCountryAlpha2();
             } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Alpha_2', $case->name));
+                $this->fail(sprintf('Case %s could not be converted to CountryAlpha2', $case->name));
             }
         }
     }
 
     /**
-     * @covers ::toISO3166_1_Numeric
+     * @covers ::toCountryNumeric
      */
-    public function testAllCasesCanBeConvertedToISO3166Numeric(): void
+    public function testAllCasesCanBeConvertedToCountryNumeric(): void
     {
         $cases = CountryAlpha3::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toISO3166_1_Numeric();
+                $case->toCountryNumeric();
             } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Numeric', $case->name));
+                $this->fail(sprintf('Case %s could not be converted to CountryNumeric', $case->name));
             }
         }
     }
 
     /**
-     * @covers ::toISO3166_Name
+     * @covers ::toCountryName
      */
-    public function testAllCasesCanBeConvertedToISO3166Name(): void
+    public function testAllCasesCanBeConvertedToCountryName(): void
     {
         $cases = CountryAlpha3::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toISO3166_Name();
+                $case->toCountryName();
             } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to ISO3166_1_Name', $case->name));
+                $this->fail(sprintf('Case %s could not be converted to CountryName', $case->name));
             }
         }
     }
