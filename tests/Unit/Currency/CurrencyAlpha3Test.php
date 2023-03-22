@@ -13,7 +13,7 @@ use TypeError;
 class CurrencyAlpha3Test extends TestCase
 {
     /**
-     * @covers ::toISO4217_Numeric
+     * @covers ::toCurrencyNumeric
      */
     public function testAllCasesCanBeConvertedToISO4217Numeric(): void
     {
@@ -29,7 +29,7 @@ class CurrencyAlpha3Test extends TestCase
     }
 
     /**
-     * @covers ::toISO4217_Name
+     * @covers ::toCurrencyName
      */
     public function testAllCasesCanBeConvertedToISO4217Name(): void
     {

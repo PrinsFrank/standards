@@ -14,7 +14,7 @@ use ValueError;
 class CurrencyNumericTest extends TestCase
 {
     /**
-     * @covers ::toISO4217_Alpha_3
+     * @covers ::toCurrencyAlpha3
      */
     public function testAllCasesCanBeConvertedToISO4217Alpha3(): void
     {
@@ -30,7 +30,7 @@ class CurrencyNumericTest extends TestCase
     }
 
     /**
-     * @covers ::toISO4217_Name
+     * @covers ::toCurrencyName
      */
     public function testAllCasesCanBeConvertedToISO4217Name(): void
     {
