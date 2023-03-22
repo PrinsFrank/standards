@@ -4,7 +4,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
 namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
-use PrinsFrank\Standards\Country\ISO3166_1_Numeric;
+use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -43,7 +43,7 @@ class CountryNumericSource implements HtmlDataSource
 
     public static function getSpecFQN(): string
     {
-        return ISO3166_1_Numeric::class;
+        return CountryNumeric::class;
     }
 
     public static function getKeyEnumFQN(): string
