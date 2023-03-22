@@ -4,13 +4,13 @@ namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
 namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
-use PrinsFrank\Standards\Country\ISO3166_1_Alpha_2;
-use PrinsFrank\Standards\Country\ISO3166_1_Name;
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class ISO3166_1_Name_Source implements HtmlDataSource
+class CountryNameSource implements HtmlDataSource
 {
     public static function url(): string
     {
@@ -44,12 +44,12 @@ class ISO3166_1_Name_Source implements HtmlDataSource
 
     public static function getSpecFQN(): string
     {
-        return ISO3166_1_Name::class;
+        return CountryName::class;
     }
 
     public static function getKeyEnumFQN(): string
     {
-        return ISO3166_1_Alpha_2::class;
+        return CountryAlpha2::class;
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

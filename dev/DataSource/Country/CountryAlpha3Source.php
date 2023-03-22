@@ -4,12 +4,12 @@ namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
 namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
-use PrinsFrank\Standards\Country\ISO3166_1_Alpha_2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class ISO3166_1_Alpha_2_Source implements HtmlDataSource
+class CountryAlpha3Source implements HtmlDataSource
 {
     public static function url(): string
     {
@@ -28,7 +28,7 @@ class ISO3166_1_Alpha_2_Source implements HtmlDataSource
 
     public static function xPathIdentifierValue(): string
     {
-        return '//tbody[@class="v-grid-body"]/tr/td[3]';
+        return '//tbody[@class="v-grid-body"]/tr/td[4]';
     }
 
     public static function transformName(string $key): ?string
@@ -43,7 +43,7 @@ class ISO3166_1_Alpha_2_Source implements HtmlDataSource
 
     public static function getSpecFQN(): string
     {
-        return ISO3166_1_Alpha_2::class;
+        return CountryAlpha3::class;
     }
 
     public static function getKeyEnumFQN(): string

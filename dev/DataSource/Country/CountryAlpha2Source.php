@@ -1,18 +1,19 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Currency;
+namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
-use PrinsFrank\Standards\Currency\CurrencyNumeric;
-use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
+namespace PrinsFrank\Standards\Dev\DataSource\Country;
+
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class ISO4217_Numeric_Source implements XmlDataSource
+class CountryAlpha2Source implements HtmlDataSource
 {
     public static function url(): string
     {
-        return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml';
+        return 'https://www.iso.org/obp/ui/#search/code/';
     }
 
     public static function xPathIdentifierKey(): string
@@ -22,12 +23,12 @@ class ISO4217_Numeric_Source implements XmlDataSource
 
     public static function xPathIdentifierName(): string
     {
-        return '//ISO_4217/CcyTbl/CcyNtry/CcyNbr//preceding-sibling::CcyNm';
+        return '//tbody[@class="v-grid-body"]/tr/td/button';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//ISO_4217/CcyTbl/CcyNtry/CcyNm//following-sibling::CcyNbr';
+        return '//tbody[@class="v-grid-body"]/tr/td[3]';
     }
 
     public static function transformName(string $key): ?string
@@ -42,7 +43,7 @@ class ISO4217_Numeric_Source implements XmlDataSource
 
     public static function getSpecFQN(): string
     {
-        return CurrencyNumeric::class;
+        return CountryAlpha2::class;
     }
 
     public static function getKeyEnumFQN(): string
@@ -52,6 +53,11 @@ class ISO4217_Numeric_Source implements XmlDataSource
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void
     {
+        $client->waitFor('.v-select-select');
+        $client->waitForInvisibility('.v-loading-indicator');
+        $perPageDropdown = $crawler->filterXPath(".//select[@class='v-select-select']//option[last()]");
+        $perPageDropdown->click();
+        $client->waitForElementToContain('html', 'Zimbabwe');
     }
 
     public static function sort(): bool

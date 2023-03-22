@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Language;
+namespace PrinsFrank\Standards\Dev\DataSource\Currency;
 
-use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
-use PrinsFrank\Standards\Language\LanguageAlpha3Common;
+use PrinsFrank\Standards\Currency\CurrencyAlpha3;
+use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class ISO639_2_Alpha_3_Common_Source implements HtmlDataSource
+class CurrencyAlpha3Source implements XmlDataSource
 {
     public static function url(): string
     {
-        return 'https://www.loc.gov/standards/iso639-2/php/code_list.php';
+        return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml';
     }
 
     public static function xPathIdentifierKey(): string
@@ -22,12 +22,12 @@ class ISO639_2_Alpha_3_Common_Source implements HtmlDataSource
 
     public static function xPathIdentifierName(): string
     {
-        return '//table[@width="100%"]/tbody/tr/td[3]';
+        return '//ISO_4217/CcyTbl/CcyNtry/Ccy//preceding-sibling::CcyNm';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//table[@width="100%"]/tbody/tr/td[1]';
+        return '//ISO_4217/CcyTbl/CcyNtry/CcyNm//following-sibling::Ccy';
     }
 
     public static function transformName(string $key): ?string
@@ -37,16 +37,12 @@ class ISO639_2_Alpha_3_Common_Source implements HtmlDataSource
 
     public static function transformValue(string $value): string|int|null
     {
-        if (str_contains($value, '(T)') || str_contains($value, '(B)') || str_contains($value, '-')) {
-            return null;
-        }
-
-        return strtolower(str_replace(' ', '', trim($value)));
+        return $value;
     }
 
     public static function getSpecFQN(): string
     {
-        return LanguageAlpha3Common::class;
+        return CurrencyAlpha3::class;
     }
 
     public static function getKeyEnumFQN(): string
