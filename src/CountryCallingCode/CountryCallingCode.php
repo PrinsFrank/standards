@@ -6,7 +6,7 @@ namespace PrinsFrank\Standards\CountryCallingCode;
 /**
  * @source https://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-E.164D-2016-PDF-E.pdf
  */
-enum ITU_T_E_164: int
+enum CountryCallingCode: int
 {
     case Afghanistan                                                                    = 93;
     case Albania_Republic_of                                                            = 355;
