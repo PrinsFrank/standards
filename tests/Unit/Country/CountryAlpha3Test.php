@@ -1,29 +1,29 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Tests\Unit\CountryShort;
+namespace PrinsFrank\Standards\Tests\Unit\Country;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\CountryShort\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
 use TypeError;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\CountryShort\CountryAlpha2
+ * @coversDefaultClass \PrinsFrank\Standards\Country\CountryAlpha3
  */
-class CountryAlpha2Test extends TestCase
+class CountryAlpha3Test extends TestCase
 {
     /**
-     * @covers ::toCountryAlpha3
+     * @covers ::toCountryAlpha2
      */
-    public function testAllCasesCanBeConvertedToCountryAlpha3(): void
+    public function testAllCasesCanBeConvertedToCountryAlpha2(): void
     {
-        $cases = CountryAlpha2::cases();
+        $cases = CountryAlpha3::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toCountryAlpha3();
+                $case->toCountryAlpha2();
             } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CountryAlpha3', $case->name));
+                $this->fail(sprintf('Case %s could not be converted to CountryAlpha2', $case->name));
             }
         }
     }
@@ -33,7 +33,7 @@ class CountryAlpha2Test extends TestCase
      */
     public function testAllCasesCanBeConvertedToCountryNumeric(): void
     {
-        $cases = CountryAlpha2::cases();
+        $cases = CountryAlpha3::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
@@ -49,7 +49,7 @@ class CountryAlpha2Test extends TestCase
      */
     public function testAllCasesCanBeConvertedToCountryName(): void
     {
-        $cases = CountryAlpha2::cases();
+        $cases = CountryAlpha3::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
@@ -65,6 +65,6 @@ class CountryAlpha2Test extends TestCase
      */
     public function testLowerCaseValue(): void
     {
-        static::assertSame('af', CountryAlpha2::Afghanistan->lowerCaseValue());
+        static::assertSame('afg', CountryAlpha3::Afghanistan->lowerCaseValue());
     }
 }

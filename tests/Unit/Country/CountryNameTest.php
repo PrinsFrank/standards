@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Tests\Unit\CountryShort;
+namespace PrinsFrank\Standards\Tests\Unit\Country;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\CountryShort\CountryName;
+use PrinsFrank\Standards\Country\CountryName;
 use TypeError;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\CountryShort\CountryName
+ * @coversDefaultClass \PrinsFrank\Standards\Country\CountryName
  */
 class CountryNameTest extends TestCase
 {

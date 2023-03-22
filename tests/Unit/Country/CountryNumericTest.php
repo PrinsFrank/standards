@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Tests\Unit\CountryShort;
+namespace PrinsFrank\Standards\Tests\Unit\Country;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\CountryShort\CountryNumeric;
+use PrinsFrank\Standards\Country\CountryNumeric;
 use TypeError;
 use ValueError;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\CountryShort\CountryNumeric
+ * @coversDefaultClass \PrinsFrank\Standards\Country\CountryNumeric
  */
 class CountryNumericTest extends TestCase
 {

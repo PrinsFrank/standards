@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\CountryShort;
+namespace PrinsFrank\Standards\Country;
 
 use PrinsFrank\Standards\BackedEnum;
 
