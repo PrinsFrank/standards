@@ -4,19 +4,19 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Tests\Unit\Language;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageName;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Language\LanguageAlpha2
+ * @coversDefaultClass \PrinsFrank\Standards\Language\LanguageName
  */
-class ISO639_1_Alpha_2Test extends TestCase
+class LanguageNameTest extends TestCase
 {
     /**
      * @covers ::toLanguageAlpha3Bibliographic
      */
     public function testAllCasesCanBeConvertedToToISO392_2Bibliographic(): void
     {
-        $cases = LanguageAlpha2::cases();
+        $cases = LanguageName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             static::assertNotNull($case->toLanguageAlpha3Bibliographic());
@@ -28,7 +28,7 @@ class ISO639_1_Alpha_2Test extends TestCase
      */
     public function testAllCasesCanBeConvertedToISO392_2Terminology(): void
     {
-        $cases = LanguageAlpha2::cases();
+        $cases = LanguageName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             static::assertNotNull($case->toLanguageAlpha3Terminology());
@@ -36,22 +36,14 @@ class ISO639_1_Alpha_2Test extends TestCase
     }
 
     /**
-     * @covers ::toLanguageName
+     * @covers ::toLanguageAlpha2
      */
-    public function testAllCasesCanBeConvertedToISO392_Name(): void
+    public function testSomeCasesCanBeConvertedToISO639_1_Alpha2(): void
     {
-        $cases = LanguageAlpha2::cases();
+        $cases = LanguageName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toLanguageName());
+            $case->toLanguageAlpha2();
         }
-    }
-
-    /**
-     * @covers ::upperCaseValue
-     */
-    public function testUpperCaseValue(): void
-    {
-        static::assertSame('AB', LanguageAlpha2::Abkhazian->upperCaseValue());
     }
 }

@@ -9,7 +9,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Common;
 /**
  * @coversDefaultClass \PrinsFrank\Standards\Language\LanguageAlpha3Common
  */
-class ISO639_2_Alpha_3CommonTest extends TestCase
+class LanguageAlpha3CommonTest extends TestCase
 {
     /**
      * @covers ::toLanguageAlpha2

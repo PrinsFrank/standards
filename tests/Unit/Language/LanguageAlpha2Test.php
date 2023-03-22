@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Language;
+namespace PrinsFrank\Standards\Tests\Unit\Language;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\Language\LanguageName;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Language\LanguageName
+ * @coversDefaultClass \PrinsFrank\Standards\Language\LanguageAlpha2
  */
-class ISO639_NameTest extends TestCase
+class LanguageAlpha2Test extends TestCase
 {
     /**
      * @covers ::toLanguageAlpha3Bibliographic
      */
     public function testAllCasesCanBeConvertedToToISO392_2Bibliographic(): void
     {
-        $cases = LanguageName::cases();
+        $cases = LanguageAlpha2::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             static::assertNotNull($case->toLanguageAlpha3Bibliographic());
@@ -28,7 +28,7 @@ class ISO639_NameTest extends TestCase
      */
     public function testAllCasesCanBeConvertedToISO392_2Terminology(): void
     {
-        $cases = LanguageName::cases();
+        $cases = LanguageAlpha2::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             static::assertNotNull($case->toLanguageAlpha3Terminology());
@@ -36,14 +36,22 @@ class ISO639_NameTest extends TestCase
     }
 
     /**
-     * @covers ::toLanguageAlpha2
+     * @covers ::toLanguageName
      */
-    public function testSomeCasesCanBeConvertedToISO639_1_Alpha2(): void
+    public function testAllCasesCanBeConvertedToISO392_Name(): void
     {
-        $cases = LanguageName::cases();
+        $cases = LanguageAlpha2::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            $case->toLanguageAlpha2();
+            static::assertNotNull($case->toLanguageName());
         }
+    }
+
+    /**
+     * @covers ::upperCaseValue
+     */
+    public function testUpperCaseValue(): void
+    {
+        static::assertSame('AB', LanguageAlpha2::Abkhazian->upperCaseValue());
     }
 }
