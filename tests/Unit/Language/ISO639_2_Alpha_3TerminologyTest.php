@@ -4,46 +4,46 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Tests\Unit\Language;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Terminology;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Terminology
+ * @coversDefaultClass \PrinsFrank\Standards\Language\LanguageAlpha3Terminology
  */
 class ISO639_2_Alpha_3TerminologyTest extends TestCase
 {
     /**
-     * @covers ::toISO639_1_Alpha_2
+     * @covers ::toLanguageAlpha2
      */
     public function testAllCasesCanBeConvertedToISO639_1(): void
     {
-        $cases = ISO639_2_Alpha_3_Terminology::cases();
+        $cases = LanguageAlpha3Terminology::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO639_1_Alpha_2());
+            static::assertNotNull($case->toLanguageAlpha2());
         }
     }
 
     /**
-     * @covers ::toISO639_2_Alpha_3_Bibliographic
+     * @covers ::toLanguageAlpha3Bibliographic
      */
     public function testAllCasesCanBeConvertedToBibiliographical(): void
     {
-        $cases = ISO639_2_Alpha_3_Terminology::cases();
+        $cases = LanguageAlpha3Terminology::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO639_2_Alpha_3_Bibliographic());
+            static::assertNotNull($case->toLanguageAlpha3Bibliographic());
         }
     }
 
     /**
-     * @covers ::toISO639_Name
+     * @covers ::toLanguageName
      */
     public function testAllCasesCanBeConvertedToISO639_Name(): void
     {
-        $cases = ISO639_2_Alpha_3_Terminology::cases();
+        $cases = LanguageAlpha3Terminology::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO639_Name());
+            static::assertNotNull($case->toLanguageName());
         }
     }
 
@@ -52,6 +52,6 @@ class ISO639_2_Alpha_3TerminologyTest extends TestCase
      */
     public function testUpperCaseValue(): void
     {
-        static::assertSame('SQI', ISO639_2_Alpha_3_Terminology::Albanian->upperCaseValue());
+        static::assertSame('SQI', LanguageAlpha3Terminology::Albanian->upperCaseValue());
     }
 }

@@ -4,35 +4,35 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Tests\Unit\Language;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Common;
+use PrinsFrank\Standards\Language\LanguageAlpha3Common;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Common
+ * @coversDefaultClass \PrinsFrank\Standards\Language\LanguageAlpha3Common
  */
 class ISO639_2_Alpha_3CommonTest extends TestCase
 {
     /**
-     * @covers ::toISO639_1_Alpha_2
+     * @covers ::toLanguageAlpha2
      */
     public function testSomeCasesCanBeConvertedToISO639_1_Alpha2(): void
     {
-        $cases = ISO639_2_Alpha_3_Common::cases();
+        $cases = LanguageAlpha3Common::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            $case->toISO639_1_Alpha_2();
+            $case->toLanguageAlpha2();
             $this->addToAssertionCount(1);
         }
     }
 
     /**
-     * @covers ::toISO639_Name
+     * @covers ::toLanguageName
      */
     public function testAllCasesCanBeConvertedToISO639_Name(): void
     {
-        $cases = ISO639_2_Alpha_3_Common::cases();
+        $cases = LanguageAlpha3Common::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO639_Name());
+            static::assertNotNull($case->toLanguageName());
         }
     }
 
@@ -41,6 +41,6 @@ class ISO639_2_Alpha_3CommonTest extends TestCase
      */
     public function testUpperCaseValue(): void
     {
-        static::assertSame('ABK', ISO639_2_Alpha_3_Common::Abkhazian->upperCaseValue());
+        static::assertSame('ABK', LanguageAlpha3Common::Abkhazian->upperCaseValue());
     }
 }

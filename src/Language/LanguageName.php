@@ -9,7 +9,7 @@ use PrinsFrank\Standards\BackedEnum;
  * @source https://www.iso.org/iso-639-language-codes.html
  * @source http://www.loc.gov/standards/iso639-2/php/code_list.php
  */
-enum ISO639_Name: string
+enum LanguageName: string
 {
     case Abkhazian                                                                    = 'Abkhazian';
     case Achinese                                                                     = 'Achinese';
@@ -498,18 +498,18 @@ enum ISO639_Name: string
     case Zulu                                                                         = 'Zulu';
     case Zuni                                                                         = 'Zuni';
 
-    public function toISO639_1_Alpha_2(): ISO639_1_Alpha_2|null
+    public function toLanguageAlpha2(): LanguageAlpha2|null
     {
-        return BackedEnum::tryFromKey(ISO639_1_Alpha_2::class, $this->name);
+        return BackedEnum::tryFromKey(LanguageAlpha2::class, $this->name);
     }
 
-    public function toISO639_2_Alpha_3_Bibliographic(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Bibliographic|null
+    public function toLanguageAlpha3Bibliographic(): LanguageAlpha3Common|LanguageAlpha3Bibliographic|null
     {
-        return BackedEnum::tryFromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? BackedEnum::tryFromKey(ISO639_2_Alpha_3_Bibliographic::class, $this->name) ?? null;
+        return BackedEnum::tryFromKey(LanguageAlpha3Common::class, $this->name) ?? BackedEnum::tryFromKey(LanguageAlpha3Bibliographic::class, $this->name) ?? null;
     }
 
-    public function toISO639_2_Alpha_3_Terminology(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Terminology|null
+    public function toLanguageAlpha3Terminology(): LanguageAlpha3Common|LanguageAlpha3Terminology|null
     {
-        return BackedEnum::tryFromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? BackedEnum::tryFromKey(ISO639_2_Alpha_3_Terminology::class, $this->name) ?? null;
+        return BackedEnum::tryFromKey(LanguageAlpha3Common::class, $this->name) ?? BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name) ?? null;
     }
 }

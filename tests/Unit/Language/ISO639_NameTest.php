@@ -4,46 +4,46 @@ declare(strict_types=1);
 namespace Language;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\Language\ISO639_Name;
+use PrinsFrank\Standards\Language\LanguageName;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Language\ISO639_Name
+ * @coversDefaultClass \PrinsFrank\Standards\Language\LanguageName
  */
 class ISO639_NameTest extends TestCase
 {
     /**
-     * @covers ::toISO639_2_Alpha_3_Bibliographic
+     * @covers ::toLanguageAlpha3Bibliographic
      */
     public function testAllCasesCanBeConvertedToToISO392_2Bibliographic(): void
     {
-        $cases = ISO639_Name::cases();
+        $cases = LanguageName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO639_2_Alpha_3_Bibliographic());
+            static::assertNotNull($case->toLanguageAlpha3Bibliographic());
         }
     }
 
     /**
-     * @covers ::toISO639_2_Alpha_3_Terminology
+     * @covers ::toLanguageAlpha3Terminology
      */
     public function testAllCasesCanBeConvertedToISO392_2Terminology(): void
     {
-        $cases = ISO639_Name::cases();
+        $cases = LanguageName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toISO639_2_Alpha_3_Terminology());
+            static::assertNotNull($case->toLanguageAlpha3Terminology());
         }
     }
 
     /**
-     * @covers ::toISO639_1_Alpha_2
+     * @covers ::toLanguageAlpha2
      */
     public function testSomeCasesCanBeConvertedToISO639_1_Alpha2(): void
     {
-        $cases = ISO639_Name::cases();
+        $cases = LanguageName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            $case->toISO639_1_Alpha_2();
+            $case->toLanguageAlpha2();
         }
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Language;
 
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
-use PrinsFrank\Standards\Language\ISO639_2_Alpha_3_Terminology;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
@@ -48,7 +48,7 @@ class ISO639_2_Alpha_3_Terminology_Source implements HtmlDataSource
 
     public static function getSpecFQN(): string
     {
-        return ISO639_2_Alpha_3_Terminology::class;
+        return LanguageAlpha3Terminology::class;
     }
 
     public static function getKeyEnumFQN(): string

@@ -9,7 +9,7 @@ use PrinsFrank\Standards\BackedEnum;
  * @source https://www.iso.org/iso-639-language-codes.html
  * @source http://www.loc.gov/standards/iso639-2/php/code_list.php
  */
-enum ISO639_2_Alpha_3_Bibliographic: string
+enum LanguageAlpha3Bibliographic: string
 {
     case Albanian                    = 'alb';
     case Armenian                    = 'arm';
@@ -32,19 +32,19 @@ enum ISO639_2_Alpha_3_Bibliographic: string
     case Tibetan                     = 'tib';
     case Welsh                       = 'wel';
 
-    public function toISO639_2_Alpha_3_Terminology(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Terminology|null
+    public function toLanguageAlpha3Terminology(): LanguageAlpha3Common|LanguageAlpha3Terminology|null
     {
-        return BackedEnum::tryFromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? BackedEnum::tryFromKey(ISO639_2_Alpha_3_Terminology::class, $this->name) ?? null;
+        return BackedEnum::tryFromKey(LanguageAlpha3Common::class, $this->name) ?? BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name) ?? null;
     }
 
-    public function toISO639_1_Alpha_2(): ISO639_1_Alpha_2|null
+    public function toLanguageAlpha2(): LanguageAlpha2|null
     {
-        return BackedEnum::tryFromKey(ISO639_1_Alpha_2::class, $this->name);
+        return BackedEnum::tryFromKey(LanguageAlpha2::class, $this->name);
     }
 
-    public function toISO639_Name(): ISO639_Name
+    public function toLanguageName(): LanguageName
     {
-        return BackedEnum::fromKey(ISO639_Name::class, $this->name);
+        return BackedEnum::fromKey(LanguageName::class, $this->name);
     }
 
     public function upperCaseValue(): string

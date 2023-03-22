@@ -9,7 +9,7 @@ use PrinsFrank\Standards\BackedEnum;
  * @source https://www.iso.org/iso-639-language-codes.html
  * @source http://www.loc.gov/standards/iso639-2/php/code_list.php
  */
-enum ISO639_1_Alpha_2: string
+enum LanguageAlpha2: string
 {
     case Abkhazian                                                                    = 'ab';
     case Afar                                                                         = 'aa';
@@ -196,19 +196,19 @@ enum ISO639_1_Alpha_2: string
     case Zhuang_Chuang                                                                = 'za';
     case Zulu                                                                         = 'zu';
 
-    public function toISO639_2_Alpha_3_Bibliographic(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Bibliographic|null
+    public function toLanguageAlpha3Bibliographic(): LanguageAlpha3Common|LanguageAlpha3Bibliographic|null
     {
-        return BackedEnum::tryFromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? BackedEnum::tryFromKey(ISO639_2_Alpha_3_Bibliographic::class, $this->name) ?? null;
+        return BackedEnum::tryFromKey(LanguageAlpha3Common::class, $this->name) ?? BackedEnum::tryFromKey(LanguageAlpha3Bibliographic::class, $this->name) ?? null;
     }
 
-    public function toISO639_2_Alpha_3_Terminology(): ISO639_2_Alpha_3_Common|ISO639_2_Alpha_3_Terminology|null
+    public function toLanguageAlpha3Terminology(): LanguageAlpha3Common|LanguageAlpha3Terminology|null
     {
-        return BackedEnum::tryFromKey(ISO639_2_Alpha_3_Common::class, $this->name) ?? BackedEnum::tryFromKey(ISO639_2_Alpha_3_Terminology::class, $this->name) ?? null;
+        return BackedEnum::tryFromKey(LanguageAlpha3Common::class, $this->name) ?? BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name) ?? null;
     }
 
-    public function toISO639_Name(): ISO639_Name
+    public function toLanguageName(): LanguageName
     {
-        return BackedEnum::fromKey(ISO639_Name::class, $this->name);
+        return BackedEnum::fromKey(LanguageName::class, $this->name);
     }
 
     public function upperCaseValue(): string
