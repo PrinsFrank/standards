@@ -14,7 +14,7 @@ class LanguageAlpha3BibliographicTest extends TestCase
     /**
      * @covers ::toLanguageAlpha2
      */
-    public function testAllCasesCanBeConvertedToISO639_1(): void
+    public function testAllCasesCanBeConvertedToLanguageAlpha2(): void
     {
         $cases = LanguageAlpha3Bibliographic::cases();
         static::assertNotEmpty($cases);
@@ -26,7 +26,7 @@ class LanguageAlpha3BibliographicTest extends TestCase
     /**
      * @covers ::toLanguageAlpha3Terminology
      */
-    public function testAllCasesCanBeConvertedToISO639_2_Terminology(): void
+    public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void
     {
         $cases = LanguageAlpha3Bibliographic::cases();
         static::assertNotEmpty($cases);
@@ -38,7 +38,7 @@ class LanguageAlpha3BibliographicTest extends TestCase
     /**
      * @covers ::toLanguageName
      */
-    public function testAllCasesCanBeConvertedToISO639_Name(): void
+    public function testAllCasesCanBeConvertedToLanguageName(): void
     {
         $cases = LanguageAlpha3Bibliographic::cases();
         static::assertNotEmpty($cases);

@@ -14,7 +14,7 @@ class LanguageAlpha3CommonTest extends TestCase
     /**
      * @covers ::toLanguageAlpha2
      */
-    public function testSomeCasesCanBeConvertedToISO639_1_Alpha2(): void
+    public function testSomeCasesCanBeConvertedToLangugaeAlpha2(): void
     {
         $cases = LanguageAlpha3Common::cases();
         static::assertNotEmpty($cases);
@@ -27,7 +27,7 @@ class LanguageAlpha3CommonTest extends TestCase
     /**
      * @covers ::toLanguageName
      */
-    public function testAllCasesCanBeConvertedToISO639_Name(): void
+    public function testAllCasesCanBeConvertedToLanguageName(): void
     {
         $cases = LanguageAlpha3Common::cases();
         static::assertNotEmpty($cases);

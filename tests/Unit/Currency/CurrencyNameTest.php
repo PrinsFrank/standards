@@ -15,7 +15,7 @@ class CurrencyNameTest extends TestCase
     /**
      * @covers ::toCurrencyNumeric
      */
-    public function testAllCasesCanBeConvertedToISO4217Numeric(): void
+    public function testAllCasesCanBeConvertedToCurrencyNumeric(): void
     {
         $cases = CurrencyName::cases();
         static::assertNotEmpty($cases);
@@ -23,7 +23,7 @@ class CurrencyNameTest extends TestCase
             try {
                 $case->toCurrencyNumeric();
             } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to ISO4217_Numeric', $case->name));
+                $this->fail(sprintf('Case %s could not be converted to CurrencyNumeric', $case->name));
             }
         }
     }
@@ -31,7 +31,7 @@ class CurrencyNameTest extends TestCase
     /**
      * @covers ::toCurrencyAlpha3
      */
-    public function testAllCasesCanBeConvertedToISO4217Alpha3(): void
+    public function testAllCasesCanBeConvertedToCurrencyAlpha3(): void
     {
         $cases = CurrencyName::cases();
         static::assertNotEmpty($cases);
@@ -39,7 +39,7 @@ class CurrencyNameTest extends TestCase
             try {
                 $case->toCurrencyAlpha3();
             } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to ISO4217_Alpha3', $case->name));
+                $this->fail(sprintf('Case %s could not be converted to CurrencyAlpha3', $case->name));
             }
         }
     }

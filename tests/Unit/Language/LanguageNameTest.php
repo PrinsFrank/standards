@@ -14,7 +14,7 @@ class LanguageNameTest extends TestCase
     /**
      * @covers ::toLanguageAlpha3Bibliographic
      */
-    public function testAllCasesCanBeConvertedToToISO392_2Bibliographic(): void
+    public function testAllCasesCanBeConvertedToLanguageAlpha3Bibliographic(): void
     {
         $cases = LanguageName::cases();
         static::assertNotEmpty($cases);
@@ -26,7 +26,7 @@ class LanguageNameTest extends TestCase
     /**
      * @covers ::toLanguageAlpha3Terminology
      */
-    public function testAllCasesCanBeConvertedToISO392_2Terminology(): void
+    public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void
     {
         $cases = LanguageName::cases();
         static::assertNotEmpty($cases);
@@ -38,7 +38,7 @@ class LanguageNameTest extends TestCase
     /**
      * @covers ::toLanguageAlpha2
      */
-    public function testSomeCasesCanBeConvertedToISO639_1_Alpha2(): void
+    public function testSomeCasesCanBeConvertedToLanguageAlpha2(): void
     {
         $cases = LanguageName::cases();
         static::assertNotEmpty($cases);
