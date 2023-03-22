@@ -4,24 +4,24 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Tests\Unit\Currency;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\Currency\ISO4217_Alpha_3;
+use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use TypeError;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Currency\ISO4217_Alpha_3
+ * @coversDefaultClass \PrinsFrank\Standards\Currency\CurrencyAlpha3
  */
-class ISO4217_Alpha_3Test extends TestCase
+class CurrencyAlpha3Test extends TestCase
 {
     /**
      * @covers ::toISO4217_Numeric
      */
     public function testAllCasesCanBeConvertedToISO4217Numeric(): void
     {
-        $cases = ISO4217_Alpha_3::cases();
+        $cases = CurrencyAlpha3::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toISO4217_Numeric();
+                $case->toCurrencyNumeric();
             } catch (TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO4217_Numeric', $case->name));
             }
@@ -33,11 +33,11 @@ class ISO4217_Alpha_3Test extends TestCase
      */
     public function testAllCasesCanBeConvertedToISO4217Name(): void
     {
-        $cases = ISO4217_Alpha_3::cases();
+        $cases = CurrencyAlpha3::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toISO4217_Name();
+                $case->toCurrencyName();
             } catch (TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO4217_Name', $case->name));
             }
@@ -49,6 +49,6 @@ class ISO4217_Alpha_3Test extends TestCase
      */
     public function testLowerCaseValue(): void
     {
-        static::assertSame('xua', ISO4217_Alpha_3::ADB_Unit_of_Account->lowerCaseValue());
+        static::assertSame('xua', CurrencyAlpha3::ADB_Unit_of_Account->lowerCaseValue());
     }
 }

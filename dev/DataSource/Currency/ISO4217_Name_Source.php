@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Currency;
 
-use PrinsFrank\Standards\Currency\ISO4217_Alpha_3;
-use PrinsFrank\Standards\Currency\ISO4217_Name;
+use PrinsFrank\Standards\Currency\CurrencyAlpha3;
+use PrinsFrank\Standards\Currency\CurrencyName;
 use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -43,12 +43,12 @@ class ISO4217_Name_Source implements XmlDataSource
 
     public static function getSpecFQN(): string
     {
-        return ISO4217_Name::class;
+        return CurrencyName::class;
     }
 
     public static function getKeyEnumFQN(): string
     {
-        return ISO4217_Alpha_3::class;
+        return CurrencyAlpha3::class;
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

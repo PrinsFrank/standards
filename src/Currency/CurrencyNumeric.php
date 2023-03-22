@@ -10,7 +10,7 @@ use PrinsFrank\Standards\BackedEnum;
  * @source https://www.six-group.com/en/products-services/financial-information/data-standards.html
  * @source https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list_one.xml
  */
-enum ISO4217_Numeric: string
+enum CurrencyNumeric: string
 {
     case ADB_Unit_of_Account                                               = '965';
     case Afghani                                                           = '971';
@@ -204,14 +204,14 @@ enum ISO4217_Numeric: string
         return self::tryFrom(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
     }
 
-    public function toISO4217_Alpha_3(): ISO4217_Alpha_3
+    public function toCurrencyAlpha3(): CurrencyAlpha3
     {
-        return BackedEnum::fromKey(ISO4217_Alpha_3::class, $this->name);
+        return BackedEnum::fromKey(CurrencyAlpha3::class, $this->name);
     }
 
-    public function toISO4217_Name(): ISO4217_Name
+    public function toCurrencyName(): CurrencyName
     {
-        return BackedEnum::fromKey(ISO4217_Name::class, $this->name);
+        return BackedEnum::fromKey(CurrencyName::class, $this->name);
     }
 
     public function valueAsInt(): int

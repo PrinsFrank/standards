@@ -4,25 +4,25 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Tests\Unit\Currency;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\Standards\Currency\ISO4217_Numeric;
+use PrinsFrank\Standards\Currency\CurrencyNumeric;
 use TypeError;
 use ValueError;
 
 /**
- * @coversDefaultClass \PrinsFrank\Standards\Currency\ISO4217_Numeric
+ * @coversDefaultClass \PrinsFrank\Standards\Currency\CurrencyNumeric
  */
-class ISO4217_NumericTest extends TestCase
+class CurrencyNumericTest extends TestCase
 {
     /**
      * @covers ::toISO4217_Alpha_3
      */
     public function testAllCasesCanBeConvertedToISO4217Alpha3(): void
     {
-        $cases = ISO4217_Numeric::cases();
+        $cases = CurrencyNumeric::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toISO4217_Alpha_3();
+                $case->toCurrencyAlpha3();
             } catch (TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO4217_Alpha3', $case->name));
             }
@@ -34,11 +34,11 @@ class ISO4217_NumericTest extends TestCase
      */
     public function testAllCasesCanBeConvertedToISO4217Name(): void
     {
-        $cases = ISO4217_Numeric::cases();
+        $cases = CurrencyNumeric::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
             try {
-                $case->toISO4217_Name();
+                $case->toCurrencyName();
             } catch (TypeError) {
                 $this->fail(sprintf('Case %s could not be converted to ISO4217_Name', $case->name));
             }
@@ -50,7 +50,7 @@ class ISO4217_NumericTest extends TestCase
      */
     public function testFromInt(): void
     {
-        static::assertEquals(ISO4217_Numeric::Lek, ISO4217_Numeric::fromInt(8));
+        static::assertEquals(CurrencyNumeric::Lek, CurrencyNumeric::fromInt(8));
     }
 
     /**
@@ -59,7 +59,7 @@ class ISO4217_NumericTest extends TestCase
     public function testFromIntThrowsExceptionOnNonExistingValue(): void
     {
         $this->expectException(ValueError::class);
-        static::assertNull(ISO4217_Numeric::fromInt(1));
+        static::assertNull(CurrencyNumeric::fromInt(1));
     }
 
     /**
@@ -67,8 +67,8 @@ class ISO4217_NumericTest extends TestCase
      */
     public function testTryFromInt(): void
     {
-        static::assertEquals(ISO4217_Numeric::Lek, ISO4217_Numeric::tryFromInt(8));
-        static::assertNull(ISO4217_Numeric::tryFromInt(1));
+        static::assertEquals(CurrencyNumeric::Lek, CurrencyNumeric::tryFromInt(8));
+        static::assertNull(CurrencyNumeric::tryFromInt(1));
     }
 
     /**
@@ -76,6 +76,6 @@ class ISO4217_NumericTest extends TestCase
      */
     public function testValueAsInt(): void
     {
-        static::assertSame(965, ISO4217_Numeric::ADB_Unit_of_Account->valueAsInt());
+        static::assertSame(965, CurrencyNumeric::ADB_Unit_of_Account->valueAsInt());
     }
 }

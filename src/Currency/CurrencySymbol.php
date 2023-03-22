@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Currency;
 
-enum Symbol: string
+enum CurrencySymbol: string
 {
     case Afghani            = '؋';
     case Armenian_Dram      = '֏';

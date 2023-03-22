@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Currency;
 
-use PrinsFrank\Standards\Currency\ISO4217_Numeric;
+use PrinsFrank\Standards\Currency\CurrencyNumeric;
 use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -42,7 +42,7 @@ class ISO4217_Numeric_Source implements XmlDataSource
 
     public static function getSpecFQN(): string
     {
-        return ISO4217_Numeric::class;
+        return CurrencyNumeric::class;
     }
 
     public static function getKeyEnumFQN(): string
