@@ -7,6 +7,7 @@ use PrinsFrank\Standards\BackedEnum;
 
 /**
  * @source https://www.iso.org/obp/ui/#search/code/
+ * @standard ISO3166_1
  */
 enum CountryName: string
 {
