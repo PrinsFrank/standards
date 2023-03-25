@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\InternationalCallPrefix;
 
 /**
- * @standard ITU_T_E_164
+ * @standard ITU-T E.164
  */
 enum InternationalCallPrefix: string
 {

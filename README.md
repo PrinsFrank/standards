@@ -68,7 +68,7 @@ The language specification is a bit more complex, as there are 20 alpha3 codes t
 | Turkish       | tr             |                             | tur                  |                           | Turkish        |
 | ...           | ...            | ...                         | ...                  | ...                       | ...            |
 
-## Country Calling Codes (ITU_T_E_164)
+## Country Calling Codes (ITU-T E.164)
 
 Country calling codes are quite straight forward. One Exception is that the +1 prefix is used across a lot of countries, and there is no standard for sub numbering plans. 
 
