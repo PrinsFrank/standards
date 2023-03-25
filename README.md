@@ -32,6 +32,10 @@ This package implements a bunch of specs as PHP Enums, so you can typehint them 
 
 In the Country, Currency and language specifications, there is also a relation between different enums. For example, the Alpha2 country code 'NL' is related to the Alpha3 'NLD', the numeric value '528' and the name 'Netherlands (the)'. Internally, these specs rely on the fact that the keys for these values is identical, so it is possible to convert between these.
 
+## Upgrading
+
+This packages adheres to [semver](https://semver.org/). This means that there are no breaking changes between minor releases (for example from 1.1 to 1.2), but that breaking changes are released as a major release (for example from 1.x to 2.x). To read about upgrading from ane major release to the next, please refer to the [UPGRADING.md](./UPGRADING.md) file in the root of this project. 
+
 ## Country (ISO3166)
 
 [![Daily country spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
