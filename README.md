@@ -32,50 +32,50 @@ This package implements a bunch of specs as PHP Enums, so you can typehint them 
 
 In the Country, Currency and language specifications, there is also a relation between different enums. For example, the Alpha2 country code 'NL' is related to the Alpha3 'NLD', the numeric value '528' and the name 'Netherlands (the)'. Internally, these specs rely on the fact that the keys for these values is identical, so it is possible to convert between these.
 
-## Country
+## Country (ISO3166)
 
 [![Daily country spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
 
 All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the other country enums. [These can be converted using their corresponding methods](/docs/country.md). 
 
-| Key         | ISO3166_1_Alpha_2 | ISO3166_1_Alpha_3 | ISO3166_1_Numeric | ISO3166_1_Name    |
-|-------------|-------------------|-------------------|-------------------|-------------------|
-| Netherlands | NL                | NLD               | 528               | Netherlands (the) |
-| Turkey      | TR                | TUR               | 792               | Türkiye           |
-| ...         | ...               | ...               | ...               | ...               |
+| Key         | CountryAlpha2 | CountryAlpha3 | CountryNumeric | CountryName       |
+|-------------|---------------|---------------|----------------|-------------------|
+| Netherlands | NL            | NLD           | 528            | Netherlands (the) |
+| Turkey      | TR            | TUR           | 792            | Türkiye           |
+| ...         | ...           | ...           | ...            | ...               |
 
-## Currency
+## Currency (ISO4217)
 
 [![Daily currency spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
 
 All the Alpha3, Numeric and Name values have a corresponding enum in the other currency enums. [These can be converted using their corresponding methods](/docs/currency.md).
 
-| Key          | ISO4217_Alpha_3 | ISO4217_Numeric | ISO4217_Name |
-|--------------|-----------------|-----------------|--------------|
-| Euro         | EUR             | 978             | Euro         |
-| Turkish_Lira | TRY             | 949             | Turkish Lira |
-| ...          | ...             | ...             | ...          |
+| Key          | CurrencyAlpha3 | CurrencyNumeric | CurrencyName |
+|--------------|----------------|-----------------|--------------|
+| Euro         | EUR            | 978             | Euro         |
+| Turkish_Lira | TRY            | 949             | Turkish Lira |
+| ...          | ...            | ...             | ...          |
 
-## Language
+## Language (ISO639)
 
 [![Daily language spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
 
 The language specification is a bit more complex, as there are 20 alpha3 codes that have both a Bibliographic and a Terminology code. All the other ones have a common one. So if you decide you want the alpha3 representation of an alpha2 code, you can convert it to either Terminology or Bibliographic, where if it is not available you will get an instance of the common enum. [More documentation can be found here](/docs/language.md).
 
-| Key           | ISO639_1_Alpha_2 | ISO639_2_Alpha_3_Bibliographic | ISO639_2_Alpha_3_Common | ISO639_2_Alpha_3_Terminology | ISO639_Name    |
-|---------------|------------------|--------------------------------|-------------------------|------------------------------|----------------|
-| Dutch_Flemish | nl               | dut                            |                         | nld                          | Dutch; Flemish |
-| Turkish       | tr               |                                | tur                     |                              | Turkish        |
-| ...           | ...              | ...                            | ...                     | ...                          | ...            |
+| Key           | LanguageAlpha2 | LanguageAlpha3Bibliographic | LanguageAlpha3Common | LanguageAlpha3Terminology | LanguageName   |
+|---------------|----------------|-----------------------------|----------------------|---------------------------|----------------|
+| Dutch_Flemish | nl             | dut                         |                      | nld                       | Dutch; Flemish |
+| Turkish       | tr             |                             | tur                  |                           | Turkish        |
+| ...           | ...            | ...                         | ...                  | ...                       | ...            |
 
-## Country Calling Codes
+## Country Calling Codes (ITU_T_E_164)
 
 Country calling codes are quite straight forward. One Exception is that the +1 prefix is used across a lot of countries, and there is no standard for sub numbering plans. 
 
-| Key                        | ITU_T_E_164 |
-|----------------------------|-------------|
-| Netherlands_Kingdom_of_the | 31          |
-| Turkey                     | 90          |
+| Key                        | InternationalCallPrefix |
+|----------------------------|-------------------------|
+| Netherlands_Kingdom_of_the | 31                      |
+| Turkey                     | 90                      |
 
 ## HTTP Status Codes
 
