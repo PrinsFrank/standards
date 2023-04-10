@@ -134,10 +134,15 @@ class SpecUpdater
                 $enumCases[] = new EnumCase($name, $value);
             }
 
-            $existingValues = array_map(static function (\BackedEnum $backedEnum) {
-                return $backedEnum->value;
-            }, $specFQN::cases());
-            foreach (array_diff($existingValues, $nameValuePairs) as $deprecatedValue) {
+            $existingValues = [];
+            foreach ($specFQN::cases() as $existingValue) {
+                $existingValues[$existingValue->name] = $existingValue->value;
+            }
+            foreach (array_diff_key($existingValues, $nameValuePairs) as $deprecatedKey => $deprecatedValue) {
+                if (array_key_exists($deprecatedKey, $existingValues)) {
+                    continue;
+                }
+
                 $enumCases[] = new EnumCase($specFQN::from($deprecatedValue)->name, $deprecatedValue, true);
             }
 
