@@ -192,9 +192,6 @@ enum CurrencyAlpha3: string
     case Zimbabwe_Dollar                                                   = 'ZWL';
     case Zloty                                                             = 'PLN';
 
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case Kuna = 'HRK';
-
     public function toCurrencyNumeric(): CurrencyNumeric
     {
         return BackedEnum::fromKey(CurrencyNumeric::class, $this->name);

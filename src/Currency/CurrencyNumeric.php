@@ -192,9 +192,6 @@ enum CurrencyNumeric: string
     case Zimbabwe_Dollar                                                   = '932';
     case Zloty                                                             = '985';
 
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case Kuna = '191';
-
     public static function fromInt(int $from): self
     {
         return self::from(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
