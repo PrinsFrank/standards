@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Country;
 namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
 use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -48,7 +49,7 @@ class CountryAlpha3Source implements HtmlDataSource
 
     public static function getKeyEnumFQN(): string
     {
-        return self::getSpecFQN();
+        return CountryName::class;
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

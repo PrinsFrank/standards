@@ -4,6 +4,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
 namespace PrinsFrank\Standards\Dev\DataSource\Country;
 
+use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
 use Symfony\Component\Panther\Client;
@@ -48,7 +49,7 @@ class CountryNumericSource implements HtmlDataSource
 
     public static function getKeyEnumFQN(): string
     {
-        return self::getSpecFQN();
+        return CountryName::class;
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void
