@@ -139,10 +139,6 @@ class SpecUpdater
                 $existingValues[$existingValue->name] = $existingValue->value;
             }
             foreach (array_diff_key($existingValues, $nameValuePairs) as $deprecatedKey => $deprecatedValue) {
-                if (array_key_exists($deprecatedKey, $existingValues)) {
-                    continue;
-                }
-
                 $enumCases[] = new EnumCase($specFQN::from($deprecatedValue)->name, $deprecatedValue, true);
             }
 
