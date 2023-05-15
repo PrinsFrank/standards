@@ -205,7 +205,7 @@ enum CurrencyAlpha3: string
         return BackedEnum::fromKey(CurrencyName::class, $this->name);
     }
 
-    public function getSymbol(): CurrencySymbol
+    public function getSymbol(): ?CurrencySymbol
     {
         return CurrencySymbol::forCurrency($this);
     }

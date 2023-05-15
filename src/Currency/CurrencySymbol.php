@@ -76,7 +76,11 @@ enum CurrencySymbol: string
 
     public static function forCurrency(CurrencyAlpha3|CurrencyName|CurrencyNumeric $currency): ?self
     {
-        return match($currency->toCurrencyAlpha3()) {
+        if ($currency instanceof CurrencyAlpha3 === false) {
+            $currency = $currency->toCurrencyAlpha3();
+        }
+
+        return match($currency) {
             CurrencyAlpha3::ADB_Unit_of_Account                                               => null,
             CurrencyAlpha3::Afghani                                                           => self::Afghani,
             CurrencyAlpha3::Algerian_Dinar                                                    => self::Algerian_Dinar,
