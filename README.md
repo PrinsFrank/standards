@@ -11,7 +11,7 @@
 
 **A collection of standards as PHP Enums**
 
-Daily updated from their sources, whether it is ISO or IANA directly, or a maintaining party like the six group or the US library of congress.
+Daily updated from their sources, whether it is ISO or IANA directly, or a maintaining party like the SIX Group or the US Library of Congress.
 
 ## Setup
 
@@ -30,11 +30,11 @@ Or for development only;
 
 This package implements a bunch of specs as PHP Enums, so you can typehint them in methods. Currently, all specs are implemented as backed enums. That means that besides a name, they have also an internal 'value', either as an integer or a string.
 
-In the Country, Currency and language specifications, there is also a relation between different enums. For example, the Alpha2 country code 'NL' is related to the Alpha3 'NLD', the numeric value '528' and the name 'Netherlands (the)'. Internally, these specs rely on the fact that the keys for these values is identical, so it is possible to convert between these.
+In the Country, Currency and language specifications, there is also a relation between different enums. For example, the Alpha2 country code 'NL' is related to the Alpha3 'NLD', the numeric value '528' and the name 'Netherlands (the)'. Internally, these specs rely on the fact that the keys for these values are identical, so it is possible to convert between these.
 
 ## Upgrading
 
-This packages adheres to [semver](https://semver.org/). This means that there are no breaking changes between minor releases (for example from 1.1 to 1.2), but that breaking changes are released as a major release (for example from 1.x to 2.x). To read about upgrading from one major release to the next, please refer to the [UPGRADING.md](./UPGRADING.md) file in the root of this project. 
+This package adheres to [semver](https://semver.org/). This means that there are no breaking changes between minor releases (for example from 1.1 to 1.2), but that breaking changes are released as a major release (for example from 1.x to 2.x). To read about upgrading from one major release to the next, please refer to the [UPGRADING.md](./UPGRADING.md) file in the root of this project. 
 
 ## Country (ISO3166)
 
@@ -74,7 +74,7 @@ The language specification is a bit more complex, as there are 20 alpha3 codes t
 
 ## Country Calling Codes (ITU-T E.164)
 
-Country calling codes are quite straight forward. One Exception is that the +1 prefix is used across a lot of countries, and there is no standard for sub numbering plans. 
+Country calling codes are quite straight forward. One Exception is that the +1 prefix is used across a lot of countries, and there is no standard for sub-numbering plans. 
 
 | Key                        | InternationalCallPrefix |
 |----------------------------|-------------------------|
@@ -85,7 +85,7 @@ Country calling codes are quite straight forward. One Exception is that the +1 p
 
 [![Daily HTTP Status code spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml)
 
-HTTP Status codes are quite straight forward. For some code examples [you can look in the documentation](/docs/http_status_code.md).
+HTTP Status codes are quite straightforward. For some code examples [you can look in the documentation](/docs/http_status_code.md).
 
 | Key               | HttpStatusCode |
 |-------------------|----------------|
