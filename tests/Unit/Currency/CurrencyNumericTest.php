@@ -46,6 +46,22 @@ class CurrencyNumericTest extends TestCase
     }
 
     /**
+     * @covers ::getSymbol
+     */
+    public function testAllCasesHaveAccessToSymbolOrNull(): void
+    {
+        $cases = CurrencyNumeric::cases();
+        static::assertNotEmpty($cases);
+        foreach ($cases as $case) {
+            try {
+                $case->getSymbol();
+            } catch (TypeError) {
+                $this->fail(sprintf('Unable to retrieve symbol for %s', $case->name));
+            }
+        }
+    }
+
+    /**
      * @covers ::fromInt
      */
     public function testFromInt(): void

@@ -45,6 +45,22 @@ class CurrencyAlpha3Test extends TestCase
     }
 
     /**
+     * @covers ::getSymbol
+     */
+    public function testAllCasesHaveAccessToSymbolOrNull(): void
+    {
+        $cases = CurrencyAlpha3::cases();
+        static::assertNotEmpty($cases);
+        foreach ($cases as $case) {
+            try {
+                $case->getSymbol();
+            } catch (TypeError) {
+                $this->fail(sprintf('Unable to retrieve symbol for %s', $case->name));
+            }
+        }
+    }
+
+    /**
      * @covers ::lowerCaseValue
      */
     public function testLowerCaseValue(): void
