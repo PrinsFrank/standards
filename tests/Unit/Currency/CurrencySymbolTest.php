@@ -15,7 +15,7 @@ use TypeError;
 class CurrencySymbolTest extends TestCase
 {
     /**
-     * @covers ::getSymbol
+     * @covers ::forCurrency
      */
     public function testAllAlpha3CasesHaveAccessToSymbolOrNull(): void
     {
@@ -31,7 +31,7 @@ class CurrencySymbolTest extends TestCase
     }
 
     /**
-     * @covers ::getSymbol
+     * @covers ::forCurrency
      */
     public function testAllNameCasesHaveAccessToSymbolOrNull(): void
     {
@@ -47,7 +47,7 @@ class CurrencySymbolTest extends TestCase
     }
 
     /**
-     * @covers ::getSymbol
+     * @covers ::forCurrency
      */
     public function testAllNumericCasesHaveAccessToSymbolOrNull(): void
     {
