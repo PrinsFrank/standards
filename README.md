@@ -34,7 +34,7 @@ In the Country, Currency and language specifications, there is also a relation b
 
 ## Upgrading
 
-This packages adheres to [semver](https://semver.org/). This means that there are no breaking changes between minor releases (for example from 1.1 to 1.2), but that breaking changes are released as a major release (for example from 1.x to 2.x). To read about upgrading from ane major release to the next, please refer to the [UPGRADING.md](./UPGRADING.md) file in the root of this project. 
+This packages adheres to [semver](https://semver.org/). This means that there are no breaking changes between minor releases (for example from 1.1 to 1.2), but that breaking changes are released as a major release (for example from 1.x to 2.x). To read about upgrading from one major release to the next, please refer to the [UPGRADING.md](./UPGRADING.md) file in the root of this project. 
 
 ## Country (ISO3166)
 

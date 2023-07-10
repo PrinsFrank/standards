@@ -14,7 +14,7 @@ class LanguageAlpha3CommonTest extends TestCase
     /**
      * @covers ::toLanguageAlpha2
      */
-    public function testSomeCasesCanBeConvertedToLangugaeAlpha2(): void
+    public function testSomeCasesCanBeConvertedToLanguageAlpha2(): void
     {
         $cases = LanguageAlpha3Common::cases();
         static::assertNotEmpty($cases);
