@@ -80,7 +80,7 @@ enum CountryCallingCode: int
     case Germany_Federal_Republic_of                                                    = 49;
     case Ghana                                                                          = 233;
     case Gibraltar                                                                      = 350;
-    case Global_Mobile_Satellite_System_shared_code                                     = 881;
+    case Global_Mobile_Satelite_System_shared_code                                     = 881;
     case Greece                                                                         = 30;
     case Greenland_Denmark                                                              = 299;
     case Group_of_countries_shared_code                                                 = 388;
