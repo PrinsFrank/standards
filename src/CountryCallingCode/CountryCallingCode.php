@@ -34,7 +34,7 @@ enum CountryCallingCode: int
     case Botswana_Republic_of                                                           = 267;
     case Brazil_Federative_Republic_of                                                  = 55;
     case Brunei_Darussalam                                                              = 673;
-    case Bulgaria_Republic_of                                                           =  359;
+    case Bulgaria_Republic_of                                                           = 359;
     case Burkina_Faso                                                                   = 226;
     case Burundi_Republic_of                                                            = 257;
     case Cabo_Verde_Republic_of                                                         = 238;
@@ -80,7 +80,7 @@ enum CountryCallingCode: int
     case Germany_Federal_Republic_of                                                    = 49;
     case Ghana                                                                          = 233;
     case Gibraltar                                                                      = 350;
-    case Global_Mobile_Satelite_System_shared_code                                     = 881;
+    case Global_Mobile_Satelite_System_shared_code                                      = 881;
     case Greece                                                                         = 30;
     case Greenland_Denmark                                                              = 299;
     case Group_of_countries_shared_code                                                 = 388;
