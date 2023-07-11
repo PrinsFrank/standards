@@ -34,7 +34,7 @@ enum CountryCallingCode: int
     case Botswana_Republic_of                                                           = 267;
     case Brazil_Federative_Republic_of                                                  = 55;
     case Brunei_Darussalam                                                              = 673;
-    case Bulgaria_Republic_of                                                           =  359;
+    case Bulgaria_Republic_of                                                           = 359;
     case Burkina_Faso                                                                   = 226;
     case Burundi_Republic_of                                                            = 257;
     case Cabo_Verde_Republic_of                                                         = 238;
