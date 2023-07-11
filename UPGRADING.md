@@ -1,3 +1,9 @@
+# Ugrading from 2.x to 3.x
+
+## Change in CountryCallingCode enum
+
+A typo in the name of Global Mobile Satellite System has been fixed.
+
 # Ugrading from 1.x to 2.x
 
 As this package is getting adopted and more people start using it, I got some valid feedback on the readability of the standards in codebases.
