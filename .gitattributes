@@ -6,6 +6,7 @@
 /dev                export-ignore
 /tests              export-ignore
 /.gitattributes     export-ignore
+/CONTRIBUTING.md    export-ignore
 /.gitignore         export-ignore
 /.php-cs-fixer.php  export-ignore
 /phpstan.neon       export-ignore
