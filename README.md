@@ -1,6 +1,6 @@
 <picture>
-  <source srcset="docs/images/banner_dark.png" media="(prefers-color-scheme: dark)">
-  <img src="docs/images/banner_light.png" alt="Banner">
+    <source srcset="docs/images/banner_dark.png" media="(prefers-color-scheme: dark)">
+    <img src="docs/images/banner_light.png" alt="Banner">
 </picture>
 
 # Standards
