@@ -10,6 +10,6 @@ jobs:
   validate-composer-file:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Validate composer.json
         run: composer validate
