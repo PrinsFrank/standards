@@ -70,6 +70,7 @@ class CountryNameTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Argument $groupFQN should be a FQN of a class that implements the groupInterface, "foo" given');
+        /** @phpstan-ignore-next-line */
         CountryName::Netherlands->isMemberOf('foo');
     }
 
