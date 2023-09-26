@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Country;
 
 use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Standards\Country\Groups\GroupInterface;
+use PrinsFrank\Standards\InvalidArgumentException;
 
 /**
  * @source https://www.iso.org/obp/ui/#search/code/
@@ -289,5 +291,15 @@ enum CountryNumeric: string
     public function valueAsInt(): int
     {
         return (int) $this->value;
+    }
+
+    /** @param class-string<GroupInterface> $groupFQN */
+    public function isMemberOf(string $groupFQN): bool
+    {
+        if (is_a($groupFQN, GroupInterface::class, true) === false || $groupFQN === GroupInterface::class) {
+            throw new InvalidArgumentException('Argument $groupFQN should be a FQN of a class that implements the groupInterface, "' . $groupFQN . '" given');
+        }
+
+        return in_array($this->toCountryAlpha2(), $groupFQN::allAlpha2(), true);
     }
 }

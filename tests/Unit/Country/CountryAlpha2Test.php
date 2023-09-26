@@ -5,6 +5,9 @@ namespace PrinsFrank\Standards\Tests\Unit\Country;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\Groups\EFTA;
+use PrinsFrank\Standards\Country\Groups\EU;
+use PrinsFrank\Standards\InvalidArgumentException;
 use TypeError;
 
 /**
@@ -66,5 +69,24 @@ class CountryAlpha2Test extends TestCase
     public function testLowerCaseValue(): void
     {
         static::assertSame('af', CountryAlpha2::Afghanistan->lowerCaseValue());
+    }
+
+    /**
+     * @covers ::isMemberOf
+     */
+    public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Argument $groupFQN should be a FQN of a class that implements the groupInterface, "foo" given');
+        CountryAlpha2::Netherlands->isMemberOf('foo');
+    }
+
+    /**
+     * @covers ::isMemberOf
+     */
+    public function testIsMemberOf(): void
+    {
+        static::assertTrue(CountryAlpha2::Netherlands->isMemberOf(EU::class));
+        static::assertFalse(CountryAlpha2::Netherlands->isMemberOf(EFTA::class));
     }
 }

@@ -5,6 +5,9 @@ namespace PrinsFrank\Standards\Tests\Unit\Country;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\Country\Groups\EFTA;
+use PrinsFrank\Standards\Country\Groups\EU;
+use PrinsFrank\Standards\InvalidArgumentException;
 use TypeError;
 use ValueError;
 
@@ -93,5 +96,24 @@ class CountryNumericTest extends TestCase
     public function testValueAsInt(): void
     {
         static::assertSame(4, CountryNumeric::Afghanistan->valueAsInt());
+    }
+
+    /**
+     * @covers ::isMemberOf
+     */
+    public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Argument $groupFQN should be a FQN of a class that implements the groupInterface, "foo" given');
+        CountryNumeric::Netherlands->isMemberOf('foo');
+    }
+
+    /**
+     * @covers ::isMemberOf
+     */
+    public function testIsMemberOf(): void
+    {
+        static::assertTrue(CountryNumeric::Netherlands->isMemberOf(EU::class));
+        static::assertFalse(CountryNumeric::Netherlands->isMemberOf(EFTA::class));
     }
 }

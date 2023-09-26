@@ -5,6 +5,9 @@ namespace PrinsFrank\Standards\Tests\Unit\Country;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryName;
+use PrinsFrank\Standards\Country\Groups\EFTA;
+use PrinsFrank\Standards\Country\Groups\EU;
+use PrinsFrank\Standards\InvalidArgumentException;
 use TypeError;
 
 /**
@@ -58,5 +61,24 @@ class CountryNameTest extends TestCase
                 $this->fail(sprintf('Case %s could not be converted to CountryNumeric', $case->name));
             }
         }
+    }
+
+    /**
+     * @covers ::isMemberOf
+     */
+    public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Argument $groupFQN should be a FQN of a class that implements the groupInterface, "foo" given');
+        CountryName::Netherlands->isMemberOf('foo');
+    }
+
+    /**
+     * @covers ::isMemberOf
+     */
+    public function testIsMemberOf(): void
+    {
+        static::assertTrue(CountryName::Netherlands->isMemberOf(EU::class));
+        static::assertFalse(CountryName::Netherlands->isMemberOf(EFTA::class));
     }
 }
