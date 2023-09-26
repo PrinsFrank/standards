@@ -16,3 +16,7 @@ jobs:
         run: composer install
       - name: Run PHP CS Fixer
         run: composer run cs
+      - name: Check EditorConfig configuration
+        run: test -f .editorconfig
+      - name: Check adherence to EditorConfig
+        uses: greut/eclint-action@v0

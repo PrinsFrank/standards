@@ -75,7 +75,9 @@ class SpecUpdater
     public static function update(Event $event): void
     {
         $type = $event->getArguments()[0] ?? throw new InvalidArgumentException('Please specify the type with "-- --type=' . implode(',', UnitEnum::names(SpecType::class)) . '"');
-        $type = str_starts_with($type, '--type=') === false ? throw new InvalidArgumentException('Please specify the type with "-- --type=' . implode(',', UnitEnum::names(SpecType::class)) . '"') : substr($type, 7);
+        $type = str_starts_with($type, '--type=') === false
+            ? throw new InvalidArgumentException('Please specify the type with "-- --type=' . implode(',', UnitEnum::names(SpecType::class)) . '"')
+            : substr($type, 7);
 
         $sources = match (UnitEnum::tryFromKey(SpecType::class, strtoupper(str_replace('-', '_', $type)))) {
             SpecType::COUNTRY           => self::COUNTRY_SOURCES,
@@ -109,7 +111,15 @@ class SpecUpdater
                     }
 
                     $backOffInSeconds *= $i;
-                    echo 'Updating spec failed with throwable "' . get_class($throwable) . '" and message "' . $throwable->getMessage() . '" in file "' . $throwable->getFile() . ':' . $throwable->getLine() . '", retrying in ' . $backOffInSeconds . ' seconds' . PHP_EOL;
+                    printf(
+                        'Updating spec failed with throwable "%s" and message "%s" in file "%s:%d", retrying in %d seconds%s',
+                        get_class($throwable),
+                        $throwable->getMessage(),
+                        $throwable->getFile(),
+                        $throwable->getLine(),
+                        $backOffInSeconds,
+                        PHP_EOL
+                    );
                     sleep($backOffInSeconds);
                     continue;
                 }
