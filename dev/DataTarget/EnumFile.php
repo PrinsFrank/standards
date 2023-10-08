@@ -55,7 +55,7 @@ class EnumFile
         $endEnumPos     = mb_strrpos($enumContent, '}');
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1) . PHP_EOL;
         foreach ($this->cases as $case) {
-            $newEnumContent .= $case;
+            $newEnumContent .= '    ' . $case;
         }
         $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
 

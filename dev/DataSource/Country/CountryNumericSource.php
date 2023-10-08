@@ -37,7 +37,7 @@ class CountryNumericSource implements HtmlDataSource
         return $key;
     }
 
-    public static function transformValue(string $value): string|int|null
+    public static function transformValue(string $value, ?string $key): string|int|null
     {
         return $value;
     }

@@ -35,7 +35,7 @@ class LanguageAlpha3TerminologySource implements HtmlDataSource
         return $key;
     }
 
-    public static function transformValue(string $value): string|int|null
+    public static function transformValue(string $value, ?string $key): string|int|null
     {
         $terminologyMarkerPos = strpos($value, '(T)');
         if ($terminologyMarkerPos === false) {
