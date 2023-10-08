@@ -35,7 +35,7 @@ class LanguageAlpha3CommonSource implements HtmlDataSource
         return $key;
     }
 
-    public static function transformValue(string $value): string|int|null
+    public static function transformValue(string $value, ?string $key): string|int|null
     {
         if (str_contains($value, '(T)') || str_contains($value, '(B)') || str_contains($value, '-')) {
             return null;

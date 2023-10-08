@@ -10,4 +10,5 @@ enum SpecType
     case HTTP_STATUS_CODES;
     case HTTP_METHODS;
     case LANGUAGE;
+    case SCRIPT;
 }

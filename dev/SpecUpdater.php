@@ -21,6 +21,10 @@ use PrinsFrank\Standards\Dev\DataSource\Language\LanguageAlpha3BibliographicSour
 use PrinsFrank\Standards\Dev\DataSource\Language\LanguageAlpha3CommonSource;
 use PrinsFrank\Standards\Dev\DataSource\Language\LanguageAlpha3TerminologySource;
 use PrinsFrank\Standards\Dev\DataSource\Language\LanguageNameSource;
+use PrinsFrank\Standards\Dev\DataSource\Script\ScriptAliasSource;
+use PrinsFrank\Standards\Dev\DataSource\Script\ScriptCodeSource;
+use PrinsFrank\Standards\Dev\DataSource\Script\ScriptNameSource;
+use PrinsFrank\Standards\Dev\DataSource\Script\ScriptNumberSource;
 use PrinsFrank\Standards\Dev\DataSource\SpecType;
 use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
 use PrinsFrank\Standards\Dev\DataSourceExtractor\HtmlDataSourceExtractor;
@@ -67,6 +71,13 @@ class SpecUpdater
         LanguageNameSource::class,
     ];
 
+    public const SCRIPT_SOURCES = [
+        ScriptAliasSource::class,
+        ScriptCodeSource::class,
+        ScriptNameSource::class,
+        ScriptNumberSource::class,
+    ];
+
     private const MAX_TRIES = 5;
 
     /**
@@ -85,6 +96,7 @@ class SpecUpdater
             SpecType::HTTP_STATUS_CODES => self::HTTP_STATUS_CODE_SOURCES,
             SpecType::HTTP_METHODS      => self::HTTP_METHOD_SOURCES,
             SpecType::LANGUAGE          => self::LANGUAGE_SOURCES,
+            SpecType::SCRIPT            => self::SCRIPT_SOURCES,
             default                     => throw new InvalidArgumentException('Automatic spec updating for type "' . $type . '" not implemented'),
         };
 

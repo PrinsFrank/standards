@@ -62,11 +62,11 @@ class XmlDataSourceExtractor implements DataSourceExtractor
                 continue;
             }
 
-            $values[] = $DomElement->nodeValue !== null ? $sourceFQN::transformValue($DomElement->nodeValue) : null;
+            $values[] = $DomElement->nodeValue !== null ? $sourceFQN::transformValue($DomElement->nodeValue, $names[$index]) : null;
         }
 
         foreach ($keyDOMList as $index => $DomElement) {
-            $value = $sourceFQN::transformValue($DomElement->nodeValue ?? '');
+            $value = $sourceFQN::transformValue($DomElement->nodeValue ?? '', $names[$index]);
             if ($value === null || in_array($index, $indicesForEmptyNames, true)) {
                 continue;
             }

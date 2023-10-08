@@ -7,7 +7,7 @@ interface DataSource
 {
     public static function transformName(string $key): ?string;
 
-    public static function transformValue(string $value): string|int|null;
+    public static function transformValue(string $value, ?string $key): string|int|null;
 
     /** @return class-string<\BackedEnum> */
     public static function getSpecFQN(): string;
