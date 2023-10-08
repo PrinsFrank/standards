@@ -33,7 +33,7 @@ class ScriptCodeSource implements HtmlDataSource
 
     public static function transformName(string $key): ?string
     {
-        return preg_replace('/_+/', '_', str_replace('+', '_', preg_replace('/\p{No}/u', '', $key)));
+        return preg_replace('/_+/', '_', str_replace('+', '_', preg_replace('/\p{No}/u', '', $key) ?? ''));
     }
 
     public static function transformValue(string $value, ?string $key): string|int|null
