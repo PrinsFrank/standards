@@ -43,12 +43,12 @@ class HtmlDataSourceExtractor implements DataSourceExtractor
             }
 
             /** @var RemoteWebElement $remoteWebElement */
-            $values[] = $sourceFQN::transformValue($remoteWebElement->getText(), $names[$index]);
+            $values[] = $sourceFQN::transformValue($remoteWebElement->getText(), $names[$index] ?? null);
         }
 
         foreach ($crawler->filterXPath($sourceFQN::xPathIdentifierKey())->getIterator() as $index => $remoteWebElement) {
             /** @var RemoteWebElement $remoteWebElement */
-            $value = $sourceFQN::transformValue($remoteWebElement->getText(), $names[$index]);
+            $value = $sourceFQN::transformValue($remoteWebElement->getText(), $names[$index] ?? null);
             if ($value === null || in_array($index, $indicesForEmptyNames, true)) {
                 continue;
             }
