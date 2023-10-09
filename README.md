@@ -103,3 +103,8 @@ HTTP Status codes are quite straightforward. For some code examples [you can loo
 | Put             | PUT              |
 | BaselineControl | BASELINE-CONTROL |
 | ...             | ...              |
+
+## Scripts
+
+[![Daily Script spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml)
+
