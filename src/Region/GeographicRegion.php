@@ -42,4 +42,77 @@ enum GeographicRegion: string
     case Micronesia = '057';
     case Polynesia = '061';
     case Small_Island_Developing_States = '722';
+
+    /**
+     * @return array<GeographicRegion>
+     */
+    public function getDirectSubRegions(): array
+    {
+        return match ($this) {
+            self::World => [
+                self::Africa,
+                self::Americas,
+                self::Antarctica,
+                self::Asia,
+                self::Europe,
+                self::Landlocked_Developing_Countries,
+                self::Least_Developed_Countries,
+                self::Oceania,
+                self::Small_Island_Developing_States,
+            ],
+            self::Africa => [
+                self::Northern_Africa,
+                self::Sub_Saharan_Africa,
+            ],
+            self::Sub_Saharan_Africa => [
+                self::Eastern_Africa,
+                self::Middle_Africa,
+                self::Southern_Africa,
+                self::Western_Africa,
+            ],
+            self::Americas => [
+                self::Latin_America_And_The_Caribbean,
+                self::Northern_America,
+            ],
+            self::Latin_America_And_The_Caribbean => [
+                self::Caribbean,
+                self::Central_America,
+                self::South_America,
+            ],
+            self::Asia => [
+                self::Central_Asia,
+                self::Eastern_Asia,
+                self::South_Eastern_Asia,
+                self::Southern_Asia,
+                self::Western_Asia,
+            ],
+            self::Europe => [
+                self::Eastern_Europe,
+                self::Northern_Europe,
+                self::Southern_Europe,
+                self::Western_Europe,
+            ],
+            self::Oceania => [
+                self::Australia_And_New_Zealand,
+                self::Melanesia,
+                self::Micronesia,
+                self::Polynesia,
+            ],
+            default => [],
+        };
+    }
+
+    /** @return array<GeographicRegion> */
+    public function getAllSubRegions(): array
+    {
+        $subRegions = [];
+        foreach ($this->getDirectSubRegions() as $subRegion) {
+            $subRegions[] = $subRegion;
+            foreach ($subRegion->getAllSubRegions() as $indirectSubRegion) {
+                $subRegions[] = $indirectSubRegion;
+            }
+        }
+
+        return $subRegions;
+    }
 }
