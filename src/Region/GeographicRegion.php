@@ -560,4 +560,18 @@ enum GeographicRegion: string
             default => [],
         };
     }
+
+    /** @return list<CountryNumeric> */
+    public function getAllSubCountries(): array
+    {
+        $subCountries = [];
+        foreach ($this->getDirectSubRegions() as $subRegion) {
+            $subCountries = [...$subCountries, ...$subRegion->getDirectSubCountries()];
+            foreach ($subRegion->getAllSubRegions() as $indirectSubRegion) {
+                $subCountries = [...$subCountries, ...$indirectSubRegion->getDirectSubCountries()];
+            }
+        }
+
+        return array_unique($subCountries);
+    }
 }
