@@ -572,6 +572,6 @@ enum GeographicRegion: string
             }
         }
 
-        return array_unique($subCountries);
+        return $subCountries;
     }
 }
