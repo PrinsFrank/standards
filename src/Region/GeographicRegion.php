@@ -24,7 +24,6 @@ enum GeographicRegion: string
     case Central_America = '013';
     case South_America = '005';
     case Northern_America = '021';
-    case Antarctica = '010';
     case Asia = '142';
     case Central_Asia = '143';
     case Eastern_Asia = '030';
@@ -55,7 +54,6 @@ enum GeographicRegion: string
             self::World => [
                 self::Africa,
                 self::Americas,
-                self::Antarctica,
                 self::Asia,
                 self::Europe,
                 self::Landlocked_Developing_Countries,
@@ -128,6 +126,9 @@ enum GeographicRegion: string
     public function getDirectSubCountries(): array
     {
         return match($this) {
+            self::World => [
+                CountryNumeric::Antarctica,
+            ],
             self::Northern_Africa => [
                 CountryNumeric::Algeria,
                 CountryNumeric::Egypt,
