@@ -44,6 +44,7 @@ enum GeographicRegion: string
     case Micronesia = '057';
     case Polynesia = '061';
     case Small_Island_Developing_States = '722';
+    case North_America = '003';
 
     /**
      * @return list<GeographicRegion>
@@ -99,6 +100,11 @@ enum GeographicRegion: string
                 self::Melanesia,
                 self::Micronesia,
                 self::Polynesia,
+            ],
+            self::North_America => [
+                self::Northern_America,
+                self::Caribbean,
+                self::Central_America,
             ],
             default => [],
         };
