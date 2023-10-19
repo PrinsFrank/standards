@@ -31,6 +31,7 @@ enum GeographicRegion: string
     case Southern_Asia                   = '034';
     case Western_Asia                    = '145';
     case Europe                          = '150';
+    case Central_Europe                  = '153';
     case Eastern_Europe                  = '151';
     case Northern_Europe                 = '154';
     case Southern_Europe                 = '039';
@@ -326,15 +327,17 @@ enum GeographicRegion: string
             ],
             self::Eastern_Europe => [
                 CountryNumeric::Belarus,
+                CountryNumeric::Russian_Federation,
+                CountryNumeric::Ukraine,
+            ],
+            self::Central_Europe => [
                 CountryNumeric::Bulgaria,
                 CountryNumeric::Czechia,
                 CountryNumeric::Hungary,
-                CountryNumeric::Poland,
                 CountryNumeric::Moldova,
+                CountryNumeric::Poland,
                 CountryNumeric::Romania,
-                CountryNumeric::Russian_Federation,
                 CountryNumeric::Slovakia,
-                CountryNumeric::Ukraine,
             ],
             self::Northern_Europe => [
                 CountryNumeric::Aland_Islands,
