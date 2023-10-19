@@ -104,6 +104,12 @@ HTTP Status codes are quite straightforward. For some code examples [you can loo
 | BaselineControl | BASELINE-CONTROL |
 | ...             | ...              |
 
+## Geographic regions
+| Key    | Value |
+|--------|-------|
+| World  | 001   |
+| Africa | 002   |
+
 ## Scripts
 
 [![Daily Script spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml)
