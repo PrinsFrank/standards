@@ -55,23 +55,24 @@ class LanguageTag
         );
     }
 
-    /** @throws InvalidArgumentException */
-    public static function fromString(string $languageTagString): self
+    public static function tryFromString(string $languageTagString): ?self
     {
-        return self::tryFromString($languageTagString) ?? throw new InvalidArgumentException('The supplied string "' . $languageTagString . '" is not a valid locale');
+        try {
+            return self::tryFromString($languageTagString);
+        } catch (InvalidArgumentException) {
+            return null;
+        }
     }
 
-    public static function tryFromString(string $languageTagString): ?self
+    /** @throws InvalidArgumentException */
+    public static function fromString(string $languageTagString): self
     {
         $languageTagSubTags = explode('-', $languageTagString);
         $primaryLanguageSubtag = LanguageAlpha2::tryFrom($languageTagSubTags[0])
             ?? LanguageAlpha3Terminology::tryFrom($languageTagSubTags[0])
             ?? LanguageAlpha3Common::tryFrom($languageTagSubTags[0])
-            ?? SingleCharacterSubtag::tryFrom($languageTagSubTags[0]);
-
-        if ($primaryLanguageSubtag === null) {
-            return null;
-        }
+            ?? SingleCharacterSubtag::tryFrom($languageTagSubTags[0])
+            ?? throw new InvalidArgumentException('Primary language sub tag "' . $languageTagSubTags[0] . '" is not a valid Alpha2, Alpha3 or grandfathered/private use tag');
 
         return new self($primaryLanguageSubtag);
     }
