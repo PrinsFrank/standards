@@ -3,6 +3,10 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\LanguageTag;
 
+/**
+ * @standard RFC5646
+ * @source https://datatracker.ietf.org/doc/html/rfc5646
+ */
 enum SingleCharacterSubtag: string
 {
     /**
