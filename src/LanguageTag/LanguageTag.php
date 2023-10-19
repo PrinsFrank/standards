@@ -58,7 +58,7 @@ class LanguageTag
     public static function tryFromString(string $languageTagString): ?self
     {
         try {
-            return self::tryFromString($languageTagString);
+            return self::fromString($languageTagString);
         } catch (InvalidArgumentException) {
             return null;
         }
