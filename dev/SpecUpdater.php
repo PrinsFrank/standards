@@ -21,6 +21,7 @@ use PrinsFrank\Standards\Dev\DataSource\Language\LanguageAlpha3BibliographicSour
 use PrinsFrank\Standards\Dev\DataSource\Language\LanguageAlpha3CommonSource;
 use PrinsFrank\Standards\Dev\DataSource\Language\LanguageAlpha3TerminologySource;
 use PrinsFrank\Standards\Dev\DataSource\Language\LanguageNameSource;
+use PrinsFrank\Standards\Dev\DataSource\LanguageExtensive\LanguageExtensiveAlpha3Source;
 use PrinsFrank\Standards\Dev\DataSource\Script\ScriptAliasSource;
 use PrinsFrank\Standards\Dev\DataSource\Script\ScriptCodeSource;
 use PrinsFrank\Standards\Dev\DataSource\Script\ScriptNameSource;
@@ -71,6 +72,10 @@ class SpecUpdater
         LanguageNameSource::class,
     ];
 
+    public const LANGUAGE_EXTENSIVE_SOURCES = [
+        LanguageExtensiveAlpha3Source::class,
+    ];
+
     public const SCRIPT_SOURCES = [
         ScriptAliasSource::class,
         ScriptCodeSource::class,
@@ -91,13 +96,14 @@ class SpecUpdater
             : substr($type, 7);
 
         $sources = match (UnitEnum::tryFromKey(SpecType::class, strtoupper(str_replace('-', '_', $type)))) {
-            SpecType::COUNTRY           => self::COUNTRY_SOURCES,
-            SpecType::CURRENCY          => self::CURRENCY_SOURCES,
-            SpecType::HTTP_STATUS_CODES => self::HTTP_STATUS_CODE_SOURCES,
-            SpecType::HTTP_METHODS      => self::HTTP_METHOD_SOURCES,
-            SpecType::LANGUAGE          => self::LANGUAGE_SOURCES,
-            SpecType::SCRIPT            => self::SCRIPT_SOURCES,
-            default                     => throw new InvalidArgumentException('Automatic spec updating for type "' . $type . '" not implemented'),
+            SpecType::COUNTRY            => self::COUNTRY_SOURCES,
+            SpecType::CURRENCY           => self::CURRENCY_SOURCES,
+            SpecType::HTTP_STATUS_CODES  => self::HTTP_STATUS_CODE_SOURCES,
+            SpecType::HTTP_METHODS       => self::HTTP_METHOD_SOURCES,
+            SpecType::LANGUAGE           => self::LANGUAGE_SOURCES,
+            SpecType::LANGUAGE_EXTENSIVE => self::LANGUAGE_EXTENSIVE_SOURCES,
+            SpecType::SCRIPT             => self::SCRIPT_SOURCES,
+            default                      => throw new InvalidArgumentException('Automatic spec updating for type "' . $type . '" not implemented'),
         };
 
         /** @var class-string<DataSource> $sourceFQN */
