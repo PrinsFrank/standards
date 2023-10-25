@@ -10,7 +10,7 @@ use PrinsFrank\Standards\InvalidArgumentException;
 use Symfony\Component\Panther\Client;
 use Throwable;
 
-class SpecUpdaterNew
+class SpecUpdater
 {
     /** @throws Throwable */
     public static function update(Event $event): void

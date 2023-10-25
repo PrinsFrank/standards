@@ -37,7 +37,7 @@
             "@unit",
             "@cs"
         ],
-        "update-spec": "PrinsFrank\\Standards\\Dev\\SpecUpdaterNew::update",
+        "update-spec": "PrinsFrank\\Standards\\Dev\\SpecUpdater::update",
         "detect-drivers": "vendor/bin/bdi detect drivers"
     }
 }
