@@ -7,9 +7,7 @@ use PrinsFrank\Standards\Dev\TransliterationException;
 
 class NameNormalizer
 {
-    /**
-     * @throws TransliterationException
-     */
+    /** @throws TransliterationException */
     public static function normalize(string $key): string
     {
         $key = transliterator_transliterate('Any-Latin; Latin-ASCII;', $key);

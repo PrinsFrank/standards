@@ -24,10 +24,17 @@ class EnumFile
         return $this;
     }
 
+    public function addCase(EnumCase $enumCase): self
+    {
+        $this->cases[] = $enumCase;
+
+        return $this;
+    }
+
     /**
      * @throws EnumNotFoundException
      */
-    public function getContent(): string
+    private function getContent(): string
     {
         $content = file_get_contents($this->path);
         if ($content === false) {
@@ -37,7 +44,7 @@ class EnumFile
         return $content;
     }
 
-    public function putContent(string $content): self
+    private function putContent(string $content): self
     {
         file_put_contents($this->path, $content);
 
@@ -54,7 +61,11 @@ class EnumFile
         $firstMethodPos = mb_strpos($enumContent, ' public ');
         $endEnumPos     = mb_strrpos($enumContent, '}');
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1) . PHP_EOL;
-        foreach ($this->cases as $case) {
+        $cases = array_unique($this->cases);
+        usort($cases, static function (EnumCase $a, EnumCase $b) {
+            return $a->key <=> $b->key;
+        });
+        foreach ($cases as $case) {
             $newEnumContent .= '    ' . $case;
         }
         $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
