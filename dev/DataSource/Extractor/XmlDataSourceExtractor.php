@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSourceExtractor;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Extractor;
 
 use DOMDocument;
 use DOMXPath;
 use Exception;
-use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
+use PrinsFrank\Standards\Dev\DataSource\Configuration\XmlDataSource;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;
 use PrinsFrank\Standards\Dev\KeyNormalizer\NameNormalizer;
 use PrinsFrank\Standards\Dev\TransliterationException;

@@ -1,54 +1,54 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Script;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Currency;
 
-use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
-use PrinsFrank\Standards\Scripts\ScriptCode;
-use PrinsFrank\Standards\Scripts\ScriptName;
+use PrinsFrank\Standards\Currency\CurrencyAlpha3;
+use PrinsFrank\Standards\Currency\CurrencyName;
+use PrinsFrank\Standards\Dev\DataSource\Configuration\XmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class ScriptCodeSource implements HtmlDataSource
+class CurrencyNameSource implements XmlDataSource
 {
     public static function url(): string
     {
-        return 'https://www.unicode.org/iso15924/iso15924-codes.html';
+        return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml';
     }
 
     public static function xPathIdentifierKey(): string
     {
-        return self::xPathIdentifierName();
+        return '//ISO_4217/CcyTbl/CcyNtry/CcyNm//following-sibling::Ccy';
     }
 
     public static function xPathIdentifierName(): string
     {
-        return '//table[@class="simple"]/tbody/tr/td[3]';
+        return '//ISO_4217/CcyTbl/CcyNtry/Ccy//preceding-sibling::CcyNm';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//table[@class="simple"]/tbody/tr/td[2]';
+        return '//ISO_4217/CcyTbl/CcyNtry/Ccy//preceding-sibling::CcyNm';
     }
 
     public static function transformName(string $key): ?string
     {
-        return preg_replace('/_+/', '_', str_replace('+', '_', preg_replace('/\p{No}/u', '', $key) ?? ''));
+        return $key;
     }
 
     public static function transformValue(string $value, ?string $key): string|int|null
     {
-        return str_replace(' ', '', trim($value));
+        return $value;
     }
 
     public static function getSpecFQN(): string
     {
-        return ScriptCode::class;
+        return CurrencyName::class;
     }
 
     public static function getKeyEnumFQN(): string
     {
-        return ScriptName::class;
+        return CurrencyAlpha3::class;
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

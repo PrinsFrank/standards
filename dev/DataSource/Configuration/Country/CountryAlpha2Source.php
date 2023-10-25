@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Country;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Country;
 
-namespace PrinsFrank\Standards\Dev\DataSource\Country;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Country;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryName;
-use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
+use PrinsFrank\Standards\Dev\DataSource\Configuration\HtmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 

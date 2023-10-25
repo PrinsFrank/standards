@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration;
 
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;

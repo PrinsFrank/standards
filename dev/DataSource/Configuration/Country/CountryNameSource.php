@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Country;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Country;
 
-namespace PrinsFrank\Standards\Dev\DataSource\Country;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Country;
 
+use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryName;
-use PrinsFrank\Standards\Country\CountryNumeric;
-use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
+use PrinsFrank\Standards\Dev\DataSource\Configuration\HtmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class CountryNumericSource implements HtmlDataSource
+class CountryNameSource implements HtmlDataSource
 {
     public static function url(): string
     {
@@ -19,7 +19,7 @@ class CountryNumericSource implements HtmlDataSource
 
     public static function xPathIdentifierKey(): string
     {
-        return self::xPathIdentifierName();
+        return '//tbody[@class="v-grid-body"]/tr/td[3]';
     }
 
     public static function xPathIdentifierName(): string
@@ -29,7 +29,7 @@ class CountryNumericSource implements HtmlDataSource
 
     public static function xPathIdentifierValue(): string
     {
-        return '//tbody[@class="v-grid-body"]/tr/td[5]';
+        return '//tbody[@class="v-grid-body"]/tr/td/button';
     }
 
     public static function transformName(string $key): ?string
@@ -44,12 +44,12 @@ class CountryNumericSource implements HtmlDataSource
 
     public static function getSpecFQN(): string
     {
-        return CountryNumeric::class;
+        return CountryName::class;
     }
 
     public static function getKeyEnumFQN(): string
     {
-        return CountryName::class;
+        return CountryAlpha2::class;
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

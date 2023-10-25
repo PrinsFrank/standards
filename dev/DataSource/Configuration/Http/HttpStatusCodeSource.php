@@ -1,20 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Language;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Http;
 
-use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
-use PrinsFrank\Standards\Language\LanguageAlpha3Common;
+use PrinsFrank\Standards\Dev\DataSource\Configuration\HtmlDataSource;
+use PrinsFrank\Standards\Http\HttpStatusCode;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class LanguageAlpha3CommonSource implements HtmlDataSource
+class HttpStatusCodeSource implements HtmlDataSource
 {
-    public static function url(): string
-    {
-        return 'https://www.loc.gov/standards/iso639-2/php/code_list.php';
-    }
-
     public static function xPathIdentifierKey(): string
     {
         return self::xPathIdentifierName();
@@ -22,12 +17,12 @@ class LanguageAlpha3CommonSource implements HtmlDataSource
 
     public static function xPathIdentifierName(): string
     {
-        return '//table[@width="100%"]/tbody/tr/td[3]';
+        return '//table[@id="table-http-status-codes-1"]/tbody/tr/td[2]';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//table[@width="100%"]/tbody/tr/td[1]';
+        return '//table[@id="table-http-status-codes-1"]/tbody/tr/td[1]';
     }
 
     public static function transformName(string $key): ?string
@@ -37,21 +32,26 @@ class LanguageAlpha3CommonSource implements HtmlDataSource
 
     public static function transformValue(string $value, ?string $key): string|int|null
     {
-        if (str_contains($value, '(T)') || str_contains($value, '(B)') || str_contains($value, '-')) {
-            return null;
+        if (str_contains($value, '-')) {
+            return null; // Don't include reserved ranges in spec
         }
 
-        return strtolower(str_replace(' ', '', trim($value)));
+        return (int) $value;
     }
 
     public static function getSpecFQN(): string
     {
-        return LanguageAlpha3Common::class;
+        return HttpStatusCode::class;
     }
 
     public static function getKeyEnumFQN(): string
     {
         return self::getSpecFQN();
+    }
+
+    public static function url(): string
+    {
+        return 'https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml';
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void
@@ -60,6 +60,6 @@ class LanguageAlpha3CommonSource implements HtmlDataSource
 
     public static function sort(): bool
     {
-        return true;
+        return false;
     }
 }

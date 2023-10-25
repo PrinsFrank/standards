@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Language;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Language;
 
-use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
+use PrinsFrank\Standards\Dev\DataSource\Configuration\HtmlDataSource;
 use PrinsFrank\Standards\Language\LanguageAlpha3Common;
 use PrinsFrank\Standards\Language\LanguageName;
 use Symfony\Component\Panther\Client;

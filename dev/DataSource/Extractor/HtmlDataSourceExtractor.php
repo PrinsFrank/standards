@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSourceExtractor;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Extractor;
 
 use Exception;
 use Facebook\WebDriver\Remote\RemoteWebElement;
-use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
+use PrinsFrank\Standards\Dev\DataSource\Configuration\HtmlDataSource;
 use PrinsFrank\Standards\Dev\KeyNormalizer\NameNormalizer;
 use PrinsFrank\Standards\Dev\TransliterationException;
 use Symfony\Component\Panther\Client;

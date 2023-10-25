@@ -1,18 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Currency;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Script;
 
-use PrinsFrank\Standards\Currency\CurrencyAlpha3;
-use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
+use PrinsFrank\Standards\Dev\DataSource\Configuration\HtmlDataSource;
+use PrinsFrank\Standards\Scripts\ScriptName;
+use PrinsFrank\Standards\Scripts\ScriptNumber;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class CurrencyAlpha3Source implements XmlDataSource
+class ScriptNumberSource implements HtmlDataSource
 {
     public static function url(): string
     {
-        return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml';
+        return 'https://www.unicode.org/iso15924/iso15924-codes.html';
     }
 
     public static function xPathIdentifierKey(): string
@@ -22,32 +23,32 @@ class CurrencyAlpha3Source implements XmlDataSource
 
     public static function xPathIdentifierName(): string
     {
-        return '//ISO_4217/CcyTbl/CcyNtry/Ccy//preceding-sibling::CcyNm';
+        return '//table[@class="simple"]/tbody/tr/td[3]';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//ISO_4217/CcyTbl/CcyNtry/CcyNm//following-sibling::Ccy';
+        return '//table[@class="simple"]/tbody/tr/td[1]';
     }
 
     public static function transformName(string $key): ?string
     {
-        return $key;
+        return preg_replace('/_+/', '_', str_replace('+', '_', preg_replace('/\p{No}/u', '', $key) ?? ''));
     }
 
     public static function transformValue(string $value, ?string $key): string|int|null
     {
-        return $value;
+        return str_replace(' ', '', trim($value));
     }
 
     public static function getSpecFQN(): string
     {
-        return CurrencyAlpha3::class;
+        return ScriptNumber::class;
     }
 
     public static function getKeyEnumFQN(): string
     {
-        return self::getSpecFQN();
+        return ScriptName::class;
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void

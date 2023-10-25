@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Http;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Http;
 
-use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
+use PrinsFrank\Standards\Dev\DataSource\Configuration\HtmlDataSource;
 use PrinsFrank\Standards\Http\HttpMethod;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;

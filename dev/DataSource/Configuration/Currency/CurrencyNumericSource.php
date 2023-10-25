@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Language;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Currency;
 
-use PrinsFrank\Standards\Dev\DataSource\HtmlDataSource;
-use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Currency\CurrencyNumeric;
+use PrinsFrank\Standards\Dev\DataSource\Configuration\XmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class LanguageAlpha2Source implements HtmlDataSource
+class CurrencyNumericSource implements XmlDataSource
 {
     public static function url(): string
     {
-        return 'https://www.loc.gov/standards/iso639-2/php/code_list.php';
+        return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml';
     }
 
     public static function xPathIdentifierKey(): string
@@ -22,12 +22,12 @@ class LanguageAlpha2Source implements HtmlDataSource
 
     public static function xPathIdentifierName(): string
     {
-        return '//table[@width="100%"]/tbody/tr/td[3]';
+        return '//ISO_4217/CcyTbl/CcyNtry/CcyNbr//preceding-sibling::CcyNm';
     }
 
     public static function xPathIdentifierValue(): string
     {
-        return '//table[@width="100%"]/tbody/tr/td[2]';
+        return '//ISO_4217/CcyTbl/CcyNtry/CcyNm//following-sibling::CcyNbr';
     }
 
     public static function transformName(string $key): ?string
@@ -37,12 +37,12 @@ class LanguageAlpha2Source implements HtmlDataSource
 
     public static function transformValue(string $value, ?string $key): string|int|null
     {
-        return strtolower(str_replace(' ', '', trim($value)));
+        return $value;
     }
 
     public static function getSpecFQN(): string
     {
-        return LanguageAlpha2::class;
+        return CurrencyNumeric::class;
     }
 
     public static function getKeyEnumFQN(): string

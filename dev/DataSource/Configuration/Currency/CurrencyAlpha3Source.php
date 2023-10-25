@@ -1,15 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Dev\DataSource\Currency;
+namespace PrinsFrank\Standards\Dev\DataSource\Configuration\Currency;
 
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
-use PrinsFrank\Standards\Currency\CurrencyName;
-use PrinsFrank\Standards\Dev\DataSource\XmlDataSource;
+use PrinsFrank\Standards\Dev\DataSource\Configuration\XmlDataSource;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-class CurrencyNameSource implements XmlDataSource
+class CurrencyAlpha3Source implements XmlDataSource
 {
     public static function url(): string
     {
@@ -18,7 +17,7 @@ class CurrencyNameSource implements XmlDataSource
 
     public static function xPathIdentifierKey(): string
     {
-        return '//ISO_4217/CcyTbl/CcyNtry/CcyNm//following-sibling::Ccy';
+        return self::xPathIdentifierName();
     }
 
     public static function xPathIdentifierName(): string
@@ -28,7 +27,7 @@ class CurrencyNameSource implements XmlDataSource
 
     public static function xPathIdentifierValue(): string
     {
-        return '//ISO_4217/CcyTbl/CcyNtry/Ccy//preceding-sibling::CcyNm';
+        return '//ISO_4217/CcyTbl/CcyNtry/CcyNm//following-sibling::Ccy';
     }
 
     public static function transformName(string $key): ?string
@@ -43,12 +42,12 @@ class CurrencyNameSource implements XmlDataSource
 
     public static function getSpecFQN(): string
     {
-        return CurrencyName::class;
+        return CurrencyAlpha3::class;
     }
 
     public static function getKeyEnumFQN(): string
     {
-        return CurrencyAlpha3::class;
+        return self::getSpecFQN();
     }
 
     public static function afterPageLoad(Client $client, Crawler $crawler): void
