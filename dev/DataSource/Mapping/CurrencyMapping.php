@@ -12,6 +12,7 @@ use PrinsFrank\Standards\Currency\CurrencyName;
 use PrinsFrank\Standards\Currency\CurrencyNumeric;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DomElementNotFoundException;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
@@ -33,10 +34,11 @@ class CurrencyMapping implements Mapping
         $domDocument->loadXML($client->getPageSource());
         $xPath = new DOMXPath($domDocument);
         $items = $xPath->query('//ISO_4217/CcyTbl/CcyNtry');
+        $items !== false ?: throw new DomElementNotFoundException('');
 
         $dataSet = [];
+        /** @var DOMElement $item */
         foreach ($items as $i => $item) {
-            /** @var DOMElement $item */
             foreach ($item->childNodes as $childNode) {
                 /** @var DOMElement|DOMText $childNode */
                 if ($childNode instanceof DOMElement === false || $childNode->localName === null) {

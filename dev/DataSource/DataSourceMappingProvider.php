@@ -6,9 +6,12 @@ namespace PrinsFrank\Standards\Dev\DataSource;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\CurrencyMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\Mapping;
 
+/**
+ * @template TDataSet of object
+ */
 class DataSourceMappingProvider
 {
-    /** @return array<Mapping> */
+    /** @return array<class-string<Mapping<TDataSet>>> */
     public function provide(): array
     {
         return [
