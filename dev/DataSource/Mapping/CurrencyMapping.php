@@ -45,7 +45,7 @@ class CurrencyMapping implements Mapping
                     continue;
                 }
 
-                $dataSet[$i] ?? $dataSet[$i] = (object) [];
+                $dataSet[$i] ?? $dataSet[$i]          = (object) [];
                 $dataSet[$i]->{$childNode->localName} = $childNode->textContent;
             }
         }
@@ -59,8 +59,8 @@ class CurrencyMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $currencyAlpha3Enum = new EnumFile(CurrencyAlpha3::class);
-        $currencyNameEnum = new EnumFile(CurrencyName::class);
+        $currencyAlpha3Enum  = new EnumFile(CurrencyAlpha3::class);
+        $currencyNameEnum    = new EnumFile(CurrencyName::class);
         $currencyNumericEnum = new EnumFile(CurrencyNumeric::class);
         foreach ($dataSet as $dataRow) {
             if (($dataRow->Ccy ?? null) === null) {

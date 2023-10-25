@@ -16,7 +16,7 @@ class SpecUpdaterNew
     public static function update(Event $event): void
     {
         $dataSourceMappingProvider = new DataSourceMappingProvider();
-        $mapping = $event->getArguments()[0] ?? throw new InvalidArgumentException('Please specify the mapping with "-- ' . str_replace('\\', '\\\\', implode(',', $dataSourceMappingProvider->provide())) . '"');
+        $mapping                   = $event->getArguments()[0] ?? throw new InvalidArgumentException('Please specify the mapping with "-- ' . str_replace('\\', '\\\\', implode(',', $dataSourceMappingProvider->provide())) . '"');
         if (is_a($mapping, Mapping::class, true) === false) {
             throw new InvalidArgumentException('source should implement ' . Mapping::class . ', ' . $mapping . ' given');
         }

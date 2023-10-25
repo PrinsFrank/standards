@@ -61,7 +61,7 @@ class EnumFile
         $firstMethodPos = mb_strpos($enumContent, ' public ');
         $endEnumPos     = mb_strrpos($enumContent, '}');
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1) . PHP_EOL;
-        $cases = array_unique($this->cases);
+        $cases          = array_unique($this->cases);
         usort($cases, static function (EnumCase $a, EnumCase $b) {
             return $a->key <=> $b->key;
         });
