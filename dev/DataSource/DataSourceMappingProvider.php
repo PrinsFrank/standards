@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource;
 
 use PrinsFrank\Standards\Dev\DataSource\Mapping\CurrencyMapping;
+use PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\Mapping;
 
 /**
@@ -16,6 +17,7 @@ class DataSourceMappingProvider
     {
         return [
             CurrencyMapping::class,
+            LanguageMapping::class,
         ];
     }
 }

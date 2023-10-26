@@ -49,17 +49,23 @@ class LanguageMapping implements Mapping
 
     public static function toEnumMapping(array $dataSet): array
     {
-        $languageAlpha2 = new EnumFile(LanguageAlpha2::class);
-        $languageName = new EnumFile(LanguageName::class);
-        $languageAlpha3Common = new EnumFile(LanguageAlpha3Common::class);
+        $languageAlpha2              = new EnumFile(LanguageAlpha2::class);
+        $languageName                = new EnumFile(LanguageName::class);
+        $languageAlpha3Common        = new EnumFile(LanguageAlpha3Common::class);
         $languageAlpha3Bibliographic = new EnumFile(LanguageAlpha3Bibliographic::class);
-        $languageAlpha3Terminology = new EnumFile(LanguageAlpha3Terminology::class);
+        $languageAlpha3Terminology   = new EnumFile(LanguageAlpha3Terminology::class);
         foreach ($dataSet as $dataRow) {
-            $languageAlpha2->addCase(new EnumCase($dataRow->name, $dataRow->alpha2));
             $languageName->addCase(new EnumCase($dataRow->name, $dataRow->name));
 
-            if () {
-                // TODO
+            if (trim($dataRow->alpha2) !== '') {
+                $languageAlpha2->addCase(new EnumCase($dataRow->name, $dataRow->alpha2));
+            }
+
+            if (strlen($dataRow->alpha3) === 3) {
+                $languageAlpha3Common->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
+            } elseif (preg_match('/(?P<bibliographic>[a-z]{3})\s+\(B\)\n(?P<terminology>[a-z]{3})\s+\(T\)/', $dataRow->alpha3, $matches)) {
+                $languageAlpha3Terminology->addCase(new EnumCase($dataRow->name, $matches['terminology']));
+                $languageAlpha3Bibliographic->addCase(new EnumCase($dataRow->name, $matches['bibliographic']));
             }
         }
 
