@@ -5,6 +5,8 @@ namespace PrinsFrank\Standards\Dev\DataSource;
 
 use PrinsFrank\Standards\Dev\DataSource\Mapping\CountryMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\CurrencyMapping;
+use PrinsFrank\Standards\Dev\DataSource\Mapping\HttpMethodMapping;
+use PrinsFrank\Standards\Dev\DataSource\Mapping\HttpStatusCodeMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\Mapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\ScriptMapping;
@@ -20,6 +22,8 @@ class DataSourceMappingProvider
         return [
             CountryMapping::class,
             CurrencyMapping::class,
+            HttpMethodMapping::class,
+            HttpStatusCodeMapping::class,
             LanguageMapping::class,
             ScriptMapping::class,
         ];
