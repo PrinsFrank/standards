@@ -3,15 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
-use DOMDocument;
-use DOMElement;
-use DOMText;
-use DOMXPath;
 use Facebook\WebDriver\Remote\RemoteWebElement;
 use Facebook\WebDriver\WebDriverBy;
-use PrinsFrank\Standards\Currency\CurrencyAlpha3;
-use PrinsFrank\Standards\Currency\CurrencyName;
-use PrinsFrank\Standards\Currency\CurrencyNumeric;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;

@@ -8,7 +8,6 @@ use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;
-use PrinsFrank\Standards\Http\HttpMethod;
 use PrinsFrank\Standards\Http\HttpStatusCode;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;

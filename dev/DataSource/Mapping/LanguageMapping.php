@@ -3,11 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
-use Doctrine\Common\Annotations\Annotation\Enum;
 use Facebook\WebDriver\Remote\RemoteWebElement;
 use Facebook\WebDriver\WebDriverBy;
-use PrinsFrank\Standards\Dev\DataSource\Configuration\Language\LanguageAlpha2Source;
-use PrinsFrank\Standards\Dev\DataSource\Configuration\Language\LanguageAlpha3CommonSource;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;
