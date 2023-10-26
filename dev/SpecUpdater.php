@@ -7,7 +7,6 @@ use Composer\Script\Event;
 use PrinsFrank\Standards\Dev\DataSource\DataSourceMappingProvider;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\Mapping;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\InvalidArgumentException;
 use Symfony\Component\Panther\Client;
 use Throwable;
@@ -23,13 +22,14 @@ class SpecUpdater
             throw new InvalidArgumentException('source should implement ' . Mapping::class . ', ' . $requestedMapping . ' given');
         }
 
+        /**
+         * @var array<class-string<Mapping<object>>> $mappings
+         */
         $mappings = $requestedMapping !== null ? [$requestedMapping] : $dataSourceMappingProvider->provide();
         foreach ($mappings as $mapping) {
-            /** @var class-string<Mapping>|Mapping $mapping */
             $event->getIO()->writeRaw('Updating from mapping "' . $mapping . '"');
             $crawler = ($client = Client::createFirefoxClient())->request('GET', $mapping::url());
 
-            /** @var EnumFile $enumFile */
             foreach ($mapping::toEnumMapping($mapping::toDataSet($client, $crawler)) as $enumFile) {
                 $event->getIO()->writeRaw('Updating contents of enum "' . $enumFile->path . '"');
                 foreach ($enumFile->fqn::cases() as $existingCase) {

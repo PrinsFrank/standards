@@ -57,7 +57,7 @@ class ScriptMapping implements Mapping
         $scriptNumber = new EnumFile(ScriptNumber::class);
         $scriptAlias  = new EnumFile(ScriptAlias::class);
         foreach ($dataSet as $dataRow) {
-            $name = preg_replace('/_+/', '_', str_replace('+', '_', preg_replace('/\p{No}/u', '', $dataRow->name) ?? ''));
+            $name = preg_replace('/_+/', '_', str_replace('+', '_', preg_replace('/\p{No}/u', '', $dataRow->name) ?? '')) ?? '';
 
             $scriptCode->addCase(new EnumCase($name, $dataRow->number));
             $scriptName->addCase(new EnumCase($name, $dataRow->name));

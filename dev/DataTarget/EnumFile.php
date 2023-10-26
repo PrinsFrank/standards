@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
+use BackedEnum;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\EnumNotFoundException;
 
@@ -13,6 +14,7 @@ class EnumFile
     /** @var EnumCase[] */
     private array $cases = [];
 
+    /** @param class-string<BackedEnum> $fqn */
     public function __construct(
         public readonly string $fqn
     ) {

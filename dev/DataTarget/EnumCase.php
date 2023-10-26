@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
+use BackedEnum;
+
 class EnumCase
 {
     public function __construct(
@@ -12,7 +14,7 @@ class EnumCase
     ) {
     }
 
-    /** @param class-string<\BackedEnum> */
+    /** @param class-string<BackedEnum> $enumFQN */
     public function toString(string $enumFQN): string
     {
         $case = '';
