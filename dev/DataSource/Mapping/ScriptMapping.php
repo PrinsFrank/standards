@@ -59,10 +59,10 @@ class ScriptMapping implements Mapping
         foreach ($dataSet as $dataRow) {
             $name = preg_replace('/_+/', '_', str_replace('+', '_', preg_replace('/\p{No}/u', '', $dataRow->name) ?? ''));
 
-            $scriptCode->addCase(new EnumCase($name, $dataRow->code));
-            $scriptName->addCase(new EnumCase($name, $dataRow->number));
-            $scriptNumber->addCase(new EnumCase($name, $dataRow->name));
-            if (trim($dataRow->alias) !== '') {
+            $scriptCode->addCase(new EnumCase($name, $dataRow->number));
+            $scriptName->addCase(new EnumCase($name, $dataRow->name));
+            $scriptNumber->addCase(new EnumCase($name, $dataRow->code));
+            if (trim($dataRow->alias) !== '' && $dataRow->number !== '241') {
                 $scriptAlias->addCase(new EnumCase($name, $dataRow->alias));
             }
         }
