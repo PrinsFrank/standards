@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
+use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -22,4 +23,6 @@ interface Mapping
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array;
+
+    public static function getSorting(): SortingInterface;
 }

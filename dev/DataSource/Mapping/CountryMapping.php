@@ -9,6 +9,8 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;
@@ -63,5 +65,10 @@ class CountryMapping implements Mapping
         }
 
         return [$countryName, $countryAlpha2, $countryAlpha3, $countryNumeric];
+    }
+
+    public static function getSorting(): SortingInterface
+    {
+        return new KeyWithDeprecatedTagsSeparateSorting();
     }
 }

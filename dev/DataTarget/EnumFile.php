@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
+use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\EnumNotFoundException;
 
 class EnumFile
@@ -59,7 +60,7 @@ class EnumFile
     /**
      * @throws EnumNotFoundException
      */
-    public function writeCases(): self
+    public function writeCases(SortingInterface $sorting): self
     {
         $enumContent    = $this->getContent();
         $startEnum      = mb_strpos($enumContent, '{');
@@ -67,9 +68,7 @@ class EnumFile
         $endEnumPos     = mb_strrpos($enumContent, '}');
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1) . PHP_EOL;
         $cases          = array_unique($this->cases);
-        usort($cases, static function (EnumCase $a, EnumCase $b) {
-            return ($a->deprecated ? 1 : 0) . $a <=>  ($b->deprecated ? 1 : 0) . $b;
-        });
+        usort($cases, $sorting);
         foreach ($cases as $case) {
             $newEnumContent .= '    ' . $case->toString($this->fqn);
         }

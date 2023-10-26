@@ -10,6 +10,8 @@ use DOMXPath;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\Currency\CurrencyName;
 use PrinsFrank\Standards\Currency\CurrencyNumeric;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;
@@ -78,5 +80,10 @@ class CurrencyMapping implements Mapping
         }
 
         return [$currencyAlpha3Enum, $currencyNameEnum, $currencyNumericEnum];
+    }
+
+    public static function getSorting(): SortingInterface
+    {
+        return new KeyWithDeprecatedTagsSeparateSorting();
     }
 }

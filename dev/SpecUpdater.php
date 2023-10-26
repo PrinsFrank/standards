@@ -38,7 +38,7 @@ class SpecUpdater
                     }
                 }
 
-                $enumFile->writeCases();
+                $enumFile->writeCases($mapping::getSorting());
             }
         }
     }

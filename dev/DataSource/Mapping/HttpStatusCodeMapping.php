@@ -5,6 +5,8 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\Remote\RemoteWebElement;
 use Facebook\WebDriver\WebDriverBy;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;
@@ -57,5 +59,10 @@ class HttpStatusCodeMapping implements Mapping
         }
 
         return [$httpMethod];
+    }
+
+    public static function getSorting(): SortingInterface
+    {
+        return new ValueWithDeprecatedTagsSeparateSorting();
     }
 }

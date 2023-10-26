@@ -5,6 +5,8 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\Remote\RemoteWebElement;
 use Facebook\WebDriver\WebDriverBy;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;
@@ -67,5 +69,10 @@ class LanguageMapping implements Mapping
         }
 
         return [$languageAlpha2, $languageAlpha3Bibliographic, $languageAlpha3Common, $languageAlpha3Terminology, $languageName];
+    }
+
+    public static function getSorting(): SortingInterface
+    {
+        return new KeyWithDeprecatedTagsSeparateSorting();
     }
 }
