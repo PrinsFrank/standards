@@ -12,8 +12,9 @@ class EnumFile
     /** @var EnumCase[] */
     private array $cases = [];
 
-    public function __construct(string $fqn)
-    {
+    public function __construct(
+        public readonly string $fqn
+    ) {
         $this->path = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace(['PrinsFrank\\Standards\\', '\\'], ['', DIRECTORY_SEPARATOR], $fqn) . '.php';
     }
 
@@ -66,7 +67,7 @@ class EnumFile
             return $a->key <=> $b->key;
         });
         foreach ($cases as $case) {
-            $newEnumContent .= '    ' . $case;
+            $newEnumContent .= '    ' . $case->toString($this->fqn);
         }
         $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
 
