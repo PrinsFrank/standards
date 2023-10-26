@@ -18,18 +18,22 @@ class EnumFile
         $this->path = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace(['PrinsFrank\\Standards\\', '\\'], ['', DIRECTORY_SEPARATOR], $fqn) . '.php';
     }
 
-    public function setCases(EnumCase ...$enumCases): self
-    {
-        $this->cases = $enumCases;
-
-        return $this;
-    }
-
     public function addCase(EnumCase $enumCase): self
     {
         $this->cases[] = $enumCase;
 
         return $this;
+    }
+
+    public function hasCaseWithKey(string $name): bool
+    {
+        foreach ($this->cases as $case) {
+            if ($case->key === $name) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -64,7 +68,7 @@ class EnumFile
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1) . PHP_EOL;
         $cases          = array_unique($this->cases);
         usort($cases, static function (EnumCase $a, EnumCase $b) {
-            return (string) $a <=> (string) $b;
+            return ($a->deprecated ? 1 : 0) . $a <=>  ($b->deprecated ? 1 : 0) . $b;
         });
         foreach ($cases as $case) {
             $newEnumContent .= '    ' . $case->toString($this->fqn);
