@@ -25,7 +25,7 @@ class EnumFile
         return $this;
     }
 
-    public function hasCaseWithValue(string $value): bool
+    public function hasCaseWithValue(string|int $value): bool
     {
         foreach ($this->cases as $case) {
             if ($case->value === $value) {

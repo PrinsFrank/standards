@@ -53,7 +53,7 @@ class HttpStatusCodeMapping implements Mapping
                 continue;
             }
 
-            $httpMethod->addCase(new EnumCase($dataRow->description, $dataRow->value));
+            $httpMethod->addCase(new EnumCase($dataRow->description, (int) $dataRow->value));
         }
 
         return [$httpMethod];
