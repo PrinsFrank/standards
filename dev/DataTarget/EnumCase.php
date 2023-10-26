@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
-use PrinsFrank\Standards\Dev\KeyNormalizer\NameNormalizer;
-
 class EnumCase
 {
     public function __construct(public readonly string $key, public readonly string|int $value, public readonly bool $deprecated = false)
