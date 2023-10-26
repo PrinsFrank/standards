@@ -7,7 +7,7 @@ use PrinsFrank\Standards\Dev\EnumNotFoundException;
 
 class EnumFile
 {
-    private string $path;
+    public readonly string $path;
 
     /** @var EnumCase[] */
     private array $cases = [];

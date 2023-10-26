@@ -16,16 +16,21 @@ class SpecUpdater
     public static function update(Event $event): void
     {
         $dataSourceMappingProvider = new DataSourceMappingProvider();
-        $mapping                   = $event->getArguments()[0] ?? throw new InvalidArgumentException('Please specify the mapping with "-- ' . str_replace('\\', '\\\\', implode(',', $dataSourceMappingProvider->provide())) . '"');
-        if (is_a($mapping, Mapping::class, true) === false) {
-            throw new InvalidArgumentException('source should implement ' . Mapping::class . ', ' . $mapping . ' given');
+        $requestedMapping          = $event->getArguments()[0] ?? null;
+        if ($requestedMapping !== null && is_a($requestedMapping, Mapping::class, true) === false) {
+            throw new InvalidArgumentException('source should implement ' . Mapping::class . ', ' . $requestedMapping . ' given');
         }
 
-        /** @var Mapping $mapping */
-        $crawler = ($client = Client::createFirefoxClient())->request('GET', $mapping::url());
+        $mappings = $requestedMapping !== null ? [$requestedMapping] : $dataSourceMappingProvider->provide();
+        foreach ($mappings as $mapping) {
+            /** @var class-string<Mapping> $mapping */
+            $event->getIO()->writeRaw('Updating from mapping "' . $mapping . '"');
+            $crawler = ($client = Client::createFirefoxClient())->request('GET', $mapping::url());
 
-        foreach ($mapping::toEnumMapping($mapping::toDataSet($client, $crawler)) as $enumFile) {
-            $enumFile->writeCases();
+            foreach ($mapping::toEnumMapping($mapping::toDataSet($client, $crawler)) as $enumFile) {
+                $event->getIO()->writeRaw('Updating contents of enum "' . $enumFile->path . '"');
+                $enumFile->writeCases();
+            }
         }
     }
 }
