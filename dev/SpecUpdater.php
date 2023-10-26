@@ -33,7 +33,7 @@ class SpecUpdater
             foreach ($mapping::toEnumMapping($mapping::toDataSet($client, $crawler)) as $enumFile) {
                 $event->getIO()->writeRaw('Updating contents of enum "' . $enumFile->path . '"');
                 foreach ($enumFile->fqn::cases() as $existingCase) {
-                    if ($enumFile->hasCaseWithKey($existingCase->name) === false) {
+                    if ($enumFile->hasCaseWithValue($existingCase->value) === false) {
                         $enumFile->addCase(new EnumCase($existingCase->name, $existingCase->value, true));
                     }
                 }

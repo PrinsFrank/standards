@@ -25,10 +25,10 @@ class EnumFile
         return $this;
     }
 
-    public function hasCaseWithKey(string $name): bool
+    public function hasCaseWithValue(string $value): bool
     {
         foreach ($this->cases as $case) {
-            if ($case->key === $name) {
+            if ($case->value === $value) {
                 return true;
             }
         }
