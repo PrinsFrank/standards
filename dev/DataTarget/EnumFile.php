@@ -64,7 +64,7 @@ class EnumFile
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1) . PHP_EOL;
         $cases          = array_unique($this->cases);
         usort($cases, static function (EnumCase $a, EnumCase $b) {
-            return $a->key <=> $b->key;
+            return (string) $a <=> (string) $b;
         });
         foreach ($cases as $case) {
             $newEnumContent .= '    ' . $case->toString($this->fqn);

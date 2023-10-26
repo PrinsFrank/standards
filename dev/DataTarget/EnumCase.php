@@ -33,6 +33,6 @@ class EnumCase
 
     public function __toString(): string
     {
-        return $this->key;
+        return NameNormalizer::normalize($this->key);
     }
 }
