@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: composer install
       - name: Run standard update command
-        run: composer update-spec -- PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\ScriptMapping
+        run: composer update-spec-script
       - name: Run CSFixer
         run: composer cs:fix
       - name: Create Pull Request
