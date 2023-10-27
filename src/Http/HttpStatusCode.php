@@ -28,7 +28,6 @@ enum HttpStatusCode: int
     case See_Other                       = 303;
     case Not_Modified                    = 304;
     case Use_Proxy                       = 305;
-    case Unused                          = 418;
     case Temporary_Redirect              = 307;
     case Permanent_Redirect              = 308;
     case Bad_Request                     = 400;
@@ -70,4 +69,7 @@ enum HttpStatusCode: int
     case Loop_Detected                   = 508;
     case Not_Extended_OBSOLETED          = 510;
     case Network_Authentication_Required = 511;
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Unused = 418;
 }
