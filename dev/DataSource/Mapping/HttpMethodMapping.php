@@ -29,7 +29,6 @@ class HttpMethodMapping implements Mapping
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $items = $crawler->filterXPath('//table[@id="table-methods"]/tbody/tr')->getIterator();
-        $items !== false ?: throw new DomElementNotFoundException('');
 
         $dataSet = [];
         /** @var RemoteWebElement $item */

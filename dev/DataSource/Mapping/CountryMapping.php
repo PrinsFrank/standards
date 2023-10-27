@@ -35,9 +35,7 @@ class CountryMapping implements Mapping
         $perPageDropdown = $crawler->filterXPath(".//select[@class='v-select-select']//option[last()]");
         $perPageDropdown->click();
         $client->waitForElementToContain('html', 'Zimbabwe');
-
         $items = $crawler->filterXPath('//tbody[@class="v-grid-body"]/tr')->getIterator();
-        $items !== false ?: throw new DomElementNotFoundException('');
 
         $dataSet = [];
         /** @var RemoteWebElement $item */

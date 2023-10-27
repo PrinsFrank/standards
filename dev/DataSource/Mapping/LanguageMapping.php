@@ -32,7 +32,6 @@ class LanguageMapping implements Mapping
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $items = $crawler->filterXPath('//table[@width="100%"]/tbody/tr')->getIterator();
-        $items !== false ?: throw new DomElementNotFoundException('');
 
         $dataSet = [];
         /** @var RemoteWebElement $item */

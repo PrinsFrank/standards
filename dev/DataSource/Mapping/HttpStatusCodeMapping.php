@@ -29,7 +29,6 @@ class HttpStatusCodeMapping implements Mapping
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $items = $crawler->filterXPath('//table[@id="table-http-status-codes-1"]/tbody/tr')->getIterator();
-        $items !== false ?: throw new DomElementNotFoundException('');
 
         $dataSet = [];
         /** @var RemoteWebElement $item */
