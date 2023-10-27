@@ -36,7 +36,7 @@ class ScriptMapping implements Mapping
         /** @var RemoteWebElement $item */
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
-            if (count($columns) !== 5) {
+            if (count($columns) !== 7) {
                 continue;
             }
 
