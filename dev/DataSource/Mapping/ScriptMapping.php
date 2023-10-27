@@ -9,7 +9,6 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSor
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
-use PrinsFrank\Standards\Dev\DomElementNotFoundException;
 use PrinsFrank\Standards\Scripts\ScriptAlias;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 use PrinsFrank\Standards\Scripts\ScriptName;
@@ -35,11 +34,23 @@ class ScriptMapping implements Mapping
 
         $dataSet = [];
         /** @var RemoteWebElement $item */
-        foreach ($items as $i => $item) {
-            foreach ($item->findElements(WebDriverBy::xpath('./td')) as $j => $childNode) {
-                $dataSet[$i] ?? $dataSet[$i]                                                          = (object) [];
-                $dataSet[$i]->{['code', 'number', 'name', 'french_name', 'alias', 'age', 'date'][$j]} = $childNode->getText();
+        foreach ($items as $item) {
+            $columns = $item->findElements(WebDriverBy::xpath('./td'));
+            if (count($columns) !== 5) {
+                continue;
             }
+
+            $record              = (object) [];
+            $record->code        = $columns[0]->getText();
+            $record->number      = $columns[1]->getText();
+            $record->name        = $columns[2]->getText();
+            $record->french_name = $columns[3]->getText();
+            $record->alias       = $columns[4]->getText();
+            $record->age         = $columns[5]->getText();
+            $record->date        = $columns[6]->getText();
+
+            /** @var TDataSet $record */
+            $dataSet[] = $record;
         }
 
         return $dataSet;

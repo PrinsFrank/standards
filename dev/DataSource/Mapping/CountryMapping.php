@@ -39,11 +39,18 @@ class CountryMapping implements Mapping
 
         $dataSet = [];
         /** @var RemoteWebElement $item */
-        foreach ($items as $i => $item) {
-            foreach ($item->findElements(WebDriverBy::xpath('./td')) as $j => $childNode) {
-                $dataSet[$i] ?? $dataSet[$i]                                                   = (object) [];
-                $dataSet[$i]->{['name', 'name_french', 'alpha2', 'alpha3', 'numeric'][$j]}     = $childNode->getText();
-            }
+        foreach ($items as $item) {
+            $columns = $item->findElements(WebDriverBy::xpath('./td'));
+
+            $record              = (object) [];
+            $record->name        = $columns[0]->getText();
+            $record->name_french = $columns[1]->getText();
+            $record->alpha2      = $columns[2]->getText();
+            $record->alpha3      = $columns[3]->getText();
+            $record->numeric     = $columns[4]->getText();
+
+            /** @var TDataSet $record */
+            $dataSet[] = $record;
         }
 
         return $dataSet;

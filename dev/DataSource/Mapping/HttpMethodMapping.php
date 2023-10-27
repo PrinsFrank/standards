@@ -9,7 +9,6 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSor
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
-use PrinsFrank\Standards\Dev\DomElementNotFoundException;
 use PrinsFrank\Standards\Http\HttpMethod;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -32,11 +31,17 @@ class HttpMethodMapping implements Mapping
 
         $dataSet = [];
         /** @var RemoteWebElement $item */
-        foreach ($items as $i => $item) {
-            foreach ($item->findElements(WebDriverBy::xpath('./td')) as $j => $childNode) {
-                $dataSet[$i] ?? $dataSet[$i]                                                   = (object) [];
-                $dataSet[$i]->{['name', 'safe', 'idempotent', 'reference'][$j]}                = $childNode->getText();
-            }
+        foreach ($items as $item) {
+            $columns = $item->findElements(WebDriverBy::xpath('./td'));
+
+            $record             = (object) [];
+            $record->name       = $columns[0]->getText();
+            $record->safe       = $columns[1]->getText();
+            $record->idempotent = $columns[2]->getText();
+            $record->reference  = $columns[3]->getText();
+
+            /** @var TDataSet $record */
+            $dataSet[] = $record;
         }
 
         return $dataSet;

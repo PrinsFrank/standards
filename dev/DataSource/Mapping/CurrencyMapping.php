@@ -5,7 +5,6 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use DOMDocument;
 use DOMElement;
-use DOMText;
 use DOMXPath;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\Currency\CurrencyName;
@@ -19,7 +18,7 @@ use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{CtryNm: string, CcyNm: string, Ccy: string, CcyNbr: string, CcyMnrUnts: string}
+ * @template TDataSet of object{CtryNm: string, CcyNm: string, Ccy: string|null, CcyNbr: string|null, CcyMnrUnts: string|null}
  * @implements Mapping<TDataSet>
  */
 class CurrencyMapping implements Mapping
@@ -40,16 +39,18 @@ class CurrencyMapping implements Mapping
 
         $dataSet = [];
         /** @var DOMElement $item */
-        foreach ($items as $i => $item) {
-            foreach ($item->childNodes as $childNode) {
-                /** @var DOMElement|DOMText $childNode */
-                if ($childNode instanceof DOMElement === false || $childNode->localName === null) {
-                    continue;
-                }
+        foreach ($items as $item) {
+            $columns = $item->childNodes;
 
-                $dataSet[$i] ?? $dataSet[$i]          = (object) [];
-                $dataSet[$i]->{$childNode->localName} = $childNode->textContent;
-            }
+            $record             = (object) [];
+            $record->CtryNm     = $columns[1]->textContent;
+            $record->CcyNm      = $columns[3]->textContent;
+            $record->Ccy        = $columns[5]->textContent ?? null;
+            $record->CcyNbr     = $columns[7]->textContent ?? null;
+            $record->CcyMnrUnts = $columns[9]->textContent ?? null;
+
+            /** @var TDataSet $record */
+            $dataSet[] = $record;
         }
 
         return $dataSet;

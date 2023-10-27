@@ -9,13 +9,12 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
-use PrinsFrank\Standards\Dev\DomElementNotFoundException;
 use PrinsFrank\Standards\Http\HttpStatusCode;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{CtryNm: string, CcyNm: string, Ccy: string, CcyNbr: string, CcyMnrUnts: string}
+ * @template TDataSet of object{value: string, description: string, reference: string}
  * @implements Mapping<TDataSet>
  */
 class HttpStatusCodeMapping implements Mapping
@@ -32,11 +31,16 @@ class HttpStatusCodeMapping implements Mapping
 
         $dataSet = [];
         /** @var RemoteWebElement $item */
-        foreach ($items as $i => $item) {
-            foreach ($item->findElements(WebDriverBy::xpath('./td')) as $j => $childNode) {
-                $dataSet[$i] ?? $dataSet[$i]                                                   = (object) [];
-                $dataSet[$i]->{['value', 'description', 'reference'][$j]}                      = $childNode->getText();
-            }
+        foreach ($items as $item) {
+            $columns = $item->findElements(WebDriverBy::xpath('./td'));
+
+            $record              = (object) [];
+            $record->value       = $columns[0]->getText();
+            $record->description = $columns[1]->getText();
+            $record->reference   = $columns[2]->getText();
+
+            /** @var TDataSet $record */
+            $dataSet[] = $record;
         }
 
         return $dataSet;

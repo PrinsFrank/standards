@@ -9,7 +9,6 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSor
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
-use PrinsFrank\Standards\Dev\DomElementNotFoundException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Common;
@@ -36,11 +35,21 @@ class LanguageMapping implements Mapping
 
         $dataSet = [];
         /** @var RemoteWebElement $item */
-        foreach ($items as $i => $item) {
-            foreach ($item->findElements(WebDriverBy::xpath('./td')) as $j => $childNode) {
-                $dataSet[$i] ?? $dataSet[$i]                                                   = (object) [];
-                $dataSet[$i]->{['alpha3', 'alpha2', 'name', 'name_french', 'name_german'][$j]} = $childNode->getText();
+        foreach ($items as $item) {
+            $columns = $item->findElements(WebDriverBy::xpath('./td'));
+            if (count($columns) !== 5) {
+                continue;
             }
+
+            $record              = (object) [];
+            $record->alpha3      = $columns[0]->getText();
+            $record->alpha2      = $columns[1]->getText();
+            $record->name        = $columns[2]->getText();
+            $record->name_french = $columns[3]->getText();
+            $record->name_german = $columns[4]->getText();
+
+            /** @var TDataSet $record */
+            $dataSet[] = $record;
         }
 
         return $dataSet;
