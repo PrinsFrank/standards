@@ -29,6 +29,7 @@ class LanguageMapping implements Mapping
         return 'https://www.loc.gov/standards/iso639-2/php/code_list.php';
     }
 
+    /** @return list<TDataSet> */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $items = $crawler->filterXPath('//table[@width="100%"]/tbody/tr')->getIterator();
@@ -45,6 +46,10 @@ class LanguageMapping implements Mapping
         return $dataSet;
     }
 
+    /**
+     * @param list<TDataSet> $dataSet
+     * @return array<EnumFile>
+     */
     public static function toEnumMapping(array $dataSet): array
     {
         $languageAlpha2              = new EnumFile(LanguageAlpha2::class);

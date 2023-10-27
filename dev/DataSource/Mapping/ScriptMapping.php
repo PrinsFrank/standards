@@ -28,7 +28,7 @@ class ScriptMapping implements Mapping
         return 'https://www.unicode.org/iso15924/iso15924-codes.html';
     }
 
-    /** @return array<TDataSet> */
+    /** @return list<TDataSet> */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $items = $crawler->filterXPath('//table[@class="simple"]/tbody/tr')->getIterator();
@@ -46,7 +46,7 @@ class ScriptMapping implements Mapping
     }
 
     /**
-     * @param array<TDataSet> $dataSet
+     * @param list<TDataSet> $dataSet
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array

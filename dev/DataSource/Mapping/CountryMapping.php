@@ -13,7 +13,6 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSor
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
-use PrinsFrank\Standards\Dev\DomElementNotFoundException;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
@@ -28,6 +27,7 @@ class CountryMapping implements Mapping
         return 'https://www.iso.org/obp/ui/#search/code/';
     }
 
+    /** @return list<TDataSet> */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $client->waitFor('.v-select-select');
@@ -49,6 +49,10 @@ class CountryMapping implements Mapping
         return $dataSet;
     }
 
+    /**
+     * @param list<TDataSet> $dataSet
+     * @return array<EnumFile>
+     */
     public static function toEnumMapping(array $dataSet): array
     {
         $countryName    = new EnumFile(CountryName::class);

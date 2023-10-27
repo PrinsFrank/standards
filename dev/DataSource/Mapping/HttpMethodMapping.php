@@ -25,7 +25,7 @@ class HttpMethodMapping implements Mapping
         return 'https://www.iana.org/assignments/http-methods/http-methods.xhtml';
     }
 
-    /** @return array<TDataSet> */
+    /** @return list<TDataSet> */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $items = $crawler->filterXPath('//table[@id="table-methods"]/tbody/tr')->getIterator();
@@ -43,7 +43,7 @@ class HttpMethodMapping implements Mapping
     }
 
     /**
-     * @param array<TDataSet> $dataSet
+     * @param list<TDataSet> $dataSet
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array

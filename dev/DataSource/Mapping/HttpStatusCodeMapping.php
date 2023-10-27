@@ -25,7 +25,7 @@ class HttpStatusCodeMapping implements Mapping
         return 'https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml';
     }
 
-    /** @return array<TDataSet> */
+    /** @return list<TDataSet> */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $items = $crawler->filterXPath('//table[@id="table-http-status-codes-1"]/tbody/tr')->getIterator();
@@ -43,7 +43,7 @@ class HttpStatusCodeMapping implements Mapping
     }
 
     /**
-     * @param array<TDataSet> $dataSet
+     * @param list<TDataSet> $dataSet
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array

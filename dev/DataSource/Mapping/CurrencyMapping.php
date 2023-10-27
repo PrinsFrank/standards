@@ -29,7 +29,7 @@ class CurrencyMapping implements Mapping
         return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml';
     }
 
-    /** @return array<TDataSet> */
+    /** @return list<TDataSet> */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $domDocument = new DOMDocument();
@@ -56,7 +56,7 @@ class CurrencyMapping implements Mapping
     }
 
     /**
-     * @param array<TDataSet> $dataSet
+     * @param list<TDataSet> $dataSet
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array

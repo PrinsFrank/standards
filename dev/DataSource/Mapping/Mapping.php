@@ -15,11 +15,11 @@ interface Mapping
 {
     public static function url(): string;
 
-    /** @return array<TDataSet> */
+    /** @return list<TDataSet> */
     public static function toDataSet(Client $client, Crawler $crawler): array;
 
     /**
-     * @param array<TDataSet> $dataSet
+     * @param list<TDataSet> $dataSet
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array;
