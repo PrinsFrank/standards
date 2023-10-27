@@ -77,7 +77,9 @@ class CurrencyMapping implements Mapping
 
             $currencyAlpha3Enum->addCase(new EnumCase($currencyName, $dataRow->Ccy));
             $currencyNameEnum->addCase(new EnumCase($currencyName, $currencyName));
-            $currencyNumericEnum->addCase(new EnumCase($currencyName, $dataRow->CcyNbr));
+            if ($dataRow->CcyNbr !== null) {
+                $currencyNumericEnum->addCase(new EnumCase($currencyName, $dataRow->CcyNbr));
+            }
         }
 
         return [$currencyAlpha3Enum, $currencyNameEnum, $currencyNumericEnum];
