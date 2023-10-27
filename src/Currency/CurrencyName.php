@@ -30,6 +30,7 @@ enum CurrencyName: string
     case Belize_Dollar                                                     = 'Belize Dollar';
     case Bermudian_Dollar                                                  = 'Bermudian Dollar';
     case Bolivar_Soberano                                                  = 'Bolívar Soberano';
+    case Bolivar_Soberano_Old                                              = 'Bolívar Soberano_Old';
     case Boliviano                                                         = 'Boliviano';
     case Bond_Markets_Unit_European_Composite_Unit_EURCO                   = 'Bond Markets Unit European Composite Unit (EURCO)';
     case Bond_Markets_Unit_European_Monetary_Unit_E_M_U_6                  = 'Bond Markets Unit European Monetary Unit (E.M.U.-6)';
@@ -96,6 +97,7 @@ enum CurrencyName: string
     case Lek                                                               = 'Lek';
     case Lempira                                                           = 'Lempira';
     case Leone                                                             = 'Leone';
+    case Leone_Old                                                         = 'Leone_Old';
     case Liberian_Dollar                                                   = 'Liberian Dollar';
     case Libyan_Dinar                                                      = 'Libyan Dinar';
     case Lilangeni                                                         = 'Lilangeni';
