@@ -37,7 +37,7 @@ class LanguageMapping implements Mapping
         /** @var RemoteWebElement $item */
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
-            if (count($columns) !== 5) {
+            if (count($columns) !== 5 || $columns[2]->getText() === 'Reserved for local use') {
                 continue;
             }
 
