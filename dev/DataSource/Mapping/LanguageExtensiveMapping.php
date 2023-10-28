@@ -7,7 +7,7 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
-use PrinsFrank\Standards\LanguageExtensive\LanguageExtensiveAlpha3;
+use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
@@ -51,7 +51,7 @@ class LanguageExtensiveMapping implements Mapping
 
     public static function toEnumMapping(array $dataSet): array
     {
-        $languageExtensive = new EnumFile(LanguageExtensiveAlpha3::class);
+        $languageExtensive = new EnumFile(LanguageAlpha3Extensive::class);
         foreach ($dataSet as $dataItem) {
             if (in_array($dataItem->RefName, ['Fa D\'ambu', 'C\'lela'], true)) {
                 continue;
