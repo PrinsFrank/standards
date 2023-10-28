@@ -10,7 +10,8 @@ return (new PhpCsFixer\Config())->setRules(
         'no_extra_blank_lines'         => true,
         'class_attributes_separation'  => true,
         'array_syntax'                 => ['syntax' => 'short'],
-        'binary_operator_spaces'       => ['default' => 'align_single_space']
+        'binary_operator_spaces'       => ['default' => 'align_single_space'],
+        'no_unused_imports'            => true,
     ]
 )->setFinder(
     PhpCsFixer\Finder::create()

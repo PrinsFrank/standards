@@ -30,6 +30,7 @@ enum CurrencyNumeric: string
     case Belize_Dollar                                                     = '084';
     case Bermudian_Dollar                                                  = '060';
     case Bolivar_Soberano                                                  = '926';
+    case Bolivar_Soberano_Old                                              = '928';
     case Boliviano                                                         = '068';
     case Bond_Markets_Unit_European_Composite_Unit_EURCO                   = '955';
     case Bond_Markets_Unit_European_Monetary_Unit_E_M_U_6                  = '956';
@@ -96,6 +97,7 @@ enum CurrencyNumeric: string
     case Lek                                                               = '008';
     case Lempira                                                           = '340';
     case Leone                                                             = '925';
+    case Leone_Old                                                         = '694';
     case Liberian_Dollar                                                   = '430';
     case Libyan_Dinar                                                      = '434';
     case Lilangeni                                                         = '748';
