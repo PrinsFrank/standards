@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource;
 
+use PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageExtensiveMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\CountryMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\CurrencyMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\HttpMethodMapping;
@@ -24,6 +25,7 @@ class DataSourceMappingProvider
             CurrencyMapping::class,
             HttpMethodMapping::class,
             HttpStatusCodeMapping::class,
+            LanguageExtensiveMapping::class,
             LanguageMapping::class,
             ScriptMapping::class,
         ];
