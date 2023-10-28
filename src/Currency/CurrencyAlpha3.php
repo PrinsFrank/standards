@@ -30,6 +30,7 @@ enum CurrencyAlpha3: string
     case Belize_Dollar                                                     = 'BZD';
     case Bermudian_Dollar                                                  = 'BMD';
     case Bolivar_Soberano                                                  = 'VED';
+    case Bolivar_Soberano_Old                                              = 'VES';
     case Boliviano                                                         = 'BOB';
     case Bond_Markets_Unit_European_Composite_Unit_EURCO                   = 'XBA';
     case Bond_Markets_Unit_European_Monetary_Unit_E_M_U_6                  = 'XBB';
@@ -96,6 +97,7 @@ enum CurrencyAlpha3: string
     case Lek                                                               = 'ALL';
     case Lempira                                                           = 'HNL';
     case Leone                                                             = 'SLE';
+    case Leone_Old                                                         = 'SLL';
     case Liberian_Dollar                                                   = 'LRD';
     case Libyan_Dinar                                                      = 'LYD';
     case Lilangeni                                                         = 'SZL';
