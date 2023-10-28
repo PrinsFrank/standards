@@ -53,6 +53,10 @@ class LanguageExtensiveMapping implements Mapping
     {
         $languageExtensive = new EnumFile(LanguageExtensiveAlpha3::class);
         foreach ($dataSet as $dataItem) {
+            if (in_array($dataItem->RefName, ['Fa D\'ambu', 'C\'lela'], true)) {
+                continue;
+            }
+
             $languageExtensive->addCase(new EnumCase($dataItem->RefName, $dataItem->Id));
         }
 

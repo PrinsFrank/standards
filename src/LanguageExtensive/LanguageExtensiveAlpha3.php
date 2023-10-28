@@ -1691,7 +1691,6 @@ enum LanguageExtensiveAlpha3: string
     case Darmiya                                                  = 'drd';
     case Dolpo                                                    = 'dre';
     case Rungus                                                   = 'drg';
-    case C_lela                                                   = 'dri';
     case C_Lela                                                   = 'dri';
     case Paakantyi                                                = 'drl';
     case West_Damar                                               = 'drn';
@@ -1906,7 +1905,6 @@ enum LanguageExtensiveAlpha3: string
     case Uzekwe                                                   = 'eze';
     case Fasu                                                     = 'faa';
     case Fa_d_Ambu                                                = 'fab';
-    case Fa_D_ambu                                                = 'fab';
     case Wagi                                                     = 'fad';
     case Fagani                                                   = 'faf';
     case Finongan                                                 = 'fag';
