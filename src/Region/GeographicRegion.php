@@ -125,7 +125,7 @@ enum GeographicRegion: string
     /** @return list<CountryNumeric> */
     public function getDirectSubCountries(): array
     {
-        return match($this) {
+        return match ($this) {
             self::World => [
                 CountryNumeric::Antarctica,
             ],

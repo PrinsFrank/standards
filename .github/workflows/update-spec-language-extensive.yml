@@ -1,4 +1,4 @@
-name: Daily Language spec update
+name: Daily Scripts spec update
 
 on:
   workflow_dispatch:
@@ -14,17 +14,17 @@ jobs:
       - name: Install dependencies
         run: composer install
       - name: Run standard update command
-        run: composer update-spec-language
+        run: composer update-spec-language-extensive
       - name: Run CSFixer
         run: composer cs:fix
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: Automatic Language spec update from upstream changes
+          commit-message: Automatic Language Extensive spec update from upstream changes
           delete-branch: true
-          title: 'Automatic Language spec update'
-          branch: update-spec/language
+          title: 'Automatic Language Extensive spec update'
+          branch: update-spec/language-extensive
           body: |
             This PR makes sure the content of this package is updated with upstream changes in the specs.
           labels: |

@@ -38,6 +38,13 @@
             "@cs"
         ],
         "update-spec": "PrinsFrank\\Standards\\Dev\\SpecUpdater::update",
+        "update-spec-country": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\CountryMapping",
+        "update-spec-currency": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\CurrencyMapping",
+        "update-spec-http-methods": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\HttpMethodMapping",
+        "update-spec-http-status-codes": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\HttpStatusCodeMapping",
+        "update-spec-language-extensive": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageExtensiveMapping",
+        "update-spec-language": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageMapping",
+        "update-spec-scripts": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\ScriptMapping",
         "detect-drivers": "vendor/bin/bdi detect drivers"
     }
 }
