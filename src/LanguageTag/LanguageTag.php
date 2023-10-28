@@ -10,6 +10,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Common;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
+use UnitEnum;
 
 /**
  * @standard RFC5646
@@ -77,15 +78,21 @@ class LanguageTag
         return new self($primaryLanguageSubtag);
     }
 
+    /** @param mixed $subtag */
+    protected function convertEnumToSeparatedString($subtag): string
+    {
+        return $subtag instanceof UnitEnum ? self::SUBTAG_SEPARATOR . $subtag->value : '';
+    }
+
     public function __toString(): string
     {
         return $this->primaryLanguageSubtag->value
-            . ($this->extendedLanguageSubtag !== null ? self::SUBTAG_SEPARATOR . $this->extendedLanguageSubtag->value : '')
-            . ($this->scriptSubtag !== null ? self::SUBTAG_SEPARATOR . $this->scriptSubtag->value : '')
-            . ($this->regionSubtag !== null ? self::SUBTAG_SEPARATOR . $this->regionSubtag->value : '')
-            . ($this->variantSubtag !== null ? self::SUBTAG_SEPARATOR . $this->variantSubtag->value : '')
-            . ($this->extensionSubtag !== null ? self::SUBTAG_SEPARATOR . $this->extensionSubtag->value : '')
-            . ($this->privateUseSubtag !== null ? self::SUBTAG_SEPARATOR . $this->privateUseSubtag->value : '')
+            . $this->convertEnumToSeparatedString($this->extendedLanguageSubtag)
+            . $this->convertEnumToSeparatedString($this->scriptSubtag)
+            . $this->convertEnumToSeparatedString($this->regionSubtag)
+            . $this->convertEnumToSeparatedString($this->variantSubtag)
+            . $this->convertEnumToSeparatedString($this->extensionSubtag)
+            . $this->convertEnumToSeparatedString($this->privateUseSubtag)
         ;
     }
 }
