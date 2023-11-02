@@ -8,6 +8,7 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
+use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
 /** @coversDefaultClass \PrinsFrank\Standards\LanguageTag\LanguageTag */
@@ -88,6 +89,148 @@ class LanguageTagTest extends TestCase
         static::assertEquals(
             LanguageTag::createNormal(LanguageAlpha3Extensive::Yue_Chinese, regionSubtag: CountryAlpha2::Hong_Kong),
             LanguageTag::fromString('yue-HK'),
+        );
+    }
+
+    /**
+     * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
+     *
+     * @covers ::fromString
+     * @covers ::tryFromString
+     */
+    public function testFromStringLanguageScriptRegion(): void
+    {
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::Chinese, scriptSubtag: ScriptCode::Han_Simplified_variant, regionSubtag: CountryAlpha2::Hong_Kong),
+            LanguageTag::fromString('zh-Hans-CN'),
+        );
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::Serbian, scriptSubtag: ScriptCode::Latin, regionSubtag: CountryAlpha2::Serbia),
+            LanguageTag::fromString('sr-Latn-RS'),
+        );
+    }
+
+    /**
+     * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
+     *
+     * @covers ::fromString
+     * @covers ::tryFromString
+     */
+    public function testFromStringLanguageVariant(): void
+    {
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::Slovenian),
+            LanguageTag::fromString('sl-rozaj'),
+        );
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::Slovenian),
+            LanguageTag::fromString('sl-rozaj-biske'),
+        );
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::Slovenian),
+            LanguageTag::fromString('sl-nedis'),
+        );
+    }
+
+    /**
+     * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
+     *
+     * @covers ::fromString
+     * @covers ::tryFromString
+     */
+    public function testFromStringLanguageRegionVariant(): void
+    {
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::German, regionSubtag:  CountryAlpha2::Switzerland),
+            LanguageTag::fromString('de-CH-1901'),
+        );
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::Slovenian, regionSubtag: CountryAlpha2::Italy),
+            LanguageTag::fromString('sl-IT-nedis'),
+        );
+    }
+
+    /**
+     * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
+     *
+     * @covers ::fromString
+     * @covers ::tryFromString
+     */
+    public function testFromStringLanguageScriptRegionVariant(): void
+    {
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::Armenian, scriptSubtag: ScriptCode::Latin, regionSubtag:  CountryAlpha2::Switzerland),
+            LanguageTag::fromString('hy-Latn-IT-arevela'),
+        );
+    }
+
+    /**
+     * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
+     *
+     * @covers ::fromString
+     * @covers ::tryFromString
+     */
+    public function testFromStringLanguageRegion(): void
+    {
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::German, regionSubtag:  CountryAlpha2::Germany),
+            LanguageTag::fromString('de-DE'),
+        );
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::English, regionSubtag:  CountryAlpha2::United_States_of_America),
+            LanguageTag::fromString('en-US'),
+        );
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::Spanish_Castilian, regionSubtag: GeographicRegion::Latin_America_And_The_Caribbean),
+            LanguageTag::fromString('es-419'),
+        );
+    }
+
+    /**
+     * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
+     *
+     * @covers ::fromString
+     * @covers ::tryFromString
+     */
+    public function testFromStringPrivateUseSubTags(): void
+    {
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::German, regionSubtag:  CountryAlpha2::Germany),
+            LanguageTag::fromString('de-CH-x-phonebk'),
+        );
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::English, regionSubtag:  CountryAlpha2::United_States_of_America),
+            LanguageTag::fromString('az-Arab-x-AZE-derbend'),
+        );
+    }
+
+    /**
+     * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
+     *
+     * @covers ::fromString
+     * @covers ::tryFromString
+     */
+    public function testFromStringPrivateUseRegistryValues(): void
+    {
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::German, regionSubtag:  CountryAlpha2::Germany),
+            LanguageTag::fromString('x-whatever'),
+        );
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::English, regionSubtag:  CountryAlpha2::United_States_of_America),
+            LanguageTag::fromString('qaa-Qaaa-QM-x-southern'),
+        );
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::English, regionSubtag:  CountryAlpha2::United_States_of_America),
+            LanguageTag::fromString('de-Qaaa'),
+        );
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::English, regionSubtag:  CountryAlpha2::United_States_of_America),
+            LanguageTag::fromString('sr-Latn-QM'),
+        );
+        static::assertEquals(
+            LanguageTag::createNormal(LanguageAlpha2::English, regionSubtag:  CountryAlpha2::United_States_of_America),
+            LanguageTag::fromString('sr-Qaaa-RS'),
         );
     }
 
