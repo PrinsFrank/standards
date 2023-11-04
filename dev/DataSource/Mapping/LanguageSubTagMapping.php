@@ -43,18 +43,18 @@ class LanguageSubTagMapping implements Mapping
             foreach ($matches as $match) {
                 $value = $match['value'];
                 match ($match['key']) {
-                    'Type'            => $record->Type                      = $value,
-                    'Subtag'          => $record->Subtag                  = $value,
-                    'Description'     => $record->Description        = $value,
-                    'Added'           => $record->Added                    = $value,
+                    'Type'            => $record->Type           = $value,
+                    'Subtag'          => $record->Subtag         = $value,
+                    'Description'     => $record->Description    = $value,
+                    'Added'           => $record->Added          = $value,
                     'Suppress-Script' => $record->SuppressScript = $value,
-                    'Scope'           => $record->Scope                    = $value,
-                    'Macrolanguage'   => $record->Macrolanguage    = $value,
-                    'Comments'        => $record->Comments              = $value,
-                    'Deprecated'      => $record->Deprecated          = $value,
+                    'Scope'           => $record->Scope          = $value,
+                    'Macrolanguage'   => $record->Macrolanguage  = $value,
+                    'Comments'        => $record->Comments       = $value,
+                    'Deprecated'      => $record->Deprecated     = $value,
                     'Preferred-Value' => $record->PreferredValue = $value,
-                    'Prefix'          => $record->Prefix                  = $value,
-                    'Tag'             => $record->Tag                        = $value,
+                    'Prefix'          => $record->Prefix         = $value,
+                    'Tag'             => $record->Tag            = $value,
                     'as'              => null,
                     default           => throw new InvalidArgumentException('Unrecognized key "' . $match['key'] . '"'),
                 };
