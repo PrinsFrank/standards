@@ -27,7 +27,7 @@ class LanguageTag
         public readonly CountryAlpha2|GeographicRegion|null $regionSubtag = null,
         public readonly mixed $variantSubtag = null,
         public readonly mixed $extensionSubtag = null,
-        public readonly mixed $privateUseSubtag = null,
+        public readonly string|null $privateUseSubtag = null,
     ) {
     }
 
@@ -45,11 +45,11 @@ class LanguageTag
         );
     }
 
-    public static function createPrivateUse(): self
+    public static function createPrivateUse(string $privateUseSubTag): self
     {
         return new self(
             SingleCharacterSubtag::PRIVATE_USE,
-
+            privateUseSubtag: $privateUseSubTag,
         );
     }
 
@@ -57,7 +57,6 @@ class LanguageTag
     {
         return new self(
             SingleCharacterSubtag::GRANDFATHERED,
-
         );
     }
 
@@ -91,17 +90,5 @@ class LanguageTag
             ?? throw new InvalidArgumentException('Extended language sub tag "' . $languageTagSubTags[1] . '" is not a valid Alpha3 tag');
 
         return new self($primaryLanguageSubtag, $extendedLanguageSubTag);
-    }
-
-    public function __toString(): string
-    {
-        return $this->primaryLanguageSubtag->value
-            . ($this->extendedLanguageSubtag !== null ? self::SUBTAG_SEPARATOR . $this->extendedLanguageSubtag->value : '')
-            . ($this->scriptSubtag !== null ? self::SUBTAG_SEPARATOR . $this->scriptSubtag->value : '')
-            . ($this->regionSubtag !== null ? self::SUBTAG_SEPARATOR . $this->regionSubtag->value : '')
-            . ($this->variantSubtag !== null ? self::SUBTAG_SEPARATOR . $this->variantSubtag->value : '')
-            . ($this->extensionSubtag !== null ? self::SUBTAG_SEPARATOR . $this->extensionSubtag->value : '')
-            . ($this->privateUseSubtag !== null ? self::SUBTAG_SEPARATOR . $this->privateUseSubtag->value : '')
-        ;
     }
 }
