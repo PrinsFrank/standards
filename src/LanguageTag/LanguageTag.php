@@ -20,50 +20,15 @@ class LanguageTag
 {
     public const SUBTAG_SEPARATOR = '-';
 
-    private function __construct(
-        public readonly SingleCharacterSubtag|LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive $primaryLanguageSubtag,
+    public function __construct(
+        public readonly SingleCharacterSubtag|PrivateUsePrimarySubtag|LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive $primaryLanguageSubtag,
         public readonly LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive|null                                 $extendedLanguageSubtag = null,
         public readonly ScriptCode|null                                                                                             $scriptSubtag = null,
         public readonly CountryAlpha2|GeographicRegion|null                                                                         $regionSubtag = null,
-        public readonly mixed                                                                                                       $variantSubtag = null,
-        public readonly mixed                                                                                                       $extensionSubtag = null,
+        public readonly LanguageTagVariant|null                                                                                     $variantSubtag = null,
+        public readonly string|null                                                                                                 $extensionSubtag = null,
         public readonly string|null                                                                                                 $privateUseSubtag = null,
     ) {
-    }
-
-    public static function createNormal(
-        LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive $primaryLanguageSubtag,
-        LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive|null           $extendedLanguageSubtag = null,
-        ScriptCode|null                                                                       $scriptSubtag = null,
-        CountryAlpha2|GeographicRegion|null                                                   $regionSubtag = null,
-        mixed                                                                                 $variantSubtag = null,
-        mixed                                                                                 $extensionSubtag = null,
-        string|null                                                                           $privateUseSubtag = null,
-    ): self {
-        return new self(
-            $primaryLanguageSubtag,
-            $extendedLanguageSubtag,
-            $scriptSubtag,
-            $regionSubtag,
-            $variantSubtag,
-            $extensionSubtag,
-            $privateUseSubtag,
-        );
-    }
-
-    public static function createPrivateUse(string $privateUseSubTag): self
-    {
-        return new self(
-            SingleCharacterSubtag::PRIVATE_USE,
-            privateUseSubtag: $privateUseSubTag,
-        );
-    }
-
-    public static function createGrandFathered(): self
-    {
-        return new self(
-            SingleCharacterSubtag::GRANDFATHERED,
-        );
     }
 
     public static function tryFromString(string $languageTagString): ?self
@@ -86,13 +51,20 @@ class LanguageTag
                      ?? LanguageAlpha3Terminology::tryFrom($subTag)
                      ?? LanguageAlpha3Common::tryFrom($subTag)
                      ?? LanguageAlpha3Extensive::tryFrom($subTag)
+                     ?? PrivateUsePrimarySubtag::tryFrom($subTag)
                      ?? SingleCharacterSubtag::tryFrom($subTag)
                      ?? throw new InvalidArgumentException('Primary language sub tag "' . $subTag . '" is not a valid Alpha2/Alpha3 tag.');
-                if ($primaryLanguageSubtag === SingleCharacterSubtag::PRIVATE_USE) {
-                    return self::createPrivateUse(implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1)));
+                if ($primaryLanguageSubtag instanceof SingleCharacterSubtag) {
+                    return new self($primaryLanguageSubtag, privateUseSubtag: implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1)));
                 }
 
                 continue;
+            }
+
+            if (SingleCharacterSubtag::tryFrom($subTag) !== null) {
+                $privateUseSubtag = implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1));
+
+                break;
             }
 
             if ($extendedLanguageSubtag === null
