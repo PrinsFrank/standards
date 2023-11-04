@@ -177,9 +177,9 @@ enum ScriptAlias: string
     case Yi                                                                                          = 'Yi';
     case Zanabazar_Square_Zanabazarin_Dorboljin_Useg_Xewtee_Dorboljin_Bicig_Horizontal_Square_Script = 'Zanabazar_Square';
 
-    public function toScriptCode(): ScriptCode
+    public function toScriptNumber(): ScriptNumber
     {
-        return BackedEnum::fromKey(ScriptCode::class, $this->name);
+        return BackedEnum::fromKey(ScriptNumber::class, $this->name);
     }
 
     public function toScriptName(): ScriptName
@@ -187,8 +187,8 @@ enum ScriptAlias: string
         return BackedEnum::fromKey(ScriptName::class, $this->name);
     }
 
-    public function toScriptNumber(): ScriptNumber
+    public function toScriptCode(): ScriptCode
     {
-        return BackedEnum::fromKey(ScriptNumber::class, $this->name);
+        return BackedEnum::fromKey(ScriptCode::class, $this->name);
     }
 }

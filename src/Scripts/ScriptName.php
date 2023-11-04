@@ -240,13 +240,13 @@ enum ScriptName: string
         return BackedEnum::tryFromKey(ScriptAlias::class, $this->name);
     }
 
-    public function toScriptCode(): ScriptCode
-    {
-        return BackedEnum::fromKey(ScriptCode::class, $this->name);
-    }
-
     public function toScriptNumber(): ScriptNumber
     {
         return BackedEnum::fromKey(ScriptNumber::class, $this->name);
+    }
+
+    public function toScriptCode(): ScriptCode
+    {
+        return BackedEnum::fromKey(ScriptCode::class, $this->name);
     }
 }

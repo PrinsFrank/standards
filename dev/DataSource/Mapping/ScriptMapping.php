@@ -10,9 +10,9 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Scripts\ScriptAlias;
-use PrinsFrank\Standards\Scripts\ScriptCode;
-use PrinsFrank\Standards\Scripts\ScriptName;
 use PrinsFrank\Standards\Scripts\ScriptNumber;
+use PrinsFrank\Standards\Scripts\ScriptName;
+use PrinsFrank\Standards\Scripts\ScriptCode;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
@@ -69,10 +69,10 @@ class ScriptMapping implements Mapping
         foreach ($dataSet as $dataRow) {
             $name = preg_replace('/_+/', '_', str_replace('+', '_', preg_replace('/\p{No}/u', '', $dataRow->name) ?? '')) ?? '';
 
-            $scriptCode->addCase(new EnumCase($name, $dataRow->number));
+            $scriptCode->addCase(new EnumCase($name, $dataRow->code));
             $scriptName->addCase(new EnumCase($name, $dataRow->name));
-            $scriptNumber->addCase(new EnumCase($name, $dataRow->code));
-            if (trim($dataRow->alias) !== '' && $dataRow->number !== '241') {
+            $scriptNumber->addCase(new EnumCase($name, $dataRow->number));
+            if (trim($dataRow->alias) !== '' && $dataRow->code !== '241') {
                 $scriptAlias->addCase(new EnumCase($name, $dataRow->alias));
             }
         }
