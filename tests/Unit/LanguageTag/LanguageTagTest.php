@@ -8,6 +8,7 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
+use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
@@ -119,15 +120,15 @@ class LanguageTagTest extends TestCase
     public function testFromStringLanguageVariant(): void
     {
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::Slovenian),
+            LanguageTag::createNormal(LanguageAlpha2::Slovenian, variantSubtag: LanguageTagVariant::Rezijan),
             LanguageTag::fromString('sl-rozaj'),
         );
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::Slovenian),
+            LanguageTag::createNormal(LanguageAlpha2::Slovenian, variantSubtag: LanguageTagVariant::Rezijan),
             LanguageTag::fromString('sl-rozaj-biske'),
         );
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::Slovenian),
+            LanguageTag::createNormal(LanguageAlpha2::Slovenian, variantSubtag: LanguageTagVariant::Nadiza_dialect),
             LanguageTag::fromString('sl-nedis'),
         );
     }
@@ -141,11 +142,11 @@ class LanguageTagTest extends TestCase
     public function testFromStringLanguageRegionVariant(): void
     {
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::German, regionSubtag:  CountryAlpha2::Switzerland),
+            LanguageTag::createNormal(LanguageAlpha2::German, regionSubtag:  CountryAlpha2::Switzerland, variantSubtag: LanguageTagVariant::Traditional_German_orthography),
             LanguageTag::fromString('de-CH-1901'),
         );
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::Slovenian, regionSubtag: CountryAlpha2::Italy),
+            LanguageTag::createNormal(LanguageAlpha2::Slovenian, regionSubtag: CountryAlpha2::Italy, variantSubtag: LanguageTagVariant::Nadiza_dialect),
             LanguageTag::fromString('sl-IT-nedis'),
         );
     }
@@ -159,7 +160,7 @@ class LanguageTagTest extends TestCase
     public function testFromStringLanguageScriptRegionVariant(): void
     {
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::Armenian, scriptSubtag: ScriptCode::Latin, regionSubtag:  CountryAlpha2::Italy),
+            LanguageTag::createNormal(LanguageAlpha2::Armenian, scriptSubtag: ScriptCode::Latin, regionSubtag:  CountryAlpha2::Italy, variantSubtag: LanguageTagVariant::Eastern_Armenian),
             LanguageTag::fromString('hy-Latn-IT-arevela'),
         );
     }
