@@ -22,26 +22,32 @@ class LanguageTag
 
     private function __construct(
         public readonly SingleCharacterSubtag|LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive $primaryLanguageSubtag,
-        public readonly LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive|null $extendedLanguageSubtag = null,
-        public readonly ScriptCode|null $scriptSubtag = null,
-        public readonly CountryAlpha2|GeographicRegion|null $regionSubtag = null,
-        public readonly mixed $variantSubtag = null,
-        public readonly mixed $extensionSubtag = null,
-        public readonly string|null $privateUseSubtag = null,
+        public readonly LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive|null                                 $extendedLanguageSubtag = null,
+        public readonly ScriptCode|null                                                                                             $scriptSubtag = null,
+        public readonly CountryAlpha2|GeographicRegion|null                                                                         $regionSubtag = null,
+        public readonly mixed                                                                                                       $variantSubtag = null,
+        public readonly mixed                                                                                                       $extensionSubtag = null,
+        public readonly string|null                                                                                                 $privateUseSubtag = null,
     ) {
     }
 
     public static function createNormal(
         LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive $primaryLanguageSubtag,
-        LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive|null $extendedLanguageSubtag = null,
-        ScriptCode|null $scriptSubtag = null,
-        CountryAlpha2|GeographicRegion|null $regionSubtag = null,
+        LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive|null           $extendedLanguageSubtag = null,
+        ScriptCode|null                                                                       $scriptSubtag = null,
+        CountryAlpha2|GeographicRegion|null                                                   $regionSubtag = null,
+        mixed                                                                                 $variantSubtag = null,
+        mixed                                                                                 $extensionSubtag = null,
+        string|null                                                                           $privateUseSubtag = null,
     ): self {
         return new self(
             $primaryLanguageSubtag,
             $extendedLanguageSubtag,
             $scriptSubtag,
             $regionSubtag,
+            $variantSubtag,
+            $extensionSubtag,
+            $privateUseSubtag,
         );
     }
 
@@ -72,23 +78,51 @@ class LanguageTag
     /** @throws InvalidArgumentException */
     public static function fromString(string $languageTagString): self
     {
-        $languageTagSubTags = explode('-', $languageTagString);
-        $primaryLanguageSubtag = LanguageAlpha2::tryFrom($languageTagSubTags[0])
-            ?? LanguageAlpha3Terminology::tryFrom($languageTagSubTags[0])
-            ?? LanguageAlpha3Common::tryFrom($languageTagSubTags[0])
-            ?? LanguageAlpha3Extensive::tryFrom($languageTagSubTags[0])
-            ?? SingleCharacterSubtag::tryFrom($languageTagSubTags[0])
-            ?? throw new InvalidArgumentException('Primary language sub tag "' . $languageTagSubTags[0] . '" is not a valid Alpha2, Alpha3 or grandfathered/private use tag');
+        $primaryLanguageSubtag = $extendedLanguageSubtag = $scriptSubtag = $regionSubtag = $variantSubtag = $extensionSubtag = $privateUseSubtag = null;
+        $subTags = explode(self::SUBTAG_SEPARATOR, $languageTagString);
+        foreach ($subTags as $index => $subTag) {
+            if ($index === 0) {
+                $primaryLanguageSubtag = LanguageAlpha2::tryFrom($subTag)
+                     ?? LanguageAlpha3Terminology::tryFrom($subTag)
+                     ?? LanguageAlpha3Common::tryFrom($subTag)
+                     ?? LanguageAlpha3Extensive::tryFrom($subTag)
+                     ?? SingleCharacterSubtag::tryFrom($subTag)
+                     ?? throw new InvalidArgumentException('Primary language sub tag "' . $subTag . '" is not a valid Alpha2/Alpha3 tag.');
+                if ($primaryLanguageSubtag === SingleCharacterSubtag::PRIVATE_USE) {
+                    return self::createPrivateUse(implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1)));
+                }
 
-        if (array_key_exists(1, $languageTagSubTags) === false) {
-            return new self($primaryLanguageSubtag);
+                continue;
+            }
+
+            if ($extendedLanguageSubtag === null
+                && $regionSubtag === null
+                && $variantSubtag === null
+                && $extensionSubtag === null
+                && $privateUseSubtag === null
+                && ($matchesExtendedLanguage = LanguageAlpha3Terminology::tryFrom($subTag) ?? LanguageAlpha3Common::tryFrom($subTag) ?? LanguageAlpha3Extensive::tryFrom($subTag)) !== null) {
+                $extendedLanguageSubtag = $matchesExtendedLanguage;
+            } else if ($scriptSubtag === null
+                && $regionSubtag === null
+                && $variantSubtag === null
+                && $extensionSubtag === null
+                && $privateUseSubtag === null
+                && ($matchesScriptTag = ScriptCode::tryFrom($subTag)) !== null) {
+                $scriptSubtag = $matchesScriptTag;
+            } else if ($regionSubtag === null
+                && $variantSubtag === null
+                && $extensionSubtag === null
+                && $privateUseSubtag === null
+                && ($matchesRegionTag = CountryAlpha2::tryFrom($subTag) ?? GeographicRegion::tryFrom($subTag)) !== null) {
+                $regionSubtag = $matchesRegionTag;
+            } else if ($variantSubtag === null
+                && $extensionSubtag === null
+                && $privateUseSubtag === null
+                && ($matchesVariantTag = null) !== null) {
+                $variantSubtag = $matchesVariantTag;
+            }
         }
 
-        $extendedLanguageSubTag =  LanguageAlpha3Terminology::tryFrom($languageTagSubTags[1])
-            ?? LanguageAlpha3Common::tryFrom($languageTagSubTags[1])
-            ?? LanguageAlpha3Extensive::tryFrom($languageTagSubTags[1])
-            ?? throw new InvalidArgumentException('Extended language sub tag "' . $languageTagSubTags[1] . '" is not a valid Alpha3 tag');
-
-        return new self($primaryLanguageSubtag, $extendedLanguageSubTag);
+        return new self($primaryLanguageSubtag, $extendedLanguageSubtag, $scriptSubtag, $regionSubtag, $variantSubtag, $extensionSubtag, $privateUseSubtag);
     }
 }

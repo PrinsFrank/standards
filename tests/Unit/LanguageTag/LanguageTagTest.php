@@ -58,11 +58,11 @@ class LanguageTagTest extends TestCase
         );
         static::assertEquals(
             LanguageTag::createNormal(LanguageAlpha2::Serbian, scriptSubtag: ScriptCode::Cyrillic),
-            LanguageTag::fromString('Sr-Cyrl'),
+            LanguageTag::fromString('sr-Cyrl'),
         );
         static::assertEquals(
             LanguageTag::createNormal(LanguageAlpha2::Serbian, scriptSubtag: ScriptCode::Latin),
-            LanguageTag::fromString('Sr-Latn'),
+            LanguageTag::fromString('sr-Latn'),
         );
     }
 
@@ -75,11 +75,11 @@ class LanguageTagTest extends TestCase
     public function testFromStringExtendedLanguageSubtagsAndTheirPrimaryLanguageSubtagCounterparts(): void
     {
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::Chinese, LanguageAlpha3Extensive::Mandarin_Chinese, ScriptCode::Han_Simplified_variant, CountryAlpha2::Hong_Kong),
+            LanguageTag::createNormal(LanguageAlpha2::Chinese, LanguageAlpha3Extensive::Mandarin_Chinese, ScriptCode::Han_Simplified_variant, CountryAlpha2::China),
             LanguageTag::fromString('zh-cmn-Hans-CN'),
         );
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha3Extensive::Mandarin_Chinese, scriptSubtag: ScriptCode::Han_Simplified_variant, regionSubtag: CountryAlpha2::Hong_Kong),
+            LanguageTag::createNormal(LanguageAlpha3Extensive::Mandarin_Chinese, scriptSubtag: ScriptCode::Han_Simplified_variant, regionSubtag: CountryAlpha2::China),
             LanguageTag::fromString('cmn-Hans-CN'),
         );
         static::assertEquals(
@@ -101,7 +101,7 @@ class LanguageTagTest extends TestCase
     public function testFromStringLanguageScriptRegion(): void
     {
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::Chinese, scriptSubtag: ScriptCode::Han_Simplified_variant, regionSubtag: CountryAlpha2::Hong_Kong),
+            LanguageTag::createNormal(LanguageAlpha2::Chinese, scriptSubtag: ScriptCode::Han_Simplified_variant, regionSubtag: CountryAlpha2::China),
             LanguageTag::fromString('zh-Hans-CN'),
         );
         static::assertEquals(
@@ -159,7 +159,7 @@ class LanguageTagTest extends TestCase
     public function testFromStringLanguageScriptRegionVariant(): void
     {
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::Armenian, scriptSubtag: ScriptCode::Latin, regionSubtag:  CountryAlpha2::Switzerland),
+            LanguageTag::createNormal(LanguageAlpha2::Armenian, scriptSubtag: ScriptCode::Latin, regionSubtag:  CountryAlpha2::Italy),
             LanguageTag::fromString('hy-Latn-IT-arevela'),
         );
     }
@@ -195,11 +195,11 @@ class LanguageTagTest extends TestCase
     public function testFromStringPrivateUseSubTags(): void
     {
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::German, regionSubtag:  CountryAlpha2::Germany),
+            LanguageTag::createNormal(LanguageAlpha2::German, regionSubtag:  CountryAlpha2::Switzerland),
             LanguageTag::fromString('de-CH-x-phonebk'),
         );
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::English, regionSubtag:  CountryAlpha2::United_States_of_America),
+            LanguageTag::createNormal(LanguageAlpha2::Azerbaijani, scriptSubtag: ScriptCode::Arabic, privateUseSubtag: 'AZE-derbend'),
             LanguageTag::fromString('az-Arab-x-AZE-derbend'),
         );
     }
@@ -213,7 +213,7 @@ class LanguageTagTest extends TestCase
     public function testFromStringPrivateUseRegistryValues(): void
     {
         static::assertEquals(
-            LanguageTag::createNormal(LanguageAlpha2::German, regionSubtag:  CountryAlpha2::Germany),
+            LanguageTag::createPrivateUse(privateUseSubTag: 'whatever'),
             LanguageTag::fromString('x-whatever'),
         );
         static::assertEquals(
