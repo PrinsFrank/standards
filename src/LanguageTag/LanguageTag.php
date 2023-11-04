@@ -43,28 +43,23 @@ class LanguageTag
     /** @throws InvalidArgumentException */
     public static function fromString(string $languageTagString): self
     {
-        $primaryLanguageSubtag = $extendedLanguageSubtag = $scriptSubtag = $regionSubtag = $variantSubtag = $extensionSubtag = $privateUseSubtag = null;
         $subTags               = explode(self::SUBTAG_SEPARATOR, $languageTagString);
+        $primaryLanguageSubtag = LanguageAlpha2::tryFrom($subTags[0])
+            ?? LanguageAlpha3Terminology::tryFrom($subTags[0])
+            ?? LanguageAlpha3Common::tryFrom($subTags[0])
+            ?? LanguageAlpha3Extensive::tryFrom($subTags[0])
+            ?? PrivateUsePrimarySubtag::tryFrom($subTags[0])
+            ?? SingleCharacterSubtag::tryFrom($subTags[0])
+            ?? throw new InvalidArgumentException('Primary language sub tag "' . $subTags[0] . '" is not a valid Alpha2/Alpha3 tag.');
+
+        if ($primaryLanguageSubtag instanceof SingleCharacterSubtag) {
+            return new self($primaryLanguageSubtag, privateUseSubtag: implode(self::SUBTAG_SEPARATOR, array_slice($subTags, 1)));
+        }
+
+        $extendedLanguageSubtag = $scriptSubtag = $regionSubtag = $variantSubtag = $extensionSubtag = $privateUseSubtag = null;
         foreach ($subTags as $index => $subTag) {
             if ($index === 0) {
-                $primaryLanguageSubtag = LanguageAlpha2::tryFrom($subTag)
-                    ?? LanguageAlpha3Terminology::tryFrom($subTag)
-                    ?? LanguageAlpha3Common::tryFrom($subTag)
-                    ?? LanguageAlpha3Extensive::tryFrom($subTag)
-                    ?? PrivateUsePrimarySubtag::tryFrom($subTag)
-                    ?? SingleCharacterSubtag::tryFrom($subTag)
-                    ?? throw new InvalidArgumentException('Primary language sub tag "' . $subTag . '" is not a valid Alpha2/Alpha3 tag.');
-                if ($primaryLanguageSubtag instanceof SingleCharacterSubtag) {
-                    return new self($primaryLanguageSubtag, privateUseSubtag: implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1)));
-                }
-
                 continue;
-            }
-
-            if (SingleCharacterSubtag::tryFrom($subTag) !== null) {
-                $privateUseSubtag = implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1));
-
-                break;
             }
 
             if ($extendedLanguageSubtag === null
@@ -92,6 +87,10 @@ class LanguageTag
                 && $privateUseSubtag === null
                 && ($matchesVariantTag = LanguageTagVariant::tryFrom($subTag)) !== null) {
                 $variantSubtag = $matchesVariantTag;
+            } elseif (SingleCharacterSubtag::tryFrom($subTag) !== null) {
+                $privateUseSubtag = implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1));
+
+                break;
             }
         }
 

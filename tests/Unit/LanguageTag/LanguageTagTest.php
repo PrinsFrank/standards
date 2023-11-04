@@ -220,7 +220,7 @@ class LanguageTagTest extends TestCase
             LanguageTag::fromString('x-whatever'),
         );
         static::assertEquals(
-            new LanguageTag(PrivateUsePrimarySubtag::tryFrom('qaa'), scriptSubtag: ScriptCode::Reserved_for_private_use_start, privateUseSubtag: 'southern'),
+            new LanguageTag(new PrivateUsePrimarySubtag('qaa'), scriptSubtag: ScriptCode::Reserved_for_private_use_start, privateUseSubtag: 'southern'),
             LanguageTag::fromString('qaa-Qaaa-QM-x-southern'),
         );
         static::assertEquals(
