@@ -48,12 +48,12 @@ class LanguageTag
         foreach ($subTags as $index => $subTag) {
             if ($index === 0) {
                 $primaryLanguageSubtag = LanguageAlpha2::tryFrom($subTag)
-                     ?? LanguageAlpha3Terminology::tryFrom($subTag)
-                     ?? LanguageAlpha3Common::tryFrom($subTag)
-                     ?? LanguageAlpha3Extensive::tryFrom($subTag)
-                     ?? PrivateUsePrimarySubtag::tryFrom($subTag)
-                     ?? SingleCharacterSubtag::tryFrom($subTag)
-                     ?? throw new InvalidArgumentException('Primary language sub tag "' . $subTag . '" is not a valid Alpha2/Alpha3 tag.');
+                    ?? LanguageAlpha3Terminology::tryFrom($subTag)
+                    ?? LanguageAlpha3Common::tryFrom($subTag)
+                    ?? LanguageAlpha3Extensive::tryFrom($subTag)
+                    ?? PrivateUsePrimarySubtag::tryFrom($subTag)
+                    ?? SingleCharacterSubtag::tryFrom($subTag)
+                    ?? throw new InvalidArgumentException('Primary language sub tag "' . $subTag . '" is not a valid Alpha2/Alpha3 tag.');
                 if ($primaryLanguageSubtag instanceof SingleCharacterSubtag) {
                     return new self($primaryLanguageSubtag, privateUseSubtag: implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1)));
                 }
