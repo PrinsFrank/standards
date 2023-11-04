@@ -44,6 +44,7 @@
         "update-spec-http-status-codes": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\HttpStatusCodeMapping",
         "update-spec-language-extensive": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageExtensiveMapping",
         "update-spec-language": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageMapping",
+        "update-spec-language-subtag": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageSubTagMapping",
         "update-spec-scripts": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\ScriptMapping",
         "detect-drivers": "vendor/bin/bdi detect drivers"
     }

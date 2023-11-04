@@ -9,6 +9,7 @@ use PrinsFrank\Standards\Dev\DataSource\Mapping\CurrencyMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\HttpMethodMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\HttpStatusCodeMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageMapping;
+use PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageSubTagMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\Mapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\ScriptMapping;
 
@@ -27,6 +28,7 @@ class DataSourceMappingProvider
             HttpStatusCodeMapping::class,
             LanguageExtensiveMapping::class,
             LanguageMapping::class,
+            LanguageSubTagMapping::class,
             ScriptMapping::class,
         ];
     }
