@@ -81,6 +81,7 @@ enum ScriptAlias: string
     case Khmer                                                                                       = 'Khmer';
     case Khojki                                                                                      = 'Khojki';
     case Khudawadi_Sindhi                                                                            = 'Khudawadi';
+    case Georgian_Mkhedruli_and_Mtavruli                                                             = 'Georgian';
     case Lao                                                                                         = 'Lao';
     case Latin                                                                                       = 'Latin';
     case Lepcha_Rong                                                                                 = 'Lepcha';
