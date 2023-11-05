@@ -72,7 +72,7 @@ class ScriptMapping implements Mapping
             $scriptCode->addCase(new EnumCase($name, $dataRow->code));
             $scriptName->addCase(new EnumCase($name, $dataRow->name));
             $scriptNumber->addCase(new EnumCase($name, $dataRow->number));
-            if (trim($dataRow->alias) !== '' && $dataRow->code !== '241') {
+            if (trim($dataRow->alias) !== '' && $dataRow->number !== '241') {
                 $scriptAlias->addCase(new EnumCase($name, $dataRow->alias));
             }
         }
