@@ -36,7 +36,7 @@ In the Country, Currency and language specifications, there is also a relation b
 
 This package adheres to [semver](https://semver.org/). This means that there are no breaking changes between minor releases (for example from 1.1 to 1.2), but that breaking changes are released as a major release (for example from 1.x to 2.x). To read about upgrading from one major release to the next, please refer to the [UPGRADING.md](./UPGRADING.md) file in the root of this project. 
 
-## Country (ISO3166)
+## Country (ISO3166-1)
 
 [![Daily country spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
 
@@ -45,16 +45,17 @@ All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the
 ### At a glance
 
 ```php
-CountryAlpha2::from('NL');                                               // CountryAlpha2::Netherlands
-CountryNumeric::from('528');                                             // CountryNumeric::Netherlands
-CountryNumeric::fromInt(528);                                            // CountryNumeric::Netherlands
-CountryAlpha3::from('NLD');                                              // CountryAlpha3::Netherlands
-CountryAlpha3::from('NLD')->toCountryAlpha2()->value;                    // 'NL'
-CountryAlpha3::from('NLD')->toCountryNumeric()->value;                   // '528'
-CountryAlpha3::from('NLD')->toCountryNumeric()->valueAsInt();            // 528
-CountryAlpha3::from('NLD')->toCountryName()->value;                      // 'Netherlands (Kingdom of the)'
-CountryAlpha3::from('NLD')->isMemberOf(EU::class);                       // true
-CountryAlpha3::from('NLD')->toCountryAlpha2()->toCountryAlpha3()->value; // 'NLD'
+CountryAlpha2::from('NL');                                    // CountryAlpha2::Netherlands
+CountryNumeric::from('528');                                  // CountryNumeric::Netherlands
+CountryNumeric::fromInt(528);                                 // CountryNumeric::Netherlands
+CountryAlpha3::from('NLD');                                   // CountryAlpha3::Netherlands
+CountryAlpha3::from('NLD')->value;                            // 'NLD'
+CountryAlpha3::from('NLD')->name;                             // 'Netherlands'
+CountryAlpha3::from('NLD')->toCountryAlpha2()->value;         // 'NL'
+CountryAlpha3::from('NLD')->toCountryNumeric()->value;        // '528'
+CountryAlpha3::from('NLD')->toCountryNumeric()->valueAsInt(); // 528
+CountryAlpha3::from('NLD')->toCountryName()->value;           // 'Netherlands (Kingdom of the)'
+CountryAlpha3::from('NLD')->isMemberOf(EU::class);            // true
 ```
 
 <details>
