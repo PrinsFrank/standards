@@ -40,13 +40,111 @@ This package adheres to [semver](https://semver.org/). This means that there are
 
 [![Daily country spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
 
-All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the other country enums. [These can be converted using their corresponding methods](/docs/country.md). 
+All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the other country enums. These can be converted using their corresponding methods. 
 
-| Key         | CountryAlpha2 | CountryAlpha3 | CountryNumeric | CountryName       |
-|-------------|---------------|---------------|----------------|-------------------|
-| Netherlands | NL            | NLD           | 528            | Netherlands (the) |
-| Turkey      | TR            | TUR           | 792            | Türkiye           |
-| ...         | ...           | ...           | ...            | ...               |
+<details>
+    <summary>Full documentation</summary>
+
+```mermaid
+erDiagram
+    CountryAlpha3 ||--|| CountryName: equals
+    CountryAlpha3 ||--|| CountryAlpha2: equals
+    CountryAlpha3 ||--|| CountryNumeric: equals
+
+    CountryNumeric ||--|| CountryName: equals
+
+    CountryName ||--|| CountryAlpha2: equals
+    CountryNumeric ||--|| CountryAlpha2: eguals
+
+    CountryAlpha2 {
+        Netherlands NL
+    }
+
+    CountryAlpha3 {
+        Netherlands NLD
+    }
+
+    CountryNumeric {
+        Netherlands _528
+    }
+
+    CountryName {
+        Netherlands Netherlands_(Kingdom_of_the)
+    }
+
+    CountryAlpha2 }o--o| Brics: isMemberOf
+    CountryAlpha2 }o--o| EEA: isMemberOf
+    CountryAlpha2 }o--o| EFTA: isMemberOf
+    CountryAlpha2 }o--o| EU: isMemberOf
+    CountryAlpha2 }o--o| NATO: isMemberOf
+    CountryAlpha2 }o--o| Schengen: isMemberOf
+```
+
+
+### CountryAlpha2
+
+```php
+$valueAlpha2 = CountryAlpha2::from('NL');         // CountryAlpha2::Netherlands
+$value = $valueAlpha2->value;                     // 'NL'
+$valueName = $valueAlpha2->name;                  // 'Netherlands'
+$valueAlpha3 = $valueAlpha2->toCountryAlpha3();   // CountryAlpha3::Netherlands
+$valueNumeric = $valueAlpha2->toCountryNumeric(); // CountryNumeric::Netherlands
+$valueName = $valueAlpha2->toCountryName();       // CountryName::Netherlands
+
+$nameString = $valueAlpha2->toCountryName()->value; // 'Netherlands (Kingdom of the)'
+
+$isMemberOfEu = $valueAlpha2->isMemberOf(EU::class);       // true
+$isMemberOfBrics = $valueAlpha2->isMemberOf(Brics::class); // false
+```
+
+### CountryAlpha3
+
+```php
+$valueAlpha3 = CountryAlpha3::from('NLD');        // CountryAlpha3::Netherlands
+$value = $valueAlpha3->value;                     // 'NLD'
+$valueName = $valueAlpha3->name;                  // 'Netherlands'
+$valueAlpha2 = $valueAlpha3->toCountryAlpha2();   // CountryAlpha2::Netherlands
+$valueNumeric = $valueAlpha3->toCountryNumeric(); // CountryNumeric::Netherlands
+$valueName = $valueAlpha3->toCountryName();       // CountryName::Netherlands
+
+$nameString = $valueAlpha3->toCountryName()->value; // 'Netherlands (Kingdom of the)'
+
+$isMemberOfEu = $valueAlpha3->isMemberOf(EU::class);       // true
+$isMemberOfBrics = $valueAlpha3->isMemberOf(Brics::class); // false
+```
+
+### CountryNumeric
+
+```php
+$valueNumeric = CountryNumeric::from('528');     // CountryNumeric::Netherlands
+$valueNumeric = CountryNumeric::fromInt(528);    // CountryNumeric::Netherlands
+$value = $valueNumeric->value;                   // '528'
+$valueName = $valueNumeric->name;                // 'Netherlands'
+$valueAlpha2 = $valueNumeric->toCountryAlpha2(); // CountryAlpha2::Netherlands
+$valueAlpha3 = $valueNumeric->toCountryAlpha3(); // CountryAlpha3::Netherlands
+$valueName = $valueNumeric->toCountryName();     // CountryName::Netherlands
+
+$nameString = $valueNumeric->toCountryName()->value; // 'Netherlands (Kingdom of the)'
+
+$isMemberOfEu = $valueNumeric->isMemberOf(EU::class);       // true
+$isMemberOfBrics = $valueNumeric->isMemberOf(Brics::class); // false
+```
+
+### CountryName
+
+```php
+$valueName = CountryName::from('Netherlands (Kingdom of the)'); // CountryName::Netherlands
+$value = $valueName->value;                                     // 'Netherlands (Kingdom of the)'
+$valueName = $valueName->name;                                  // 'Netherlands'
+$valueAlpha2 = $valueName->toCountryAlpha2();                   // CountryAlpha2::Netherlands
+$valueAlpha3 = $valueName->toCountryAlpha3();                   // CountryAlpha3::Netherlands
+$valueNumeric = $valueName->toCountryNumeric();                 // CountryNumeric::Netherlands
+
+$isMemberOfEu = $valueName->isMemberOf(EU::class);       // true
+$isMemberOfBrics = $valueName->isMemberOf(Brics::class); // false
+```
+
+</details>
 
 ## Currency (ISO4217)
 
