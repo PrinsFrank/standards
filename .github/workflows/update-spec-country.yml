@@ -1,4 +1,4 @@
-name: Daily Country spec update
+name: Daily Country update
 
 on:
   workflow_dispatch:

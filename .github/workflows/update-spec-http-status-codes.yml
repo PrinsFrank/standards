@@ -1,4 +1,4 @@
-name: Daily HTTP status code spec update
+name: Daily HTTP status update
 
 on:
   workflow_dispatch:

@@ -1,4 +1,4 @@
-name: Daily HTTP Method spec update
+name: Daily HTTP Method update
 
 on:
   workflow_dispatch:

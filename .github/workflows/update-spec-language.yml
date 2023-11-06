@@ -1,4 +1,4 @@
-name: Daily Language spec update
+name: Daily Language update
 
 on:
   workflow_dispatch:

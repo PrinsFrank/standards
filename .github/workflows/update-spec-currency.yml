@@ -1,4 +1,4 @@
-name: Daily Currency spec update
+name: Daily Currency update
 
 on:
   workflow_dispatch:

@@ -1,4 +1,4 @@
-name: Daily Scripts spec update
+name: Daily Scripts update
 
 on:
   workflow_dispatch:
