@@ -56,6 +56,10 @@ CountryAlpha3::from('NLD')->toCountryNumeric()->value;        // '528'
 CountryAlpha3::from('NLD')->toCountryNumeric()->valueAsInt(); // 528
 CountryAlpha3::from('NLD')->toCountryName()->value;           // 'Netherlands (Kingdom of the)'
 CountryAlpha3::from('NLD')->isMemberOf(EU::class);            // true
+
+public function foo(CountryAlpha2 $countryAlpha2) {}          // Use spec as typehint to enforce valid value
+
+$country = CountryAlpha2::Netherlands;                        // Use specific value from spec explicitly
 ```
 
 <details>
