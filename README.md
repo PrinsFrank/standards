@@ -42,6 +42,21 @@ This package adheres to [semver](https://semver.org/). This means that there are
 
 All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the other country enums. These can be converted using their corresponding methods. 
 
+### At a glance
+
+```php
+CountryAlpha2::from('NL');                                               // CountryAlpha2::Netherlands
+CountryNumeric::from('528');                                             // CountryNumeric::Netherlands
+CountryNumeric::fromInt(528);                                            // CountryNumeric::Netherlands
+CountryAlpha3::from('NLD');                                              // CountryAlpha3::Netherlands
+CountryAlpha3::from('NLD')->toCountryAlpha2()->value;                    // 'NL'
+CountryAlpha3::from('NLD')->toCountryNumeric()->value;                   // '528'
+CountryAlpha3::from('NLD')->toCountryNumeric()->valueAsInt();            // 528
+CountryAlpha3::from('NLD')->toCountryName()->value;                      // 'Netherlands (Kingdom of the)'
+CountryAlpha3::from('NLD')->isMemberOf(EU::class);                       // true
+CountryAlpha3::from('NLD')->toCountryAlpha2()->toCountryAlpha3()->value; // 'NLD'
+```
+
 <details>
     <summary>Full documentation</summary>
 
