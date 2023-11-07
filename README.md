@@ -103,7 +103,6 @@ erDiagram
     CountryAlpha2 }o--o| Schengen: isMemberOf
 ```
 
-
 ### CountryAlpha2
 
 ```php
@@ -173,25 +172,166 @@ $isMemberOfBrics = $valueName->isMemberOf(Brics::class); // false
 
 [![Daily currency spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
 
-All the Alpha3, Numeric and Name values have a corresponding enum in the other currency enums. [These can be converted using their corresponding methods](/docs/currency.md).
+All the Alpha3, Numeric and Name values have a corresponding enum in the other currency enums. These can be converted using their corresponding methods.
 
-| Key          | CurrencyAlpha3 | CurrencyNumeric | CurrencyName |
-|--------------|----------------|-----------------|--------------|
-| Euro         | EUR            | 978             | Euro         |
-| Turkish_Lira | TRY            | 949             | Turkish Lira |
-| ...          | ...            | ...             | ...          |
+```mermaid
+classDiagram
+    direction LR
+    class ISO4217_Alpha_3 {
+        +String value [EUR]
+        from(string $value) self
+        tryfrom(string $value) self|null
+        toISO4217_Name()
+        toISO4217_Numeric()
+    }
+    class ISO4217_Name {
+        +String value [Euro]
+        from(string $value) self
+        tryfrom(string $value) self|null
+        toISO4217_Alpha_3()
+        toISO4217_Numeric()
+    }
+    class ISO4217_Numeric {
+        +String value [978]
+        from(string $value) self
+        tryfrom(string $value) self|null
+        toISO4217_Alpha_3()
+        toISO4217_Name()
+    }
+    
+    ISO4217_Name <--> ISO4217_Numeric
+    ISO4217_Name <--> ISO4217_Alpha_3
+    ISO4217_Numeric <--> ISO4217_Alpha_3
+```
+
+### ISO 4217 Alpha-3
+
+```php
+$valueAlpha3 = ISO4217_Alpha_3::from('EUR');        // ISO4217_Alpha_3::Euro
+$value = $valueAlpha3->value;                      // 'EUR'
+$valueName = $valueAlpha3->name;                   // 'Euro'
+$valueNumeric = $valueAlpha3->toISO4217_Numeric(); // ISO4217_Numeric::Euro
+```
+
+### ISO 4217 Numeric
+
+```php
+$valueNumeric = ISO4217_Numeric::from('978');     // ISO4217_Numeric::Euro
+$valueNumeric = ISO4217_Numeric::fromInt(978);    // ISO4217_Numeric::Euro
+$value = $valueNumeric->value;                    // '978'
+$valueName = $valueNumeric->name;                 // 'Euro'
+$valueAlpha3 = $valueNumeric->toISO4217_Alpha_3(); // ISO4217_Alpha_3::Euro
+```
 
 ## Language (ISO639)
 
 [![Daily language spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
 
-The language specification is a bit more complex, as there are 20 alpha3 codes that have both a Bibliographic and a Terminology code. All the other ones have a common one. So if you decide you want the alpha3 representation of an alpha2 code, you can convert it to either Terminology or Bibliographic, where if it is not available you will get an instance of the common enum. [More documentation can be found here](/docs/language.md).
+The language specification is a bit more complex, as there are 20 alpha3 codes that have both a Bibliographic and a Terminology code. All the other ones have a common one. So if you decide you want the alpha3 representation of an alpha2 code, you can convert it to either Terminology or Bibliographic, where if it is not available you will get an instance of the common enum.
 
-| Key           | LanguageAlpha2 | LanguageAlpha3Bibliographic | LanguageAlpha3Common | LanguageAlpha3Terminology | LanguageName   |
-|---------------|----------------|-----------------------------|----------------------|---------------------------|----------------|
-| Dutch_Flemish | nl             | dut                         |                      | nld                       | Dutch; Flemish |
-| Turkish       | tr             |                             | tur                  |                           | Turkish        |
-| ...           | ...            | ...                         | ...                  | ...                       | ...            |
+```mermaid
+classDiagram
+    direction LR
+    class ISO639_Name {
+        +String value [English]
+        from(string $value) self
+        tryfrom(string $value) self|null
+    }
+    class ISO639_1_Alpha_2 {
+        +String value [en]
+        from(string $value) self
+        tryfrom(string $value) self|null
+    }
+    class ISO639_2_Alpha_3_Common {
+        +String value [eng]
+        from(string $value) self
+        tryfrom(string $value) self|null
+    }
+    class ISO639_2_Alpha_3_Terminology {
+        N/A
+        from(string $value) self
+        tryfrom(string $value) self|null
+    }
+    class ISO639_2_Alpha_3_Bibliographic {
+        N/A
+        from(string $value) self
+        tryfrom(string $value) self|null
+    }
+    
+    ISO639_Name <--> ISO639_1_Alpha_2
+    ISO639_Name <--> ISO639_2_Alpha_3_Common
+    ISO639_Name <--> ISO639_2_Alpha_3_Bibliographic
+    ISO639_Name <--> ISO639_2_Alpha_3_Terminology
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Bibliographic
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Terminology
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Common
+    ISO639_2_Alpha_3_Bibliographic <--> ISO639_2_Alpha_3_Terminology
+```
+
+```mermaid
+classDiagram
+    direction LR
+    class ISO639_Name {
+        +String value [Albanian]
+        from(string $value) self
+        tryfrom(string $value) self|null
+    }
+    class ISO639_1_Alpha_2 {
+        +String value [sq]
+        from(string $value) self
+        tryfrom(string $value) self|null
+    }
+    class ISO639_2_Alpha_3_Common {
+        N/A
+        from(string $value) self
+        tryfrom(string $value) self|null
+    }
+    class ISO639_2_Alpha_3_Terminology {
+        +String value [alb]
+        from(string $value) self
+        tryfrom(string $value) self|null
+    }
+    class ISO639_2_Alpha_3_Bibliographic {
+        +String value [sqi]
+        from(string $value) self
+        tryfrom(string $value) self|null
+    }
+    
+    ISO639_Name <--> ISO639_1_Alpha_2
+    ISO639_Name <--> ISO639_2_Alpha_3_Common
+    ISO639_Name <--> ISO639_2_Alpha_3_Terminology
+    ISO639_Name <--> ISO639_2_Alpha_3_Bibliographic
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Bibliographic
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Terminology
+    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Common
+    ISO639_2_Alpha_3_Bibliographic <--> ISO639_2_Alpha_3_Terminology
+```
+
+### ISO 639-1
+
+```php
+$valueAlpha2 = ISO639_1_Alpha_2::from('nl');                                  // ISO639_1_Alpha_2::Dutch_Flemish
+$value = $valueAlpha2->value;                                                 // 'nl'
+$valueName = $valueAlpha2->name;                                              // 'Dutch_Flemish'
+$valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); // ISO639_2_Alpha_3_Bibliographic::Dutch_Flemish
+$valueAlpha3Terminology = $valueAlpha2->toISO639_2_Alpha_3_Terminology();     // ISO639_2_Alpha_3_Terminology::Dutch_Flemish
+```
+
+### ISO 639-2 (Common, Bibliographic and Terminology)
+
+```php
+$valueAlpha2 = ISO639_2_Alpha_3_Bibliographic::from('dut');               // ISO639_1_Alpha_2::Dutch_Flemish
+$value = $valueAlpha2->value;                                             // 'dut'
+$valueName = $valueAlpha2->name;                                          // 'Dutch_Flemish'
+$valueAlpha2 = $valueAlpha2->toISO639_1_Alpha_2();                        // ISO639_1_Alpha_2::Dutch_Flemish
+$valueAlpha3Terminology = $valueAlpha2->toISO639_2_Alpha_3_Terminology(); // ISO639_2_Alpha_3_Terminology::Dutch_Flemish
+
+$valueAlpha2 = ISO639_2_Alpha_3_Terminology::from('nld');                     // ISO639_1_Alpha_2::Dutch_Flemish
+$value = $valueAlpha2->value;                                                 // 'nld'
+$valueName = $valueAlpha2->name;                                              // 'Dutch_Flemish'
+$valueAlpha2 = $valueAlpha2->toISO639_1_Alpha_2();                            // ISO639_1_Alpha_2::Dutch_Flemish
+$valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); // ISO639_2_Alpha_3_Bibliographic::Dutch_Flemish
+```
 
 ## Country Calling Codes (ITU-T E.164)
 
@@ -206,13 +346,13 @@ Country calling codes are quite straight forward. One Exception is that the +1 p
 
 [![Daily HTTP Status code spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml)
 
-HTTP Status codes are quite straightforward. For some code examples [you can look in the documentation](/docs/http_status_code.md).
+HTTP Status codes are quite straightforward. 
 
-| Key               | HttpStatusCode |
-|-------------------|----------------|
-| Moved_Permanently | 301            |
-| Not_Found         | 404            |
-| ...               | ...            |
+```php
+$code = HttpStatusCode::from(404);                                     // HttpStatusCode::Not_Found
+$value = $code->value;                                                 // 404
+$valueName = $code->name;                                              // Not_Found
+```
 
 ## HTTP Methods
 
