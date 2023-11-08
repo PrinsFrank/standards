@@ -197,10 +197,10 @@ CurrencySymbol::forCurrency(CurrencyAlpha3::Euro)         // CurrencySymbol::Eur
 CurrencySymbol::forCurrency(CurrencyNumeric::Euro)        // CurrencySymbol::Euro
 CurrencySymbol::forCurrency(CurrencyName::Euro)           // CurrencySymbol::Euro
 CurrencySymbol::forCurrency(CurrencyNumeric::from('978')) // CurrencySymbol::Euro
+CurrencyAlpha3::Euro;                                     // CurrencyAlpha3::Euro
 
 public function foo(CurrencyAlpha3 $currencyAlpha3) {}    // Use spec as typehint to enforce valid value
 
-$currency = CurrencyAlpha3::Euro;                         // Use specific value from spec explicitly
 ```
 
 <details>
@@ -425,16 +425,21 @@ $valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); //
 
 ## Country Calling Codes (ITU-T E.164)
 
-> :mortar_board: **Country calling codes can be anywhere from 1 to 3 digits, and can span several countries**
+> :mortar_board: **Country calling codes can be anywhere from 1 to 3 digits, and can span several countries. There are no leading zeros in this specification.**
 
 ### At a glance
 
 Country calling codes are quite straight forward. One Exception is that the +1 prefix is used across a lot of countries, and there is no standard for sub-numbering plans. 
 
-| Key                        | InternationalCallPrefix |
-|----------------------------|-------------------------|
-| Netherlands_Kingdom_of_the | 31                      |
-| Turkey                     | 90                      |
+```php
+CountryCallingCode::from(1);                    // CountryCallingCode::Integrated_numbering_plan
+CountryCallingCode::from(31);                   // CountryCallingCode::Netherlands_Kingdom_of_the
+CountryCallingCode::from(31)->value;            // 31
+CountryCallingCode::from(31)->name;             // 'Netherlands_Kingdom_of_the'
+CountryCallingCode::Netherlands_Kingdom_of_the; // CountryCallingCode::Netherlands_Kingdom_of_the
+
+public function foo(CountryCallingCode $countryCallingCode) {} // Use spec as typehint to enforce valid value
+```
 
 ## HTTP Status Codes
 
@@ -446,6 +451,8 @@ Country calling codes are quite straight forward. One Exception is that the +1 p
 HttpStatusCode::from(404);       // HttpStatusCode::Not_Found
 HttpStatusCode::from(404->value; // 404
 HttpStatusCode::from(404->name;  // Not_Found
+
+public function foo(HttpStatusCode $httpStatusCode) {} // Use spec as typehint to enforce valid value
 ```
 
 ## HTTP Methods
@@ -458,7 +465,9 @@ HttpStatusCode::from(404->name;  // Not_Found
 HttpMethod::from('POST');        // HttpMethod::Post
 HttpMethod::from('POST')->value; // 'POST'
 HttpMethod::from('POST')->name;  // Post
-HttpMethod::Post;                // HttpMethod::Post 
+HttpMethod::Post;                // HttpMethod::Post
+
+public function foo(HttpMethod $httpMethod) {} // Use spec as typehint to enforce valid value
 ```
 
 ## Geographic regions
@@ -478,6 +487,8 @@ GeographicRegion::from('150')->getAllSubRegions();      // [GeographicRegion::Ea
 
 GeographicRegion::from('150')->getDirectSubCountries(); // []
 GeographicRegion::from('150')->getAllSubCountries();    // [CountryNumeric::Belarus, CountryNumeric::Bulgaria, ...]
+
+public function foo(GeographicRegion $geographicRegion) {} // Use spec as typehint to enforce valid value
 ```
 
 ## Scripts
