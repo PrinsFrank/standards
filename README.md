@@ -43,6 +43,8 @@ This package adheres to [semver](https://semver.org/). This means that there are
 
 ### At a glance
 
+> :mortar_board: **Country codes are always UPPERCASE to avoid confusion with language codes. It is recommended to use ALPHA-3 codes when exposing the specification in APIs** 
+
 All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the other country enums. These can be converted using their corresponding methods (toAlpha2, toAlpha3 etc...).
 
 Country group membership can be checked by calling the `isMemberOf` method, supplying the FQN of a class that implements the `GroupInterface`. Several country groups are available: BRICS, EEA, EFTA etc.
