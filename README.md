@@ -32,6 +32,88 @@ This package implements a bunch of specs as PHP Enums, so you can typehint them 
 
 In the Country, Currency and language specifications, there is also a relation between different enums. For example, the Alpha2 country code 'NL' is related to the Alpha3 'NLD', the numeric value '528' and the name 'Netherlands (the)'. Internally, these specs rely on the fact that the keys for these values are identical, so it is possible to convert between these.
 
+## Entities and their relations
+
+All specifications in this package are closely related, except for the Http status code and methods. Not all relations are bidirectional though. For example, a language tag is build up of a language and optionally a country, but only a country cannot be converted to a language tag. 
+
+Below you can find an overview of all the relationships between specifications. As not all relationships are implemented yet, a dotted line indicates when there is a relationship, but that has not yet been implemented in this package.
+
+```mermaid
+erDiagram
+    Country {
+        class CountryAlpha2
+        class CountryAlpha3
+        class CountryNumeric
+        class CountryName
+    }
+    GeographicRegion {
+        class GeographicRegion
+    }
+    CountryGroup {
+        class BRICS
+        class EEA
+        class EFTA
+        class EU
+        class NATO
+        class Schengen
+    }
+    CountryCallingCode {
+        class CountryCallingCode
+    }
+    Currency {
+        class CurrencyAlpha3
+        class CurrencyName
+        class CurrencyNumeric
+    }
+    CurrencySymbol {
+        class CurrencySymbol
+    }
+    InternationalCallPrefix {
+        class InternationalCallPrefix
+    }
+    Language {
+        class LanguageName
+        class LanguageAlpha2
+        class LanguageAlpha3Common
+        class LanguageAlpha3Bibliographic
+        class LanguageAlpha3Terminology
+        class LanguageAlpha3Extensive
+    }
+    Script {
+        class ScriptAlias
+        class ScriptCode
+        class ScriptName
+        class ScriptNumber
+    }
+    LanguageTag {
+        class LanguageTag
+        class LanguageTagVariant
+        class PrivateUsePrimarySubtag
+        class SingleCharacterSubtag
+    }
+    HttpMethod {
+        class HtppMethod
+    }
+    HttpStatusCode {
+        class HttpStatusCode
+    }
+
+    GeographicRegion }|--o{ Country: containment
+    GeographicRegion ||--o{ GeographicRegion: containment
+    Language }o..o{ Country: usage
+    Country }|--o{ CountryGroup: membership
+    Country }|..o{ CountryCallingCode: direction
+    Country }o..o{ Currency: usage
+    Country }|..o{ InternationalCallPrefix: usage
+    Country ||..|| Script: usage
+    Currency }|--o| CurrencySymbol: usage
+    LanguageTag ||..o{ LanguageTag: composition
+    Language }|..|| LanguageTag: composition
+    Script ||..|| LanguageTag: composition
+    Country ||..|| LanguageTag: composition
+    LanguageTag ||..|| GeographicRegion: ""
+```
+
 ## Upgrading
 
 This package adheres to [semver](https://semver.org/). This means that there are no breaking changes between minor releases (for example from 1.1 to 1.2), but that breaking changes are released as a major release (for example from 1.x to 2.x). To read about upgrading from one major release to the next, please refer to the [UPGRADING.md](./UPGRADING.md) file in the root of this project. 
