@@ -98,20 +98,20 @@ erDiagram
         class HttpStatusCode
     }
 
-    GeographicRegion }|--o{ Country: containment
-    GeographicRegion ||--o{ GeographicRegion: containment
-    Language }o..o{ Country: usage
-    Country }|--o{ CountryGroup: membership
-    Country }|..o{ CountryCallingCode: direction
-    Country }o..o{ Currency: usage
-    Country }|..o{ InternationalCallPrefix: usage
-    Country }o..o{ Script: usage
-    Currency }|--o| CurrencySymbol: usage
-    LanguageTag ||--o{ LanguageTag: composition
-    Language }|--o{ LanguageTag: composition
-    Script |o--o{ LanguageTag: composition
-    Country |o--o{ LanguageTag: composition
-    LanguageTag }o--o| GeographicRegion: composition
+    GeographicRegion }|--o{ Country: ""
+    GeographicRegion ||--o{ GeographicRegion: ""
+    Language }o..o{ Country: ""
+    Country }|--o{ CountryGroup: ""
+    Country }|..o{ CountryCallingCode: ""
+    Country }o..o{ Currency: ""
+    Country }|..o{ InternationalCallPrefix: ""
+    Country }o..o{ Script: ""
+    Currency }|--o| CurrencySymbol: ""
+    LanguageTag ||--o{ LanguageTag: ""
+    Language }|--o{ LanguageTag: ""
+    Script |o--o{ LanguageTag: ""
+    Country |o--o{ LanguageTag: ""
+    LanguageTag }o--o| GeographicRegion: ""
 ```
 
 ## Upgrading
