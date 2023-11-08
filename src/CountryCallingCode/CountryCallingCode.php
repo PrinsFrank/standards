@@ -3,6 +3,11 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\CountryCallingCode;
 
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryName;
+use PrinsFrank\Standards\Country\CountryNumeric;
+
 /**
  * @source https://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-E.164D-2016-PDF-E.pdf
  */
@@ -225,4 +230,90 @@ enum CountryCallingCode: int
     case Zambia_Republic_of                                                             = 260;
     case Zimbabwe_Republic_of                                                           = 263;
     case Telecommunications_for_Disaster_Relief                                         = 888;
+
+    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): self
+    {
+        if ($country instanceof CountryAlpha2 === false) {
+            $country = $country->toCountryAlpha2();
+        }
+
+        return match ($country) {
+            CountryAlpha2::American_Samoa,
+            CountryAlpha2::Anguilla,
+            CountryAlpha2::Antigua_and_Barbuda,
+            CountryAlpha2::Bahamas,
+            CountryAlpha2::Barbados,
+            CountryAlpha2::Bermuda,
+            CountryAlpha2::Virgin_Islands_British,
+            CountryAlpha2::Canada,
+            CountryAlpha2::Cayman_Islands,
+            CountryAlpha2::Dominica,
+            CountryAlpha2::Dominican_Republic,
+            CountryAlpha2::Grenada,
+            CountryAlpha2::Guam,
+            CountryAlpha2::Jamaica,
+            CountryAlpha2::Montserrat,
+            CountryAlpha2::Northern_Mariana_Islands,
+            CountryAlpha2::Puerto_Rico,
+            CountryAlpha2::Saint_Kitts_and_Nevis,
+            CountryAlpha2::Saint_Lucia,
+            CountryAlpha2::Saint_Vincent_and_the_Grenadines,
+            CountryAlpha2::Sint_Maarten_Dutch_part,
+            CountryAlpha2::Trinidad_and_Tobago,
+            CountryAlpha2::Turks_and_Caicos_Islands,
+            CountryAlpha2::United_States_of_America,
+            CountryAlpha2::Virgin_Islands_U_S => self::Integrated_numbering_plan,
+            CountryAlpha2::Egypt => self::Egypt_Arab_Republic_of,
+            CountryAlpha2::South_Sudan => self::South_Sudan_Republic_of,
+            CountryAlpha2::Morocco => self::Morocco_Kingdom_of,
+            CountryAlpha2::Algeria => self::Algeria_Peoples_Democratic_Republic_of,
+            CountryAlpha2::Tunisia => self::Tunisia,
+            CountryAlpha2::Libya => self::Libya,
+            CountryAlpha2::Gambia => self::Gambia_Republic_of_the,
+            CountryAlpha2::Senegal => self::Senegal_Republic_of,
+            CountryAlpha2::Mauritania => self::Mauritania_Islamic_Republic_of,
+            CountryAlpha2::Mali => self::Mali_Republic_of,
+            CountryAlpha2::Guinea => self::Guinea_Republic_of,
+            CountryAlpha2::Cote_d_Ivoire => self::Cote_dIvoire_Republic_of,
+            CountryAlpha2::Burkina_Faso => self::Burkina_Faso,
+            CountryAlpha2::Niger => self::Niger_Republic_of_the,
+            CountryAlpha2::Togo => self::Togolese_Republic,
+            CountryAlpha2::Benin => self::Benin_Republic_of,
+            CountryAlpha2::Mauritius => self::Mauritius_Republic_of,
+            CountryAlpha2::Liberia => self::Liberia_Republic_of,
+            CountryAlpha2::Sierra_Leone => self::Sierra_Leone,
+            CountryAlpha2::Ghana => self::Ghana,
+            CountryAlpha2::Nigeria => self::Nigeria_Federal_Republic_of,
+            CountryAlpha2::Chad => self::Chad_Republic_of,
+            CountryAlpha2::Central_African_Republic => self::Central_African_Republic,
+            CountryAlpha2::Cameroon => self::Cameroon_Republic_of,
+            CountryAlpha2::Cabo_Verde => self::Cabo_Verde_Republic_of,
+            CountryAlpha2::Sao_Tome_and_Principe => self::Sao_Tome_and_Principe_Democratic_Republic_of,
+            CountryAlpha2::Equatorial_Guinea => self::Equatorial_Guinea_Republic_of,
+            CountryAlpha2::Gabon => self::Gabonese_Republic,
+            CountryAlpha2::Congo => self::Congo_Republic_of_the,
+            CountryAlpha2::Congo_Democratic_Republic => self::Democratic_Republic_of_the_Congo,
+            CountryAlpha2::Angola => self::Angola_Republic_of,
+            CountryAlpha2::Guinea_Bissau => self::Guinea_Bissau_Republic_of,
+            CountryAlpha2::British_Indian_Ocean_Territory => self::Diego_Garcia,
+            CountryAlpha2::Saint_Helena_Ascension_Tristan_da_Cunha => [self::Saint_Helena_Ascension_and_Tristan_da_Cunha, self::Saint_Helena_Ascension_and_Tristan_da_Cunha_2],
+            CountryAlpha2::Seychelles => self::Seychelles_Republic_of,
+            CountryAlpha2::Sudan => self::Sudan_Republic_of_the,
+            CountryAlpha2::Rwanda => self::Rwanda_Republic_of,
+            CountryAlpha2::Ethiopia => self::Ethiopia_Federal_Democratic_Republic_of,
+            CountryAlpha2::Somalia => self::Somalia_Federal_Republic_of,
+            CountryAlpha2::Djibouti => self::Djibouti_Republic_of,
+            CountryAlpha2::Kenya => self::Kenya_Republic_of,
+            CountryAlpha2::Tanzania => self::Tanzania_United_Republic_of,
+            CountryAlpha2::Uganda => self::Uganda_Republic_of,
+            CountryAlpha2::Burundi => self::Burundi_Republic_of,
+            CountryAlpha2::Mozambique => self::Mozambique_Republic_of,
+            CountryAlpha2::Zambia => self::Zambia_Republic_of,
+            CountryAlpha2::Madagascar => self::Madagascar_Republic_of,
+            CountryAlpha2::French_Southern_Territories => self::French_Departments_and_Territories_in_the_Indian_Ocean,
+            CountryAlpha2::
+
+
+        };
+    }
 }
