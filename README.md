@@ -169,6 +169,24 @@ $isMemberOfBrics = $valueName->isMemberOf(Brics::class); // false
 
 </details>
 
+## Country Calling Codes (ITU-T E.164)
+
+> :mortar_board: **Country calling codes can be anywhere from 1 to 3 digits, and can span several countries. There are no leading zeros in this specification.**
+
+### At a glance
+
+Country calling codes are quite straight forward. One Exception is that the +1 prefix is used across a lot of countries, and there is no standard for sub-numbering plans.
+
+```php
+CountryCallingCode::from(1);                    // CountryCallingCode::Integrated_numbering_plan
+CountryCallingCode::from(31);                   // CountryCallingCode::Netherlands_Kingdom_of_the
+CountryCallingCode::from(31)->value;            // 31
+CountryCallingCode::from(31)->name;             // 'Netherlands_Kingdom_of_the'
+CountryCallingCode::Netherlands_Kingdom_of_the; // CountryCallingCode::Netherlands_Kingdom_of_the
+
+public function foo(CountryCallingCode $countryCallingCode) {} // Use spec as typehint to enforce valid value
+```
+
 ## Currency (ISO4217)
 
 [![Daily currency spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
@@ -299,6 +317,40 @@ $valueAlpha3 = $currencyName->toCurrencyNumeric(); // CurrencyNumeric::Euro
 
 </details>
 
+## HTTP Methods
+
+[![Daily HTTP method spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml)
+
+### At a glance
+
+```php
+HttpMethod::from('POST');        // HttpMethod::Post
+HttpMethod::from('POST')->value; // 'POST'
+HttpMethod::from('POST')->name;  // Post
+HttpMethod::Post;                // HttpMethod::Post
+
+public function foo(HttpMethod $httpMethod) {} // Use spec as typehint to enforce valid value
+```
+
+## HTTP Status Codes
+
+[![Daily HTTP Status code spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml)
+
+### At a glance
+
+```php
+HttpStatusCode::from(404);       // HttpStatusCode::Not_Found
+HttpStatusCode::from(404->value; // 404
+HttpStatusCode::from(404->name;  // Not_Found
+HttpStatusCode::Not_Found;       // HttpStatusCode::Not_Found
+
+public function foo(HttpStatusCode $httpStatusCode) {} // Use spec as typehint to enforce valid value
+```
+
+## International Call Prefixes (ITU-T E.164)
+
+### At a glance
+
 ## Language (ISO639)
 
 [![Daily language spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
@@ -423,53 +475,9 @@ $valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); //
 
 </details>
 
-## Country Calling Codes (ITU-T E.164)
-
-> :mortar_board: **Country calling codes can be anywhere from 1 to 3 digits, and can span several countries. There are no leading zeros in this specification.**
+## Language Tags (RFC 5646)
 
 ### At a glance
-
-Country calling codes are quite straight forward. One Exception is that the +1 prefix is used across a lot of countries, and there is no standard for sub-numbering plans. 
-
-```php
-CountryCallingCode::from(1);                    // CountryCallingCode::Integrated_numbering_plan
-CountryCallingCode::from(31);                   // CountryCallingCode::Netherlands_Kingdom_of_the
-CountryCallingCode::from(31)->value;            // 31
-CountryCallingCode::from(31)->name;             // 'Netherlands_Kingdom_of_the'
-CountryCallingCode::Netherlands_Kingdom_of_the; // CountryCallingCode::Netherlands_Kingdom_of_the
-
-public function foo(CountryCallingCode $countryCallingCode) {} // Use spec as typehint to enforce valid value
-```
-
-## HTTP Status Codes
-
-[![Daily HTTP Status code spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml)
-
-### At a glance
-
-```php
-HttpStatusCode::from(404);       // HttpStatusCode::Not_Found
-HttpStatusCode::from(404->value; // 404
-HttpStatusCode::from(404->name;  // Not_Found
-HttpStatusCode::Not_Found;       // HttpStatusCode::Not_Found
-
-public function foo(HttpStatusCode $httpStatusCode) {} // Use spec as typehint to enforce valid value
-```
-
-## HTTP Methods
-
-[![Daily HTTP method spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml)
-
-### At a glance
-
-```php
-HttpMethod::from('POST');        // HttpMethod::Post
-HttpMethod::from('POST')->value; // 'POST'
-HttpMethod::from('POST')->name;  // Post
-HttpMethod::Post;                // HttpMethod::Post
-
-public function foo(HttpMethod $httpMethod) {} // Use spec as typehint to enforce valid value
-```
 
 ## Geographic regions
 
