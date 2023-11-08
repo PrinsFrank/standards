@@ -60,10 +60,10 @@ CountryAlpha3::from('NLD')->toCountryNumeric()->value;        // '528'
 CountryAlpha3::from('NLD')->toCountryNumeric()->valueAsInt(); // 528
 CountryAlpha3::from('NLD')->toCountryName()->value;           // 'Netherlands (Kingdom of the)'
 CountryAlpha3::from('NLD')->isMemberOf(EU::class);            // true
+CountryAlpha2::Netherlands;                                   // CountryAlpha2::Netherlands
 
 public function foo(CountryAlpha2 $countryAlpha2) {}          // Use spec as typehint to enforce valid value
 
-$country = CountryAlpha2::Netherlands;                        // Use specific value from spec explicitly
 ```
 
 <details>
@@ -451,6 +451,7 @@ public function foo(CountryCallingCode $countryCallingCode) {} // Use spec as ty
 HttpStatusCode::from(404);       // HttpStatusCode::Not_Found
 HttpStatusCode::from(404->value; // 404
 HttpStatusCode::from(404->name;  // Not_Found
+HttpStatusCode::Not_Found;       // HttpStatusCode::Not_Found
 
 public function foo(HttpStatusCode $httpStatusCode) {} // Use spec as typehint to enforce valid value
 ```
