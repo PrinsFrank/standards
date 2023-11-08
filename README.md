@@ -431,7 +431,18 @@ public function foo(HttpStatusCode $httpStatusCode) {} // Use spec as typehint t
 
 ## International Call Prefixes (ITU-T E.164)
 
+Different countries have different international call prefixes. This is a spec extracted from ITU-T E.164 listing all possible international call prefixes.
+
 ### At a glance
+
+```php
+InternationalCallPrefix::from('0');        // InternationalCallPrefix::_0
+InternationalCallPrefix::from('0')->value; // '0'
+InternationalCallPrefix::from('0')->name;  // '_0'
+InternationalCallPrefix::_0;               // InternationalCallPrefix::_0
+
+public function foo(InternationalCallPrefix $internationalCallPrefix) {} // Use spec as typehint to enforce valid value
+```
 
 ## Language (ISO639)
 
