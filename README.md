@@ -40,10 +40,9 @@ This package adheres to [semver](https://semver.org/). This means that there are
 
 [![Daily country spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
 
+> :mortar_board: **Alpha2/3 country codes are always UPPERCASE to avoid confusion with language codes. It is recommended to use Alpha3 codes when exposing the specification in APIs**
 
 ### At a glance
-
-> :mortar_board: **Country codes are always UPPERCASE to avoid confusion with language codes. It is recommended to use ALPHA-3 codes when exposing the specification in APIs** 
 
 All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the other country enums. These can be converted using their corresponding methods (toAlpha2, toAlpha3 etc...).
 
@@ -174,6 +173,10 @@ $isMemberOfBrics = $valueName->isMemberOf(Brics::class); // false
 
 [![Daily currency spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
 
+> :mortar_board: **Alpha3 codes are uppercase. When communicating or storing currencies, it is recommended to do so using the Alpha3 or Numeric representation.**
+
+### At a glance
+
 All the Alpha3, Numeric and Name values have a corresponding enum in the other currency enums. These can be converted using their corresponding methods (toCurrencyAlpha3, etc...). A fourth enum is available that maps all currencies to a currency symbol, that can be accessed by calling the 'getSymbol' method.
 
 ```php
@@ -300,6 +303,14 @@ $valueAlpha3 = $currencyName->toCurrencyNumeric(); // CurrencyNumeric::Euro
 
 [![Daily language spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
 
+> :mortar_board: **Language codes are always in lowercase to avoid confusion with country codes.**
+
+> :mortar_board: **The alpha2 specification has 184 languages, the alpha3 Bibliographic/Terminology specification has 486 languages and the alpha3 Extensive specification has 7908 languages.**
+
+> :mortar_board: **If you have to choose between the alpha3 Bibliographic and Terminology specification, the Terminology specification is more widely used.**
+
+### At a glance
+
 The language specification is a bit more complex, as there are 20 alpha3 codes that have both a Bibliographic and a Terminology code. All the other ones have a common one. So if you decide you want the alpha3 representation of an alpha2 code, you can convert it to either Terminology or Bibliographic, where if it is not available you will get an instance of the common enum.
 
 
@@ -414,6 +425,10 @@ $valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); //
 
 ## Country Calling Codes (ITU-T E.164)
 
+> :mortar_board: **Country calling codes can be anywhere from 1 to 3 digits, and can span several countries**
+
+### At a glance
+
 Country calling codes are quite straight forward. One Exception is that the +1 prefix is used across a lot of countries, and there is no standard for sub-numbering plans. 
 
 | Key                        | InternationalCallPrefix |
@@ -424,6 +439,8 @@ Country calling codes are quite straight forward. One Exception is that the +1 p
 ## HTTP Status Codes
 
 [![Daily HTTP Status code spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml)
+
+### At a glance
 
 HTTP Status codes are quite straightforward. 
 
@@ -437,6 +454,8 @@ $valueName = $code->name;                                              // Not_Fo
 
 [![Daily HTTP method spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml)
 
+### At a glance
+
 | Key             | Value            |
 |-----------------|------------------|
 | Post            | POST             |
@@ -445,6 +464,11 @@ $valueName = $code->name;                                              // Not_Fo
 | ...             | ...              |
 
 ## Geographic regions
+
+> :mortar_board: **Geographic regions are represented by three digits. As leading zeros are required, the spec is represented by numbers in strings. Each geographic region can span multiple other geographic regions or countries.**
+
+### At a glance
+
 | Key    | Value |
 |--------|-------|
 | World  | 001   |
@@ -453,4 +477,6 @@ $valueName = $code->name;                                              // Not_Fo
 ## Scripts
 
 [![Daily Script spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml)
+
+### At a glance
 
