@@ -442,12 +442,10 @@ Country calling codes are quite straight forward. One Exception is that the +1 p
 
 ### At a glance
 
-HTTP Status codes are quite straightforward. 
-
 ```php
-$code = HttpStatusCode::from(404);                                     // HttpStatusCode::Not_Found
-$value = $code->value;                                                 // 404
-$valueName = $code->name;                                              // Not_Found
+HttpStatusCode::from(404);       // HttpStatusCode::Not_Found
+HttpStatusCode::from(404->value; // 404
+HttpStatusCode::from(404->name;  // Not_Found
 ```
 
 ## HTTP Methods
@@ -456,23 +454,31 @@ $valueName = $code->name;                                              // Not_Fo
 
 ### At a glance
 
-| Key             | Value            |
-|-----------------|------------------|
-| Post            | POST             |
-| Put             | PUT              |
-| BaselineControl | BASELINE-CONTROL |
-| ...             | ...              |
+```php
+HttpMethod::from('POST');        // HttpMethod::Post
+HttpMethod::from('POST')->value; // 'POST'
+HttpMethod::from('POST')->name;  // Post
+HttpMethod::Post;                // HttpMethod::Post 
+```
 
 ## Geographic regions
 
-> :mortar_board: **Geographic regions are represented by three digits. As leading zeros are required, the spec is represented by numbers in strings. Each geographic region can span multiple other geographic regions or countries.**
+> :mortar_board: **Geographic regions are represented by three digits. Leading zeros are required. Each geographic region can span multiple other geographic regions or countries.**
 
 ### At a glance
 
-| Key    | Value |
-|--------|-------|
-| World  | 001   |
-| Africa | 002   |
+```php
+GeographicRegion::from('150');        // GeographicRegion::Europe
+GeographicRegion::from('150')->value; // 'POST'
+GeographicRegion::from('150')->name;  // Post
+GeographicRegion::Europe;             // GeographicRegion::Europe
+
+GeographicRegion::from('150')->getDirectSubRegions();   // [GeographicRegion::Eastern_Europe, GeographicRegion::Northern_Europe, ...]
+GeographicRegion::from('150')->getAllSubRegions();      // [GeographicRegion::Eastern_Europe, GeographicRegion::Northern_Europe, ...]
+
+GeographicRegion::from('150')->getDirectSubCountries(); // []
+GeographicRegion::from('150')->getAllSubCountries();    // [CountryNumeric::Belarus, CountryNumeric::Bulgaria, ...]
+```
 
 ## Scripts
 
