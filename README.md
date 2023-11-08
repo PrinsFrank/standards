@@ -172,62 +172,137 @@ $isMemberOfBrics = $valueName->isMemberOf(Brics::class); // false
 
 [![Daily currency spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
 
-All the Alpha3, Numeric and Name values have a corresponding enum in the other currency enums. These can be converted using their corresponding methods.
+All the Alpha3, Numeric and Name values have a corresponding enum in the other currency enums. These can be converted using their corresponding methods (toCurrencyAlpha3, etc...). A fourth enum is available that maps all currencies to a currency symbol, that can be accessed by calling the 'getSymbol' method.
+
+```php
+CurrencyAlpha3::from('EUR');                              // CurrencyAlpha3::Euro
+CurrencyAlpha3::from('EUR')->value;                       // 'EUR'
+CurrencyAlpha3::from('EUR')->lowercaseValue();            // 'eur'
+CurrencyAlpha3::from('EUR')->toCurrencyName()->value;     // 'Euro'
+CurrencyAlpha3::from('EUR')->getSymbol();                 // CurrencySymbol::Euro
+CurrencyAlpha3::from('EUR')->getSymbol()->value;          // '€'
+CurrencyAlpha3::from('EUR')->toCurrencyNumeric()->value;  // '978'
+CurrencyNumeric::from('978');                             // CurrencyNumeric::Euro
+CurrencyNumeric::fromInt(978);                            // CurrencyNumeric::Euro
+CurrencyNumeric::from('978')->value;                      // '978'
+CurrencyNumeric::from('978')->valueAsInt();               // 978
+CurrencySymbol::from('€')                                 // CurrencySymbol::Euro
+CurrencySymbol::from('€')->value                          // '€'
+CurrencySymbol::forCurrency(CurrencyAlpha3::Euro)         // CurrencySymbol::Euro
+CurrencySymbol::forCurrency(CurrencyNumeric::Euro)        // CurrencySymbol::Euro
+CurrencySymbol::forCurrency(CurrencyName::Euro)           // CurrencySymbol::Euro
+CurrencySymbol::forCurrency(CurrencyNumeric::from('978')) // CurrencySymbol::Euro
+
+public function foo(CurrencyAlpha3 $currencyAlpha3) {}    // Use spec as typehint to enforce valid value
+
+$currency = CurrencyAlpha3::Euro;                         // Use specific value from spec explicitly
+```
+
+<details>
+    <summary>Full documentation</summary>
 
 ```mermaid
 classDiagram
     direction LR
-    class ISO4217_Alpha_3 {
+    class CurrencyAlpha3 {
         +String value [EUR]
         from(string $value) self
         tryfrom(string $value) self|null
-        toISO4217_Name()
-        toISO4217_Numeric()
+        toCurrencyName()
+        toCurrencyNumeric()
+        getSymbol()
     }
-    class ISO4217_Name {
+    class CurrencyName {
         +String value [Euro]
         from(string $value) self
         tryfrom(string $value) self|null
-        toISO4217_Alpha_3()
-        toISO4217_Numeric()
+        toCurrencyName()
+        toCurrencyNumeric()
+        getSymbol()
     }
-    class ISO4217_Numeric {
+    class CurrencyNumeric {
         +String value [978]
         from(string $value) self
         tryfrom(string $value) self|null
-        toISO4217_Alpha_3()
-        toISO4217_Name()
+        toCurrencyAlpha3()
+        toCurrencyName()
+        getSymbol()
+    }
+    class CurrencySymbol {
+        +String value [€]
+        forCurrency(CurrencyAlpha3|CurrencyName|CurrencyNumeric $value) self|null
     }
     
-    ISO4217_Name <--> ISO4217_Numeric
-    ISO4217_Name <--> ISO4217_Alpha_3
-    ISO4217_Numeric <--> ISO4217_Alpha_3
+    CurrencyName <--> CurrencyNumeric: toXXX()
+    CurrencyName <--> CurrencyAlpha3: toXXX()
+    CurrencyNumeric <--> CurrencyAlpha3: toXXX()
+    
+    CurrencyName --> CurrencySymbol: getSymbol
+    CurrencyAlpha3 --> CurrencySymbol: getSymbol
+    CurrencyNumeric --> CurrencySymbol: getSymbol
 ```
 
-### ISO 4217 Alpha-3
+### CurrencyAlpha3
 
 ```php
-$valueAlpha3 = ISO4217_Alpha_3::from('EUR');        // ISO4217_Alpha_3::Euro
-$value = $valueAlpha3->value;                      // 'EUR'
-$valueName = $valueAlpha3->name;                   // 'Euro'
-$valueNumeric = $valueAlpha3->toISO4217_Numeric(); // ISO4217_Numeric::Euro
+$currencyAlpha3 = CurrencyAlpha3::from('EUR');         // CurrencyAlpha3::Euro
+$value = $currencyAlpha3->value;                       // 'EUR'
+$value = $currencyAlpha3->lowercaseValue();            // 'eur'
+$valueName = $currencyAlpha3->name;                    // 'Euro'
+$valueNumeric = $currencyAlpha3->toCurrencyNumeric();  // CurrencyNumeric::Euro
+$valueName = $currencyAlpha3->toCurrencyName();        // CurrencyName::Euro
+$valueName = $currencyAlpha3->toCurrencyName()->value; // 'Euro'
+$valueSymbol = $currencyAlpha3->getSymbol();           // CurrencySymbol::Euro
+$valueSymbol = $currencyAlpha3->getSymbol()->value;    // '€'
 ```
 
-### ISO 4217 Numeric
+### CurrencyNumeric
 
 ```php
-$valueNumeric = ISO4217_Numeric::from('978');     // ISO4217_Numeric::Euro
-$valueNumeric = ISO4217_Numeric::fromInt(978);    // ISO4217_Numeric::Euro
-$value = $valueNumeric->value;                    // '978'
-$valueName = $valueNumeric->name;                 // 'Euro'
-$valueAlpha3 = $valueNumeric->toISO4217_Alpha_3(); // ISO4217_Alpha_3::Euro
+$currencyNumeric = CurrencyNumeric::from('978');        // CurrencyNumeric::Euro
+$currencyNumeric = CurrencyNumeric::fromInt(978);       // CurrencyNumeric::Euro
+$value = $currencyNumeric->value;                       // '978'
+$value = $currencyNumeric->valueAsInt();                // 978
+$valueName = $currencyNumeric->name;                    // 'Euro'
+$valueAlpha3 = $currencyNumeric->toCurrencyAlpha3();    // CurrencyAlpha3::Euro
+$valueName = $currencyNumeric->toCurrencyName();        // CurrencyName::Euro
+$valueName = $currencyNumeric->toCurrencyName()->value; // 'Euro'
+$valueSymbol = $currencyNumeric->getSymbol();           // CurrencySymbol::Euro
+$valueSymbol = $currencyNumeric->getSymbol()->value;    // '€'
 ```
+
+### CurrencySymbol
+
+```php
+$currencySymbol = CurrencySymbol::from('€');                        // CurrencySymbol::Euro
+$currencySymbol =  $currencySymbol->name;                           // 'Euro'
+$currencySymbol =  $currencySymbol->value;                          // '€'
+$currencySymbol = CurrencySymbol::forCurrency(CurrencyAlpha3::Euro) // CurrencySymbol::Euro
+```
+
+### CurrencyName
+
+```php
+$currencyName = CurrencyName::from('Euro');        // CurrencyName::Euro 
+$currencyName = CurrencyName::Euro;                // CurrencyName::Euro
+$name = $currencyName->name;                       // 'Euro'
+$value = $currencyName->value;                     // 'Euro'
+$valueAlpha3 = $currencyName->toCurrencyAlpha3();  // CurrencyAlpha3::Euro
+$valueAlpha3 = $currencyName->toCurrencyNumeric(); // CurrencyNumeric::Euro
+```
+
+
+</details>
 
 ## Language (ISO639)
 
 [![Daily language spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
 
 The language specification is a bit more complex, as there are 20 alpha3 codes that have both a Bibliographic and a Terminology code. All the other ones have a common one. So if you decide you want the alpha3 representation of an alpha2 code, you can convert it to either Terminology or Bibliographic, where if it is not available you will get an instance of the common enum.
+
+
+<details>
+    <summary>Full documentation</summary>
 
 ```mermaid
 classDiagram
@@ -332,6 +407,8 @@ $valueName = $valueAlpha2->name;                                              //
 $valueAlpha2 = $valueAlpha2->toISO639_1_Alpha_2();                            // ISO639_1_Alpha_2::Dutch_Flemish
 $valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); // ISO639_2_Alpha_3_Bibliographic::Dutch_Flemish
 ```
+
+</details>
 
 ## Country Calling Codes (ITU-T E.164)
 
