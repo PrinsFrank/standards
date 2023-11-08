@@ -180,26 +180,26 @@ $isMemberOfBrics = $valueName->isMemberOf(Brics::class); // false
 All the Alpha3, Numeric and Name values have a corresponding enum in the other currency enums. These can be converted using their corresponding methods (toCurrencyAlpha3, etc...). A fourth enum is available that maps all currencies to a currency symbol, that can be accessed by calling the 'getSymbol' method.
 
 ```php
-CurrencyAlpha3::from('EUR');                              // CurrencyAlpha3::Euro
-CurrencyAlpha3::from('EUR')->value;                       // 'EUR'
-CurrencyAlpha3::from('EUR')->lowercaseValue();            // 'eur'
-CurrencyAlpha3::from('EUR')->toCurrencyName()->value;     // 'Euro'
-CurrencyAlpha3::from('EUR')->getSymbol();                 // CurrencySymbol::Euro
-CurrencyAlpha3::from('EUR')->getSymbol()->value;          // '€'
-CurrencyAlpha3::from('EUR')->toCurrencyNumeric()->value;  // '978'
-CurrencyNumeric::from('978');                             // CurrencyNumeric::Euro
-CurrencyNumeric::fromInt(978);                            // CurrencyNumeric::Euro
-CurrencyNumeric::from('978')->value;                      // '978'
-CurrencyNumeric::from('978')->valueAsInt();               // 978
-CurrencySymbol::from('€')                                 // CurrencySymbol::Euro
-CurrencySymbol::from('€')->value                          // '€'
-CurrencySymbol::forCurrency(CurrencyAlpha3::Euro)         // CurrencySymbol::Euro
-CurrencySymbol::forCurrency(CurrencyNumeric::Euro)        // CurrencySymbol::Euro
-CurrencySymbol::forCurrency(CurrencyName::Euro)           // CurrencySymbol::Euro
-CurrencySymbol::forCurrency(CurrencyNumeric::from('978')) // CurrencySymbol::Euro
-CurrencyAlpha3::Euro;                                     // CurrencyAlpha3::Euro
+CurrencyAlpha3::from('EUR');                               // CurrencyAlpha3::Euro
+CurrencyAlpha3::from('EUR')->value;                        // 'EUR'
+CurrencyAlpha3::from('EUR')->lowercaseValue();             // 'eur'
+CurrencyAlpha3::from('EUR')->toCurrencyName()->value;      // 'Euro'
+CurrencyAlpha3::from('EUR')->getSymbol();                  // CurrencySymbol::Euro
+CurrencyAlpha3::from('EUR')->getSymbol()->value;           // '€'
+CurrencyAlpha3::from('EUR')->toCurrencyNumeric()->value;   // '978'
+CurrencyNumeric::from('978');                              // CurrencyNumeric::Euro
+CurrencyNumeric::fromInt(978);                             // CurrencyNumeric::Euro
+CurrencyNumeric::from('978')->value;                       // '978'
+CurrencyNumeric::from('978')->valueAsInt();                // 978
+CurrencySymbol::from('€');                                 // CurrencySymbol::Euro
+CurrencySymbol::from('€')->value;                          // '€'
+CurrencySymbol::forCurrency(CurrencyAlpha3::Euro);         // CurrencySymbol::Euro
+CurrencySymbol::forCurrency(CurrencyNumeric::Euro);        // CurrencySymbol::Euro
+CurrencySymbol::forCurrency(CurrencyName::Euro);           // CurrencySymbol::Euro
+CurrencySymbol::forCurrency(CurrencyNumeric::from('978')); // CurrencySymbol::Euro
+CurrencyAlpha3::Euro;                                      // CurrencyAlpha3::Euro
 
-public function foo(CurrencyAlpha3 $currencyAlpha3) {}    // Use spec as typehint to enforce valid value
+public function foo(CurrencyAlpha3 $currencyAlpha3) {}     // Use spec as typehint to enforce valid value
 
 ```
 
