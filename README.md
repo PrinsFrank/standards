@@ -105,13 +105,13 @@ erDiagram
     Country }|..o{ CountryCallingCode: direction
     Country }o..o{ Currency: usage
     Country }|..o{ InternationalCallPrefix: usage
-    Country ||..|| Script: usage
+    Country }o..o{ Script: usage
     Currency }|--o| CurrencySymbol: usage
-    LanguageTag ||..o{ LanguageTag: composition
-    Language }|..|| LanguageTag: composition
-    Script ||..|| LanguageTag: composition
-    Country ||..|| LanguageTag: composition
-    LanguageTag ||..|| GeographicRegion: ""
+    LanguageTag ||--o{ LanguageTag: composition
+    Language }|--o{ LanguageTag: composition
+    Script |o--o{ LanguageTag: composition
+    Country |o--o{ LanguageTag: composition
+    LanguageTag }o--o| GeographicRegion: composition
 ```
 
 ## Upgrading
