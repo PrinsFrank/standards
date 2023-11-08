@@ -569,8 +569,8 @@ $valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); //
 
 ```php
 GeographicRegion::from('150');        // GeographicRegion::Europe
-GeographicRegion::from('150')->value; // 'POST'
-GeographicRegion::from('150')->name;  // Post
+GeographicRegion::from('150')->value; // '150'
+GeographicRegion::from('150')->name;  // EUrope
 GeographicRegion::Europe;             // GeographicRegion::Europe
 
 GeographicRegion::from('150')->getDirectSubRegions();   // [GeographicRegion::Eastern_Europe, GeographicRegion::Northern_Europe, ...]
@@ -588,3 +588,76 @@ public function foo(GeographicRegion $geographicRegion) {} // Use spec as typehi
 
 ### At a glance
 
+```php
+ScriptAlias::from('Latin');                 // ScriptAlias::Latin
+ScriptAlias::from('Latin')->value;          // 'Latin'
+ScriptAlias::from('Latin')->name;           // 'Latin'
+ScriptAlias::Latin;                         // ScriptAlias::Latin
+ScriptAlias::from('Latin')->toScriptCode(); // ScriptCode::Latin
+ScriptCode::from('Latn');                   // ScriptCode::Latin
+ScriptName::from('Latin');                  // ScriptName::Latin
+ScriptNumber::from('215');                  // ScriptNumber::Latin
+
+public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
+```
+
+<details>
+    <summary>Full documentation</summary>
+
+## ScriptAlias
+
+```php
+ScriptAlias::from('Latin');                   // ScriptAlias::latin
+ScriptAlias::from('Latin')->value;            // 'Latin'
+ScriptAlias::from('Latin')->name;             // 'Latin'
+ScriptAlias::from('Latin')->toScriptCode();   // ScriptCode::Latin
+ScriptAlias::from('Latin')->toScriptName();   // ScriptName::Latin
+ScriptAlias::from('Latin')->toScriptNumber(); // ScriptNumber::Latin
+ScriptAlias::Latin;                           // ScriptAlias::Latin
+
+public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
+```
+
+## ScriptCode
+
+```php
+ScriptCode::from('Latn');                   // ScriptCode::latin
+ScriptCode::from('Latn')->value;            // 'Latin'
+ScriptCode::from('Latn')->name;             // 'Latin'
+ScriptCode::from('Latn')->toScriptAlias();  // ScriptAlias::Latin
+ScriptCode::from('Latn')->toScriptName();   // ScriptName::Latin
+ScriptCode::from('Latn')->toScriptNumber(); // ScriptNumber::Latin
+ScriptCode::Latin;                          // ScriptCode::Latin
+
+public function foo(ScriptCode $scriptCode) {} // Use spec as typehint to enforce valid value
+```
+
+## ScriptName
+
+```php
+ScriptName::from('Latin');                   // ScriptName::latin
+ScriptName::from('Latin')->value;            // 'Latin'
+ScriptName::from('Latin')->name;             // 'Latin'
+ScriptName::from('Latin')->toScriptCode();   // ScriptCode::Latin
+ScriptName::from('Latin')->toScriptAlias();  // ScriptAlias::Latin
+ScriptName::from('Latin')->toScriptNumber(); // ScriptNumber::Latin
+ScriptName::Latin;                           // ScriptName::Latin
+
+public function foo(ScriptName $scriptName) {} // Use spec as typehint to enforce valid value
+```
+
+## ScriptNumber
+
+```php
+ScriptNumber::from('215');                   // ScriptNumber::latin
+ScriptNumber::from('215')->value;            // 'Latin'
+ScriptNumber::from('215')->name;             // 'Latin'
+ScriptNumber::from('215')->toScriptCode();   // ScriptCode::Latin
+ScriptNumber::from('215')->toScriptName();   // ScriptName::Latin
+ScriptNumber::from('215')->toScriptAlias();  // ScriptAlias::Latin
+ScriptNumber::Latin;                         // ScriptNumber::Latin
+
+public function foo(ScriptNumber $scriptNumber) {} // Use spec as typehint to enforce valid value
+```
+
+</details>
