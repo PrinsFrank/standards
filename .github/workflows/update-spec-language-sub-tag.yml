@@ -1,4 +1,4 @@
-name: Daily Scripts update
+name: Daily Language Subtags update
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: composer install
       - name: Run standard update command
-        run: composer update-spec-language-sub-tag
+        run: composer update-spec-language-subtag
       - name: Run CSFixer
         run: composer cs:fix
       - name: Create Pull Request

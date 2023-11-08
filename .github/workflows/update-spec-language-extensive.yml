@@ -1,4 +1,4 @@
-name: Daily Scripts update
+name: Daily Language Extensive update
 
 on:
   workflow_dispatch:
