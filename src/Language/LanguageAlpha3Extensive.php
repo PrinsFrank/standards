@@ -3,6 +3,12 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Language;
 
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\LanguageTag\LanguageTag;
+use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
+use PrinsFrank\Standards\Region\GeographicRegion;
+use PrinsFrank\Standards\Scripts\ScriptCode;
+
 /**
  * @source https://iso639-3.sil.org/code_tables/download_tables#Complete%20Code%20Tables
  * @source https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3_Latin1.tab
@@ -7918,4 +7924,23 @@ enum LanguageAlpha3Extensive: string
     case Zyphe_Chin                                               = 'zyp';
     case Zaza                                                     = 'zza';
     case Zuojiang_Zhuang                                          = 'zzj';
+
+    public function toLanguageTag(
+        LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive|null $extendedLanguageSubtag = null,
+        ScriptCode|null                                                             $scriptSubtag = null,
+        CountryAlpha2|GeographicRegion|null                                         $regionSubtag = null,
+        LanguageTagVariant|null                                                     $variantSubtag = null,
+        string|null                                                                 $extensionSubtag = null,
+        string|null                                                                 $privateUseSubtag = null,
+    ): LanguageTag {
+        return new LanguageTag(
+            $this,
+            $extendedLanguageSubtag,
+            $scriptSubtag,
+            $regionSubtag,
+            $variantSubtag,
+            $extensionSubtag,
+            $privateUseSubtag,
+        );
+    }
 }
