@@ -106,7 +106,6 @@ erDiagram
     Country }|--o{ CountryCallingCode: ""
     Country }o..o{ Currency: ""
     Country }|--o{ InternationalCallPrefix: ""
-    Country }o..o{ Script: ""
     Currency }|--o| CurrencySymbol: ""
     LanguageTag ||--o{ LanguageTag: ""
     Language }|--o{ LanguageTag: ""
