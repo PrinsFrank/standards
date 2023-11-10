@@ -104,7 +104,7 @@ erDiagram
     Country }|--o{ CountryGroup: ""
     Country }|..o{ CountryCallingCode: ""
     Country }o..o{ Currency: ""
-    Country }|..o{ InternationalCallPrefix: ""
+    Country }|--o{ InternationalCallPrefix: ""
     Country }o..o{ Script: ""
     Currency }|--o| CurrencySymbol: ""
     LanguageTag ||--o{ LanguageTag: ""
@@ -131,20 +131,23 @@ All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the
 Country group membership can be checked by calling the `isMemberOf` method, supplying the FQN of a class that implements the `GroupInterface`. Several country groups are available: BRICS, EEA, EFTA etc.
 
 ```php
-CountryAlpha2::from('NL');                                    // CountryAlpha2::Netherlands
-CountryNumeric::from('528');                                  // CountryNumeric::Netherlands
-CountryNumeric::fromInt(528);                                 // CountryNumeric::Netherlands
-CountryAlpha3::from('NLD');                                   // CountryAlpha3::Netherlands
-CountryAlpha3::from('NLD')->value;                            // 'NLD'
-CountryAlpha3::from('NLD')->name;                             // 'Netherlands'
-CountryAlpha3::from('NLD')->toCountryAlpha2()->value;         // 'NL'
-CountryAlpha3::from('NLD')->toCountryNumeric()->value;        // '528'
-CountryAlpha3::from('NLD')->toCountryNumeric()->valueAsInt(); // 528
-CountryAlpha3::from('NLD')->toCountryName()->value;           // 'Netherlands (Kingdom of the)'
-CountryAlpha3::from('NLD')->isMemberOf(EU::class);            // true
-CountryAlpha2::Netherlands;                                   // CountryAlpha2::Netherlands
+CountryAlpha2::from('NL');                                      // CountryAlpha2::Netherlands
+CountryNumeric::from('528');                                    // CountryNumeric::Netherlands
+CountryNumeric::fromInt(528);                                   // CountryNumeric::Netherlands
+CountryAlpha3::from('NLD');                                     // CountryAlpha3::Netherlands
+CountryAlpha3::from('NLD')->value;                              // 'NLD'
+CountryAlpha3::from('NLD')->name;                               // 'Netherlands'
+CountryAlpha3::from('NLD')->toCountryAlpha2()->value;           // 'NL'
+CountryAlpha3::from('NLD')->toCountryNumeric()->value;          // '528'
+CountryAlpha3::from('NLD')->toCountryNumeric()->valueAsInt();   // 528
+CountryAlpha3::from('NLD')->toCountryName()->value;             // 'Netherlands (Kingdom of the)'
+CountryAlpha3::from('NLD')->isMemberOf(EU::class);              // true
+CountryAlpha2::Netherlands;                                     // CountryAlpha2::Netherlands
 
-public function foo(CountryAlpha2 $countryAlpha2) {}          // Use spec as typehint to enforce valid value
+CountryAlpha3::from('NLD')->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
+CountryAlpha3::from('NLD')->getCountryCallingCodes()[0]->value; // 31
+
+public function foo(CountryAlpha2 $countryAlpha2) {}            // Use spec as typehint to enforce valid value
 
 ```
 
@@ -200,6 +203,9 @@ $nameString = $valueAlpha2->toCountryName()->value; // 'Netherlands (Kingdom of 
 
 $isMemberOfEu = $valueAlpha2->isMemberOf(EU::class);       // true
 $isMemberOfBrics = $valueAlpha2->isMemberOf(Brics::class); // false
+
+$valueAlpha2->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
+$valueAlpha2->getCountryCallingCodes()[0]->value; // 31
 ```
 
 ### CountryAlpha3
@@ -216,6 +222,9 @@ $nameString = $valueAlpha3->toCountryName()->value; // 'Netherlands (Kingdom of 
 
 $isMemberOfEu = $valueAlpha3->isMemberOf(EU::class);       // true
 $isMemberOfBrics = $valueAlpha3->isMemberOf(Brics::class); // false
+
+$valueAlpha3->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
+$valueAlpha3->getCountryCallingCodes()[0]->value; // 31
 ```
 
 ### CountryNumeric
@@ -233,6 +242,9 @@ $nameString = $valueNumeric->toCountryName()->value; // 'Netherlands (Kingdom of
 
 $isMemberOfEu = $valueNumeric->isMemberOf(EU::class);       // true
 $isMemberOfBrics = $valueNumeric->isMemberOf(Brics::class); // false
+
+$valueNumeric->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
+$valueNumeric->getCountryCallingCodes()[0]->value; // 31
 ```
 
 ### CountryName
@@ -247,6 +259,9 @@ $valueNumeric = $valueName->toCountryNumeric();                 // CountryNumeri
 
 $isMemberOfEu = $valueName->isMemberOf(EU::class);       // true
 $isMemberOfBrics = $valueName->isMemberOf(Brics::class); // false
+
+$valueName->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
+$valueName->getCountryCallingCodes()[0]->value; // 31
 ```
 
 </details>
@@ -257,7 +272,7 @@ $isMemberOfBrics = $valueName->isMemberOf(Brics::class); // false
 
 ### At a glance
 
-Country calling codes are quite straight forward. One Exception is that the +1 prefix is used across a lot of countries, and there is no standard for sub-numbering plans.
+Country calling codes are quite straight forward. One country can have multiple country calling codes though, And one country calling code can span multiple countries. That's why the `forCountry` and `getCountriesAlpha2` both return an array of country calling codes/countries and not a single item.
 
 ```php
 CountryCallingCode::from(1);                    // CountryCallingCode::Integrated_numbering_plan
@@ -265,6 +280,11 @@ CountryCallingCode::from(31);                   // CountryCallingCode::Netherlan
 CountryCallingCode::from(31)->value;            // 31
 CountryCallingCode::from(31)->name;             // 'Netherlands_Kingdom_of_the'
 CountryCallingCode::Netherlands_Kingdom_of_the; // CountryCallingCode::Netherlands_Kingdom_of_the
+
+CountryCallingCode::from(31)->getCountriesAlpha2(); // [CountryAlpha2::Netherlands]
+CountryCallingCode::from(7)->getCountriesAlpha2();  // [CountryAlpha2::Kazakhstan, CountryAlpha2::Russian_Federation]
+
+CountryCallingCode::forCountry(CountryAlpha2::Netherlands); // [CountryCallingCode::Netherlands_Kingdom_of_the]
 
 public function foo(CountryCallingCode $countryCallingCode) {} // Use spec as typehint to enforce valid value
 ```

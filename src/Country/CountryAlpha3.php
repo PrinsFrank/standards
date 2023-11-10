@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Country;
 
 use PrinsFrank\Standards\BackedEnum;
 use PrinsFrank\Standards\Country\Groups\GroupInterface;
+use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
 use PrinsFrank\Standards\InvalidArgumentException;
 
 /**
@@ -291,5 +292,11 @@ enum CountryAlpha3: string
         }
 
         return in_array($this->toCountryAlpha2(), $groupFQN::allAlpha2(), true);
+    }
+
+    /** @return list<CountryCallingCode> */
+    public function getCountryCallingCodes(): array
+    {
+        return CountryCallingCode::forCountry($this);
     }
 }
