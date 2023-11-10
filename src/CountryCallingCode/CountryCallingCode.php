@@ -492,7 +492,6 @@ enum CountryCallingCode: int
             CountryAlpha2::Yemen                                   => [self::Yemen_Republic_of],
             CountryAlpha2::Zambia                                  => [self::Zambia_Republic_of],
             CountryAlpha2::Zimbabwe                                => [self::Zimbabwe_Republic_of],
-            default                                                => [],
         };
     }
 
