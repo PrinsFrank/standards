@@ -101,6 +101,7 @@ erDiagram
     GeographicRegion }|--o{ Country: ""
     GeographicRegion ||--o{ GeographicRegion: ""
     Language }o..o{ Country: ""
+    Language }o..|{ Script: ""
     Country }|--o{ CountryGroup: ""
     Country }|--o{ CountryCallingCode: ""
     Country }o..o{ Currency: ""
