@@ -102,7 +102,7 @@ erDiagram
     GeographicRegion ||--o{ GeographicRegion: ""
     Language }o..o{ Country: ""
     Country }|--o{ CountryGroup: ""
-    Country }|..o{ CountryCallingCode: ""
+    Country }|--o{ CountryCallingCode: ""
     Country }o..o{ Currency: ""
     Country }|--o{ InternationalCallPrefix: ""
     Country }o..o{ Script: ""
@@ -146,6 +146,9 @@ CountryAlpha2::Netherlands;                                     // CountryAlpha2
 
 CountryAlpha3::from('NLD')->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
 CountryAlpha3::from('NLD')->getCountryCallingCodes()[0]->value; // 31
+
+CountryAlpha3::from('NLD')->getInternationalCallPrefix();        // InternationalCallPrefix::_00
+CountryAlpha3::from('NLD')->getInternationalCallPrefix()->value; // '00'
 
 public function foo(CountryAlpha2 $countryAlpha2) {}            // Use spec as typehint to enforce valid value
 
@@ -206,6 +209,10 @@ $isMemberOfBrics = $valueAlpha2->isMemberOf(Brics::class); // false
 
 $valueAlpha2->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
 $valueAlpha2->getCountryCallingCodes()[0]->value; // 31
+
+$valueAlpha2->getInternationalCallPrefix();        // InternationalCallPrefix::_00
+$valueAlpha2->getInternationalCallPrefix()->value; // '00'
+
 ```
 
 ### CountryAlpha3
@@ -225,6 +232,9 @@ $isMemberOfBrics = $valueAlpha3->isMemberOf(Brics::class); // false
 
 $valueAlpha3->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
 $valueAlpha3->getCountryCallingCodes()[0]->value; // 31
+
+$valueAlpha3->getInternationalCallPrefix();        // InternationalCallPrefix::_00
+$valueAlpha3->getInternationalCallPrefix()->value; // '00'
 ```
 
 ### CountryNumeric
@@ -245,6 +255,9 @@ $isMemberOfBrics = $valueNumeric->isMemberOf(Brics::class); // false
 
 $valueNumeric->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
 $valueNumeric->getCountryCallingCodes()[0]->value; // 31
+
+$valueNumeric->getInternationalCallPrefix();        // InternationalCallPrefix::_00
+$valueNumeric->getInternationalCallPrefix()->value; // '00'
 ```
 
 ### CountryName
@@ -262,6 +275,9 @@ $isMemberOfBrics = $valueName->isMemberOf(Brics::class); // false
 
 $valueName->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
 $valueName->getCountryCallingCodes()[0]->value; // 31
+
+$valueName->getInternationalCallPrefix();        // InternationalCallPrefix::_00
+$valueName->getInternationalCallPrefix()->value; // '00'
 ```
 
 </details>
@@ -456,10 +472,16 @@ Different countries have different international call prefixes. This is a spec e
 ### At a glance
 
 ```php
-InternationalCallPrefix::from('0');        // InternationalCallPrefix::_0
-InternationalCallPrefix::from('0')->value; // '0'
-InternationalCallPrefix::from('0')->name;  // '_0'
-InternationalCallPrefix::_0;               // InternationalCallPrefix::_0
+InternationalCallPrefix::from('0');                // InternationalCallPrefix::_0
+InternationalCallPrefix::from('0')->value;         // '0'
+InternationalCallPrefix::from('0')->name;          // '_0'
+InternationalCallPrefix::_0;                       // InternationalCallPrefix::_0
+InternationalCallPrefix::_0->getCountriesAlpha2(); // [CountryAlpha2::Samoa]
+
+InternationalCallPrefix::forCountry(CountryAlpha2::Netherlands);  // InternationalCallPrefix::_00
+InternationalCallPrefix::forCountry(CountryAlpha3::Netherlands);  // InternationalCallPrefix::_00
+InternationalCallPrefix::forCountry(CountryNumeric::Netherlands); // InternationalCallPrefix::_00
+InternationalCallPrefix::forCountry(CountryName::Netherlands);    // InternationalCallPrefix::_00
 
 public function foo(InternationalCallPrefix $internationalCallPrefix) {} // Use spec as typehint to enforce valid value
 ```

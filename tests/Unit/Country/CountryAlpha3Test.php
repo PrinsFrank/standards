@@ -100,4 +100,16 @@ class CountryAlpha3Test extends TestCase
             static::assertNotEmpty($countryAlpha2->getCountryCallingCodes());
         }
     }
+
+    /**
+     * @covers ::getInternationalCallPrefix
+     */
+    public function testGetInternationalCallPrefix(): void
+    {
+        foreach (CountryAlpha3::cases() as $countryAlpha2) {
+            $countryAlpha2->getInternationalCallPrefix();
+
+            $this->addToAssertionCount(1);
+        }
+    }
 }

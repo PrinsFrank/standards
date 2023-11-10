@@ -25,13 +25,13 @@
         "phpunit/phpunit": "^9.5",
         "symfony/panther": "^2.0",
         "dbrekelmans/bdi": "^1.0",
-        "phpstan/phpstan": "^1.8",
+        "phpstan/phpstan": "1.10.41",
         "composer/composer": "^2.3"
     },
     "scripts": {
         "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
         "cs:fix": "php-cs-fixer fix --allow-risky=yes",
-        "stan": "phpstan analyse",
+        "stan": "php -d memory_limit=4G vendor/bin/phpstan analyse -vv",
         "unit": "phpunit --testsuite=Unit",
         "test": [
             "@unit",
