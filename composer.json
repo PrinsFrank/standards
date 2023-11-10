@@ -31,7 +31,7 @@
     "scripts": {
         "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
         "cs:fix": "php-cs-fixer fix --allow-risky=yes",
-        "stan": "phpstan analyse",
+        "stan": "php -d memory_limit=4G vendor/bin/phpstan analyse -vv",
         "unit": "phpunit --testsuite=Unit",
         "test": [
             "@unit",
