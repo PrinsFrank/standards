@@ -127,4 +127,16 @@ class CountryNumericTest extends TestCase
             static::assertNotEmpty($countryAlpha2->getCountryCallingCodes());
         }
     }
+
+    /**
+     * @covers ::getInternationalCallPrefix
+     */
+    public function testGetInternationalCallPrefix(): void
+    {
+        foreach (CountryNumeric::cases() as $countryAlpha2) {
+            $countryAlpha2->getInternationalCallPrefix();
+
+            $this->addToAssertionCount(1);
+        }
+    }
 }
