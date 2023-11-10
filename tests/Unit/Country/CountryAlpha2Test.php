@@ -90,4 +90,14 @@ class CountryAlpha2Test extends TestCase
         static::assertTrue(CountryAlpha2::Netherlands->isMemberOf(EU::class));
         static::assertFalse(CountryAlpha2::Netherlands->isMemberOf(EFTA::class));
     }
+
+    /**
+     * @covers ::getCountryCallingCodes
+     */
+    public function testGetCountryCallingCodes(): void
+    {
+        foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            static::assertNotEmpty($countryAlpha2->getCountryCallingCodes());
+        }
+    }
 }

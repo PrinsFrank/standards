@@ -117,4 +117,14 @@ class CountryNumericTest extends TestCase
         static::assertTrue(CountryNumeric::Netherlands->isMemberOf(EU::class));
         static::assertFalse(CountryNumeric::Netherlands->isMemberOf(EFTA::class));
     }
+
+    /**
+     * @covers ::getCountryCallingCodes
+     */
+    public function testGetCountryCallingCodes(): void
+    {
+        foreach (CountryNumeric::cases() as $countryAlpha2) {
+            static::assertNotEmpty($countryAlpha2->getCountryCallingCodes());
+        }
+    }
 }
