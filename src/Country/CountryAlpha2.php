@@ -294,7 +294,8 @@ enum CountryAlpha2: string
         return in_array($this, $groupFQN::allAlpha2(), true);
     }
 
-    public function getCountryCallingCode(): CountryCallingCode
+    /** @return list<CountryCallingCode> */
+    public function getCountryCallingCodes(): array
     {
         return CountryCallingCode::forCountry($this);
     }
