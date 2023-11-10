@@ -231,7 +231,7 @@ enum LanguageAlpha2: string
         string|null                                                                 $privateUseSubtag = null,
     ): LanguageTag {
         return new LanguageTag(
-            $this->toLanguageAlpha3Terminology(),
+            $this,
             $extendedLanguageSubtag,
             $scriptSubtag,
             $regionSubtag,

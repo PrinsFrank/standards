@@ -38,9 +38,9 @@ enum LanguageAlpha3Bibliographic: string
     case Tibetan                     = 'tib';
     case Welsh                       = 'wel';
 
-    public function toLanguageAlpha3Terminology(): LanguageAlpha3Common|LanguageAlpha3Terminology|null
+    public function toLanguageAlpha3Terminology(): LanguageAlpha3Terminology
     {
-        return BackedEnum::tryFromKey(LanguageAlpha3Common::class, $this->name) ?? BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name) ?? null;
+        return BackedEnum::fromKey(LanguageAlpha3Terminology::class, $this->name);
     }
 
     public function toLanguageAlpha2(): LanguageAlpha2|null
