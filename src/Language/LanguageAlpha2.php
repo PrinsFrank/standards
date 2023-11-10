@@ -4,6 +4,11 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Language;
 
 use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\LanguageTag\LanguageTag;
+use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
+use PrinsFrank\Standards\Region\GeographicRegion;
+use PrinsFrank\Standards\Scripts\ScriptCode;
 
 /**
  * @source https://www.iso.org/iso-639-language-codes.html
@@ -215,5 +220,24 @@ enum LanguageAlpha2: string
     public function upperCaseValue(): string
     {
         return strtoupper($this->value);
+    }
+
+    public function toLanguageTag(
+        LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive|null $extendedLanguageSubtag = null,
+        ScriptCode|null                                                             $scriptSubtag = null,
+        CountryAlpha2|GeographicRegion|null                                         $regionSubtag = null,
+        LanguageTagVariant|null                                                     $variantSubtag = null,
+        string|null                                                                 $extensionSubtag = null,
+        string|null                                                                 $privateUseSubtag = null,
+    ): LanguageTag {
+        return new LanguageTag(
+            $this,
+            $extendedLanguageSubtag,
+            $scriptSubtag,
+            $regionSubtag,
+            $variantSubtag,
+            $extensionSubtag,
+            $privateUseSubtag,
+        );
     }
 }
