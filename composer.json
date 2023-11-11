@@ -31,7 +31,7 @@
     "scripts": {
         "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
         "cs:fix": "php-cs-fixer fix --allow-risky=yes",
-        "stan": "php -d memory_limit=4G vendor/bin/phpstan analyse -vv",
+        "stan": "phpstan analyse --memory-limit 4G",
         "unit": "phpunit --testsuite=Unit",
         "test": [
             "@unit",
@@ -46,6 +46,6 @@
         "update-spec-language": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageMapping",
         "update-spec-language-subtag": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageSubTagMapping",
         "update-spec-scripts": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\ScriptMapping",
-        "detect-drivers": "vendor/bin/bdi detect drivers"
+        "detect-drivers": "bdi detect drivers"
     }
 }
