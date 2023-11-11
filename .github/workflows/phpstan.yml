@@ -18,8 +18,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ./.phpstan.result.cache
-          key: result-cache-${{ github.run_id }}
+          key: phpstan-result-cache-${{ github.run_id }}
           restore-keys: |
-            result-cache-
+            phpstan-result-cache-
       - name: Run PHPStan
         run: php -d memory_limit=4G vendor/bin/phpstan analyse -vv
