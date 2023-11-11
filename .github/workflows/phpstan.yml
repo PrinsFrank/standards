@@ -14,5 +14,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Install dependencies
         run: composer install
+      - name: Cache PHPStan
+        uses: actions/cache@v3
+        with:
+          path: ./.phpstan.result.cache
+          key: result-cache-${{ github.run_id }}
+          restore-keys: |
+            result-cache-
       - name: Run PHPStan
         run: php -d memory_limit=4G vendor/bin/phpstan analyse -vv
