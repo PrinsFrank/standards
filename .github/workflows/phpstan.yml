@@ -15,4 +15,4 @@ jobs:
       - name: Install dependencies
         run: composer install
       - name: Run PHPStan
-        run: php -d memory_limit=4G vendor/bin/phpstan analyse -vv
+        run: vendor/bin/phpstan analyse --memory-limit 4G
