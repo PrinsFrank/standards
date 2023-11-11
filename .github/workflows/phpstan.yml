@@ -22,4 +22,4 @@ jobs:
           restore-keys: |
             phpstan-result-cache-
       - name: Run PHPStan
-        run: php -d memory_limit=4G vendor/bin/phpstan analyse -vv
+        run: vendor/bin/phpstan analyse --memory-limit 4G
