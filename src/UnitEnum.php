@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards;
 
+/** @internal This class or its methods may change between minor versions */
 class UnitEnum
 {
     /**
