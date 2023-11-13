@@ -506,6 +506,17 @@ There are four language code specifications:
 
 As you see, the Bibliographic and Terminology specifications have an identical number of languages, so there is a one-to-one relation between these.
 
+```php
+LanguageAlpha2::from('nl');                                         // LanguageAlpha2::Dutch_Flemish
+LanguageAlpha2::from('nl')->value;                                  // 'nl'
+LanguageAlpha2::from('nl')->name;                                   // 'Dutch_Flemish'
+LanguageAlpha2::from('nl')->toLanguageAlpha3Bibliographic();        // LanguageAlpha3Bibliographic::Dutch_Flemish
+LanguageAlpha2::from('nl')->toLanguageAlpha3Bibliographic()->value; // 'dut'
+LanguageAlpha2::from('nl')->toLanguageAlpha3Terminology();          // LanguageAlpha3Terminology::Dutch_Flemish
+LanguageAlpha2::from('nl')->toLanguageAlpha3Terminology()->value;   // 'nld'
+LanguageAlpha2::from('nl')->toLanguageName()->value;                // 'Dutch; Flemish'
+```
+
 <details>
     <summary>Full documentation</summary>
 
