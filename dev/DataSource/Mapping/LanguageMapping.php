@@ -11,7 +11,6 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
-use PrinsFrank\Standards\Language\LanguageAlpha3Common;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Language\LanguageName;
 use Symfony\Component\Panther\Client;
@@ -63,7 +62,6 @@ class LanguageMapping implements Mapping
     {
         $languageAlpha2              = new EnumFile(LanguageAlpha2::class);
         $languageName                = new EnumFile(LanguageName::class);
-        $languageAlpha3Common        = new EnumFile(LanguageAlpha3Common::class);
         $languageAlpha3Bibliographic = new EnumFile(LanguageAlpha3Bibliographic::class);
         $languageAlpha3Terminology   = new EnumFile(LanguageAlpha3Terminology::class);
         foreach ($dataSet as $dataRow) {
@@ -74,14 +72,15 @@ class LanguageMapping implements Mapping
             }
 
             if (strlen($dataRow->alpha3) === 3) {
-                $languageAlpha3Common->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
+                $languageAlpha3Terminology->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
+                $languageAlpha3Bibliographic->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
             } elseif (preg_match('/(?P<bibliographic>[a-z]{3})\s+\(B\)\n(?P<terminology>[a-z]{3})\s+\(T\)/', $dataRow->alpha3, $matches)) {
                 $languageAlpha3Terminology->addCase(new EnumCase($dataRow->name, $matches['terminology']));
                 $languageAlpha3Bibliographic->addCase(new EnumCase($dataRow->name, $matches['bibliographic']));
             }
         }
 
-        return [$languageAlpha2, $languageAlpha3Bibliographic, $languageAlpha3Common, $languageAlpha3Terminology, $languageName];
+        return [$languageAlpha2, $languageAlpha3Bibliographic, $languageAlpha3Terminology, $languageName];
     }
 
     public static function getSorting(): SortingInterface

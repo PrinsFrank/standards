@@ -202,14 +202,14 @@ enum LanguageAlpha2: string
     case Zhuang_Chuang                                                                = 'za';
     case Zulu                                                                         = 'zu';
 
-    public function toLanguageAlpha3Bibliographic(): LanguageAlpha3Common|LanguageAlpha3Bibliographic|null
+    public function toLanguageAlpha3Bibliographic(): ?LanguageAlpha3Bibliographic
     {
-        return BackedEnum::tryFromKey(LanguageAlpha3Common::class, $this->name) ?? BackedEnum::tryFromKey(LanguageAlpha3Bibliographic::class, $this->name) ?? null;
+        return BackedEnum::tryFromKey(LanguageAlpha3Bibliographic::class, $this->name);
     }
 
-    public function toLanguageAlpha3Terminology(): LanguageAlpha3Common|LanguageAlpha3Terminology|null
+    public function toLanguageAlpha3Terminology(): ?LanguageAlpha3Terminology
     {
-        return BackedEnum::tryFromKey(LanguageAlpha3Common::class, $this->name) ?? BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name) ?? null;
+        return BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name);
     }
 
     public function toLanguageName(): LanguageName
@@ -223,7 +223,7 @@ enum LanguageAlpha2: string
     }
 
     public function toLanguageTag(
-        LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive|null $extendedLanguageSubtag = null,
+        LanguageAlpha3Terminology|LanguageAlpha3Extensive|null $extendedLanguageSubtag = null,
         ScriptCode|null                                                             $scriptSubtag = null,
         CountryAlpha2|GeographicRegion|null                                         $regionSubtag = null,
         LanguageTagVariant|null                                                     $variantSubtag = null,

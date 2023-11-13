@@ -504,13 +504,13 @@ enum LanguageName: string
         return BackedEnum::tryFromKey(LanguageAlpha2::class, $this->name);
     }
 
-    public function toLanguageAlpha3Bibliographic(): LanguageAlpha3Common|LanguageAlpha3Bibliographic|null
+    public function toLanguageAlpha3Bibliographic(): ?LanguageAlpha3Bibliographic
     {
-        return BackedEnum::tryFromKey(LanguageAlpha3Common::class, $this->name) ?? BackedEnum::tryFromKey(LanguageAlpha3Bibliographic::class, $this->name) ?? null;
+        return BackedEnum::tryFromKey(LanguageAlpha3Bibliographic::class, $this->name);
     }
 
-    public function toLanguageAlpha3Terminology(): LanguageAlpha3Common|LanguageAlpha3Terminology|null
+    public function toLanguageAlpha3Terminology(): ?LanguageAlpha3Terminology
     {
-        return BackedEnum::tryFromKey(LanguageAlpha3Common::class, $this->name) ?? BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name) ?? null;
+        return BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name);
     }
 }
