@@ -150,6 +150,8 @@ CountryAlpha3::from('NLD')->getCountryCallingCodes()[0]->value; // 31
 CountryAlpha3::from('NLD')->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 CountryAlpha3::from('NLD')->getInternationalCallPrefix()->value; // '00'
 
+CountryAlpha3::from('NLD')->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
+
 public function foo(CountryAlpha2 $countryAlpha2) {}            // Use spec as typehint to enforce valid value
 
 ```
@@ -213,6 +215,7 @@ $valueAlpha2->getCountryCallingCodes()[0]->value; // 31
 $valueAlpha2->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueAlpha2->getInternationalCallPrefix()->value; // '00'
 
+$valueAlpha2::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 ```
 
 ### CountryAlpha3
@@ -235,6 +238,8 @@ $valueAlpha3->getCountryCallingCodes()[0]->value; // 31
 
 $valueAlpha3->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueAlpha3->getInternationalCallPrefix()->value; // '00'
+
+$valueAlpha3::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 ```
 
 ### CountryNumeric
@@ -258,6 +263,8 @@ $valueNumeric->getCountryCallingCodes()[0]->value; // 31
 
 $valueNumeric->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueNumeric->getInternationalCallPrefix()->value; // '00'
+
+$valueNumeric::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 ```
 
 ### CountryName
@@ -278,6 +285,8 @@ $valueName->getCountryCallingCodes()[0]->value; // 31
 
 $valueName->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueName->getInternationalCallPrefix()->value; // '00'
+
+$valueName::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 ```
 
 </details>
