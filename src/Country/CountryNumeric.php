@@ -315,4 +315,9 @@ enum CountryNumeric: string
     {
         return InternationalCallPrefix::forCountry($this);
     }
+
+    public function getFlagEmoji(): string
+    {
+        return $this->toCountryAlpha2()->getFlagEmoji();
+    }
 }

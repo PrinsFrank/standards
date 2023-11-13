@@ -112,4 +112,10 @@ class CountryAlpha2Test extends TestCase
             $this->addToAssertionCount(1);
         }
     }
+
+    /** @covers ::getFlagEmoji */
+    public function testGetFlagEmoji(): void
+    {
+        static::assertSame('🇳🇱', CountryAlpha2::Netherlands->getFlagEmoji());
+    }
 }
