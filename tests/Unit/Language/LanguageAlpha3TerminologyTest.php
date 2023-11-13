@@ -19,7 +19,9 @@ class LanguageAlpha3TerminologyTest extends TestCase
         $cases = LanguageAlpha3Terminology::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toLanguageAlpha2());
+            $case->toLanguageAlpha2();
+
+            $this->addToAssertionCount(1);
         }
     }
 

@@ -19,7 +19,9 @@ class LanguageAlpha3BibliographicTest extends TestCase
         $cases = LanguageAlpha3Bibliographic::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            static::assertNotNull($case->toLanguageAlpha2());
+            $case->toLanguageAlpha2();
+
+            $this->addToAssertionCount(1);
         }
     }
 

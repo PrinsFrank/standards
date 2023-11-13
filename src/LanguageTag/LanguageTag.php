@@ -6,7 +6,6 @@ namespace PrinsFrank\Standards\LanguageTag;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
-use PrinsFrank\Standards\Language\LanguageAlpha3Common;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Region\GeographicRegion;
@@ -21,13 +20,13 @@ class LanguageTag
     public const SUBTAG_SEPARATOR = '-';
 
     public function __construct(
-        public readonly SingleCharacterSubtag|PrivateUsePrimarySubtag|LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive $primaryLanguageSubtag,
-        public readonly LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive|null                                 $extendedLanguageSubtag = null,
-        public readonly ScriptCode|null                                                                                             $scriptSubtag = null,
-        public readonly CountryAlpha2|GeographicRegion|null                                                                         $regionSubtag = null,
-        public readonly LanguageTagVariant|null                                                                                     $variantSubtag = null,
-        public readonly string|null                                                                                                 $extensionSubtag = null,
-        public readonly string|null                                                                                                 $privateUseSubtag = null,
+        public readonly SingleCharacterSubtag|PrivateUsePrimarySubtag|LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive $primaryLanguageSubtag,
+        public readonly LanguageAlpha3Terminology|LanguageAlpha3Extensive|null                                                         $extendedLanguageSubtag = null,
+        public readonly ScriptCode|null                                                                                                $scriptSubtag = null,
+        public readonly CountryAlpha2|GeographicRegion|null                                                                            $regionSubtag = null,
+        public readonly LanguageTagVariant|null                                                                                        $variantSubtag = null,
+        public readonly string|null                                                                                                    $extensionSubtag = null,
+        public readonly string|null                                                                                                    $privateUseSubtag = null,
     ) {
     }
 
@@ -46,7 +45,6 @@ class LanguageTag
         $subTags               = explode(self::SUBTAG_SEPARATOR, $languageTagString);
         $primaryLanguageSubtag = LanguageAlpha2::tryFrom($subTags[0])
             ?? LanguageAlpha3Terminology::tryFrom($subTags[0])
-            ?? LanguageAlpha3Common::tryFrom($subTags[0])
             ?? LanguageAlpha3Extensive::tryFrom($subTags[0])
             ?? PrivateUsePrimarySubtag::tryFrom($subTags[0])
             ?? SingleCharacterSubtag::tryFrom($subTags[0])
@@ -67,7 +65,7 @@ class LanguageTag
                 && $variantSubtag       === null
                 && $extensionSubtag     === null
                 && $privateUseSubtag    === null
-                && ($matchesExtendedLanguage = LanguageAlpha3Terminology::tryFrom($subTag) ?? LanguageAlpha3Common::tryFrom($subTag) ?? LanguageAlpha3Extensive::tryFrom($subTag)) !== null) {
+                && ($matchesExtendedLanguage = LanguageAlpha3Terminology::tryFrom($subTag) ?? LanguageAlpha3Extensive::tryFrom($subTag)) !== null) {
                 $extendedLanguageSubtag = $matchesExtendedLanguage;
             } elseif ($scriptSubtag  === null
                 && $regionSubtag     === null

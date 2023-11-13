@@ -7926,12 +7926,12 @@ enum LanguageAlpha3Extensive: string
     case Zuojiang_Zhuang                                          = 'zzj';
 
     public function toLanguageTag(
-        LanguageAlpha3Terminology|LanguageAlpha3Common|LanguageAlpha3Extensive|null $extendedLanguageSubtag = null,
-        ScriptCode|null                                                             $scriptSubtag = null,
-        CountryAlpha2|GeographicRegion|null                                         $regionSubtag = null,
-        LanguageTagVariant|null                                                     $variantSubtag = null,
-        string|null                                                                 $extensionSubtag = null,
-        string|null                                                                 $privateUseSubtag = null,
+        LanguageAlpha3Terminology|LanguageAlpha3Extensive|null $extendedLanguageSubtag = null,
+        ScriptCode|null                                        $scriptSubtag = null,
+        CountryAlpha2|GeographicRegion|null                    $regionSubtag = null,
+        LanguageTagVariant|null                                $variantSubtag = null,
+        string|null                                            $extensionSubtag = null,
+        string|null                                            $privateUseSubtag = null,
     ): LanguageTag {
         return new LanguageTag(
             $this,
