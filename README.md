@@ -507,114 +507,66 @@ public function foo(InternationalCallPrefix $internationalCallPrefix) {} // Use 
 
 ### At a glance
 
-The language specification is a bit more complex, as there are 20 alpha3 codes that have both a Bibliographic and a Terminology code. All the other ones have a common one. So if you decide you want the alpha3 representation of an alpha2 code, you can convert it to either Terminology or Bibliographic, where if it is not available you will get an instance of the common enum.
+There are four language code specifications:
+- 184 Language Alpha2 (ISO 639-1)
+- 486 Language Alpha3 Bibliographic (ISO 639-2)
+- 486 Language Alpha3 Terminology (ISO 639-2)
+- 7908 Language Alpha3 Extensive (ISO 639-3)
 
+As you see, the Bibliographic and Terminology specifications have an identical number of languages, so there is a one-to-one relation between these.
+
+```php
+LanguageAlpha2::from('nl');                                         // LanguageAlpha2::Dutch_Flemish
+LanguageAlpha2::from('nl')->value;                                  // 'nl'
+LanguageAlpha2::from('nl')->name;                                   // 'Dutch_Flemish'
+LanguageAlpha2::from('nl')->toLanguageAlpha3Bibliographic();        // LanguageAlpha3Bibliographic::Dutch_Flemish
+LanguageAlpha2::from('nl')->toLanguageAlpha3Bibliographic()->value; // 'dut'
+LanguageAlpha2::from('nl')->toLanguageAlpha3Terminology();          // LanguageAlpha3Terminology::Dutch_Flemish
+LanguageAlpha2::from('nl')->toLanguageAlpha3Terminology()->value;   // 'nld'
+LanguageAlpha2::from('nl')->toLanguageName()->value;                // 'Dutch; Flemish'
+```
 
 <details>
     <summary>Full documentation</summary>
 
-```mermaid
-classDiagram
-    direction LR
-    class ISO639_Name {
-        +String value [English]
-        from(string $value) self
-        tryfrom(string $value) self|null
-    }
-    class ISO639_1_Alpha_2 {
-        +String value [en]
-        from(string $value) self
-        tryfrom(string $value) self|null
-    }
-    class ISO639_2_Alpha_3_Common {
-        +String value [eng]
-        from(string $value) self
-        tryfrom(string $value) self|null
-    }
-    class ISO639_2_Alpha_3_Terminology {
-        N/A
-        from(string $value) self
-        tryfrom(string $value) self|null
-    }
-    class ISO639_2_Alpha_3_Bibliographic {
-        N/A
-        from(string $value) self
-        tryfrom(string $value) self|null
-    }
-    
-    ISO639_Name <--> ISO639_1_Alpha_2
-    ISO639_Name <--> ISO639_2_Alpha_3_Common
-    ISO639_Name <--> ISO639_2_Alpha_3_Bibliographic
-    ISO639_Name <--> ISO639_2_Alpha_3_Terminology
-    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Bibliographic
-    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Terminology
-    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Common
-    ISO639_2_Alpha_3_Bibliographic <--> ISO639_2_Alpha_3_Terminology
-```
-
-```mermaid
-classDiagram
-    direction LR
-    class ISO639_Name {
-        +String value [Albanian]
-        from(string $value) self
-        tryfrom(string $value) self|null
-    }
-    class ISO639_1_Alpha_2 {
-        +String value [sq]
-        from(string $value) self
-        tryfrom(string $value) self|null
-    }
-    class ISO639_2_Alpha_3_Common {
-        N/A
-        from(string $value) self
-        tryfrom(string $value) self|null
-    }
-    class ISO639_2_Alpha_3_Terminology {
-        +String value [alb]
-        from(string $value) self
-        tryfrom(string $value) self|null
-    }
-    class ISO639_2_Alpha_3_Bibliographic {
-        +String value [sqi]
-        from(string $value) self
-        tryfrom(string $value) self|null
-    }
-    
-    ISO639_Name <--> ISO639_1_Alpha_2
-    ISO639_Name <--> ISO639_2_Alpha_3_Common
-    ISO639_Name <--> ISO639_2_Alpha_3_Terminology
-    ISO639_Name <--> ISO639_2_Alpha_3_Bibliographic
-    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Bibliographic
-    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Terminology
-    ISO639_1_Alpha_2 <--> ISO639_2_Alpha_3_Common
-    ISO639_2_Alpha_3_Bibliographic <--> ISO639_2_Alpha_3_Terminology
-```
-
-### ISO 639-1
+### LanguageAlpha2 (ISO 639-1)
 
 ```php
-$valueAlpha2 = ISO639_1_Alpha_2::from('nl');                                  // ISO639_1_Alpha_2::Dutch_Flemish
-$value = $valueAlpha2->value;                                                 // 'nl'
-$valueName = $valueAlpha2->name;                                              // 'Dutch_Flemish'
-$valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); // ISO639_2_Alpha_3_Bibliographic::Dutch_Flemish
-$valueAlpha3Terminology = $valueAlpha2->toISO639_2_Alpha_3_Terminology();     // ISO639_2_Alpha_3_Terminology::Dutch_Flemish
+$valueAlpha2 = LanguageAlpha2::from('nl');                                 // LanguageAlpha2::Dutch_Flemish
+$value = $valueAlpha2->value;                                              // 'nl'
+$valueName = $valueAlpha2->name;                                           // 'Dutch_Flemish'
+$valueAlpha3Bibliographic = $valueAlpha2->toLanguageAlpha3Bibliographic(); // LanguageAlpha3Bibliographic::Dutch_Flemish
+$valueAlpha3Terminology = $valueAlpha2->toLanguageAlpha3Terminology();     // LanguageAlpha3Terminology::Dutch_Flemish
+$valueAlpha3Terminology = $valueAlpha2->toLanguageName();                  // LanguageName::Dutch_Flemish
+$valueAlpha3Terminology = $valueAlpha2->toLanguageName()->value;           // 'Dutch; Flemish'
 ```
 
-### ISO 639-2 (Common, Bibliographic and Terminology)
+### LanguageAlpha3Bibliographic (ISO 639-2)
 
 ```php
-$valueAlpha2 = ISO639_2_Alpha_3_Bibliographic::from('dut');               // ISO639_1_Alpha_2::Dutch_Flemish
-$value = $valueAlpha2->value;                                             // 'dut'
-$valueName = $valueAlpha2->name;                                          // 'Dutch_Flemish'
-$valueAlpha2 = $valueAlpha2->toISO639_1_Alpha_2();                        // ISO639_1_Alpha_2::Dutch_Flemish
-$valueAlpha3Terminology = $valueAlpha2->toISO639_2_Alpha_3_Terminology(); // ISO639_2_Alpha_3_Terminology::Dutch_Flemish
+$valueAlpha3 = LanguageAlpha3Bibliographic::from('dut');               // LanguageAlpha3Bibliographic::Dutch_Flemish
+$value = $valueAlpha3->value;                                          // 'dut'
+$valueName = $valueAlpha3->name;                                       // 'Dutch_Flemish'
+$valueAlpha2 = $valueAlpha3->toLanguageAlhpa2();                       // LanguageAlpha2::Dutch_Flemish
+$valueAlpha3Terminology = $valueAlpha3->toLanguageAlpha3Terminology(); // LanguageAlpha3Terminology::Dutch_Flemish
+```
 
-$valueAlpha2 = ISO639_2_Alpha_3_Terminology::from('nld');                     // ISO639_1_Alpha_2::Dutch_Flemish
-$value = $valueAlpha2->value;                                                 // 'nld'
-$valueName = $valueAlpha2->name;                                              // 'Dutch_Flemish'
-$valueAlpha2 = $valueAlpha2->toISO639_1_Alpha_2();                            // ISO639_1_Alpha_2::Dutch_Flemish
-$valueAlpha3Bibliographic = $valueAlpha2->toISO639_2_Alpha_3_Bibliographic(); // ISO639_2_Alpha_3_Bibliographic::Dutch_Flemish
+### LanguageAlpha3Terminology (ISO 639-2)
+
+```php
+$valueAlpha3 = LanguageAlpha3Terminology::from('nld');                     // LanguageAlpha3Terminology::Dutch_Flemish
+$value = $valueAlpha3->value;                                              // 'nld'
+$valueName = $valueAlpha3->name;                                           // 'Dutch_Flemish'
+$valueAlpha2 = $valueAlpha3->toLanguageAlpha2();                         // LanguageAlpha2::Dutch_Flemish
+$valueAlpha3Bibliographic = $valueAlpha3->toLanguageAlpha3Bibliographic(); // LanguageAlpha3Bibliographic::Dutch_Flemish
+```
+
+### LanguageAlpha3Extensive (ISO 639-3)
+
+```php
+$valueAlpha3 = LanguageAlpha3Extensive::from('nld'); // LanguageAlpha3Extensive::Dutch
+$value = $valueAlpha3->value;                        // 'nld'
+$valueName = $valueAlpha3->name;                     // 'Dutch'
 ```
 
 </details>
