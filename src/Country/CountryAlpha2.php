@@ -305,4 +305,21 @@ enum CountryAlpha2: string
     {
         return InternationalCallPrefix::forCountry($this);
     }
+
+    /**
+     * When displaying this on web pages, keep in mind the default windows fonts don't have a representation for these.
+     * @see https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.
+     */
+    public function getFlagEmoji(): string
+    {
+        return implode(
+            '',
+            array_map(
+                static function (string $char) {
+                    return mb_chr(mb_ord($char) + (127462 - 65)); // The emoji for region letter 'A' in flags is at code point 127462, the capital letter 'A' itself is at 65
+                },
+                str_split($this->value)
+            )
+        );
+    }
 }
