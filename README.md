@@ -524,6 +524,14 @@ LanguageAlpha2::from('nl')->toLanguageAlpha3Bibliographic()->value; // 'dut'
 LanguageAlpha2::from('nl')->toLanguageAlpha3Terminology();          // LanguageAlpha3Terminology::Dutch_Flemish
 LanguageAlpha2::from('nl')->toLanguageAlpha3Terminology()->value;   // 'nld'
 LanguageAlpha2::from('nl')->toLanguageName()->value;                // 'Dutch; Flemish'
+
+LanguageAlpha3Terminology::from('nld');                             // LanguageAlpha3Terminology::Dutch_Flemish
+LanguageAlpha3Bibliographic::from('dut');                           // LanguageAlpha3Bibliographic::Dutch_Flemish
+
+LanguageAlpha3Extensive::from('nld');                               // LanguageAlpha3Extensive::Dutch
+LanguageAlpha3Extensive::from('dse');                               // LanguageAlpha3Extensive::Dutch_Sign_Language
+
+public function foo(LanguageAlpha2 $languageAlpha2);                // Use spec as typehint to enforce valid value
 ```
 
 <details>
