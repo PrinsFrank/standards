@@ -229,7 +229,7 @@ enum CountryAlpha3: string
     case Stateless                               = 'XXA';
 
     case Refugee                                 = 'XXB';
-    case Refugee_Not_Defined                      = 'XXC';
+    case Refugee_Not_Defined                     = 'XXC';
     case Unspecified_Nationality                 = 'XXX';
     case Sudan                                   = 'SDN';
     case Suriname                                = 'SUR';
