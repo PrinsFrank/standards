@@ -229,6 +229,7 @@ enum CountryAlpha3: string
     case Stateless                               = 'XXA';
 
     case Refugee                                 = 'XXB';
+    case Refugee_Not_Defined                      = 'XXC';
     case Unspecified_Nationality                 = 'XXX';
     case Sudan                                   = 'SDN';
     case Suriname                                = 'SUR';
@@ -271,6 +272,10 @@ enum CountryAlpha3: string
 
     public function toCountryAlpha2(): CountryAlpha2
     {
+        if (in_array($this, [self::Stateless, self::Refugee, self::Refugee_Not_Defined, self::Stateless], true)) {
+            return CountryAlpha2::Stateless_Refugee;
+        }
+
         return BackedEnum::fromKey(CountryAlpha2::class, $this->name);
     }
 
