@@ -19,7 +19,12 @@ class LanguageTag
 {
     public const SUBTAG_SEPARATOR = '-';
 
-    /** @throws InvalidArgumentException */
+    /**
+     * @throws InvalidArgumentException
+     *
+     * @param list<LanguageTagVariant> $variantSubtag,
+     * @param list<string> $extensionSubtag
+     */
     public function __construct(
         public readonly SingleCharacterSubtag|PrivateUsePrimarySubtag|LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive $primaryLanguageSubtag,
         public readonly LanguageAlpha3Terminology|LanguageAlpha3Extensive|null                                                         $extendedLanguageSubtag = null,
@@ -93,7 +98,7 @@ class LanguageTag
 
                 break;
             } else {
-                throw new InvalidArgumentException('Subtag "' . $subTag . '" is not a valid subtag with context ' . json_encode(array_filter(['primarySubTag' => $primaryLanguageSubtag, 'extendedLanguageSubtag' => $extendedLanguageSubtag, 'scriptSubTag' => $scriptSubtag, 'regionSubtag' => $regionSubtag, 'variantSubtag' => $variantSubtag, 'extensionSubtag' => $extensionSubtag, 'privateUseSubtag' => $privateUseSubtag]), JSON_THROW_ON_ERROR));
+                throw new InvalidArgumentException('Subtag "' . $subTag . '" is not a valid subtag with context ' . json_encode(array_filter(['primarySubTag' => $primaryLanguageSubtag, 'extendedLanguageSubtag' => $extendedLanguageSubtag, 'scriptSubTag' => $scriptSubtag, 'regionSubtag' => $regionSubtag, 'variantSubtag' => $variantSubtag, 'extensionSubtag' => $extensionSubtag, 'privateUseSubtag' => $privateUseSubtag])));
             }
         }
 
