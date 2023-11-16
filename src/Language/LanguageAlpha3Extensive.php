@@ -4,8 +4,10 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Language;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
 use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
+use PrinsFrank\Standards\LanguageTag\PrivateUseRegionSubtag;
 use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
@@ -7925,13 +7927,19 @@ enum LanguageAlpha3Extensive: string
     case Zaza                                                     = 'zza';
     case Zuojiang_Zhuang                                          = 'zzj';
 
+    /**
+     * @throws InvalidArgumentException
+     *
+     * @param list<LanguageTagVariant> $variantSubtag,
+     * @param list<string> $extensionSubtag
+     */
     public function toLanguageTag(
-        LanguageAlpha3Terminology|LanguageAlpha3Extensive|null $extendedLanguageSubtag = null,
-        ScriptCode|null                                        $scriptSubtag = null,
-        CountryAlpha2|GeographicRegion|null                    $regionSubtag = null,
-        LanguageTagVariant|null                                $variantSubtag = null,
-        string|null                                            $extensionSubtag = null,
-        string|null                                            $privateUseSubtag = null,
+        LanguageAlpha3Terminology|LanguageAlpha3Extensive|null     $extendedLanguageSubtag = null,
+        ScriptCode|null                                            $scriptSubtag = null,
+        CountryAlpha2|GeographicRegion|PrivateUseRegionSubtag|null $regionSubtag = null,
+        array                                                      $variantSubtag = [],
+        array                                                      $extensionSubtag = [],
+        string|null                                                $privateUseSubtag = null,
     ): LanguageTag {
         return new LanguageTag(
             $this,

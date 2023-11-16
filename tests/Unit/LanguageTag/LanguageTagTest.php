@@ -5,11 +5,13 @@ namespace PrinsFrank\Standards\Tests\Unit\LanguageTag;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
 use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 use PrinsFrank\Standards\LanguageTag\PrivateUsePrimarySubtag;
+use PrinsFrank\Standards\LanguageTag\PrivateUseRegionSubtag;
 use PrinsFrank\Standards\LanguageTag\SingleCharacterSubtag;
 use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
@@ -18,10 +20,31 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
 class LanguageTagTest extends TestCase
 {
     /**
+     * @covers ::fromString
+     */
+    public function testThrowsExceptionIfVariantSubTagIsOfInvalidType(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Param $variantSubtag should be an array of "' . LanguageTagVariant::class . '"');
+        /** @phpstan-ignore-next-line */
+        new LanguageTag(LanguageAlpha2::Dutch_Flemish, variantSubtag: ['foo']);
+    }
+
+    /**
+     * @covers ::fromString
+     */
+    public function testThrowsExceptionIfExtensionSubtagIsOfInvalidType(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Param $variantSubtag should be an array of strings');
+        /** @phpstan-ignore-next-line */
+        new LanguageTag(LanguageAlpha2::Dutch_Flemish, extensionSubtag: [42]);
+    }
+
+    /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringSimpleLanguageTag(): void
     {
@@ -47,7 +70,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageSubtagPlusScriptSubtag(): void
     {
@@ -73,7 +95,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringExtendedLanguageSubtagsAndTheirPrimaryLanguageSubtagCounterparts(): void
     {
@@ -99,7 +120,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageScriptRegion(): void
     {
@@ -117,20 +137,19 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageVariant(): void
     {
         static::assertEquals(
-            new LanguageTag(LanguageAlpha2::Slovenian, variantSubtag: LanguageTagVariant::Rezijan),
+            new LanguageTag(LanguageAlpha2::Slovenian, variantSubtag: [LanguageTagVariant::Rezijan]),
             LanguageTag::fromString('sl-rozaj'),
         );
         static::assertEquals(
-            new LanguageTag(LanguageAlpha2::Slovenian, variantSubtag: LanguageTagVariant::Rezijan),
+            new LanguageTag(LanguageAlpha2::Slovenian, variantSubtag: [LanguageTagVariant::Rezijan, LanguageTagVariant::The_Bila_dialect_of_Resian]),
             LanguageTag::fromString('sl-rozaj-biske'),
         );
         static::assertEquals(
-            new LanguageTag(LanguageAlpha2::Slovenian, variantSubtag: LanguageTagVariant::Nadiza_dialect),
+            new LanguageTag(LanguageAlpha2::Slovenian, variantSubtag: [LanguageTagVariant::Nadiza_dialect]),
             LanguageTag::fromString('sl-nedis'),
         );
     }
@@ -139,16 +158,15 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageRegionVariant(): void
     {
         static::assertEquals(
-            new LanguageTag(LanguageAlpha2::German, regionSubtag: CountryAlpha2::Switzerland, variantSubtag: LanguageTagVariant::Traditional_German_orthography),
+            new LanguageTag(LanguageAlpha2::German, regionSubtag: CountryAlpha2::Switzerland, variantSubtag: [LanguageTagVariant::Traditional_German_orthography]),
             LanguageTag::fromString('de-CH-1901'),
         );
         static::assertEquals(
-            new LanguageTag(LanguageAlpha2::Slovenian, regionSubtag: CountryAlpha2::Italy, variantSubtag: LanguageTagVariant::Nadiza_dialect),
+            new LanguageTag(LanguageAlpha2::Slovenian, regionSubtag: CountryAlpha2::Italy, variantSubtag: [LanguageTagVariant::Nadiza_dialect]),
             LanguageTag::fromString('sl-IT-nedis'),
         );
     }
@@ -157,12 +175,11 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageScriptRegionVariant(): void
     {
         static::assertEquals(
-            new LanguageTag(LanguageAlpha2::Armenian, scriptSubtag: ScriptCode::Latin, regionSubtag: CountryAlpha2::Italy, variantSubtag: LanguageTagVariant::Eastern_Armenian),
+            new LanguageTag(LanguageAlpha2::Armenian, scriptSubtag: ScriptCode::Latin, regionSubtag: CountryAlpha2::Italy, variantSubtag: [LanguageTagVariant::Eastern_Armenian]),
             LanguageTag::fromString('hy-Latn-IT-arevela'),
         );
     }
@@ -171,7 +188,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageRegion(): void
     {
@@ -193,7 +209,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringPrivateUseSubTags(): void
     {
@@ -211,7 +226,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringPrivateUseRegistryValues(): void
     {
@@ -220,7 +234,7 @@ class LanguageTagTest extends TestCase
             LanguageTag::fromString('x-whatever'),
         );
         static::assertEquals(
-            new LanguageTag(new PrivateUsePrimarySubtag('qaa'), scriptSubtag: ScriptCode::Reserved_for_private_use_start, privateUseSubtag: 'southern'),
+            new LanguageTag(new PrivateUsePrimarySubtag('qaa'), scriptSubtag: ScriptCode::Reserved_for_private_use_start, regionSubtag: PrivateUseRegionSubtag::QM, privateUseSubtag: 'southern'),
             LanguageTag::fromString('qaa-Qaaa-QM-x-southern'),
         );
         static::assertEquals(
@@ -228,7 +242,7 @@ class LanguageTagTest extends TestCase
             LanguageTag::fromString('de-Qaaa'),
         );
         static::assertEquals(
-            new LanguageTag(LanguageAlpha2::Serbian, scriptSubtag: ScriptCode::Latin),
+            new LanguageTag(LanguageAlpha2::Serbian, scriptSubtag: ScriptCode::Latin, regionSubtag: PrivateUseRegionSubtag::QM),
             LanguageTag::fromString('sr-Latn-QM'),
         );
         static::assertEquals(
@@ -241,9 +255,8 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#section-2.2.2
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
-    public function testFromString(): void
+    public function testFromStringWithLanguageExtensions(): void
     {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Chinese),
@@ -272,6 +285,21 @@ class LanguageTagTest extends TestCase
         static::assertEquals(
             new LanguageTag(LanguageAlpha3Extensive::Mandarin_Chinese),
             LanguageTag::fromString('cmn')
+        );
+    }
+
+    /**
+     * @covers ::fromString
+     */
+    public function testFromStringWithExtensions(): void
+    {
+        static::assertEquals(
+            new LanguageTag(LanguageAlpha2::German, extensionSubtag: ['a', 'value']),
+            LanguageTag::fromString('de-a-value')
+        );
+        static::assertEquals(
+            new LanguageTag(LanguageAlpha2::French, extensionSubtag: ['a', 'Latn']),
+            LanguageTag::fromString('fr-a-Latn')
         );
     }
 }
