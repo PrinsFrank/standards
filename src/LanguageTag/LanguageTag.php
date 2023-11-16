@@ -97,6 +97,13 @@ class LanguageTag
                 $privateUseSubtag = implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1));
 
                 break;
+            } elseif ($extensionSubtag === []
+                && $privateUseSubtag === null
+                && $primaryLanguageSubtag !== SingleCharacterSubtag::PRIVATE_USE
+                && strlen($subTag) === 1) {
+                $extensionSubtag = array_slice($subTags, $index);
+
+                break;
             } else {
                 throw new InvalidArgumentException('Subtag "' . $subTag . '" is not a valid subtag with context ' . json_encode(array_filter(['primarySubTag' => $primaryLanguageSubtag, 'extendedLanguageSubtag' => $extendedLanguageSubtag, 'scriptSubTag' => $scriptSubtag, 'regionSubtag' => $regionSubtag, 'variantSubtag' => $variantSubtag, 'extensionSubtag' => $extensionSubtag, 'privateUseSubtag' => $privateUseSubtag])));
             }

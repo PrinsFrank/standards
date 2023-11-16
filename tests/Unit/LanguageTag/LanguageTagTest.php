@@ -244,7 +244,7 @@ class LanguageTagTest extends TestCase
      * @covers ::fromString
      * @covers ::tryFromString
      */
-    public function testFromString(): void
+    public function testFromStringWithLanguageExtensions(): void
     {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Chinese),
@@ -273,6 +273,21 @@ class LanguageTagTest extends TestCase
         static::assertEquals(
             new LanguageTag(LanguageAlpha3Extensive::Mandarin_Chinese),
             LanguageTag::fromString('cmn')
+        );
+    }
+
+    /**
+     * @covers ::fromString
+     */
+    public function testFromStringWithExtensions(): void
+    {
+        static::assertEquals(
+            new LanguageTag(LanguageAlpha2::German, extensionSubtag: ['a', 'value']),
+            LanguageTag::fromString('de-a-value')
+        );
+        static::assertEquals(
+            new LanguageTag(LanguageAlpha2::French, extensionSubtag: ['a', 'Latn']),
+            LanguageTag::fromString('fr-a-Latn')
         );
     }
 }
