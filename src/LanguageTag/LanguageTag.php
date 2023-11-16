@@ -98,7 +98,7 @@ class LanguageTag
 
                 break;
             } elseif ($extensionSubtag === []
-                && $privateUseSubtag === null
+                && $privateUseSubtag   === null
                 && $primaryLanguageSubtag !== SingleCharacterSubtag::PRIVATE_USE
                 && strlen($subTag) === 1) {
                 $extensionSubtag = array_slice($subTags, $index);
