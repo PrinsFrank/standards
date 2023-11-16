@@ -34,8 +34,8 @@ class LanguageTag
         public readonly array                                                                                                          $extensionSubtag = [],
         public readonly string|null                                                                                                    $privateUseSubtag = null,
     ) {
-        array_map(static function (mixed $variantSubtag) { $variantSubtag instanceof LanguageTagVariant ?: throw new InvalidArgumentException('Param $variantSubtag should be an array of "' . LanguageTagVariant::class . '"');}, $this->variantSubtag);
-        array_map(static function (mixed $extensionSubtag) { is_string($extensionSubtag) ?: throw new InvalidArgumentException('Param $variantSubtag should be an array of strings');}, $this->extensionSubtag);
+        array_map(static function (mixed $variantSubtag) { $variantSubtag instanceof LanguageTagVariant || throw new InvalidArgumentException('Param $variantSubtag should be an array of "' . LanguageTagVariant::class . '"');}, $this->variantSubtag);
+        array_map(static function (mixed $extensionSubtag) { is_string($extensionSubtag) || throw new InvalidArgumentException('Param $variantSubtag should be an array of strings');}, $this->extensionSubtag);
     }
 
     public static function tryFromString(string $languageTagString): ?self
@@ -86,7 +86,7 @@ class LanguageTag
                 && $privateUseSubtag === null
                 && ($matchesRegionTag = CountryAlpha2::tryFrom($subTag) ?? GeographicRegion::tryFrom($subTag) ?? PrivateUseRegionSubtag::tryFrom($subTag)) !== null) {
                 $regionSubtag = $matchesRegionTag;
-            } elseif ($privateUseSubtag    === null
+            } elseif ($privateUseSubtag === null
                 && ($matchesVariantTag = LanguageTagVariant::tryFrom($subTag)) !== null) {
                 $variantSubtag[] = $matchesVariantTag;
             } elseif (SingleCharacterSubtag::tryFrom($subTag) !== null) {

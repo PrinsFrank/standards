@@ -5,7 +5,6 @@ namespace PrinsFrank\Standards\Language;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
-use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 use PrinsFrank\Standards\LanguageTag\PrivateUseRegionSubtag;
 use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;

@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Tests\Unit\LanguageTag;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
@@ -19,10 +20,29 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
 class LanguageTagTest extends TestCase
 {
     /**
+     * @covers ::fromString
+     */
+    public function testThrowsExceptionIfVariantSubTagIsOfInvalidType(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Param $variantSubtag should be an array of "' . LanguageTagVariant::class . '"');
+        new LanguageTag(LanguageAlpha2::Dutch_Flemish, variantSubtag: ['foo']);
+    }
+
+    /**
+     * @covers ::fromString
+     */
+    public function testThrowsExceptionIfExtensionSubtagIsOfInvalidType(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Param $variantSubtag should be an array of strings');
+        new LanguageTag(LanguageAlpha2::Dutch_Flemish, extensionSubtag: [42]);
+    }
+
+    /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringSimpleLanguageTag(): void
     {
@@ -48,7 +68,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageSubtagPlusScriptSubtag(): void
     {
@@ -74,7 +93,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringExtendedLanguageSubtagsAndTheirPrimaryLanguageSubtagCounterparts(): void
     {
@@ -100,7 +118,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageScriptRegion(): void
     {
@@ -118,7 +135,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageVariant(): void
     {
@@ -140,7 +156,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageRegionVariant(): void
     {
@@ -158,7 +173,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageScriptRegionVariant(): void
     {
@@ -172,7 +186,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringLanguageRegion(): void
     {
@@ -194,7 +207,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringPrivateUseSubTags(): void
     {
@@ -212,7 +224,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringPrivateUseRegistryValues(): void
     {
@@ -242,7 +253,6 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#section-2.2.2
      *
      * @covers ::fromString
-     * @covers ::tryFromString
      */
     public function testFromStringWithLanguageExtensions(): void
     {
