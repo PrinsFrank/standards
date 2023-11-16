@@ -2,7 +2,11 @@
 
 ## Change in CountryCallingCode enum
 
-A typo in the name of Global Mobile Satellite System has been fixed.
+A typo in the name of Global Mobile Satellite System has been fixed. If you were using the `Global_Mobile_Satelite_System_shared_code` case of CountryCallingCode as a hardcoded value in your codebase, you schould change it:
+```diff
+- CountryCallingCode::Global_Mobile_Satelite_System_shared_code;
++ CountryCallingCode::Global_Mobile_Satellite_System_shared_code;
+```
 
 # Ugrading from 1.x to 2.x
 
