@@ -26,6 +26,7 @@ class LanguageTagTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Param $variantSubtag should be an array of "' . LanguageTagVariant::class . '"');
+        /** @phpstan-ignore-next-line */
         new LanguageTag(LanguageAlpha2::Dutch_Flemish, variantSubtag: ['foo']);
     }
 
@@ -36,6 +37,7 @@ class LanguageTagTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Param $variantSubtag should be an array of strings');
+        /** @phpstan-ignore-next-line */
         new LanguageTag(LanguageAlpha2::Dutch_Flemish, extensionSubtag: [42]);
     }
 

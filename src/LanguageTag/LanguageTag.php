@@ -93,9 +93,7 @@ class LanguageTag
                 $privateUseSubtag = implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1));
 
                 break;
-            } elseif ($privateUseSubtag   === null
-                && $primaryLanguageSubtag !== SingleCharacterSubtag::PRIVATE_USE
-                && strlen($subTag) === 1) {
+            } elseif ($privateUseSubtag === null && strlen($subTag) === 1) {
                 $extensionSubtag = array_slice($subTags, $index);
 
                 break;

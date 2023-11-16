@@ -5,7 +5,9 @@ namespace PrinsFrank\Standards\Language;
 
 use PrinsFrank\Standards\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
+use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 use PrinsFrank\Standards\LanguageTag\PrivateUseRegionSubtag;
 use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
@@ -524,6 +526,12 @@ enum LanguageAlpha3Bibliographic: string
         return strtoupper($this->value);
     }
 
+    /**
+     * @throws InvalidArgumentException
+     *
+     * @param list<LanguageTagVariant> $variantSubtag,
+     * @param list<string> $extensionSubtag
+     */
     public function toLanguageTag(
         LanguageAlpha3Terminology|LanguageAlpha3Extensive|null     $extendedLanguageSubtag = null,
         ScriptCode|null                                            $scriptSubtag = null,
