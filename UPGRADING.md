@@ -1,12 +1,42 @@
-# Ugrading from 2.x to 3.x
+# Upgrading from 2.x to 3.x
 
-## Change in CountryCallingCode enum
+## Removal of LanguageAlpha3Common; merged into LanguageAlpha3Bibliographic and LanguageAlpha3Terminology
 
-A typo in the name of Global Mobile Satellite System has been fixed. If you were using the `Global_Mobile_Satelite_System_shared_code` case of CountryCallingCode as a hardcoded value in your codebase, you schould change it:
+LanguageAlpha3Common contained all the cases that were present in both LanguageAlpha3Bibliographic and LanguageAlpha3Terminology. That resulted in complicated type hints. For the sake of simplicity these have now been merged. All the cases that were present in the LanguageAlpha3Common enum are now also present in the LanguageAlpha3Bibliographic and LanguageAlpha3Terminology enums, and the LanguageAlpha3Common class has been removed.
+
+This change also results in the return types of the methods on language classes 'toLanguageAlpha3Terminology' changing from an intersection type with the common class to just an instance of LanguageAlpha3Terminology or null and the 'toLanguageAlpha3Bibliographic' changing from an intersection type with the common class to just an instance of LanguageAlpha3Bibliographic or null.
+
+To process this change, simply remove all references to the following class:
+```diff
+- LanguageAlpha3Common
+```
+
+## ScriptCode and ScriptNumber naming inverted
+
+In the previous release 2.5.0, the naming for scriptCode and ScriptNumber were swapped. In this release the naming has been fixed. If you used any of these classes already, please swap them in your code as well:
+
+```diff
+- ScriptCode
++ ScriptName
+```
+
+```diff
+- ScriptName
++ ScriptCode
+```
+
+## Typo fixed in CountryCallingCode enum case
+
+A typo in the name of Global Mobile Satellite System has been fixed. If you were using the `Global_Mobile_Satelite_System_shared_code` case of CountryCallingCode as a hardcoded value in your codebase, you schould change it: (Note the extra letter 'l')
 ```diff
 - CountryCallingCode::Global_Mobile_Satelite_System_shared_code;
 + CountryCallingCode::Global_Mobile_Satellite_System_shared_code;
 ```
+
+## BackedEnum and UnitEnum are now marked internal
+
+These classes should not be used outside of this package, as the method signature might change between minor versions. As such, these classes are now marked internal. If you use the classes in your code you can continue to do so at your own risk, or you might want to remove their usages.
+
 
 # Ugrading from 1.x to 2.x
 
