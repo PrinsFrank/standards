@@ -72,33 +72,28 @@ class LanguageTag
             if ($extendedLanguageSubtag === null
                 && $regionSubtag        === null
                 && $variantSubtag       === []
-                && $extensionSubtag     === []
                 && $privateUseSubtag    === null
                 && ($matchesExtendedLanguage = LanguageAlpha3Terminology::tryFrom($subTag) ?? LanguageAlpha3Extensive::tryFrom($subTag)) !== null) {
                 $extendedLanguageSubtag = $matchesExtendedLanguage;
             } elseif ($scriptSubtag  === null
                 && $regionSubtag     === null
                 && $variantSubtag    === []
-                && $extensionSubtag  === []
                 && $privateUseSubtag === null
                 && ($matchesScriptTag = ScriptCode::tryFrom($subTag)) !== null) {
                 $scriptSubtag = $matchesScriptTag;
             } elseif ($regionSubtag  === null
                 && $variantSubtag    === []
-                && $extensionSubtag  === []
                 && $privateUseSubtag === null
                 && ($matchesRegionTag = CountryAlpha2::tryFrom($subTag) ?? GeographicRegion::tryFrom($subTag) ?? PrivateUseRegionSubtag::tryFrom($subTag)) !== null) {
                 $regionSubtag = $matchesRegionTag;
-            } elseif ($extensionSubtag  === []
-                && $privateUseSubtag    === null
+            } elseif ($privateUseSubtag    === null
                 && ($matchesVariantTag = LanguageTagVariant::tryFrom($subTag)) !== null) {
                 $variantSubtag[] = $matchesVariantTag;
             } elseif (SingleCharacterSubtag::tryFrom($subTag) !== null) {
                 $privateUseSubtag = implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1));
 
                 break;
-            } elseif ($extensionSubtag === []
-                && $privateUseSubtag   === null
+            } elseif ($privateUseSubtag   === null
                 && $primaryLanguageSubtag !== SingleCharacterSubtag::PRIVATE_USE
                 && strlen($subTag) === 1) {
                 $extensionSubtag = array_slice($subTags, $index);
