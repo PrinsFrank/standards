@@ -221,7 +221,6 @@ enum CountryAlpha2: string
     case Slovenia                                = 'SI';
     case Solomon_Islands                         = 'SB';
     case Somalia                                 = 'SO';
-    case Stateless_Refugee                       = 'XX';
     case South_Africa                            = 'ZA';
     case South_Georgia_South_Sandwich_Islands    = 'GS';
     case South_Sudan                             = 'SS';
