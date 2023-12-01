@@ -6,6 +6,7 @@ namespace PrinsFrank\Standards\Dev\DataTarget;
 use BackedEnum;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\EnumNotFoundException;
+use RuntimeException;
 
 class EnumFile
 {
@@ -101,6 +102,10 @@ class EnumFile
             $anchor              = '    public function ' . $method->name . '()';
             $startExistingMethod = mb_strpos($enumContent, $anchor);
             $lastClosingTag      = mb_strrpos($enumContent, '}');
+            if ($lastClosingTag === false) {
+                throw new RuntimeException('Couldn\'t locate closing tag');
+            }
+
             if ($startExistingMethod !== false) {
                 $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $lastClosingTag);
             } else {
