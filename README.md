@@ -341,6 +341,7 @@ CurrencyAlpha3::from('EUR')->toCurrencyName()->value;      // 'Euro'
 CurrencyAlpha3::from('EUR')->getSymbol();                  // CurrencySymbol::Euro
 CurrencyAlpha3::from('EUR')->getSymbol()->value;           // '€'
 CurrencyAlpha3::from('EUR')->toCurrencyNumeric()->value;   // '978'
+CurrencyAlpha3::from('EUR')->getMinorUnits();              // 2
 CurrencyNumeric::from('978');                              // CurrencyNumeric::Euro
 CurrencyNumeric::fromInt(978);                             // CurrencyNumeric::Euro
 CurrencyNumeric::from('978')->value;                       // '978'
@@ -410,6 +411,7 @@ $currencyAlpha3 = CurrencyAlpha3::from('EUR');         // CurrencyAlpha3::Euro
 $value = $currencyAlpha3->value;                       // 'EUR'
 $value = $currencyAlpha3->lowercaseValue();            // 'eur'
 $valueName = $currencyAlpha3->name;                    // 'Euro'
+$minorUnits = $currencyAlpha3->getMinorUnits();        // 2
 $valueNumeric = $currencyAlpha3->toCurrencyNumeric();  // CurrencyNumeric::Euro
 $valueName = $currencyAlpha3->toCurrencyName();        // CurrencyName::Euro
 $valueName = $currencyAlpha3->toCurrencyName()->value; // 'Euro'
@@ -427,6 +429,7 @@ $currencyNumeric = CurrencyNumeric::fromInt(978);       // CurrencyNumeric::Euro
 $value = $currencyNumeric->value;                       // '978'
 $value = $currencyNumeric->valueAsInt();                // 978
 $valueName = $currencyNumeric->name;                    // 'Euro'
+$minorUnits = $currencyNumeric->getMinorUnits();        // 2
 $valueAlpha3 = $currencyNumeric->toCurrencyAlpha3();    // CurrencyAlpha3::Euro
 $valueName = $currencyNumeric->toCurrencyName();        // CurrencyName::Euro
 $valueName = $currencyNumeric->toCurrencyName()->value; // 'Euro'
@@ -451,6 +454,7 @@ $currencyName = CurrencyName::from('Euro');        // CurrencyName::Euro
 $currencyName = CurrencyName::Euro;                // CurrencyName::Euro
 $name = $currencyName->name;                       // 'Euro'
 $value = $currencyName->value;                     // 'Euro'
+$minorUnits = $currencyName->getMinorUnits();      // 2
 $valueAlpha3 = $currencyName->toCurrencyAlpha3();  // CurrencyAlpha3::Euro
 $valueAlpha3 = $currencyName->toCurrencyNumeric(); // CurrencyNumeric::Euro
 $countries = $currencyName->getCountriesAlpha2();  // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
