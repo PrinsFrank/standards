@@ -213,6 +213,11 @@ enum CurrencyName: string
         return CurrencySymbol::forCurrency($this);
     }
 
+    public function getMinorUnits(): ?int
+    {
+        return $this->toCurrencyAlpha3()->getMinorUnits();
+    }
+
     /** @return list<CountryAlpha2> */
     public function getCountriesAlpha2(): array
     {

@@ -95,6 +95,16 @@ class CurrencyNumericTest extends TestCase
         static::assertSame(965, CurrencyNumeric::ADB_Unit_of_Account->valueAsInt());
     }
 
+    /** @covers ::getMinorUnits */
+    public function testGetMinorUnits(): void
+    {
+        foreach (CurrencyNumeric::cases() as $currencyAlpha3) {
+            $currencyAlpha3->getMinorUnits();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
     /** @covers ::getCountriesAlpha2 */
     public function testGetCountriesAlpha2(): void
     {

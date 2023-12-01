@@ -69,11 +69,12 @@ class CurrencyMapping implements Mapping
     {
         $currencyNameEnum         = new EnumFile(CurrencyName::class);
         $currencyNumericEnum      = new EnumFile(CurrencyNumeric::class);
-        $getCountriesAlpha2Method = new EnumMethod('getCountriesAlpha2', 'array', '[]');
-        $currencyAlpha3Enum       = (new EnumFile(CurrencyAlpha3::class))->addMethod($getCountriesAlpha2Method);
+        $currencyAlpha3Enum       = (new EnumFile(CurrencyAlpha3::class))
+            ->addMethod($getMinorUnitsMethod      = new EnumMethod('getMinorUnits', '?int', 'null'))
+            ->addMethod($getCountriesAlpha2Method = new EnumMethod('getCountriesAlpha2', 'array', '[]'));
 
-        $getCurrenciesMethod = new EnumMethod('getCurrenciesAlpha3', 'array', '[]');
-        $countryAlpha2       = (new EnumFile(CountryAlpha2::class))->addMethod($getCurrenciesMethod);
+        $countryAlpha2 = (new EnumFile(CountryAlpha2::class))
+            ->addMethod($getCurrenciesMethod = new EnumMethod('getCurrenciesAlpha3', 'array', '[]'));
         foreach ($dataSet as $dataRow) {
             if (($dataRow->Ccy ?? null) === null) {
                 continue;
@@ -82,6 +83,10 @@ class CurrencyMapping implements Mapping
             $currencyName = $dataRow->CcyNm;
             if ($dataRow->Ccy === 'VES' || $dataRow->Ccy === 'SLL') {
                 $currencyName .= '_Old';
+            }
+
+            if ($dataRow->CcyMnrUnts === (string) (int) $dataRow->CcyMnrUnts) {
+                $getMinorUnitsMethod->addMapping('self::' . NameNormalizer::normalize($currencyName), $dataRow->CcyMnrUnts);
             }
 
             $currencyAlpha3Enum->addCase(new EnumCase($currencyName, $dataRow->Ccy));
