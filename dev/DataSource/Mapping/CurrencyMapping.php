@@ -67,10 +67,10 @@ class CurrencyMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
+        $currencyNameEnum    = new EnumFile(CurrencyName::class);
+        $currencyNumericEnum = new EnumFile(CurrencyNumeric::class);
         $mappingMethod       = new EnumMethod('getCountryAlpha2', 'array');
         $currencyAlpha3Enum  = (new EnumFile(CurrencyAlpha3::class))->addMethod($mappingMethod);
-        $currencyNameEnum    = (new EnumFile(CurrencyName::class))->addMethod($mappingMethod);
-        $currencyNumericEnum = (new EnumFile(CurrencyNumeric::class))->addMethod($mappingMethod);
         foreach ($dataSet as $dataRow) {
             if (($dataRow->Ccy ?? null) === null) {
                 continue;
@@ -94,13 +94,14 @@ class CurrencyMapping implements Mapping
 
             if ($countryName === 'European_Union') {
                 foreach (EuroZone::allAlpha2() as $euroZoneCountry) {
-                    $mappingMethod->addMapping('self::' . NameNormalizer::normalize($currencyName), '\\' . CountryAlpha2::class . '::' . $euroZoneCountry->name);
+                    $mappingMethod->addMapping('self::' . NameNormalizer::normalize($currencyName), 'CountryAlpha2::' . $euroZoneCountry->name);
                 }
             } else {
-                $mappingMethod->addMapping('self::' . NameNormalizer::normalize($currencyName), '\\' . CountryAlpha2::class . '::' . (BackedEnum::fromKey(CountryAlpha2::class, str_replace(['_The', '_And_', '_Plurinational_State_Of', '_Keeling', '_Of', '_D_ivoire', '_Malvinas', 'Mcdonald', '_Islamic_Republic', 'Isle_Man', 'People_s_', '_Federated_States', 'Moldova_Republic', '_and_Tristan', '_Da_', '_Part', '_and_Grenadines', '_and_Jan', '_Province_China', '_United_Republic', 'Turkiye', '_Great_Britain_and_Northern_Ireland', 'Minor_', '_America', '_Bolivarian_Republic', '_U_s'], ['', '_and_', '', '', '', '_d_Ivoire', '', 'McDonald', '', 'Isle_of_Man', 'Peoples_', '', 'Moldova', '_Tristan', '_da_', '_part', '_and_the_Grenadines', '_Jan', '_Province_of_China', '', 'Turkey', '', '', '_of_America', '', '_U_S'], $countryName))->name));
+                $mappingMethod->addMapping('self::' . NameNormalizer::normalize($currencyName), 'CountryAlpha2::' . (BackedEnum::fromKey(CountryAlpha2::class, str_replace(['_The', '_And_', '_Plurinational_State_Of', '_Keeling', '_Of', '_D_ivoire', '_Malvinas', 'Mcdonald', '_Islamic_Republic', 'Isle_Man', 'People_s_', '_Federated_States', 'Moldova_Republic', '_and_Tristan', '_Da_', '_Part', '_and_Grenadines', '_and_Jan', '_Province_China', '_United_Republic', 'Turkiye', '_Great_Britain_and_Northern_Ireland', 'Minor_', '_America', '_Bolivarian_Republic', '_U_s'], ['', '_and_', '', '', '', '_d_Ivoire', '', 'McDonald', '', 'Isle_of_Man', 'Peoples_', '', 'Moldova', '_Tristan', '_da_', '_part', '_and_the_Grenadines', '_Jan', '_Province_of_China', '', 'Turkey', '', '', '_of_America', '', '_U_S'], $countryName))->name));
             }
         }
 
+        $mappingMethod->addMapping('default', '[]');
         return [$currencyAlpha3Enum, $currencyNameEnum, $currencyNumericEnum];
     }
 
