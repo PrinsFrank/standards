@@ -6,6 +6,7 @@ namespace PrinsFrank\Standards\Dev\DataTarget;
 use BackedEnum;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\EnumNotFoundException;
+use RuntimeException;
 
 class EnumFile
 {
@@ -13,6 +14,9 @@ class EnumFile
 
     /** @var EnumCase[] */
     private array $cases = [];
+
+    /** @var EnumMethod[] */
+    private array $methods = [];
 
     /** @param class-string<BackedEnum> $fqn */
     public function __construct(
@@ -26,6 +30,18 @@ class EnumFile
         $this->cases[] = $enumCase;
 
         return $this;
+    }
+
+    public function addMethod(EnumMethod $method): self
+    {
+        $this->methods[] = $method;
+
+        return $this;
+    }
+
+    public function hasCases(): bool
+    {
+        return count($this->cases) > 0;
     }
 
     public function hasCaseWithValue(string|int $value): bool
@@ -77,5 +93,26 @@ class EnumFile
         $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
 
         return $this->putContent($newEnumContent);
+    }
+
+    public function writeMethods(): void
+    {
+        foreach ($this->methods as $method) {
+            $enumContent         = $this->getContent();
+            $anchor              = '    public function ' . $method->name . '()';
+            $startExistingMethod = mb_strpos($enumContent, $anchor);
+            $lastClosingTag      = mb_strrpos($enumContent, '}');
+            if ($lastClosingTag === false) {
+                throw new RuntimeException('Couldn\'t locate closing tag');
+            }
+
+            if ($startExistingMethod !== false) {
+                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $lastClosingTag);
+            } else {
+                $newEnumContent = mb_substr($enumContent, 0, $lastClosingTag) . $method->__toString() . mb_substr($enumContent, $lastClosingTag);
+            }
+
+            $this->putContent($newEnumContent);
+        }
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Currency;
 
 use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Standards\Country\CountryAlpha2;
 
 /**
  * @source https://www.iso.org/iso-4217-currency-codes.html
@@ -225,5 +226,11 @@ enum CurrencyNumeric: string
     public function valueAsInt(): int
     {
         return (int) $this->value;
+    }
+
+    /** @return list<CountryAlpha2> */
+    public function getCountriesAlpha2(): array
+    {
+        return $this->toCurrencyAlpha3()->getCountriesAlpha2();
     }
 }

@@ -44,9 +44,7 @@ class CurrencyAlpha3Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::getSymbol
-     */
+    /** @covers ::getSymbol */
     public function testAllCasesHaveAccessToSymbolOrNull(): void
     {
         $cases = CurrencyAlpha3::cases();
@@ -60,11 +58,19 @@ class CurrencyAlpha3Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::lowerCaseValue
-     */
+    /** @covers ::lowerCaseValue */
     public function testLowerCaseValue(): void
     {
         static::assertSame('xua', CurrencyAlpha3::ADB_Unit_of_Account->lowerCaseValue());
+    }
+
+    /** @covers ::getCountriesAlpha2 */
+    public function testGetCountriesAlpha2(): void
+    {
+        foreach (CurrencyAlpha3::cases() as $currencyAlpha3) {
+            $currencyAlpha3->getCountriesAlpha2();
+
+            $this->addToAssertionCount(1);
+        }
     }
 }

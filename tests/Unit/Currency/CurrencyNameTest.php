@@ -59,4 +59,14 @@ class CurrencyNameTest extends TestCase
             }
         }
     }
+
+    /** @covers ::getCountriesAlpha2 */
+    public function testGetCountriesAlpha2(): void
+    {
+        foreach (CurrencyName::cases() as $currencyAlpha3) {
+            $currencyAlpha3->getCountriesAlpha2();
+
+            $this->addToAssertionCount(1);
+        }
+    }
 }

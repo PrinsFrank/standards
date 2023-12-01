@@ -118,4 +118,19 @@ class CountryAlpha3Test extends TestCase
     {
         static::assertSame('🇳🇱', CountryAlpha3::Netherlands->getFlagEmoji());
     }
+
+    /** @covers ::getCurrenciesAlpha3 */
+    public function testGetCurrenciesAlpha3(): void
+    {
+        foreach (CountryAlpha3::cases() as $countryAlpha2) {
+            $currencies = $countryAlpha2->getCurrenciesAlpha3();
+            if (in_array($countryAlpha2, [CountryAlpha3::Antarctica, CountryAlpha3::Palestine, CountryAlpha3::South_Georgia_South_Sandwich_Islands], true)) {
+                $this->addToAssertionCount(1);
+
+                continue;
+            }
+
+            static::assertNotEmpty($currencies, 'No currencies for "' . $countryAlpha2->name . '"');
+        }
+    }
 }
