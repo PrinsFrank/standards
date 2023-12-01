@@ -104,7 +104,7 @@ erDiagram
     Language }o..|{ Script: ""
     Country }|--o{ CountryGroup: ""
     Country }|--o{ CountryCallingCode: ""
-    Country }o..o{ Currency: ""
+    Country }o--o{ Currency: ""
     Country }|--o{ InternationalCallPrefix: ""
     Currency }|--o| CurrencySymbol: ""
     LanguageTag ||--o{ LanguageTag: ""
@@ -151,6 +151,7 @@ CountryAlpha3::from('NLD')->getInternationalCallPrefix();        // Internationa
 CountryAlpha3::from('NLD')->getInternationalCallPrefix()->value; // '00'
 
 CountryAlpha3::from('NLD')->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
+CountryAlpha3::from('NLD')->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 public function foo(CountryAlpha2 $countryAlpha2) {}            // Use spec as typehint to enforce valid value
 
@@ -216,6 +217,8 @@ $valueAlpha2->getInternationalCallPrefix();        // InternationalCallPrefix::_
 $valueAlpha2->getInternationalCallPrefix()->value; // '00'
 
 $valueAlpha2::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
+
+$valueAlpha2->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 ```
 
 ### CountryAlpha3
@@ -239,7 +242,9 @@ $valueAlpha3->getCountryCallingCodes()[0]->value; // 31
 $valueAlpha3->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueAlpha3->getInternationalCallPrefix()->value; // '00'
 
-$valueAlpha3::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
+$valueAlpha3->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
+
+$valueAlpha3->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 ```
 
 ### CountryNumeric
@@ -264,7 +269,9 @@ $valueNumeric->getCountryCallingCodes()[0]->value; // 31
 $valueNumeric->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueNumeric->getInternationalCallPrefix()->value; // '00'
 
-$valueNumeric::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
+$valueNumeric->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
+
+$valueNumeric->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 ```
 
 ### CountryName
@@ -286,7 +293,9 @@ $valueName->getCountryCallingCodes()[0]->value; // 31
 $valueName->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueName->getInternationalCallPrefix()->value; // '00'
 
-$valueName::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
+$valueName->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
+
+$valueName->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 ```
 
 </details>
@@ -343,6 +352,8 @@ CurrencySymbol::forCurrency(CurrencyNumeric::Euro);        // CurrencySymbol::Eu
 CurrencySymbol::forCurrency(CurrencyName::Euro);           // CurrencySymbol::Euro
 CurrencySymbol::forCurrency(CurrencyNumeric::from('978')); // CurrencySymbol::Euro
 CurrencyAlpha3::Euro;                                      // CurrencyAlpha3::Euro
+
+CurrencyAlpha3::Norwegian_Krone->getCountriesAlpha2();     // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
 
 public function foo(CurrencyAlpha3 $currencyAlpha3) {}     // Use spec as typehint to enforce valid value
 
@@ -404,6 +415,8 @@ $valueName = $currencyAlpha3->toCurrencyName();        // CurrencyName::Euro
 $valueName = $currencyAlpha3->toCurrencyName()->value; // 'Euro'
 $valueSymbol = $currencyAlpha3->getSymbol();           // CurrencySymbol::Euro
 $valueSymbol = $currencyAlpha3->getSymbol()->value;    // '€'
+$countries = $currencyAlpha2->getCountriesAlpha2();    // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
+
 ```
 
 ### CurrencyNumeric
@@ -419,6 +432,7 @@ $valueName = $currencyNumeric->toCurrencyName();        // CurrencyName::Euro
 $valueName = $currencyNumeric->toCurrencyName()->value; // 'Euro'
 $valueSymbol = $currencyNumeric->getSymbol();           // CurrencySymbol::Euro
 $valueSymbol = $currencyNumeric->getSymbol()->value;    // '€'
+$countries = $currencyNumeric->getCountriesAlpha2();    // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
 ```
 
 ### CurrencySymbol
@@ -439,6 +453,7 @@ $name = $currencyName->name;                       // 'Euro'
 $value = $currencyName->value;                     // 'Euro'
 $valueAlpha3 = $currencyName->toCurrencyAlpha3();  // CurrencyAlpha3::Euro
 $valueAlpha3 = $currencyName->toCurrencyNumeric(); // CurrencyNumeric::Euro
+$countries = $currencyName->getCountriesAlpha2();  // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
 ```
 
 
