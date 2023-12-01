@@ -7,27 +7,6 @@ on:
 
 jobs:
   update-specs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Install dependencies
-        run: composer install
-      - name: Run standard update command
-        run: composer update-spec-language-subtag
-      - name: Run CSFixer
-        run: composer cs:fix
-      - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v4
-        with:
-          commit-message: Automatic Language Subtag spec update from upstream changes
-          delete-branch: true
-          title: 'Automatic Language Subtag spec update'
-          branch: update-spec/language-sub-tag
-          body: |
-            This PR makes sure the content of this package is updated with upstream changes in the specs.
-          labels: |
-            spec-update
-            automated pr
-          reviewers: prinsfrank
+    uses: ./.github/workflows/update-spec.yml
+    with:
+      type: language-subtag
