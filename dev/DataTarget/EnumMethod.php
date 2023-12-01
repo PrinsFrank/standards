@@ -30,16 +30,23 @@ class EnumMethod
         $sortedMapping = $this->mapping;
         ksort($sortedMapping);
 
+        $oneOfItemsIsArray = array_reduce(
+            $sortedMapping,
+            static function (?bool $carry, array $item) {
+                return $carry === true || count($item) > 1;
+            }
+        );
+
         foreach ($sortedMapping as $key => $values) {
             sort($values);
 
             if (count($values) <= 1) {
-                $mappingString .= $key . ' => [' . implode(',', $values) . '],' . PHP_EOL;
+                $mappingString .= $key . ' => ' . ($oneOfItemsIsArray ? '[' : '') . implode(',', $values) . ($oneOfItemsIsArray ? ']' : '') . ',' . PHP_EOL;
 
                 continue;
             }
 
-            $mappingString .= $key . ' => [' . PHP_EOL . implode(',' . PHP_EOL, $values) . PHP_EOL . '],' . PHP_EOL;
+            $mappingString .= $key . ' => ' . ($oneOfItemsIsArray ? '[' : '') . PHP_EOL . implode(',' . PHP_EOL, $values) . PHP_EOL . ($oneOfItemsIsArray ? ']' : '') . ',' . PHP_EOL;
         }
 
         if ($this->default !== null) {

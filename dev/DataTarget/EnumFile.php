@@ -98,18 +98,22 @@ class EnumFile
     public function writeMethods(): void
     {
         foreach ($this->methods as $method) {
-            $enumContent         = $this->getContent();
-            $anchor              = '    public function ' . $method->name . '()';
-            $startExistingMethod = mb_strpos($enumContent, $anchor);
-            $lastClosingTag      = mb_strrpos($enumContent, '}');
-            if ($lastClosingTag === false) {
+            $enumContent                  = $this->getContent();
+            $anchor                       = '    public function ' . $method->name . '()';
+            $startExistingMethod          = mb_strpos($enumContent, $anchor);
+            $endPosMethodOrLastClosingTag = mb_strpos($enumContent, 'public function', $startExistingMethod === false ? 0 : $startExistingMethod);
+            if ($endPosMethodOrLastClosingTag === false) {
+                $endPosMethodOrLastClosingTag = mb_strrpos($enumContent, '}');
+            }
+
+            if ($endPosMethodOrLastClosingTag === false) {
                 throw new RuntimeException('Couldn\'t locate closing tag');
             }
 
             if ($startExistingMethod !== false) {
-                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $lastClosingTag);
+                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
             } else {
-                $newEnumContent = mb_substr($enumContent, 0, $lastClosingTag) . $method->__toString() . mb_substr($enumContent, $lastClosingTag);
+                $newEnumContent = mb_substr($enumContent, 0, $endPosMethodOrLastClosingTag) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
             }
 
             $this->putContent($newEnumContent);
