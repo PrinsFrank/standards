@@ -11,6 +11,7 @@ class EnumMethod
     public function __construct(
         public readonly string $name,
         public readonly string $returnType,
+        public readonly ?string $default,
     ) {
     }
 
@@ -22,8 +23,18 @@ class EnumMethod
     public function __toString(): string
     {
         $mappingString = '';
-        foreach ($this->mapping as $key => $value) {
-            $mappingString .= $key . ' => [' . PHP_EOL . implode(',' . PHP_EOL, $value) . PHP_EOL . '],' . PHP_EOL;
+        foreach ($this->mapping as $key => $values) {
+            if (count($values) <= 1) {
+                $mappingString .= $key . ' => [' . implode(',', $values) . '],' . PHP_EOL;
+
+                continue;
+            }
+
+            $mappingString .= $key . ' => [' . PHP_EOL . implode(',' . PHP_EOL, $values) . PHP_EOL . '],' . PHP_EOL;
+        }
+
+        if ($this->default !== null) {
+            $mappingString .= 'default => ' . $this->default;
         }
 
         return <<<EOD

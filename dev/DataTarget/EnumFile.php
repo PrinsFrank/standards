@@ -93,14 +93,12 @@ class EnumFile
     {
         foreach ($this->methods as $method) {
             $enumContent         = $this->getContent();
-            $startExistingMethod = mb_strpos($enumContent, 'public function ' . $method->name . '()');
+            $anchor              = '    public function ' . $method->name . '()';
+            $startExistingMethod = mb_strpos($enumContent, $anchor);
+            $lastClosingTag      = mb_strrpos($enumContent, '}');
             if ($startExistingMethod !== false) {
-                $nextMethodPos = mb_strpos($enumContent, 'public function', $startExistingMethod ?? 0);
-
-                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $nextMethodPos);
+                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $lastClosingTag);
             } else {
-                $lastClosingTag = mb_strrpos($enumContent, '}');
-
                 $newEnumContent = mb_substr($enumContent, 0, $lastClosingTag) . $method->__toString() . mb_substr($enumContent, $lastClosingTag);
             }
 

@@ -222,10 +222,8 @@ enum CurrencyAlpha3: string
     public function getCountriesAlpha2(): array
     {
         return match($this) {
-            self::Afghani => [
-                CountryAlpha2::Afghanistan
-            ],
-            self::Euro => [
+            self::Afghani => [CountryAlpha2::Afghanistan],
+            self::Euro    => [
                 CountryAlpha2::Aland_Islands,
                 CountryAlpha2::Andorra,
                 CountryAlpha2::Austria,
@@ -282,13 +280,9 @@ enum CurrencyAlpha3: string
                 CountryAlpha2::Slovenia,
                 CountryAlpha2::Spain
             ],
-            self::Lek => [
-                CountryAlpha2::Albania
-            ],
-            self::Algerian_Dinar => [
-                CountryAlpha2::Algeria
-            ],
-            self::US_Dollar => [
+            self::Lek            => [CountryAlpha2::Albania],
+            self::Algerian_Dinar => [CountryAlpha2::Algeria],
+            self::US_Dollar      => [
                 CountryAlpha2::American_Samoa,
                 CountryAlpha2::Bonaire_Sint_Eustatius_and_Saba,
                 CountryAlpha2::British_Indian_Ocean_Territory,
@@ -309,9 +303,7 @@ enum CurrencyAlpha3: string
                 CountryAlpha2::Virgin_Islands_British,
                 CountryAlpha2::Virgin_Islands_U_S
             ],
-            self::Kwanza => [
-                CountryAlpha2::Angola
-            ],
+            self::Kwanza                => [CountryAlpha2::Angola],
             self::East_Caribbean_Dollar => [
                 CountryAlpha2::Anguilla,
                 CountryAlpha2::Antigua_and_Barbuda,
@@ -322,15 +314,9 @@ enum CurrencyAlpha3: string
                 CountryAlpha2::Saint_Lucia,
                 CountryAlpha2::Saint_Vincent_and_the_Grenadines
             ],
-            self::Argentine_Peso => [
-                CountryAlpha2::Argentina
-            ],
-            self::Armenian_Dram => [
-                CountryAlpha2::Armenia
-            ],
-            self::Aruban_Florin => [
-                CountryAlpha2::Aruba
-            ],
+            self::Argentine_Peso    => [CountryAlpha2::Argentina],
+            self::Armenian_Dram     => [CountryAlpha2::Armenia],
+            self::Aruban_Florin     => [CountryAlpha2::Aruba],
             self::Australian_Dollar => [
                 CountryAlpha2::Australia,
                 CountryAlpha2::Christmas_Island,
@@ -341,28 +327,14 @@ enum CurrencyAlpha3: string
                 CountryAlpha2::Norfolk_Island,
                 CountryAlpha2::Tuvalu
             ],
-            self::Azerbaijan_Manat => [
-                CountryAlpha2::Azerbaijan
-            ],
-            self::Bahamian_Dollar => [
-                CountryAlpha2::Bahamas
-            ],
-            self::Bahraini_Dinar => [
-                CountryAlpha2::Bahrain
-            ],
-            self::Taka => [
-                CountryAlpha2::Bangladesh
-            ],
-            self::Barbados_Dollar => [
-                CountryAlpha2::Barbados
-            ],
-            self::Belarusian_Ruble => [
-                CountryAlpha2::Belarus
-            ],
-            self::Belize_Dollar => [
-                CountryAlpha2::Belize
-            ],
-            self::CFA_Franc_BCEAO => [
+            self::Azerbaijan_Manat => [CountryAlpha2::Azerbaijan],
+            self::Bahamian_Dollar  => [CountryAlpha2::Bahamas],
+            self::Bahraini_Dinar   => [CountryAlpha2::Bahrain],
+            self::Taka             => [CountryAlpha2::Bangladesh],
+            self::Barbados_Dollar  => [CountryAlpha2::Barbados],
+            self::Belarusian_Ruble => [CountryAlpha2::Belarus],
+            self::Belize_Dollar    => [CountryAlpha2::Belize],
+            self::CFA_Franc_BCEAO  => [
                 CountryAlpha2::Benin,
                 CountryAlpha2::Burkina_Faso,
                 CountryAlpha2::Cote_d_Ivoire,
@@ -372,52 +344,28 @@ enum CurrencyAlpha3: string
                 CountryAlpha2::Senegal,
                 CountryAlpha2::Togo
             ],
-            self::Bermudian_Dollar => [
-                CountryAlpha2::Bermuda
-            ],
-            self::Indian_Rupee => [
+            self::Bermudian_Dollar => [CountryAlpha2::Bermuda],
+            self::Indian_Rupee     => [
                 CountryAlpha2::Bhutan,
                 CountryAlpha2::India
             ],
-            self::Ngultrum => [
-                CountryAlpha2::Bhutan
-            ],
-            self::Boliviano => [
-                CountryAlpha2::Bolivia
-            ],
-            self::Mvdol => [
-                CountryAlpha2::Bolivia
-            ],
-            self::Convertible_Mark => [
-                CountryAlpha2::Bosnia_and_Herzegovina
-            ],
-            self::Pula => [
-                CountryAlpha2::Botswana
-            ],
-            self::Norwegian_Krone => [
+            self::Ngultrum         => [CountryAlpha2::Bhutan],
+            self::Boliviano        => [CountryAlpha2::Bolivia],
+            self::Mvdol            => [CountryAlpha2::Bolivia],
+            self::Convertible_Mark => [CountryAlpha2::Bosnia_and_Herzegovina],
+            self::Pula             => [CountryAlpha2::Botswana],
+            self::Norwegian_Krone  => [
                 CountryAlpha2::Bouvet_Island,
                 CountryAlpha2::Norway,
                 CountryAlpha2::Svalbard_Jan_Mayen
             ],
-            self::Brazilian_Real => [
-                CountryAlpha2::Brazil
-            ],
-            self::Brunei_Dollar => [
-                CountryAlpha2::Brunei_Darussalam
-            ],
-            self::Bulgarian_Lev => [
-                CountryAlpha2::Bulgaria
-            ],
-            self::Burundi_Franc => [
-                CountryAlpha2::Burundi
-            ],
-            self::Cabo_Verde_Escudo => [
-                CountryAlpha2::Cabo_Verde
-            ],
-            self::Riel => [
-                CountryAlpha2::Cambodia
-            ],
-            self::CFA_Franc_BEAC => [
+            self::Brazilian_Real    => [CountryAlpha2::Brazil],
+            self::Brunei_Dollar     => [CountryAlpha2::Brunei_Darussalam],
+            self::Bulgarian_Lev     => [CountryAlpha2::Bulgaria],
+            self::Burundi_Franc     => [CountryAlpha2::Burundi],
+            self::Cabo_Verde_Escudo => [CountryAlpha2::Cabo_Verde],
+            self::Riel              => [CountryAlpha2::Cambodia],
+            self::CFA_Franc_BEAC    => [
                 CountryAlpha2::Cameroon,
                 CountryAlpha2::Central_African_Republic,
                 CountryAlpha2::Chad,
@@ -425,421 +373,172 @@ enum CurrencyAlpha3: string
                 CountryAlpha2::Equatorial_Guinea,
                 CountryAlpha2::Gabon
             ],
-            self::Canadian_Dollar => [
-                CountryAlpha2::Canada
-            ],
-            self::Cayman_Islands_Dollar => [
-                CountryAlpha2::Cayman_Islands
-            ],
-            self::Chilean_Peso => [
-                CountryAlpha2::Chile
-            ],
-            self::Unidad_de_Fomento => [
-                CountryAlpha2::Chile
-            ],
-            self::Yuan_Renminbi => [
-                CountryAlpha2::China
-            ],
-            self::Colombian_Peso => [
-                CountryAlpha2::Colombia
-            ],
-            self::Unidad_de_Valor_Real => [
-                CountryAlpha2::Colombia
-            ],
-            self::Comorian_Franc => [
-                CountryAlpha2::Comoros
-            ],
-            self::Congolese_Franc => [
-                CountryAlpha2::Congo_Democratic_Republic
-            ],
-            self::New_Zealand_Dollar => [
+            self::Canadian_Dollar       => [CountryAlpha2::Canada],
+            self::Cayman_Islands_Dollar => [CountryAlpha2::Cayman_Islands],
+            self::Chilean_Peso          => [CountryAlpha2::Chile],
+            self::Unidad_de_Fomento     => [CountryAlpha2::Chile],
+            self::Yuan_Renminbi         => [CountryAlpha2::China],
+            self::Colombian_Peso        => [CountryAlpha2::Colombia],
+            self::Unidad_de_Valor_Real  => [CountryAlpha2::Colombia],
+            self::Comorian_Franc        => [CountryAlpha2::Comoros],
+            self::Congolese_Franc       => [CountryAlpha2::Congo_Democratic_Republic],
+            self::New_Zealand_Dollar    => [
                 CountryAlpha2::Cook_Islands,
                 CountryAlpha2::New_Zealand,
                 CountryAlpha2::Niue,
                 CountryAlpha2::Pitcairn,
                 CountryAlpha2::Tokelau
             ],
-            self::Costa_Rican_Colon => [
-                CountryAlpha2::Costa_Rica
-            ],
-            self::Cuban_Peso => [
-                CountryAlpha2::Cuba
-            ],
-            self::Peso_Convertible => [
-                CountryAlpha2::Cuba
-            ],
+            self::Costa_Rican_Colon             => [CountryAlpha2::Costa_Rica],
+            self::Cuban_Peso                    => [CountryAlpha2::Cuba],
+            self::Peso_Convertible              => [CountryAlpha2::Cuba],
             self::Netherlands_Antillean_Guilder => [
                 CountryAlpha2::Curacao,
                 CountryAlpha2::Sint_Maarten_Dutch_part
             ],
-            self::Czech_Koruna => [
-                CountryAlpha2::Czechia
-            ],
+            self::Czech_Koruna => [CountryAlpha2::Czechia],
             self::Danish_Krone => [
                 CountryAlpha2::Denmark,
                 CountryAlpha2::Faroe_Islands,
                 CountryAlpha2::Greenland
             ],
-            self::Djibouti_Franc => [
-                CountryAlpha2::Djibouti
-            ],
-            self::Dominican_Peso => [
-                CountryAlpha2::Dominican_Republic
-            ],
-            self::Egyptian_Pound => [
-                CountryAlpha2::Egypt
-            ],
-            self::El_Salvador_Colon => [
-                CountryAlpha2::El_Salvador
-            ],
-            self::Nakfa => [
-                CountryAlpha2::Eritrea
-            ],
-            self::Lilangeni => [
-                CountryAlpha2::Eswatini
-            ],
-            self::Ethiopian_Birr => [
-                CountryAlpha2::Ethiopia
-            ],
-            self::Falkland_Islands_Pound => [
-                CountryAlpha2::Falkland_Islands
-            ],
-            self::Fiji_Dollar => [
-                CountryAlpha2::Fiji
-            ],
-            self::CFP_Franc => [
+            self::Djibouti_Franc         => [CountryAlpha2::Djibouti],
+            self::Dominican_Peso         => [CountryAlpha2::Dominican_Republic],
+            self::Egyptian_Pound         => [CountryAlpha2::Egypt],
+            self::El_Salvador_Colon      => [CountryAlpha2::El_Salvador],
+            self::Nakfa                  => [CountryAlpha2::Eritrea],
+            self::Lilangeni              => [CountryAlpha2::Eswatini],
+            self::Ethiopian_Birr         => [CountryAlpha2::Ethiopia],
+            self::Falkland_Islands_Pound => [CountryAlpha2::Falkland_Islands],
+            self::Fiji_Dollar            => [CountryAlpha2::Fiji],
+            self::CFP_Franc              => [
                 CountryAlpha2::French_Polynesia,
                 CountryAlpha2::New_Caledonia,
                 CountryAlpha2::Wallis_and_Futuna
             ],
-            self::Dalasi => [
-                CountryAlpha2::Gambia
-            ],
-            self::Lari => [
-                CountryAlpha2::Georgia
-            ],
-            self::Ghana_Cedi => [
-                CountryAlpha2::Ghana
-            ],
-            self::Gibraltar_Pound => [
-                CountryAlpha2::Gibraltar
-            ],
-            self::Quetzal => [
-                CountryAlpha2::Guatemala
-            ],
-            self::Pound_Sterling => [
+            self::Dalasi          => [CountryAlpha2::Gambia],
+            self::Lari            => [CountryAlpha2::Georgia],
+            self::Ghana_Cedi      => [CountryAlpha2::Ghana],
+            self::Gibraltar_Pound => [CountryAlpha2::Gibraltar],
+            self::Quetzal         => [CountryAlpha2::Guatemala],
+            self::Pound_Sterling  => [
                 CountryAlpha2::Guernsey,
                 CountryAlpha2::Isle_of_Man,
                 CountryAlpha2::Jersey,
                 CountryAlpha2::United_Kingdom
             ],
-            self::Guinean_Franc => [
-                CountryAlpha2::Guinea
-            ],
-            self::Guyana_Dollar => [
-                CountryAlpha2::Guyana
-            ],
-            self::Gourde => [
-                CountryAlpha2::Haiti
-            ],
-            self::Lempira => [
-                CountryAlpha2::Honduras
-            ],
-            self::Hong_Kong_Dollar => [
-                CountryAlpha2::Hong_Kong
-            ],
-            self::Forint => [
-                CountryAlpha2::Hungary
-            ],
-            self::Iceland_Krona => [
-                CountryAlpha2::Iceland
-            ],
-            self::Rupiah => [
-                CountryAlpha2::Indonesia
-            ],
-            self::Iranian_Rial => [
-                CountryAlpha2::Iran
-            ],
-            self::Iraqi_Dinar => [
-                CountryAlpha2::Iraq
-            ],
-            self::New_Israeli_Sheqel => [
-                CountryAlpha2::Israel
-            ],
-            self::Jamaican_Dollar => [
-                CountryAlpha2::Jamaica
-            ],
-            self::Yen => [
-                CountryAlpha2::Japan
-            ],
-            self::Jordanian_Dinar => [
-                CountryAlpha2::Jordan
-            ],
-            self::Tenge => [
-                CountryAlpha2::Kazakhstan
-            ],
-            self::Kenyan_Shilling => [
-                CountryAlpha2::Kenya
-            ],
-            self::North_Korean_Won => [
-                CountryAlpha2::Korea_Democratic_Peoples_Republic
-            ],
-            self::Won => [
-                CountryAlpha2::Korea_Republic
-            ],
-            self::Kuwaiti_Dinar => [
-                CountryAlpha2::Kuwait
-            ],
-            self::Som => [
-                CountryAlpha2::Kyrgyzstan
-            ],
-            self::Lao_Kip => [
-                CountryAlpha2::Lao_Peoples_Democratic_Republic
-            ],
-            self::Lebanese_Pound => [
-                CountryAlpha2::Lebanon
-            ],
-            self::Loti => [
-                CountryAlpha2::Lesotho
-            ],
-            self::Rand => [
+            self::Guinean_Franc      => [CountryAlpha2::Guinea],
+            self::Guyana_Dollar      => [CountryAlpha2::Guyana],
+            self::Gourde             => [CountryAlpha2::Haiti],
+            self::Lempira            => [CountryAlpha2::Honduras],
+            self::Hong_Kong_Dollar   => [CountryAlpha2::Hong_Kong],
+            self::Forint             => [CountryAlpha2::Hungary],
+            self::Iceland_Krona      => [CountryAlpha2::Iceland],
+            self::Rupiah             => [CountryAlpha2::Indonesia],
+            self::Iranian_Rial       => [CountryAlpha2::Iran],
+            self::Iraqi_Dinar        => [CountryAlpha2::Iraq],
+            self::New_Israeli_Sheqel => [CountryAlpha2::Israel],
+            self::Jamaican_Dollar    => [CountryAlpha2::Jamaica],
+            self::Yen                => [CountryAlpha2::Japan],
+            self::Jordanian_Dinar    => [CountryAlpha2::Jordan],
+            self::Tenge              => [CountryAlpha2::Kazakhstan],
+            self::Kenyan_Shilling    => [CountryAlpha2::Kenya],
+            self::North_Korean_Won   => [CountryAlpha2::Korea_Democratic_Peoples_Republic],
+            self::Won                => [CountryAlpha2::Korea_Republic],
+            self::Kuwaiti_Dinar      => [CountryAlpha2::Kuwait],
+            self::Som                => [CountryAlpha2::Kyrgyzstan],
+            self::Lao_Kip            => [CountryAlpha2::Lao_Peoples_Democratic_Republic],
+            self::Lebanese_Pound     => [CountryAlpha2::Lebanon],
+            self::Loti               => [CountryAlpha2::Lesotho],
+            self::Rand               => [
                 CountryAlpha2::Lesotho,
                 CountryAlpha2::Namibia,
                 CountryAlpha2::South_Africa
             ],
-            self::Liberian_Dollar => [
-                CountryAlpha2::Liberia
-            ],
-            self::Libyan_Dinar => [
-                CountryAlpha2::Libya
-            ],
-            self::Swiss_Franc => [
+            self::Liberian_Dollar => [CountryAlpha2::Liberia],
+            self::Libyan_Dinar    => [CountryAlpha2::Libya],
+            self::Swiss_Franc     => [
                 CountryAlpha2::Liechtenstein,
                 CountryAlpha2::Switzerland
             ],
-            self::Pataca => [
-                CountryAlpha2::Macao
-            ],
-            self::Denar => [
-                CountryAlpha2::North_Macedonia
-            ],
-            self::Malagasy_Ariary => [
-                CountryAlpha2::Madagascar
-            ],
-            self::Malawi_Kwacha => [
-                CountryAlpha2::Malawi
-            ],
-            self::Malaysian_Ringgit => [
-                CountryAlpha2::Malaysia
-            ],
-            self::Rufiyaa => [
-                CountryAlpha2::Maldives
-            ],
-            self::Ouguiya => [
-                CountryAlpha2::Mauritania
-            ],
-            self::Mauritius_Rupee => [
-                CountryAlpha2::Mauritius
-            ],
-            self::Mexican_Peso => [
-                CountryAlpha2::Mexico
-            ],
-            self::Mexican_Unidad_de_Inversion_UDI => [
-                CountryAlpha2::Mexico
-            ],
-            self::Moldovan_Leu => [
-                CountryAlpha2::Moldova
-            ],
-            self::Tugrik => [
-                CountryAlpha2::Mongolia
-            ],
-            self::Moroccan_Dirham => [
+            self::Pataca                          => [CountryAlpha2::Macao],
+            self::Denar                           => [CountryAlpha2::North_Macedonia],
+            self::Malagasy_Ariary                 => [CountryAlpha2::Madagascar],
+            self::Malawi_Kwacha                   => [CountryAlpha2::Malawi],
+            self::Malaysian_Ringgit               => [CountryAlpha2::Malaysia],
+            self::Rufiyaa                         => [CountryAlpha2::Maldives],
+            self::Ouguiya                         => [CountryAlpha2::Mauritania],
+            self::Mauritius_Rupee                 => [CountryAlpha2::Mauritius],
+            self::Mexican_Peso                    => [CountryAlpha2::Mexico],
+            self::Mexican_Unidad_de_Inversion_UDI => [CountryAlpha2::Mexico],
+            self::Moldovan_Leu                    => [CountryAlpha2::Moldova],
+            self::Tugrik                          => [CountryAlpha2::Mongolia],
+            self::Moroccan_Dirham                 => [
                 CountryAlpha2::Morocco,
                 CountryAlpha2::Western_Sahara
             ],
-            self::Mozambique_Metical => [
-                CountryAlpha2::Mozambique
-            ],
-            self::Kyat => [
-                CountryAlpha2::Myanmar
-            ],
-            self::Namibia_Dollar => [
-                CountryAlpha2::Namibia
-            ],
-            self::Nepalese_Rupee => [
-                CountryAlpha2::Nepal
-            ],
-            self::Cordoba_Oro => [
-                CountryAlpha2::Nicaragua
-            ],
-            self::Naira => [
-                CountryAlpha2::Nigeria
-            ],
-            self::Rial_Omani => [
-                CountryAlpha2::Oman
-            ],
-            self::Pakistan_Rupee => [
-                CountryAlpha2::Pakistan
-            ],
-            self::Balboa => [
-                CountryAlpha2::Panama
-            ],
-            self::Kina => [
-                CountryAlpha2::Papua_New_Guinea
-            ],
-            self::Guarani => [
-                CountryAlpha2::Paraguay
-            ],
-            self::Sol => [
-                CountryAlpha2::Peru
-            ],
-            self::Philippine_Peso => [
-                CountryAlpha2::Philippines
-            ],
-            self::Zloty => [
-                CountryAlpha2::Poland
-            ],
-            self::Qatari_Rial => [
-                CountryAlpha2::Qatar
-            ],
-            self::Romanian_Leu => [
-                CountryAlpha2::Romania
-            ],
-            self::Russian_Ruble => [
-                CountryAlpha2::Russian_Federation
-            ],
-            self::Rwanda_Franc => [
-                CountryAlpha2::Rwanda
-            ],
-            self::Saint_Helena_Pound => [
-                CountryAlpha2::Saint_Helena_Ascension_Tristan_da_Cunha
-            ],
-            self::Tala => [
-                CountryAlpha2::Samoa
-            ],
-            self::Dobra => [
-                CountryAlpha2::Sao_Tome_and_Principe
-            ],
-            self::Saudi_Riyal => [
-                CountryAlpha2::Saudi_Arabia
-            ],
-            self::Serbian_Dinar => [
-                CountryAlpha2::Serbia
-            ],
-            self::Seychelles_Rupee => [
-                CountryAlpha2::Seychelles
-            ],
-            self::Leone_Old => [
-                CountryAlpha2::Sierra_Leone
-            ],
-            self::Leone => [
-                CountryAlpha2::Sierra_Leone
-            ],
-            self::Singapore_Dollar => [
-                CountryAlpha2::Singapore
-            ],
-            self::Solomon_Islands_Dollar => [
-                CountryAlpha2::Solomon_Islands
-            ],
-            self::Somali_Shilling => [
-                CountryAlpha2::Somalia
-            ],
-            self::South_Sudanese_Pound => [
-                CountryAlpha2::South_Sudan
-            ],
-            self::Sri_Lanka_Rupee => [
-                CountryAlpha2::Sri_Lanka
-            ],
-            self::Sudanese_Pound => [
-                CountryAlpha2::Sudan
-            ],
-            self::Surinam_Dollar => [
-                CountryAlpha2::Suriname
-            ],
-            self::Swedish_Krona => [
-                CountryAlpha2::Sweden
-            ],
-            self::WIR_Euro => [
-                CountryAlpha2::Switzerland
-            ],
-            self::WIR_Franc => [
-                CountryAlpha2::Switzerland
-            ],
-            self::Syrian_Pound => [
-                CountryAlpha2::Syrian_Arab_Republic
-            ],
-            self::New_Taiwan_Dollar => [
-                CountryAlpha2::Taiwan_Province_of_China
-            ],
-            self::Somoni => [
-                CountryAlpha2::Tajikistan
-            ],
-            self::Tanzanian_Shilling => [
-                CountryAlpha2::Tanzania
-            ],
-            self::Baht => [
-                CountryAlpha2::Thailand
-            ],
-            self::Pa_anga => [
-                CountryAlpha2::Tonga
-            ],
-            self::Trinidad_and_Tobago_Dollar => [
-                CountryAlpha2::Trinidad_and_Tobago
-            ],
-            self::Tunisian_Dinar => [
-                CountryAlpha2::Tunisia
-            ],
-            self::Turkish_Lira => [
-                CountryAlpha2::Turkey
-            ],
-            self::Turkmenistan_New_Manat => [
-                CountryAlpha2::Turkmenistan
-            ],
-            self::Uganda_Shilling => [
-                CountryAlpha2::Uganda
-            ],
-            self::Hryvnia => [
-                CountryAlpha2::Ukraine
-            ],
-            self::UAE_Dirham => [
-                CountryAlpha2::United_Arab_Emirates
-            ],
-            self::US_Dollar_Next_day => [
-                CountryAlpha2::United_States_of_America
-            ],
-            self::Peso_Uruguayo => [
-                CountryAlpha2::Uruguay
-            ],
-            self::Uruguay_Peso_en_Unidades_Indexadas_UI => [
-                CountryAlpha2::Uruguay
-            ],
-            self::Unidad_Previsional => [
-                CountryAlpha2::Uruguay
-            ],
-            self::Uzbekistan_Sum => [
-                CountryAlpha2::Uzbekistan
-            ],
-            self::Vatu => [
-                CountryAlpha2::Vanuatu
-            ],
-            self::Bolivar_Soberano_Old => [
-                CountryAlpha2::Venezuela
-            ],
-            self::Bolivar_Soberano => [
-                CountryAlpha2::Venezuela
-            ],
-            self::Dong => [
-                CountryAlpha2::Viet_Nam
-            ],
-            self::Yemeni_Rial => [
-                CountryAlpha2::Yemen
-            ],
-            self::Zambian_Kwacha => [
-                CountryAlpha2::Zambia
-            ],
-            self::Zimbabwe_Dollar => [
-                CountryAlpha2::Zimbabwe
-            ],
+            self::Mozambique_Metical                    => [CountryAlpha2::Mozambique],
+            self::Kyat                                  => [CountryAlpha2::Myanmar],
+            self::Namibia_Dollar                        => [CountryAlpha2::Namibia],
+            self::Nepalese_Rupee                        => [CountryAlpha2::Nepal],
+            self::Cordoba_Oro                           => [CountryAlpha2::Nicaragua],
+            self::Naira                                 => [CountryAlpha2::Nigeria],
+            self::Rial_Omani                            => [CountryAlpha2::Oman],
+            self::Pakistan_Rupee                        => [CountryAlpha2::Pakistan],
+            self::Balboa                                => [CountryAlpha2::Panama],
+            self::Kina                                  => [CountryAlpha2::Papua_New_Guinea],
+            self::Guarani                               => [CountryAlpha2::Paraguay],
+            self::Sol                                   => [CountryAlpha2::Peru],
+            self::Philippine_Peso                       => [CountryAlpha2::Philippines],
+            self::Zloty                                 => [CountryAlpha2::Poland],
+            self::Qatari_Rial                           => [CountryAlpha2::Qatar],
+            self::Romanian_Leu                          => [CountryAlpha2::Romania],
+            self::Russian_Ruble                         => [CountryAlpha2::Russian_Federation],
+            self::Rwanda_Franc                          => [CountryAlpha2::Rwanda],
+            self::Saint_Helena_Pound                    => [CountryAlpha2::Saint_Helena_Ascension_Tristan_da_Cunha],
+            self::Tala                                  => [CountryAlpha2::Samoa],
+            self::Dobra                                 => [CountryAlpha2::Sao_Tome_and_Principe],
+            self::Saudi_Riyal                           => [CountryAlpha2::Saudi_Arabia],
+            self::Serbian_Dinar                         => [CountryAlpha2::Serbia],
+            self::Seychelles_Rupee                      => [CountryAlpha2::Seychelles],
+            self::Leone_Old                             => [CountryAlpha2::Sierra_Leone],
+            self::Leone                                 => [CountryAlpha2::Sierra_Leone],
+            self::Singapore_Dollar                      => [CountryAlpha2::Singapore],
+            self::Solomon_Islands_Dollar                => [CountryAlpha2::Solomon_Islands],
+            self::Somali_Shilling                       => [CountryAlpha2::Somalia],
+            self::South_Sudanese_Pound                  => [CountryAlpha2::South_Sudan],
+            self::Sri_Lanka_Rupee                       => [CountryAlpha2::Sri_Lanka],
+            self::Sudanese_Pound                        => [CountryAlpha2::Sudan],
+            self::Surinam_Dollar                        => [CountryAlpha2::Suriname],
+            self::Swedish_Krona                         => [CountryAlpha2::Sweden],
+            self::WIR_Euro                              => [CountryAlpha2::Switzerland],
+            self::WIR_Franc                             => [CountryAlpha2::Switzerland],
+            self::Syrian_Pound                          => [CountryAlpha2::Syrian_Arab_Republic],
+            self::New_Taiwan_Dollar                     => [CountryAlpha2::Taiwan_Province_of_China],
+            self::Somoni                                => [CountryAlpha2::Tajikistan],
+            self::Tanzanian_Shilling                    => [CountryAlpha2::Tanzania],
+            self::Baht                                  => [CountryAlpha2::Thailand],
+            self::Pa_anga                               => [CountryAlpha2::Tonga],
+            self::Trinidad_and_Tobago_Dollar            => [CountryAlpha2::Trinidad_and_Tobago],
+            self::Tunisian_Dinar                        => [CountryAlpha2::Tunisia],
+            self::Turkish_Lira                          => [CountryAlpha2::Turkey],
+            self::Turkmenistan_New_Manat                => [CountryAlpha2::Turkmenistan],
+            self::Uganda_Shilling                       => [CountryAlpha2::Uganda],
+            self::Hryvnia                               => [CountryAlpha2::Ukraine],
+            self::UAE_Dirham                            => [CountryAlpha2::United_Arab_Emirates],
+            self::US_Dollar_Next_day                    => [CountryAlpha2::United_States_of_America],
+            self::Peso_Uruguayo                         => [CountryAlpha2::Uruguay],
+            self::Uruguay_Peso_en_Unidades_Indexadas_UI => [CountryAlpha2::Uruguay],
+            self::Unidad_Previsional                    => [CountryAlpha2::Uruguay],
+            self::Uzbekistan_Sum                        => [CountryAlpha2::Uzbekistan],
+            self::Vatu                                  => [CountryAlpha2::Vanuatu],
+            self::Bolivar_Soberano_Old                  => [CountryAlpha2::Venezuela],
+            self::Bolivar_Soberano                      => [CountryAlpha2::Venezuela],
+            self::Dong                                  => [CountryAlpha2::Viet_Nam],
+            self::Yemeni_Rial                           => [CountryAlpha2::Yemen],
+            self::Zambian_Kwacha                        => [CountryAlpha2::Zambia],
+            self::Zimbabwe_Dollar                       => [CountryAlpha2::Zimbabwe],
+            default                                     => []
         };
     }
 }
