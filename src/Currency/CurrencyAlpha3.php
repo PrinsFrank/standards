@@ -392,7 +392,6 @@ enum CurrencyAlpha3: string
         };
     }
 
-    /** @return list<CountryAlpha2> */
     public function getCountriesAlpha2(): array
     {
         return match($this) {
