@@ -14,6 +14,9 @@ class EnumFile
     /** @var EnumCase[] */
     private array $cases = [];
 
+    /** @var EnumMethod[] */
+    private array $methods = [];
+
     /** @param class-string<BackedEnum> $fqn */
     public function __construct(
         public readonly string $fqn
@@ -24,6 +27,13 @@ class EnumFile
     public function addCase(EnumCase $enumCase): self
     {
         $this->cases[] = $enumCase;
+
+        return $this;
+    }
+
+    public function addMethod(EnumMethod $method): self
+    {
+        $this->methods[] = $method;
 
         return $this;
     }
@@ -77,5 +87,24 @@ class EnumFile
         $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
 
         return $this->putContent($newEnumContent);
+    }
+
+    public function writeMethods(): void
+    {
+        foreach ($this->methods as $method) {
+            $enumContent         = $this->getContent();
+            $startExistingMethod = mb_strpos($enumContent, 'public function ' . $method->name . '()');
+            if ($startExistingMethod !== false) {
+                $nextMethodPos = mb_strpos($enumContent, 'public function', $startExistingMethod ?? 0);
+
+                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $nextMethodPos);
+            } else {
+                $lastClosingTag = mb_strrpos($enumContent, '}');
+
+                $newEnumContent = mb_substr($enumContent, 0, $lastClosingTag) . $method->__toString() . mb_substr($enumContent, $lastClosingTag);
+            }
+
+            $this->putContent($newEnumContent);
+        }
     }
 }
