@@ -6,6 +6,7 @@ namespace PrinsFrank\Standards\Country;
 use PrinsFrank\Standards\BackedEnum;
 use PrinsFrank\Standards\Country\Groups\GroupInterface;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
+use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
 use PrinsFrank\Standards\InvalidArgumentException;
 
@@ -313,5 +314,11 @@ enum CountryAlpha3: string
     public function getFlagEmoji(): string
     {
         return $this->toCountryAlpha2()->getFlagEmoji();
+    }
+
+    /** @return list<CurrencyAlpha3> */
+    public function getCurrenciesAlpha3(): array
+    {
+        return $this->toCountryAlpha2()->getCurrenciesAlpha3();
     }
 }

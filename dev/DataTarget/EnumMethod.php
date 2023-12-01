@@ -17,13 +17,22 @@ class EnumMethod
 
     public function addMapping(string $from, string $to): void
     {
+        if (array_key_exists($from, $this->mapping) && in_array($to, $this->mapping[$from], true) === true) {
+            return;
+        }
+
         $this->mapping[$from][] = $to;
     }
 
     public function __toString(): string
     {
         $mappingString = '';
-        foreach ($this->mapping as $key => $values) {
+        $sortedMapping = $this->mapping;
+        ksort($sortedMapping);
+
+        foreach ($sortedMapping as $key => $values) {
+            sort($values);
+
             if (count($values) <= 1) {
                 $mappingString .= $key . ' => [' . implode(',', $values) . '],' . PHP_EOL;
 

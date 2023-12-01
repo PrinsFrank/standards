@@ -38,6 +38,11 @@ class EnumFile
         return $this;
     }
 
+    public function hasCases(): bool
+    {
+        return count($this->cases) > 0;
+    }
+
     public function hasCaseWithValue(string|int $value): bool
     {
         foreach ($this->cases as $case) {
