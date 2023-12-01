@@ -12,6 +12,7 @@ return (new PhpCsFixer\Config())->setRules(
         'array_syntax'                 => ['syntax' => 'short'],
         'binary_operator_spaces'       => ['default' => 'align_single_space'],
         'no_unused_imports'            => true,
+        'array_indentation'            => true,
     ]
 )->setFinder(
     PhpCsFixer\Finder::create()
