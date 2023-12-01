@@ -12,6 +12,7 @@ class EnumMethod
         public readonly string $name,
         public readonly string $returnType,
         public readonly ?string $default,
+        public readonly ?string $docBlock = null,
     ) {
     }
 
@@ -53,7 +54,9 @@ class EnumMethod
             $mappingString .= 'default => ' . $this->default;
         }
 
+        $docBlock = $this->docBlock ?? '';
         return <<<EOD
+            {$docBlock}
             public function {$this->name}(): {$this->returnType}
             {
                 return match(\$this) {
