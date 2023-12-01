@@ -198,6 +198,21 @@ enum CurrencyAlpha3: string
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Kuna = 'HRK';
 
+    public function toCurrencyName(): CurrencyName
+    {
+        return BackedEnum::fromKey(CurrencyName::class, $this->name);
+    }
+
+    public function getSymbol(): ?CurrencySymbol
+    {
+        return CurrencySymbol::forCurrency($this);
+    }
+
+    public function lowerCaseValue(): string
+    {
+        return strtolower($this->value);
+    }
+
     public function getMinorUnits(): ?int
     {
         return match($this) {
@@ -370,26 +385,6 @@ enum CurrencyAlpha3: string
             self::Zloty                                 => 2,
             default                                     => null
         };
-    }
-
-public function toCurrencyNumeric(): CurrencyNumeric
-{
-    return BackedEnum::fromKey(CurrencyNumeric::class, $this->name);
-}
-
-    public function toCurrencyName(): CurrencyName
-    {
-        return BackedEnum::fromKey(CurrencyName::class, $this->name);
-    }
-
-    public function getSymbol(): ?CurrencySymbol
-    {
-        return CurrencySymbol::forCurrency($this);
-    }
-
-    public function lowerCaseValue(): string
-    {
-        return strtolower($this->value);
     }
 
     /** @return list<CountryAlpha2> */
