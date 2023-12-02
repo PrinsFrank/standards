@@ -637,7 +637,6 @@ enum CountryAlpha2: string
         };
     }
 
-    /** @return list<LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive> */
     public function getOfficialAndDeFactoLanguages(): array
     {
         return match($this) {
