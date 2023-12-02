@@ -133,4 +133,14 @@ class CountryAlpha2Test extends TestCase
             static::assertNotEmpty($currencies, 'No currencies for "' . $countryAlpha2->name . '"');
         }
     }
+
+    /** @covers ::getOfficialAndDeFactoLanguages */
+    public function testGetOfficialAndDeFactoLanguages(): void
+    {
+        foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            $countryAlpha2->getOfficialAndDeFactoLanguages();
+
+            $this->addToAssertionCount(1);
+        }
+    }
 }

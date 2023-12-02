@@ -36,7 +36,7 @@ In the Country, Currency and language specifications, there is also a relation b
 
 All specifications in this package are closely related, except for the Http status code and methods. Not all relations are bidirectional though. For example, a language tag is build up of a language and optionally a country, but only a country cannot be converted to a language tag. 
 
-Below you can find an overview of all the relationships between specifications. As not all relationships are implemented yet, a dotted line indicates when there is a relationship, but that has not yet been implemented in this package.
+Below you can find an overview of all the relationships between specifications.
 
 ```mermaid
 erDiagram
@@ -100,8 +100,7 @@ erDiagram
 
     GeographicRegion }|--o{ Country: ""
     GeographicRegion ||--o{ GeographicRegion: ""
-    Language }o..o{ Country: ""
-    Language }o..|{ Script: ""
+    Language }o--o{ Country: ""
     Country }|--o{ CountryGroup: ""
     Country }|--o{ CountryCallingCode: ""
     Country }o--o{ Currency: ""
@@ -152,8 +151,9 @@ CountryAlpha3::from('NLD')->getInternationalCallPrefix()->value; // '00'
 
 CountryAlpha3::from('NLD')->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 CountryAlpha3::from('NLD')->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
+CountryAlpha3::from('NLD')->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 
-public function foo(CountryAlpha2 $countryAlpha2) {}            // Use spec as typehint to enforce valid value
+public function foo(CountryAlpha2 $countryAlpha2) {}             // Use spec as typehint to enforce valid value
 
 ```
 
@@ -219,6 +219,8 @@ $valueAlpha2->getInternationalCallPrefix()->value; // '00'
 $valueAlpha2::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 
 $valueAlpha2->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
+
+$valueAlpha2->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 ```
 
 ### CountryAlpha3
@@ -245,6 +247,8 @@ $valueAlpha3->getInternationalCallPrefix()->value; // '00'
 $valueAlpha3->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 
 $valueAlpha3->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
+
+$valueAlpha3->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 ```
 
 ### CountryNumeric
@@ -272,6 +276,8 @@ $valueNumeric->getInternationalCallPrefix()->value; // '00'
 $valueNumeric->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 
 $valueNumeric->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
+
+$valueNumeric->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 ```
 
 ### CountryName
@@ -296,6 +302,8 @@ $valueName->getInternationalCallPrefix()->value; // '00'
 $valueName->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 
 $valueName->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
+
+$valueName->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 ```
 
 </details>

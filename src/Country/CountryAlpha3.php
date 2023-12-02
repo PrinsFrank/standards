@@ -9,6 +9,9 @@ use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
 use PrinsFrank\Standards\InvalidArgumentException;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 
 /**
  * @source https://www.iso.org/obp/ui/#search/code/
@@ -320,5 +323,11 @@ enum CountryAlpha3: string
     public function getCurrenciesAlpha3(): array
     {
         return $this->toCountryAlpha2()->getCurrenciesAlpha3();
+    }
+
+    /** @return list<LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive> */
+    public function getOfficialAndDeFactoLanguages(): array
+    {
+        return $this->toCountryAlpha2()->getOfficialAndDeFactoLanguages();
     }
 }

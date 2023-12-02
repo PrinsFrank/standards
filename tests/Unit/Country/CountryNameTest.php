@@ -88,8 +88,8 @@ class CountryNameTest extends TestCase
      */
     public function testGetCountryCallingCodes(): void
     {
-        foreach (CountryName::cases() as $countryAlpha2) {
-            static::assertNotEmpty($countryAlpha2->getCountryCallingCodes());
+        foreach (CountryName::cases() as $countryName) {
+            static::assertNotEmpty($countryName->getCountryCallingCodes());
         }
     }
 
@@ -98,8 +98,8 @@ class CountryNameTest extends TestCase
      */
     public function testGetInternationalCallPrefix(): void
     {
-        foreach (CountryName::cases() as $countryAlpha2) {
-            $countryAlpha2->getInternationalCallPrefix();
+        foreach (CountryName::cases() as $countryName) {
+            $countryName->getInternationalCallPrefix();
 
             $this->addToAssertionCount(1);
         }
@@ -114,15 +114,25 @@ class CountryNameTest extends TestCase
     /** @covers ::getCurrenciesAlpha3 */
     public function testGetCurrenciesAlpha3(): void
     {
-        foreach (CountryName::cases() as $countryAlpha2) {
-            $currencies = $countryAlpha2->getCurrenciesAlpha3();
-            if (in_array($countryAlpha2, [CountryName::Antarctica, CountryName::Palestine, CountryName::South_Georgia_South_Sandwich_Islands], true)) {
+        foreach (CountryName::cases() as $countryName) {
+            $currencies = $countryName->getCurrenciesAlpha3();
+            if (in_array($countryName, [CountryName::Antarctica, CountryName::Palestine, CountryName::South_Georgia_South_Sandwich_Islands], true)) {
                 $this->addToAssertionCount(1);
 
                 continue;
             }
 
-            static::assertNotEmpty($currencies, 'No currencies for "' . $countryAlpha2->name . '"');
+            static::assertNotEmpty($currencies, 'No currencies for "' . $countryName->name . '"');
+        }
+    }
+
+    /** @covers ::getOfficialAndDeFactoLanguages */
+    public function testGetOfficialAndDeFactoLanguages(): void
+    {
+        foreach (CountryName::cases() as $countryName) {
+            $countryName->getOfficialAndDeFactoLanguages();
+
+            $this->addToAssertionCount(1);
         }
     }
 }
