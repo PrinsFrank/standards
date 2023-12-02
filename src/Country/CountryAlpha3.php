@@ -12,6 +12,7 @@ use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
+use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
 
 /**
  * @source https://www.iso.org/obp/ui/#search/code/
@@ -303,6 +304,11 @@ enum CountryAlpha3: string
     public function getCountryCallingCodes(): array
     {
         return CountryCallingCode::forCountry($this);
+    }
+
+    public function getNationalCallPrefix(): NationalCallPrefix
+    {
+        return NationalCallPrefix::forCountry($this);
     }
 
     public function getInternationalCallPrefix(): InternationalCallPrefix

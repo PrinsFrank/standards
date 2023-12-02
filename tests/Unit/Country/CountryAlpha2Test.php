@@ -102,6 +102,18 @@ class CountryAlpha2Test extends TestCase
     }
 
     /**
+     * @covers ::getNationalCallPrefix
+     */
+    public function testGetNationalCallPrefix(): void
+    {
+        foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            $countryAlpha2->getNationalCallPrefix();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
+    /**
      * @covers ::getInternationalCallPrefix
      */
     public function testGetInternationalCallPrefix(): void
