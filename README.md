@@ -13,17 +13,6 @@
 
 Daily updated from their sources, whether it is ISO or IANA directly, or a maintaining party like the SIX Group or the US Library of Congress.
 
-## Some powerful use cases
-
-__Format a complete phone number string based on the users country;__
-![](https://github.com/PrinsFrank/standards/raw/main/docs/gifs/phone-formatting.gif)
-
-__Automatically select a supported language from an HTTP request;__
-![](https://github.com/PrinsFrank/standards/raw/main/docs/gifs/language-detection.gif)
-
-__Listing all country calling codes sorted by country name in a dropdown;__
-![](https://github.com/PrinsFrank/standards/raw/main/docs/gifs/country-calling-code-dropdown.gif)
-
 ## Setup
 
 > **Note**
@@ -131,6 +120,17 @@ erDiagram
 ## Upgrading
 
 This package adheres to [semver](https://semver.org/). This means that there are no breaking changes between minor releases (for example from 1.1 to 1.2), but that breaking changes are released as a major release (for example from 1.x to 2.x). To read about upgrading from one major release to the next, please refer to the [UPGRADING.md](./UPGRADING.md) file in the root of this project. 
+
+## Some powerful use cases
+
+__Format a complete phone number string based on the users country;__
+![](https://github.com/PrinsFrank/standards/raw/main/docs/gifs/phone-formatting.gif)
+
+__Automatically select a supported language from an HTTP request;__
+![](https://github.com/PrinsFrank/standards/raw/main/docs/gifs/language-detection.gif)
+
+__Listing all country calling codes sorted by country name in a dropdown;__
+![](https://github.com/PrinsFrank/standards/raw/main/docs/gifs/country-calling-code-dropdown.gif)
 
 ## Country (ISO3166-1)
 
