@@ -123,8 +123,8 @@ class CountryNumericTest extends TestCase
      */
     public function testGetCountryCallingCodes(): void
     {
-        foreach (CountryNumeric::cases() as $countryAlpha2) {
-            static::assertNotEmpty($countryAlpha2->getCountryCallingCodes());
+        foreach (CountryNumeric::cases() as $countryNumeric) {
+            static::assertNotEmpty($countryNumeric->getCountryCallingCodes());
         }
     }
 
@@ -133,8 +133,8 @@ class CountryNumericTest extends TestCase
      */
     public function testGetInternationalCallPrefix(): void
     {
-        foreach (CountryNumeric::cases() as $countryAlpha2) {
-            $countryAlpha2->getInternationalCallPrefix();
+        foreach (CountryNumeric::cases() as $countryNumeric) {
+            $countryNumeric->getInternationalCallPrefix();
 
             $this->addToAssertionCount(1);
         }
@@ -149,15 +149,25 @@ class CountryNumericTest extends TestCase
     /** @covers ::getCurrenciesAlpha3 */
     public function testGetCurrenciesAlpha3(): void
     {
-        foreach (CountryNumeric::cases() as $countryAlpha2) {
-            $currencies = $countryAlpha2->getCurrenciesAlpha3();
-            if (in_array($countryAlpha2, [CountryNumeric::Antarctica, CountryNumeric::Palestine, CountryNumeric::South_Georgia_South_Sandwich_Islands], true)) {
+        foreach (CountryNumeric::cases() as $countryNumeric) {
+            $currencies = $countryNumeric->getCurrenciesAlpha3();
+            if (in_array($countryNumeric, [CountryNumeric::Antarctica, CountryNumeric::Palestine, CountryNumeric::South_Georgia_South_Sandwich_Islands], true)) {
                 $this->addToAssertionCount(1);
 
                 continue;
             }
 
-            static::assertNotEmpty($currencies, 'No currencies for "' . $countryAlpha2->name . '"');
+            static::assertNotEmpty($currencies, 'No currencies for "' . $countryNumeric->name . '"');
+        }
+    }
+
+    /** @covers ::getOfficialAndDeFactoLanguages */
+    public function testGetOfficialAndDeFactoLanguages(): void
+    {
+        foreach (CountryNumeric::cases() as $countryNumeric) {
+            $countryNumeric->getOfficialAndDeFactoLanguages();
+
+            $this->addToAssertionCount(1);
         }
     }
 }
