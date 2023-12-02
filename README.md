@@ -68,6 +68,9 @@ erDiagram
     CurrencySymbol {
         class CurrencySymbol
     }
+    NationalCallPrefix {
+        class NationalCallPrefix
+    }
     InternationalCallPrefix {
         class InternationalCallPrefix
     }
@@ -104,6 +107,7 @@ erDiagram
     Country }|--o{ CountryGroup: ""
     Country }|--o{ CountryCallingCode: ""
     Country }o--o{ Currency: ""
+    Country }|--o{ NationalCallPrefix: ""
     Country }|--o{ InternationalCallPrefix: ""
     Currency }|--o| CurrencySymbol: ""
     LanguageTag ||--o{ LanguageTag: ""
@@ -148,6 +152,9 @@ CountryAlpha3::from('NLD')->getCountryCallingCodes()[0]->value; // 31
 
 CountryAlpha3::from('NLD')->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 CountryAlpha3::from('NLD')->getInternationalCallPrefix()->value; // '00'
+
+CountryAlpha3::from('NLD')->getNationalCallPrefix();             // NationalCallPrefix::_0
+CountryAlpha3::from('NLD')->getNationalCallPrefix()->value;      // '0'
 
 CountryAlpha3::from('NLD')->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 CountryAlpha3::from('NLD')->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
@@ -216,6 +223,9 @@ $valueAlpha2->getCountryCallingCodes()[0]->value; // 31
 $valueAlpha2->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueAlpha2->getInternationalCallPrefix()->value; // '00'
 
+$valueAlpha2->getNationalCallPrefix();             // NationalCallPrefix::_0
+$valueAlpha2->getNationalCallPrefix()->value;      // '0'
+
 $valueAlpha2::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 
 $valueAlpha2->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
@@ -243,6 +253,9 @@ $valueAlpha3->getCountryCallingCodes()[0]->value; // 31
 
 $valueAlpha3->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueAlpha3->getInternationalCallPrefix()->value; // '00'
+
+$valueAlpha3->getNationalCallPrefix();             // NationalCallPrefix::_0
+$valueAlpha3->getNationalCallPrefix()->value;      // '0'
 
 $valueAlpha3->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 
@@ -273,6 +286,9 @@ $valueNumeric->getCountryCallingCodes()[0]->value; // 31
 $valueNumeric->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueNumeric->getInternationalCallPrefix()->value; // '00'
 
+$valueNumeric->getNationalCallPrefix();             // NationalCallPrefix::_0
+$valueNumeric->getNationalCallPrefix()->value;      // '0'
+
 $valueNumeric->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 
 $valueNumeric->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
@@ -298,6 +314,9 @@ $valueName->getCountryCallingCodes()[0]->value; // 31
 
 $valueName->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueName->getInternationalCallPrefix()->value; // '00'
+
+$valueName->getNationalCallPrefix();             // NationalCallPrefix::_0
+$valueName->getNationalCallPrefix()->value;      // '0'
 
 $valueName->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 
@@ -629,6 +648,26 @@ GeographicRegion::from('150')->getDirectSubCountries(); // []
 GeographicRegion::from('150')->getAllSubCountries();    // [CountryNumeric::Belarus, CountryNumeric::Bulgaria, ...]
 
 public function foo(GeographicRegion $geographicRegion) {} // Use spec as typehint to enforce valid value
+```
+
+## National Call Prefixes (ITU-T E.164)
+
+Different countries have different national call prefixes;
+
+### At a glance
+
+```php
+NationalCallPrefix::from('0');                // NationalCallPrefix::_0
+NationalCallPrefix::from('0')->value;         // '0'
+NationalCallPrefix::from('0')->name;          // '_0'
+NationalCallPrefix::_0;                       // NationalCallPrefix::_0
+
+NationalCallPrefix::forCountry(CountryAlpha2::Netherlands);  // NationalCallPrefix::_0
+NationalCallPrefix::forCountry(CountryAlpha3::Netherlands);  // NationalCallPrefix::_0
+NationalCallPrefix::forCountry(CountryNumeric::Netherlands); // NationalCallPrefix::_0
+NationalCallPrefix::forCountry(CountryName::Netherlands);    // NationalCallPrefix::_0
+
+public function foo(NationalCallPrefix $nationalCallPrefix) {} // Use spec as typehint to enforce valid value
 ```
 
 ## Scripts
