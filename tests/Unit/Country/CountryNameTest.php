@@ -94,6 +94,18 @@ class CountryNameTest extends TestCase
     }
 
     /**
+     * @covers ::getNationalCallPrefix
+     */
+    public function testGetNationalCallPrefix(): void
+    {
+        foreach (CountryName::cases() as $countryName) {
+            $countryName->getNationalCallPrefix();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
+    /**
      * @covers ::getInternationalCallPrefix
      */
     public function testGetInternationalCallPrefix(): void
