@@ -323,7 +323,7 @@ enum CountryName: string
 
     public function getDecimalSeparator(): DecimalSeparator
     {
-        return $this->toCountryAlpha2()->getDecimalSeparator();
+        return DecimalSeparator::forCountry($this);
     }
 
     /** @return list<CurrencyAlpha3> */

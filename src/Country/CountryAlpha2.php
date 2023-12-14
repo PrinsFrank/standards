@@ -336,7 +336,7 @@ enum CountryAlpha2: string
 
     public function getDecimalSeparator(): DecimalSeparator
     {
-        return DecimalSeparator::forCountryAlpha2($this);
+        return DecimalSeparator::forCountry($this);
     }
 
     /** @return list<LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive> */

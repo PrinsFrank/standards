@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\NumberFormatting;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryName;
+use PrinsFrank\Standards\Country\CountryNumeric;
 
 /** Symbol used to separate the integer part from the fractional part of a number written in decimal form */
 enum DecimalSeparator: string
@@ -28,9 +31,14 @@ enum DecimalSeparator: string
 
     case Slash = '/';
 
-    public static function forCountryAlpha2(CountryAlpha2 $countryAlpha2): self
+    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): self
     {
-        return match ($countryAlpha2) {
+        if ($country instanceof CountryAlpha2 === false) {
+            $country = $country->toCountryAlpha2();
+        }
+
+        /** @var CountryAlpha2 $country */
+        return match ($country) {
             CountryAlpha2::Afghanistan                             => self::Comma,
             CountryAlpha2::Aland_Islands                           => self::Comma,
             CountryAlpha2::Albania                                 => self::Comma,

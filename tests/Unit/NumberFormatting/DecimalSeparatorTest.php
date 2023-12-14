@@ -1,23 +1,23 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Tests\Unit\NationalCallPrefix;
+namespace PrinsFrank\Standards\Tests\Unit\NumberFormatting;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
-use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
+use PrinsFrank\Standards\NumberFormatting\DecimalSeparator;
 
-/** @coversDefaultClass \PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix */
-class NationalCallPrefixTest extends TestCase
+/** @coversDefaultClass \PrinsFrank\Standards\NumberFormatting\DecimalSeparator */
+class DecimalSeparatorTest extends TestCase
 {
     /** @covers ::forCountry */
     public function testForCountryAlpha2(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
-            NationalCallPrefix::forCountry($countryAlpha2);
+            DecimalSeparator::forCountry($countryAlpha2);
 
             $this->addToAssertionCount(1);
         }
@@ -27,7 +27,7 @@ class NationalCallPrefixTest extends TestCase
     public function testForCountryAlpha3(): void
     {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
-            NationalCallPrefix::forCountry($countryAlpha3);
+            DecimalSeparator::forCountry($countryAlpha3);
 
             $this->addToAssertionCount(1);
         }
@@ -37,7 +37,7 @@ class NationalCallPrefixTest extends TestCase
     public function testForCountryName(): void
     {
         foreach (CountryName::cases() as $countryName) {
-            NationalCallPrefix::forCountry($countryName);
+            DecimalSeparator::forCountry($countryName);
 
             $this->addToAssertionCount(1);
         }
@@ -47,7 +47,7 @@ class NationalCallPrefixTest extends TestCase
     public function testForCountryNumeric(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
-            NationalCallPrefix::forCountry($countryNumeric);
+            DecimalSeparator::forCountry($countryNumeric);
 
             $this->addToAssertionCount(1);
         }
