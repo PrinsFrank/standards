@@ -158,6 +158,18 @@ class CountryNumericTest extends TestCase
         static::assertSame('🇳🇱', CountryNumeric::Netherlands->getFlagEmoji());
     }
 
+    /**
+     * @covers ::getDecimalSeparator
+     */
+    public function testGetDecimalSeparator(): void
+    {
+        foreach (CountryNumeric::cases() as $countryNumeric) {
+            $countryNumeric->getDecimalSeparator();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
     /** @covers ::getCurrenciesAlpha3 */
     public function testGetCurrenciesAlpha3(): void
     {

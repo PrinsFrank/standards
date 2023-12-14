@@ -13,6 +13,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
+use PrinsFrank\Standards\NumberFormatting\DecimalSeparator;
 
 /**
  * @source https://www.iso.org/obp/ui/#search/code/
@@ -318,6 +319,11 @@ enum CountryName: string
     public function getFlagEmoji(): string
     {
         return $this->toCountryAlpha2()->getFlagEmoji();
+    }
+
+    public function getDecimalSeparator(): DecimalSeparator
+    {
+        return DecimalSeparator::forCountry($this);
     }
 
     /** @return list<CurrencyAlpha3> */
