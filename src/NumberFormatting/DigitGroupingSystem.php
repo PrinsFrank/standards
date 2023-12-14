@@ -28,7 +28,7 @@ enum DigitGroupingSystem
             CountryAlpha2::Nepal,
             CountryAlpha2::Pakistan,
             CountryAlpha2::Sri_Lanka => self::Thousand_Then_Hundreds,
-            default => self::Thousands,
+            default                  => self::Thousands,
         };
     }
 }
