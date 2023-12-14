@@ -131,6 +131,18 @@ class CountryAlpha2Test extends TestCase
         static::assertSame('🇳🇱', CountryAlpha2::Netherlands->getFlagEmoji());
     }
 
+    /**
+     * @covers ::getDecimalSeparator
+     */
+    public function testGetDecimalSeparator(): void
+    {
+        foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            $countryAlpha2->getDecimalSeparator();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
     /** @covers ::getCurrenciesAlpha3 */
     public function testGetCurrenciesAlpha3(): void
     {
