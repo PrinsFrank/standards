@@ -170,6 +170,18 @@ class CountryNumericTest extends TestCase
         }
     }
 
+    /**
+     * @covers ::getDigitGroupingSystem
+     */
+    public function testGetDigitGroupingSystem(): void
+    {
+        foreach (CountryNumeric::cases() as $countryNumeric) {
+            $countryNumeric->getDigitGroupingSystem();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
     /** @covers ::getCurrenciesAlpha3 */
     public function testGetCurrenciesAlpha3(): void
     {

@@ -135,6 +135,18 @@ class CountryNameTest extends TestCase
         }
     }
 
+    /**
+     * @covers ::getDigitGroupingSystem
+     */
+    public function testGetDigitGroupingSystem(): void
+    {
+        foreach (CountryName::cases() as $countryName) {
+            $countryName->getDigitGroupingSystem();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
     /** @covers ::getCurrenciesAlpha3 */
     public function testGetCurrenciesAlpha3(): void
     {
