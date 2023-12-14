@@ -13,6 +13,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
+use PrinsFrank\Standards\NumberFormatting\DecimalSeparator;
 
 /**
  * @source https://www.iso.org/obp/ui/#search/code/
@@ -331,6 +332,11 @@ enum CountryAlpha2: string
                 str_split($this->value)
             )
         );
+    }
+
+    public function getDecimalSeparator(): DecimalSeparator
+    {
+        return DecimalSeparator::forCountryAlpha2($this);
     }
 
     /** @return list<LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive> */
