@@ -106,9 +106,14 @@ erDiagram
     DecimalSeparator {
         class DecimalSeparator
     }
+    DigitGroupingIndicator {
+        class DigitGroupingIndicator
+    }
 
     DigitGroupingSystem ||--|{ Country: ""
     DecimalSeparator ||--|{ Country: ""
+    DigitGroupingIndicator }|--|{ Country: ""
+    DigitGroupingIndicator }o--o{ Language: ""
     GeographicRegion }|--o{ Country: ""
     GeographicRegion ||--o{ GeographicRegion: ""
     Language }o--o{ Country: ""
