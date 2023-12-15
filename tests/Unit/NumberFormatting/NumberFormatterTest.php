@@ -9,17 +9,17 @@ use PrinsFrank\Standards\NumberFormatting\NumberFormatter;
 /** @coversDefaultClass \PrinsFrank\Standards\NumberFormatting\NumberFormatter */
 class NumberFormatterTest extends TestCase
 {
-    /** @covers ::getNumberOfDecimals */
-    public function testGetNumberOfDecimals(): void
+    /** @covers ::getPrecision */
+    public function testGetPrecision(): void
     {
-        static::assertSame(0, NumberFormatter::getNumberOfDecimals(4));
-        static::assertSame(0, NumberFormatter::getNumberOfDecimals(42));
-        static::assertSame(0, NumberFormatter::getNumberOfDecimals(42 / 3 * 3));
-        static::assertSame(0, NumberFormatter::getNumberOfDecimals(0.000000000000000));
-        static::assertSame(1, NumberFormatter::getNumberOfDecimals(4.2));
-        static::assertSame(2, NumberFormatter::getNumberOfDecimals(42.42));
-        static::assertSame(10, NumberFormatter::getNumberOfDecimals(42.4242424242));
-        static::assertSame(14, NumberFormatter::getNumberOfDecimals(0.00000000000012));
-        static::assertSame(15, NumberFormatter::getNumberOfDecimals(0.000000000000123));
+        static::assertSame(0, NumberFormatter::getPrecision(4));
+        static::assertSame(0, NumberFormatter::getPrecision(42));
+        static::assertSame(0, NumberFormatter::getPrecision(42 / 3 * 3));
+        static::assertSame(0, NumberFormatter::getPrecision(0.000000000000000));
+        static::assertSame(1, NumberFormatter::getPrecision(4.2));
+        static::assertSame(2, NumberFormatter::getPrecision(42.42));
+        static::assertSame(10, NumberFormatter::getPrecision(42.4242424242));
+        static::assertSame(14, NumberFormatter::getPrecision(0.00000000000012));
+        static::assertSame(15, NumberFormatter::getPrecision(0.000000000000123));
     }
 }

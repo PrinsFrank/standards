@@ -25,13 +25,13 @@ class NumberFormatter
 
         return number_format(
             $number,
-            $decimals ?? self::getNumberOfDecimals($number),
+            $decimals ?? self::getPrecision($number),
             $country->getDecimalSeparator($language)->value,
             $country->getDigitGroupingIndicator($language)->value
         );
     }
 
-    public static function getNumberOfDecimals(float $number): int
+    public static function getPrecision(float $number): int
     {
         $decimalSeparatorPos = strchr(rtrim(number_format($number, (int)(PHP_FLOAT_DIG - log10($number)), DecimalSeparator::Dot->value), '0'), DecimalSeparator::Dot->value);
         if ($decimalSeparatorPos === false) {
