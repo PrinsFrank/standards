@@ -20,7 +20,12 @@ class NumberFormatter
         int|null $decimals = null,
     ): string {
         if ($country->getDigitGroupingSystem() === DigitGroupingSystem::Thousand_Then_Hundreds) {
-            return ''; // TODO
+            $decimalSeparatorPos = strchr(rtrim(number_format($number, (int)(PHP_FLOAT_DIG - log10($number)), DecimalSeparator::Dot->value), '0'), DecimalSeparator::Dot->value);
+            $decimalString       = $decimalSeparatorPos === false ? '' : substr($decimalSeparatorPos, 1);
+
+            return preg_replace('/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/', '$1,', (string) (int) $number)
+                   . ($decimalSeparatorPos === false ? '' : $country->getDecimalSeparator($language)->value)
+                   . substr($decimalString, 0, $decimals);
         }
 
         return number_format(
