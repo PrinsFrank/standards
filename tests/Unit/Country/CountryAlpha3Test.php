@@ -143,6 +143,18 @@ class CountryAlpha3Test extends TestCase
         }
     }
 
+    /**
+     * @covers ::getDigitGroupingSystem
+     */
+    public function testGetDigitGroupingSystem(): void
+    {
+        foreach (CountryAlpha3::cases() as $countryAlpha3) {
+            $countryAlpha3->getDigitGroupingSystem();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
     /** @covers ::getCurrenciesAlpha3 */
     public function testGetCurrenciesAlpha3(): void
     {

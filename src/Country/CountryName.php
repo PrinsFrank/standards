@@ -14,6 +14,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
 use PrinsFrank\Standards\NumberFormatting\DecimalSeparator;
+use PrinsFrank\Standards\NumberFormatting\DigitGroupingSystem;
 
 /**
  * @source https://www.iso.org/obp/ui/#search/code/
@@ -324,6 +325,11 @@ enum CountryName: string
     public function getDecimalSeparator(): DecimalSeparator
     {
         return DecimalSeparator::forCountry($this);
+    }
+
+    public function getDigitGroupingSystem(): DigitGroupingSystem
+    {
+        return DigitGroupingSystem::forCountry($this);
     }
 
     /** @return list<CurrencyAlpha3> */
