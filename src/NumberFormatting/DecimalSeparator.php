@@ -7,6 +7,8 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 
 /** Symbol used to separate the integer part from the fractional part of a number written in decimal form */
 enum DecimalSeparator: string
@@ -30,6 +32,112 @@ enum DecimalSeparator: string
     case Comma = ',';
 
     case Slash = '/';
+
+    case Arabic_Decimal_Separator = '٫';
+
+    public static function forCountryAndLanguage(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country, LanguageAlpha3Bibliographic|LanguageAlpha3Terminology $language): self
+    {
+        if ($country instanceof CountryAlpha2 === false) {
+            $country = $country->toCountryAlpha2();
+        }
+
+        if ($language instanceof LanguageAlpha3Terminology === false) {
+            $language = $language->toLanguageAlpha3Terminology();
+        }
+
+        /** @var CountryAlpha2 $country */
+        /** @var LanguageAlpha3Terminology $language */
+        return match ([$country, $language]) {
+            [CountryAlpha2::Afghanistan, LanguageAlpha3Terminology::Persian] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Afghanistan, LanguageAlpha3Terminology::Pushto_Pashto] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Algeria, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Bahrain, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Botswana, LanguageAlpha3Terminology::English] => self::Dot,
+            [CountryAlpha2::Botswana, LanguageAlpha3Terminology::Tswana] => self::Dot,
+            [CountryAlpha2::Burundi, LanguageAlpha3Terminology::Rundi] => self::Comma,
+            [CountryAlpha2::Burundi, LanguageAlpha3Terminology::French] => self::Comma,
+            [CountryAlpha2::Cameroon, LanguageAlpha3Terminology::Fulah] => self::Comma,
+            [CountryAlpha2::Cameroon, LanguageAlpha3Terminology::Ewondo] => self::Comma,
+            [CountryAlpha2::Cameroon, LanguageAlpha3Terminology::French] => self::Comma,
+            [CountryAlpha2::Cameroon, LanguageAlpha3Terminology::English] => self::Dot,
+            [CountryAlpha2::Canada, LanguageAlpha3Terminology::English] => self::Dot,
+            [CountryAlpha2::Canada, LanguageAlpha3Terminology::French] => self::Comma,
+            [CountryAlpha2::Chad, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Comoros, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Djibouti, LanguageAlpha3Terminology::Afar] => self::Dot,
+            [CountryAlpha2::Djibouti, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Djibouti, LanguageAlpha3Terminology::Somali] => self::Dot,
+            [CountryAlpha2::Ecuador, LanguageAlpha3Terminology::Spanish_Castilian] => self::Comma,
+            [CountryAlpha2::Ecuador, LanguageAlpha3Terminology::Quechua] => self::Dot,
+            [CountryAlpha2::Egypt, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Eritrea, LanguageAlpha3Terminology::Afar] => self::Dot,
+            [CountryAlpha2::Eritrea, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Eritrea, LanguageAlpha3Terminology::Geez] => self::Dot,
+            [CountryAlpha2::Eritrea, LanguageAlpha3Terminology::Tigrinya] => self::Dot,
+            [CountryAlpha2::Eswatini, LanguageAlpha3Terminology::English] => self::Dot,
+            [CountryAlpha2::Eswatini, LanguageAlpha3Terminology::Swati] => self::Comma,
+            [CountryAlpha2::Ethiopia, LanguageAlpha3Terminology::Afar] => self::Dot,
+            [CountryAlpha2::Ethiopia, LanguageAlpha3Terminology::Amharic] => self::Dot,
+            [CountryAlpha2::Ethiopia, LanguageAlpha3Terminology::Oromo] => self::Dot,
+            [CountryAlpha2::Ethiopia, LanguageAlpha3Terminology::Sidamo] => self::Dot,
+            [CountryAlpha2::Ethiopia, LanguageAlpha3Terminology::Somali] => self::Dot,
+            [CountryAlpha2::Ethiopia, LanguageAlpha3Terminology::Tigrinya] => self::Dot,
+            [CountryAlpha2::Ethiopia, LanguageAlpha3Terminology::Geez] => self::Dot,
+            [CountryAlpha2::Ethiopia, LanguageAlpha3Terminology::Wolaitta_Wolaytta] => self::Dot,
+            [CountryAlpha2::Ghana, LanguageAlpha3Terminology::Fulah] => self::Comma,
+            [CountryAlpha2::Ghana, LanguageAlpha3Terminology::English] => self::Dot,
+            [CountryAlpha2::Ghana, LanguageAlpha3Terminology::Akan] => self::Dot,
+            [CountryAlpha2::Ghana, LanguageAlpha3Terminology::Ewe] => self::Dot,
+            [CountryAlpha2::Ghana, LanguageAlpha3Terminology::Ga] => self::Dot,
+            [CountryAlpha2::Ghana, LanguageAlpha3Terminology::Hausa] => self::Dot,
+            [CountryAlpha2::Holy_See, LanguageAlpha3Terminology::Italian] => self::Comma,
+            [CountryAlpha2::Holy_See, LanguageAlpha3Terminology::Latin] => self::Comma,
+            [CountryAlpha2::Iran, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Iran, LanguageAlpha3Terminology::Persian] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Iraq, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Israel, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Jordan, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Kuwait, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Lebanon, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Lesotho, LanguageAlpha3Terminology::English] => self::Dot,
+            [CountryAlpha2::Lesotho, LanguageAlpha3Terminology::Sotho_Southern] => self::Comma,
+            [CountryAlpha2::Libya, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Luxembourg, LanguageAlpha3Terminology::German] => self::Comma,
+            [CountryAlpha2::Luxembourg, LanguageAlpha3Terminology::French] => self::Comma,
+            [CountryAlpha2::Macao, LanguageAlpha3Terminology::Chinese] => self::Dot,
+            [CountryAlpha2::Macao, LanguageAlpha3Terminology::English] => self::Dot,
+            [CountryAlpha2::Macao, LanguageAlpha3Terminology::Portuguese] => self::Comma,
+            [CountryAlpha2::Mali, LanguageAlpha3Terminology::Bambara] => self::Dot,
+            [CountryAlpha2::Mali, LanguageAlpha3Terminology::French] => self::Comma,
+            [CountryAlpha2::Mali, LanguageAlpha3Terminology::Songhai_languages] => self::Dot,
+            [CountryAlpha2::Moldova, LanguageAlpha3Terminology::Romanian_Moldavian_Moldovan] => self::Comma,
+            [CountryAlpha2::Moldova, LanguageAlpha3Terminology::Russian] => self::Comma,
+            [CountryAlpha2::Morocco, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Namibia, LanguageAlpha3Terminology::English] => self::Dot,
+            [CountryAlpha2::Namibia, LanguageAlpha3Terminology::Afrikaans] => self::Comma,
+            [CountryAlpha2::North_Macedonia, LanguageAlpha3Terminology::Macedonian] => self::Comma,
+            [CountryAlpha2::North_Macedonia, LanguageAlpha3Terminology::Albanian] => self::Comma,
+            [CountryAlpha2::Oman, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Pakistan, LanguageAlpha3Terminology::Persian] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Qatar, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Rwanda, LanguageAlpha3Terminology::French] => self::Comma,
+            [CountryAlpha2::Rwanda, LanguageAlpha3Terminology::English] => self::Dot,
+            [CountryAlpha2::Rwanda, LanguageAlpha3Terminology::Kinyarwanda] => self::Comma,
+            [CountryAlpha2::Saudi_Arabia, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Senegal, LanguageAlpha3Terminology::Fulah] => self::Comma,
+            [CountryAlpha2::Senegal, LanguageAlpha3Terminology::French] => self::Comma,
+            [CountryAlpha2::Senegal, LanguageAlpha3Terminology::Wolof] => self::Comma,
+            [CountryAlpha2::Somalia, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::South_Sudan, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Sudan, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Syrian_Arab_Republic, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Tunisia, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::United_Arab_Emirates, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Western_Sahara, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            [CountryAlpha2::Yemen, LanguageAlpha3Terminology::Arabic] => self::Arabic_Decimal_Separator,
+            default => self::forCountry($country),
+        };
+    }
 
     public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): self
     {
