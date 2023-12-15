@@ -31,8 +31,7 @@ enum DecimalSeparator: string
      */
     case Comma = ',';
 
-    case Slash = '/';
-
+    case Slash                    = '/';
     case Arabic_Decimal_Separator = '٫';
 
     public static function forCountryAndLanguage(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country, LanguageAlpha3Bibliographic|LanguageAlpha3Terminology $language): self

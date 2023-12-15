@@ -12,12 +12,12 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 
 enum DigitGroupingIndicator: string
 {
-    case Space = ' ';
-    case Dot = '.';
-    case Comma = ',';
+    case Space                     = ' ';
+    case Dot                       = '.';
+    case Comma                     = ',';
     case Arabic_Thousand_Separator = '٬';
-    case Ethiopic_Syllable_Wa = 'ወ';
-    case Apostrophe = "'";
+    case Ethiopic_Syllable_Wa      = 'ወ';
+    case Apostrophe                = "'";
 
     public static function forCountryAndLanguage(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country, LanguageAlpha3Bibliographic|LanguageAlpha3Terminology $language): self
     {
