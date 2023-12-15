@@ -13,17 +13,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 /** Symbol used to separate the integer part from the fractional part of a number written in decimal form */
 enum DecimalSeparator: string
 {
-    /**
-     * @recommended-by BIPM
-     * @recommended-by NIST
-     */
-    case Space = ' ';
-
-    /**
-     * @recommended-by ISO 8601 (But preference for comma in earlier version https://xml.coverpages.org/ISO-FDIS-8601.pdf)
-     * @recommended-by ISO 80000-1 (or Comma)
-     */
-    case Dot = '.';
+    case Arabic_Decimal_Separator = '٫';
 
     /**
      * @recommended-by ISO 8601 (And preferred over the dot in earlier version https://xml.coverpages.org/ISO-FDIS-8601.pdf)
@@ -31,8 +21,13 @@ enum DecimalSeparator: string
      */
     case Comma = ',';
 
-    case Slash                    = '/';
-    case Arabic_Decimal_Separator = '٫';
+    /**
+     * @recommended-by ISO 8601 (But preference for comma in earlier version https://xml.coverpages.org/ISO-FDIS-8601.pdf)
+     * @recommended-by ISO 80000-1 (or Comma)
+     */
+    case Dot = '.';
+
+    case Slash = '/';
 
     public static function forCountryAndLanguage(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country, LanguageAlpha3Bibliographic|LanguageAlpha3Terminology $language): self
     {
