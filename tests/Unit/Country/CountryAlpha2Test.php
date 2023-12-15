@@ -8,16 +8,13 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\EFTA;
 use PrinsFrank\Standards\Country\Groups\EU;
 use PrinsFrank\Standards\InvalidArgumentException;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use TypeError;
 
-/**
- * @coversDefaultClass \PrinsFrank\Standards\Country\CountryAlpha2
- */
+/** @coversDefaultClass \PrinsFrank\Standards\Country\CountryAlpha2 */
 class CountryAlpha2Test extends TestCase
 {
-    /**
-     * @covers ::toCountryAlpha3
-     */
+    /** @covers ::toCountryAlpha3 */
     public function testAllCasesCanBeConvertedToCountryAlpha3(): void
     {
         $cases = CountryAlpha2::cases();
@@ -31,9 +28,7 @@ class CountryAlpha2Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::toCountryNumeric
-     */
+    /** @covers ::toCountryNumeric */
     public function testAllCasesCanBeConvertedToCountryNumeric(): void
     {
         $cases = CountryAlpha2::cases();
@@ -47,9 +42,7 @@ class CountryAlpha2Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::toCountryName
-     */
+    /** @covers ::toCountryName */
     public function testAllCasesCanBeConvertedToCountryName(): void
     {
         $cases = CountryAlpha2::cases();
@@ -63,17 +56,13 @@ class CountryAlpha2Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::lowerCaseValue
-     */
+    /** @covers ::lowerCaseValue */
     public function testLowerCaseValue(): void
     {
         static::assertSame('af', CountryAlpha2::Afghanistan->lowerCaseValue());
     }
 
-    /**
-     * @covers ::isMemberOf
-     */
+    /** @covers ::isMemberOf */
     public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -82,18 +71,14 @@ class CountryAlpha2Test extends TestCase
         CountryAlpha2::Netherlands->isMemberOf('foo');
     }
 
-    /**
-     * @covers ::isMemberOf
-     */
+    /** @covers ::isMemberOf */
     public function testIsMemberOf(): void
     {
         static::assertTrue(CountryAlpha2::Netherlands->isMemberOf(EU::class));
         static::assertFalse(CountryAlpha2::Netherlands->isMemberOf(EFTA::class));
     }
 
-    /**
-     * @covers ::getCountryCallingCodes
-     */
+    /** @covers ::getCountryCallingCodes */
     public function testGetCountryCallingCodes(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
@@ -101,9 +86,7 @@ class CountryAlpha2Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::getNationalCallPrefix
-     */
+    /** @covers ::getNationalCallPrefix */
     public function testGetNationalCallPrefix(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
@@ -113,9 +96,7 @@ class CountryAlpha2Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::getInternationalCallPrefix
-     */
+    /** @covers ::getInternationalCallPrefix */
     public function testGetInternationalCallPrefix(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
@@ -131,9 +112,7 @@ class CountryAlpha2Test extends TestCase
         static::assertSame('🇳🇱', CountryAlpha2::Netherlands->getFlagEmoji());
     }
 
-    /**
-     * @covers ::getDecimalSeparator
-     */
+    /** @covers ::getDecimalSeparator */
     public function testGetDecimalSeparator(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
@@ -143,15 +122,35 @@ class CountryAlpha2Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::getDigitGroupingSystem
-     */
+    /** @covers ::getDigitGroupingSystem */
     public function testGetDigitGroupingSystem(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
             $countryAlpha2->getDigitGroupingSystem();
 
             $this->addToAssertionCount(1);
+        }
+    }
+
+    /** @covers ::getDigitGroupingIndicator */
+    public function testGetDigitGroupingIndicator(): void
+    {
+        foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            $countryAlpha2->getDigitGroupingIndicator();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
+    /** @covers ::getDigitGroupingIndicator */
+    public function testGetDigitGroupingIndicatorWithLanguage(): void
+    {
+        foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            foreach (LanguageAlpha3Terminology::cases() as $languageAlpha3Terminology) {
+                $countryAlpha2->getDigitGroupingIndicator($languageAlpha3Terminology);
+
+                $this->addToAssertionCount(1);
+            }
         }
     }
 

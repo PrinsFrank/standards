@@ -10,10 +10,12 @@ use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
 use PrinsFrank\Standards\NumberFormatting\DecimalSeparator;
+use PrinsFrank\Standards\NumberFormatting\DigitGroupingIndicator;
 use PrinsFrank\Standards\NumberFormatting\DigitGroupingSystem;
 
 /**
@@ -322,14 +324,27 @@ enum CountryName: string
         return $this->toCountryAlpha2()->getFlagEmoji();
     }
 
-    public function getDecimalSeparator(): DecimalSeparator
+    public function getDecimalSeparator(LanguageAlpha3Bibliographic|LanguageAlpha3Terminology|null $language = null): DecimalSeparator
     {
+        if ($language !== null) {
+            return DecimalSeparator::forCountryAndLanguage($this, $language);
+        }
+
         return DecimalSeparator::forCountry($this);
     }
 
     public function getDigitGroupingSystem(): DigitGroupingSystem
     {
         return DigitGroupingSystem::forCountry($this);
+    }
+
+    public function getDigitGroupingIndicator(LanguageAlpha3Bibliographic|LanguageAlpha3Terminology|null $language = null): DigitGroupingIndicator
+    {
+        if ($language !== null) {
+            return DigitGroupingIndicator::forCountryAndLanguage($this, $language);
+        }
+
+        return DigitGroupingIndicator::forCountry($this);
     }
 
     /** @return list<CurrencyAlpha3> */

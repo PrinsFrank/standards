@@ -8,16 +8,13 @@ use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\Groups\EFTA;
 use PrinsFrank\Standards\Country\Groups\EU;
 use PrinsFrank\Standards\InvalidArgumentException;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use TypeError;
 
-/**
- * @coversDefaultClass \PrinsFrank\Standards\Country\CountryName
- */
+/** @coversDefaultClass \PrinsFrank\Standards\Country\CountryName */
 class CountryNameTest extends TestCase
 {
-    /**
-     * @covers ::toCountryAlpha2
-     */
+    /** @covers ::toCountryAlpha2 */
     public function testAllCasesCanBeConvertedToCountryAlpha2(): void
     {
         $cases = CountryName::cases();
@@ -31,9 +28,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::toCountryAlpha3
-     */
+    /** @covers ::toCountryAlpha3 */
     public function testAllCasesCanBeConvertedToISO3166Alpha3(): void
     {
         $cases = CountryName::cases();
@@ -47,9 +42,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::toCountryNumeric
-     */
+    /** @covers ::toCountryNumeric */
     public function testAllCasesCanBeConvertedToISO3166Numeric(): void
     {
         $cases = CountryName::cases();
@@ -63,9 +56,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::isMemberOf
-     */
+    /** @covers ::isMemberOf */
     public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -74,18 +65,14 @@ class CountryNameTest extends TestCase
         CountryName::Netherlands->isMemberOf('foo');
     }
 
-    /**
-     * @covers ::isMemberOf
-     */
+    /** @covers ::isMemberOf */
     public function testIsMemberOf(): void
     {
         static::assertTrue(CountryName::Netherlands->isMemberOf(EU::class));
         static::assertFalse(CountryName::Netherlands->isMemberOf(EFTA::class));
     }
 
-    /**
-     * @covers ::getCountryCallingCodes
-     */
+    /** @covers ::getCountryCallingCodes */
     public function testGetCountryCallingCodes(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -93,9 +80,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::getNationalCallPrefix
-     */
+    /** @covers ::getNationalCallPrefix */
     public function testGetNationalCallPrefix(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -105,9 +90,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::getInternationalCallPrefix
-     */
+    /** @covers ::getInternationalCallPrefix */
     public function testGetInternationalCallPrefix(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -123,9 +106,7 @@ class CountryNameTest extends TestCase
         static::assertSame('🇳🇱', CountryName::Netherlands->getFlagEmoji());
     }
 
-    /**
-     * @covers ::getDecimalSeparator
-     */
+    /** @covers ::getDecimalSeparator */
     public function testGetDecimalSeparator(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -135,15 +116,35 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::getDigitGroupingSystem
-     */
+    /** @covers ::getDigitGroupingSystem */
     public function testGetDigitGroupingSystem(): void
     {
         foreach (CountryName::cases() as $countryName) {
             $countryName->getDigitGroupingSystem();
 
             $this->addToAssertionCount(1);
+        }
+    }
+
+    /** @covers ::getDigitGroupingIndicator */
+    public function testGetDigitGroupingIndicator(): void
+    {
+        foreach (CountryName::cases() as $countryAlpha2) {
+            $countryAlpha2->getDigitGroupingIndicator();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
+    /** @covers ::getDigitGroupingIndicator */
+    public function testGetDigitGroupingIndicatorWithLanguage(): void
+    {
+        foreach (CountryName::cases() as $countryAlpha2) {
+            foreach (LanguageAlpha3Terminology::cases() as $languageAlpha3Terminology) {
+                $countryAlpha2->getDigitGroupingIndicator($languageAlpha3Terminology);
+
+                $this->addToAssertionCount(1);
+            }
         }
     }
 
