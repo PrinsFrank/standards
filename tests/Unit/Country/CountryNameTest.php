@@ -116,6 +116,18 @@ class CountryNameTest extends TestCase
         }
     }
 
+    /** @covers ::getDecimalSeparator */
+    public function testGetDecimalSeparatorWithLanguage(): void
+    {
+        foreach (CountryName::cases() as $countryName) {
+            foreach (LanguageAlpha3Terminology::cases() as $languageAlpha3Terminology) {
+                $countryName->getDecimalSeparator($languageAlpha3Terminology);
+
+                $this->addToAssertionCount(1);
+            }
+        }
+    }
+
     /** @covers ::getDigitGroupingSystem */
     public function testGetDigitGroupingSystem(): void
     {
@@ -129,8 +141,8 @@ class CountryNameTest extends TestCase
     /** @covers ::getDigitGroupingIndicator */
     public function testGetDigitGroupingIndicator(): void
     {
-        foreach (CountryName::cases() as $countryAlpha2) {
-            $countryAlpha2->getDigitGroupingIndicator();
+        foreach (CountryName::cases() as $countryName) {
+            $countryName->getDigitGroupingIndicator();
 
             $this->addToAssertionCount(1);
         }
@@ -139,9 +151,9 @@ class CountryNameTest extends TestCase
     /** @covers ::getDigitGroupingIndicator */
     public function testGetDigitGroupingIndicatorWithLanguage(): void
     {
-        foreach (CountryName::cases() as $countryAlpha2) {
+        foreach (CountryName::cases() as $countryName) {
             foreach (LanguageAlpha3Terminology::cases() as $languageAlpha3Terminology) {
-                $countryAlpha2->getDigitGroupingIndicator($languageAlpha3Terminology);
+                $countryName->getDigitGroupingIndicator($languageAlpha3Terminology);
 
                 $this->addToAssertionCount(1);
             }

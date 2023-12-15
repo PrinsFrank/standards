@@ -122,6 +122,18 @@ class CountryAlpha2Test extends TestCase
         }
     }
 
+    /** @covers ::getDecimalSeparator */
+    public function testGetDecimalSeparatorWithLanguage(): void
+    {
+        foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            foreach (LanguageAlpha3Terminology::cases() as $languageAlpha3Terminology) {
+                $countryAlpha2->getDecimalSeparator($languageAlpha3Terminology);
+
+                $this->addToAssertionCount(1);
+            }
+        }
+    }
+
     /** @covers ::getDigitGroupingSystem */
     public function testGetDigitGroupingSystem(): void
     {

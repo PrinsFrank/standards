@@ -143,6 +143,18 @@ class CountryNumericTest extends TestCase
         }
     }
 
+    /** @covers ::getDecimalSeparator */
+    public function testGetDecimalSeparatorWithLanguage(): void
+    {
+        foreach (CountryNumeric::cases() as $countryNumeric) {
+            foreach (LanguageAlpha3Terminology::cases() as $languageAlpha3Terminology) {
+                $countryNumeric->getDecimalSeparator($languageAlpha3Terminology);
+
+                $this->addToAssertionCount(1);
+            }
+        }
+    }
+
     /** @covers ::getDigitGroupingSystem */
     public function testGetDigitGroupingSystem(): void
     {
@@ -156,8 +168,8 @@ class CountryNumericTest extends TestCase
     /** @covers ::getDigitGroupingIndicator */
     public function testGetDigitGroupingIndicator(): void
     {
-        foreach (CountryNumeric::cases() as $countryAlpha2) {
-            $countryAlpha2->getDigitGroupingIndicator();
+        foreach (CountryNumeric::cases() as $countryNumeric) {
+            $countryNumeric->getDigitGroupingIndicator();
 
             $this->addToAssertionCount(1);
         }
@@ -166,9 +178,9 @@ class CountryNumericTest extends TestCase
     /** @covers ::getDigitGroupingIndicator */
     public function testGetDigitGroupingIndicatorWithLanguage(): void
     {
-        foreach (CountryNumeric::cases() as $countryAlpha2) {
+        foreach (CountryNumeric::cases() as $countryNumeric) {
             foreach (LanguageAlpha3Terminology::cases() as $languageAlpha3Terminology) {
-                $countryAlpha2->getDigitGroupingIndicator($languageAlpha3Terminology);
+                $countryNumeric->getDigitGroupingIndicator($languageAlpha3Terminology);
 
                 $this->addToAssertionCount(1);
             }

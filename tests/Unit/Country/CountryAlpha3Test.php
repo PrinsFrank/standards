@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Tests\Unit\Country;
 
 use PHPUnit\Framework\TestCase;
+use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\Groups\EFTA;
 use PrinsFrank\Standards\Country\Groups\EU;
@@ -122,6 +123,18 @@ class CountryAlpha3Test extends TestCase
         }
     }
 
+    /** @covers ::getDecimalSeparator */
+    public function testGetDecimalSeparatorWithLanguage(): void
+    {
+        foreach (CountryAlpha3::cases() as $countryAlpha3) {
+            foreach (LanguageAlpha3Terminology::cases() as $languageAlpha3Terminology) {
+                $countryAlpha3->getDecimalSeparator($languageAlpha3Terminology);
+
+                $this->addToAssertionCount(1);
+            }
+        }
+    }
+
     /** @covers ::getDigitGroupingSystem */
     public function testGetDigitGroupingSystem(): void
     {
@@ -135,8 +148,8 @@ class CountryAlpha3Test extends TestCase
     /** @covers ::getDigitGroupingIndicator */
     public function testGetDigitGroupingIndicator(): void
     {
-        foreach (CountryAlpha3::cases() as $countryAlpha2) {
-            $countryAlpha2->getDigitGroupingIndicator();
+        foreach (CountryAlpha3::cases() as $countryAlpha3) {
+            $countryAlpha3->getDigitGroupingIndicator();
 
             $this->addToAssertionCount(1);
         }
@@ -145,9 +158,9 @@ class CountryAlpha3Test extends TestCase
     /** @covers ::getDigitGroupingIndicator */
     public function testGetDigitGroupingIndicatorWithLanguage(): void
     {
-        foreach (CountryAlpha3::cases() as $countryAlpha2) {
+        foreach (CountryAlpha3::cases() as $countryAlpha3) {
             foreach (LanguageAlpha3Terminology::cases() as $languageAlpha3Terminology) {
-                $countryAlpha2->getDigitGroupingIndicator($languageAlpha3Terminology);
+                $countryAlpha3->getDigitGroupingIndicator($languageAlpha3Terminology);
 
                 $this->addToAssertionCount(1);
             }
