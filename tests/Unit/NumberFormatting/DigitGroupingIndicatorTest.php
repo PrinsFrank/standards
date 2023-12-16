@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace NumberFormatting;
+namespace PrinsFrank\Standards\Tests\Unit\NumberFormatting;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
