@@ -24,8 +24,8 @@ class NumberFormatter
             $decimalString       = $decimalSeparatorPos === false ? '' : substr($decimalSeparatorPos, 1);
 
             return preg_replace('/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/', '$1,', (string) (int) $number)
-                   . ($decimalSeparatorPos === false || $decimalString === '' ? '' : $country->getDecimalSeparator($language)->value)
-                   . substr($decimalString, 0, $decimals);
+                . ($decimalSeparatorPos === false || $decimalString === '' ? '' : $country->getDecimalSeparator($language)->value)
+                . substr($decimalString, 0, $decimals);
         }
 
         return number_format(
