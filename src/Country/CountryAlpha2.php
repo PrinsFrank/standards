@@ -7,6 +7,9 @@ use PrinsFrank\Standards\BackedEnum;
 use PrinsFrank\Standards\Country\Groups\GroupInterface;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
+use PrinsFrank\Standards\DecimalSeparator\DecimalSeparator;
+use PrinsFrank\Standards\DigitGroupingIndicator\DigitGroupingIndicator;
+use PrinsFrank\Standards\DigitGroupingSystem\DigitGroupingSystem;
 use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
@@ -14,9 +17,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
-use PrinsFrank\Standards\NumberFormatting\DecimalSeparator;
-use PrinsFrank\Standards\NumberFormatting\DigitGroupingIndicator;
-use PrinsFrank\Standards\NumberFormatting\DigitGroupingSystem;
+use PrinsFrank\Standards\NumberFormatting\NumberFormatter;
 
 /**
  * @source https://www.iso.org/obp/ui/#search/code/
@@ -358,6 +359,12 @@ enum CountryAlpha2: string
         }
 
         return DigitGroupingIndicator::forCountry($this);
+    }
+
+    /** If $decimals is set to/left at null, the full precision of the number will be included in the formatted number */
+    public function formatNumber(float $number, LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|null $language = null, int|null $decimals = null): string
+    {
+        return NumberFormatter::format($number, $this, $language, $decimals);
     }
 
     /** @return list<LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive> */

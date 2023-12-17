@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Tests\Unit\NumberFormatting;
+namespace DigitGroupingSystem;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
-use PrinsFrank\Standards\NumberFormatting\DigitGroupingSystem;
+use PrinsFrank\Standards\DigitGroupingSystem\DigitGroupingSystem;
 
-/** @coversDefaultClass \PrinsFrank\Standards\NumberFormatting\DigitGroupingSystem */
+/** @coversDefaultClass \PrinsFrank\Standards\DigitGroupingSystem\DigitGroupingSystem */
 class DigitGroupingSystemTest extends TestCase
 {
     /** @covers ::forCountry */
