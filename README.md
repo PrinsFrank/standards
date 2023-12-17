@@ -667,7 +667,7 @@ $valueName = $valueAlpha3->name;                     // 'Dutch'
 
 ### At a glance
 
-## Geographic regions
+## Geographic regions (M49)
 
 > :mortar_board: **Geographic regions are represented by three digits. Leading zeros are required. Each geographic region can span multiple other geographic regions or countries.**
 
@@ -676,7 +676,7 @@ $valueName = $valueAlpha3->name;                     // 'Dutch'
 ```php
 GeographicRegion::from('150');        // GeographicRegion::Europe
 GeographicRegion::from('150')->value; // '150'
-GeographicRegion::from('150')->name;  // EUrope
+GeographicRegion::from('150')->name;  // Europe
 GeographicRegion::Europe;             // GeographicRegion::Europe
 
 GeographicRegion::from('150')->getDirectSubRegions();   // [GeographicRegion::Eastern_Europe, GeographicRegion::Northern_Europe, ...]
