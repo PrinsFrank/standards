@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Tests\Unit\NumberFormatting;
+namespace DecimalSeparator;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\DecimalSeparator\DecimalSeparator;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
-use PrinsFrank\Standards\NumberFormatting\DecimalSeparator;
 
-/** @coversDefaultClass \PrinsFrank\Standards\NumberFormatting\DecimalSeparator */
+/** @coversDefaultClass \PrinsFrank\Standards\DecimalSeparator\DecimalSeparator */
 class DecimalSeparatorTest extends TestCase
 {
     /** @covers ::forCountryAndLanguage */

@@ -166,6 +166,13 @@ class CountryAlpha2Test extends TestCase
         }
     }
 
+    /** @covers ::formatNumber */
+    public function testFormatNumber(): void
+    {
+        static::assertSame('424.242,4242', CountryAlpha2::Netherlands->formatNumber(424242.4242));
+        static::assertSame('4,24,242.4242', CountryAlpha2::Nepal->formatNumber(424242.4242));
+    }
+
     /** @covers ::getCurrenciesAlpha3 */
     public function testGetCurrenciesAlpha3(): void
     {

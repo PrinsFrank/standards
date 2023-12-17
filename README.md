@@ -185,6 +185,7 @@ CountryAlpha3::from('NLD')->getCurrenciesAlpha3();               // [CurrencyAlp
 CountryAlpha3::from('NLD')->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 CountryAlpha3::from('NLD')->getDecimalSeparator();               // [DecimalSeparator::Comma]
 CountryAlpha3::from('NLD')->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
+CountryAlpha3::from('NLD')->formatNumber(424242.4242);           // '424.242,4242'
 
 public function foo(CountryAlpha2 $countryAlpha2) {}             // Use spec as typehint to enforce valid value
 
@@ -260,6 +261,7 @@ $valueAlpha2->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Fle
 
 $valueAlpha2->getDecimalSeparator();               // [DecimalSeparator::Comma]
 $valueAlpha2->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
+$valueAlpha2->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 ### CountryAlpha3
@@ -294,6 +296,7 @@ $valueAlpha3->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Fle
 
 $valueAlpha3->getDecimalSeparator();               // [DecimalSeparator::Comma]
 $valueAlpha3->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
+$valueAlpha3->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 ### CountryNumeric
@@ -329,6 +332,7 @@ $valueNumeric->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Fl
 
 $valueNumeric->getDecimalSeparator();               // [DecimalSeparator::Comma]
 $valueNumeric->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
+$valueNumeric->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 ### CountryName
@@ -361,6 +365,7 @@ $valueName->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemi
 
 $valueName->getDecimalSeparator();               // [DecimalSeparator::Comma]
 $valueName->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
+$valueName->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 </details>
@@ -667,7 +672,7 @@ $valueName = $valueAlpha3->name;                     // 'Dutch'
 
 ### At a glance
 
-## Geographic regions
+## Geographic regions (M49)
 
 > :mortar_board: **Geographic regions are represented by three digits. Leading zeros are required. Each geographic region can span multiple other geographic regions or countries.**
 
@@ -676,7 +681,7 @@ $valueName = $valueAlpha3->name;                     // 'Dutch'
 ```php
 GeographicRegion::from('150');        // GeographicRegion::Europe
 GeographicRegion::from('150')->value; // '150'
-GeographicRegion::from('150')->name;  // EUrope
+GeographicRegion::from('150')->name;  // Europe
 GeographicRegion::Europe;             // GeographicRegion::Europe
 
 GeographicRegion::from('150')->getDirectSubRegions();   // [GeographicRegion::Eastern_Europe, GeographicRegion::Northern_Europe, ...]
@@ -730,7 +735,7 @@ public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enfo
 <details>
     <summary>Full documentation</summary>
 
-## ScriptAlias
+### ScriptAlias
 
 ```php
 ScriptAlias::from('Latin');                   // ScriptAlias::latin
@@ -744,7 +749,7 @@ ScriptAlias::Latin;                           // ScriptAlias::Latin
 public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
 ```
 
-## ScriptCode
+### ScriptCode
 
 ```php
 ScriptCode::from('Latn');                   // ScriptCode::latin
@@ -758,7 +763,7 @@ ScriptCode::Latin;                          // ScriptCode::Latin
 public function foo(ScriptCode $scriptCode) {} // Use spec as typehint to enforce valid value
 ```
 
-## ScriptName
+### ScriptName
 
 ```php
 ScriptName::from('Latin');                   // ScriptName::latin
@@ -772,7 +777,7 @@ ScriptName::Latin;                           // ScriptName::Latin
 public function foo(ScriptName $scriptName) {} // Use spec as typehint to enforce valid value
 ```
 
-## ScriptNumber
+### ScriptNumber
 
 ```php
 ScriptNumber::from('215');                   // ScriptNumber::latin

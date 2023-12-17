@@ -187,6 +187,13 @@ class CountryNumericTest extends TestCase
         }
     }
 
+    /** @covers ::formatNumber */
+    public function testFormatNumber(): void
+    {
+        static::assertSame('424.242,4242', CountryNumeric::Netherlands->formatNumber(424242.4242));
+        static::assertSame('4,24,242.4242', CountryNumeric::Nepal->formatNumber(424242.4242));
+    }
+
     /** @covers ::getCurrenciesAlpha3 */
     public function testGetCurrenciesAlpha3(): void
     {

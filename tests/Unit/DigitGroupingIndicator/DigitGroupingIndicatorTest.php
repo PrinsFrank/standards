@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Tests\Unit\NumberFormatting;
+namespace DigitGroupingIndicator;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\DigitGroupingIndicator\DigitGroupingIndicator;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
-use PrinsFrank\Standards\NumberFormatting\DigitGroupingIndicator;
 
-/** @coversDefaultClass \PrinsFrank\Standards\NumberFormatting\DigitGroupingIndicator */
+/** @coversDefaultClass \PrinsFrank\Standards\DigitGroupingIndicator\DigitGroupingIndicator */
 class DigitGroupingIndicatorTest extends TestCase
 {
     /** @covers ::forCountryAndLanguage */
