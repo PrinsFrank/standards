@@ -730,7 +730,7 @@ public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enfo
 <details>
     <summary>Full documentation</summary>
 
-## ScriptAlias
+### ScriptAlias
 
 ```php
 ScriptAlias::from('Latin');                   // ScriptAlias::latin
@@ -744,7 +744,7 @@ ScriptAlias::Latin;                           // ScriptAlias::Latin
 public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
 ```
 
-## ScriptCode
+### ScriptCode
 
 ```php
 ScriptCode::from('Latn');                   // ScriptCode::latin
@@ -758,7 +758,7 @@ ScriptCode::Latin;                          // ScriptCode::Latin
 public function foo(ScriptCode $scriptCode) {} // Use spec as typehint to enforce valid value
 ```
 
-## ScriptName
+### ScriptName
 
 ```php
 ScriptName::from('Latin');                   // ScriptName::latin
@@ -772,7 +772,7 @@ ScriptName::Latin;                           // ScriptName::Latin
 public function foo(ScriptName $scriptName) {} // Use spec as typehint to enforce valid value
 ```
 
-## ScriptNumber
+### ScriptNumber
 
 ```php
 ScriptNumber::from('215');                   // ScriptNumber::latin
