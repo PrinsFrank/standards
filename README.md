@@ -185,6 +185,7 @@ CountryAlpha3::from('NLD')->getCurrenciesAlpha3();               // [CurrencyAlp
 CountryAlpha3::from('NLD')->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 CountryAlpha3::from('NLD')->getDecimalSeparator();               // [DecimalSeparator::Comma]
 CountryAlpha3::from('NLD')->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
+CountryAlpha3::from('NLD')->formatNumber(424242.4242);           // '424.242,4242'
 
 public function foo(CountryAlpha2 $countryAlpha2) {}             // Use spec as typehint to enforce valid value
 
@@ -260,6 +261,7 @@ $valueAlpha2->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Fle
 
 $valueAlpha2->getDecimalSeparator();               // [DecimalSeparator::Comma]
 $valueAlpha2->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
+$valueAlpha2->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 ### CountryAlpha3
@@ -294,6 +296,7 @@ $valueAlpha3->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Fle
 
 $valueAlpha3->getDecimalSeparator();               // [DecimalSeparator::Comma]
 $valueAlpha3->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
+$valueAlpha3->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 ### CountryNumeric
@@ -329,6 +332,7 @@ $valueNumeric->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Fl
 
 $valueNumeric->getDecimalSeparator();               // [DecimalSeparator::Comma]
 $valueNumeric->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
+$valueNumeric->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 ### CountryName
@@ -361,6 +365,7 @@ $valueName->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemi
 
 $valueName->getDecimalSeparator();               // [DecimalSeparator::Comma]
 $valueName->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
+$valueName->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 </details>
