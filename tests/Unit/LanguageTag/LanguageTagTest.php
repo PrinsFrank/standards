@@ -21,6 +21,7 @@ class LanguageTagTest extends TestCase
 {
     /**
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testThrowsExceptionIfVariantSubTagIsOfInvalidType(): void
     {
@@ -32,6 +33,7 @@ class LanguageTagTest extends TestCase
 
     /**
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testThrowsExceptionIfExtensionSubtagIsOfInvalidType(): void
     {
@@ -45,6 +47,7 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringSimpleLanguageTag(): void
     {
@@ -70,6 +73,7 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringLanguageSubtagPlusScriptSubtag(): void
     {
@@ -95,6 +99,7 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringExtendedLanguageSubtagsAndTheirPrimaryLanguageSubtagCounterparts(): void
     {
@@ -120,6 +125,7 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringLanguageScriptRegion(): void
     {
@@ -137,6 +143,7 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringLanguageVariant(): void
     {
@@ -158,6 +165,7 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringLanguageRegionVariant(): void
     {
@@ -175,6 +183,7 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringLanguageScriptRegionVariant(): void
     {
@@ -188,6 +197,7 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringLanguageRegion(): void
     {
@@ -209,6 +219,7 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringPrivateUseSubTags(): void
     {
@@ -226,6 +237,7 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringPrivateUseRegistryValues(): void
     {
@@ -255,6 +267,7 @@ class LanguageTagTest extends TestCase
      * @example https://datatracker.ietf.org/doc/html/rfc5646#section-2.2.2
      *
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringWithLanguageExtensions(): void
     {
@@ -290,6 +303,7 @@ class LanguageTagTest extends TestCase
 
     /**
      * @covers ::fromString
+     * @covers ::__construct
      */
     public function testFromStringWithExtensions(): void
     {
@@ -301,5 +315,20 @@ class LanguageTagTest extends TestCase
             new LanguageTag(LanguageAlpha2::French, extensionSubtag: ['a', 'Latn']),
             LanguageTag::fromString('fr-a-Latn')
         );
+    }
+
+    /** @covers ::fromString */
+    public function testFromStringWithInvalidFormat(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Subtag "nl" is not a valid subtag with context {"primarySubTag":"nl"}');
+        LanguageTag::fromString('nl-nl');
+    }
+
+    /** @covers ::tryFromString */
+    public function testTryFromString(): void
+    {
+        static::assertNull(LanguageTag::tryFromString('nl-nl'));
+        static::assertEquals(new LanguageTag(LanguageAlpha2::Dutch_Flemish), LanguageTag::tryFromString('nl'));
     }
 }
