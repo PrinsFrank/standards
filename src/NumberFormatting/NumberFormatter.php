@@ -7,13 +7,15 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\DecimalSeparator\DecimalSeparator;
+use PrinsFrank\Standards\DigitGroupingSystem\DigitGroupingSystem;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 
 class NumberFormatter
 {
-    /** If $decimals is set to null, the full precision of the number will be formatted */
-    public static function format(
+    /** If $decimals is set to/left at null, the full precision of the number will be included in the formatted number */
+    public static function formatNumber(
         float $number,
         CountryAlpha2|CountryAlpha3|CountryNumeric|CountryName $country,
         LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|null $language = null,

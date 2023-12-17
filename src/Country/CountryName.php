@@ -351,7 +351,7 @@ enum CountryName: string
     /** If $decimals is set to/left at null, the full precision of the number will be included in the formatted number */
     public function formatNumber(float $number, LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|null $language = null, int|null $decimals = null): string
     {
-        return NumberFormatter::format($number, $this, $language, $decimals);
+        return NumberFormatter::formatNumber($number, $this, $language, $decimals);
     }
 
     /** @return list<CurrencyAlpha3> */
