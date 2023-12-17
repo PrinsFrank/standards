@@ -20,7 +20,7 @@ class NumberFormatter
         int|null $decimals = null,
     ): string {
         if ($country->getDigitGroupingSystem() === DigitGroupingSystem::Thousand_Then_Hundreds) {
-            $decimalSeparatorPos = strchr(rtrim(number_format($number, (int)(PHP_FLOAT_DIG - log10($number)), DecimalSeparator::Dot->value), '0'), DecimalSeparator::Dot->value);
+            $decimalSeparatorPos = strstr(rtrim(number_format($number, (int)(PHP_FLOAT_DIG - log10($number)), DecimalSeparator::Dot->value), '0'), DecimalSeparator::Dot->value);
             $decimalString       = $decimalSeparatorPos === false ? '' : substr($decimalSeparatorPos, 1);
 
             return preg_replace('/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/', '$1,', (string) (int) $number)
@@ -38,7 +38,7 @@ class NumberFormatter
 
     public static function getPrecision(float $number): int
     {
-        $decimalSeparatorPos = strchr(rtrim(number_format($number, (int)(PHP_FLOAT_DIG - log10($number)), DecimalSeparator::Dot->value), '0'), DecimalSeparator::Dot->value);
+        $decimalSeparatorPos = strstr(rtrim(number_format($number, (int)(PHP_FLOAT_DIG - log10($number)), DecimalSeparator::Dot->value), '0'), DecimalSeparator::Dot->value);
         if ($decimalSeparatorPos === false) {
             return 0;
         }

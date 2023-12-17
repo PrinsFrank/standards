@@ -13,6 +13,7 @@ return (new PhpCsFixer\Config())->setRules(
         'binary_operator_spaces'       => ['default' => 'align_single_space'],
         'no_unused_imports'            => true,
         'array_indentation'            => true,
+        'no_alias_functions'           => true,
     ]
 )->setFinder(
     PhpCsFixer\Finder::create()
