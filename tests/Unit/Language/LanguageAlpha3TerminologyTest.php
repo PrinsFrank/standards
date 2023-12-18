@@ -16,9 +16,7 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
  */
 class LanguageAlpha3TerminologyTest extends TestCase
 {
-    /**
-     * @covers ::toLanguageAlpha2
-     */
+    /** @covers ::toLanguageAlpha2 */
     public function testAllCasesCanBeConvertedToLanguageAlpha2(): void
     {
         $cases = LanguageAlpha3Terminology::cases();
@@ -30,9 +28,7 @@ class LanguageAlpha3TerminologyTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::toLanguageAlpha3Bibliographic
-     */
+    /** @covers ::toLanguageAlpha3Bibliographic */
     public function testAllCasesCanBeConvertedToLanguageAlpha3Bibliographic(): void
     {
         $cases = LanguageAlpha3Terminology::cases();
@@ -42,9 +38,7 @@ class LanguageAlpha3TerminologyTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::toLanguageName
-     */
+    /** @covers ::toLanguageName */
     public function testAllCasesCanBeConvertedToLanguageName(): void
     {
         $cases = LanguageAlpha3Terminology::cases();
@@ -54,9 +48,7 @@ class LanguageAlpha3TerminologyTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::upperCaseValue
-     */
+    /** @covers ::upperCaseValue */
     public function testUpperCaseValue(): void
     {
         static::assertSame('SQI', LanguageAlpha3Terminology::Albanian->upperCaseValue());

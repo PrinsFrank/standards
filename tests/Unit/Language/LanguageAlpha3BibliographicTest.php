@@ -17,9 +17,7 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
  */
 class LanguageAlpha3BibliographicTest extends TestCase
 {
-    /**
-     * @covers ::toLanguageAlpha2
-     */
+    /** @covers ::toLanguageAlpha2 */
     public function testAllCasesCanBeConvertedToLanguageAlpha2(): void
     {
         $cases = LanguageAlpha3Bibliographic::cases();
@@ -31,9 +29,7 @@ class LanguageAlpha3BibliographicTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::toLanguageAlpha3Terminology
-     */
+    /** @covers ::toLanguageAlpha3Terminology */
     public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void
     {
         $cases = LanguageAlpha3Bibliographic::cases();
@@ -43,9 +39,7 @@ class LanguageAlpha3BibliographicTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::toLanguageName
-     */
+    /** @covers ::toLanguageName */
     public function testAllCasesCanBeConvertedToLanguageName(): void
     {
         $cases = LanguageAlpha3Bibliographic::cases();
@@ -55,9 +49,7 @@ class LanguageAlpha3BibliographicTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::upperCaseValue
-     */
+    /** @covers ::upperCaseValue */
     public function testUpperCaseValue(): void
     {
         static::assertSame('ALB', LanguageAlpha3Bibliographic::Albanian->upperCaseValue());

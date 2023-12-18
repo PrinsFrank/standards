@@ -13,9 +13,7 @@ use ValueError;
  */
 class CurrencyNumericTest extends TestCase
 {
-    /**
-     * @covers ::toCurrencyAlpha3
-     */
+    /** @covers ::toCurrencyAlpha3 */
     public function testAllCasesCanBeConvertedToCurrencyAlpha3(): void
     {
         $cases = CurrencyNumeric::cases();
@@ -29,9 +27,7 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::toCurrencyName
-     */
+    /** @covers ::toCurrencyName */
     public function testAllCasesCanBeConvertedToCurrencyName(): void
     {
         $cases = CurrencyNumeric::cases();
@@ -45,9 +41,7 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::getSymbol
-     */
+    /** @covers ::getSymbol */
     public function testAllCasesHaveAccessToSymbolOrNull(): void
     {
         $cases = CurrencyNumeric::cases();
@@ -61,35 +55,27 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::fromInt
-     */
+    /** @covers ::fromInt */
     public function testFromInt(): void
     {
         static::assertEquals(CurrencyNumeric::Lek, CurrencyNumeric::fromInt(8));
     }
 
-    /**
-     * @covers ::fromInt
-     */
+    /** @covers ::fromInt */
     public function testFromIntThrowsExceptionOnNonExistingValue(): void
     {
         $this->expectException(ValueError::class);
         static::assertNull(CurrencyNumeric::fromInt(1));
     }
 
-    /**
-     * @covers ::tryFromInt
-     */
+    /** @covers ::tryFromInt */
     public function testTryFromInt(): void
     {
         static::assertEquals(CurrencyNumeric::Lek, CurrencyNumeric::tryFromInt(8));
         static::assertNull(CurrencyNumeric::tryFromInt(1));
     }
 
-    /**
-     * @covers ::valueAsInt
-     */
+    /** @covers ::valueAsInt */
     public function testValueAsInt(): void
     {
         static::assertSame(965, CurrencyNumeric::ADB_Unit_of_Account->valueAsInt());

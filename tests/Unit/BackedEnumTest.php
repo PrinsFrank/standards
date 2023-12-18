@@ -13,9 +13,7 @@ use PrinsFrank\Standards\KeyNotFoundException;
  */
 class BackedEnumTest extends TestCase
 {
-    /**
-     * @covers ::tryFromKey
-     */
+    /** @covers ::tryFromKey */
     public function testTryFromKey(): void
     {
         static::assertNull(BackedEnum::tryFromKey(TestEnumBackedByString::class, 'BAR'));
@@ -25,9 +23,7 @@ class BackedEnumTest extends TestCase
         static::assertSame(TestEnumBackedByInt::FOO, BackedEnum::tryFromKey(TestEnumBackedByInt::class, 'FOO'));
     }
 
-    /**
-     * @covers ::tryFromKey
-     */
+    /** @covers ::tryFromKey */
     public function testTryFromKeyThrowsExceptionOnNonEnumValue(): void
     {
         $testClass = new class () {};
@@ -39,18 +35,14 @@ class BackedEnumTest extends TestCase
         BackedEnum::tryFromKey($testClass::class, 'foo');
     }
 
-    /**
-     * @covers ::fromKey
-     */
+    /** @covers ::fromKey */
     public function testFromKey(): void
     {
         static::assertSame(TestEnumBackedByString::FOO, BackedEnum::fromKey(TestEnumBackedByString::class, 'FOO'));
         static::assertSame(TestEnumBackedByInt::FOO, BackedEnum::fromKey(TestEnumBackedByInt::class, 'FOO'));
     }
 
-    /**
-     * @covers ::names
-     */
+    /** @covers ::names */
     public function testNames(): void
     {
         static::assertSame(
@@ -63,9 +55,7 @@ class BackedEnumTest extends TestCase
         );
     }
 
-    /**
-     * @covers ::names
-     */
+    /** @covers ::names */
     public function testNamesThrowsExceptionOnNonEnumValue(): void
     {
         $testClass = new class () {};
@@ -77,9 +67,7 @@ class BackedEnumTest extends TestCase
         BackedEnum::names($testClass::class);
     }
 
-    /**
-     * @covers ::values
-     */
+    /** @covers ::values */
     public function testValues(): void
     {
         static::assertSame(
@@ -92,9 +80,7 @@ class BackedEnumTest extends TestCase
         );
     }
 
-    /**
-     * @covers ::values
-     */
+    /** @covers ::values */
     public function testValuesThrowsExceptionOnNonEnumValue(): void
     {
         $testClass = new class () {};
@@ -106,9 +92,7 @@ class BackedEnumTest extends TestCase
         BackedEnum::values($testClass::class);
     }
 
-    /**
-     * @covers ::toArray
-     */
+    /** @covers ::toArray */
     public function testToArray(): void
     {
         static::assertSame(
@@ -121,9 +105,7 @@ class BackedEnumTest extends TestCase
         );
     }
 
-    /**
-     * @covers ::toArray
-     */
+    /** @covers ::toArray */
     public function testToArrayThrowsExceptionOnNonEnumValue(): void
     {
         $testClass = new class () {};
@@ -135,9 +117,7 @@ class BackedEnumTest extends TestCase
         BackedEnum::toArray($testClass::class);
     }
 
-    /**
-     * @covers ::fromKey
-     */
+    /** @covers ::fromKey */
     public function testFromKeyThrowsExceptionNonExistingKey(): void
     {
         $this->expectException(KeyNotFoundException::class);

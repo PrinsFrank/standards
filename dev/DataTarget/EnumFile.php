@@ -55,9 +55,7 @@ class EnumFile
         return false;
     }
 
-    /**
-     * @throws EnumNotFoundException
-     */
+    /** @throws EnumNotFoundException */
     private function getContent(): string
     {
         $content = file_get_contents($this->path);
@@ -75,9 +73,7 @@ class EnumFile
         return $this;
     }
 
-    /**
-     * @throws EnumNotFoundException
-     */
+    /** @throws EnumNotFoundException */
     public function writeCases(SortingInterface $sorting): self
     {
         $enumContent    = $this->getContent();

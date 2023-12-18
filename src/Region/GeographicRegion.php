@@ -45,9 +45,7 @@ enum GeographicRegion: string
     case Small_Island_Developing_States  = '722';
     case North_America                   = '003';
 
-    /**
-     * @return list<GeographicRegion>
-     */
+    /** @return list<GeographicRegion> */
     public function getDirectSubRegions(): array
     {
         return match ($this) {

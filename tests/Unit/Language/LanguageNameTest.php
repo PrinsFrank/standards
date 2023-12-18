@@ -11,9 +11,7 @@ use PrinsFrank\Standards\Language\LanguageName;
  */
 class LanguageNameTest extends TestCase
 {
-    /**
-     * @covers ::toLanguageAlpha3Bibliographic
-     */
+    /** @covers ::toLanguageAlpha3Bibliographic */
     public function testAllCasesCanBeConvertedToLanguageAlpha3Bibliographic(): void
     {
         $cases = LanguageName::cases();
@@ -23,9 +21,7 @@ class LanguageNameTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::toLanguageAlpha3Terminology
-     */
+    /** @covers ::toLanguageAlpha3Terminology */
     public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void
     {
         $cases = LanguageName::cases();
@@ -35,9 +31,7 @@ class LanguageNameTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::toLanguageAlpha2
-     */
+    /** @covers ::toLanguageAlpha2 */
     public function testSomeCasesCanBeConvertedToLanguageAlpha2(): void
     {
         $cases = LanguageName::cases();

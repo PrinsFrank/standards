@@ -16,9 +16,7 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
  */
 class LanguageAlpha2Test extends TestCase
 {
-    /**
-     * @covers ::toLanguageAlpha3Bibliographic
-     */
+    /** @covers ::toLanguageAlpha3Bibliographic */
     public function testAllCasesCanBeConvertedToToLanguageAlpha3Bibliographic(): void
     {
         $cases = LanguageAlpha2::cases();
@@ -28,9 +26,7 @@ class LanguageAlpha2Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::toLanguageAlpha3Terminology
-     */
+    /** @covers ::toLanguageAlpha3Terminology */
     public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void
     {
         $cases = LanguageAlpha2::cases();
@@ -40,9 +36,7 @@ class LanguageAlpha2Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::toLanguageName
-     */
+    /** @covers ::toLanguageName */
     public function testAllCasesCanBeConvertedToLanguageName(): void
     {
         $cases = LanguageAlpha2::cases();
@@ -52,9 +46,7 @@ class LanguageAlpha2Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::upperCaseValue
-     */
+    /** @covers ::upperCaseValue */
     public function testUpperCaseValue(): void
     {
         static::assertSame('AB', LanguageAlpha2::Abkhazian->upperCaseValue());

@@ -14,6 +14,7 @@ return (new PhpCsFixer\Config())->setRules(
         'no_unused_imports'            => true,
         'array_indentation'            => true,
         'no_alias_functions'           => true,
+        'phpdoc_line_span'             => ['property' => 'single', 'method' => 'single', 'const' => 'single'],
     ]
 )->setFinder(
     PhpCsFixer\Finder::create()

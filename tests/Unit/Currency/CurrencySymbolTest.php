@@ -15,9 +15,7 @@ use TypeError;
  */
 class CurrencySymbolTest extends TestCase
 {
-    /**
-     * @covers ::forCurrency
-     */
+    /** @covers ::forCurrency */
     public function testAllAlpha3CasesHaveAccessToSymbolOrNull(): void
     {
         $cases = CurrencyAlpha3::cases();
@@ -31,9 +29,7 @@ class CurrencySymbolTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::forCurrency
-     */
+    /** @covers ::forCurrency */
     public function testAllNameCasesHaveAccessToSymbolOrNull(): void
     {
         $cases = CurrencyName::cases();
@@ -47,9 +43,7 @@ class CurrencySymbolTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::forCurrency
-     */
+    /** @covers ::forCurrency */
     public function testAllNumericCasesHaveAccessToSymbolOrNull(): void
     {
         $cases = CurrencyNumeric::cases();

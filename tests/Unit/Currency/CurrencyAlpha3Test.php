@@ -12,9 +12,7 @@ use TypeError;
  */
 class CurrencyAlpha3Test extends TestCase
 {
-    /**
-     * @covers ::toCurrencyNumeric
-     */
+    /** @covers ::toCurrencyNumeric */
     public function testAllCasesCanBeConvertedToCurrencyNumeric(): void
     {
         $cases = CurrencyAlpha3::cases();
@@ -28,9 +26,7 @@ class CurrencyAlpha3Test extends TestCase
         }
     }
 
-    /**
-     * @covers ::toCurrencyName
-     */
+    /** @covers ::toCurrencyName */
     public function testAllCasesCanBeConvertedToCurrencyName(): void
     {
         $cases = CurrencyAlpha3::cases();
