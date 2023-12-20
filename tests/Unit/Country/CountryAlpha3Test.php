@@ -8,6 +8,10 @@ use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\Groups\EFTA;
 use PrinsFrank\Standards\Country\Groups\EU;
 use PrinsFrank\Standards\InvalidArgumentException;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
+use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use TypeError;
 
 /** @coversDefaultClass \PrinsFrank\Standards\Country\CountryAlpha3 */
@@ -59,6 +63,15 @@ class CountryAlpha3Test extends TestCase
     public function testLowerCaseValue(): void
     {
         static::assertSame('afg', CountryAlpha3::Afghanistan->lowerCaseValue());
+    }
+
+    /** @covers ::getNameInLanguage */
+    public function testGetNameInLanguage(): void
+    {
+        static::assertSame('Nederland', CountryAlpha3::Netherlands->getNameInLanguage(LanguageAlpha2::Dutch_Flemish));
+        static::assertSame('Nederland', CountryAlpha3::Netherlands->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
+        static::assertSame('Nederland', CountryAlpha3::Netherlands->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
+        static::assertSame('Nederland', CountryAlpha3::Netherlands->getNameInLanguage(LanguageAlpha3Extensive::Dutch));
     }
 
     /** @covers ::isMemberOf */

@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\Country;
 
+use PHPUnit\Framework\Constraint\Count;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Country\Groups\EFTA;
 use PrinsFrank\Standards\Country\Groups\EU;
 use PrinsFrank\Standards\InvalidArgumentException;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
+use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use TypeError;
 use ValueError;
 
@@ -80,6 +85,15 @@ class CountryNumericTest extends TestCase
     public function testValueAsInt(): void
     {
         static::assertSame(4, CountryNumeric::Afghanistan->valueAsInt());
+    }
+
+    /** @covers ::getNameInLanguage */
+    public function testGetNameInLanguage(): void
+    {
+        static::assertSame('Nederland', CountryNumeric::Netherlands->getNameInLanguage(LanguageAlpha2::Dutch_Flemish));
+        static::assertSame('Nederland', CountryNumeric::Netherlands->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
+        static::assertSame('Nederland', CountryNumeric::Netherlands->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
+        static::assertSame('Nederland', CountryNumeric::Netherlands->getNameInLanguage(LanguageAlpha3Extensive::Dutch));
     }
 
     /** @covers ::isMemberOf */

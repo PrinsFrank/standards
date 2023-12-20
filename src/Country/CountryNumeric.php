@@ -300,6 +300,11 @@ enum CountryNumeric: string
         return (int) $this->value;
     }
 
+    public function getNameInLanguage(LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string
+    {
+        return $this->toCountryAlpha2()->getNameInLanguage($language);
+    }
+
     /** @param class-string<GroupInterface> $groupFQN */
     public function isMemberOf(string $groupFQN): bool
     {

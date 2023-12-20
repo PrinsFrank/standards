@@ -10,6 +10,7 @@ use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
@@ -288,6 +289,20 @@ enum CountryAlpha2: string
     public function lowerCaseValue(): string
     {
         return strtolower($this->value);
+    }
+
+    public function getNameInLanguage(LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string
+    {
+        if ($language instanceof LanguageAlpha3Bibliographic) {
+            $language = $language->toLanguageAlpha3Terminology();
+        }
+
+        $countryInLanguage = locale_get_display_region('-' . $this->value, $language->value);
+        if ($countryInLanguage === false) {
+            return null;
+        }
+
+        return $countryInLanguage;
     }
 
     /** @param class-string<GroupInterface> $groupFQN */
