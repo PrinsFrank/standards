@@ -1,6 +1,21 @@
 # Upgrading from 3.x to 4.x
 
+## New ext-intl requirement
+
 Ext-intl was already a requirement to use all features of this package, but it has now become an official requirement to prevent runtime errors
+
+## Removal of CountryName class, use ::getNameInLanguage or ::getNameOfCountry instead
+
+As this package now has an official requirement to ext-intl, we can get the names of countries for all languages instead of only the English languages. Please replace any references to the CountryName with the CountryAlpha2 class;
+
+```diff
+- CountryName;
++ CountryAlpha2;
+
+- $countryAlpha2->toLanguageName()->value;                    // 'Netherlands'
++ $countryAlpha2->getNameInLanguage(LanguageAlpha2::English); // 'Netherlands'
++ $countryAlpha2->getNameInLanguage(LanguageAlpha2::Dutch);   // 'Nederland'
+```
 
 
 # Upgrading from 2.x to 3.x

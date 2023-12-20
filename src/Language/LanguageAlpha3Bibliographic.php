@@ -526,6 +526,11 @@ enum LanguageAlpha3Bibliographic: string
         return strtoupper($this->value);
     }
 
+    public function getNameForCountry(CountryAlpha2 $country): ?string
+    {
+        return $country->getNameInLanguage($this);
+    }
+
     /**
      * @throws InvalidArgumentException
      *
