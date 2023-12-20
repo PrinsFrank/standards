@@ -1,3 +1,8 @@
+# Upgrading from 3.x to 4.x
+
+Ext-intl was already a requirement to use all features of this package, but it has now become an official requirement to prevent runtime errors
+
+
 # Upgrading from 2.x to 3.x
 
 ## Removal of LanguageAlpha3Common; merged into LanguageAlpha3Bibliographic and LanguageAlpha3Terminology

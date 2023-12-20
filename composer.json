@@ -15,11 +15,11 @@
         }
     },
     "require": {
-        "php": "^8.1 || ^8.2 || ^8.3"
+        "php": "^8.1 || ^8.2 || ^8.3",
+        "ext-intl": "*"
     },
     "require-dev": {
         "ext-mbstring": "*",
-        "ext-intl": "*",
         "ext-dom": "*",
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpunit/phpunit": "^9.5",
