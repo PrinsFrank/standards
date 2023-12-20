@@ -100,20 +100,7 @@ erDiagram
     HttpStatusCode {
         class HttpStatusCode
     }
-    DigitGroupingSystem {
-        class DigitGroupingSystem
-    }
-    DecimalSeparator {
-        class DecimalSeparator
-    }
-    DigitGroupingIndicator {
-        class DigitGroupingIndicator
-    }
 
-    DigitGroupingSystem ||--|{ Country: ""
-    DecimalSeparator ||--|{ Country: ""
-    DigitGroupingIndicator }|--|{ Country: ""
-    DigitGroupingIndicator }o--o{ Language: ""
     GeographicRegion }|--o{ Country: ""
     GeographicRegion ||--o{ GeographicRegion: ""
     Language }o--o{ Country: ""
@@ -183,9 +170,6 @@ CountryAlpha3::from('NLD')->getNationalCallPrefix()->value;      // '0'
 CountryAlpha3::from('NLD')->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 CountryAlpha3::from('NLD')->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 CountryAlpha3::from('NLD')->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
-CountryAlpha3::from('NLD')->getDecimalSeparator();               // [DecimalSeparator::Comma]
-CountryAlpha3::from('NLD')->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
-CountryAlpha3::from('NLD')->formatNumber(424242.4242);           // '424.242,4242'
 
 public function foo(CountryAlpha2 $countryAlpha2) {}             // Use spec as typehint to enforce valid value
 
@@ -258,10 +242,6 @@ $valueAlpha2::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not
 $valueAlpha2->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 $valueAlpha2->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
-
-$valueAlpha2->getDecimalSeparator();               // [DecimalSeparator::Comma]
-$valueAlpha2->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
-$valueAlpha2->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 ### CountryAlpha3
@@ -293,10 +273,6 @@ $valueAlpha3->getFlagEmoji();                      // '🇳🇱' (This might not
 $valueAlpha3->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 $valueAlpha3->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
-
-$valueAlpha3->getDecimalSeparator();               // [DecimalSeparator::Comma]
-$valueAlpha3->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
-$valueAlpha3->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 ### CountryNumeric
@@ -329,10 +305,6 @@ $valueNumeric->getFlagEmoji();                      // '🇳🇱' (This might no
 $valueNumeric->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 $valueNumeric->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
-
-$valueNumeric->getDecimalSeparator();               // [DecimalSeparator::Comma]
-$valueNumeric->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
-$valueNumeric->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 ### CountryName
@@ -362,10 +334,6 @@ $valueName->getFlagEmoji();                      // '🇳🇱' (This might not b
 $valueName->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 $valueName->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
-
-$valueName->getDecimalSeparator();               // [DecimalSeparator::Comma]
-$valueName->getDigitGroupingSystem();            // [DigitGroupingSystem::Thousands]
-$valueName->formatNumber(424242.4242);           // '424.242,4242'
 ```
 
 </details>
