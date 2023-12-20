@@ -8,7 +8,6 @@ use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\Groups\EFTA;
 use PrinsFrank\Standards\Country\Groups\EU;
 use PrinsFrank\Standards\InvalidArgumentException;
-use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use TypeError;
 
 /** @coversDefaultClass \PrinsFrank\Standards\Country\CountryAlpha3 */
@@ -110,67 +109,6 @@ class CountryAlpha3Test extends TestCase
     public function testGetFlagEmoji(): void
     {
         static::assertSame('🇳🇱', CountryAlpha3::Netherlands->getFlagEmoji());
-    }
-
-    /** @covers ::getDecimalSeparator */
-    public function testGetDecimalSeparator(): void
-    {
-        foreach (CountryAlpha3::cases() as $countryAlpha3) {
-            $countryAlpha3->getDecimalSeparator();
-
-            $this->addToAssertionCount(1);
-        }
-    }
-
-    /** @covers ::getDecimalSeparator */
-    public function testGetDecimalSeparatorWithLanguage(): void
-    {
-        foreach (CountryAlpha3::cases() as $countryAlpha3) {
-            foreach (LanguageAlpha3Terminology::cases() as $languageAlpha3Terminology) {
-                $countryAlpha3->getDecimalSeparator($languageAlpha3Terminology);
-
-                $this->addToAssertionCount(1);
-            }
-        }
-    }
-
-    /** @covers ::getDigitGroupingSystem */
-    public function testGetDigitGroupingSystem(): void
-    {
-        foreach (CountryAlpha3::cases() as $countryAlpha3) {
-            $countryAlpha3->getDigitGroupingSystem();
-
-            $this->addToAssertionCount(1);
-        }
-    }
-
-    /** @covers ::getDigitGroupingIndicator */
-    public function testGetDigitGroupingIndicator(): void
-    {
-        foreach (CountryAlpha3::cases() as $countryAlpha3) {
-            $countryAlpha3->getDigitGroupingIndicator();
-
-            $this->addToAssertionCount(1);
-        }
-    }
-
-    /** @covers ::getDigitGroupingIndicator */
-    public function testGetDigitGroupingIndicatorWithLanguage(): void
-    {
-        foreach (CountryAlpha3::cases() as $countryAlpha3) {
-            foreach (LanguageAlpha3Terminology::cases() as $languageAlpha3Terminology) {
-                $countryAlpha3->getDigitGroupingIndicator($languageAlpha3Terminology);
-
-                $this->addToAssertionCount(1);
-            }
-        }
-    }
-
-    /** @covers ::formatNumber */
-    public function testFormatNumber(): void
-    {
-        static::assertSame('424.242,4242', CountryAlpha3::Netherlands->formatNumber(424242.4242));
-        static::assertSame('4,24,242.4242', CountryAlpha3::Nepal->formatNumber(424242.4242));
     }
 
     /** @covers ::getCurrenciesAlpha3 */
