@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\Country;
 
-use PHPUnit\Framework\Constraint\Count;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Country\Groups\EFTA;
@@ -94,6 +93,11 @@ class CountryNumericTest extends TestCase
         static::assertSame('Nederland', CountryNumeric::Netherlands->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
         static::assertSame('Nederland', CountryNumeric::Netherlands->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
         static::assertSame('Nederland', CountryNumeric::Netherlands->getNameInLanguage(LanguageAlpha3Extensive::Dutch));
+
+        static::assertSame('Magyarország', CountryNumeric::Hungary->getNameInLanguage(LanguageAlpha2::Hungarian));
+        static::assertSame('Magyarország', CountryNumeric::Hungary->getNameInLanguage(LanguageAlpha3Terminology::Hungarian));
+        static::assertSame('Magyarország', CountryNumeric::Hungary->getNameInLanguage(LanguageAlpha3Bibliographic::Hungarian));
+        static::assertSame('Magyarország', CountryNumeric::Hungary->getNameInLanguage(LanguageAlpha3Extensive::Hungarian));
     }
 
     /** @covers ::isMemberOf */

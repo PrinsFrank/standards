@@ -72,6 +72,11 @@ class CountryAlpha2Test extends TestCase
         static::assertSame('Nederland', CountryAlpha2::Netherlands->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
         static::assertSame('Nederland', CountryAlpha2::Netherlands->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
         static::assertSame('Nederland', CountryAlpha2::Netherlands->getNameInLanguage(LanguageAlpha3Extensive::Dutch));
+
+        static::assertSame('Magyarország', CountryAlpha2::Hungary->getNameInLanguage(LanguageAlpha2::Hungarian));
+        static::assertSame('Magyarország', CountryAlpha2::Hungary->getNameInLanguage(LanguageAlpha3Terminology::Hungarian));
+        static::assertSame('Magyarország', CountryAlpha2::Hungary->getNameInLanguage(LanguageAlpha3Bibliographic::Hungarian));
+        static::assertSame('Magyarország', CountryAlpha2::Hungary->getNameInLanguage(LanguageAlpha3Extensive::Hungarian));
     }
 
     /** @covers ::isMemberOf */
