@@ -7927,6 +7927,11 @@ enum LanguageAlpha3Extensive: string
     case Zaza                                                     = 'zza';
     case Zuojiang_Zhuang                                          = 'zzj';
 
+    public function getNameForCountry(CountryAlpha2 $country): ?string
+    {
+        return $country->getNameInLanguage($this);
+    }
+
     /**
      * @throws InvalidArgumentException
      *

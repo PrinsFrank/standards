@@ -10,6 +10,7 @@ use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
@@ -298,6 +299,11 @@ enum CountryNumeric: string
     public function valueAsInt(): int
     {
         return (int) $this->value;
+    }
+
+    public function getNameInLanguage(LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string
+    {
+        return $this->toCountryAlpha2()->getNameInLanguage($language);
     }
 
     /** @param class-string<GroupInterface> $groupFQN */

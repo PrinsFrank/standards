@@ -13,6 +13,12 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
 /** @coversDefaultClass \PrinsFrank\Standards\Language\LanguageAlpha3Extensive */
 class LanguageAlpha3ExtensiveTest extends TestCase
 {
+    /** @covers ::getNameForCountry */
+    public function testGetNameForCountry(): void
+    {
+        static::assertSame('Nederland', LanguageAlpha3Extensive::Dutch->getNameForCountry(CountryAlpha2::Netherlands));
+    }
+
     /** @covers ::toLanguageTag */
     public function testToLanguageTag(): void
     {

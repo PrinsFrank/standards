@@ -8,6 +8,10 @@ use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\Groups\EFTA;
 use PrinsFrank\Standards\Country\Groups\EU;
 use PrinsFrank\Standards\InvalidArgumentException;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
+use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use TypeError;
 
 /** @coversDefaultClass \PrinsFrank\Standards\Country\CountryName */
@@ -53,6 +57,20 @@ class CountryNameTest extends TestCase
                 $this->fail(sprintf('Case %s could not be converted to CountryNumeric', $case->name));
             }
         }
+    }
+
+    /** @covers ::getNameInLanguage */
+    public function testGetNameInLanguage(): void
+    {
+        static::assertSame('Nederland', CountryName::Netherlands->getNameInLanguage(LanguageAlpha2::Dutch_Flemish));
+        static::assertSame('Nederland', CountryName::Netherlands->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
+        static::assertSame('Nederland', CountryName::Netherlands->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
+        static::assertSame('Nederland', CountryName::Netherlands->getNameInLanguage(LanguageAlpha3Extensive::Dutch));
+
+        static::assertSame('Magyarország', CountryName::Hungary->getNameInLanguage(LanguageAlpha2::Hungarian));
+        static::assertSame('Magyarország', CountryName::Hungary->getNameInLanguage(LanguageAlpha3Terminology::Hungarian));
+        static::assertSame('Magyarország', CountryName::Hungary->getNameInLanguage(LanguageAlpha3Bibliographic::Hungarian));
+        static::assertSame('Magyarország', CountryName::Hungary->getNameInLanguage(LanguageAlpha3Extensive::Hungarian));
     }
 
     /** @covers ::isMemberOf */
