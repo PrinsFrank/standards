@@ -214,11 +214,6 @@ enum LanguageAlpha2: string
         return BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name);
     }
 
-    public function toLanguageName(): LanguageName
-    {
-        return BackedEnum::fromKey(LanguageName::class, $this->name);
-    }
-
     public function upperCaseValue(): string
     {
         return strtoupper($this->value);

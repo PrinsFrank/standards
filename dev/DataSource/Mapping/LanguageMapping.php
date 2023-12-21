@@ -61,12 +61,9 @@ class LanguageMapping implements Mapping
     public static function toEnumMapping(array $dataSet): array
     {
         $languageAlpha2              = new EnumFile(LanguageAlpha2::class);
-        $languageName                = new EnumFile(LanguageName::class);
         $languageAlpha3Bibliographic = new EnumFile(LanguageAlpha3Bibliographic::class);
         $languageAlpha3Terminology   = new EnumFile(LanguageAlpha3Terminology::class);
         foreach ($dataSet as $dataRow) {
-            $languageName->addCase(new EnumCase($dataRow->name, $dataRow->name));
-
             if (trim($dataRow->alpha2) !== '') {
                 $languageAlpha2->addCase(new EnumCase($dataRow->name, $dataRow->alpha2));
             }
@@ -80,7 +77,7 @@ class LanguageMapping implements Mapping
             }
         }
 
-        return [$languageAlpha2, $languageAlpha3Bibliographic, $languageAlpha3Terminology, $languageName];
+        return [$languageAlpha2, $languageAlpha3Bibliographic, $languageAlpha3Terminology];
     }
 
     public static function getSorting(): SortingInterface
