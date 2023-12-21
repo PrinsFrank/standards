@@ -6,7 +6,6 @@ namespace PrinsFrank\Standards\Tests\Unit\NationalCallPrefix;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
-use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
 
@@ -28,16 +27,6 @@ class NationalCallPrefixTest extends TestCase
     {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
             NationalCallPrefix::forCountry($countryAlpha3);
-
-            $this->addToAssertionCount(1);
-        }
-    }
-
-    /** @covers ::forCountry */
-    public function testForCountryName(): void
-    {
-        foreach (CountryName::cases() as $countryName) {
-            NationalCallPrefix::forCountry($countryName);
 
             $this->addToAssertionCount(1);
         }

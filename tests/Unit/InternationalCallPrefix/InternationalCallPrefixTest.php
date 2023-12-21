@@ -6,7 +6,6 @@ namespace PrinsFrank\Standards\Tests\Unit\InternationalCallPrefix;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
-use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
 use UnhandledMatchError;
@@ -50,20 +49,6 @@ class InternationalCallPrefixTest extends TestCase
                 InternationalCallPrefix::forCountry($countryNumeric);
             } catch (UnhandledMatchError) {
                 $this->fail('No international call prefix found for "' . $countryNumeric->name . '"');
-            }
-
-            $this->addToAssertionCount(1);
-        }
-    }
-
-    /** @covers ::forCountry */
-    public function testForCountryName(): void
-    {
-        foreach (CountryName::cases() as $countryName) {
-            try {
-                InternationalCallPrefix::forCountry($countryName);
-            } catch (UnhandledMatchError) {
-                $this->fail('No international call prefix found for "' . $countryName->name . '"');
             }
 
             $this->addToAssertionCount(1);

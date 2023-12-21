@@ -6,7 +6,6 @@ namespace PrinsFrank\Standards\Tests\Unit\CountryCallingCode;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
-use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
 
@@ -76,18 +75,5 @@ class CountryCallingCodeTest extends TestCase
             }
         }
         static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryNumeric $countryNumeric) => $countryNumeric->name, $missingRelations)));
-    }
-
-    /** @covers ::forCountry */
-    public function testCanBeRetrievedForAllCountryName(): void
-    {
-        $missingRelations = [];
-        foreach (CountryName::cases() as $countryName) {
-            $countryCallingCodes = CountryCallingCode::forCountry($countryName);
-            if ($countryCallingCodes === []) {
-                $missingRelations[] = $countryName;
-            }
-        }
-        static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryName $countryName) => $countryName->name, $missingRelations)));
     }
 }

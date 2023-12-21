@@ -281,11 +281,6 @@ enum CountryAlpha3: string
         return BackedEnum::fromKey(CountryNumeric::class, $this->name);
     }
 
-    public function toCountryName(): CountryName
-    {
-        return BackedEnum::fromKey(CountryName::class, $this->name);
-    }
-
     public function lowerCaseValue(): string
     {
         return strtolower($this->value);
