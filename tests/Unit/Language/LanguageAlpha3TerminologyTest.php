@@ -54,6 +54,13 @@ class LanguageAlpha3TerminologyTest extends TestCase
         static::assertSame('SQI', LanguageAlpha3Terminology::Albanian->upperCaseValue());
     }
 
+    /** @covers ::getNameInLanguage */
+    public function testGetNameInLanguage(): void
+    {
+        static::assertSame('Dutch', LanguageAlpha3Terminology::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Terminology::English));
+        static::assertSame('Nederlands', LanguageAlpha3Terminology::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
+    }
+
     /** @covers ::getNameForCountry */
     public function testGetNameForCountry(): void
     {

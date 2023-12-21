@@ -526,6 +526,20 @@ enum LanguageAlpha3Terminology: string
         return strtoupper($this->value);
     }
 
+    public function getNameInLanguage(LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string
+    {
+        if ($language instanceof LanguageAlpha3Bibliographic) {
+            $language = $language->toLanguageAlpha3Terminology();
+        }
+
+        $languageNameInLanguage = locale_get_display_language($this->value, $language->value);
+        if ($languageNameInLanguage === false) {
+            return null;
+        }
+
+        return $languageNameInLanguage;
+    }
+
     public function getNameForCountry(CountryAlpha2 $country): ?string
     {
         return $country->getNameInLanguage($this);

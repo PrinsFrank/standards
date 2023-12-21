@@ -52,6 +52,13 @@ class LanguageAlpha2Test extends TestCase
         static::assertSame('AB', LanguageAlpha2::Abkhazian->upperCaseValue());
     }
 
+    /** @covers ::getNameInLanguage */
+    public function testGetNameInLanguage(): void
+    {
+        static::assertSame('Dutch', LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::English));
+        static::assertSame('Nederlands', LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::Dutch_Flemish));
+    }
+
     /** @covers ::getNameForCountry */
     public function testGetNameForCountry(): void
     {
