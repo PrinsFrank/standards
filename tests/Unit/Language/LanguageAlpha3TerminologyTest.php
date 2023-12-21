@@ -39,16 +39,6 @@ class LanguageAlpha3TerminologyTest extends TestCase
         }
     }
 
-    /** @covers ::toLanguageName */
-    public function testAllCasesCanBeConvertedToLanguageName(): void
-    {
-        $cases = LanguageAlpha3Terminology::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
-            static::assertNotNull($case->toLanguageName());
-        }
-    }
-
     /** @covers ::upperCaseValue */
     public function testUpperCaseValue(): void
     {

@@ -74,9 +74,7 @@ erDiagram
         class InternationalCallPrefix
     }
     Language {
-        class LanguageName
         class LanguageAlpha2
-        class LanguageAlpha3Common
         class LanguageAlpha3Bibliographic
         class LanguageAlpha3Terminology
         class LanguageAlpha3Extensive
@@ -530,7 +528,6 @@ LanguageAlpha2::from('nl')->toLanguageAlpha3Bibliographic();        // LanguageA
 LanguageAlpha2::from('nl')->toLanguageAlpha3Bibliographic()->value; // 'dut'
 LanguageAlpha2::from('nl')->toLanguageAlpha3Terminology();          // LanguageAlpha3Terminology::Dutch_Flemish
 LanguageAlpha2::from('nl')->toLanguageAlpha3Terminology()->value;   // 'nld'
-LanguageAlpha2::from('nl')->toLanguageName()->value;                // 'Dutch; Flemish'
 
 LanguageAlpha3Terminology::from('nld');                             // LanguageAlpha3Terminology::Dutch_Flemish
 LanguageAlpha3Bibliographic::from('dut');                           // LanguageAlpha3Bibliographic::Dutch_Flemish
@@ -552,8 +549,6 @@ $value = $valueAlpha2->value;                                              // 'n
 $valueName = $valueAlpha2->name;                                           // 'Dutch_Flemish'
 $valueAlpha3Bibliographic = $valueAlpha2->toLanguageAlpha3Bibliographic(); // LanguageAlpha3Bibliographic::Dutch_Flemish
 $valueAlpha3Terminology = $valueAlpha2->toLanguageAlpha3Terminology();     // LanguageAlpha3Terminology::Dutch_Flemish
-$valueAlpha3Terminology = $valueAlpha2->toLanguageName();                  // LanguageName::Dutch_Flemish
-$valueAlpha3Terminology = $valueAlpha2->toLanguageName()->value;           // 'Dutch; Flemish'
 ```
 
 ### LanguageAlpha3Bibliographic (ISO 639-2)

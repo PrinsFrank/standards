@@ -12,7 +12,6 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
-use PrinsFrank\Standards\Language\LanguageName;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
@@ -61,12 +60,9 @@ class LanguageMapping implements Mapping
     public static function toEnumMapping(array $dataSet): array
     {
         $languageAlpha2              = new EnumFile(LanguageAlpha2::class);
-        $languageName                = new EnumFile(LanguageName::class);
         $languageAlpha3Bibliographic = new EnumFile(LanguageAlpha3Bibliographic::class);
         $languageAlpha3Terminology   = new EnumFile(LanguageAlpha3Terminology::class);
         foreach ($dataSet as $dataRow) {
-            $languageName->addCase(new EnumCase($dataRow->name, $dataRow->name));
-
             if (trim($dataRow->alpha2) !== '') {
                 $languageAlpha2->addCase(new EnumCase($dataRow->name, $dataRow->alpha2));
             }
@@ -80,7 +76,7 @@ class LanguageMapping implements Mapping
             }
         }
 
-        return [$languageAlpha2, $languageAlpha3Bibliographic, $languageAlpha3Terminology, $languageName];
+        return [$languageAlpha2, $languageAlpha3Bibliographic, $languageAlpha3Terminology];
     }
 
     public static function getSorting(): SortingInterface

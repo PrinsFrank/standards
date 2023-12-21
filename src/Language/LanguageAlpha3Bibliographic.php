@@ -516,11 +516,6 @@ enum LanguageAlpha3Bibliographic: string
         return BackedEnum::tryFromKey(LanguageAlpha2::class, $this->name);
     }
 
-    public function toLanguageName(): LanguageName
-    {
-        return BackedEnum::fromKey(LanguageName::class, $this->name);
-    }
-
     public function upperCaseValue(): string
     {
         return strtoupper($this->value);

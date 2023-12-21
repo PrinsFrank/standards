@@ -39,16 +39,6 @@ class LanguageAlpha3BibliographicTest extends TestCase
         }
     }
 
-    /** @covers ::toLanguageName */
-    public function testAllCasesCanBeConvertedToLanguageName(): void
-    {
-        $cases = LanguageAlpha3Bibliographic::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
-            static::assertNotNull($case->toLanguageName());
-        }
-    }
-
     /** @covers ::upperCaseValue */
     public function testUpperCaseValue(): void
     {
