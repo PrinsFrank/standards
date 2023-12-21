@@ -6,6 +6,7 @@ namespace PrinsFrank\Standards\Tests\Unit\Language;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
 use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
@@ -50,6 +51,14 @@ class LanguageAlpha2Test extends TestCase
     public function testUpperCaseValue(): void
     {
         static::assertSame('AB', LanguageAlpha2::Abkhazian->upperCaseValue());
+    }
+
+    /** @covers ::getNameInLanguage */
+    public function testGetNameInLanguage(): void
+    {
+        static::assertSame('Dutch', LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::English));
+        static::assertSame('Nederlands', LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::Dutch_Flemish));
+        static::assertSame('Nederlands', LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
     }
 
     /** @covers ::getNameForCountry */

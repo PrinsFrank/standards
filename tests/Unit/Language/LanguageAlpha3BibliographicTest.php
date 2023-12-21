@@ -55,6 +55,14 @@ class LanguageAlpha3BibliographicTest extends TestCase
         static::assertSame('ALB', LanguageAlpha3Bibliographic::Albanian->upperCaseValue());
     }
 
+    /** @covers ::getNameInLanguage */
+    public function testGetNameInLanguage(): void
+    {
+        static::assertSame('Dutch', LanguageAlpha3Bibliographic::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Bibliographic::English));
+        static::assertSame('Nederlands', LanguageAlpha3Bibliographic::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
+        static::assertSame('Nederlands', LanguageAlpha3Bibliographic::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
+    }
+
     /** @covers ::getNameForCountry */
     public function testGetNameForCountry(): void
     {
