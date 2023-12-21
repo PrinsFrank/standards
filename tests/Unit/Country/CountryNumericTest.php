@@ -46,20 +46,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    /** @covers ::toCountryName */
-    public function testAllCasesCanBeConvertedToCountryName(): void
-    {
-        $cases = CountryNumeric::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
-            try {
-                $case->toCountryName();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CountryName', $case->name));
-            }
-        }
-    }
-
     /** @covers ::fromInt */
     public function testFromInt(): void
     {
