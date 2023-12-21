@@ -232,6 +232,7 @@ enum LanguageAlpha2: string
 
         $languageNameInLanguage = locale_get_display_language($this->value, $language->value);
         if ($languageNameInLanguage === false) {
+            /** @codeCoverageIgnore */
             return null;
         }
 

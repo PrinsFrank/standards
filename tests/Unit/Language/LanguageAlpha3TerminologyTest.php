@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Tests\Unit\Language;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
@@ -59,6 +60,7 @@ class LanguageAlpha3TerminologyTest extends TestCase
     {
         static::assertSame('Dutch', LanguageAlpha3Terminology::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Terminology::English));
         static::assertSame('Nederlands', LanguageAlpha3Terminology::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
+        static::assertSame('Nederlands', LanguageAlpha3Terminology::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
     }
 
     /** @covers ::getNameForCountry */
