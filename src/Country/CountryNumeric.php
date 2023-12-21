@@ -291,11 +291,6 @@ enum CountryNumeric: string
         return BackedEnum::fromKey(CountryAlpha3::class, $this->name);
     }
 
-    public function toCountryName(): CountryName
-    {
-        return BackedEnum::fromKey(CountryName::class, $this->name);
-    }
-
     public function valueAsInt(): int
     {
         return (int) $this->value;

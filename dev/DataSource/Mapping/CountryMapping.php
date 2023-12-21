@@ -7,7 +7,6 @@ use Facebook\WebDriver\Remote\RemoteWebElement;
 use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
-use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
@@ -62,18 +61,16 @@ class CountryMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $countryName    = new EnumFile(CountryName::class);
         $countryAlpha2  = new EnumFile(CountryAlpha2::class);
         $countryAlpha3  = new EnumFile(CountryAlpha3::class);
         $countryNumeric = new EnumFile(CountryNumeric::class);
         foreach ($dataSet as $dataRow) {
-            $countryName->addCase(new EnumCase($dataRow->name, $dataRow->name));
             $countryAlpha2->addCase(new EnumCase($dataRow->name, $dataRow->alpha2));
             $countryAlpha3->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
             $countryNumeric->addCase(new EnumCase($dataRow->name, $dataRow->numeric));
         }
 
-        return [$countryName, $countryAlpha2, $countryAlpha3, $countryNumeric];
+        return [$countryAlpha2, $countryAlpha3, $countryNumeric];
     }
 
     public static function getSorting(): SortingInterface
