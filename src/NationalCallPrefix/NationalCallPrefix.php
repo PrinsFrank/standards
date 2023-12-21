@@ -5,7 +5,6 @@ namespace PrinsFrank\Standards\NationalCallPrefix;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
-use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 
 /**
@@ -23,7 +22,7 @@ enum NationalCallPrefix: string
     case _1YZ      = '1YZ';
     case _8        = '8';
 
-    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): self
+    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryNumeric $country): self
     {
         if ($country instanceof CountryAlpha2 === false) {
             $country = $country->toCountryAlpha2();

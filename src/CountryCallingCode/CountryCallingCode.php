@@ -5,7 +5,6 @@ namespace PrinsFrank\Standards\CountryCallingCode;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
-use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 
 /**
@@ -233,7 +232,7 @@ enum CountryCallingCode: int
     case Telecommunications_for_Disaster_Relief                                         = 888;
 
     /** @return list<self> */
-    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): array
+    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryNumeric $country): array
     {
         if ($country instanceof CountryAlpha2 === false) {
             $country = $country->toCountryAlpha2();

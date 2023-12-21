@@ -5,7 +5,6 @@ namespace PrinsFrank\Standards\InternationalCallPrefix;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
-use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 
 /**
@@ -28,7 +27,7 @@ enum InternationalCallPrefix: string
     /** @deprecated Used to be used by Cuba, which now uses 00 */
     case _119  = '119';
 
-    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): self
+    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryNumeric $country): self
     {
         if ($country instanceof CountryAlpha2 === false) {
             $country = $country->toCountryAlpha2();
