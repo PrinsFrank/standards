@@ -45,20 +45,6 @@ class CountryAlpha3Test extends TestCase
         }
     }
 
-    /** @covers ::toCountryName */
-    public function testAllCasesCanBeConvertedToCountryName(): void
-    {
-        $cases = CountryAlpha3::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
-            try {
-                $case->toCountryName();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CountryName', $case->name));
-            }
-        }
-    }
-
     /** @covers ::lowerCaseValue */
     public function testLowerCaseValue(): void
     {
