@@ -44,7 +44,6 @@ erDiagram
         class CountryAlpha2
         class CountryAlpha3
         class CountryNumeric
-        class CountryName
     }
     GeographicRegion {
         class GeographicRegion
@@ -154,7 +153,6 @@ CountryAlpha3::from('NLD')->name;                               // 'Netherlands'
 CountryAlpha3::from('NLD')->toCountryAlpha2()->value;           // 'NL'
 CountryAlpha3::from('NLD')->toCountryNumeric()->value;          // '528'
 CountryAlpha3::from('NLD')->toCountryNumeric()->valueAsInt();   // 528
-CountryAlpha3::from('NLD')->toCountryName()->value;             // 'Netherlands (Kingdom of the)'
 CountryAlpha3::from('NLD')->isMemberOf(EU::class);              // true
 CountryAlpha2::Netherlands;                                     // CountryAlpha2::Netherlands
 
@@ -180,13 +178,8 @@ public function foo(CountryAlpha2 $countryAlpha2) {}             // Use spec as 
 
 ```mermaid
 erDiagram
-    CountryAlpha3 ||--|| CountryName: equals
     CountryAlpha3 ||--|| CountryAlpha2: equals
     CountryAlpha3 ||--|| CountryNumeric: equals
-
-    CountryNumeric ||--|| CountryName: equals
-
-    CountryName ||--|| CountryAlpha2: equals
     CountryNumeric ||--|| CountryAlpha2: eguals
 
     CountryAlpha2 {
@@ -199,10 +192,6 @@ erDiagram
 
     CountryNumeric {
         Netherlands _528
-    }
-
-    CountryName {
-        Netherlands Netherlands_(Kingdom_of_the)
     }
 
     CountryAlpha2 }o--o| Brics: isMemberOf
@@ -221,9 +210,6 @@ $value = $valueAlpha2->value;                     // 'NL'
 $valueName = $valueAlpha2->name;                  // 'Netherlands'
 $valueAlpha3 = $valueAlpha2->toCountryAlpha3();   // CountryAlpha3::Netherlands
 $valueNumeric = $valueAlpha2->toCountryNumeric(); // CountryNumeric::Netherlands
-$valueName = $valueAlpha2->toCountryName();       // CountryName::Netherlands
-
-$nameString = $valueAlpha2->toCountryName()->value; // 'Netherlands (Kingdom of the)'
 
 $isMemberOfEu = $valueAlpha2->isMemberOf(EU::class);       // true
 $isMemberOfBrics = $valueAlpha2->isMemberOf(Brics::class); // false
@@ -252,9 +238,6 @@ $value = $valueAlpha3->value;                     // 'NLD'
 $valueName = $valueAlpha3->name;                  // 'Netherlands'
 $valueAlpha2 = $valueAlpha3->toCountryAlpha2();   // CountryAlpha2::Netherlands
 $valueNumeric = $valueAlpha3->toCountryNumeric(); // CountryNumeric::Netherlands
-$valueName = $valueAlpha3->toCountryName();       // CountryName::Netherlands
-
-$nameString = $valueAlpha3->toCountryName()->value; // 'Netherlands (Kingdom of the)'
 
 $isMemberOfEu = $valueAlpha3->isMemberOf(EU::class);       // true
 $isMemberOfBrics = $valueAlpha3->isMemberOf(Brics::class); // false
@@ -284,9 +267,6 @@ $value = $valueNumeric->value;                   // '528'
 $valueName = $valueNumeric->name;                // 'Netherlands'
 $valueAlpha2 = $valueNumeric->toCountryAlpha2(); // CountryAlpha2::Netherlands
 $valueAlpha3 = $valueNumeric->toCountryAlpha3(); // CountryAlpha3::Netherlands
-$valueName = $valueNumeric->toCountryName();     // CountryName::Netherlands
-
-$nameString = $valueNumeric->toCountryName()->value; // 'Netherlands (Kingdom of the)'
 
 $isMemberOfEu = $valueNumeric->isMemberOf(EU::class);       // true
 $isMemberOfBrics = $valueNumeric->isMemberOf(Brics::class); // false
@@ -305,35 +285,6 @@ $valueNumeric->getFlagEmoji();                      // '🇳🇱' (This might no
 $valueNumeric->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 $valueNumeric->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
-```
-
-### CountryName
-
-```php
-$valueName = CountryName::from('Netherlands (Kingdom of the)'); // CountryName::Netherlands
-$value = $valueName->value;                                     // 'Netherlands (Kingdom of the)'
-$valueName = $valueName->name;                                  // 'Netherlands'
-$valueAlpha2 = $valueName->toCountryAlpha2();                   // CountryAlpha2::Netherlands
-$valueAlpha3 = $valueName->toCountryAlpha3();                   // CountryAlpha3::Netherlands
-$valueNumeric = $valueName->toCountryNumeric();                 // CountryNumeric::Netherlands
-
-$isMemberOfEu = $valueName->isMemberOf(EU::class);       // true
-$isMemberOfBrics = $valueName->isMemberOf(Brics::class); // false
-
-$valueName->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
-$valueName->getCountryCallingCodes()[0]->value; // 31
-
-$valueName->getInternationalCallPrefix();        // InternationalCallPrefix::_00
-$valueName->getInternationalCallPrefix()->value; // '00'
-
-$valueName->getNationalCallPrefix();             // NationalCallPrefix::_0
-$valueName->getNationalCallPrefix()->value;      // '0'
-
-$valueName->getFlagEmoji();                      // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
-
-$valueName->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
-
-$valueName->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 ```
 
 </details>
@@ -547,7 +498,6 @@ InternationalCallPrefix::_0->getCountriesAlpha2(); // [CountryAlpha2::Samoa]
 InternationalCallPrefix::forCountry(CountryAlpha2::Netherlands);  // InternationalCallPrefix::_00
 InternationalCallPrefix::forCountry(CountryAlpha3::Netherlands);  // InternationalCallPrefix::_00
 InternationalCallPrefix::forCountry(CountryNumeric::Netherlands); // InternationalCallPrefix::_00
-InternationalCallPrefix::forCountry(CountryName::Netherlands);    // InternationalCallPrefix::_00
 
 public function foo(InternationalCallPrefix $internationalCallPrefix) {} // Use spec as typehint to enforce valid value
 ```
@@ -676,7 +626,6 @@ NationalCallPrefix::_0;                       // NationalCallPrefix::_0
 NationalCallPrefix::forCountry(CountryAlpha2::Netherlands);  // NationalCallPrefix::_0
 NationalCallPrefix::forCountry(CountryAlpha3::Netherlands);  // NationalCallPrefix::_0
 NationalCallPrefix::forCountry(CountryNumeric::Netherlands); // NationalCallPrefix::_0
-NationalCallPrefix::forCountry(CountryName::Netherlands);    // NationalCallPrefix::_0
 
 public function foo(NationalCallPrefix $nationalCallPrefix) {} // Use spec as typehint to enforce valid value
 ```
