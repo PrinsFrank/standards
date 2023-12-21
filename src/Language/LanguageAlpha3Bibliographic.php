@@ -534,8 +534,9 @@ enum LanguageAlpha3Bibliographic: string
 
         $languageNameInLanguage = locale_get_display_language($this->toLanguageAlpha3Terminology()->value, $language->value);
         if ($languageNameInLanguage === false) {
-            /** @codeCoverageIgnore */
+            /** @codeCoverageIgnoreStart */
             return null;
+            /** @codeCoverageIgnoreEnd */
         }
 
         return $languageNameInLanguage;
