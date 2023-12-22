@@ -154,7 +154,6 @@ CountryAlpha3::from('NLD')->name;                               // 'Netherlands'
 CountryAlpha3::from('NLD')->toCountryAlpha2()->value;           // 'NL'
 CountryAlpha3::from('NLD')->toCountryNumeric()->value;          // '528'
 CountryAlpha3::from('NLD')->toCountryNumeric()->valueAsInt();   // 528
-CountryAlpha3::from('NLD')->toCountryName()->value;             // 'Netherlands (Kingdom of the)'
 CountryAlpha3::from('NLD')->isMemberOf(EU::class);              // true
 CountryAlpha2::Netherlands;                                     // CountryAlpha2::Netherlands
 
@@ -173,6 +172,8 @@ CountryAlpha3::from('NLD')->getOfficialAndDeFactoLanguages();    // [LanguageAlp
 
 CountryAlpha3::from('NLD')->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
 CountryAlpha3::from('NLD')->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
+
+CountryAlpha3::from('NLD')->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 
 public function foo(CountryAlpha2 $countryAlpha2) {}             // Use spec as typehint to enforce valid value
 
@@ -221,6 +222,7 @@ erDiagram
 ```php
 $valueAlpha2 = CountryAlpha2::from('NL');         // CountryAlpha2::Netherlands
 $value = $valueAlpha2->value;                     // 'NL'
+$lowerCaseValue = $valueAlpha2->lowerCaseValue(); // 'nl'
 $valueName = $valueAlpha2->name;                  // 'Netherlands'
 $valueAlpha3 = $valueAlpha2->toCountryAlpha3();   // CountryAlpha3::Netherlands
 $valueNumeric = $valueAlpha2->toCountryNumeric(); // CountryNumeric::Netherlands
@@ -245,6 +247,8 @@ $valueAlpha2->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Fle
 
 $valueAlpha2->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
 $valueAlpha2->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
+
+$valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 ```
 
 ### CountryAlpha3
@@ -276,6 +280,8 @@ $valueAlpha3->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Fle
 
 $valueAlpha3->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
 $valueAlpha3->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
+
+$valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 ```
 
 ### CountryNumeric
@@ -308,6 +314,8 @@ $valueNumeric->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Fl
 
 $valueNumeric->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
 $valueNumeric->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
+
+$valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 ```
 
 ### <s>CountryName</s> (Deprecated)
@@ -395,6 +403,9 @@ CurrencySymbol::forCurrency(CurrencyName::Euro);           // CurrencySymbol::Eu
 CurrencySymbol::forCurrency(CurrencyNumeric::from('978')); // CurrencySymbol::Euro
 CurrencyAlpha3::Euro;                                      // CurrencyAlpha3::Euro
 
+CurrencyAlpha3::Euro->format(42.42, CountryAlpha2::Netherlands);                                // '€ 42,42'
+CurrencyAlpha3::Euro->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutch_Flemish); // '€ 42,42'
+
 CurrencyAlpha3::Norwegian_Krone->getCountriesAlpha2();     // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
 
 public function foo(CurrencyAlpha3 $currencyAlpha3) {}     // Use spec as typehint to enforce valid value
@@ -460,6 +471,9 @@ $valueSymbol = $currencyAlpha3->getSymbol();           // CurrencySymbol::Euro
 $valueSymbol = $currencyAlpha3->getSymbol()->value;    // '€'
 $countries = $currencyAlpha2->getCountriesAlpha2();    // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
 
+$currencyAlpha3->format(42.42, CountryAlpha2::Netherlands);                                // '€ 42,42'
+$currencyAlpha3->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutch_Flemish); // '€ 42,42'
+
 ```
 
 ### CurrencyNumeric
@@ -477,6 +491,9 @@ $valueName = $currencyNumeric->toCurrencyName()->value; // 'Euro'
 $valueSymbol = $currencyNumeric->getSymbol();           // CurrencySymbol::Euro
 $valueSymbol = $currencyNumeric->getSymbol()->value;    // '€'
 $countries = $currencyNumeric->getCountriesAlpha2();    // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
+
+$currencyNumeric->format(42.42, CountryAlpha2::Netherlands);                                // '€ 42,42'
+$currencyNumeric->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutch_Flemish); // '€ 42,42'
 ```
 
 ### CurrencySymbol
@@ -499,6 +516,9 @@ $minorUnits = $currencyName->getMinorUnits();      // 2
 $valueAlpha3 = $currencyName->toCurrencyAlpha3();  // CurrencyAlpha3::Euro
 $valueAlpha3 = $currencyName->toCurrencyNumeric(); // CurrencyNumeric::Euro
 $countries = $currencyName->getCountriesAlpha2();  // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
+
+$currencyName->format(42.42, CountryAlpha2::Netherlands);                                // '€ 42,42'
+$currencyName->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutch_Flemish); // '€ 42,42'
 ```
 
 
