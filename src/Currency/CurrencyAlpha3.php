@@ -3,8 +3,13 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Currency;
 
+use NumberFormatter;
 use PrinsFrank\Standards\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
+use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 
 /**
  * @source https://www.iso.org/iso-4217-currency-codes.html
@@ -216,6 +221,18 @@ enum CurrencyAlpha3: string
     public function lowerCaseValue(): string
     {
         return strtolower($this->value);
+    }
+
+    public function format(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language, CountryAlpha2|null $country = null): ?string
+    {
+        if ($language instanceof LanguageAlpha3Bibliographic) {
+            $language = $language->toLanguageAlpha3Terminology();
+        }
+
+        $formattedCurrency = (new NumberFormatter($language->value . ($country !== null ? '-' . $country->value : ''), NumberFormatter::CURRENCY))
+            ->formatCurrency($amount, $this->value);
+
+        return $formattedCurrency === false ? null : $formattedCurrency;
     }
 
     public function getMinorUnits(): ?int
