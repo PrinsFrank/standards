@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Country;
 
+use NumberFormatter;
 use PrinsFrank\Standards\BackedEnum;
 use PrinsFrank\Standards\Country\Groups\GroupInterface;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
@@ -306,6 +307,18 @@ enum CountryAlpha2: string
         }
 
         return $countryInLanguage;
+    }
+
+    public function formatNumber(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string
+    {
+        if ($language instanceof LanguageAlpha3Bibliographic) {
+            $language = $language->toLanguageAlpha3Terminology();
+        }
+
+        $formattedNumber = (new NumberFormatter($language->value . '-' . $this->value, NumberFormatter::DECIMAL))
+            ->format($amount);
+
+        return $formattedNumber === false ? null : $formattedNumber;
     }
 
     /** @param class-string<GroupInterface> $groupFQN */

@@ -153,4 +153,24 @@ class CountryAlpha2Test extends TestCase
             $this->addToAssertionCount(1);
         }
     }
+
+    /** @covers ::formatNumber */
+    public function testFormatNumber(): void
+    {
+        static::assertSame('42,42', CountryAlpha2::Netherlands->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish));
+        static::assertSame('42,42', CountryAlpha2::Netherlands->formatNumber(42.42, LanguageAlpha3Terminology::Dutch_Flemish));
+        static::assertSame('42,42', CountryAlpha2::Netherlands->formatNumber(42.42, LanguageAlpha3Bibliographic::Dutch_Flemish));
+
+        static::assertSame('42,42', CountryAlpha2::Netherlands->formatNumber(42.42, LanguageAlpha2::English));
+        static::assertSame('42,42', CountryAlpha2::Netherlands->formatNumber(42.42, LanguageAlpha3Terminology::English));
+        static::assertSame('42,42', CountryAlpha2::Netherlands->formatNumber(42.42, LanguageAlpha3Bibliographic::English));
+
+        static::assertSame('42,42', CountryAlpha2::United_States_of_America->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish));
+        static::assertSame('42,42', CountryAlpha2::United_States_of_America->formatNumber(42.42, LanguageAlpha3Terminology::Dutch_Flemish));
+        static::assertSame('42,42', CountryAlpha2::United_States_of_America->formatNumber(42.42, LanguageAlpha3Bibliographic::Dutch_Flemish));
+
+        static::assertSame('42.42', CountryAlpha2::United_States_of_America->formatNumber(42.42, LanguageAlpha2::English));
+        static::assertSame('42.42', CountryAlpha2::United_States_of_America->formatNumber(42.42, LanguageAlpha3Terminology::English));
+        static::assertSame('42.42', CountryAlpha2::United_States_of_America->formatNumber(42.42, LanguageAlpha3Bibliographic::English));
+    }
 }

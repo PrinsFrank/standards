@@ -5,6 +5,8 @@ namespace PrinsFrank\Standards\Tests\Unit\Language;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
@@ -90,5 +92,14 @@ class LanguageAlpha2Test extends TestCase
                 'boop'
             )
         );
+    }
+
+    /** @covers ::formatNumber */
+    public function testFormatNumber(): void
+    {
+        static::assertSame('42,42', LanguageAlpha2::Dutch_Flemish->formatNumber(42.42));
+        static::assertSame('42,42', LanguageAlpha2::Dutch_Flemish->formatNumber(42.42, CountryAlpha2::Netherlands));
+        static::assertSame('42,42', LanguageAlpha2::Dutch_Flemish->formatNumber(42.42, CountryAlpha3::Netherlands));
+        static::assertSame('42,42', LanguageAlpha2::Dutch_Flemish->formatNumber(42.42, CountryNumeric::Netherlands));
     }
 }
