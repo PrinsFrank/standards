@@ -171,6 +171,9 @@ CountryAlpha3::from('NLD')->getFlagEmoji();                      // '🇳🇱' (
 CountryAlpha3::from('NLD')->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 CountryAlpha3::from('NLD')->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 
+CountryAlpha3::from('NLD')->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
+CountryAlpha3::from('NLD')->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
+
 public function foo(CountryAlpha2 $countryAlpha2) {}             // Use spec as typehint to enforce valid value
 
 ```
@@ -221,9 +224,6 @@ $value = $valueAlpha2->value;                     // 'NL'
 $valueName = $valueAlpha2->name;                  // 'Netherlands'
 $valueAlpha3 = $valueAlpha2->toCountryAlpha3();   // CountryAlpha3::Netherlands
 $valueNumeric = $valueAlpha2->toCountryNumeric(); // CountryNumeric::Netherlands
-$valueName = $valueAlpha2->toCountryName();       // CountryName::Netherlands
-
-$nameString = $valueAlpha2->toCountryName()->value; // 'Netherlands (Kingdom of the)'
 
 $isMemberOfEu = $valueAlpha2->isMemberOf(EU::class);       // true
 $isMemberOfBrics = $valueAlpha2->isMemberOf(Brics::class); // false
@@ -242,6 +242,9 @@ $valueAlpha2::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not
 $valueAlpha2->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 $valueAlpha2->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
+
+$valueAlpha2->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
+$valueAlpha2->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
 ```
 
 ### CountryAlpha3
@@ -252,9 +255,6 @@ $value = $valueAlpha3->value;                     // 'NLD'
 $valueName = $valueAlpha3->name;                  // 'Netherlands'
 $valueAlpha2 = $valueAlpha3->toCountryAlpha2();   // CountryAlpha2::Netherlands
 $valueNumeric = $valueAlpha3->toCountryNumeric(); // CountryNumeric::Netherlands
-$valueName = $valueAlpha3->toCountryName();       // CountryName::Netherlands
-
-$nameString = $valueAlpha3->toCountryName()->value; // 'Netherlands (Kingdom of the)'
 
 $isMemberOfEu = $valueAlpha3->isMemberOf(EU::class);       // true
 $isMemberOfBrics = $valueAlpha3->isMemberOf(Brics::class); // false
@@ -273,6 +273,9 @@ $valueAlpha3->getFlagEmoji();                      // '🇳🇱' (This might not
 $valueAlpha3->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 $valueAlpha3->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
+
+$valueAlpha3->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
+$valueAlpha3->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
 ```
 
 ### CountryNumeric
@@ -284,9 +287,6 @@ $value = $valueNumeric->value;                   // '528'
 $valueName = $valueNumeric->name;                // 'Netherlands'
 $valueAlpha2 = $valueNumeric->toCountryAlpha2(); // CountryAlpha2::Netherlands
 $valueAlpha3 = $valueNumeric->toCountryAlpha3(); // CountryAlpha3::Netherlands
-$valueName = $valueNumeric->toCountryName();     // CountryName::Netherlands
-
-$nameString = $valueNumeric->toCountryName()->value; // 'Netherlands (Kingdom of the)'
 
 $isMemberOfEu = $valueNumeric->isMemberOf(EU::class);       // true
 $isMemberOfBrics = $valueNumeric->isMemberOf(Brics::class); // false
@@ -305,9 +305,12 @@ $valueNumeric->getFlagEmoji();                      // '🇳🇱' (This might no
 $valueNumeric->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 $valueNumeric->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
+
+$valueNumeric->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
+$valueNumeric->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
 ```
 
-### CountryName
+### <s>CountryName</s> (Deprecated)
 
 ```php
 $valueName = CountryName::from('Netherlands (Kingdom of the)'); // CountryName::Netherlands
