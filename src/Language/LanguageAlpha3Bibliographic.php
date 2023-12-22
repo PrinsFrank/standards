@@ -5,6 +5,8 @@ namespace PrinsFrank\Standards\Language;
 
 use PrinsFrank\Standards\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
 use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
@@ -541,6 +543,11 @@ enum LanguageAlpha3Bibliographic: string
         }
 
         return $languageNameInLanguage;
+    }
+
+    public function formatNumber(float $amount, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string
+    {
+        return $this->toLanguageAlpha3Terminology()->formatNumber($amount, $country);
     }
 
     public function getNameForCountry(CountryAlpha2 $country): ?string

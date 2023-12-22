@@ -307,6 +307,11 @@ enum CountryNumeric: string
         return $this->toCountryAlpha2()->getNameInLanguage($language);
     }
 
+    public function formatNumber(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string
+    {
+        return $this->toCountryAlpha2()->formatNumber($amount, $language);
+    }
+
     /** @param class-string<GroupInterface> $groupFQN */
     public function isMemberOf(string $groupFQN): bool
     {

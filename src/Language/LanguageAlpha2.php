@@ -3,8 +3,11 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Language;
 
+use NumberFormatter;
 use PrinsFrank\Standards\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
 use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
@@ -239,6 +242,18 @@ enum LanguageAlpha2: string
         }
 
         return $languageNameInLanguage;
+    }
+
+    public function formatNumber(float $amount, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string
+    {
+        if ($country !== null && $country instanceof CountryAlpha2 === false) {
+            $country = $country->toCountryAlpha2();
+        }
+
+        $formattedNumber = (new NumberFormatter($this->value . ($country !== null ? '-' . $country->value : ''), NumberFormatter::DECIMAL))
+            ->format($amount);
+
+        return $formattedNumber === false ? null : $formattedNumber;
     }
 
     public function getNameForCountry(CountryAlpha2 $country): ?string

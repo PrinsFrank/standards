@@ -5,6 +5,8 @@ namespace PrinsFrank\Standards\Currency;
 
 use PrinsFrank\Standards\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
@@ -232,7 +234,7 @@ enum CurrencyNumeric: string
         return (int) $this->value;
     }
 
-    public function format(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language, CountryAlpha2|null $country = null): ?string
+    public function format(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string
     {
         return $this->toCurrencyAlpha3()->format($amount, $language, $country);
     }

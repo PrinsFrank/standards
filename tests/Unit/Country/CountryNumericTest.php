@@ -174,4 +174,13 @@ class CountryNumericTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
+
+    /** @covers ::formatNumber */
+    public function testFormatNumber(): void
+    {
+        static::assertSame('42,42', CountryNumeric::Netherlands->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish));
+        static::assertSame('42,42', CountryNumeric::Netherlands->formatNumber(42.42, LanguageAlpha2::English));
+        static::assertSame('42,42', CountryNumeric::United_States_of_America->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish));
+        static::assertSame('42.42', CountryNumeric::United_States_of_America->formatNumber(42.42, LanguageAlpha2::English));
+    }
 }
