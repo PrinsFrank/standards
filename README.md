@@ -591,6 +591,9 @@ LanguageAlpha3Bibliographic::from('dut');                           // LanguageA
 LanguageAlpha3Extensive::from('nld');                               // LanguageAlpha3Extensive::Dutch
 LanguageAlpha3Extensive::from('dse');                               // LanguageAlpha3Extensive::Dutch_Sign_Language
 
+LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
+LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
+
 public function foo(LanguageAlpha2 $languageAlpha2);                // Use spec as typehint to enforce valid value
 ```
 
@@ -605,8 +608,9 @@ $value = $valueAlpha2->value;                                              // 'n
 $valueName = $valueAlpha2->name;                                           // 'Dutch_Flemish'
 $valueAlpha3Bibliographic = $valueAlpha2->toLanguageAlpha3Bibliographic(); // LanguageAlpha3Bibliographic::Dutch_Flemish
 $valueAlpha3Terminology = $valueAlpha2->toLanguageAlpha3Terminology();     // LanguageAlpha3Terminology::Dutch_Flemish
-$valueAlpha3Terminology = $valueAlpha2->toLanguageName();                  // LanguageName::Dutch_Flemish
-$valueAlpha3Terminology = $valueAlpha2->toLanguageName()->value;           // 'Dutch; Flemish'
+$valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
+$valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
+
 ```
 
 ### LanguageAlpha3Bibliographic (ISO 639-2)
@@ -617,6 +621,8 @@ $value = $valueAlpha3->value;                                          // 'dut'
 $valueName = $valueAlpha3->name;                                       // 'Dutch_Flemish'
 $valueAlpha2 = $valueAlpha3->toLanguageAlhpa2();                       // LanguageAlpha2::Dutch_Flemish
 $valueAlpha3Terminology = $valueAlpha3->toLanguageAlpha3Terminology(); // LanguageAlpha3Terminology::Dutch_Flemish
+$valueAlpha3Bibliographic->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
+$valueAlpha3Bibliographic->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
 ```
 
 ### LanguageAlpha3Terminology (ISO 639-2)
@@ -625,8 +631,10 @@ $valueAlpha3Terminology = $valueAlpha3->toLanguageAlpha3Terminology(); // Langua
 $valueAlpha3 = LanguageAlpha3Terminology::from('nld');                     // LanguageAlpha3Terminology::Dutch_Flemish
 $value = $valueAlpha3->value;                                              // 'nld'
 $valueName = $valueAlpha3->name;                                           // 'Dutch_Flemish'
-$valueAlpha2 = $valueAlpha3->toLanguageAlpha2();                         // LanguageAlpha2::Dutch_Flemish
+$valueAlpha2 = $valueAlpha3->toLanguageAlpha2();                           // LanguageAlpha2::Dutch_Flemish
 $valueAlpha3Bibliographic = $valueAlpha3->toLanguageAlpha3Bibliographic(); // LanguageAlpha3Bibliographic::Dutch_Flemish
+$valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
+$valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
 ```
 
 ### LanguageAlpha3Extensive (ISO 639-3)
