@@ -214,6 +214,7 @@ enum LanguageAlpha2: string
         return BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name);
     }
 
+    /** @deprecated Will be removed in v4. Please use ::getNameInLanguage(LanguageAlpha2::English) instead */
     public function toLanguageName(): LanguageName
     {
         return BackedEnum::fromKey(LanguageName::class, $this->name);

@@ -291,6 +291,7 @@ enum CountryNumeric: string
         return BackedEnum::fromKey(CountryAlpha3::class, $this->name);
     }
 
+    /** @deprecated Will be removed in v4. Please use ::getNameInLanguage(LanguageAlpha2::English) instead */
     public function toCountryName(): CountryName
     {
         return BackedEnum::fromKey(CountryName::class, $this->name);

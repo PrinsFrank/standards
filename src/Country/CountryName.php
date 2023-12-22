@@ -18,6 +18,8 @@ use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
 /**
  * @source https://www.iso.org/obp/ui/#search/code/
  * @standard ISO3166_1
+ *
+ * @deprecated Will be removed in v4. Please use ::getNameInLanguage(LanguageAlpha2::English) instead
  */
 enum CountryName: string
 {
