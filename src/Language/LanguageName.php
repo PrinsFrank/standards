@@ -9,6 +9,8 @@ use PrinsFrank\Standards\BackedEnum;
  * @source https://www.iso.org/iso-639-language-codes.html
  * @source http://www.loc.gov/standards/iso639-2/php/code_list.php
  * @standard ISO639_1
+ *
+ * @deprecated Will be removed in v4. Please use ::getNameInLanguage(LanguageAlpha2::English) instead
  */
 enum LanguageName: string
 {
