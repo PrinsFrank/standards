@@ -231,7 +231,7 @@ enum CurrencyAlpha3: string
             $language = $language->toLanguageAlpha3Terminology();
         }
 
-        if ($country instanceof CountryAlpha2 === false) {
+        if ($country !== null && $country instanceof CountryAlpha2 === false) {
             $country = $country->toCountryAlpha2();
         }
 
