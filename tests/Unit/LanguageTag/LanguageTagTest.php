@@ -331,4 +331,48 @@ class LanguageTagTest extends TestCase
         static::assertNull(LanguageTag::tryFromString('nl-nl'));
         static::assertEquals(new LanguageTag(LanguageAlpha2::Dutch_Flemish), LanguageTag::tryFromString('nl'));
     }
+
+    /** @covers ::__toString */
+    public function testToString(): void
+    {
+        static::assertSame('de', (LanguageTag::fromString('de'))->__toString());
+        static::assertSame('fr', (LanguageTag::fromString('fr'))->__toString());
+        static::assertSame('ja', (LanguageTag::fromString('ja'))->__toString());
+        static::assertSame('i-enochian', (LanguageTag::fromString('i-enochian'))->__toString());
+        static::assertSame('zh-Hant', (LanguageTag::fromString('zh-Hant'))->__toString());
+        static::assertSame('zh-Hans', (LanguageTag::fromString('zh-Hans'))->__toString());
+        static::assertSame('sr-Cyrl', (LanguageTag::fromString('sr-Cyrl'))->__toString());
+        static::assertSame('sr-Latn', (LanguageTag::fromString('sr-Latn'))->__toString());
+        static::assertSame('zh-cmn-Hans-CN', (LanguageTag::fromString('zh-cmn-Hans-CN'))->__toString());
+        static::assertSame('cmn-Hans-CN', (LanguageTag::fromString('cmn-Hans-CN'))->__toString());
+        static::assertSame('zh-yue-HK', (LanguageTag::fromString('zh-yue-HK'))->__toString());
+        static::assertSame('yue-HK', (LanguageTag::fromString('yue-HK'))->__toString());
+        static::assertSame('zh-Hans-CN', (LanguageTag::fromString('zh-Hans-CN'))->__toString());
+        static::assertSame('sr-Latn-RS', (LanguageTag::fromString('sr-Latn-RS'))->__toString());
+        static::assertSame('sl-rozaj', (LanguageTag::fromString('sl-rozaj'))->__toString());
+        static::assertSame('sl-rozaj-biske', (LanguageTag::fromString('sl-rozaj-biske'))->__toString());
+        static::assertSame('sl-nedis', (LanguageTag::fromString('sl-nedis'))->__toString());
+        static::assertSame('de-CH-1901', (LanguageTag::fromString('de-CH-1901'))->__toString());
+        static::assertSame('sl-IT-nedis', (LanguageTag::fromString('sl-IT-nedis'))->__toString());
+        static::assertSame('hy-Latn-IT-arevela', (LanguageTag::fromString('hy-Latn-IT-arevela'))->__toString());
+        static::assertSame('de-DE', (LanguageTag::fromString('de-DE'))->__toString());
+        static::assertSame('en-US', (LanguageTag::fromString('en-US'))->__toString());
+        static::assertSame('es-419', (LanguageTag::fromString('es-419'))->__toString());
+        static::assertSame('de-CH-x-phonebk', (LanguageTag::fromString('de-CH-x-phonebk'))->__toString());
+        static::assertSame('az-Arab-x-AZE-derbend', (LanguageTag::fromString('az-Arab-x-AZE-derbend'))->__toString());
+        static::assertSame('x-whatever', (LanguageTag::fromString('x-whatever'))->__toString());
+        static::assertSame('qaa-Qaaa-QM-x-southern', (LanguageTag::fromString('qaa-Qaaa-QM-x-southern'))->__toString());
+        static::assertSame('de-Qaaa', (LanguageTag::fromString('de-Qaaa'))->__toString());
+        static::assertSame('sr-Latn-QM', (LanguageTag::fromString('sr-Latn-QM'))->__toString());
+        static::assertSame('sr-Qaaa-RS', (LanguageTag::fromString('sr-Qaaa-RS'))->__toString());
+        static::assertSame('zh', (LanguageTag::fromString('zh'))->__toString());
+        static::assertSame('zh-gan', (LanguageTag::fromString('zh-gan'))->__toString());
+        static::assertSame('gan', (LanguageTag::fromString('gan'))->__toString());
+        static::assertSame('zh-yue', (LanguageTag::fromString('zh-yue'))->__toString());
+        static::assertSame('yue', (LanguageTag::fromString('yue'))->__toString());
+        static::assertSame('zh-cmn', (LanguageTag::fromString('zh-cmn'))->__toString());
+        static::assertSame('cmn', (LanguageTag::fromString('cmn'))->__toString());
+        static::assertSame('de-a-value', (LanguageTag::fromString('de-a-value'))->__toString());
+        static::assertSame('fr-a-Latn', (LanguageTag::fromString('fr-a-Latn'))->__toString());
+    }
 }

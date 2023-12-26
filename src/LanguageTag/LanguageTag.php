@@ -10,12 +10,13 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
+use Stringable;
 
 /**
  * @standard RFC5646
  * @source https://datatracker.ietf.org/doc/html/rfc5646
  */
-class LanguageTag
+class LanguageTag implements Stringable
 {
     public const SUBTAG_SEPARATOR = '-';
 
@@ -103,5 +104,39 @@ class LanguageTag
         }
 
         return new self($primaryLanguageSubtag, $extendedLanguageSubtag, $scriptSubtag, $regionSubtag, $variantSubtag, $extensionSubtag, $privateUseSubtag);
+    }
+
+    public function __toString(): string
+    {
+        if ($this->primaryLanguageSubtag instanceof SingleCharacterSubtag) {
+            return $this->primaryLanguageSubtag->value . ($this->privateUseSubtag !== null ? self::SUBTAG_SEPARATOR . $this->privateUseSubtag : '');
+        }
+
+        $string = $this->primaryLanguageSubtag instanceof PrivateUsePrimarySubtag ? $this->primaryLanguageSubtag->subtag : $this->primaryLanguageSubtag->value;
+        if ($this->extendedLanguageSubtag !== null) {
+            $string .= self::SUBTAG_SEPARATOR . $this->extendedLanguageSubtag->value;
+        }
+
+        if ($this->scriptSubtag !== null) {
+            $string .= self::SUBTAG_SEPARATOR . $this->scriptSubtag->value;
+        }
+
+        if ($this->regionSubtag !== null) {
+            $string .= self::SUBTAG_SEPARATOR . $this->regionSubtag->value;
+        }
+
+        foreach ($this->variantSubtag as $variantSubtag) {
+            $string .= self::SUBTAG_SEPARATOR . $variantSubtag->value;
+        }
+
+        foreach ($this->extensionSubtag as $extensionSubtag) {
+            $string .= self::SUBTAG_SEPARATOR . $extensionSubtag;
+        }
+
+        if ($this->privateUseSubtag !== null) {
+            $string .= self::SUBTAG_SEPARATOR . SingleCharacterSubtag::PRIVATE_USE->value . self::SUBTAG_SEPARATOR . $this->privateUseSubtag;
+        }
+
+        return $string;
     }
 }
