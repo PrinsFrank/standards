@@ -10,12 +10,13 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
+use Stringable;
 
 /**
  * @standard RFC5646
  * @source https://datatracker.ietf.org/doc/html/rfc5646
  */
-class LanguageTag
+class LanguageTag implements Stringable
 {
     public const SUBTAG_SEPARATOR = '-';
 
@@ -103,5 +104,20 @@ class LanguageTag
         }
 
         return new self($primaryLanguageSubtag, $extendedLanguageSubtag, $scriptSubtag, $regionSubtag, $variantSubtag, $extensionSubtag, $privateUseSubtag);
+    }
+
+    public function __toString(): string
+    {
+        if ($this->primaryLanguageSubtag instanceof SingleCharacterSubtag) {
+            return $this->primaryLanguageSubtag->value . ($this->privateUseSubtag !== null ? self::SUBTAG_SEPARATOR . $this->privateUseSubtag : '');
+        }
+
+        return ($this->primaryLanguageSubtag instanceof PrivateUsePrimarySubtag ? $this->primaryLanguageSubtag->subtag : $this->primaryLanguageSubtag->value)
+            . ($this->extendedLanguageSubtag !== null ? self::SUBTAG_SEPARATOR . $this->extendedLanguageSubtag->value : '')
+            . ($this->scriptSubtag !== null ? self::SUBTAG_SEPARATOR . $this->scriptSubtag->value : '')
+            . ($this->regionSubtag !== null ? self::SUBTAG_SEPARATOR . $this->regionSubtag->value : '')
+            . ($this->variantSubtag !== [] ? self::SUBTAG_SEPARATOR . implode(self::SUBTAG_SEPARATOR, array_column($this->variantSubtag, 'value')) : '')
+            . ($this->extensionSubtag !== [] ? self::SUBTAG_SEPARATOR . implode(self::SUBTAG_SEPARATOR, $this->extensionSubtag) : '')
+            . ($this->privateUseSubtag !== null ? self::SUBTAG_SEPARATOR . SingleCharacterSubtag::PRIVATE_USE->value . self::SUBTAG_SEPARATOR . $this->privateUseSubtag : '');
     }
 }
