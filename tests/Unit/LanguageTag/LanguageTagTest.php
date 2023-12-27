@@ -332,7 +332,10 @@ class LanguageTagTest extends TestCase
         static::assertEquals(new LanguageTag(LanguageAlpha2::Dutch_Flemish), LanguageTag::tryFromString('nl'));
     }
 
-    /** @covers ::__toString */
+    /**
+     * @covers ::toString
+     * @covers ::__toString
+     */
     public function testToString(): void
     {
         static::assertSame('de', (LanguageTag::fromString('de'))->__toString());
