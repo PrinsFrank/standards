@@ -114,12 +114,12 @@ class LanguageTag implements Stringable
         }
 
         return ($this->primaryLanguageSubtag instanceof PrivateUsePrimarySubtag ? $this->primaryLanguageSubtag->subtag : $this->primaryLanguageSubtag->value)
-               . ($this->extendedLanguageSubtag !== null ? $subtagSeparator->value . $this->extendedLanguageSubtag->value : '')
-               . ($this->scriptSubtag !== null ? $subtagSeparator->value . $this->scriptSubtag->value : '')
-               . ($this->regionSubtag !== null ? $subtagSeparator->value . $this->regionSubtag->value : '')
-               . ($this->variantSubtag !== [] ? $subtagSeparator->value . implode($subtagSeparator->value, array_column($this->variantSubtag, 'value')) : '')
-               . ($this->extensionSubtag !== [] ? $subtagSeparator->value . implode($subtagSeparator->value, $this->extensionSubtag) : '')
-               . ($this->privateUseSubtag !== null ? $subtagSeparator->value . SingleCharacterSubtag::PRIVATE_USE->value . $subtagSeparator->value . $this->privateUseSubtag : '');
+            . ($this->extendedLanguageSubtag !== null ? $subtagSeparator->value . $this->extendedLanguageSubtag->value : '')
+            . ($this->scriptSubtag !== null ? $subtagSeparator->value . $this->scriptSubtag->value : '')
+            . ($this->regionSubtag !== null ? $subtagSeparator->value . $this->regionSubtag->value : '')
+            . ($this->variantSubtag !== [] ? $subtagSeparator->value . implode($subtagSeparator->value, array_column($this->variantSubtag, 'value')) : '')
+            . ($this->extensionSubtag !== [] ? $subtagSeparator->value . implode($subtagSeparator->value, $this->extensionSubtag) : '')
+            . ($this->privateUseSubtag !== null ? $subtagSeparator->value . SingleCharacterSubtag::PRIVATE_USE->value . $subtagSeparator->value . $this->privateUseSubtag : '');
     }
 
     /** Stringable::__toString() doesn't allow arguments, so this method redirects to toString() to allow for custom separators */
