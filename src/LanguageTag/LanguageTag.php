@@ -18,6 +18,7 @@ use Stringable;
  */
 class LanguageTag implements Stringable
 {
+    /** @deprecated will be removed in v4. Use LanguageSubtagSeparator::DEFAULT instead */
     public const SUBTAG_SEPARATOR = '-';
 
     /**
@@ -39,19 +40,19 @@ class LanguageTag implements Stringable
         array_map(static function (mixed $extensionSubtag) { is_string($extensionSubtag) || throw new InvalidArgumentException('Param $variantSubtag should be an array of strings');}, $this->extensionSubtag);
     }
 
-    public static function tryFromString(string $languageTagString): ?self
+    public static function tryFromString(string $languageTagString, SubtagSeparator $subtagSeparator = SubtagSeparator::STANDARD): ?self
     {
         try {
-            return self::fromString($languageTagString);
+            return self::fromString($languageTagString, $subtagSeparator);
         } catch (InvalidArgumentException) {
             return null;
         }
     }
 
     /** @throws InvalidArgumentException */
-    public static function fromString(string $languageTagString): self
+    public static function fromString(string $languageTagString, SubtagSeparator $subtagSeparator = SubtagSeparator::STANDARD): self
     {
-        $subTags               = explode(self::SUBTAG_SEPARATOR, $languageTagString);
+        $subTags               = explode($subtagSeparator->value, $languageTagString);
         $primaryLanguageSubtag = LanguageAlpha2::tryFrom($subTags[0])
             ?? LanguageAlpha3Terminology::tryFrom($subTags[0])
             ?? LanguageAlpha3Extensive::tryFrom($subTags[0])
@@ -60,7 +61,7 @@ class LanguageTag implements Stringable
             ?? throw new InvalidArgumentException('Primary language sub tag "' . $subTags[0] . '" is not a valid Alpha2/Alpha3 tag.');
 
         if ($primaryLanguageSubtag instanceof SingleCharacterSubtag) {
-            return new self($primaryLanguageSubtag, privateUseSubtag: implode(self::SUBTAG_SEPARATOR, array_slice($subTags, 1)));
+            return new self($primaryLanguageSubtag, privateUseSubtag: implode($subtagSeparator->value, array_slice($subTags, 1)));
         }
 
         $variantSubtag          = $extensionSubtag = [];
@@ -91,7 +92,7 @@ class LanguageTag implements Stringable
                 && ($matchesVariantTag = LanguageTagVariant::tryFrom($subTag)) !== null) {
                 $variantSubtag[] = $matchesVariantTag;
             } elseif (SingleCharacterSubtag::tryFrom($subTag) !== null) {
-                $privateUseSubtag = implode(self::SUBTAG_SEPARATOR, array_slice($subTags, $index + 1));
+                $privateUseSubtag = implode($subtagSeparator->value, array_slice($subTags, $index + 1));
 
                 break;
             } elseif ($privateUseSubtag === null && strlen($subTag) === 1) {
@@ -106,18 +107,24 @@ class LanguageTag implements Stringable
         return new self($primaryLanguageSubtag, $extendedLanguageSubtag, $scriptSubtag, $regionSubtag, $variantSubtag, $extensionSubtag, $privateUseSubtag);
     }
 
-    public function __toString(): string
+    public function toString(SubtagSeparator $subtagSeparator = SubtagSeparator::STANDARD): string
     {
         if ($this->primaryLanguageSubtag instanceof SingleCharacterSubtag) {
-            return $this->primaryLanguageSubtag->value . ($this->privateUseSubtag !== null ? self::SUBTAG_SEPARATOR . $this->privateUseSubtag : '');
+            return $this->primaryLanguageSubtag->value . ($this->privateUseSubtag !== null ? $subtagSeparator->value . $this->privateUseSubtag : '');
         }
 
         return ($this->primaryLanguageSubtag instanceof PrivateUsePrimarySubtag ? $this->primaryLanguageSubtag->subtag : $this->primaryLanguageSubtag->value)
-            . ($this->extendedLanguageSubtag !== null ? self::SUBTAG_SEPARATOR . $this->extendedLanguageSubtag->value : '')
-            . ($this->scriptSubtag !== null ? self::SUBTAG_SEPARATOR . $this->scriptSubtag->value : '')
-            . ($this->regionSubtag !== null ? self::SUBTAG_SEPARATOR . $this->regionSubtag->value : '')
-            . ($this->variantSubtag !== [] ? self::SUBTAG_SEPARATOR . implode(self::SUBTAG_SEPARATOR, array_column($this->variantSubtag, 'value')) : '')
-            . ($this->extensionSubtag !== [] ? self::SUBTAG_SEPARATOR . implode(self::SUBTAG_SEPARATOR, $this->extensionSubtag) : '')
-            . ($this->privateUseSubtag !== null ? self::SUBTAG_SEPARATOR . SingleCharacterSubtag::PRIVATE_USE->value . self::SUBTAG_SEPARATOR . $this->privateUseSubtag : '');
+            . ($this->extendedLanguageSubtag !== null ? $subtagSeparator->value . $this->extendedLanguageSubtag->value : '')
+            . ($this->scriptSubtag !== null ? $subtagSeparator->value . $this->scriptSubtag->value : '')
+            . ($this->regionSubtag !== null ? $subtagSeparator->value . $this->regionSubtag->value : '')
+            . ($this->variantSubtag !== [] ? $subtagSeparator->value . implode($subtagSeparator->value, array_column($this->variantSubtag, 'value')) : '')
+            . ($this->extensionSubtag !== [] ? $subtagSeparator->value . implode($subtagSeparator->value, $this->extensionSubtag) : '')
+            . ($this->privateUseSubtag !== null ? $subtagSeparator->value . SingleCharacterSubtag::PRIVATE_USE->value . $subtagSeparator->value . $this->privateUseSubtag : '');
+    }
+
+    /** Stringable::__toString() doesn't allow arguments, so this method redirects to toString() to allow for custom separators */
+    public function __toString(): string
+    {
+        return $this->toString();
     }
 }
