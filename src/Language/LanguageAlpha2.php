@@ -262,7 +262,6 @@ enum LanguageAlpha2: string
     }
 
     /**
-     *
      * @param list<LanguageTagVariant> $variantSubtag,
      * @param list<string> $extensionSubtag
      * @throws InvalidArgumentException

@@ -7933,7 +7933,6 @@ enum LanguageAlpha3Extensive: string
     }
 
     /**
-     *
      * @param list<LanguageTagVariant> $variantSubtag,
      * @param list<string> $extensionSubtag
      * @throws InvalidArgumentException
