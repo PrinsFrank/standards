@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Language;
 
 use NumberFormatter;
-use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
@@ -209,18 +209,18 @@ enum LanguageAlpha2: string
 
     public function toLanguageAlpha3Bibliographic(): ?LanguageAlpha3Bibliographic
     {
-        return BackedEnum::tryFromKey(LanguageAlpha3Bibliographic::class, $this->name);
+        return BackedEnum::tryFromName(LanguageAlpha3Bibliographic::class, $this->name);
     }
 
     public function toLanguageAlpha3Terminology(): ?LanguageAlpha3Terminology
     {
-        return BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name);
+        return BackedEnum::tryFromName(LanguageAlpha3Terminology::class, $this->name);
     }
 
     /** @deprecated Will be removed in v4. Please use ::getNameInLanguage(LanguageAlpha2::English) instead */
     public function toLanguageName(): LanguageName
     {
-        return BackedEnum::fromKey(LanguageName::class, $this->name);
+        return BackedEnum::fromName(LanguageName::class, $this->name);
     }
 
     public function upperCaseValue(): string
