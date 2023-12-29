@@ -33,7 +33,11 @@ class CurrencyMapping implements Mapping
         return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml';
     }
 
-    /** @return list<TDataSet> */
+    /**
+     * @throws DomElementNotFoundException
+     *
+     * @return list<TDataSet>
+     */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $domDocument = new DOMDocument();
