@@ -8,6 +8,7 @@
 ![GitHub](https://img.shields.io/github/license/prinsfrank/standards)
 ![PHP Version Support](https://img.shields.io/packagist/php-v/prinsfrank/standards)
 [![codecov](https://codecov.io/gh/PrinsFrank/standards/branch/main/graph/badge.svg?token=9O3VB563MU)](https://codecov.io/gh/PrinsFrank/standards)
+![PHPStan Level](https://img.shields.io/badge/PHPStan-level%209-brightgreen.svg?style=flat)
 
 **A collection of standards as PHP Enums**
 
