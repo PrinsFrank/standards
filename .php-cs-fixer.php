@@ -15,6 +15,7 @@ return (new PhpCsFixer\Config())->setRules(
         'array_indentation'            => true,
         'no_alias_functions'           => true,
         'phpdoc_line_span'             => ['property' => 'single', 'method' => 'single', 'const' => 'single'],
+        'phpdoc_order'                 => ['order' => ['deprecated', 'internal', 'standard', 'source', 'template', 'implements', 'extends', 'covers', 'coversDefaultClass', 'param', 'throws', 'return']]
     ]
 )->setFinder(
     PhpCsFixer\Finder::create()
