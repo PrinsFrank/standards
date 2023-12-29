@@ -15,7 +15,10 @@ return (new PhpCsFixer\Config())->setRules(
         'array_indentation'            => true,
         'no_alias_functions'           => true,
         'phpdoc_line_span'             => ['property' => 'single', 'method' => 'single', 'const' => 'single'],
-        'phpdoc_order'                 => ['order' => ['deprecated', 'internal', 'standard', 'source', 'template', 'implements', 'extends', 'covers', 'coversDefaultClass', 'param', 'throws', 'return']]
+        'phpdoc_order'                 => ['order' => ['deprecated', 'internal', 'standard', 'source', 'template', 'implements', 'extends', 'covers', 'coversDefaultClass', 'param', 'throws', 'return']],
+        'phpdoc_param_order'           => true,
+        'phpdoc_separation'            => ['groups' => [['deprecated', 'internal'], ['standard', 'source'], ['covers', 'coversDefaultClass'], ['template', 'implements', 'extends', 'param', 'throws', 'return']]],
+        'phpdoc_trim'                  => true,
     ]
 )->setFinder(
     PhpCsFixer\Finder::create()

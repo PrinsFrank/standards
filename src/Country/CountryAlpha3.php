@@ -330,6 +330,7 @@ enum CountryAlpha3: string
 
     /**
      * When displaying this on web pages, keep in mind the default windows fonts don't have a representation for these.
+     *
      * @see https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.
      */
     public function getFlagEmoji(): string

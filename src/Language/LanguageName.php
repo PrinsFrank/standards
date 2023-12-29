@@ -7,6 +7,7 @@ use PrinsFrank\Standards\BackedEnum;
 
 /**
  * @deprecated Will be removed in v4. Please use ::getNameInLanguage(LanguageAlpha2::English) instead
+ *
  * @standard ISO639_1
  * @source https://www.iso.org/iso-639-language-codes.html
  * @source http://www.loc.gov/standards/iso639-2/php/code_list.php
