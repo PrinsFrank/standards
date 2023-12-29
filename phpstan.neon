@@ -1,6 +1,8 @@
 parameters:
     tmpDir: .phpstan.result.cache
     level: 9
+    includes:
+        - vendor/phpstan/phpstan-strict-rules/rules.neon
     paths:
         - src
         - tests
