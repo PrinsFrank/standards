@@ -13,10 +13,10 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 
 /**
+ * @standard ISO4217
  * @source https://www.iso.org/iso-4217-currency-codes.html
  * @source https://www.six-group.com/en/products-services/financial-information/data-standards.html
  * @source https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list_one.xml
- * @standard ISO4217
  */
 enum CurrencyNumeric: string
 {

@@ -22,10 +22,9 @@ class LanguageTag implements Stringable
     public const SUBTAG_SEPARATOR = '-';
 
     /**
-     * @throws InvalidArgumentException
-     *
      * @param list<LanguageTagVariant> $variantSubtag,
      * @param list<string> $extensionSubtag
+     * @throws InvalidArgumentException
      */
     public function __construct(
         public readonly SingleCharacterSubtag|PrivateUsePrimarySubtag|LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive $primaryLanguageSubtag,
