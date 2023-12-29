@@ -24,8 +24,8 @@ class LanguageSubTagMapping implements Mapping
     }
 
     /**
-     * @return list<TDataSet>
      * @throws InvalidArgumentException
+     * @return list<TDataSet>
      */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {

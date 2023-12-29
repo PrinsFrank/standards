@@ -15,9 +15,9 @@ use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
 /**
+ * @standard ISO639_1
  * @source https://www.iso.org/iso-639-language-codes.html
  * @source http://www.loc.gov/standards/iso639-2/php/code_list.php
- * @standard ISO639_1
  */
 enum LanguageAlpha3Bibliographic: string
 {
@@ -556,10 +556,9 @@ enum LanguageAlpha3Bibliographic: string
     }
 
     /**
-     * @throws InvalidArgumentException
-     *
      * @param list<LanguageTagVariant> $variantSubtag,
      * @param list<string> $extensionSubtag
+     * @throws InvalidArgumentException
      */
     public function toLanguageTag(
         LanguageAlpha3Terminology|LanguageAlpha3Extensive|null     $extendedLanguageSubtag = null,

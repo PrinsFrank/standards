@@ -12,9 +12,9 @@ use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
 /**
+ * @standard ISO639_3
  * @source https://iso639-3.sil.org/code_tables/download_tables#Complete%20Code%20Tables
  * @source https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3_Latin1.tab
- * @standard ISO639_3
  */
 enum LanguageAlpha3Extensive: string
 {
@@ -7933,10 +7933,9 @@ enum LanguageAlpha3Extensive: string
     }
 
     /**
-     * @throws InvalidArgumentException
-     *
      * @param list<LanguageTagVariant> $variantSubtag,
      * @param list<string> $extensionSubtag
+     * @throws InvalidArgumentException
      */
     public function toLanguageTag(
         LanguageAlpha3Terminology|LanguageAlpha3Extensive|null     $extendedLanguageSubtag = null,

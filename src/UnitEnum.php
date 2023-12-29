@@ -9,9 +9,9 @@ class UnitEnum
     /**
      * @template T of \UnitEnum
      * @param class-string<T> $fqn
-     * @return T
      * @throws KeyNotFoundException
      * @throws InvalidArgumentException
+     * @return T
      */
     public static function fromKey(string $fqn, string $keyName): \UnitEnum
     {
@@ -21,8 +21,8 @@ class UnitEnum
     /**
      * @template T of \UnitEnum
      * @param class-string<T> $fqn
-     * @return T|null
      * @throws InvalidArgumentException
+     * @return T|null
      */
     public static function tryFromKey(string $fqn, string $keyName): ?\UnitEnum
     {
@@ -43,8 +43,8 @@ class UnitEnum
     /**
      * @template T of \UnitEnum
      * @param class-string<T> $fqn
-     * @return array<int, string>
      * @throws InvalidArgumentException
+     * @return array<int, string>
      */
     public static function names(string $fqn): array
     {
