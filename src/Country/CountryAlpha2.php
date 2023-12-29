@@ -301,9 +301,9 @@ enum CountryAlpha2: string
 
         $countryInLanguage = locale_get_display_region('-' . $this->value, $language->value);
         if ($countryInLanguage === false) {
-            /** @codeCoverageIgnoreStart */
+            // @codeCoverageIgnoreStart
             return null;
-            /** @codeCoverageIgnoreEnd */
+            // @codeCoverageIgnoreEnd
         }
 
         return $countryInLanguage;
