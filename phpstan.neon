@@ -1,9 +1,20 @@
 parameters:
     tmpDir: .phpstan.result.cache
     level: 9
-    includes:
-        - vendor/phpstan/phpstan-strict-rules/rules.neon
     paths:
         - src
         - tests
         - dev
+    phpVersion: 80300
+    checkUninitializedProperties: true
+    checkImplicitMixed: true
+    checkBenevolentUnionTypes: true
+    checkMissingOverrideMethodAttribute: true
+    exceptions:
+        check:
+            missingCheckedExceptionInThrows: true
+            tooWideThrowType: true
+            implicitThrows: false
+includes:
+    - phar://phpstan.phar/conf/bleedingEdge.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
