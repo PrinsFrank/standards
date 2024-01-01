@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Language;
 
-use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Enums\BackedEnum;
 
 /**
  * @deprecated Will be removed in v4. Please use ::getNameInLanguage(LanguageAlpha2::English) instead
@@ -503,16 +503,16 @@ enum LanguageName: string
 
     public function toLanguageAlpha2(): LanguageAlpha2|null
     {
-        return BackedEnum::tryFromKey(LanguageAlpha2::class, $this->name);
+        return BackedEnum::tryFromName(LanguageAlpha2::class, $this->name);
     }
 
     public function toLanguageAlpha3Bibliographic(): ?LanguageAlpha3Bibliographic
     {
-        return BackedEnum::tryFromKey(LanguageAlpha3Bibliographic::class, $this->name);
+        return BackedEnum::tryFromName(LanguageAlpha3Bibliographic::class, $this->name);
     }
 
     public function toLanguageAlpha3Terminology(): ?LanguageAlpha3Terminology
     {
-        return BackedEnum::tryFromKey(LanguageAlpha3Terminology::class, $this->name);
+        return BackedEnum::tryFromName(LanguageAlpha3Terminology::class, $this->name);
     }
 }

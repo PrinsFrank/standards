@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Currency;
 
 use NumberFormatter;
-use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
@@ -207,12 +207,12 @@ enum CurrencyAlpha3: string
 
     public function toCurrencyNumeric(): CurrencyNumeric
     {
-        return BackedEnum::fromKey(CurrencyNumeric::class, $this->name);
+        return BackedEnum::fromName(CurrencyNumeric::class, $this->name);
     }
 
     public function toCurrencyName(): CurrencyName
     {
-        return BackedEnum::fromKey(CurrencyName::class, $this->name);
+        return BackedEnum::fromName(CurrencyName::class, $this->name);
     }
 
     public function getSymbol(): ?CurrencySymbol

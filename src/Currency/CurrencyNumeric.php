@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Currency;
 
-use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
@@ -216,12 +216,12 @@ enum CurrencyNumeric: string
 
     public function toCurrencyAlpha3(): CurrencyAlpha3
     {
-        return BackedEnum::fromKey(CurrencyAlpha3::class, $this->name);
+        return BackedEnum::fromName(CurrencyAlpha3::class, $this->name);
     }
 
     public function toCurrencyName(): CurrencyName
     {
-        return BackedEnum::fromKey(CurrencyName::class, $this->name);
+        return BackedEnum::fromName(CurrencyName::class, $this->name);
     }
 
     public function getSymbol(): ?CurrencySymbol

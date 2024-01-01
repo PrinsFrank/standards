@@ -6,7 +6,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 use DOMDocument;
 use DOMElement;
 use DOMXPath;
-use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\EuroZone;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
@@ -106,7 +106,7 @@ class CurrencyMapping implements Mapping
                     $getCountriesAlpha2Method->addMapping('self::' . NameNormalizer::normalize($currencyName), 'CountryAlpha2::' . $euroZoneCountry->name);
                 }
             } else {
-                $countryName = (BackedEnum::fromKey(CountryAlpha2::class, str_replace(['_The', '_And_', '_Plurinational_State_Of', '_Keeling', '_Of', '_D_ivoire', '_Malvinas', 'Mcdonald', '_Islamic_Republic', 'Isle_Man', 'People_s_', '_Federated_States', 'Moldova_Republic', '_and_Tristan', '_Da_', '_Part', '_and_Grenadines', '_and_Jan', '_Province_China', '_United_Republic', 'Turkiye', '_Great_Britain_and_Northern_Ireland', 'Minor_', '_America', '_Bolivarian_Republic', '_U_s'], ['', '_and_', '', '', '', '_d_Ivoire', '', 'McDonald', '', 'Isle_of_Man', 'Peoples_', '', 'Moldova', '_Tristan', '_da_', '_part', '_and_the_Grenadines', '_Jan', '_Province_of_China', '', 'Turkey', '', '', '_of_America', '', '_U_S'], $countryName))->name);
+                $countryName = (BackedEnum::fromName(CountryAlpha2::class, str_replace(['_The', '_And_', '_Plurinational_State_Of', '_Keeling', '_Of', '_D_ivoire', '_Malvinas', 'Mcdonald', '_Islamic_Republic', 'Isle_Man', 'People_s_', '_Federated_States', 'Moldova_Republic', '_and_Tristan', '_Da_', '_Part', '_and_Grenadines', '_and_Jan', '_Province_China', '_United_Republic', 'Turkiye', '_Great_Britain_and_Northern_Ireland', 'Minor_', '_America', '_Bolivarian_Republic', '_U_s'], ['', '_and_', '', '', '', '_d_Ivoire', '', 'McDonald', '', 'Isle_of_Man', 'Peoples_', '', 'Moldova', '_Tristan', '_da_', '_part', '_and_the_Grenadines', '_Jan', '_Province_of_China', '', 'Turkey', '', '', '_of_America', '', '_U_S'], $countryName))->name);
 
                 $getCurrenciesMethod->addMapping('self::' . $countryName, 'CurrencyAlpha3::' . NameNormalizer::normalize($currencyName));
                 $getCountriesAlpha2Method->addMapping('self::' . NameNormalizer::normalize($currencyName), 'CountryAlpha2::' . $countryName);
