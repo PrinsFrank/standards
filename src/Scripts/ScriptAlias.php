@@ -6,8 +6,8 @@ namespace PrinsFrank\Standards\Scripts;
 use PrinsFrank\Standards\BackedEnum;
 
 /**
- * @source https://www.unicode.org/iso15924/iso15924-codes.html
  * @standard ISO-15924
+ * @source https://www.unicode.org/iso15924/iso15924-codes.html
  */
 enum ScriptAlias: string
 {
