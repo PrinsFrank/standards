@@ -17,6 +17,8 @@ parameters:
         uncheckedExceptionClasses:
             - 'PHPUnit\Framework\ExpectationFailedException'
             - 'SebastianBergmann\RecursionContext\InvalidArgumentException'
+            - 'PrinsFrank\Enums\Exception\InvalidArgumentException'
+            - 'PrinsFrank\Enums\Exception\NameNotFoundException'
 includes:
     - phar://phpstan.phar/conf/bleedingEdge.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon
