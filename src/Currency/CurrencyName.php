@@ -104,7 +104,6 @@ enum CurrencyName: string
     case Lek                                                               = 'Lek';
     case Lempira                                                           = 'Lempira';
     case Leone                                                             = 'Leone';
-    case Leone_Old                                                         = 'Leone_Old';
     case Liberian_Dollar                                                   = 'Liberian Dollar';
     case Libyan_Dinar                                                      = 'Libyan Dinar';
     case Lilangeni                                                         = 'Lilangeni';
@@ -203,6 +202,9 @@ enum CurrencyName: string
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Kuna = 'Kuna';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Leone_Old = 'Leone_Old';
 
     public function toCurrencyAlpha3(): CurrencyAlpha3
     {

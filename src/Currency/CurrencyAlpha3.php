@@ -105,7 +105,6 @@ enum CurrencyAlpha3: string
     case Lek                                                               = 'ALL';
     case Lempira                                                           = 'HNL';
     case Leone                                                             = 'SLE';
-    case Leone_Old                                                         = 'SLL';
     case Liberian_Dollar                                                   = 'LRD';
     case Libyan_Dinar                                                      = 'LYD';
     case Lilangeni                                                         = 'SZL';
@@ -204,6 +203,9 @@ enum CurrencyAlpha3: string
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Kuna = 'HRK';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Leone_Old = 'SLL';
 
     public function toCurrencyNumeric(): CurrencyNumeric
     {
@@ -321,7 +323,6 @@ enum CurrencyAlpha3: string
             self::Lek                                   => 2,
             self::Lempira                               => 2,
             self::Leone                                 => 2,
-            self::Leone_Old                             => 2,
             self::Liberian_Dollar                       => 2,
             self::Libyan_Dinar                          => 3,
             self::Lilangeni                             => 2,
@@ -577,7 +578,6 @@ enum CurrencyAlpha3: string
             self::Lek                             => [CountryAlpha2::Albania],
             self::Lempira                         => [CountryAlpha2::Honduras],
             self::Leone                           => [CountryAlpha2::Sierra_Leone],
-            self::Leone_Old                       => [CountryAlpha2::Sierra_Leone],
             self::Liberian_Dollar                 => [CountryAlpha2::Liberia],
             self::Libyan_Dinar                    => [CountryAlpha2::Libya],
             self::Lilangeni                       => [CountryAlpha2::Eswatini],
