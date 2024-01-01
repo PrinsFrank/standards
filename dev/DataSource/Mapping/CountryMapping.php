@@ -32,7 +32,6 @@ class CountryMapping implements Mapping
     /**
      * @throws NoSuchElementException
      * @throws TimeoutException
-     *
      * @return list<TDataSet>
      */
     public static function toDataSet(Client $client, Crawler $crawler): array

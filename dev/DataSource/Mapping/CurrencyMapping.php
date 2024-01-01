@@ -35,7 +35,6 @@ class CurrencyMapping implements Mapping
 
     /**
      * @throws DomElementNotFoundException
-     *
      * @return list<TDataSet>
      */
     public static function toDataSet(Client $client, Crawler $crawler): array
