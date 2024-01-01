@@ -104,7 +104,6 @@ enum CurrencyNumeric: string
     case Lek                                                               = '008';
     case Lempira                                                           = '340';
     case Leone                                                             = '925';
-    case Leone_Old                                                         = '694';
     case Liberian_Dollar                                                   = '430';
     case Libyan_Dinar                                                      = '434';
     case Lilangeni                                                         = '748';
@@ -203,6 +202,9 @@ enum CurrencyNumeric: string
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Kuna = '191';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Leone_Old = '694';
 
     public static function fromInt(int $from): self
     {
