@@ -19,11 +19,15 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
 use PrinsFrank\Standards\Dev\DataTarget\NameNormalizer;
 use PrinsFrank\Standards\Dev\DomElementNotFoundException;
+use PrinsFrank\Standards\Dev\TransliterationException;
+use PrinsFrank\Standards\InvalidArgumentException;
+use PrinsFrank\Standards\KeyNotFoundException;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{CtryNm: string, CcyNm: string, Ccy: string|null, CcyNbr: string|null, CcyMnrUnts: string|null}
+ * @template TDataSet of object{CtryNm: string, CcyNm: string, Ccy: string|null, CcyNbr: string|null, CcyMnrUnts: string|null}&stdClass
  * @implements Mapping<TDataSet>
  */
 class CurrencyMapping implements Mapping
@@ -66,6 +70,9 @@ class CurrencyMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
+     * @throws TransliterationException
+     * @throws InvalidArgumentException
+     * @throws KeyNotFoundException
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array

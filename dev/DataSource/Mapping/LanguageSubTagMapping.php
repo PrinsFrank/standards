@@ -9,11 +9,12 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{Type: string, Subtag: string, Description: string, Added: string, SuppressScript: string, Scope: string, Macrolanguage: string, Comments: string, Deprecated: string, PreferredValue: string, Prefix: string, Tag: string}
+ * @template TDataSet of object{Type: string, Subtag: string, Description: string, Added: string, SuppressScript: string, Scope: string, Macrolanguage: string, Comments: string, Deprecated: string, PreferredValue: string, Prefix: string, Tag: string}&stdClass
  * @implements Mapping<TDataSet>
  */
 class LanguageSubTagMapping implements Mapping

@@ -13,11 +13,12 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Language\LanguageName;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{alpha3: string, alpha2: string, name: string, name_french: string, name_german: string}
+ * @template TDataSet of object{alpha3: string, alpha2: string, name: string, name_french: string, name_german: string}&stdClass
  * @implements Mapping<TDataSet>
  */
 class LanguageMapping implements Mapping
