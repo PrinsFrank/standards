@@ -13,6 +13,8 @@ class PrivateUsePrimarySubtagTest extends TestCase
     /**
      * @covers ::__construct
      * @covers ::isValid
+     *
+     * @throws InvalidArgumentException
      */
     public function testConstructThrowsExceptionWhenInvalidTag(): void
     {
@@ -24,6 +26,8 @@ class PrivateUsePrimarySubtagTest extends TestCase
     /**
      * @covers ::tryFrom
      * @covers ::isValid
+     *
+     * @throws InvalidArgumentException
      */
     public function testTryFrom(): void
     {
