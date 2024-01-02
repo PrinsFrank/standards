@@ -36,6 +36,7 @@ class UnitEnumTest extends TestCase
 
     /**
      * @covers ::fromKey
+     *
      * @throws InvalidArgumentException
      * @throws KeyNotFoundException
      */
@@ -46,6 +47,7 @@ class UnitEnumTest extends TestCase
 
     /**
      * @covers ::names
+     *
      * @throws InvalidArgumentException
      */
     public function testNames(): void
@@ -70,6 +72,7 @@ class UnitEnumTest extends TestCase
 
     /**
      * @covers ::fromKey
+     *
      * @throws InvalidArgumentException
      */
     public function testFromKeyThrowsExceptionNonExistingKey(): void

@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
@@ -22,9 +23,7 @@ class LanguageAlpha3TerminologyTest extends TestCase
     /** @covers ::toLanguageAlpha2 */
     public function testAllCasesCanBeConvertedToLanguageAlpha2(): void
     {
-        $cases = LanguageAlpha3Terminology::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (LanguageAlpha3Terminology::cases() as $case) {
             $case->toLanguageAlpha2();
 
             $this->addToAssertionCount(1);
@@ -34,9 +33,7 @@ class LanguageAlpha3TerminologyTest extends TestCase
     /** @covers ::toLanguageAlpha3Bibliographic */
     public function testAllCasesCanBeConvertedToLanguageAlpha3Bibliographic(): void
     {
-        $cases = LanguageAlpha3Terminology::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (LanguageAlpha3Terminology::cases() as $case) {
             static::assertNotNull($case->toLanguageAlpha3Bibliographic());
         }
     }
@@ -44,10 +41,10 @@ class LanguageAlpha3TerminologyTest extends TestCase
     /** @covers ::toLanguageName */
     public function testAllCasesCanBeConvertedToLanguageName(): void
     {
-        $cases = LanguageAlpha3Terminology::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
-            static::assertNotNull($case->toLanguageName());
+        foreach (LanguageAlpha3Terminology::cases() as $case) {
+            $case->toLanguageName();
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -71,7 +68,11 @@ class LanguageAlpha3TerminologyTest extends TestCase
         static::assertSame('Nederland', LanguageAlpha3Terminology::Dutch_Flemish->getNameForCountry(CountryAlpha2::Netherlands));
     }
 
-    /** @covers ::toLanguageTag */
+    /**
+     * @covers ::toLanguageTag
+     *
+     * @throws InvalidArgumentException
+     */
     public function testToLanguageTag(): void
     {
         static::assertEquals(new LanguageTag(LanguageAlpha3Terminology::Dutch_Flemish), LanguageAlpha3Terminology::Dutch_Flemish->toLanguageTag());
