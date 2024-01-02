@@ -5,7 +5,7 @@ namespace PrinsFrank\Standards;
 
 use Error;
 
-/** @internal This class or its methods may change between minor versions */
+/** @deprecated Will be removed in v4 of this package. If you want to use the logic here, please use prinsfrank/enums instead */
 class BackedEnum
 {
     /**

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Scripts;
 
-use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Enums\BackedEnum;
 
 /**
  * @standard ISO-15924
@@ -237,16 +237,16 @@ enum ScriptCode: string
 
     public function toScriptAlias(): ?ScriptAlias
     {
-        return BackedEnum::tryFromKey(ScriptAlias::class, $this->name);
+        return BackedEnum::tryFromName(ScriptAlias::class, $this->name);
     }
 
     public function toScriptNumber(): ScriptNumber
     {
-        return BackedEnum::fromKey(ScriptNumber::class, $this->name);
+        return BackedEnum::fromName(ScriptNumber::class, $this->name);
     }
 
     public function toScriptName(): ScriptName
     {
-        return BackedEnum::fromKey(ScriptName::class, $this->name);
+        return BackedEnum::fromName(ScriptName::class, $this->name);
     }
 }

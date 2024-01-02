@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Currency;
 
-use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
@@ -104,7 +104,6 @@ enum CurrencyNumeric: string
     case Lek                                                               = '008';
     case Lempira                                                           = '340';
     case Leone                                                             = '925';
-    case Leone_Old                                                         = '694';
     case Liberian_Dollar                                                   = '430';
     case Libyan_Dinar                                                      = '434';
     case Lilangeni                                                         = '748';
@@ -204,6 +203,9 @@ enum CurrencyNumeric: string
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Kuna = '191';
 
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Leone_Old = '694';
+
     public static function fromInt(int $from): self
     {
         return self::from(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
@@ -216,12 +218,12 @@ enum CurrencyNumeric: string
 
     public function toCurrencyAlpha3(): CurrencyAlpha3
     {
-        return BackedEnum::fromKey(CurrencyAlpha3::class, $this->name);
+        return BackedEnum::fromName(CurrencyAlpha3::class, $this->name);
     }
 
     public function toCurrencyName(): CurrencyName
     {
-        return BackedEnum::fromKey(CurrencyName::class, $this->name);
+        return BackedEnum::fromName(CurrencyName::class, $this->name);
     }
 
     public function getSymbol(): ?CurrencySymbol

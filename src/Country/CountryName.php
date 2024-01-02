@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Country;
 
-use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\Groups\GroupInterface;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
@@ -275,17 +275,17 @@ enum CountryName: string
 
     public function toCountryAlpha2(): CountryAlpha2
     {
-        return BackedEnum::fromKey(CountryAlpha2::class, $this->name);
+        return BackedEnum::fromName(CountryAlpha2::class, $this->name);
     }
 
     public function toCountryAlpha3(): CountryAlpha3
     {
-        return BackedEnum::fromKey(CountryAlpha3::class, $this->name);
+        return BackedEnum::fromName(CountryAlpha3::class, $this->name);
     }
 
     public function toCountryNumeric(): CountryNumeric
     {
-        return BackedEnum::fromKey(CountryNumeric::class, $this->name);
+        return BackedEnum::fromName(CountryNumeric::class, $this->name);
     }
 
     public function getNameInLanguage(LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string

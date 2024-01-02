@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Country;
 
 use NumberFormatter;
-use PrinsFrank\Standards\BackedEnum;
+use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\Groups\GroupInterface;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
@@ -274,18 +274,18 @@ enum CountryAlpha2: string
 
     public function toCountryAlpha3(): CountryAlpha3
     {
-        return BackedEnum::fromKey(CountryAlpha3::class, $this->name);
+        return BackedEnum::fromName(CountryAlpha3::class, $this->name);
     }
 
     public function toCountryNumeric(): CountryNumeric
     {
-        return BackedEnum::fromKey(CountryNumeric::class, $this->name);
+        return BackedEnum::fromName(CountryNumeric::class, $this->name);
     }
 
     /** @deprecated Will be removed in v4. Please use ::getNameInLanguage(LanguageAlpha2::English) instead */
     public function toCountryName(): CountryName
     {
-        return BackedEnum::fromKey(CountryName::class, $this->name);
+        return BackedEnum::fromName(CountryName::class, $this->name);
     }
 
     public function lowerCaseValue(): string
@@ -858,25 +858,22 @@ enum CountryAlpha2: string
             self::Senegal                                 => [CurrencyAlpha3::CFA_Franc_BCEAO],
             self::Serbia                                  => [CurrencyAlpha3::Serbian_Dinar],
             self::Seychelles                              => [CurrencyAlpha3::Seychelles_Rupee],
-            self::Sierra_Leone                            => [
-                CurrencyAlpha3::Leone,
-                CurrencyAlpha3::Leone_Old
-            ],
-            self::Singapore               => [CurrencyAlpha3::Singapore_Dollar],
-            self::Sint_Maarten_Dutch_part => [CurrencyAlpha3::Netherlands_Antillean_Guilder],
-            self::Slovakia                => [CurrencyAlpha3::Euro],
-            self::Slovenia                => [CurrencyAlpha3::Euro],
-            self::Solomon_Islands         => [CurrencyAlpha3::Solomon_Islands_Dollar],
-            self::Somalia                 => [CurrencyAlpha3::Somali_Shilling],
-            self::South_Africa            => [CurrencyAlpha3::Rand],
-            self::South_Sudan             => [CurrencyAlpha3::South_Sudanese_Pound],
-            self::Spain                   => [CurrencyAlpha3::Euro],
-            self::Sri_Lanka               => [CurrencyAlpha3::Sri_Lanka_Rupee],
-            self::Sudan                   => [CurrencyAlpha3::Sudanese_Pound],
-            self::Suriname                => [CurrencyAlpha3::Surinam_Dollar],
-            self::Svalbard_Jan_Mayen      => [CurrencyAlpha3::Norwegian_Krone],
-            self::Sweden                  => [CurrencyAlpha3::Swedish_Krona],
-            self::Switzerland             => [
+            self::Sierra_Leone                            => [CurrencyAlpha3::Leone],
+            self::Singapore                               => [CurrencyAlpha3::Singapore_Dollar],
+            self::Sint_Maarten_Dutch_part                 => [CurrencyAlpha3::Netherlands_Antillean_Guilder],
+            self::Slovakia                                => [CurrencyAlpha3::Euro],
+            self::Slovenia                                => [CurrencyAlpha3::Euro],
+            self::Solomon_Islands                         => [CurrencyAlpha3::Solomon_Islands_Dollar],
+            self::Somalia                                 => [CurrencyAlpha3::Somali_Shilling],
+            self::South_Africa                            => [CurrencyAlpha3::Rand],
+            self::South_Sudan                             => [CurrencyAlpha3::South_Sudanese_Pound],
+            self::Spain                                   => [CurrencyAlpha3::Euro],
+            self::Sri_Lanka                               => [CurrencyAlpha3::Sri_Lanka_Rupee],
+            self::Sudan                                   => [CurrencyAlpha3::Sudanese_Pound],
+            self::Suriname                                => [CurrencyAlpha3::Surinam_Dollar],
+            self::Svalbard_Jan_Mayen                      => [CurrencyAlpha3::Norwegian_Krone],
+            self::Sweden                                  => [CurrencyAlpha3::Swedish_Krona],
+            self::Switzerland                             => [
                 CurrencyAlpha3::Swiss_Franc,
                 CurrencyAlpha3::WIR_Euro,
                 CurrencyAlpha3::WIR_Franc
