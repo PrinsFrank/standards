@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards;
 
+use Error;
+
 /** @internal This class or its methods may change between minor versions */
 class UnitEnum
 {
@@ -35,7 +37,11 @@ class UnitEnum
         }
 
         /** @var T $itemValue */
-        $itemValue = constant("$fqn::$keyName");
+        try {
+            $itemValue = constant("$fqn::$keyName");
+        } catch (Error) {
+            return null;
+        }
 
         return $itemValue;
     }

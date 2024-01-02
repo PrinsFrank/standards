@@ -5,7 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataTarget;
 
 class EnumMethod
 {
-    /** @var array<int|string, list<string>> */
+    /** @var non-empty-array<int|string, list<string>> */
     private array $mapping = [];
 
     public function __construct(
@@ -31,7 +31,7 @@ class EnumMethod
         $sortedMapping = $this->mapping;
         ksort($sortedMapping);
 
-        $oneOfItemsIsArray = array_reduce(
+        $oneOfItemsIsArray = $sortedMapping === [] ? false : array_reduce(
             $sortedMapping,
             static function (?bool $carry, array $item) {
                 return $carry === true || count($item) > 1;
