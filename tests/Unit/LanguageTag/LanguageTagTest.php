@@ -341,7 +341,11 @@ class LanguageTagTest extends TestCase
         );
     }
 
-    /** @covers ::fromString */
+    /**
+     * @covers ::fromString
+     *
+     * @throws InvalidArgumentException
+     */
     public function testFromStringWithInvalidFormat(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -349,7 +353,11 @@ class LanguageTagTest extends TestCase
         LanguageTag::fromString('nl-nl');
     }
 
-    /** @covers ::tryFromString */
+    /**
+     * @covers ::tryFromString
+     *
+     * @throws InvalidArgumentException
+     */
     public function testTryFromString(): void
     {
         static::assertNull(LanguageTag::tryFromString('nl-nl'));

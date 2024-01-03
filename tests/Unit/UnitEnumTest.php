@@ -76,6 +76,7 @@ class UnitEnumTest extends TestCase
      * @covers ::fromKey
      *
      * @throws InvalidArgumentException
+     * @throws KeyNotFoundException
      */
     public function testFromKeyThrowsExceptionNonExistingKey(): void
     {
