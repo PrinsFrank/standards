@@ -5,3 +5,14 @@ parameters:
         - src
         - tests
         - dev
+    phpVersion: 80300
+    exceptions:
+        check:
+            missingCheckedExceptionInThrows: true
+            tooWideThrowType: true
+        implicitThrows: false
+        uncheckedExceptionClasses:
+            - 'PHPUnit\Framework\ExpectationFailedException'
+            - 'SebastianBergmann\RecursionContext\InvalidArgumentException'
+            - 'PrinsFrank\Enums\Exception\InvalidArgumentException'
+            - 'PrinsFrank\Enums\Exception\NameNotFoundException'
