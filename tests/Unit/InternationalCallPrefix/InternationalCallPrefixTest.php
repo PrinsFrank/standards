@@ -9,7 +9,6 @@ use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
-use UnhandledMatchError;
 
 /** @coversDefaultClass \PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix */
 class InternationalCallPrefixTest extends TestCase
@@ -18,11 +17,7 @@ class InternationalCallPrefixTest extends TestCase
     public function testForCountryAlpha2(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
-            try {
-                InternationalCallPrefix::forCountry($countryAlpha2);
-            } catch (UnhandledMatchError) {
-                $this->fail('No international call prefix found for "' . $countryAlpha2->name . '"');
-            }
+            InternationalCallPrefix::forCountry($countryAlpha2);
 
             $this->addToAssertionCount(1);
         }
@@ -32,11 +27,7 @@ class InternationalCallPrefixTest extends TestCase
     public function testForCountryAlpha3(): void
     {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
-            try {
-                InternationalCallPrefix::forCountry($countryAlpha3);
-            } catch (UnhandledMatchError) {
-                $this->fail('No international call prefix found for "' . $countryAlpha3->name . '"');
-            }
+            InternationalCallPrefix::forCountry($countryAlpha3);
 
             $this->addToAssertionCount(1);
         }
@@ -46,11 +37,7 @@ class InternationalCallPrefixTest extends TestCase
     public function testForCountryNumeric(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
-            try {
-                InternationalCallPrefix::forCountry($countryNumeric);
-            } catch (UnhandledMatchError) {
-                $this->fail('No international call prefix found for "' . $countryNumeric->name . '"');
-            }
+            InternationalCallPrefix::forCountry($countryNumeric);
 
             $this->addToAssertionCount(1);
         }
@@ -60,11 +47,7 @@ class InternationalCallPrefixTest extends TestCase
     public function testForCountryName(): void
     {
         foreach (CountryName::cases() as $countryName) {
-            try {
-                InternationalCallPrefix::forCountry($countryName);
-            } catch (UnhandledMatchError) {
-                $this->fail('No international call prefix found for "' . $countryName->name . '"');
-            }
+            InternationalCallPrefix::forCountry($countryName);
 
             $this->addToAssertionCount(1);
         }

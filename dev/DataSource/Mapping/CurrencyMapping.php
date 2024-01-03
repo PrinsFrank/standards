@@ -18,7 +18,8 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
 use PrinsFrank\Standards\Dev\DataTarget\NameNormalizer;
-use PrinsFrank\Standards\Dev\DomElementNotFoundException;
+use PrinsFrank\Standards\Dev\Exception\DomElementNotFoundException;
+use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
@@ -33,7 +34,10 @@ class CurrencyMapping implements Mapping
         return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml';
     }
 
-    /** @return list<TDataSet> */
+    /**
+     * @throws DomElementNotFoundException
+     * @return list<TDataSet>
+     */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $domDocument = new DOMDocument();
@@ -63,6 +67,7 @@ class CurrencyMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
+     * @throws TransliterationException
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array

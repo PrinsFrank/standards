@@ -48,6 +48,8 @@ class LanguageTagTest extends TestCase
      *
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringSimpleLanguageTag(): void
     {
@@ -74,6 +76,8 @@ class LanguageTagTest extends TestCase
      *
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringLanguageSubtagPlusScriptSubtag(): void
     {
@@ -100,6 +104,8 @@ class LanguageTagTest extends TestCase
      *
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringExtendedLanguageSubtagsAndTheirPrimaryLanguageSubtagCounterparts(): void
     {
@@ -126,6 +132,8 @@ class LanguageTagTest extends TestCase
      *
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringLanguageScriptRegion(): void
     {
@@ -144,6 +152,8 @@ class LanguageTagTest extends TestCase
      *
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringLanguageVariant(): void
     {
@@ -166,6 +176,8 @@ class LanguageTagTest extends TestCase
      *
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringLanguageRegionVariant(): void
     {
@@ -184,6 +196,8 @@ class LanguageTagTest extends TestCase
      *
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringLanguageScriptRegionVariant(): void
     {
@@ -198,6 +212,8 @@ class LanguageTagTest extends TestCase
      *
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringLanguageRegion(): void
     {
@@ -220,6 +236,8 @@ class LanguageTagTest extends TestCase
      *
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringPrivateUseSubTags(): void
     {
@@ -238,6 +256,8 @@ class LanguageTagTest extends TestCase
      *
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringPrivateUseRegistryValues(): void
     {
@@ -268,6 +288,8 @@ class LanguageTagTest extends TestCase
      *
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringWithLanguageExtensions(): void
     {
@@ -304,6 +326,8 @@ class LanguageTagTest extends TestCase
     /**
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testFromStringWithExtensions(): void
     {
@@ -317,7 +341,11 @@ class LanguageTagTest extends TestCase
         );
     }
 
-    /** @covers ::fromString */
+    /**
+     * @covers ::fromString
+     *
+     * @throws InvalidArgumentException
+     */
     public function testFromStringWithInvalidFormat(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -335,6 +363,8 @@ class LanguageTagTest extends TestCase
     /**
      * @covers ::toString
      * @covers ::__toString
+     *
+     * @throws InvalidArgumentException
      */
     public function testToString(): void
     {

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
-use PrinsFrank\Standards\Dev\TransliterationException;
+use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 
 class NameNormalizer
 {

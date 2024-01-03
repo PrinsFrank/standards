@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards;
 
+use Error;
+
 /** @deprecated Will be removed in v4 of this package. If you want to use the logic here, please use prinsfrank/enums instead */
 class UnitEnum
 {
@@ -34,8 +36,12 @@ class UnitEnum
             return null;
         }
 
-        /** @var T $itemValue */
-        $itemValue = constant("$fqn::$keyName");
+        try {
+            /** @var T $itemValue */
+            $itemValue = constant("$fqn::$keyName");
+        } catch (Error) {
+            return null;
+        }
 
         return $itemValue;
     }

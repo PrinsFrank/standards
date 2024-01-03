@@ -12,7 +12,6 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
-use TypeError;
 
 /** @coversDefaultClass \PrinsFrank\Standards\Country\CountryName */
 class CountryNameTest extends TestCase
@@ -23,11 +22,9 @@ class CountryNameTest extends TestCase
         $cases = CountryName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->toCountryAlpha2();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CountryAlpha2', $case->name));
-            }
+            $case->toCountryAlpha2();
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -37,11 +34,9 @@ class CountryNameTest extends TestCase
         $cases = CountryName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->toCountryAlpha3();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CountryAlpha3', $case->name));
-            }
+            $case->toCountryAlpha3();
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -51,11 +46,9 @@ class CountryNameTest extends TestCase
         $cases = CountryName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->toCountryNumeric();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CountryNumeric', $case->name));
-            }
+            $case->toCountryNumeric();
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -82,7 +75,11 @@ class CountryNameTest extends TestCase
         CountryName::Netherlands->isMemberOf('foo');
     }
 
-    /** @covers ::isMemberOf */
+    /**
+     * @covers ::isMemberOf
+     *
+     * @throws InvalidArgumentException
+     */
     public function testIsMemberOf(): void
     {
         static::assertTrue(CountryName::Netherlands->isMemberOf(EU::class));

@@ -5,7 +5,8 @@ namespace PrinsFrank\Standards\Dev\DataTarget;
 
 use BackedEnum;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
-use PrinsFrank\Standards\Dev\EnumNotFoundException;
+use PrinsFrank\Standards\Dev\Exception\EnumNotFoundException;
+use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use RuntimeException;
 
 class EnumFile
@@ -73,7 +74,10 @@ class EnumFile
         return $this;
     }
 
-    /** @throws EnumNotFoundException */
+    /**
+     * @throws EnumNotFoundException
+     * @throws TransliterationException
+     */
     public function writeCases(SortingInterface $sorting): self
     {
         $enumContent    = $this->getContent();
@@ -91,6 +95,10 @@ class EnumFile
         return $this->putContent($newEnumContent);
     }
 
+    /**
+     * @throws EnumNotFoundException
+     * @throws RuntimeException
+     */
     public function writeMethods(): void
     {
         foreach ($this->methods as $method) {

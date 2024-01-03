@@ -9,7 +9,6 @@ use PrinsFrank\Standards\Currency\CurrencyName;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
-use TypeError;
 
 /**
  * @coversDefaultClass \PrinsFrank\Standards\Currency\CurrencyName
@@ -22,11 +21,9 @@ class CurrencyNameTest extends TestCase
         $cases = CurrencyName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->toCurrencyNumeric();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CurrencyNumeric', $case->name));
-            }
+            $case->toCurrencyNumeric();
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -36,11 +33,9 @@ class CurrencyNameTest extends TestCase
         $cases = CurrencyName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->getSymbol();
-            } catch (TypeError) {
-                $this->fail(sprintf('Unable to retrieve symbol for %s', $case->name));
-            }
+            $case->getSymbol();
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -50,11 +45,9 @@ class CurrencyNameTest extends TestCase
         $cases = CurrencyName::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->toCurrencyAlpha3();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CurrencyAlpha3', $case->name));
-            }
+            $case->toCurrencyAlpha3();
+
+            $this->addToAssertionCount(1);
         }
     }
 
