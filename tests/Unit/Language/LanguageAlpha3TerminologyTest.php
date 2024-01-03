@@ -74,6 +74,7 @@ class LanguageAlpha3TerminologyTest extends TestCase
 
     /**
      * @covers ::toLanguageTag
+     *
      * @throws InvalidArgumentException
      */
     public function testToLanguageTag(): void

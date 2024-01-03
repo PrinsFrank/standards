@@ -9,7 +9,6 @@ use PrinsFrank\Standards\Currency\CurrencyName;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
-use TypeError;
 
 /**
  * @coversDefaultClass \PrinsFrank\Standards\Currency\CurrencyName

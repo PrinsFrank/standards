@@ -104,6 +104,7 @@ class CountryNumericTest extends TestCase
 
     /**
      * @covers ::isMemberOf
+     *
      * @throws InvalidArgumentException
      */
     public function testIsMemberOf(): void

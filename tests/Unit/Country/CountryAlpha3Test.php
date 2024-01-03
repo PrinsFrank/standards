@@ -83,6 +83,7 @@ class CountryAlpha3Test extends TestCase
 
     /**
      * @covers ::isMemberOf
+     *
      * @throws InvalidArgumentException
      */
     public function testIsMemberOf(): void

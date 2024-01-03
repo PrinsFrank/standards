@@ -9,7 +9,6 @@ use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
-use UnhandledMatchError;
 
 /** @coversDefaultClass \PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix */
 class InternationalCallPrefixTest extends TestCase

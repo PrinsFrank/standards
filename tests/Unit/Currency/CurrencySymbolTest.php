@@ -8,7 +8,6 @@ use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\Currency\CurrencyName;
 use PrinsFrank\Standards\Currency\CurrencyNumeric;
 use PrinsFrank\Standards\Currency\CurrencySymbol;
-use TypeError;
 
 /**
  * @coversDefaultClass \PrinsFrank\Standards\Currency\CurrencySymbol
