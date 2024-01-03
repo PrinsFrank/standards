@@ -95,9 +95,7 @@ class EnumFile
         return $this->putContent($newEnumContent);
     }
 
-    /**
-     * @throws EnumNotFoundException
-     */
+    /** @throws EnumNotFoundException */
     public function writeMethods(): void
     {
         foreach ($this->methods as $method) {

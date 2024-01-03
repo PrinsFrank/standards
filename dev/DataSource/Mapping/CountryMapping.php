@@ -30,9 +30,9 @@ class CountryMapping implements Mapping
     }
 
     /**
-     * @return list<TDataSet>
      * @throws NoSuchElementException
      * @throws TimeoutException
+     * @return list<TDataSet>
      */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {

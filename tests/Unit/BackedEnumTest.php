@@ -15,6 +15,7 @@ class BackedEnumTest extends TestCase
 {
     /**
      * @covers ::tryFromKey
+     *
      * @throws InvalidArgumentException
      */
     public function testTryFromKey(): void
@@ -40,6 +41,7 @@ class BackedEnumTest extends TestCase
 
     /**
      * @covers ::fromKey
+     *
      * @throws InvalidArgumentException
      * @throws KeyNotFoundException
      */
@@ -51,6 +53,7 @@ class BackedEnumTest extends TestCase
 
     /**
      * @covers ::names
+     *
      * @throws InvalidArgumentException
      */
     public function testNames(): void
@@ -79,6 +82,7 @@ class BackedEnumTest extends TestCase
 
     /**
      * @covers ::values
+     *
      * @throws InvalidArgumentException
      */
     public function testValues(): void
@@ -107,6 +111,7 @@ class BackedEnumTest extends TestCase
 
     /**
      * @covers ::toArray
+     *
      * @throws InvalidArgumentException
      */
     public function testToArray(): void
@@ -135,6 +140,7 @@ class BackedEnumTest extends TestCase
 
     /**
      * @covers ::fromKey
+     *
      * @throws InvalidArgumentException
      */
     public function testFromKeyThrowsExceptionNonExistingKey(): void

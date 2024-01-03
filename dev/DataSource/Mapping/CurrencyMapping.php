@@ -7,8 +7,6 @@ use DOMDocument;
 use DOMElement;
 use DOMXPath;
 use PrinsFrank\Enums\BackedEnum;
-use PrinsFrank\Enums\Exception\InvalidArgumentException;
-use PrinsFrank\Enums\Exception\NameNotFoundException;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\EuroZone;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;

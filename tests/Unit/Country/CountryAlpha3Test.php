@@ -12,7 +12,6 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
-use TypeError;
 
 /** @coversDefaultClass \PrinsFrank\Standards\Country\CountryAlpha3 */
 class CountryAlpha3Test extends TestCase
