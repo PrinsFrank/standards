@@ -26,7 +26,7 @@
         "phpunit/phpunit": "^9.5",
         "symfony/panther": "^2.0",
         "dbrekelmans/bdi": "^1.0",
-        "phpstan/phpstan": "1.10.41",
+        "phpstan/phpstan": "^1.10.50",
         "composer/composer": "^2.3"
     },
     "scripts": {
