@@ -126,7 +126,7 @@ class BackedEnumTest extends TestCase
         );
     }
 
-    /**@covers ::toArray */
+    /** @covers ::toArray */
     public function testToArrayThrowsExceptionOnNonEnumValue(): void
     {
         $testClass = new class () {};
