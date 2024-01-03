@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
 use BackedEnum;
+use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 
 class EnumCase
 {
@@ -14,7 +15,10 @@ class EnumCase
     ) {
     }
 
-    /** @param class-string<BackedEnum> $enumFQN */
+    /**
+     * @param class-string<BackedEnum> $enumFQN
+     * @throws TransliterationException
+     */
     public function toString(string $enumFQN): string
     {
         $case = '';
@@ -33,6 +37,9 @@ class EnumCase
         return $case;
     }
 
+    /**
+     * @throws TransliterationException
+     */
     public function __toString(): string
     {
         return NameNormalizer::normalize($this->key);

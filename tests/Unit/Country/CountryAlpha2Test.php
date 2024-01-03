@@ -23,11 +23,9 @@ class CountryAlpha2Test extends TestCase
         $cases = CountryAlpha2::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->toCountryAlpha3();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CountryAlpha3', $case->name));
-            }
+            $case->toCountryAlpha3();
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -37,11 +35,9 @@ class CountryAlpha2Test extends TestCase
         $cases = CountryAlpha2::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->toCountryNumeric();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CountryNumeric', $case->name));
-            }
+            $case->toCountryNumeric();
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -51,11 +47,9 @@ class CountryAlpha2Test extends TestCase
         $cases = CountryAlpha2::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->toCountryName();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CountryName', $case->name));
-            }
+            $case->toCountryName();
+
+            $this->addToAssertionCount(1);
         }
     }
 

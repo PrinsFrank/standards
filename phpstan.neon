@@ -12,7 +12,7 @@ parameters:
             tooWideThrowType: true
         implicitThrows: false
         uncheckedExceptionClasses:
-            - 'PHPUnit\Framework\ExpectationFailedException'
+            - 'PHPUnit\Framework\Exception'
             - 'SebastianBergmann\RecursionContext\InvalidArgumentException'
             - 'PrinsFrank\Enums\Exception\InvalidArgumentException'
             - 'PrinsFrank\Enums\Exception\NameNotFoundException'

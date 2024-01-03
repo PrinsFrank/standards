@@ -293,7 +293,10 @@ enum CountryName: string
         return $this->toCountryAlpha2()->getNameInLanguage($language);
     }
 
-    /** @param class-string<GroupInterface> $groupFQN */
+    /**
+     * @param class-string<GroupInterface> $groupFQN
+     * @throws InvalidArgumentException
+     */
     public function isMemberOf(string $groupFQN): bool
     {
         if (is_a($groupFQN, GroupInterface::class, true) === false || $groupFQN === GroupInterface::class) {

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
+use Facebook\WebDriver\Exception\NoSuchElementException;
+use Facebook\WebDriver\Exception\TimeoutException;
 use Facebook\WebDriver\Remote\RemoteWebElement;
 use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Standards\Country\CountryAlpha2;
@@ -27,7 +29,11 @@ class CountryMapping implements Mapping
         return 'https://www.iso.org/obp/ui/#search/code/';
     }
 
-    /** @return list<TDataSet> */
+    /**
+     * @return list<TDataSet>
+     * @throws NoSuchElementException
+     * @throws TimeoutException
+     */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $client->waitFor('.v-select-select');
