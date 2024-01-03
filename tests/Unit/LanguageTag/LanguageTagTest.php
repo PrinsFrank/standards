@@ -353,11 +353,7 @@ class LanguageTagTest extends TestCase
         LanguageTag::fromString('nl-nl');
     }
 
-    /**
-     * @covers ::tryFromString
-     *
-     * @throws InvalidArgumentException
-     */
+    /** @covers ::tryFromString */
     public function testTryFromString(): void
     {
         static::assertNull(LanguageTag::tryFromString('nl-nl'));

@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Language;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
-use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
 use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 use PrinsFrank\Standards\LanguageTag\PrivateUseRegionSubtag;
