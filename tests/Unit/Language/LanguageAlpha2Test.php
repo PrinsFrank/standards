@@ -72,8 +72,6 @@ class LanguageAlpha2Test extends TestCase
 
     /**
      * @covers ::toLanguageTag
-     *
-     * @throws InvalidArgumentException
      */
     public function testToLanguageTag(): void
     {

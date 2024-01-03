@@ -74,8 +74,6 @@ class LanguageAlpha3BibliographicTest extends TestCase
 
     /**
      * @covers ::toLanguageTag
-     *
-     * @throws InvalidArgumentException
      */
     public function testToLanguageTag(): void
     {

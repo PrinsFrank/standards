@@ -7935,7 +7935,6 @@ enum LanguageAlpha3Extensive: string
     /**
      * @param list<LanguageTagVariant> $variantSubtag,
      * @param list<string> $extensionSubtag
-     * @throws InvalidArgumentException
      */
     public function toLanguageTag(
         LanguageAlpha3Terminology|LanguageAlpha3Extensive|null     $extendedLanguageSubtag = null,
