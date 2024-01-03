@@ -102,7 +102,10 @@ class CountryNumericTest extends TestCase
         CountryNumeric::Netherlands->isMemberOf('foo');
     }
 
-    /** @covers ::isMemberOf */
+    /**
+     * @covers ::isMemberOf
+     * @throws InvalidArgumentException
+     */
     public function testIsMemberOf(): void
     {
         static::assertTrue(CountryNumeric::Netherlands->isMemberOf(EU::class));

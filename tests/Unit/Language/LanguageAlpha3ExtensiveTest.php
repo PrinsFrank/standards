@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Tests\Unit\Language;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
 use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
@@ -19,7 +20,10 @@ class LanguageAlpha3ExtensiveTest extends TestCase
         static::assertSame('Nederland', LanguageAlpha3Extensive::Dutch->getNameForCountry(CountryAlpha2::Netherlands));
     }
 
-    /** @covers ::toLanguageTag */
+    /**
+     * @covers ::toLanguageTag
+     * @throws InvalidArgumentException
+     */
     public function testToLanguageTag(): void
     {
         static::assertEquals(new LanguageTag(LanguageAlpha3Extensive::Dutch), LanguageAlpha3Extensive::Dutch->toLanguageTag());

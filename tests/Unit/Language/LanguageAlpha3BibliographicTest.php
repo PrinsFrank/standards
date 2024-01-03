@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
@@ -71,7 +72,10 @@ class LanguageAlpha3BibliographicTest extends TestCase
         static::assertSame('Nederland', LanguageAlpha3Bibliographic::Dutch_Flemish->getNameForCountry(CountryAlpha2::Netherlands));
     }
 
-    /** @covers ::toLanguageTag */
+    /**
+     * @covers ::toLanguageTag
+     * @throws InvalidArgumentException
+     */
     public function testToLanguageTag(): void
     {
         static::assertEquals(new LanguageTag(LanguageAlpha3Terminology::Dutch_Flemish), LanguageAlpha3Bibliographic::Dutch_Flemish->toLanguageTag());

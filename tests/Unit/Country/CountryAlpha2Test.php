@@ -81,7 +81,10 @@ class CountryAlpha2Test extends TestCase
         CountryAlpha2::Netherlands->isMemberOf('foo');
     }
 
-    /** @covers ::isMemberOf */
+    /**
+     * @covers ::isMemberOf
+     * @throws InvalidArgumentException
+     */
     public function testIsMemberOf(): void
     {
         static::assertTrue(CountryAlpha2::Netherlands->isMemberOf(EU::class));

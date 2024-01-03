@@ -23,11 +23,9 @@ class CurrencyNumericTest extends TestCase
         $cases = CurrencyNumeric::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->toCurrencyAlpha3();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CurrencyAlpha3', $case->name));
-            }
+            $case->toCurrencyAlpha3();
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -37,11 +35,9 @@ class CurrencyNumericTest extends TestCase
         $cases = CurrencyNumeric::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->toCurrencyName();
-            } catch (TypeError) {
-                $this->fail(sprintf('Case %s could not be converted to CurrencyName', $case->name));
-            }
+            $case->toCurrencyName();
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -51,11 +47,9 @@ class CurrencyNumericTest extends TestCase
         $cases = CurrencyNumeric::cases();
         static::assertNotEmpty($cases);
         foreach ($cases as $case) {
-            try {
-                $case->getSymbol();
-            } catch (TypeError) {
-                $this->fail(sprintf('Unable to retrieve symbol for %s', $case->name));
-            }
+            $case->getSymbol();
+
+            $this->addToAssertionCount(1);
         }
     }
 
