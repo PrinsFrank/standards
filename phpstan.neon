@@ -7,7 +7,7 @@ parameters:
         - dev
     phpVersion: 80300
     stubFiles:
-        stubs/SymfonyPantherDomCrawler.stub
+        - stubs/SymfonyPantherDomCrawler.stub
     exceptions:
         check:
             missingCheckedExceptionInThrows: true
