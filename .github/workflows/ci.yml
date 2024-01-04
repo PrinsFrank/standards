@@ -1,0 +1,306 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [opened, synchronize]
+    branches: [ main ]
+
+env:
+  PHP_VERSION: 8.3 # Latest stable version. See php-unit for supported version matrix
+  GLOBAL_COMPOSER_CACHE_PATH: '/tmp/composer'
+  PHPSTAN_CACHE_DIR: '/tmp/phpstan'
+  COVERAGE_PATH: '/coverage.xml'
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  composer-build-dev:
+    name: Composer DEV
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Pull composer vendor cache
+        id: pull-composer-build-dev-vendor-cache
+        uses: actions/cache/restore@v3
+        with:
+          path: vendor
+          lookup-only: true
+          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            composer-build-dev-
+
+      - name: Setup PHP version
+        if: steps.pull-composer-build-dev-vendor-cache.outputs.cache-hit != 'true'
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          coverage: none
+
+      - name: Install dependencies
+        if: steps.pull-composer-build-dev-vendor-cache.outputs.cache-hit != 'true'
+        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer install --no-scripts --no-progress
+
+      - name: Push composer vendor cache
+        id: push-composer-build-dev-vendor-cache-lock
+        if: steps.pull-composer-build-dev-vendor-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v3
+        with:
+          path: vendor
+          key: ${{ steps.pull-composer-build-dev-vendor-cache.outputs.cache-primary-key }}
+
+  composer-validate:
+    name: Validate composer.json
+    runs-on: ubuntu-latest
+    needs: composer-build-dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          coverage: none
+
+      - name: Pull composer vendor cache
+        uses: actions/cache/restore@v3
+        with:
+          path: vendor
+          fail-on-cache-miss: true
+          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
+
+      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
+        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+  composer-psr:
+    name: Check namespaces
+    runs-on: ubuntu-latest
+    needs: composer-build-dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          coverage: none
+
+      - name: Pull composer vendor cache
+        uses: actions/cache/restore@v3
+        with:
+          path: vendor
+          fail-on-cache-miss: true
+          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
+
+      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
+        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+
+      - name: Check Optimized autoload
+        run: composer dump-autoload --optimize --strict-psr
+
+  php-code-style:
+    name: PHP Code Style
+    runs-on: ubuntu-latest
+    needs: composer-build-dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          coverage: none
+
+      - name: Pull composer vendor cache
+        uses: actions/cache/restore@v3
+        with:
+          path: vendor
+          fail-on-cache-miss: true
+          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
+
+      - name: Load php-cs-fixer cache
+        id: php-cs-fixer-cache
+        uses: actions/cache/restore@v3
+        with:
+          path: .php-cs-fixer.cache
+          key: php-cs-fixer-${{ github.ref_name }}
+          restore-keys: |
+            php-cs-fixer-
+
+      - name: Check code style
+        run: composer cs
+
+      - name: Push php-cs-fixer branch cache
+        id: push-php-cs-fixer-cache-branch
+        if: always()
+        uses: actions/cache/save@v3
+        with:
+          path: .php-cs-fixer.cache
+          key: php-cs-fixer-${{ github.ref_name }}
+
+  php-stan:
+    name: PHP Stan
+    runs-on: ubuntu-latest
+    needs: composer-build-dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          coverage: none
+
+      - name: Pull composer vendor cache
+        uses: actions/cache/restore@v3
+        with:
+          path: vendor
+          fail-on-cache-miss: true
+          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
+
+      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
+        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+
+      - name: Pull PHPStan cache
+        id: pull-phpstan-cache
+        uses: actions/cache/restore@v3
+        with:
+          path: ${{ env.PHPSTAN_CACHE_DIR }}
+          key: phpstan-${{ github.ref_name }}
+          restore-keys: |
+            phpstan
+
+      - name: Run PHPStan
+        run: composer stan
+
+      - name: Install gh-actions cache plugin
+        if: always()
+        run: gh extension install actions/gh-actions-cache
+
+      - name: Clear previous version of PHPStan branch cache
+        if: always() # We always delete the cache, because even if it was not 'hit', it might have been created by a commit in the meantime
+        continue-on-error: true
+        run: gh actions-cache delete phpstan-${{ github.ref_name }} -B ${{ github.ref }} --confirm
+
+      - name: Push PHPStan branch cache
+        id: push-phpstan-cache-branch
+        if: always()
+        uses: actions/cache/save@v3
+        with:
+          path: ${{ env.PHPSTAN_CACHE_DIR }}
+          key: phpstan-${{ github.ref_name }}
+
+      - name: Clear previous version of PHPStan master cache
+        if: github.ref == 'refs/heads/master'
+        continue-on-error: true
+        run: gh actions-cache delete phpstan -B ${{ github.ref }} --confirm
+
+      - name: Push PHPStan master cache
+        id: push-phpstan-cache-master
+        if: github.ref == 'refs/heads/master'
+        uses: actions/cache/save@v3
+        with:
+          path: ${{ env.PHPSTAN_CACHE_DIR }}
+          key: phpstan
+
+  php-unit:
+    name: PHP Tests - Unit
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: [8.1, 8.2, 8.3]
+    needs: composer-build-dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+
+      - name: Pull composer vendor cache
+        uses: actions/cache/restore@v3
+        with:
+          path: vendor
+          fail-on-cache-miss: true
+          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
+
+      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
+        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+
+      - name: Run Unit tests
+        run: composer unit
+
+  php-coverage:
+    name: PHP Test coverage
+    runs-on: ubuntu-latst
+    needs: composer-build-dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: pcov
+
+      - name: Pull composer vendor cache
+        uses: actions/cache/restore@v3
+        with:
+          path: vendor
+          fail-on-cache-miss: true
+          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
+
+      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
+        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+
+      - name: Run Unit tests
+        run: vendor/bin/phpunit --coverage-clover=${{ env.COVERAGE_PATH }}
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ${{ env.COVERAGE_PATH }}
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  php-lint:
+    name: PHP Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          coverage: none
+
+      - name: Lint files
+        run: find . -type f -name '*.php' -print0 | xargs -0 -n1 -P16 php -l -n | (! grep -v "No syntax errors detected" )
+
+  editorconfig:
+    name: EditorConfig
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Check EditorConfig configuration
+        run: test -f .editorconfig
+
+      - name: Check adherence to EditorConfig
+        uses: greut/eclint-action@v0
