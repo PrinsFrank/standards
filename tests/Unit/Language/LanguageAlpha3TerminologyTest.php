@@ -33,7 +33,9 @@ class LanguageAlpha3TerminologyTest extends TestCase
     public function testAllCasesCanBeConvertedToLanguageAlpha3Bibliographic(): void
     {
         foreach (LanguageAlpha3Terminology::cases() as $case) {
-            static::assertNotNull($case->toLanguageAlpha3Bibliographic());
+            $case->toLanguageAlpha3Bibliographic();
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -41,7 +43,9 @@ class LanguageAlpha3TerminologyTest extends TestCase
     public function testAllCasesCanBeConvertedToLanguageName(): void
     {
         foreach (LanguageAlpha3Terminology::cases() as $case) {
-            static::assertNotNull($case->toLanguageName());
+            $case->toLanguageName();
+
+            $this->addToAssertionCount(1);
         }
     }
 

@@ -75,7 +75,7 @@ class LanguageMapping implements Mapping
             if (strlen($dataRow->alpha3) === 3) {
                 $languageAlpha3Terminology->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
                 $languageAlpha3Bibliographic->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
-            } elseif (preg_match('/(?P<bibliographic>[a-z]{3})\s+\(B\)\n(?P<terminology>[a-z]{3})\s+\(T\)/', $dataRow->alpha3, $matches)) {
+            } elseif (preg_match('/(?P<bibliographic>[a-z]{3})\s+\(B\)\n(?P<terminology>[a-z]{3})\s+\(T\)/', $dataRow->alpha3, $matches) === 1) {
                 $languageAlpha3Terminology->addCase(new EnumCase($dataRow->name, $matches['terminology']));
                 $languageAlpha3Bibliographic->addCase(new EnumCase($dataRow->name, $matches['bibliographic']));
             }

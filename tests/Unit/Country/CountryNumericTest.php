@@ -57,7 +57,7 @@ class CountryNumericTest extends TestCase
     public function testFromIntThrowsExceptionOnNonExistingValue(): void
     {
         $this->expectException(ValueError::class);
-        static::assertNull(CountryNumeric::fromInt(1));
+        CountryNumeric::fromInt(1);
     }
 
     /** @covers ::tryFromInt */

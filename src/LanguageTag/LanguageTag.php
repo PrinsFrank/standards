@@ -34,7 +34,9 @@ class LanguageTag implements Stringable
         public readonly array                                                                                                          $extensionSubtag = [],
         public readonly string|null                                                                                                    $privateUseSubtag = null,
     ) {
+        /** @phpstan-ignore-next-line as not everyone has PHPStan to tell them not to pass something else than a LanguageTagVariant */
         array_map(static function (mixed $variantSubtag) { $variantSubtag instanceof LanguageTagVariant || throw new InvalidArgumentException('Param $variantSubtag should be an array of "' . LanguageTagVariant::class . '"');}, $this->variantSubtag);
+        /** @phpstan-ignore-next-line as not everyone has PHPStan to tell them not to pass something else than a string */
         array_map(static function (mixed $extensionSubtag) { is_string($extensionSubtag) || throw new InvalidArgumentException('Param $variantSubtag should be an array of strings');}, $this->extensionSubtag);
     }
 
@@ -72,28 +74,24 @@ class LanguageTag implements Stringable
             if ($extendedLanguageSubtag === null
                 && $regionSubtag        === null
                 && $variantSubtag       === []
-                && $privateUseSubtag    === null
                 && ($matchesExtendedLanguage = LanguageAlpha3Terminology::tryFrom($subTag) ?? LanguageAlpha3Extensive::tryFrom($subTag)) !== null) {
                 $extendedLanguageSubtag = $matchesExtendedLanguage;
             } elseif ($scriptSubtag  === null
                 && $regionSubtag     === null
                 && $variantSubtag    === []
-                && $privateUseSubtag === null
                 && ($matchesScriptTag = ScriptCode::tryFrom($subTag)) !== null) {
                 $scriptSubtag = $matchesScriptTag;
             } elseif ($regionSubtag  === null
                 && $variantSubtag    === []
-                && $privateUseSubtag === null
                 && ($matchesRegionTag = CountryAlpha2::tryFrom($subTag) ?? GeographicRegion::tryFrom($subTag) ?? PrivateUseRegionSubtag::tryFrom($subTag)) !== null) {
                 $regionSubtag = $matchesRegionTag;
-            } elseif ($privateUseSubtag === null
-                && ($matchesVariantTag = LanguageTagVariant::tryFrom($subTag)) !== null) {
+            } elseif (($matchesVariantTag = LanguageTagVariant::tryFrom($subTag)) !== null) {
                 $variantSubtag[] = $matchesVariantTag;
             } elseif (SingleCharacterSubtag::tryFrom($subTag) !== null) {
                 $privateUseSubtag = implode($subtagSeparator->value, array_slice($subTags, $index + 1));
 
                 break;
-            } elseif ($privateUseSubtag === null && strlen($subTag) === 1) {
+            } elseif (strlen($subTag) === 1) {
                 $extensionSubtag = array_slice($subTags, $index);
 
                 break;

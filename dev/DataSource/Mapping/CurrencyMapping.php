@@ -45,7 +45,9 @@ class CurrencyMapping implements Mapping
         $domDocument->loadXML($client->getPageSource());
         $xPath = new DOMXPath($domDocument);
         $items = $xPath->query('//ISO_4217/CcyTbl/CcyNtry');
-        $items !== false ?: throw new DomElementNotFoundException('');
+        if ($items === false) {
+            throw new DomElementNotFoundException();
+        }
 
         $dataSet = [];
         /** @var DOMElement $item */

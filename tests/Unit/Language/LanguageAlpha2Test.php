@@ -39,7 +39,9 @@ class LanguageAlpha2Test extends TestCase
     public function testAllCasesCanBeConvertedToLanguageName(): void
     {
         foreach (LanguageAlpha2::cases() as $case) {
-            static::assertNotNull($case->toLanguageName());
+            $case->toLanguageName();
+
+            $this->addToAssertionCount(1);
         }
     }
 
