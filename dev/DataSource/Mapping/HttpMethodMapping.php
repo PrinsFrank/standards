@@ -10,11 +10,12 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Http\HttpMethod;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{alpha3: string, alpha2: string, name: string, name_french: string, name_german: string}
+ * @template TDataSet of object{alpha3: string, alpha2: string, name: string, name_french: string, name_german: string}&stdClass
  * @implements Mapping<TDataSet>
  */
 class HttpMethodMapping implements Mapping

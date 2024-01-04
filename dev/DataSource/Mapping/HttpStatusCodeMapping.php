@@ -10,11 +10,12 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueWithDeprecatedTagsSeparateS
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Http\HttpStatusCode;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{value: string, description: string, reference: string}
+ * @template TDataSet of object{value: string, description: string, reference: string}&stdClass
  * @implements Mapping<TDataSet>
  */
 class HttpStatusCodeMapping implements Mapping

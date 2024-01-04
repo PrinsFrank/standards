@@ -13,11 +13,12 @@ use PrinsFrank\Standards\Scripts\ScriptAlias;
 use PrinsFrank\Standards\Scripts\ScriptNumber;
 use PrinsFrank\Standards\Scripts\ScriptName;
 use PrinsFrank\Standards\Scripts\ScriptCode;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{code: string, number: string, name: string, french_name: string, alias: string, age: string, date: string}
+ * @template TDataSet of object{code: string, number: string, name: string, french_name: string, alias: string, age: string, date: string}&stdClass
  * @implements Mapping<TDataSet>
  */
 class ScriptMapping implements Mapping

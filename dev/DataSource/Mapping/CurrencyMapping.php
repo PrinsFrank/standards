@@ -20,11 +20,12 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
 use PrinsFrank\Standards\Dev\DataTarget\NameNormalizer;
 use PrinsFrank\Standards\Dev\Exception\DomElementNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{CtryNm: string, CcyNm: string, Ccy: string|null, CcyNbr: string|null, CcyMnrUnts: string|null}
+ * @template TDataSet of object{CtryNm: string, CcyNm: string, Ccy: string|null, CcyNbr: string|null, CcyMnrUnts: string|null}&stdClass
  * @implements Mapping<TDataSet>
  */
 class CurrencyMapping implements Mapping

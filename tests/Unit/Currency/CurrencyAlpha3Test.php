@@ -20,9 +20,7 @@ class CurrencyAlpha3Test extends TestCase
     /** @covers ::toCurrencyNumeric */
     public function testAllCasesCanBeConvertedToCurrencyNumeric(): void
     {
-        $cases = CurrencyAlpha3::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CurrencyAlpha3::cases() as $case) {
             $case->toCurrencyNumeric();
 
             $this->addToAssertionCount(1);
@@ -32,9 +30,7 @@ class CurrencyAlpha3Test extends TestCase
     /** @covers ::toCurrencyName */
     public function testAllCasesCanBeConvertedToCurrencyName(): void
     {
-        $cases = CurrencyAlpha3::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CurrencyAlpha3::cases() as $case) {
             $case->toCurrencyName();
 
             $this->addToAssertionCount(1);
@@ -44,9 +40,7 @@ class CurrencyAlpha3Test extends TestCase
     /** @covers ::getSymbol */
     public function testAllCasesHaveAccessToSymbolOrNull(): void
     {
-        $cases = CurrencyAlpha3::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CurrencyAlpha3::cases() as $case) {
             $case->getSymbol();
 
             $this->addToAssertionCount(1);

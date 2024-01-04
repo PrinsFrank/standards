@@ -15,11 +15,12 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSor
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string}
+ * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string}&stdClass
  * @implements Mapping<TDataSet>
  */
 class CountryMapping implements Mapping

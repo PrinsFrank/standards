@@ -8,11 +8,12 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueWithDeprecatedTagsSeparateS
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{Id: string, Part2B: string, Part2T: string, Part1: string, Scope: string, LanguageType: string, RefName: string, Comment: string}
+ * @template TDataSet of object{Id: string, Part2B: string, Part2T: string, Part1: string, Scope: string, LanguageType: string, RefName: string, Comment: string}&stdClass
  * @implements Mapping<TDataSet>
  */
 class LanguageExtensiveMapping implements Mapping
