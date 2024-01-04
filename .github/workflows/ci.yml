@@ -50,7 +50,7 @@ jobs:
           key: ${{ steps.pull-composer-build-dev-vendor-cache.outputs.cache-primary-key }}
 
   composer-validate:
-    name: PHP Checks
+    name: Validate composer.json
     runs-on: ubuntu-latest
     needs: composer-build-dev
     steps:
@@ -77,7 +77,7 @@ jobs:
         run: composer validate --strict
 
   composer-psr:
-    name: PHP Checks
+    name: Check namespaces
     runs-on: ubuntu-latest
     needs: composer-build-dev
     steps:
@@ -102,33 +102,6 @@ jobs:
 
       - name: Check Optimized autoload
         run: composer dump-autoload --optimize --strict-psr
-
-  composer-unused:
-    name: PHP Checks
-    runs-on: ubuntu-latest
-    needs: composer-build-dev
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ env.PHP_VERSION }}
-          coverage: none
-
-      - name: Pull composer vendor cache
-        uses: actions/cache/restore@v3
-        with:
-          path: vendor
-          fail-on-cache-miss: true
-          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
-
-      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
-        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
-
-      - name: Check for unused locked packages
-        run: composer remove --unused
 
   php-code-style:
     name: PHP Code Style
