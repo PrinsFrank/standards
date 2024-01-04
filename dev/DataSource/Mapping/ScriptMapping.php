@@ -34,7 +34,6 @@ class ScriptMapping implements Mapping
         $items = $crawler->filterXPath('//table[@class="simple"]/tbody/tr')->getIterator();
 
         $dataSet = [];
-        /** @var RemoteWebElement $item */
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
             if (count($columns) !== 7) {

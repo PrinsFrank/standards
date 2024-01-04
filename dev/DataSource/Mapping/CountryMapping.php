@@ -45,7 +45,6 @@ class CountryMapping implements Mapping
         $items = $crawler->filterXPath('//tbody[@class="v-grid-body"]/tr')->getIterator();
 
         $dataSet = [];
-        /** @var RemoteWebElement $item */
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
 

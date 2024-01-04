@@ -34,7 +34,6 @@ class LanguageMapping implements Mapping
         $items = $crawler->filterXPath('//table[@width="100%"]/tbody/tr')->getIterator();
 
         $dataSet = [];
-        /** @var RemoteWebElement $item */
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
             if (count($columns) !== 5 || $columns[2]->getText() === 'Reserved for local use') {
