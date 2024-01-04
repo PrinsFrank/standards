@@ -7,6 +7,8 @@ parameters:
         - dev
     phpVersion: 80300
     stubFiles:
+        - dev/stubs/FacebookWebDriverWebDriverElement.stub
+        - dev/stubs/SymfonyComponentDomCrawler.stub
         - dev/stubs/SymfonyPantherDomCrawler.stub
     exceptions:
         check:
