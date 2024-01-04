@@ -5,10 +5,11 @@ namespace Symfony\Component\Panther\DomCrawler;
 
 use Facebook\WebDriver\WebDriverElement;
 use IteratorAggregate;
+use Symfony\Component\DomCrawler\Crawler as BaseCrawler;
 
 /**
  * @implements IteratorAggregate<int, WebDriverElement>
  */
-class Crawler implements \Countable, \IteratorAggregate
+final class Crawler extends BaseCrawler implements WebDriverElement
 {
 }
