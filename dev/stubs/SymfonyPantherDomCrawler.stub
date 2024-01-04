@@ -9,6 +9,6 @@ use IteratorAggregate;
 /**
  * @implements IteratorAggregate<int, WebDriverElement>
  */
-class SymfonyPantherDomCrawler
+class Crawler implements \Countable, \IteratorAggregate
 {
 }
