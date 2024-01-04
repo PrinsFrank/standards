@@ -6,7 +6,7 @@ parameters:
         - tests
         - dev
     phpVersion: 80300
-    stubsFiles:
+    stubFiles:
         stubs/SymfonyPantherDomCrawler.stub
     exceptions:
         check:
