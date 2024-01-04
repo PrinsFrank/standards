@@ -19,6 +19,8 @@ class CurrencySymbolTest extends TestCase
     {
         foreach (CurrencyAlpha3::cases() as $case) {
             CurrencySymbol::forCurrency($case);
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -27,6 +29,8 @@ class CurrencySymbolTest extends TestCase
     {
         foreach (CurrencyName::cases() as $case) {
             CurrencySymbol::forCurrency($case);
+
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -35,6 +39,8 @@ class CurrencySymbolTest extends TestCase
     {
         foreach (CurrencyNumeric::cases() as $case) {
             CurrencySymbol::forCurrency($case);
+
+            $this->addToAssertionCount(1);
         }
     }
 }
