@@ -12,6 +12,7 @@ env:
   GLOBAL_COMPOSER_CACHE_PATH: '/tmp/composer'
   PHPSTAN_CACHE_DIR: '/tmp/phpstan'
   COVERAGE_PATH: '/coverage.xml'
+  GH_TOKEN: ${{ github.token }}
 
 jobs:
   composer-build-dev:
