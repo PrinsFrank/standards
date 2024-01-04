@@ -42,12 +42,12 @@ class EnumMethod
             sort($values);
 
             if (count($values) <= 1) {
-                $mappingString .= $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . implode(',', $values) . ($oneOfItemsIsArray ? ']' : '') . ',' . PHP_EOL;
+                $mappingString .= $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . implode(',', $values) . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
 
                 continue;
             }
 
-            $mappingString .= $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . implode(',' . PHP_EOL, $values) . PHP_EOL . ($oneOfItemsIsArray ? ']' : '') . ',' . PHP_EOL;
+            $mappingString .= $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . implode(',' . PHP_EOL, $values) . PHP_EOL . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
         }
 
         if ($this->default !== null) {
