@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Standards\Tests;
+namespace PrinsFrank\Standards\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\UnitEnum;
