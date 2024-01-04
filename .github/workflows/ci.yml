@@ -8,9 +8,10 @@ on:
     branches: [ main ]
 
 env:
-  PHP_VERSION: 8.3
+  PHP_VERSION: 8.3 # Latest stable version. See php-unit for supported version matrix
   GLOBAL_COMPOSER_CACHE_PATH: '/tmp/composer'
   PHPSTAN_CACHE_DIR: '/tmp/phpstan'
+  COVERAGE_PATH: '/coverage.xml'
 
 jobs:
   composer-build-dev:
@@ -213,6 +214,9 @@ jobs:
   php-unit:
     name: PHP Tests - Unit
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: [8.1, 8.2, 8.3]
     needs: composer-build-dev
     steps:
       - name: Checkout code
@@ -221,7 +225,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ env.PHP_VERSION }}
+          php-version: ${{ matrix.php-version }}
           coverage: none
 
       - name: Pull composer vendor cache
@@ -236,6 +240,40 @@ jobs:
 
       - name: Run Unit tests
         run: composer unit
+
+  php-coverage:
+    name: PHP Test coverage
+    runs-on: ubuntu-latst
+    needs: composer-build-dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: pcov
+
+      - name: Pull composer vendor cache
+        uses: actions/cache/restore@v3
+        with:
+          path: vendor
+          fail-on-cache-miss: true
+          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
+
+      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
+        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+
+      - name: Run Unit tests
+        run: vendor/bin/phpunit --coverage-clover=${{ env.COVERAGE_PATH }}
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ${{ env.COVERAGE_PATH }}
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   php-lint:
     name: PHP Lint
