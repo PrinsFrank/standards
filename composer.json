@@ -25,7 +25,7 @@
         "ext-dom": "*",
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpunit/phpunit": "^9.5",
-        "symfony/panther": "^2.0",
+        "symfony/panther": "^2.1.1",
         "dbrekelmans/bdi": "^1.0",
         "phpstan/phpstan": "^1.10.50",
         "composer/composer": "^2.3"

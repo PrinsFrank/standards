@@ -6,6 +6,8 @@ parameters:
         - tests
         - dev
     phpVersion: 80300
+    stubsFiles:
+        stubs/SymfonyPantherDomCrawler.stub
     exceptions:
         check:
             missingCheckedExceptionInThrows: true

@@ -6,6 +6,7 @@
 /dev                export-ignore
 /docs/gifs          export-ignore
 /docs/images        export-ignore
+/stubs              export-ignore
 /tests              export-ignore
 /.gitattributes     export-ignore
 /CONTRIBUTING.md    export-ignore
