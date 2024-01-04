@@ -257,6 +257,9 @@ jobs:
     name: EditorConfig
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Check EditorConfig configuration
         run: test -f .editorconfig
 
