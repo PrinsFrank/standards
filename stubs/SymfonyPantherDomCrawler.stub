@@ -1,7 +1,10 @@
 <?php
 declare(strict_types=1);
 
+namespace Symfony\Component\Panther\DomCrawler;
+
 use Facebook\WebDriver\WebDriverElement;
+use IteratorAggregate;
 
 /**
  * @implements IteratorAggregate<int, WebDriverElement>
