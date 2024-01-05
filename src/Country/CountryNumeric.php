@@ -14,6 +14,8 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
+use TypeError;
+use ValueError;
 
 /**
  * @standard ISO3166_1
@@ -271,6 +273,10 @@ enum CountryNumeric: string
     case Zambia                                  = '894';
     case Zimbabwe                                = '716';
 
+    /**
+     * @throws TypeError
+     * @throws ValueError
+     */
     public static function fromInt(int $from): self
     {
         return self::from(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
