@@ -25,7 +25,7 @@
         "ext-dom": "*",
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpunit/phpunit": "^9.5",
-        "symfony/panther": "^2.1.1",
+        "symfony/panther": "dev-document-iterator-type",
         "dbrekelmans/bdi": "^1.0",
         "phpstan/phpstan": "^1.10.50",
         "composer/composer": "^2.3"
@@ -49,5 +49,11 @@
         "update-spec-language-subtag": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageSubTagMapping",
         "update-spec-scripts": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\ScriptMapping",
         "detect-drivers": "bdi detect drivers"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/PrinsFrank/symfony-panther"
+        }
+    ]
 }
