@@ -49,6 +49,7 @@ class CurrencyNumericTest extends TestCase
 
     /**
      * @covers ::fromInt
+     *
      * @throws TypeError
      * @throws ValueError
      */
@@ -59,6 +60,7 @@ class CurrencyNumericTest extends TestCase
 
     /**
      * @covers ::fromInt
+     *
      * @throws ValueError
      * @throws TypeError
      */

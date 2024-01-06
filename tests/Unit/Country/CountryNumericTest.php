@@ -50,6 +50,7 @@ class CountryNumericTest extends TestCase
 
     /**
      * @covers ::fromInt
+     *
      * @throws TypeError
      * @throws ValueError
      */
@@ -60,6 +61,7 @@ class CountryNumericTest extends TestCase
 
     /**
      * @covers ::fromInt
+     *
      * @throws TypeError
      * @throws ValueError
      */
