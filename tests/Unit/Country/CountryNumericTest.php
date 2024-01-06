@@ -12,6 +12,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
+use TypeError;
 use ValueError;
 
 /** @coversDefaultClass \PrinsFrank\Standards\Country\CountryNumeric */
@@ -47,13 +48,21 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    /** @covers ::fromInt */
+    /**
+     * @covers ::fromInt
+     * @throws TypeError
+     * @throws ValueError
+     */
     public function testFromInt(): void
     {
         static::assertEquals(CountryNumeric::Albania, CountryNumeric::fromInt(8));
     }
 
-    /** @covers ::fromInt */
+    /**
+     * @covers ::fromInt
+     * @throws TypeError
+     * @throws ValueError
+     */
     public function testFromIntThrowsExceptionOnNonExistingValue(): void
     {
         $this->expectException(ValueError::class);
