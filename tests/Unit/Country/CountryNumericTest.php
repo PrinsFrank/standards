@@ -12,6 +12,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
+use TypeError;
 use ValueError;
 
 /** @coversDefaultClass \PrinsFrank\Standards\Country\CountryNumeric */
@@ -20,9 +21,7 @@ class CountryNumericTest extends TestCase
     /** @covers ::toCountryAlpha2 */
     public function testAllCasesCanBeConvertedToCountryAlpha2(): void
     {
-        $cases = CountryNumeric::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CountryNumeric::cases() as $case) {
             $case->toCountryAlpha2();
 
             $this->addToAssertionCount(1);
@@ -32,9 +31,7 @@ class CountryNumericTest extends TestCase
     /** @covers ::toCountryAlpha3 */
     public function testAllCasesCanBeConvertedToCountryAlpha3(): void
     {
-        $cases = CountryNumeric::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CountryNumeric::cases() as $case) {
             $case->toCountryAlpha3();
 
             $this->addToAssertionCount(1);
@@ -44,26 +41,34 @@ class CountryNumericTest extends TestCase
     /** @covers ::toCountryName */
     public function testAllCasesCanBeConvertedToCountryName(): void
     {
-        $cases = CountryNumeric::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CountryNumeric::cases() as $case) {
             $case->toCountryName();
 
             $this->addToAssertionCount(1);
         }
     }
 
-    /** @covers ::fromInt */
+    /**
+     * @covers ::fromInt
+     *
+     * @throws TypeError
+     * @throws ValueError
+     */
     public function testFromInt(): void
     {
         static::assertEquals(CountryNumeric::Albania, CountryNumeric::fromInt(8));
     }
 
-    /** @covers ::fromInt */
+    /**
+     * @covers ::fromInt
+     *
+     * @throws TypeError
+     * @throws ValueError
+     */
     public function testFromIntThrowsExceptionOnNonExistingValue(): void
     {
         $this->expectException(ValueError::class);
-        static::assertNull(CountryNumeric::fromInt(1));
+        CountryNumeric::fromInt(1);
     }
 
     /** @covers ::tryFromInt */

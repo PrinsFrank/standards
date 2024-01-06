@@ -17,30 +17,30 @@ class CurrencySymbolTest extends TestCase
     /** @covers ::forCurrency */
     public function testAllAlpha3CasesHaveAccessToSymbolOrNull(): void
     {
-        $cases = CurrencyAlpha3::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CurrencyAlpha3::cases() as $case) {
             CurrencySymbol::forCurrency($case);
+
+            $this->addToAssertionCount(1);
         }
     }
 
     /** @covers ::forCurrency */
     public function testAllNameCasesHaveAccessToSymbolOrNull(): void
     {
-        $cases = CurrencyName::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CurrencyName::cases() as $case) {
             CurrencySymbol::forCurrency($case);
+
+            $this->addToAssertionCount(1);
         }
     }
 
     /** @covers ::forCurrency */
     public function testAllNumericCasesHaveAccessToSymbolOrNull(): void
     {
-        $cases = CurrencyNumeric::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CurrencyNumeric::cases() as $case) {
             CurrencySymbol::forCurrency($case);
+
+            $this->addToAssertionCount(1);
         }
     }
 }

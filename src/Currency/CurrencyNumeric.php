@@ -11,6 +11,8 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
+use TypeError;
+use ValueError;
 
 /**
  * @standard ISO4217
@@ -206,6 +208,10 @@ enum CurrencyNumeric: string
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Leone_Old = '694';
 
+    /**
+     * @throws TypeError
+     * @throws ValueError
+     */
     public static function fromInt(int $from): self
     {
         return self::from(str_pad((string) $from, 3, '0', STR_PAD_LEFT));

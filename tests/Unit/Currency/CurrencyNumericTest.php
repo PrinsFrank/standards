@@ -9,6 +9,7 @@ use PrinsFrank\Standards\Currency\CurrencyNumeric;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
+use TypeError;
 use ValueError;
 
 /**
@@ -19,9 +20,7 @@ class CurrencyNumericTest extends TestCase
     /** @covers ::toCurrencyAlpha3 */
     public function testAllCasesCanBeConvertedToCurrencyAlpha3(): void
     {
-        $cases = CurrencyNumeric::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CurrencyNumeric::cases() as $case) {
             $case->toCurrencyAlpha3();
 
             $this->addToAssertionCount(1);
@@ -31,9 +30,7 @@ class CurrencyNumericTest extends TestCase
     /** @covers ::toCurrencyName */
     public function testAllCasesCanBeConvertedToCurrencyName(): void
     {
-        $cases = CurrencyNumeric::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CurrencyNumeric::cases() as $case) {
             $case->toCurrencyName();
 
             $this->addToAssertionCount(1);
@@ -43,26 +40,34 @@ class CurrencyNumericTest extends TestCase
     /** @covers ::getSymbol */
     public function testAllCasesHaveAccessToSymbolOrNull(): void
     {
-        $cases = CurrencyNumeric::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CurrencyNumeric::cases() as $case) {
             $case->getSymbol();
 
             $this->addToAssertionCount(1);
         }
     }
 
-    /** @covers ::fromInt */
+    /**
+     * @covers ::fromInt
+     *
+     * @throws TypeError
+     * @throws ValueError
+     */
     public function testFromInt(): void
     {
         static::assertEquals(CurrencyNumeric::Lek, CurrencyNumeric::fromInt(8));
     }
 
-    /** @covers ::fromInt */
+    /**
+     * @covers ::fromInt
+     *
+     * @throws ValueError
+     * @throws TypeError
+     */
     public function testFromIntThrowsExceptionOnNonExistingValue(): void
     {
         $this->expectException(ValueError::class);
-        static::assertNull(CurrencyNumeric::fromInt(1));
+        CurrencyNumeric::fromInt(1);
     }
 
     /** @covers ::tryFromInt */

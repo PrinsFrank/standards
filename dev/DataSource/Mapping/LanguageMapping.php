@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
-use Facebook\WebDriver\Remote\RemoteWebElement;
 use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
@@ -13,11 +12,12 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Language\LanguageName;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{alpha3: string, alpha2: string, name: string, name_french: string, name_german: string}
+ * @template TDataSet of object{alpha3: string, alpha2: string, name: string, name_french: string, name_german: string}&stdClass
  * @implements Mapping<TDataSet>
  */
 class LanguageMapping implements Mapping
@@ -33,7 +33,6 @@ class LanguageMapping implements Mapping
         $items = $crawler->filterXPath('//table[@width="100%"]/tbody/tr')->getIterator();
 
         $dataSet = [];
-        /** @var RemoteWebElement $item */
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
             if (count($columns) !== 5 || $columns[2]->getText() === 'Reserved for local use') {
@@ -74,7 +73,7 @@ class LanguageMapping implements Mapping
             if (strlen($dataRow->alpha3) === 3) {
                 $languageAlpha3Terminology->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
                 $languageAlpha3Bibliographic->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
-            } elseif (preg_match('/(?P<bibliographic>[a-z]{3})\s+\(B\)\n(?P<terminology>[a-z]{3})\s+\(T\)/', $dataRow->alpha3, $matches)) {
+            } elseif (preg_match('/(?P<bibliographic>[a-z]{3})\s+\(B\)\n(?P<terminology>[a-z]{3})\s+\(T\)/', $dataRow->alpha3, $matches) === 1) {
                 $languageAlpha3Terminology->addCase(new EnumCase($dataRow->name, $matches['terminology']));
                 $languageAlpha3Bibliographic->addCase(new EnumCase($dataRow->name, $matches['bibliographic']));
             }

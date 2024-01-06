@@ -5,7 +5,6 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\Exception\NoSuchElementException;
 use Facebook\WebDriver\Exception\TimeoutException;
-use Facebook\WebDriver\Remote\RemoteWebElement;
 use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
@@ -15,11 +14,12 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSor
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string}
+ * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string}&stdClass
  * @implements Mapping<TDataSet>
  */
 class CountryMapping implements Mapping
@@ -44,7 +44,6 @@ class CountryMapping implements Mapping
         $items = $crawler->filterXPath('//tbody[@class="v-grid-body"]/tr')->getIterator();
 
         $dataSet = [];
-        /** @var RemoteWebElement $item */
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
 

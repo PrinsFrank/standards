@@ -17,14 +17,15 @@
     "require": {
         "php": "^8.1 || ^8.2 || ^8.3",
         "ext-intl": "*",
-        "prinsfrank/enums": "^1.1"
+        "prinsfrank/enums": "^1.1",
+        "phpstan/phpstan-strict-rules": "^1.5"
     },
     "require-dev": {
         "ext-mbstring": "*",
         "ext-dom": "*",
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpunit/phpunit": "^9.5",
-        "symfony/panther": "^2.0",
+        "symfony/panther": "dev-document-iterator-type",
         "dbrekelmans/bdi": "^1.0",
         "phpstan/phpstan": "^1.10.50",
         "composer/composer": "^2.3"
@@ -48,5 +49,11 @@
         "update-spec-language-subtag": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageSubTagMapping",
         "update-spec-scripts": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\ScriptMapping",
         "detect-drivers": "bdi detect drivers"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/PrinsFrank/symfony-panther"
+        }
+    ]
 }

@@ -3,18 +3,18 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
-use Facebook\WebDriver\Remote\RemoteWebElement;
 use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Http\HttpStatusCode;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{value: string, description: string, reference: string}
+ * @template TDataSet of object{value: string, description: string, reference: string}&stdClass
  * @implements Mapping<TDataSet>
  */
 class HttpStatusCodeMapping implements Mapping
@@ -30,7 +30,6 @@ class HttpStatusCodeMapping implements Mapping
         $items = $crawler->filterXPath('//table[@id="table-http-status-codes-1"]/tbody/tr')->getIterator();
 
         $dataSet = [];
-        /** @var RemoteWebElement $item */
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
 

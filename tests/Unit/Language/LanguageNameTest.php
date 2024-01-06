@@ -14,9 +14,7 @@ class LanguageNameTest extends TestCase
     /** @covers ::toLanguageAlpha3Bibliographic */
     public function testAllCasesCanBeConvertedToLanguageAlpha3Bibliographic(): void
     {
-        $cases = LanguageName::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (LanguageName::cases() as $case) {
             static::assertNotNull($case->toLanguageAlpha3Bibliographic());
         }
     }
@@ -24,9 +22,7 @@ class LanguageNameTest extends TestCase
     /** @covers ::toLanguageAlpha3Terminology */
     public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void
     {
-        $cases = LanguageName::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (LanguageName::cases() as $case) {
             static::assertNotNull($case->toLanguageAlpha3Terminology());
         }
     }
@@ -34,10 +30,10 @@ class LanguageNameTest extends TestCase
     /** @covers ::toLanguageAlpha2 */
     public function testSomeCasesCanBeConvertedToLanguageAlpha2(): void
     {
-        $cases = LanguageName::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (LanguageName::cases() as $case) {
             $case->toLanguageAlpha2();
+
+            $this->addToAssertionCount(1);
         }
     }
 }

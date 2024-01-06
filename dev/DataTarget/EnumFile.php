@@ -82,8 +82,12 @@ class EnumFile
     {
         $enumContent    = $this->getContent();
         $startEnum      = mb_strpos($enumContent, '{');
-        $firstMethodPos = mb_strpos($enumContent, ' public ');
         $endEnumPos     = mb_strrpos($enumContent, '}');
+        if ($startEnum === false || $endEnumPos === false) {
+            throw new EnumNotFoundException();
+        }
+
+        $firstMethodPos = mb_strpos($enumContent, ' public ');
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1) . PHP_EOL;
         $cases          = array_unique($this->cases);
         usort($cases, $sorting);

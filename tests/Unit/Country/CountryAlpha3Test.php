@@ -19,9 +19,7 @@ class CountryAlpha3Test extends TestCase
     /** @covers ::toCountryAlpha2 */
     public function testAllCasesCanBeConvertedToCountryAlpha2(): void
     {
-        $cases = CountryAlpha3::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CountryAlpha3::cases() as $case) {
             $case->toCountryAlpha2();
 
             $this->addToAssertionCount(1);
@@ -31,9 +29,7 @@ class CountryAlpha3Test extends TestCase
     /** @covers ::toCountryNumeric */
     public function testAllCasesCanBeConvertedToCountryNumeric(): void
     {
-        $cases = CountryAlpha3::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CountryAlpha3::cases() as $case) {
             $case->toCountryNumeric();
 
             $this->addToAssertionCount(1);
@@ -43,9 +39,7 @@ class CountryAlpha3Test extends TestCase
     /** @covers ::toCountryName */
     public function testAllCasesCanBeConvertedToCountryName(): void
     {
-        $cases = CountryAlpha3::cases();
-        static::assertNotEmpty($cases);
-        foreach ($cases as $case) {
+        foreach (CountryAlpha3::cases() as $case) {
             $case->toCountryName();
 
             $this->addToAssertionCount(1);
