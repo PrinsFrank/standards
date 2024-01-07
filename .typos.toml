@@ -6,15 +6,13 @@ ignore-hidden = false
 
 [default]
 extend-ignore-re = [
-    "\\bcase [0-9A-Z_a-z]+ += .+",
+    "\\bcase [0-9A-Z_a-z]+ += .+;",
     "\\bself::[0-9A-Z_a-z]+ +=> .+,",
     "\\b(Country|Currency)[:0-9A-Z_a-z]+,",
     "\\b(Country|Currency)[:0-9A-Z_a-z]+ +=> [:0-9A-Z_a-z]+,",
     # Non-ASCII
     "gʌ²¹ba²¹",
 ]
-
-[default.extend-words]
 
 [default.extend-identifiers]
 "Viet_Nam" = "Viet_Nam"
