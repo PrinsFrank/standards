@@ -313,7 +313,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 2
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -338,4 +338,4 @@ jobs:
         run: composer cs:fix
 
       - name: Check for changes
-        run: git diff --name-only origin/main origin/${GITHUB_HEAD_REF} --exit-code
+        run: git diff --name-only origin/${GITHUB_HEAD_REF} --exit-code
