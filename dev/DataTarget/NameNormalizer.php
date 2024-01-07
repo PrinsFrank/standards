@@ -15,7 +15,7 @@ class NameNormalizer
             throw new TransliterationException();
         }
 
-        $key = str_replace(['ʌ'], ['e'], $key);
+        $key = str_replace(['ɔ', 'ʌ'], ['O', 'e'], $key);
         $key = str_replace([' ', ';', ',', '(', ')', '-', '.', '\'', '"', '/', '|', '=', '!', '?', '*', '[', ']', '~', '´'], '_', $key);
 
         return trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
