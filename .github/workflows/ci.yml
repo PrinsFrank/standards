@@ -318,3 +318,5 @@ jobs:
       - php-coverage
       - php-lint
       - editorconfig
+    steps:
+      - run: echo 'completed'
