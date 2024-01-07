@@ -312,7 +312,7 @@ jobs:
       - composer-build-dev
       - composer-validate
       - composer-psr
-      - php-code-styl
+      - php-code-style
       - php-stan
       - php-unit
       - php-coverage
