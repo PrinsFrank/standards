@@ -1157,7 +1157,6 @@ enum LanguageAlpha3Extensive: string
     case Burmeso                                                  = 'bzu';
     case Naami                                                    = 'bzv';
     case Basa_Nigeria                                             = 'bzw';
-    case Kelengaxo_Bozo                                           = 'bzx';
     case Obanliku                                                 = 'bzy';
     case Evant                                                    = 'bzz';
     case Chorti                                                   = 'caa';
@@ -1317,6 +1316,7 @@ enum LanguageAlpha3Extensive: string
     case Chala                                                    = 'cll';
     case Clallam                                                  = 'clm';
     case Lowland_Oaxaca_Chontal                                   = 'clo';
+    case Classical_Sanskrit                                       = 'cls';
     case Lautu_Chin                                               = 'clt';
     case Caluyanun                                                = 'clu';
     case Chulym                                                   = 'clw';
@@ -1947,7 +1947,6 @@ enum LanguageAlpha3Extensive: string
     case Firan                                                    = 'fir';
     case Tornedalen_Finnish                                       = 'fit';
     case Fiwaga                                                   = 'fiw';
-    case Kirya_Konzel                                             = 'fkk';
     case Kven_Finnish                                             = 'fkv';
     case Kalispel_Pend_d_Oreille                                  = 'fla';
     case Foau                                                     = 'flh';
@@ -2127,7 +2126,6 @@ enum LanguageAlpha3Extensive: string
     case Gibanawa                                                 = 'gib';
     case Gail                                                     = 'gic';
     case Gidar                                                    = 'gid';
-    case Gabogbo                                                  = 'gie';
     case Goaria                                                   = 'gig';
     case Githabul                                                 = 'gih';
     case Girirra                                                  = 'gii';
@@ -2150,12 +2148,10 @@ enum LanguageAlpha3Extensive: string
     case Gurindji_Kriol                                           = 'gjr';
     case Gujari                                                   = 'gju';
     case Guya                                                     = 'gka';
-    case Magi_Madang_Province                                     = 'gkd';
     case Ndai                                                     = 'gke';
     case Gokana                                                   = 'gkn';
     case Kok_Nar                                                  = 'gko';
     case Guinea_Kpelle                                            = 'gkp';
-    case Ungkue                                                   = 'gku';
     case Scottish_Gaelic                                          = 'gla';
     case Belning                                                  = 'glb';
     case Bon_Gula                                                 = 'glc';
@@ -2175,7 +2171,6 @@ enum LanguageAlpha3Extensive: string
     case Gambera                                                  = 'gma';
     case Gula_alaa                                                = 'gmb';
     case Maghdi                                                   = 'gmd';
-    case Magiyi                                                   = 'gmg';
     case Middle_High_German_ca_1050_1500                          = 'gmh';
     case Middle_Low_German                                        = 'gml';
     case Gbaya_Mbodomo                                            = 'gmm';
@@ -2195,11 +2190,11 @@ enum LanguageAlpha3Extensive: string
     case Lere                                                     = 'gnh';
     case Gooniyandi                                               = 'gni';
     case Ngen                                                     = 'gnj';
-    case Gana                                                     = 'gnk';
     case Gangulu                                                  = 'gnl';
     case Ginuman                                                  = 'gnm';
     case Gumatj                                                   = 'gnn';
     case Northern_Gondi                                           = 'gno';
+    case Gana                                                     = 'gnq';
     case Gureng_Gureng                                            = 'gnr';
     case Guntai                                                   = 'gnt';
     case Gnau                                                     = 'gnu';
@@ -2315,8 +2310,6 @@ enum LanguageAlpha3Extensive: string
     case Gweno                                                    = 'gwe';
     case Gowro                                                    = 'gwf';
     case Moo                                                      = 'gwg';
-    case Gwich_in                                                 = 'gwi';
-    case Gwi                                                      = 'gwj';
     case Awngthim                                                 = 'gwm';
     case Gwandara                                                 = 'gwn';
     case Gwere                                                    = 'gwr';
@@ -2387,7 +2380,6 @@ enum LanguageAlpha3Extensive: string
     case Heiltsuk                                                 = 'hei';
     case Hemba                                                    = 'hem';
     case Herero                                                   = 'her';
-    case Hai_om                                                   = 'hgm';
     case Haigwai                                                  = 'hgw';
     case Hoia_Hoia                                                = 'hhi';
     case Kerak                                                    = 'hhr';
@@ -2450,7 +2442,6 @@ enum LanguageAlpha3Extensive: string
     case Southern_Hindko                                          = 'hnd';
     case Chhattisgarhi                                            = 'hne';
     case Hungu                                                    = 'hng';
-    case Ani                                                      = 'hnh';
     case Hani                                                     = 'hni';
     case Hmong_Njua                                               = 'hnj';
     case Hanunoo                                                  = 'hnn';
@@ -2502,7 +2493,6 @@ enum LanguageAlpha3Extensive: string
     case Hitu                                                     = 'htu';
     case Middle_Hittite                                           = 'htx';
     case Huambisa                                                 = 'hub';
-    case Hua                                                      = 'huc';
     case Huaulu                                                   = 'hud';
     case San_Francisco_Del_Mar_Huave                              = 'hue';
     case Humene                                                   = 'huf';
@@ -3343,7 +3333,6 @@ enum LanguageAlpha3Extensive: string
     case Kato                                                     = 'ktw';
     case Kaxarari                                                 = 'ktx';
     case Kango_Bas_Uele_District                                  = 'kty';
-    case Ju_hoan                                                  = 'ktz';
     case Kuanyama                                                 = 'kua';
     case Kutep                                                    = 'kub';
     case Kwinsu                                                   = 'kuc';
@@ -4486,7 +4475,6 @@ enum LanguageAlpha3Extensive: string
     case Khoekhoe                                                 = 'naq';
     case Iguta                                                    = 'nar';
     case Naasioi                                                  = 'nas';
-    case Cahungwarya                                              = 'nat';
     case Nauru                                                    = 'nau';
     case Navajo                                                   = 'nav';
     case Nawuri                                                   = 'naw';
@@ -4737,7 +4725,6 @@ enum LanguageAlpha3Extensive: string
     case Namakura                                                 = 'nmk';
     case Ndemli                                                   = 'nml';
     case Manangba                                                 = 'nmm';
-    case Xoo                                                      = 'nmn';
     case Moyon_Naga                                               = 'nmo';
     case Nimanbur                                                 = 'nmp';
     case Nambya                                                   = 'nmq';
@@ -5227,7 +5214,6 @@ enum LanguageAlpha3Extensive: string
     case Pere                                                     = 'pfe';
     case Pfaelzisch                                               = 'pfl';
     case Sudanese_Creole_Arabic                                   = 'pga';
-    case Gandhari                                                 = 'pgd';
     case Pangwali                                                 = 'pgg';
     case Pagi                                                     = 'pgi';
     case Rerep                                                    = 'pgk';
@@ -5276,7 +5262,6 @@ enum LanguageAlpha3Extensive: string
     case Piya_Kwonci                                              = 'piy';
     case Pije                                                     = 'piz';
     case Pitjantjatjara                                           = 'pjt';
-    case Ardhamagadhi_Prakrit                                     = 'pka';
     case Pokomo                                                   = 'pkb';
     case Paekche                                                  = 'pkc';
     case Pak_Tong                                                 = 'pkg';
@@ -5314,7 +5299,6 @@ enum LanguageAlpha3Extensive: string
     case Pallanganmiddang                                         = 'pmd';
     case Pwaamei                                                  = 'pme';
     case Pamona                                                   = 'pmf';
-    case Maharastri_Prakrit                                       = 'pmh';
     case Northern_Pumi                                            = 'pmi';
     case Southern_Pumi                                            = 'pmj';
     case Lingua_Franca                                            = 'pml';
@@ -5424,7 +5408,6 @@ enum LanguageAlpha3Extensive: string
     case Portuguese_Sign_Language                                 = 'psr';
     case Kaulong                                                  = 'pss';
     case Central_Pashto                                           = 'pst';
-    case Sauraseni_Prakrit                                        = 'psu';
     case Port_Sandwich                                            = 'psw';
     case Piscataway                                               = 'psy';
     case Pai_Tavytera                                             = 'pta';
@@ -5660,6 +5643,7 @@ enum LanguageAlpha3Extensive: string
     case Repanbitip                                               = 'rpn';
     case Rapting                                                  = 'rpt';
     case Ririo                                                    = 'rri';
+    case Moriori                                                  = 'rrm';
     case Waima                                                    = 'rro';
     case Arritinngithigh                                          = 'rrt';
     case Romano_Serbian                                           = 'rsb';
@@ -5701,7 +5685,6 @@ enum LanguageAlpha3Extensive: string
     case Northern_Amami_Oshima                                    = 'ryn';
     case Yaeyama                                                  = 'rys';
     case Central_Okinawan                                         = 'ryu';
-    case Razihi                                                   = 'rzh';
     case Saba                                                     = 'saa';
     case Buglere                                                  = 'sab';
     case Meskwaki                                                 = 'sac';
@@ -6957,6 +6940,7 @@ enum LanguageAlpha3Extensive: string
     case Burmbar                                                  = 'vrt';
     case Moldova_Sign_Language                                    = 'vsi';
     case Venezuelan_Sign_Language                                 = 'vsl';
+    case Vedic_Sanskrit                                           = 'vsn';
     case Valencian_Sign_Language                                  = 'vsv';
     case Vitou                                                    = 'vto';
     case Vumbu                                                    = 'vum';
@@ -7197,9 +7181,7 @@ enum LanguageAlpha3Extensive: string
     case Aghwan                                                   = 'xag';
     case Kaimbe                                                   = 'xai';
     case Ararandewara                                             = 'xaj';
-    case Maku                                                     = 'xak';
     case Kalmyk                                                   = 'xal';
-    case Xam                                                      = 'xam';
     case Xamtanga                                                 = 'xan';
     case Khao                                                     = 'xao';
     case Apalachee                                                = 'xap';
@@ -7249,7 +7231,6 @@ enum LanguageAlpha3Extensive: string
     case Malayic_Dayak                                            = 'xdy';
     case Eblan                                                    = 'xeb';
     case Hdi                                                      = 'xed';
-    case Xegwi                                                    = 'xeg';
     case Kelo                                                     = 'xel';
     case Kembayan                                                 = 'xem';
     case Epi_Olmec                                                = 'xep';
@@ -7576,8 +7557,8 @@ enum LanguageAlpha3Extensive: string
     case Yagwoia                                                  = 'ygw';
     case Baha_Buyang                                              = 'yha';
     case Judeo_Iraqi_Arabic                                       = 'yhd';
+    case Khamnigan_Mongol                                         = 'yhk';
     case Hlepho_Phowa                                             = 'yhl';
-    case Yan_nhangu_Sign_Language                                 = 'yhs';
     case Yinggarda                                                = 'yia';
     case Yiddish                                                  = 'yid';
     case Wusa_Nasu                                                = 'yig';
@@ -7599,7 +7580,6 @@ enum LanguageAlpha3Extensive: string
     case Azhe                                                     = 'yiz';
     case Yakan                                                    = 'yka';
     case Northern_Yukaghir                                        = 'ykg';
-    case Khamnigan_Mongol                                         = 'ykh';
     case Yoke                                                     = 'yki';
     case Yakaikeke                                                = 'ykk';
     case Khlula                                                   = 'ykl';
@@ -7678,7 +7658,6 @@ enum LanguageAlpha3Extensive: string
     case Nhengatu                                                 = 'yrl';
     case Yirrk_Mel                                                = 'yrm';
     case Yerong                                                   = 'yrn';
-    case Yaroame                                                  = 'yro';
     case Yarsun                                                   = 'yrs';
     case Yarawata                                                 = 'yrw';
     case Yarluyandi                                               = 'yry';
@@ -7925,6 +7904,78 @@ enum LanguageAlpha3Extensive: string
     case Zyphe_Chin                                               = 'zyp';
     case Zaza                                                     = 'zza';
     case Zuojiang_Zhuang                                          = 'zzj';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Kelengaxo_Bozo = 'bzx';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Kirya_Konzel = 'fkk';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Gabogbo = 'gie';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Magi_Madang_Province = 'gkd';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Ungkue = 'gku';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Magiyi = 'gmg';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Gwich_in = 'gwi';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Gwi = 'gwj';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Hai_om = 'hgm';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Ani = 'hnh';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Hua = 'huc';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Ju_hoan = 'ktz';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Cahungwarya = 'nat';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Xoo = 'nmn';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Gandhari = 'pgd';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Ardhamagadhi_Prakrit = 'pka';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Maharastri_Prakrit = 'pmh';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Sauraseni_Prakrit = 'psu';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Razihi = 'rzh';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Maku = 'xak';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Xam = 'xam';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Xegwi = 'xeg';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Yan_nhangu_Sign_Language = 'yhs';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Yaroame = 'yro';
 
     public function getNameForCountry(CountryAlpha2 $country): ?string
     {
