@@ -336,4 +336,4 @@ jobs:
         run: composer cs:fix
 
       - name: Check for changes
-        run: git diff --name-only --exit-code
+        run: git diff --exit-code
