@@ -16,42 +16,6 @@ env:
   MAIN_BRANCH: 'main'
 
 jobs:
-  composer-build-dev:
-    name: Composer DEV
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Pull composer vendor cache
-        id: pull-composer-build-dev-vendor-cache
-        uses: actions/cache/restore@v3
-        with:
-          path: vendor
-          lookup-only: true
-          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            composer-build-dev-
-
-      - name: Setup PHP version
-        if: steps.pull-composer-build-dev-vendor-cache.outputs.cache-hit != 'true'
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ env.PHP_VERSION }}
-          coverage: none
-
-      - name: Install dependencies
-        if: steps.pull-composer-build-dev-vendor-cache.outputs.cache-hit != 'true'
-        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer install --no-scripts --no-progress
-
-      - name: Push composer vendor cache
-        id: push-composer-build-dev-vendor-cache-lock
-        if: steps.pull-composer-build-dev-vendor-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v3
-        with:
-          path: vendor
-          key: ${{ steps.pull-composer-build-dev-vendor-cache.outputs.cache-primary-key }}
-
   composer-validate:
     name: Validate composer.json
     runs-on: ubuntu-latest
@@ -83,15 +47,8 @@ jobs:
           php-version: ${{ env.PHP_VERSION }}
           coverage: none
 
-      - name: Pull composer vendor cache
-        uses: actions/cache/restore@v3
-        with:
-          path: vendor
-          fail-on-cache-miss: true
-          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
-
-      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
-        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+      - name: Install dependencies
+        uses: ramsey/composer-install@v2
 
       - name: Check Optimized autoload
         run: composer dump-autoload --optimize --strict-psr
@@ -110,12 +67,8 @@ jobs:
           php-version: ${{ env.PHP_VERSION }}
           coverage: none
 
-      - name: Pull composer vendor cache
-        uses: actions/cache/restore@v3
-        with:
-          path: vendor
-          fail-on-cache-miss: true
-          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
+      - name: Install dependencies
+        uses: ramsey/composer-install@v2
 
       - name: Load php-cs-fixer cache
         id: php-cs-fixer-cache
@@ -151,15 +104,8 @@ jobs:
           php-version: ${{ env.PHP_VERSION }}
           coverage: none
 
-      - name: Pull composer vendor cache
-        uses: actions/cache/restore@v3
-        with:
-          path: vendor
-          fail-on-cache-miss: true
-          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
-
-      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
-        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+      - name: Install dependencies
+        uses: ramsey/composer-install@v2
 
       - name: Pull PHPStan cache
         id: pull-phpstan-cache
@@ -218,15 +164,8 @@ jobs:
           php-version: ${{ matrix.php-version }}
           coverage: none
 
-      - name: Pull composer vendor cache
-        uses: actions/cache/restore@v3
-        with:
-          path: vendor
-          fail-on-cache-miss: true
-          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
-
-      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
-        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+      - name: Install dependencies
+        uses: ramsey/composer-install@v2
 
       - name: Run Unit tests
         run: composer run unit
@@ -245,15 +184,8 @@ jobs:
           php-version: ${{ env.PHP_VERSION }}
           coverage: pcov
 
-      - name: Pull composer vendor cache
-        uses: actions/cache/restore@v3
-        with:
-          path: vendor
-          fail-on-cache-miss: true
-          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
-
-      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
-        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+      - name: Install dependencies
+        uses: ramsey/composer-install@v2
 
       - name: Run Unit tests
         run: vendor/bin/phpunit --coverage-clover=${{ env.COVERAGE_PATH }}
@@ -309,15 +241,8 @@ jobs:
           php-version: ${{ matrix.php-version }}
           coverage: pcov
 
-      - name: Pull composer vendor cache
-        uses: actions/cache/restore@v3
-        with:
-          path: vendor
-          fail-on-cache-miss: true
-          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
-
-      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
-        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+      - name: Install dependencies
+        uses: ramsey/composer-install@v2
 
       - name: Update spec
         run: composer run update-spec
@@ -332,7 +257,6 @@ jobs:
     name: Completed
     runs-on: ubuntu-latest
     needs:
-      - composer-build-dev
       - composer-validate
       - composer-psr
       - php-code-style
