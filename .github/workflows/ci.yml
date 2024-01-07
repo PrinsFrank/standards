@@ -9,7 +9,6 @@ on:
 
 env:
   PHP_VERSION: '8.3' # Latest stable version. See php-unit for supported version matrix
-  GLOBAL_COMPOSER_CACHE_PATH: '/tmp/composer'
   PHPSTAN_CACHE_DIR: '.phpstan.result.cache'
   COVERAGE_PATH: 'coverage.xml'
   GH_TOKEN: ${{ github.token }}
