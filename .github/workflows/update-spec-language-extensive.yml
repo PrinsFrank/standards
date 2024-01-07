@@ -2,6 +2,8 @@ name: Daily Language Extensive update
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '55 17 * * *'
 
 jobs:
   update-specs:
