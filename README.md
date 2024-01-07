@@ -640,7 +640,7 @@ $valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::English);       // 'D
 $valueAlpha3 = LanguageAlpha3Bibliographic::from('dut');               // LanguageAlpha3Bibliographic::Dutch_Flemish
 $value = $valueAlpha3->value;                                          // 'dut'
 $valueName = $valueAlpha3->name;                                       // 'Dutch_Flemish'
-$valueAlpha2 = $valueAlpha3->toLanguageAlhpa2();                       // LanguageAlpha2::Dutch_Flemish
+$valueAlpha2 = $valueAlpha3->toLanguageAlpha2();                       // LanguageAlpha2::Dutch_Flemish
 $valueAlpha3Terminology = $valueAlpha3->toLanguageAlpha3Terminology(); // LanguageAlpha3Terminology::Dutch_Flemish
 $valueAlpha3Bibliographic->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
 $valueAlpha3Bibliographic->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
