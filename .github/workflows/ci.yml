@@ -19,7 +19,6 @@ jobs:
   composer-validate:
     name: Validate composer.json
     runs-on: ubuntu-latest
-    needs: composer-build-dev
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -36,7 +35,6 @@ jobs:
   composer-psr:
     name: Check namespaces
     runs-on: ubuntu-latest
-    needs: composer-build-dev
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -56,7 +54,6 @@ jobs:
   php-code-style:
     name: PHP Code Style
     runs-on: ubuntu-latest
-    needs: composer-build-dev
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -93,7 +90,6 @@ jobs:
   php-stan:
     name: PHP Stan
     runs-on: ubuntu-latest
-    needs: composer-build-dev
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -153,7 +149,6 @@ jobs:
     strategy:
       matrix:
         php-version: ['8.1', '8.2', '8.3']
-    needs: composer-build-dev
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -173,7 +168,6 @@ jobs:
   php-coverage:
     name: PHP Test coverage
     runs-on: ubuntu-latest
-    needs: composer-build-dev
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -230,7 +224,6 @@ jobs:
   specs-regenerate:
     name: Regenerate specs
     runs-on: ubuntu-latest
-    needs: composer-build-dev
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
