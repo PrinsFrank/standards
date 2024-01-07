@@ -1,0 +1,23 @@
+[files]
+extend-exclude = [
+    ".git/",
+]
+ignore-hidden = false
+
+[default]
+extend-ignore-re = [
+    "\\bcase [0-9A-Z_a-z]+ += .+",
+    "\\bself::[0-9A-Z_a-z]+ +=> .+,",
+    "\\b(Country|Currency)[:0-9A-Z_a-z]+,",
+    "\\b(Country|Currency)[:0-9A-Z_a-z]+ +=> [:0-9A-Z_a-z]+,",
+    # Non-ASCII
+    "gʌ²¹ba²¹",
+]
+
+[default.extend-words]
+
+[default.extend-identifiers]
+"Viet_Nam" = "Viet_Nam"
+"Viet_Nam_Socialist_Republic_of" = "Viet_Nam_Socialist_Republic_of"
+# Known typo
+"Global_Mobile_Satelite_System_shared_code" = "Global_Mobile_Satelite_System_shared_code"
