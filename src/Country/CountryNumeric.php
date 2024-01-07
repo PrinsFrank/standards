@@ -273,6 +273,11 @@ enum CountryNumeric: string
     case Zambia                                  = '894';
     case Zimbabwe                                = '716';
 
+    public static function tryFromInt(int $from): ?self
+    {
+        return self::tryFrom(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
+    }
+
     /**
      * @throws TypeError
      * @throws ValueError
@@ -280,11 +285,6 @@ enum CountryNumeric: string
     public static function fromInt(int $from): self
     {
         return self::from(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
-    }
-
-    public static function tryFromInt(int $from): ?self
-    {
-        return self::tryFrom(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
     }
 
     public function toCountryAlpha2(): CountryAlpha2
