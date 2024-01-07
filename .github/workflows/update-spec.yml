@@ -5,6 +5,9 @@ on:
         required: true
         type: string
 
+env:
+  GH_TOKEN: ${{ github.token }}
+
 jobs:
   update-specs:
     runs-on: ubuntu-latest
@@ -31,3 +34,4 @@ jobs:
             spec-update
             automated pr
           reviewers: prinsfrank
+          token: ${GITHUB_TOKEN}
