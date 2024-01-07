@@ -200,12 +200,12 @@ jobs:
           key: phpstan-${{ github.ref_name }}
 
       - name: Clear previous version of PHPStan main cache
-        if: github.ref == 'refs/heads/$({ env.MAIN_BRANCH }}'
+        if: ${{ github.ref == format('refs/heads/{0}', env.MAIN_BRANCH) }}
         continue-on-error: true
         run: gh actions-cache delete phpstan -B ${{ github.ref }} --confirm
 
       - name: Push PHPStan main cache
-        if: github.ref == 'refs/heads/$({ env.MAIN_BRANCH }}'
+        if: ${{ github.ref == format('refs/heads/{0}', env.MAIN_BRANCH) }}
         uses: actions/cache/save@v3
         with:
           path: ${{ env.PHPSTAN_CACHE_DIR }}
