@@ -2,6 +2,11 @@ name: Daily Language Extensive update
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '55 17 * * *'
+
+env:
+  GH_TOKEN: ${{ github.token }}
 
 jobs:
   update-specs:
