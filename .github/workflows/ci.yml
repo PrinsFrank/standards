@@ -4,11 +4,11 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    types: [opened, synchronize]
+    types: [ opened, synchronize ]
     branches: [ main ]
 
 env:
-  PHP_VERSION: 8.3 # Latest stable version. See php-unit for supported version matrix
+  PHP_VERSION: '8.3' # Latest stable version. See php-unit for supported version matrix
   GLOBAL_COMPOSER_CACHE_PATH: '/tmp/composer'
   PHPSTAN_CACHE_DIR: '.phpstan.result.cache'
   COVERAGE_PATH: 'coverage.xml'
@@ -65,16 +65,6 @@ jobs:
         with:
           php-version: ${{ env.PHP_VERSION }}
           coverage: none
-
-      - name: Pull composer vendor cache
-        uses: actions/cache/restore@v3
-        with:
-          path: vendor
-          fail-on-cache-miss: true
-          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
-
-      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
-        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
 
       - name: Validate composer.json
         run: composer validate --strict
@@ -137,7 +127,7 @@ jobs:
             php-cs-fixer-
 
       - name: Check code style
-        run: composer cs
+        run: composer run cs
 
       - name: Push php-cs-fixer branch cache
         id: push-php-cs-fixer-cache-branch
@@ -181,7 +171,7 @@ jobs:
             phpstan
 
       - name: Run PHPStan
-        run: composer stan
+        run: composer run stan
 
       - name: Install gh-actions cache plugin
         if: always()
@@ -216,7 +206,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: [8.1, 8.2, 8.3]
+        php-version: ['8.1', '8.2', '8.3']
     needs: composer-build-dev
     steps:
       - name: Checkout code
@@ -239,7 +229,7 @@ jobs:
         run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
 
       - name: Run Unit tests
-        run: composer unit
+        run: composer run unit
 
   php-coverage:
     name: PHP Test coverage
@@ -252,7 +242,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-version }}
+          php-version: ${{ env.PHP_VERSION }}
           coverage: pcov
 
       - name: Pull composer vendor cache
@@ -287,9 +277,10 @@ jobs:
         with:
           php-version: ${{ env.PHP_VERSION }}
           coverage: none
+          tools: parallel-lint,cs2pr
 
       - name: Lint files
-        run: find . -type f -name '*.php' -print0 | xargs -0 -n1 -P16 php -l -n | (! grep -v "No syntax errors detected" )
+        run: parallel-lint --checkstyle . | cs2pr
 
   editorconfig:
     name: EditorConfig
@@ -329,10 +320,10 @@ jobs:
         run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
 
       - name: Update spec
-        run: composer update-spec
+        run: composer run update-spec
 
       - name: Run CSFixer
-        run: composer cs:fix
+        run: composer run cs:fix
 
       - name: Check for changes
         run: git diff --exit-code
