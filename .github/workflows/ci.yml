@@ -305,6 +305,39 @@ jobs:
       - name: Check adherence to EditorConfig
         uses: greut/eclint-action@v0
 
+  specs-regenerate:
+    name: Regenerate specs
+    runs-on: ubuntu-latest
+    needs: composer-build-dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: pcov
+
+      - name: Pull composer vendor cache
+        uses: actions/cache/restore@v3
+        with:
+          path: vendor
+          fail-on-cache-miss: true
+          key: composer-build-dev-${{ hashFiles('**/composer.lock') }}
+
+      - name: Regenerate autoload file # If autoloading paths were added before the files themselves, the autoload cache is out of date
+        run: COMPOSER_HOME=$GLOBAL_COMPOSER_CACHE_PATH composer dump-autoload
+
+      - name: Update spec
+        run: composer update-spec
+
+      - name: Run CSFixer
+        run: composer cs:fix
+
+      - name: Check for changes
+        run: git diff --exit-code
+
   completed:
     name: Completed
     runs-on: ubuntu-latest
@@ -318,5 +351,6 @@ jobs:
       - php-coverage
       - php-lint
       - editorconfig
+      - specs-regenerate
     steps:
       - run: echo 'completed'
