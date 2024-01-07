@@ -34,4 +34,3 @@ jobs:
             spec-update
             automated pr
           reviewers: prinsfrank
-          token: ${GITHUB_TOKEN}
