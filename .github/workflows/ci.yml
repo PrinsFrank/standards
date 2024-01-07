@@ -304,3 +304,19 @@ jobs:
 
       - name: Check adherence to EditorConfig
         uses: greut/eclint-action@v0
+
+  completed:
+    name: Completed
+    runs-on: ubuntu-latest
+    needs:
+      - composer-build-dev
+      - composer-validate
+      - composer-psr
+      - php-code-style
+      - php-stan
+      - php-unit
+      - php-coverage
+      - php-lint
+      - editorconfig
+    steps:
+      - run: echo 'completed'
