@@ -337,6 +337,16 @@ jobs:
       - name: Check for changes
         run: git diff --exit-code
 
+  typos:
+    name: Typos
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Search for misspellings
+        uses: crate-ci/typos@master
+
   completed:
     name: Completed
     runs-on: ubuntu-latest
@@ -351,5 +361,6 @@ jobs:
       - php-lint
       - editorconfig
       - specs-regenerate
+      - typos
     steps:
       - run: echo 'completed'
