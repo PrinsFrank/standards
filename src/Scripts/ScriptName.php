@@ -128,7 +128,7 @@ enum ScriptName: string
     case Masaram_Gondi                                                                               = 'Masaram Gondi';
     case Mathematical_notation                                                                       = 'Mathematical notation';
     case Mayan_hieroglyphs                                                                           = 'Mayan hieroglyphs';
-    case Medefaidrin_Oberi_Okaime_Oberi_Ɔkaime                                                       = 'Medefaidrin (Oberi Okaime, Oberi Ɔkaimɛ)';
+    case Medefaidrin_Oberi_Okaime_Oberi_Okaime                                                       = 'Medefaidrin (Oberi Okaime, Oberi Ɔkaimɛ)';
     case Meitei_Mayek_Meithei_Meetei                                                                 = 'Meitei Mayek (Meithei, Meetei)';
     case Mende_Kikakui                                                                               = 'Mende Kikakui';
     case Meroitic_Cursive                                                                            = 'Meroitic Cursive';
@@ -145,7 +145,7 @@ enum ScriptName: string
     case Nag_Mundari                                                                                 = 'Nag Mundari';
     case Nandinagari                                                                                 = 'Nandinagari';
     case Naxi_Dongba_naci_toba_Nakhi_Tomba                                                           = 'Naxi Dongba (na²¹ɕi³³ to³³ba²¹, Nakhi Tomba)';
-    case Naxi_Geba_naci_gʌba_Na_Khi_Ggo_baw_Nakhi_Geba                                               = 'Naxi Geba (na²¹ɕi³³ gʌ²¹ba²¹, \'Na-\'Khi ²Ggŏ-¹baw, Nakhi Geba)';
+    case Naxi_Geba_naci_geba_Na_Khi_Ggo_baw_Nakhi_Geba                                               = 'Naxi Geba (na²¹ɕi³³ gʌ²¹ba²¹, \'Na-\'Khi ²Ggŏ-¹baw, Nakhi Geba)';
     case New_Tai_Lue                                                                                 = 'New Tai Lue';
     case Newa_Newar_Newari_Nepala_lipi                                                               = 'Newa, Newar, Newari, Nepāla lipi';
     case Nushu                                                                                       = 'Nüshu';

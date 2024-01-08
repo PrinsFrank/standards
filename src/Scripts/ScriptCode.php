@@ -128,7 +128,7 @@ enum ScriptCode: string
     case Masaram_Gondi                                                                               = 'Gonm';
     case Mathematical_notation                                                                       = 'Zmth';
     case Mayan_hieroglyphs                                                                           = 'Maya';
-    case Medefaidrin_Oberi_Okaime_Oberi_Ɔkaime                                                       = 'Medf';
+    case Medefaidrin_Oberi_Okaime_Oberi_Okaime                                                       = 'Medf';
     case Meitei_Mayek_Meithei_Meetei                                                                 = 'Mtei';
     case Mende_Kikakui                                                                               = 'Mend';
     case Meroitic_Cursive                                                                            = 'Merc';
@@ -145,7 +145,7 @@ enum ScriptCode: string
     case Nag_Mundari                                                                                 = 'Nagm';
     case Nandinagari                                                                                 = 'Nand';
     case Naxi_Dongba_naci_toba_Nakhi_Tomba                                                           = 'Nkdb';
-    case Naxi_Geba_naci_gʌba_Na_Khi_Ggo_baw_Nakhi_Geba                                               = 'Nkgb';
+    case Naxi_Geba_naci_geba_Na_Khi_Ggo_baw_Nakhi_Geba                                               = 'Nkgb';
     case New_Tai_Lue                                                                                 = 'Talu';
     case Newa_Newar_Newari_Nepala_lipi                                                               = 'Newa';
     case Nushu                                                                                       = 'Nshu';
