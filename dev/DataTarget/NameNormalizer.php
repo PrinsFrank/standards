@@ -10,12 +10,12 @@ class NameNormalizer
     /** @throws TransliterationException */
     public static function normalize(string $key): string
     {
-        $key = transliterator_transliterate('Any-Latin; Latin-ASCII;', $key);
+        $key = transliterator_transliterate('Any-Latin; Latin-ASCII; IPA-XSampa;', $key);
         if ($key === false) {
             throw new TransliterationException();
         }
 
-        $key = str_replace([' ', ';', ',', '(', ')', '-', '.', '\'', '"', '/', '|', '=', '!', '?', '*', '[', ']', '~'], '_', $key);
+        $key = str_replace([' ', ';', ',', '(', ')', '-', '.', '\'', '"', '/', '|', '=', '!', '?', '*', '[', ']', '~', '´'], '_', $key);
         if (preg_match('/[^0-9A-Z_a-z]/', $key) === 1) {
             throw new TransliterationException();
         }

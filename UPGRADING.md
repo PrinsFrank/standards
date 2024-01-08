@@ -27,7 +27,7 @@ In the previous release 2.5.0, the naming for scriptCode and ScriptNumber were s
 
 ## Typo fixed in CountryCallingCode enum case
 
-A typo in the name of Global Mobile Satellite System has been fixed. If you were using the `Global_Mobile_Satelite_System_shared_code` case of CountryCallingCode as a hardcoded value in your codebase, you schould change it: (Note the extra letter 'l')
+A typo in the name of Global Mobile Satellite System has been fixed. If you were using the `Global_Mobile_Satelite_System_shared_code` case of CountryCallingCode as a hardcoded value in your codebase, you should change it: (Note the extra letter 'l')
 ```diff
 - CountryCallingCode::Global_Mobile_Satelite_System_shared_code;
 + CountryCallingCode::Global_Mobile_Satellite_System_shared_code;

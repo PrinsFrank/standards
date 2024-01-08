@@ -1724,7 +1724,7 @@ enum LanguageAlpha3Extensive: string
     case Ana_Tinga_Dogon                                          = 'dti';
     case Tene_Kan_Dogon                                           = 'dtk';
     case Tomo_Kan_Dogon                                           = 'dtm';
-    case Daats_i´in                                               = 'dtn';
+    case Daats_iin                                                = 'dtn';
     case Tommo_So_Dogon                                           = 'dto';
     case Kadazan_Dusun                                            = 'dtp';
     case Lotud                                                    = 'dtr';

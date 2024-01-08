@@ -128,7 +128,7 @@ enum ScriptNumber: string
     case Masaram_Gondi                                                                               = '313';
     case Mathematical_notation                                                                       = '995';
     case Mayan_hieroglyphs                                                                           = '090';
-    case Medefaidrin_Oberi_Okaime_Oberi_Ɔkaime                                                       = '265';
+    case Medefaidrin_Oberi_Okaime_Oberi_Okaime                                                       = '265';
     case Meitei_Mayek_Meithei_Meetei                                                                 = '337';
     case Mende_Kikakui                                                                               = '438';
     case Meroitic_Cursive                                                                            = '101';
@@ -145,7 +145,7 @@ enum ScriptNumber: string
     case Nag_Mundari                                                                                 = '295';
     case Nandinagari                                                                                 = '311';
     case Naxi_Dongba_naci_toba_Nakhi_Tomba                                                           = '085';
-    case Naxi_Geba_naci_gʌba_Na_Khi_Ggo_baw_Nakhi_Geba                                               = '420';
+    case Naxi_Geba_naci_geba_Na_Khi_Ggo_baw_Nakhi_Geba                                               = '420';
     case New_Tai_Lue                                                                                 = '354';
     case Newa_Newar_Newari_Nepala_lipi                                                               = '333';
     case Nushu                                                                                       = '499';

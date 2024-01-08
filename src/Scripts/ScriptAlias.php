@@ -97,7 +97,7 @@ enum ScriptAlias: string
     case Manichaean                                                                                  = 'Manichaean';
     case Marchen                                                                                     = 'Marchen';
     case Masaram_Gondi                                                                               = 'Masaram_Gondi';
-    case Medefaidrin_Oberi_Okaime_Oberi_Ɔkaime                                                       = 'Medefaidrin';
+    case Medefaidrin_Oberi_Okaime_Oberi_Okaime                                                       = 'Medefaidrin';
     case Meitei_Mayek_Meithei_Meetei                                                                 = 'Meetei_Mayek';
     case Mende_Kikakui                                                                               = 'Mende_Kikakui';
     case Meroitic_Cursive                                                                            = 'Meroitic_Cursive';
