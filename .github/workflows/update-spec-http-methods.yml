@@ -10,6 +10,6 @@ env:
 
 jobs:
   update-specs:
-    uses: ./.github/workflows/update-spec.yml
+    uses: ./.github/workflows/reusable-update-spec.yml
     with:
       type: http-method

@@ -1,3 +1,5 @@
+name: Shared Spec Update
+
 on:
   workflow_call:
     inputs:
@@ -6,7 +8,7 @@ on:
         type: string
 
 jobs:
-  update-specs:
+  update-spec:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -21,9 +23,11 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: Automatic ${{ inputs.type }} spec update from upstream changes
+          commit-message: |
+            Automatic ${{ inputs.type }} spec update from upstream changes
           delete-branch: true
-          title: 'Automatic ${{ inputs.type }} spec update'
+          title: |
+            Automatic ${{ inputs.type }} spec update
           branch: update-spec/${{ inputs.type }}
           body: |
             This PR makes sure the content of this package is updated with upstream changes in the specs.
