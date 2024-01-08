@@ -13,3 +13,4 @@
 /.php-cs-fixer.php  export-ignore
 /phpstan.neon       export-ignore
 /phpunit.xml.dist   export-ignore
+/.typos.toml        export-ignore
