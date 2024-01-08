@@ -17,7 +17,7 @@ class NameNormalizer
 
         $key = str_replace([' ', ';', ',', '(', ')', '-', '.', '\'', '"', '/', '|', '=', '!', '?', '*', '[', ']', '~', '´'], '_', $key);
         if (preg_match('/[^0-9A-Z_a-z]/', $key) === 1) {
-            throw new TransliterationException();
+            throw new TransliterationException(sprintf('Invalid key: (%s)', $key));
         }
 
         return trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
