@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '55 17 * * *'
+  pull_request: null
 
 env:
   GH_TOKEN: ${{ github.token }}
