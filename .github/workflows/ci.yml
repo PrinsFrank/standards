@@ -81,6 +81,13 @@ jobs:
       - name: Check code style
         run: composer run cs
 
+      - name: Save PHP-CS-Fixer cache
+        if: ${{ always() }}
+        uses: actions/cache/save@v3
+        with:
+          path: ${{ env.PHP_CS_FIXER_CACHE_DIR }}
+          key: php-cs-fixer-${{ runner.os }}-${{ steps.runner_os.outputs.release }}-${{ steps.setup_php.outputs.php-version }}
+
   php-stan:
     name: PHPStan
     runs-on: ubuntu-latest
@@ -111,6 +118,13 @@ jobs:
 
       - name: Run PHPStan
         run: composer run stan
+
+      - name: Save PHPStan cache
+        if: ${{ always() }}
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.PHPSTAN_CACHE_DIR }}
+          key: phpstan-${{ runner.os }}-${{ steps.runner_os.outputs.release }}-${{ steps.setup_php.outputs.php-version }}
 
   php-unit:
     name: PHP Tests - Unit
