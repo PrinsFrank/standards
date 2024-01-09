@@ -9,6 +9,7 @@ on:
 
 env:
   PHP_VERSION: '8.3' # Latest stable version. See php-unit for supported version matrix
+  PHP_CS_FIXER_CACHE_DIR: '.php-cs-fixer.cache'
   PHPSTAN_CACHE_DIR: '.phpstan.result.cache'
   COVERAGE_PATH: 'coverage.xml'
   GH_TOKEN: ${{ github.token }}
@@ -57,6 +58,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup PHP version
+        id: setup_php
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ env.PHP_VERSION }}
@@ -65,34 +67,24 @@ jobs:
       - name: Install dependencies
         uses: ramsey/composer-install@v2
 
-      - name: Load php-cs-fixer cache
-        id: php-cs-fixer-cache
-        uses: actions/cache/restore@v3
+      - name: Cache PHP-CS-Fixer
+        uses: actions/cache@v3
         with:
-          path: .php-cs-fixer.cache
-          key: php-cs-fixer-${{ github.ref_name }}
-          restore-keys: |
-            php-cs-fixer-
+          path: ${{ env.PHP_CS_FIXER_CACHE_DIR }}
+          key: php-cs-fixer-${{ runner.os }}-${{ steps.setup_php.outputs.version }}
 
       - name: Check code style
         run: composer run cs
 
-      - name: Push php-cs-fixer branch cache
-        id: push-php-cs-fixer-cache-branch
-        if: always()
-        uses: actions/cache/save@v3
-        with:
-          path: .php-cs-fixer.cache
-          key: php-cs-fixer-${{ github.ref_name }}
-
   php-stan:
-    name: PHP Stan
+    name: PHPStan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup PHP version
+        id: setup_php
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ env.PHP_VERSION }}
@@ -101,45 +93,14 @@ jobs:
       - name: Install dependencies
         uses: ramsey/composer-install@v2
 
-      - name: Pull PHPStan cache
-        id: pull-phpstan-cache
-        uses: actions/cache/restore@v3
+      - name: Cache PHPStan
+        uses: actions/cache@v3
         with:
           path: ${{ env.PHPSTAN_CACHE_DIR }}
-          key: phpstan-${{ github.ref_name }}
-          restore-keys: |
-            phpstan
+          key: phpstan-${{ runner.os }}-${{ steps.setup_php.outputs.version }}
 
       - name: Run PHPStan
         run: composer run stan
-
-      - name: Install gh-actions cache plugin
-        if: always()
-        run: gh extension install actions/gh-actions-cache
-
-      - name: Clear previous version of PHPStan branch cache
-        if: always() # We always delete the cache, because even if it was not 'hit', it might have been created by a commit in the meantime
-        continue-on-error: true
-        run: gh actions-cache delete phpstan-${{ github.ref_name }} -B ${{ github.ref }} --confirm
-
-      - name: Push PHPStan branch cache
-        if: always()
-        uses: actions/cache/save@v3
-        with:
-          path: ${{ env.PHPSTAN_CACHE_DIR }}
-          key: phpstan-${{ github.ref_name }}
-
-      - name: Clear previous version of PHPStan main cache
-        if: ${{ github.ref_name == github.event.repository.default_branch }}
-        continue-on-error: true
-        run: gh actions-cache delete phpstan -B ${{ github.ref }} --confirm
-
-      - name: Push PHPStan main cache
-        if: ${{ github.ref_name == github.event.repository.default_branch }}
-        uses: actions/cache/save@v3
-        with:
-          path: ${{ env.PHPSTAN_CACHE_DIR }}
-          key: phpstan
 
   php-unit:
     name: PHP Tests - Unit
