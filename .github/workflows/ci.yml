@@ -71,7 +71,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ env.PHP_CS_FIXER_CACHE_DIR }}
-          key: php-cs-fixer-${{ runner.os }}-${{ steps.setup_php.outputs.version }}
+          key: php-cs-fixer-${{ runner.os }}-${{ steps.setup_php.outputs.php-version }}
 
       - name: Check code style
         run: composer run cs
@@ -97,7 +97,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ env.PHPSTAN_CACHE_DIR }}
-          key: phpstan-${{ runner.os }}-${{ steps.setup_php.outputs.version }}
+          key: phpstan-${{ runner.os }}-${{ steps.setup_php.outputs.php-version }}
 
       - name: Run PHPStan
         run: composer run stan
