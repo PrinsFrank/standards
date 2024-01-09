@@ -67,11 +67,16 @@ jobs:
       - name: Install dependencies
         uses: ramsey/composer-install@v2
 
+      - name: Determine OS release
+        id: runner_os
+        run: |
+          echo "release=$(nodejs -e 'console.log(os.release());')" >>"${GITHUB_OUTPUT}"
+
       - name: Cache PHP-CS-Fixer
         uses: actions/cache@v3
         with:
           path: ${{ env.PHP_CS_FIXER_CACHE_DIR }}
-          key: php-cs-fixer-${{ runner.os }}-${{ steps.setup_php.outputs.php-version }}
+          key: php-cs-fixer-${{ runner.os }}-${{ steps.runner_os.outputs.release }}-${{ steps.setup_php.outputs.php-version }}
 
       - name: Check code style
         run: composer run cs
@@ -93,11 +98,16 @@ jobs:
       - name: Install dependencies
         uses: ramsey/composer-install@v2
 
+      - name: Determine OS release
+        id: runner_os
+        run: |
+          echo "release=$(nodejs -e 'console.log(os.release());')" >>"${GITHUB_OUTPUT}"
+
       - name: Cache PHPStan
         uses: actions/cache@v3
         with:
           path: ${{ env.PHPSTAN_CACHE_DIR }}
-          key: phpstan-${{ runner.os }}-${{ steps.setup_php.outputs.php-version }}
+          key: phpstan-${{ runner.os }}-${{ steps.runner_os.outputs.release }}-${{ steps.setup_php.outputs.php-version }}
 
       - name: Run PHPStan
         run: composer run stan
