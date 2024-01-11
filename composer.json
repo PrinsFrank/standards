@@ -56,5 +56,10 @@
             "type": "vcs",
             "url": "https://github.com/PrinsFrank/symfony-panther"
         }
-    ]
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-main": "3.x-dev"
+        }
+    }
 }
