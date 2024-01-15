@@ -86,7 +86,7 @@ enum ScriptName: string
     case Inscriptional_Pahlavi                                                                       = 'Inscriptional Pahlavi';
     case Inscriptional_Parthian                                                                      = 'Inscriptional Parthian';
     case Jamo_alias_for_Jamo_subset_of_Hangul                                                        = 'Jamo (alias for Jamo subset of Hangul)';
-    case Japanese_alias_for_Han_Hiragana_Katakana                                                    = 'Japanese (alias for Han + Hiragana + Katakana)';
+    case Japanese_alias_for_Han_Hiragana_Katakana                                                    = 'Japanese (alias for Han + Hiragana                                                    + Katakana)';
     case Japanese_syllabaries_alias_for_Hiragana_Katakana                                            = 'Japanese syllabaries (alias for Hiragana + Katakana)';
     case Javanese                                                                                    = 'Javanese';
     case Jurchen                                                                                     = 'Jurchen';
@@ -145,7 +145,7 @@ enum ScriptName: string
     case Nag_Mundari                                                                                 = 'Nag Mundari';
     case Nandinagari                                                                                 = 'Nandinagari';
     case Naxi_Dongba_naci_toba_Nakhi_Tomba                                                           = 'Naxi Dongba (na²¹ɕi³³ to³³ba²¹, Nakhi Tomba)';
-    case Naxi_Geba_naci_geba_Na_Khi_Ggo_baw_Nakhi_Geba                                               = 'Naxi Geba (na²¹ɕi³³ gʌ²¹ba²¹, \'Na-\'Khi ²Ggŏ-¹baw, Nakhi Geba)';
+    case Naxi_Geba_naci_geba_Na_Khi_Ggo_baw_Nakhi_Geba                                               = 'Naxi Geba (na²¹ɕi³³ gʌ²¹ba²¹, \'Na-\'Khi ²Ggŏ                                              -¹baw, Nakhi Geba)';
     case New_Tai_Lue                                                                                 = 'New Tai Lue';
     case Newa_Newar_Newari_Nepala_lipi                                                               = 'Newa, Newar, Newari, Nepāla lipi';
     case Nushu                                                                                       = 'Nüshu';
