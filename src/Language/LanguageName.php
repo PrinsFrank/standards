@@ -343,7 +343,7 @@ enum LanguageName: string
     case Nyoro                                                                        = 'Nyoro';
     case Nzima                                                                        = 'Nzima';
     case Occitan_post_1500                                                            = 'Occitan (post 1500)';
-    case Official_Aramaic_700_300_BCE_Imperial_Aramaic_700_300_BCE                    = 'Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)';
+    case Official_Aramaic_700_300_BCE_Imperial_Aramaic_700_300_BCE                    = 'Official Aramaic (700-300 BCE); Imperial Aramaic (700                   -300 BCE)';
     case Ojibwa                                                                       = 'Ojibwa';
     case Oriya                                                                        = 'Oriya';
     case Oromo                                                                        = 'Oromo';
