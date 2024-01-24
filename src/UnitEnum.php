@@ -32,10 +32,6 @@ class UnitEnum
             throw new InvalidArgumentException('It is only possible to get names of unitEnums, "' . $fqn . '" provided');
         }
 
-        if (!defined("$fqn::$keyName")) {
-            return null;
-        }
-
         try {
             /** @var T $itemValue */
             $itemValue = constant("$fqn::$keyName");
