@@ -240,7 +240,7 @@ $valueAlpha2->getInternationalCallPrefix()->value; // '00'
 $valueAlpha2->getNationalCallPrefix();             // NationalCallPrefix::_0
 $valueAlpha2->getNationalCallPrefix()->value;      // '0'
 
-$valueAlpha2::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
+$valueAlpha2::from('NL')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 
 $valueAlpha2->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
