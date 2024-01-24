@@ -29,7 +29,7 @@ class LanguageExtensiveMapping implements Mapping
     {
         $dataSet = [];
         foreach (explode("\n", $client->getPageSource()) as $lineNumber => $line) {
-            if ($lineNumber === 0) {
+            if ($lineNumber === 0 || $line === '</pre></body></html>') {
                 continue;
             }
 
