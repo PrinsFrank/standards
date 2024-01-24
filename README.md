@@ -579,6 +579,7 @@ public function foo(InternationalCallPrefix $internationalCallPrefix) {} // Use 
 ## Language (ISO639)
 
 [![Daily language spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
+[![Daily Language Extensive update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml)
 
 > :mortar_board: **Language codes are always in lowercase to avoid confusion with country codes.**
 
