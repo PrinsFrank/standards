@@ -240,7 +240,7 @@ $valueAlpha2->getInternationalCallPrefix()->value; // '00'
 $valueAlpha2->getNationalCallPrefix();             // NationalCallPrefix::_0
 $valueAlpha2->getNationalCallPrefix()->value;      // '0'
 
-$valueAlpha2::from('NLD')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
+$valueAlpha2::from('NL')->getFlagEmoji();         // '🇳🇱' (This might not be displayed correctly in this readme if you're on windows, see 'https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.')
 
 $valueAlpha2->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
@@ -579,6 +579,7 @@ public function foo(InternationalCallPrefix $internationalCallPrefix) {} // Use 
 ## Language (ISO639)
 
 [![Daily language spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
+[![Daily Language Extensive update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml)
 
 > :mortar_board: **Language codes are always in lowercase to avoid confusion with country codes.**
 
