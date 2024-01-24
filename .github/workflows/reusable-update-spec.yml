@@ -21,7 +21,7 @@ jobs:
         run: composer cs:fix
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           commit-message: |
             Automatic ${{ inputs.type }} spec update from upstream changes
