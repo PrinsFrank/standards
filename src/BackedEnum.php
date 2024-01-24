@@ -32,10 +32,6 @@ class BackedEnum
             throw new InvalidArgumentException('It is only possible to get names of backedEnums, "' . $fqn . '" provided');
         }
 
-        if (!defined("$fqn::$keyName")) {
-            return null;
-        }
-
         try {
             /** @var T $itemValue */
             $itemValue = constant("$fqn::$keyName");
