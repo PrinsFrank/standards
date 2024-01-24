@@ -28,7 +28,7 @@ class SpecUpdater
          */
         $mappings = $requestedMapping !== null ? [$requestedMapping] : $dataSourceMappingProvider->provide();
         foreach ($mappings as $mapping) {
-            $event->getIO()->writeRaw('Updating from mapping "' . $mapping . '"');
+            $event->getIO()->writeRaw('Retrieving data from mapping "' . $mapping . '"');
             $crawler = ($client = Client::createFirefoxClient())->request('GET', $mapping::url());
 
             /** @var EnumFile $enumFile */
