@@ -48,6 +48,7 @@
         "update-spec-language": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageMapping",
         "update-spec-language-subtag": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageSubTagMapping",
         "update-spec-scripts": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\ScriptMapping",
+        "update-spec-tld": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\TopLevelDomainMapping",
         "detect-drivers": "bdi detect drivers"
     },
     "repositories": [
