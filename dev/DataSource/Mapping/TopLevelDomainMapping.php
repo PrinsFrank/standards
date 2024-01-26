@@ -12,8 +12,10 @@ use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
 use PrinsFrank\Standards\TopLevelDomain\GenericRestrictedTLD;
 use PrinsFrank\Standards\TopLevelDomain\GenericTLD;
+use PrinsFrank\Standards\TopLevelDomain\InfrastructureTLD;
 use PrinsFrank\Standards\TopLevelDomain\SponsoredTLD;
 use PrinsFrank\Standards\TopLevelDomain\TestTLD;
+use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
@@ -62,6 +64,7 @@ class TopLevelDomainMapping implements Mapping
         $countryCodeTLD       = new EnumFile(CountryCodeTLD::class);
         $genericRestrictedTLD = new EnumFile(GenericRestrictedTLD::class);
         $genericTLD           = new EnumFile(GenericTLD::class);
+        $infrastructureTLD    = new EnumFile(InfrastructureTLD::class);
         $sponsoredTLD         = new EnumFile(SponsoredTLD::class);
         $testTLD              = new EnumFile(TestTLD::class);
         foreach ($dataSet as $dataRow) {
@@ -71,6 +74,7 @@ class TopLevelDomainMapping implements Mapping
                 'country-code'       => $countryCodeTLD->addCase(new EnumCase($name, $name)),
                 'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name)),
                 'generic'            => $genericTLD->addCase(new EnumCase($name, $name)),
+                'infrastructure'     => $infrastructureTLD->addCase(new EnumCase($name, $name)),
                 'sponsored'          => $sponsoredTLD->addCase(new EnumCase($name, $name)),
                 'test'               => $testTLD->addCase(new EnumCase($name, $name)),
                 default              => throw new InvalidArgumentException('Unrecognized TLD type "' . $dataRow->type . '"'),
