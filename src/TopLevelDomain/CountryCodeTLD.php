@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\TopLevelDomain;
 
 enum CountryCodeTLD: string
 {
+    case laka = 'ලංකා';
     case ac = 'ac';
     case ad = 'ad';
     case ae = 'ae';
@@ -158,7 +159,6 @@ enum CountryCodeTLD: string
     case ky = 'ky';
     case kz = 'kz';
     case la = 'la';
-    case laka = 'ලංකා';
     case lb = 'lb';
     case lc = 'lc';
     case li = 'li';

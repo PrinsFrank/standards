@@ -8,6 +8,7 @@ use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 
+/** @internal */
 class EnumCase
 {
     public function __construct(

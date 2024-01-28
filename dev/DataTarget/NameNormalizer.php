@@ -10,6 +10,7 @@ use PrinsFrank\Transliteration\FormalIdSyntax\Components\Character;
 use PrinsFrank\Transliteration\FormalIdSyntax\Components\Filter;
 use PrinsFrank\Transliteration\TransliteratorBuilder;
 
+/** @internal */
 class NameNormalizer
 {
     /**

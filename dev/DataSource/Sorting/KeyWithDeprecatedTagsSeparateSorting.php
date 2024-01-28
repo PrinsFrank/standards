@@ -9,6 +9,6 @@ class KeyWithDeprecatedTagsSeparateSorting implements SortingInterface
 {
     public function __invoke(EnumCase $a, EnumCase $b): int
     {
-        return ($a->deprecated ? 1 : 0) . $a <=> ($b->deprecated ? 1 : 0) . $b;
+        return ($a->deprecated ? 1 : 0) . $a->key <=> ($b->deprecated ? 1 : 0) . $b->key;
     }
 }
