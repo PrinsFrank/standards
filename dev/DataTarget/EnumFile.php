@@ -92,7 +92,7 @@ class EnumFile
         }
 
         $firstMethodPos = mb_strpos($enumContent, ' public ');
-        $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1) . PHP_EOL;
+        $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1);
         $cases = array_unique($this->cases);
         usort($cases, $sorting);
         foreach ($cases as $case) {
