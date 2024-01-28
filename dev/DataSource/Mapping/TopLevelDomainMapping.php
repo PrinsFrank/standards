@@ -81,7 +81,7 @@ class TopLevelDomainMapping implements Mapping
             };
         }
 
-        return [$countryCodeTLD, $genericRestrictedTLD, $genericTLD, $sponsoredTLD, $testTLD];
+        return [$countryCodeTLD, $genericRestrictedTLD, $genericTLD, $infrastructureTLD, $sponsoredTLD, $testTLD];
     }
 
     public static function getSorting(): SortingInterface
