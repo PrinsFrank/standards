@@ -31,7 +31,7 @@ class EnumCase
         }
 
         $existingKeyWithValue = $enumFQN::tryFrom($this->value);
-        $key                  = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->key);
+        $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->key);
         if (is_int($this->value)) {
             $case .= 'case ' . $key . ' = ' . $this->value . ';' . PHP_EOL;
         } else {

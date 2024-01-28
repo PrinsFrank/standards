@@ -33,10 +33,10 @@ class HttpStatusCodeMapping implements Mapping
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
 
-            $record              = (object) [];
-            $record->value       = $columns[0]->getText();
+            $record = (object) [];
+            $record->value = $columns[0]->getText();
             $record->description = $columns[1]->getText();
-            $record->reference   = $columns[2]->getText();
+            $record->reference = $columns[2]->getText();
 
             /** @var TDataSet $record */
             $dataSet[] = $record;
@@ -51,7 +51,7 @@ class HttpStatusCodeMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $httpMethod  = new EnumFile(HttpStatusCode::class);
+        $httpMethod = new EnumFile(HttpStatusCode::class);
         foreach ($dataSet as $dataRow) {
             if (in_array($dataRow->description, ['Unassigned', '(Unused)'], true)) {
                 continue;
