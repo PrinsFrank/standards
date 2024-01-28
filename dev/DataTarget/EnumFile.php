@@ -7,6 +7,8 @@ use BackedEnum;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\Exception\EnumNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
+use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
+use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 use RuntimeException;
 
 class EnumFile
@@ -77,6 +79,8 @@ class EnumFile
     /**
      * @throws EnumNotFoundException
      * @throws TransliterationException
+     * @throws InvalidArgumentException
+     * @throws UnableToCreateTransliteratorException
      */
     public function writeCases(SortingInterface $sorting): self
     {
