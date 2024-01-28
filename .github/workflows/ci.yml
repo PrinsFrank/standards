@@ -12,6 +12,7 @@ env:
   PHPSTAN_CACHE_DIR: '.phpstan.result.cache'
   COVERAGE_PATH: 'coverage.xml'
   GH_TOKEN: ${{ github.token }}
+  COMPOSER_ROOT_VERSION: dev-main # see https://getcomposer.org/doc/articles/troubleshooting.md#dependencies-on-the-root-package
 
 jobs:
   composer-validate:
