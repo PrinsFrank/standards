@@ -29,7 +29,7 @@
         "dbrekelmans/bdi": "^1.0",
         "phpstan/phpstan": "^1.10.50",
         "composer/composer": "^2.3",
-        "prinsfrank/transliteration": "^0.1.0"
+        "prinsfrank/transliteration": "^0.2.2"
     },
     "scripts": {
         "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
