@@ -55,9 +55,8 @@ class NameNormalizer
         }
 
         $key = trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
-
         if ($key === '') {
-            throw new TransliterationException('No characters left in key');
+            throw new TransliterationException(sprintf('No characters left in key (%s)', $key));
         }
 
         return $key;
