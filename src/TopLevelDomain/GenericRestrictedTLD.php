@@ -5,7 +5,7 @@ namespace PrinsFrank\Standards\TopLevelDomain;
 
 enum GenericRestrictedTLD: string
 {
-    case biz  = 'biz';
+    case biz = 'biz';
     case name = 'name';
-    case pro  = 'pro';
+    case pro = 'pro';
 }

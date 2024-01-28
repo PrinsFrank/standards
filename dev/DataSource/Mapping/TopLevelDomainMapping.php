@@ -42,9 +42,9 @@ class TopLevelDomainMapping implements Mapping
                 continue;
             }
 
-            $record          = (object) [];
-            $record->tld     = $columns[0]->getText();
-            $record->type    = $columns[1]->getText();
+            $record = (object) [];
+            $record->tld = $columns[0]->getText();
+            $record->type = $columns[1]->getText();
             $record->manager = $columns[2]->getText();
 
             /** @var TDataSet $record */
@@ -61,23 +61,23 @@ class TopLevelDomainMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $countryCodeTLD       = new EnumFile(CountryCodeTLD::class);
+        $countryCodeTLD = new EnumFile(CountryCodeTLD::class);
         $genericRestrictedTLD = new EnumFile(GenericRestrictedTLD::class);
-        $genericTLD           = new EnumFile(GenericTLD::class);
-        $infrastructureTLD    = new EnumFile(InfrastructureTLD::class);
-        $sponsoredTLD         = new EnumFile(SponsoredTLD::class);
-        $testTLD              = new EnumFile(TestTLD::class);
+        $genericTLD = new EnumFile(GenericTLD::class);
+        $infrastructureTLD = new EnumFile(InfrastructureTLD::class);
+        $sponsoredTLD = new EnumFile(SponsoredTLD::class);
+        $testTLD = new EnumFile(TestTLD::class);
         foreach ($dataSet as $dataRow) {
             $name = trim($dataRow->tld, '.');
 
             match ($dataRow->type) {
-                'country-code'       => $countryCodeTLD->addCase(new EnumCase($name, $name)),
+                'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name)),
                 'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name)),
-                'generic'            => $genericTLD->addCase(new EnumCase($name, $name)),
-                'infrastructure'     => $infrastructureTLD->addCase(new EnumCase($name, $name)),
-                'sponsored'          => $sponsoredTLD->addCase(new EnumCase($name, $name)),
-                'test'               => $testTLD->addCase(new EnumCase($name, $name)),
-                default              => throw new InvalidArgumentException('Unrecognized TLD type "' . $dataRow->type . '"'),
+                'generic' => $genericTLD->addCase(new EnumCase($name, $name)),
+                'infrastructure' => $infrastructureTLD->addCase(new EnumCase($name, $name)),
+                'sponsored' => $sponsoredTLD->addCase(new EnumCase($name, $name)),
+                'test' => $testTLD->addCase(new EnumCase($name, $name)),
+                default => throw new InvalidArgumentException('Unrecognized TLD type "' . $dataRow->type . '"'),
             };
         }
 
