@@ -21,6 +21,7 @@ class NameNormalizer
     {
         $key = (new TransliteratorBuilder())
             ->toASCII()
+            ->IPAToEnglishApproximation()
             ->replace(' ', '_')
             ->replace(';', '_')
             ->replace(',', '_')
@@ -39,12 +40,11 @@ class NameNormalizer
             ->replace('[', '_')
             ->replace(']', '_')
             ->replace('~', '_')
-            ->IPAToEnglishApproximation()
             ->keep(
                 (new Filter())
                     ->addRange(new Character('a'), new Character('z'))
                     ->addRange(new Character('A'), new Character('Z'))
-                    ->addChar(new Character(' '))
+                    ->addChar(new Character('_'))
             )
             ->transliterate($key);
 
