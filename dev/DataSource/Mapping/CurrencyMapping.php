@@ -7,6 +7,8 @@ use DOMDocument;
 use DOMElement;
 use DOMXPath;
 use PrinsFrank\Enums\BackedEnum;
+use PrinsFrank\Enums\Exception\InvalidArgumentException;
+use PrinsFrank\Enums\Exception\NameNotFoundException;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\EuroZone;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
@@ -20,6 +22,7 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
 use PrinsFrank\Standards\Dev\DataTarget\NameNormalizer;
 use PrinsFrank\Standards\Dev\Exception\DomElementNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
+use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -71,6 +74,10 @@ class CurrencyMapping implements Mapping
     /**
      * @param list<TDataSet> $dataSet
      * @throws TransliterationException
+     * @throws InvalidArgumentException
+     * @throws NameNotFoundException
+     * @throws \PrinsFrank\Transliteration\Exception\InvalidArgumentException
+     * @throws UnableToCreateTransliteratorException
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array
