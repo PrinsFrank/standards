@@ -9,8 +9,8 @@ namespace PrinsFrank\Standards\Country\UserAssigned;
  */
 enum TravelDocumentAlpha3: string
 {
-    case European_Union                                            = 'EUE';
-    case United_Nations_Organization_or_one_of_its_officials       = 'UNO';
+    case European_Union = 'EUE';
+    case United_Nations_Organization_or_one_of_its_officials = 'UNO';
     case United_Nations_specialized_agency_or_one_of_its_officials = 'UNA';
 
     /**
@@ -47,7 +47,7 @@ enum TravelDocumentAlpha3: string
     case Parliamentary_Assembly_of_the_Mediterranean = 'XMP';
 
     case Sovereign_Military_Order_of_Malta_or_one_of_its_emissaries = 'XOM';
-    case Southern_African_Development_Community                     = 'XDC';
+    case Southern_African_Development_Community = 'XDC';
 
     /**
      * Stateless person, as defined in Article 1 of the 1954 Convention
@@ -96,11 +96,11 @@ enum TravelDocumentAlpha3: string
             self::European_Union => TravelDocumentAlpha2::European_Union,
             self::United_Nations_Organization_or_one_of_its_officials,
             self::United_Nations_specialized_agency_or_one_of_its_officials => TravelDocumentAlpha2::United_Nations,
-            self::Netherlands_Antilles                                      => TravelDocumentAlpha2::Netherlands_Antilles,
-            self::Neutral_Zone                                              => TravelDocumentAlpha2::Neutral_Zone,
-            self::Utopia                                                    => TravelDocumentAlpha2::Utopia,
-            self::International_Civil_Aviation_Organization                 => TravelDocumentAlpha2::International_Civil_Aviation_Organization,
-            default                                                         => null,
+            self::Netherlands_Antilles => TravelDocumentAlpha2::Netherlands_Antilles,
+            self::Neutral_Zone => TravelDocumentAlpha2::Neutral_Zone,
+            self::Utopia => TravelDocumentAlpha2::Utopia,
+            self::International_Civil_Aviation_Organization => TravelDocumentAlpha2::International_Civil_Aviation_Organization,
+            default => null,
         };
     }
 }

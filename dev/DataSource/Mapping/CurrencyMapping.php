@@ -57,11 +57,11 @@ class CurrencyMapping implements Mapping
         foreach ($items as $item) {
             $columns = $item->childNodes;
 
-            $record             = (object) [];
-            $record->CtryNm     = $columns[1]->textContent;
-            $record->CcyNm      = $columns[3]->textContent;
-            $record->Ccy        = $columns[5]->textContent ?? null;
-            $record->CcyNbr     = $columns[7]->textContent ?? null;
+            $record = (object) [];
+            $record->CtryNm = $columns[1]->textContent;
+            $record->CcyNm = $columns[3]->textContent;
+            $record->Ccy = $columns[5]->textContent ?? null;
+            $record->CcyNbr = $columns[7]->textContent ?? null;
             $record->CcyMnrUnts = $columns[9]->textContent ?? null;
 
             /** @var TDataSet $record */
@@ -82,10 +82,10 @@ class CurrencyMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $currencyNameEnum         = new EnumFile(CurrencyName::class);
-        $currencyNumericEnum      = new EnumFile(CurrencyNumeric::class);
-        $currencyAlpha3Enum       = (new EnumFile(CurrencyAlpha3::class))
-            ->addMethod($getMinorUnitsMethod      = new EnumMethod('getMinorUnits', '?int', 'null'))
+        $currencyNameEnum = new EnumFile(CurrencyName::class);
+        $currencyNumericEnum = new EnumFile(CurrencyNumeric::class);
+        $currencyAlpha3Enum = (new EnumFile(CurrencyAlpha3::class))
+            ->addMethod($getMinorUnitsMethod = new EnumMethod('getMinorUnits', '?int', 'null'))
             ->addMethod($getCountriesAlpha2Method = new EnumMethod('getCountriesAlpha2', 'array', '[]', '/** @return list<CountryAlpha2> */'));
 
         $countryAlpha2 = (new EnumFile(CountryAlpha2::class))

@@ -9,6 +9,6 @@ class ValueWithDeprecatedTagsSeparateSorting implements SortingInterface
 {
     public function __invoke(EnumCase $a, EnumCase $b): int
     {
-        return ($a->deprecated ? 1 : 0) . $a->value <=>  ($b->deprecated ? 1 : 0) . $b->value;
+        return ($a->deprecated ? 1 : 0) . $a->value <=> ($b->deprecated ? 1 : 0) . $b->value;
     }
 }

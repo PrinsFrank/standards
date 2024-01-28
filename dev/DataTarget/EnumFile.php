@@ -84,16 +84,16 @@ class EnumFile
      */
     public function writeCases(SortingInterface $sorting): self
     {
-        $enumContent    = $this->getContent();
-        $startEnum      = mb_strpos($enumContent, '{');
-        $endEnumPos     = mb_strrpos($enumContent, '}');
+        $enumContent = $this->getContent();
+        $startEnum = mb_strpos($enumContent, '{');
+        $endEnumPos = mb_strrpos($enumContent, '}');
         if ($startEnum === false || $endEnumPos === false) {
             throw new EnumNotFoundException();
         }
 
         $firstMethodPos = mb_strpos($enumContent, ' public ');
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1) . PHP_EOL;
-        $cases          = array_unique($this->cases);
+        $cases = array_unique($this->cases);
         usort($cases, $sorting);
         foreach ($cases as $case) {
             $newEnumContent .= '    ' . $case->toString($this->fqn);
@@ -110,8 +110,8 @@ class EnumFile
     public function writeMethods(): void
     {
         foreach ($this->methods as $method) {
-            $enumContent                  = $this->getContent();
-            $startExistingMethod          = mb_strpos($enumContent, '    public function ' . $method->name . '()');
+            $enumContent = $this->getContent();
+            $startExistingMethod = mb_strpos($enumContent, '    public function ' . $method->name . '()');
             $endPosMethodOrLastClosingTag = mb_strpos($enumContent, '    public function', $startExistingMethod === false ? 0 : $startExistingMethod + 1);
             if ($endPosMethodOrLastClosingTag === false) {
                 $endPosMethodOrLastClosingTag = mb_strrpos($enumContent, '}');

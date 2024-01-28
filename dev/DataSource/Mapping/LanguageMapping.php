@@ -39,10 +39,10 @@ class LanguageMapping implements Mapping
                 continue;
             }
 
-            $record              = (object) [];
-            $record->alpha3      = $columns[0]->getText();
-            $record->alpha2      = $columns[1]->getText();
-            $record->name        = $columns[2]->getText();
+            $record = (object) [];
+            $record->alpha3 = $columns[0]->getText();
+            $record->alpha2 = $columns[1]->getText();
+            $record->name = $columns[2]->getText();
             $record->name_french = $columns[3]->getText();
             $record->name_german = $columns[4]->getText();
 
@@ -59,10 +59,10 @@ class LanguageMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $languageAlpha2              = new EnumFile(LanguageAlpha2::class);
-        $languageName                = new EnumFile(LanguageName::class);
+        $languageAlpha2 = new EnumFile(LanguageAlpha2::class);
+        $languageName = new EnumFile(LanguageName::class);
         $languageAlpha3Bibliographic = new EnumFile(LanguageAlpha3Bibliographic::class);
-        $languageAlpha3Terminology   = new EnumFile(LanguageAlpha3Terminology::class);
+        $languageAlpha3Terminology = new EnumFile(LanguageAlpha3Terminology::class);
         foreach ($dataSet as $dataRow) {
             $languageName->addCase(new EnumCase($dataRow->name, $dataRow->name));
 

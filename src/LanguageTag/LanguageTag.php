@@ -52,7 +52,7 @@ class LanguageTag implements Stringable
     /** @throws InvalidArgumentException */
     public static function fromString(string $languageTagString, SubtagSeparator $subtagSeparator = SubtagSeparator::STANDARD): self
     {
-        $subTags               = explode($subtagSeparator->value, $languageTagString);
+        $subTags = explode($subtagSeparator->value, $languageTagString);
         $primaryLanguageSubtag = LanguageAlpha2::tryFrom($subTags[0])
             ?? LanguageAlpha3Terminology::tryFrom($subTags[0])
             ?? LanguageAlpha3Extensive::tryFrom($subTags[0])
@@ -64,7 +64,7 @@ class LanguageTag implements Stringable
             return new self($primaryLanguageSubtag, privateUseSubtag: implode($subtagSeparator->value, array_slice($subTags, 1)));
         }
 
-        $variantSubtag          = $extensionSubtag = [];
+        $variantSubtag = $extensionSubtag = [];
         $extendedLanguageSubtag = $scriptSubtag = $regionSubtag = $privateUseSubtag = null;
         foreach ($subTags as $index => $subTag) {
             if ($index === 0) {
@@ -72,17 +72,17 @@ class LanguageTag implements Stringable
             }
 
             if ($extendedLanguageSubtag === null
-                && $regionSubtag        === null
-                && $variantSubtag       === []
+                && $regionSubtag === null
+                && $variantSubtag === []
                 && ($matchesExtendedLanguage = LanguageAlpha3Terminology::tryFrom($subTag) ?? LanguageAlpha3Extensive::tryFrom($subTag)) !== null) {
                 $extendedLanguageSubtag = $matchesExtendedLanguage;
-            } elseif ($scriptSubtag  === null
-                && $regionSubtag     === null
-                && $variantSubtag    === []
+            } elseif ($scriptSubtag === null
+                && $regionSubtag === null
+                && $variantSubtag === []
                 && ($matchesScriptTag = ScriptCode::tryFrom($subTag)) !== null) {
                 $scriptSubtag = $matchesScriptTag;
-            } elseif ($regionSubtag  === null
-                && $variantSubtag    === []
+            } elseif ($regionSubtag === null
+                && $variantSubtag === []
                 && ($matchesRegionTag = CountryAlpha2::tryFrom($subTag) ?? GeographicRegion::tryFrom($subTag) ?? PrivateUseRegionSubtag::tryFrom($subTag)) !== null) {
                 $regionSubtag = $matchesRegionTag;
             } elseif (($matchesVariantTag = LanguageTagVariant::tryFrom($subTag)) !== null) {
