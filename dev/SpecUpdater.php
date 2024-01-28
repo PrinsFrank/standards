@@ -18,7 +18,7 @@ class SpecUpdater
     public static function update(Event $event): void
     {
         $dataSourceMappingProvider = new DataSourceMappingProvider();
-        $requestedMapping          = $event->getArguments()[0] ?? null;
+        $requestedMapping = $event->getArguments()[0] ?? null;
         if ($requestedMapping !== null && is_a($requestedMapping, Mapping::class, true) === false) {
             throw new InvalidArgumentException('source should implement ' . Mapping::class . ', ' . $requestedMapping . ' given');
         }

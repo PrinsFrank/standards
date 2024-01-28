@@ -47,12 +47,12 @@ class CountryMapping implements Mapping
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
 
-            $record              = (object) [];
-            $record->name        = $columns[0]->getText();
+            $record = (object) [];
+            $record->name = $columns[0]->getText();
             $record->name_french = $columns[1]->getText();
-            $record->alpha2      = $columns[2]->getText();
-            $record->alpha3      = $columns[3]->getText();
-            $record->numeric     = $columns[4]->getText();
+            $record->alpha2 = $columns[2]->getText();
+            $record->alpha3 = $columns[3]->getText();
+            $record->numeric = $columns[4]->getText();
 
             /** @var TDataSet $record */
             $dataSet[] = $record;
@@ -67,9 +67,9 @@ class CountryMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $countryName    = new EnumFile(CountryName::class);
-        $countryAlpha2  = new EnumFile(CountryAlpha2::class);
-        $countryAlpha3  = new EnumFile(CountryAlpha3::class);
+        $countryName = new EnumFile(CountryName::class);
+        $countryAlpha2 = new EnumFile(CountryAlpha2::class);
+        $countryAlpha3 = new EnumFile(CountryAlpha3::class);
         $countryNumeric = new EnumFile(CountryNumeric::class);
         foreach ($dataSet as $dataRow) {
             $countryName->addCase(new EnumCase($dataRow->name, $dataRow->name));

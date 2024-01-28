@@ -7,6 +7,8 @@ use DOMDocument;
 use DOMElement;
 use DOMXPath;
 use PrinsFrank\Enums\BackedEnum;
+use PrinsFrank\Enums\Exception\InvalidArgumentException;
+use PrinsFrank\Enums\Exception\NameNotFoundException;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\EuroZone;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
@@ -20,6 +22,7 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
 use PrinsFrank\Standards\Dev\DataTarget\NameNormalizer;
 use PrinsFrank\Standards\Dev\Exception\DomElementNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
+use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -54,11 +57,11 @@ class CurrencyMapping implements Mapping
         foreach ($items as $item) {
             $columns = $item->childNodes;
 
-            $record             = (object) [];
-            $record->CtryNm     = $columns[1]->textContent;
-            $record->CcyNm      = $columns[3]->textContent;
-            $record->Ccy        = $columns[5]->textContent ?? null;
-            $record->CcyNbr     = $columns[7]->textContent ?? null;
+            $record = (object) [];
+            $record->CtryNm = $columns[1]->textContent;
+            $record->CcyNm = $columns[3]->textContent;
+            $record->Ccy = $columns[5]->textContent ?? null;
+            $record->CcyNbr = $columns[7]->textContent ?? null;
             $record->CcyMnrUnts = $columns[9]->textContent ?? null;
 
             /** @var TDataSet $record */
@@ -71,14 +74,18 @@ class CurrencyMapping implements Mapping
     /**
      * @param list<TDataSet> $dataSet
      * @throws TransliterationException
+     * @throws InvalidArgumentException
+     * @throws NameNotFoundException
+     * @throws \PrinsFrank\Transliteration\Exception\InvalidArgumentException
+     * @throws UnableToCreateTransliteratorException
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $currencyNameEnum         = new EnumFile(CurrencyName::class);
-        $currencyNumericEnum      = new EnumFile(CurrencyNumeric::class);
-        $currencyAlpha3Enum       = (new EnumFile(CurrencyAlpha3::class))
-            ->addMethod($getMinorUnitsMethod      = new EnumMethod('getMinorUnits', '?int', 'null'))
+        $currencyNameEnum = new EnumFile(CurrencyName::class);
+        $currencyNumericEnum = new EnumFile(CurrencyNumeric::class);
+        $currencyAlpha3Enum = (new EnumFile(CurrencyAlpha3::class))
+            ->addMethod($getMinorUnitsMethod = new EnumMethod('getMinorUnits', '?int', 'null'))
             ->addMethod($getCountriesAlpha2Method = new EnumMethod('getCountriesAlpha2', 'array', '[]', '/** @return list<CountryAlpha2> */'));
 
         $countryAlpha2 = (new EnumFile(CountryAlpha2::class))

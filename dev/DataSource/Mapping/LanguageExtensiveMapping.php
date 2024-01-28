@@ -35,15 +35,15 @@ class LanguageExtensiveMapping implements Mapping
 
             $columns = explode("\t", $line);
 
-            $record               = (object) [];
-            $record->Id           = $columns[0] ?? throw new DomElementNotFoundException('ID in ' . $line);
-            $record->Part2B       = $columns[1] ?? throw new DomElementNotFoundException('Part2B in ' . $line);
-            $record->Part2T       = $columns[2] ?? throw new DomElementNotFoundException('Part2T in ' . $line);
-            $record->Part1        = $columns[3] ?? throw new DomElementNotFoundException('Part1 in ' . $line);
-            $record->Scope        = $columns[4] ?? throw new DomElementNotFoundException('Scope in ' . $line);
+            $record = (object) [];
+            $record->Id = $columns[0] ?? throw new DomElementNotFoundException('ID in ' . $line);
+            $record->Part2B = $columns[1] ?? throw new DomElementNotFoundException('Part2B in ' . $line);
+            $record->Part2T = $columns[2] ?? throw new DomElementNotFoundException('Part2T in ' . $line);
+            $record->Part1 = $columns[3] ?? throw new DomElementNotFoundException('Part1 in ' . $line);
+            $record->Scope = $columns[4] ?? throw new DomElementNotFoundException('Scope in ' . $line);
             $record->LanguageType = $columns[5] ?? throw new DomElementNotFoundException('LanguageType in ' . $line);
-            $record->RefName      = $columns[6] ?? throw new DomElementNotFoundException('RefName in ' . $line);
-            $record->Comment      = $columns[7] ?? throw new DomElementNotFoundException('Comment in ' . $line);
+            $record->RefName = $columns[6] ?? throw new DomElementNotFoundException('RefName in ' . $line);
+            $record->Comment = $columns[7] ?? throw new DomElementNotFoundException('Comment in ' . $line);
 
             /** @var TDataSet $record */
             $dataSet[] = $record;

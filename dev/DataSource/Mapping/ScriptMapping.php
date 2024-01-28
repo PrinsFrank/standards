@@ -39,14 +39,14 @@ class ScriptMapping implements Mapping
                 continue;
             }
 
-            $record              = (object) [];
-            $record->code        = $columns[0]->getText();
-            $record->number      = $columns[1]->getText();
-            $record->name        = $columns[2]->getText();
+            $record = (object) [];
+            $record->code = $columns[0]->getText();
+            $record->number = $columns[1]->getText();
+            $record->name = $columns[2]->getText();
             $record->french_name = $columns[3]->getText();
-            $record->alias       = $columns[4]->getText();
-            $record->age         = $columns[5]->getText();
-            $record->date        = $columns[6]->getText();
+            $record->alias = $columns[4]->getText();
+            $record->age = $columns[5]->getText();
+            $record->date = $columns[6]->getText();
 
             /** @var TDataSet $record */
             $dataSet[] = $record;
@@ -61,10 +61,10 @@ class ScriptMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $scriptCode   = new EnumFile(ScriptCode::class);
-        $scriptName   = new EnumFile(ScriptName::class);
+        $scriptCode = new EnumFile(ScriptCode::class);
+        $scriptName = new EnumFile(ScriptName::class);
         $scriptNumber = new EnumFile(ScriptNumber::class);
-        $scriptAlias  = new EnumFile(ScriptAlias::class);
+        $scriptAlias = new EnumFile(ScriptAlias::class);
         foreach ($dataSet as $dataRow) {
             $name = preg_replace('/_+/', '_', str_replace('+', '_', preg_replace('/\p{No}/u', '', $dataRow->name) ?? '')) ?? '';
 

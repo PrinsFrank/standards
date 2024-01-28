@@ -13,20 +13,20 @@ use PrinsFrank\Standards\Country\CountryNumeric;
  */
 enum InternationalCallPrefix: string
 {
-    case _0    = '0';
-    case _00   = '00';
-    case _000  = '000';
-    case _001  = '001';
+    case _0 = '0';
+    case _00 = '00';
+    case _000 = '000';
+    case _001 = '001';
     case _0011 = '0011';
-    case _009  = '009';
-    case _00x  = '00x';
-    case _010  = '010';
-    case _011  = '011';
+    case _009 = '009';
+    case _00x = '00x';
+    case _010 = '010';
+    case _011 = '011';
     case _1xx0 = '1xx0';
     case _8_10 = '8~10';
 
     /** @deprecated Used to be used by Cuba, which now uses 00 */
-    case _119  = '119';
+    case _119 = '119';
 
     public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): self
     {
@@ -239,9 +239,9 @@ enum InternationalCallPrefix: string
             CountryAlpha2::Uganda => self::_000,
             CountryAlpha2::Guyana,
             CountryAlpha2::Hong_Kong,
-            CountryAlpha2::Mongolia  => self::_001,
+            CountryAlpha2::Mongolia => self::_001,
             CountryAlpha2::Australia => self::_0011,
-            CountryAlpha2::Nigeria   => self::_009,
+            CountryAlpha2::Nigeria => self::_009,
             CountryAlpha2::Brazil,
             CountryAlpha2::Cambodia,
             CountryAlpha2::Colombia,
@@ -249,7 +249,7 @@ enum InternationalCallPrefix: string
             CountryAlpha2::Korea_Republic,
             CountryAlpha2::Taiwan_Province_of_China,
             CountryAlpha2::Thailand => self::_00x,
-            CountryAlpha2::Japan    => self::_010,
+            CountryAlpha2::Japan => self::_010,
             CountryAlpha2::American_Samoa,
             CountryAlpha2::Anguilla,
             CountryAlpha2::Antigua_and_Barbuda,
@@ -277,7 +277,7 @@ enum InternationalCallPrefix: string
             CountryAlpha2::Turks_and_Caicos_Islands,
             CountryAlpha2::United_States_of_America,
             CountryAlpha2::Virgin_Islands_U_S => self::_011,
-            CountryAlpha2::Chile              => self::_1xx0,
+            CountryAlpha2::Chile => self::_1xx0,
             CountryAlpha2::Belarus,
             CountryAlpha2::Kazakhstan,
             CountryAlpha2::Kyrgyzstan,

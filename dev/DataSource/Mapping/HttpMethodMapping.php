@@ -33,11 +33,11 @@ class HttpMethodMapping implements Mapping
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
 
-            $record             = (object) [];
-            $record->name       = $columns[0]->getText();
-            $record->safe       = $columns[1]->getText();
+            $record = (object) [];
+            $record->name = $columns[0]->getText();
+            $record->safe = $columns[1]->getText();
             $record->idempotent = $columns[2]->getText();
-            $record->reference  = $columns[3]->getText();
+            $record->reference = $columns[3]->getText();
 
             /** @var TDataSet $record */
             $dataSet[] = $record;
@@ -52,7 +52,7 @@ class HttpMethodMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $httpMethod  = new EnumFile(HttpMethod::class);
+        $httpMethod = new EnumFile(HttpMethod::class);
         foreach ($dataSet as $dataRow) {
             if ($dataRow->name === '*') {
                 continue;
