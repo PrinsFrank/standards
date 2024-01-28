@@ -42,9 +42,10 @@ class NameNormalizer
             ->replace('~', '_')
             ->keep(
                 (new Filter())
-                    ->addRange(new Character('a'), new Character('z'))
+                    ->addRange(new Character('0'), new Character('9'))
                     ->addRange(new Character('A'), new Character('Z'))
                     ->addChar(new Character('_'))
+                    ->addRange(new Character('a'), new Character('z'))
             )
             ->transliterate($key);
 
