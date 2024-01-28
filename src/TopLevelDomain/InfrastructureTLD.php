@@ -5,4 +5,5 @@ namespace PrinsFrank\Standards\TopLevelDomain;
 
 enum InfrastructureTLD: string
 {
+    case arpa = 'arpa';
 }
