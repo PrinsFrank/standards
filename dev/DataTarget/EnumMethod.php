@@ -61,6 +61,7 @@ class EnumMethod
         {$mappingString}
                 };
             }
+
         EOD;
     }
 }
