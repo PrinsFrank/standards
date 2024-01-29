@@ -89,7 +89,7 @@ class CurrencyMapping implements Mapping
             ->addMethod($getCountriesAlpha2Method = new EnumMethod('getCountriesAlpha2', 'array', '[]', '/** @return list<CountryAlpha2> */'));
 
         $countryAlpha2 = (new EnumFile(CountryAlpha2::class))
-            ->addMethod($getCurrenciesMethod = new EnumMethod('getCurrenciesAlpha3', 'array', '[]', '/** @return list<CountryAlpha3> */'));
+            ->addMethod($getCurrenciesMethod = new EnumMethod('getCurrenciesAlpha3', 'array', '[]', '/** @return list<CurrencyAlpha3> */'));
         foreach ($dataSet as $dataRow) {
             if (($dataRow->Ccy ?? null) === null) {
                 continue;
