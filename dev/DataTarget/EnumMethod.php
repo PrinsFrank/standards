@@ -48,7 +48,7 @@ class EnumMethod
                 continue;
             }
 
-            $mappingString .= $indenting . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . implode(',' . PHP_EOL, $values) . PHP_EOL . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
+            $mappingString .= $indenting . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . $indenting . implode(',' . PHP_EOL . $indenting, $values) . PHP_EOL . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
         }
 
         if ($this->default !== null) {
