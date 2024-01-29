@@ -110,29 +110,24 @@ class EnumFile
     public function writeMethods(): void
     {
         foreach ($this->methods as $method) {
-            $this->writeMethod($method);
-        }
-    }
+            $enumContent = $this->getContent();
+            $startExistingMethod = mb_strpos($enumContent, '    public function ' . $method->name . '()');
+            $endPosMethodOrLastClosingTag = mb_strpos($enumContent, '    public function', $startExistingMethod === false ? 0 : $startExistingMethod + 1);
+            if ($endPosMethodOrLastClosingTag === false) {
+                $endPosMethodOrLastClosingTag = mb_strrpos($enumContent, '}');
+            }
 
-    public function writeMethod(EnumMethod $method): void
-    {
-        $enumContent = $this->getContent();
-        $startExistingMethod = mb_strpos($enumContent, '    public function ' . $method->name . '()');
-        $endPosMethodOrLastClosingTag = mb_strpos($enumContent, '    public function', $startExistingMethod === false ? 0 : $startExistingMethod + 1);
-        if ($endPosMethodOrLastClosingTag === false) {
-            $endPosMethodOrLastClosingTag = mb_strrpos($enumContent, '}');
-        }
+            if ($endPosMethodOrLastClosingTag === false) {
+                throw new RuntimeException('Couldn\'t locate closing tag');
+            }
 
-        if ($endPosMethodOrLastClosingTag === false) {
-            throw new RuntimeException('Couldn\'t locate closing tag');
-        }
+            if ($startExistingMethod !== false) {
+                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
+            } else {
+                $newEnumContent = mb_substr($enumContent, 0, $endPosMethodOrLastClosingTag) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
+            }
 
-        if ($startExistingMethod !== false) {
-            $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
-        } else {
-            $newEnumContent = mb_substr($enumContent, 0, $endPosMethodOrLastClosingTag) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
+            $this->putContent($newEnumContent);
         }
-
-        $this->putContent($newEnumContent);
     }
 }
