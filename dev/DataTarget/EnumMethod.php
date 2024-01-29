@@ -11,8 +11,7 @@ class EnumMethod
     public function __construct(
         public readonly string $name,
         public readonly string $returnType,
-        public readonly ?string $default,
-        public readonly ?string $docBlock = null,
+        public readonly ?string $default
     ) {
     }
 
@@ -55,7 +54,7 @@ class EnumMethod
             $mappingString .= $indentingCase . 'default => ' . $this->default;
         }
 
-        $methodContent = <<<EOD
+        return <<<EOD
             public function {$this->name}(): {$this->returnType}
             {
                 return match(\$this) {
@@ -63,7 +62,5 @@ class EnumMethod
                 };
             }
         EOD;
-
-        return ($this->docBlock !== null ? ('    ' . $this->docBlock . PHP_EOL) : '') . $methodContent;
     }
 }
