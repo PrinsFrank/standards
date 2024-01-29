@@ -27,7 +27,7 @@ class EnumCase
     {
         $case = '';
         if ($this->deprecated === true) {
-            $case .= $indenting . '/** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */' . PHP_EOL;
+            $case .= PHP_EOL . $indenting . '/** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */' . PHP_EOL;
         }
 
         $existingKeyWithValue = $enumFQN::tryFrom($this->value);
