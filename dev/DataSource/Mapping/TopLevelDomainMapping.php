@@ -47,6 +47,11 @@ class TopLevelDomainMapping implements Mapping
             $record->type = $columns[1]->getText();
             $record->manager = $columns[2]->getText();
 
+            // Exclude revoked TLD-s.
+            if ($record->manager === 'Not assigned') {
+                continue;
+            }
+
             /** @var TDataSet $record */
             $dataSet[] = $record;
         }
