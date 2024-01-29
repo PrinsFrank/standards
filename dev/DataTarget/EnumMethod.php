@@ -55,9 +55,12 @@ class EnumMethod
             $mappingString .= $indentingCase . 'default => ' . $this->default;
         }
 
-        $docBlock = $this->docBlock ?? '';
-        return <<<EOD
-            {$docBlock}
+        $docBlock = '';
+        if ($this->docBlock !== null) {
+            $docBlock = '    ' . $docBlock . PHP_EOL;
+        }
+
+        return $docBlock . <<<EOD
             public function {$this->name}(): {$this->returnType}
             {
                 return match(\$this) {
