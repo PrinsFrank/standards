@@ -13,10 +13,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Install dependencies
         run: composer install
+
       - name: Run standard update command
         run: composer update-spec-${{ inputs.type }}
+
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v5
