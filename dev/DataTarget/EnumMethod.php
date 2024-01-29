@@ -27,7 +27,7 @@ class EnumMethod
 
     public function __toString(): string
     {
-        $indenting = str_repeat(' ', 8);
+        $indentingCase = str_repeat(' ', 12);
         $mappingString = '';
         $sortedMapping = $this->mapping;
         ksort($sortedMapping);
@@ -43,16 +43,16 @@ class EnumMethod
             sort($values);
 
             if (count($values) <= 1) {
-                $mappingString .= $indenting . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . implode(',', $values) . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
+                $mappingString .= $indentingCase . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . implode(',', $values) . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
 
                 continue;
             }
 
-            $mappingString .= $indenting . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . $indenting . implode(',' . PHP_EOL . $indenting, $values) . PHP_EOL . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
+            $mappingString .= $indentingCase . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . $indentingCase . '    ' . implode(',' . PHP_EOL . $indentingCase . '    ', $values) . PHP_EOL . $indentingCase . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
         }
 
         if ($this->default !== null) {
-            $mappingString .= $indenting . 'default => ' . $this->default;
+            $mappingString .= $indentingCase . 'default => ' . $this->default;
         }
 
         $docBlock = $this->docBlock ?? '';
