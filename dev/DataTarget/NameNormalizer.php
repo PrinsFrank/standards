@@ -20,7 +20,7 @@ class NameNormalizer
      */
     public static function normalize(string $key): string
     {
-        $key = (new TransliteratorBuilder())
+        $normalizedKey = (new TransliteratorBuilder())
             ->toASCII()
             ->IPAToEnglishApproximation()
             ->replace(' ', '_')
@@ -50,15 +50,15 @@ class NameNormalizer
             )
             ->transliterate($key);
 
-        if (preg_match('/[^0-9A-Z_a-z]/', $key) === 1) {
-            throw new TransliterationException(sprintf('Invalid key: (%s)', $key));
+        if (preg_match('/[^0-9A-Z_a-z]/', $normalizedKey) === 1) {
+            throw new TransliterationException(sprintf('Invalid key: (%s)', $normalizedKey));
         }
 
-        $key = trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
-        if ($key === '') {
+        $normalizedKey = trim(str_replace(['__', '__'], ['_', '_'], $normalizedKey), '_');
+        if ($normalizedKey === '') {
             throw new TransliterationException(sprintf('No characters left in key (%s)', $key));
         }
 
-        return $key;
+        return $normalizedKey;
     }
 }
