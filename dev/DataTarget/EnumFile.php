@@ -114,6 +114,7 @@ class EnumFile
         }
     }
 
+    /** @throws EnumNotFoundException */
     public function writeMethod(EnumMethod $method): void
     {
         $enumContent = $this->getContent();
