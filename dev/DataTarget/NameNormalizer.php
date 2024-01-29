@@ -67,6 +67,12 @@ class NameNormalizer
             throw new TransliterationException(sprintf('Invalid key: (%s)', $key));
         }
 
-        return trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
+        $key = trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
+
+        if ($key === '') {
+            throw new TransliterationException('No characters left in key');
+        }
+
+        return $key;
     }
 }
