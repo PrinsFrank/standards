@@ -23,28 +23,43 @@ class NameNormalizer
             ->toASCII()
             ->IPAToEnglishApproximation()
             ->replace(' ', '_')
-            ->replace(';', '_')
-            ->replace(',', '_')
+            ->replace('!', '_')
+            ->replace('"', '_')
+            ->replace('#', '_')
+            ->replace('$', '_')
+            ->replace('%', '_')
+            ->replace('&', '_')
+            ->replace('\'', '_')
             ->replace('(', '_')
             ->replace(')', '_')
+            ->replace('*', '_')
+            ->replace('+', '_')
+            ->replace(',', '_')
             ->replace('-', '_')
             ->replace('.', '_')
-            ->replace('\'', '_')
-            ->replace('"', '_')
             ->replace('/', '_')
-            ->replace('|', '_')
+            ->replace(':', '_')
+            ->replace(';', '_')
+            ->replace('<', '_')
             ->replace('=', '_')
-            ->replace('!', '_')
+            ->replace('>', '_')
             ->replace('?', '_')
-            ->replace('*', '_')
+            ->replace('@', '_')
             ->replace('[', '_')
+            ->replace('\\', '_')
             ->replace(']', '_')
+            ->replace('^', '_')
+            ->replace('`', '_')
+            ->replace('{', '_')
+            ->replace('|', '_')
+            ->replace('}', '_')
             ->replace('~', '_')
             ->keep(
                 (new Filter())
-                    ->addRange(new Character('a'), new Character('z'))
+                    ->addRange(new Character('0'), new Character('9'))
                     ->addRange(new Character('A'), new Character('Z'))
                     ->addChar(new Character('_'))
+                    ->addRange(new Character('a'), new Character('z'))
             )
             ->transliterate($key);
 
@@ -52,6 +67,12 @@ class NameNormalizer
             throw new TransliterationException(sprintf('Invalid key: (%s)', $key));
         }
 
-        return trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
+        $key = trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
+
+        if ($key === '') {
+            throw new TransliterationException('No characters left in key');
+        }
+
+        return $key;
     }
 }
