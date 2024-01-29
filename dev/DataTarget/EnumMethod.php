@@ -57,7 +57,7 @@ class EnumMethod
 
         $docBlock = '';
         if ($this->docBlock !== null) {
-            $docBlock = '    ' . $docBlock . PHP_EOL;
+            $docBlock = '    ' . $this->docBlock . PHP_EOL;
         }
 
         return $docBlock . <<<EOD
