@@ -239,9 +239,6 @@ jobs:
       - name: Update spec
         run: composer run update-spec
 
-      - name: Run CSFixer
-        run: composer run cs:fix
-
       - name: Check for changes
         run: git diff --exit-code
 

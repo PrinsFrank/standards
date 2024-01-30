@@ -27,6 +27,7 @@ class EnumMethod
 
     public function __toString(): string
     {
+        $indentingCase = str_repeat(' ', 12);
         $mappingString = '';
         $sortedMapping = $this->mapping;
         ksort($sortedMapping);
@@ -42,27 +43,26 @@ class EnumMethod
             sort($values);
 
             if (count($values) <= 1) {
-                $mappingString .= $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . implode(',', $values) . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
+                $mappingString .= $indentingCase . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . implode(',', $values) . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
 
                 continue;
             }
 
-            $mappingString .= $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . implode(',' . PHP_EOL, $values) . PHP_EOL . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
+            $mappingString .= $indentingCase . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . $indentingCase . '    ' . implode(',' . PHP_EOL . $indentingCase . '    ', $values) . PHP_EOL . $indentingCase . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
         }
 
         if ($this->default !== null) {
-            $mappingString .= 'default => ' . $this->default;
+            $mappingString .= $indentingCase . 'default => ' . $this->default;
         }
 
-        $docBlock = $this->docBlock ?? '';
-        return <<<EOD
-            {$docBlock}
+        return ($this->docBlock !== null ? (PHP_EOL . '    ' . $this->docBlock . PHP_EOL) : '') . <<<EOD
             public function {$this->name}(): {$this->returnType}
             {
                 return match(\$this) {
-                    {$mappingString}
+        {$mappingString}
                 };
             }
+
         EOD;
     }
 }
