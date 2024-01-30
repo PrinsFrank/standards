@@ -56,6 +56,7 @@ class NameNormalizer
             ->replace('}', '_')
             ->replace('~', '_')
             ->replace('ලංකා', 'lanka')
+            ->replace('ລາວ', 'laav')
             ->keep(
                 (new Filter())
                     ->addRange(new Character('0'), new Character('9'))
