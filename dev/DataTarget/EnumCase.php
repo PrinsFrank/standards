@@ -24,19 +24,19 @@ class EnumCase
      * @throws TransliterationException
      * @throws UnableToCreateTransliteratorException
      */
-    public function toString(string $enumFQN): string
+    public function toString(string $enumFQN, string $indenting): string
     {
         $case = '';
         if ($this->deprecated === true) {
-            $case .= '/** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */' . PHP_EOL;
+            $case .= PHP_EOL . $indenting . '/** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */' . PHP_EOL;
         }
 
         $existingKeyWithValue = $enumFQN::tryFrom($this->value);
         $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->key);
         if (is_int($this->value)) {
-            $case .= 'case ' . $key . ' = ' . $this->value . ';' . PHP_EOL;
+            $case .= $indenting . 'case ' . $key . ' = ' . $this->value . ';';
         } else {
-            $case .= 'case ' . $key . ' = \'' . str_replace('\'', '\\\'', $this->value) . '\';' . PHP_EOL;
+            $case .= $indenting . 'case ' . $key . ' = \'' . str_replace('\'', '\\\'', $this->value) . '\';';
         }
 
         return $case;
