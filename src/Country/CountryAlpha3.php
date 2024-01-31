@@ -14,6 +14,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
+use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
 
 /**
  * @standard ISO3166_1
@@ -351,5 +352,10 @@ enum CountryAlpha3: string
     public function getOfficialAndDeFactoLanguages(): array
     {
         return $this->toCountryAlpha2()->getOfficialAndDeFactoLanguages();
+    }
+
+    public function getCountryCodeTLD(): ?CountryCodeTLD
+    {
+        return $this->toCountryAlpha2()->getCountryCodeTLD();
     }
 }
