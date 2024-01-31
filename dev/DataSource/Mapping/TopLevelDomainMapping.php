@@ -4,10 +4,12 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
+use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
 use PrinsFrank\Standards\TopLevelDomain\GenericRestrictedTLD;
@@ -61,15 +63,26 @@ class TopLevelDomainMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $countryCodeTLD = new EnumFile(CountryCodeTLD::class);
+        $countryCodeTLD = (new EnumFile(CountryCodeTLD::class))
+            ->addMethod($toCountryAlpha2 = new EnumMethod('toCountryAlpha2', '?CountryAlpha2', 'null'));
         $genericRestrictedTLD = new EnumFile(GenericRestrictedTLD::class);
         $genericTLD = new EnumFile(GenericTLD::class);
         $infrastructureTLD = new EnumFile(InfrastructureTLD::class);
         $sponsoredTLD = new EnumFile(SponsoredTLD::class);
         $testTLD = new EnumFile(TestTLD::class);
+        $countryAlpha2 = (new EnumFile(CountryAlpha2::class))
+            ->addMethod($getCountryCodeTLD = new EnumMethod('getCountryCodeTLD', '?CountryCodeTLD', 'null'));
         foreach ($dataSet as $dataRow) {
             $name = trim($dataRow->tld, '.');
             $isDeprecated = $dataRow->manager === 'Not assigned';
+
+            if ($dataRow->type === 'country-code' && strlen($name) === 2) {
+                $countryAlpha2 = CountryAlpha2::tryFrom($name);
+                if ($countryAlpha2 !== null) {
+                    $toCountryAlpha2->addMapping('self::' . $name, 'CountryAlpha2::' . $countryAlpha2->name);
+                    $getCountryCodeTLD->addMapping('self::' . $countryAlpha2->name, 'CountryCodeTLD::' . $name);
+                }
+            }
 
             match ($dataRow->type) {
                 'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
