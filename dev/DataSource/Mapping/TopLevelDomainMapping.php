@@ -77,7 +77,7 @@ class TopLevelDomainMapping implements Mapping
             $isDeprecated = $dataRow->manager === 'Not assigned';
 
             if ($dataRow->type === 'country-code' && strlen($name) === 2) {
-                $countryAlpha2 = CountryAlpha2::tryFrom($name);
+                $countryAlpha2 = CountryAlpha2::tryFrom(strtoupper($name));
                 if ($countryAlpha2 !== null) {
                     $toCountryAlpha2->addMapping('self::' . $name, 'CountryAlpha2::' . $countryAlpha2->name);
                     $getCountryCodeTLD->addMapping('self::' . $countryAlpha2->name, 'CountryCodeTLD::' . $name);
