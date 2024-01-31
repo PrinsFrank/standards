@@ -70,7 +70,7 @@ class TopLevelDomainMapping implements Mapping
         $infrastructureTLD = new EnumFile(InfrastructureTLD::class);
         $sponsoredTLD = new EnumFile(SponsoredTLD::class);
         $testTLD = new EnumFile(TestTLD::class);
-        $countryAlpha2 = (new EnumFile(CountryAlpha2::class))
+        $countryAlpha2Enum = (new EnumFile(CountryAlpha2::class))
             ->addMethod($getCountryCodeTLD = new EnumMethod('getCountryCodeTLD', '?CountryCodeTLD', 'null'));
         foreach ($dataSet as $dataRow) {
             $name = trim($dataRow->tld, '.');
@@ -95,7 +95,7 @@ class TopLevelDomainMapping implements Mapping
             };
         }
 
-        return [$countryCodeTLD, $genericRestrictedTLD, $genericTLD, $infrastructureTLD, $sponsoredTLD, $testTLD, $countryAlpha2];
+        return [$countryCodeTLD, $genericRestrictedTLD, $genericTLD, $infrastructureTLD, $sponsoredTLD, $testTLD, $countryAlpha2Enum];
     }
 
     public static function getSorting(): SortingInterface
