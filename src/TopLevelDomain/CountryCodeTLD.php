@@ -583,13 +583,13 @@ enum CountryCodeTLD: string
         };
     }
 
-    public function getCountryAlpha3(): CountryAlpha3
+    public function getCountryAlpha3(): ?CountryAlpha3
     {
-        return $this->getCountryAlpha2()->toCountryAlpha3();
+        return $this->getCountryAlpha2()?->toCountryAlpha3();
     }
 
-    public function getCountryNumeric(): CountryNumeric
+    public function getCountryNumeric(): ?CountryNumeric
     {
-        return $this->getCountryAlpha2()->toCountryNumeric();
+        return $this->getCountryAlpha2()?->toCountryNumeric();
     }
 }
