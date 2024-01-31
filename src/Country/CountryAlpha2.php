@@ -362,7 +362,7 @@ enum CountryAlpha2: string
             '',
             array_map(
                 static function (string $char) {
-                    return mb_chr(mb_ord($char)  (127462 - 65)); // The emoji for region letter 'A' in flags is at code point 127462, the capital letter 'A' itself is at 65
+                    return mb_chr(mb_ord($char) + (127462 - 65)); // The emoji for region letter 'A' in flags is at code point 127462, the capital letter 'A' itself is at 65
                 },
                 str_split($this->value)
             )
