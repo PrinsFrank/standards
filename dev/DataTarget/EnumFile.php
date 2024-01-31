@@ -11,6 +11,7 @@ use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 use RuntimeException;
 
+/** @internal */
 class EnumFile
 {
     public readonly string $path;

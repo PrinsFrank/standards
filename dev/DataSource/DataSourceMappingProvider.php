@@ -12,6 +12,7 @@ use PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageSubTagMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\Mapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\ScriptMapping;
+use PrinsFrank\Standards\Dev\DataSource\Mapping\TopLevelDomainMapping;
 
 /**
  * @template TDataSet of object
@@ -30,6 +31,7 @@ class DataSourceMappingProvider
             LanguageMapping::class,
             LanguageSubTagMapping::class,
             ScriptMapping::class,
+            TopLevelDomainMapping::class,
         ];
     }
 }

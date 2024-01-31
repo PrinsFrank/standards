@@ -10,6 +10,7 @@ use PrinsFrank\Transliteration\FormalIdSyntax\Components\Character;
 use PrinsFrank\Transliteration\FormalIdSyntax\Components\Filter;
 use PrinsFrank\Transliteration\TransliteratorBuilder;
 
+/** @internal */
 class NameNormalizer
 {
     /**
@@ -19,7 +20,7 @@ class NameNormalizer
      */
     public static function normalize(string $key): string
     {
-        $key = (new TransliteratorBuilder())
+        $normalizedKey = (new TransliteratorBuilder())
             ->toASCII()
             ->IPAToEnglishApproximation()
             ->replace(' ', '_')
@@ -54,6 +55,8 @@ class NameNormalizer
             ->replace('|', '_')
             ->replace('}', '_')
             ->replace('~', '_')
+            ->replace('ලංකා', 'lanka')
+            ->replace('ລາວ', 'laav')
             ->keep(
                 (new Filter())
                     ->addRange(new Character('0'), new Character('9'))
@@ -63,16 +66,15 @@ class NameNormalizer
             )
             ->transliterate($key);
 
-        if (preg_match('/[^0-9A-Z_a-z]/', $key) === 1) {
-            throw new TransliterationException(sprintf('Invalid key: (%s)', $key));
+        if (preg_match('/[^0-9A-Z_a-z]/', $normalizedKey) === 1) {
+            throw new TransliterationException(sprintf('Invalid key: (%s)', $normalizedKey));
         }
 
-        $key = trim(str_replace(['__', '__'], ['_', '_'], $key), '_');
-
-        if ($key === '') {
-            throw new TransliterationException('No characters left in key');
+        $normalizedKey = trim(str_replace(['__', '__'], ['_', '_'], $normalizedKey), '_');
+        if ($normalizedKey === '') {
+            throw new TransliterationException(sprintf('No characters left in key (%s)', $key));
         }
 
-        return $key;
+        return $normalizedKey;
     }
 }
