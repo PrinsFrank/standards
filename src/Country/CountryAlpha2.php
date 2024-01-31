@@ -1177,7 +1177,8 @@ enum CountryAlpha2: string
             self::Western_Sahara => CountryCodeTLD::eh,
             self::Yemen => CountryCodeTLD::ye,
             self::Zambia => CountryCodeTLD::zm,
-            self::Zimbabwe => CountryCodeTLD::zw
+            self::Zimbabwe => CountryCodeTLD::zw,
+            default => null,
         };
     }
 }
