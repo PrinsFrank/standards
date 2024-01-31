@@ -805,12 +805,93 @@ public function foo(ScriptNumber $scriptNumber) {} // Use spec as typehint to en
 
 ## TLDs
 
+There are currently 6 types of Top Level Domains:
+- CountryCode
+- GenericRestricted
+- Generic
+- Infrastructure
+- Sponsored
+- Test
+
+Most of these specification have several TLDs that are 'unmanaged' and are thus not currently available. Those are marked as deprecated, but are kept in the specification. There is one exception: All Test TLDs are always unmanaged and are thus never marked as deprecated.
+
 ### CountryCodeTLD
+
+Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
+
+```php
+CountryCodeTLD::from('nl');                      // CountryCodeTLD::nl
+CountryCodeTLD::nl;                              // CountryCodeTLD::nl
+CountryCodeTLD::from('nl')->value;               // 'nl'
+CountryCodeTLD::from('nl')->name;                // 'nl'
+CountryCodeTLD::from('nl')->getCountryAlpha2();  // CountryAlpha2::Netherlands
+CountryCodeTLD::from('nl')->getCountryAlpha3();  // CountryAlpha3::Netherlands
+CountryCodeTLD::from('nl')->getCountryNumeric(); // CountryNumeric::Netherlands
+
+public function foo(CountryCodeTLD $countryCodeTLD) {} // Use spec as typehint to enforce valid value
+```
 
 ### GenericRestrictedTLD
 
+Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
+
+```php
+GenericRestrictedTLD::from('name');        // GenericRestrictedTLD::name
+GenericRestrictedTLD::name;                // GenericRestrictedTLD::name
+GenericRestrictedTLD::from('name')->value; // 'name'
+GenericRestrictedTLD::from('name')->name;  // 'name'
+
+public function foo(GenericRestrictedTLD $genericRestrictedTLD) {} // Use spec as typehint to enforce valid value
+```
+
 ### GenericTLD
+
+Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
+
+```php
+GenericTLD::from('aaa');        // GenericTLD::aaa
+GenericTLD::aaa;                // GenericTLD::aaa
+GenericTLD::from('aaa')->value; // 'aaa'
+GenericTLD::from('aaa')->name;  // 'aaa'
+
+public function foo(GenericTLD $genericTLD) {} // Use spec as typehint to enforce valid value
+```
 
 ### InfrastructureTLD
 
+Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
+
+```php
+InfrastructureTLD::from('arpa');        // InfrastructureTLD::arpa
+InfrastructureTLD::arpa;                // InfrastructureTLD::arpa
+InfrastructureTLD::from('arpa')->value; // 'arpa'
+InfrastructureTLD::from('arpa')->name;  // 'arpa'
+
+public function foo(InfrastructureTLD $infrastructureTLD) {} // Use spec as typehint to enforce valid value
+```
+
+### SponsoredTLD
+
+Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
+
+```php
+SponsoredTLD::from('aero');        // SponsoredTLD::aero
+SponsoredTLD::arpa;                // SponsoredTLD::aero
+SponsoredTLD::from('aero')->value; // 'aero'
+SponsoredTLD::from('aero')->name;  // 'aero'
+
+public function foo(SponsoredTLD $sponsoredTLD) {} // Use spec as typehint to enforce valid value
+```
+
 ### TestTLD
+
+All Test TLDs are always unmanaged and are thus never marked as deprecated.
+
+```php
+TestTLD::from('テスト');        // TestTLD::tesuto
+TestTLD::tesuto;               // TestTLD::tesuto
+TestTLD::from('テスト')->value; // 'テスト'
+TestTLD::from('テスト')->name;  // 'tesuto'
+
+public function foo(TestTLD $testTLD) {} // Use spec as typehint to enforce valid value
+```
