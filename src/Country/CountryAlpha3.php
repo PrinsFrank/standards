@@ -354,7 +354,7 @@ enum CountryAlpha3: string
         return $this->toCountryAlpha2()->getOfficialAndDeFactoLanguages();
     }
 
-    public function getCountryCodeTLD(): ?CountryCodeTLD
+    public function getCountryCodeTLD(): CountryCodeTLD
     {
         return $this->toCountryAlpha2()->getCountryCodeTLD();
     }
