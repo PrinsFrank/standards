@@ -7,6 +7,7 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
 
+/** @source https://www.iana.org/domains/root/db */
 enum CountryCodeTLD: string
 {
     case ac = 'ac';
