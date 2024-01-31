@@ -5,6 +5,8 @@ namespace PrinsFrank\Standards\Tests\Unit\TopLevelDomain;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
 
 /** @coversDefaultClass \PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD */
@@ -24,7 +26,7 @@ class CountryCodeTLDTest extends TestCase
     /** @covers ::getCountryAlpha3 */
     public function testGetCountryAlpha3(): void
     {
-        static::assertSame(CountryAlpha2::Netherlands, CountryCodeTLD::nl->getCountryAlpha3());
+        static::assertSame(CountryAlpha3::Netherlands, CountryCodeTLD::nl->getCountryAlpha3());
         foreach (CountryCodeTLD::cases() as $countryCodeTLD) {
             $countryCodeTLD->getCountryAlpha3();
 
@@ -35,7 +37,7 @@ class CountryCodeTLDTest extends TestCase
     /** @covers ::getCountryNumeric */
     public function testGetCountryNumeric(): void
     {
-        static::assertSame(CountryAlpha2::Netherlands, CountryCodeTLD::nl->getCountryNumeric());
+        static::assertSame(CountryNumeric::Netherlands, CountryCodeTLD::nl->getCountryNumeric());
         foreach (CountryCodeTLD::cases() as $countryCodeTLD) {
             $countryCodeTLD->getCountryNumeric();
 
