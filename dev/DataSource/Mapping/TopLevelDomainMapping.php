@@ -47,11 +47,6 @@ class TopLevelDomainMapping implements Mapping
             $record->type = $columns[1]->getText();
             $record->manager = $columns[2]->getText();
 
-            // Exclude revoked TLD-s.
-            if ($record->manager === 'Not assigned' && $record->type !== 'test') {
-                continue;
-            }
-
             /** @var TDataSet $record */
             $dataSet[] = $record;
         }
@@ -74,14 +69,15 @@ class TopLevelDomainMapping implements Mapping
         $testTLD = new EnumFile(TestTLD::class);
         foreach ($dataSet as $dataRow) {
             $name = trim($dataRow->tld, '.');
+            $isDeprecated = $dataRow->manager === 'Not assigned';
 
             match ($dataRow->type) {
-                'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name)),
-                'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name)),
-                'generic' => $genericTLD->addCase(new EnumCase($name, $name)),
-                'infrastructure' => $infrastructureTLD->addCase(new EnumCase($name, $name)),
-                'sponsored' => $sponsoredTLD->addCase(new EnumCase($name, $name)),
-                'test' => $testTLD->addCase(new EnumCase($name, $name)),
+                'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
+                'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
+                'generic' => $genericTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
+                'infrastructure' => $infrastructureTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
+                'sponsored' => $sponsoredTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
+                'test' => $testTLD->addCase(new EnumCase($name, $name, false)), // Test TLDs are not deprecated when they don't have a manager assigned
                 default => throw new InvalidArgumentException('Unrecognized TLD type "' . $dataRow->type . '"'),
             };
         }
