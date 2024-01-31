@@ -124,7 +124,7 @@ erDiagram
     Language }|--o{ LanguageTag: ""
     Script |o--o{ LanguageTag: ""
     Country |o--o{ LanguageTag: ""
-    TLD |o--o| Country: ""
+    TLD ||--o| Country: ""
     LanguageTag }o--o| GeographicRegion: ""
 ```
 
