@@ -48,7 +48,7 @@ class TopLevelDomainMapping implements Mapping
             $record->manager = $columns[2]->getText();
 
             // Exclude revoked TLD-s.
-            if ($record->manager === 'Not assigned') {
+            if ($record->manager === 'Not assigned' && $record->type !== 'test') {
                 continue;
             }
 
