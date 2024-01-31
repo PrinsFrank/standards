@@ -12,7 +12,7 @@ use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 class EnumCase
 {
     public function __construct(
-        public readonly string $key,
+        public readonly string $name,
         public readonly string|int $value,
         public readonly bool $deprecated = false
     ) {
@@ -32,7 +32,7 @@ class EnumCase
         }
 
         $existingKeyWithValue = $enumFQN::tryFrom($this->value);
-        $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->key);
+        $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->name);
         if (is_int($this->value)) {
             $case .= $indenting . 'case ' . $key . ' = ' . $this->value . ';';
         } else {
@@ -49,6 +49,6 @@ class EnumCase
      */
     public function __toString(): string
     {
-        return NameNormalizer::normalize($this->key);
+        return NameNormalizer::normalize($this->name);
     }
 }
