@@ -53,7 +53,7 @@ class EnumMethod
         }
 
         if ($this->default !== null) {
-            $mappingString .= $indentingCase . 'default => ' . $this->default;
+            $mappingString .= $indentingCase . 'default => ' . $this->default . ',';
         }
 
         return ($this->docBlock !== null ? (PHP_EOL . '    ' . $this->docBlock . PHP_EOL) : '') . <<<EOD
