@@ -102,6 +102,14 @@ erDiagram
     HttpStatusCode {
         class HttpStatusCode
     }
+    TLD {
+        class CountryCodeTLD
+        class GenericRestrictedTLD
+        class GenericTLD
+        class InfrastructureTLD
+        class SponsoredTLD
+        class TestTLD
+    }
 
     GeographicRegion }|--o{ Country: ""
     GeographicRegion ||--o{ GeographicRegion: ""
@@ -794,3 +802,15 @@ public function foo(ScriptNumber $scriptNumber) {} // Use spec as typehint to en
 ```
 
 </details>
+
+## TLDs
+
+### CountryCodeTLD
+
+### GenericRestrictedTLD
+
+### GenericTLD
+
+### InfrastructureTLD
+
+### TestTLD
