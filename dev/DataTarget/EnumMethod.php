@@ -44,25 +44,24 @@ class EnumMethod
             sort($values);
 
             if (count($values) <= 1) {
-                $mappingString .= $indentingCase . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . implode(',', $values) . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
+                $mappingString .= PHP_EOL . $indentingCase . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . implode(',', $values) . ($oneOfItemsIsArray === true ? ']' : '') . ',';
 
                 continue;
             }
 
-            $mappingString .= $indentingCase . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . $indentingCase . '    ' . implode(',' . PHP_EOL . $indentingCase . '    ', $values) . PHP_EOL . $indentingCase . ($oneOfItemsIsArray === true ? ']' : '') . ',' . PHP_EOL;
+            $mappingString .= PHP_EOL . $indentingCase . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . $indentingCase . '    ' . implode(',' . PHP_EOL . $indentingCase . '    ', $values) . PHP_EOL . $indentingCase . ($oneOfItemsIsArray === true ? ']' : '') . ',';
         }
 
         if ($this->default !== null) {
-            $mappingString .= $indentingCase . 'default => ' . $this->default . PHP_EOL;
+            $mappingString .= PHP_EOL .$indentingCase . 'default => ' . $this->default;
         }
 
         return ($this->docBlock !== null ? (PHP_EOL . '    ' . $this->docBlock . PHP_EOL) : '') . <<<EOD
             public function {$this->name}(): {$this->returnType}
             {
-                return match(\$this) {
-        {$mappingString}};
+                return match(\$this) {{$mappingString}
+                };
             }
-
         EOD;
     }
 }
