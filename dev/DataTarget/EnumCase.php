@@ -49,6 +49,6 @@ class EnumCase
      */
     public function __toString(): string
     {
-        return NameNormalizer::normalize($this->name);
+        return NameNormalizer::normalize($this->name) . $this->value;
     }
 }
