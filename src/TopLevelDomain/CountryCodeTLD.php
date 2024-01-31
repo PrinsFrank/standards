@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\TopLevelDomain;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryNumeric;
 
 enum CountryCodeTLD: string
 {
@@ -324,7 +326,7 @@ enum CountryCodeTLD: string
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case um = 'um';
 
-    public function toCountryAlpha2(): ?CountryAlpha2
+    public function getCountryAlpha2(): ?CountryAlpha2
     {
         return match($this) {
             self::ad => CountryAlpha2::Andorra,
@@ -578,5 +580,15 @@ enum CountryCodeTLD: string
             self::zw => CountryAlpha2::Zimbabwe,
             default => null
         };
+    }
+
+    public function getCountryAlpha3(): CountryAlpha3
+    {
+        return $this->getCountryAlpha2()->toCountryAlpha3();
+    }
+
+    public function getCountryNumeric(): CountryNumeric
+    {
+        return $this->getCountryAlpha2()->toCountryNumeric();
     }
 }
