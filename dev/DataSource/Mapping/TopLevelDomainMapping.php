@@ -71,7 +71,7 @@ class TopLevelDomainMapping implements Mapping
         $sponsoredTLD = new EnumFile(SponsoredTLD::class);
         $testTLD = new EnumFile(TestTLD::class);
         $countryAlpha2Enum = (new EnumFile(CountryAlpha2::class))
-            ->addMethod($getCountryCodeTLD = new EnumMethod('getCountryCodeTLD', 'CountryCodeTLD', 'null'));
+            ->addMethod($getCountryCodeTLD = new EnumMethod('getCountryCodeTLD', 'CountryCodeTLD', null));
         foreach ($dataSet as $dataRow) {
             $name = trim($dataRow->tld, '.');
             $isDeprecated = $dataRow->manager === 'Not assigned';

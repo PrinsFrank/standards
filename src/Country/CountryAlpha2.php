@@ -926,7 +926,7 @@ enum CountryAlpha2: string
         };
     }
 
-    public function getCountryCodeTLD(): ?CountryCodeTLD
+    public function getCountryCodeTLD(): CountryCodeTLD
     {
         return match($this) {
             self::Afghanistan => CountryCodeTLD::af,
@@ -1178,7 +1178,6 @@ enum CountryAlpha2: string
             self::Yemen => CountryCodeTLD::ye,
             self::Zambia => CountryCodeTLD::zm,
             self::Zimbabwe => CountryCodeTLD::zw,
-            default => null,
         };
     }
 }
