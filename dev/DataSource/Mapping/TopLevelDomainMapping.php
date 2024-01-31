@@ -64,7 +64,7 @@ class TopLevelDomainMapping implements Mapping
     public static function toEnumMapping(array $dataSet): array
     {
         $countryCodeTLD = (new EnumFile(CountryCodeTLD::class))
-            ->addMethod($toCountryAlpha2 = new EnumMethod('toCountryAlpha2', '?CountryAlpha2', 'null'));
+            ->addMethod($toCountryAlpha2 = new EnumMethod('getCountryAlpha2', '?CountryAlpha2', 'null'));
         $genericRestrictedTLD = new EnumFile(GenericRestrictedTLD::class);
         $genericTLD = new EnumFile(GenericTLD::class);
         $infrastructureTLD = new EnumFile(InfrastructureTLD::class);
