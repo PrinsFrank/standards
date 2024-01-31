@@ -53,15 +53,14 @@ class EnumMethod
         }
 
         if ($this->default !== null) {
-            $mappingString .= $indentingCase . 'default => ' . $this->default;
+            $mappingString .= $indentingCase . 'default => ' . $this->default . PHP_EOL;
         }
 
         return ($this->docBlock !== null ? (PHP_EOL . '    ' . $this->docBlock . PHP_EOL) : '') . <<<EOD
             public function {$this->name}(): {$this->returnType}
             {
                 return match(\$this) {
-        {$mappingString}
-                };
+        {$mappingString}};
             }
 
         EOD;
