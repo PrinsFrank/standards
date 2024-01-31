@@ -68,7 +68,7 @@ jobs:
 
       - name: Load php-cs-fixer cache
         id: php-cs-fixer-cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: .php-cs-fixer.cache
           key: php-cs-fixer-${{ github.ref_name }}
@@ -81,7 +81,7 @@ jobs:
       - name: Push php-cs-fixer branch cache
         id: push-php-cs-fixer-cache-branch
         if: always()
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: .php-cs-fixer.cache
           key: php-cs-fixer-${{ github.ref_name }}
@@ -104,7 +104,7 @@ jobs:
 
       - name: Pull PHPStan cache
         id: pull-phpstan-cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: ${{ env.PHPSTAN_CACHE_DIR }}
           key: phpstan-${{ github.ref_name }}
@@ -125,7 +125,7 @@ jobs:
 
       - name: Push PHPStan branch cache
         if: always()
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: ${{ env.PHPSTAN_CACHE_DIR }}
           key: phpstan-${{ github.ref_name }}
@@ -137,7 +137,7 @@ jobs:
 
       - name: Push PHPStan main cache
         if: ${{ github.ref_name == github.event.repository.default_branch }}
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: ${{ env.PHPSTAN_CACHE_DIR }}
           key: phpstan
