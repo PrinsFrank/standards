@@ -60,7 +60,7 @@ class EnumMethod
             public function {$this->name}(): {$this->returnType}
             {
                 return match(\$this) {
-                    {$mappingString}
+        {$mappingString}
                 };
             }
 
