@@ -83,8 +83,7 @@ class TopLevelDomainMapping implements Mapping
                 }
             }
 
-            $notAssigned = $dataRow->manager === 'Not assigned';
-            $attributes = $notAssigned === true ? [new NotAssigned()] : [];
+            $attributes = $dataRow->manager === 'Not assigned' ? [new NotAssigned()] : [];
             match ($dataRow->type) {
                 'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name, $attributes)),
                 'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name, $attributes)),

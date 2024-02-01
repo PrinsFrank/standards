@@ -27,7 +27,7 @@ class EnumCase
      * @throws TransliterationException
      * @throws UnableToCreateTransliteratorException
      */
-    public function toString(string $enumFQN, string $indenting, bool $isFirst, bool $isLast): string
+    public function toString(string $enumFQN, string $indenting, bool $isFirst): string
     {
         $case = '';
         if ($isFirst === false && ($this->deprecated === true || $this->attributes !== [])) {
