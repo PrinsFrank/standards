@@ -416,7 +416,7 @@ enum ScriptAlias: string
 
         $supportedScripts = array_filter(self::cases(), fn (self $case) => $case->isSupportedByPHPRegex());
         $regex = '/' . implode('|', array_map(fn (self $case) => sprintf('(?P<%s>\p{%s}+)', $case->value, $case->value), $supportedScripts)) . '/u';
-        if (in_array(preg_match_all($regex, $string, $matches, PREG_UNMATCHED_AS_NULL), [0, false], true)) {
+        if (preg_match_all($regex, $string, $matches, PREG_UNMATCHED_AS_NULL) === false) {
             return [];
         }
 
