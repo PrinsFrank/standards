@@ -12,7 +12,8 @@ class EnumCaseAttribute implements Stringable
     /** @param class-string<object> $fqn */
     public function __construct(
         public readonly string $fqn,
-    ) { }
+    ) {
+    }
 
     /** @throws ReflectionException */
     public function __toString(): string

@@ -7,7 +7,6 @@ use BackedEnum;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
-use Stringable;
 
 /** @internal */
 class EnumCase
