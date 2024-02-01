@@ -44,4 +44,11 @@ class CountryCodeTLDTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
+
+    /** @covers ::isAssigned */
+    public function testIsAssigned(): void
+    {
+        static::assertFalse(CountryCodeTLD::an->isAssigned());
+        static::assertTrue(CountryCodeTLD::nl->isAssigned());
+    }
 }

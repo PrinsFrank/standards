@@ -825,6 +825,7 @@ CountryCodeTLD::from('nl');                      // CountryCodeTLD::nl
 CountryCodeTLD::nl;                              // CountryCodeTLD::nl
 CountryCodeTLD::from('nl')->value;               // 'nl'
 CountryCodeTLD::from('nl')->name;                // 'nl'
+CountryCodeTLD::from('nl')->isAssigned();        // true
 CountryCodeTLD::from('nl')->getCountryAlpha2();  // CountryAlpha2::Netherlands
 CountryCodeTLD::from('nl')->getCountryAlpha3();  // CountryAlpha3::Netherlands
 CountryCodeTLD::from('nl')->getCountryNumeric(); // CountryNumeric::Netherlands
@@ -837,10 +838,11 @@ public function foo(CountryCodeTLD $countryCodeTLD) {} // Use spec as typehint t
 Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
 
 ```php
-GenericRestrictedTLD::from('name');        // GenericRestrictedTLD::name
-GenericRestrictedTLD::name;                // GenericRestrictedTLD::name
-GenericRestrictedTLD::from('name')->value; // 'name'
-GenericRestrictedTLD::from('name')->name;  // 'name'
+GenericRestrictedTLD::from('name');                // GenericRestrictedTLD::name
+GenericRestrictedTLD::name;                        // GenericRestrictedTLD::name
+GenericRestrictedTLD::from('name')->value;         // 'name'
+GenericRestrictedTLD::from('name')->name;          // 'name'
+GenericRestrictedTLD::from('name')->isAssigned();  // true
 
 public function foo(GenericRestrictedTLD $genericRestrictedTLD) {} // Use spec as typehint to enforce valid value
 ```
@@ -850,10 +852,11 @@ public function foo(GenericRestrictedTLD $genericRestrictedTLD) {} // Use spec a
 Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
 
 ```php
-GenericTLD::from('aaa');        // GenericTLD::aaa
-GenericTLD::aaa;                // GenericTLD::aaa
-GenericTLD::from('aaa')->value; // 'aaa'
-GenericTLD::from('aaa')->name;  // 'aaa'
+GenericTLD::from('aaa');                // GenericTLD::aaa
+GenericTLD::aaa;                        // GenericTLD::aaa
+GenericTLD::from('aaa')->value;         // 'aaa'
+GenericTLD::from('aaa')->name;          // 'aaa'
+GenericTLD::from('aaa')->isAssigned();  // true
 
 public function foo(GenericTLD $genericTLD) {} // Use spec as typehint to enforce valid value
 ```
@@ -863,10 +866,11 @@ public function foo(GenericTLD $genericTLD) {} // Use spec as typehint to enforc
 Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
 
 ```php
-InfrastructureTLD::from('arpa');        // InfrastructureTLD::arpa
-InfrastructureTLD::arpa;                // InfrastructureTLD::arpa
-InfrastructureTLD::from('arpa')->value; // 'arpa'
-InfrastructureTLD::from('arpa')->name;  // 'arpa'
+InfrastructureTLD::from('arpa');                // InfrastructureTLD::arpa
+InfrastructureTLD::arpa;                        // InfrastructureTLD::arpa
+InfrastructureTLD::from('arpa')->value;         // 'arpa'
+InfrastructureTLD::from('arpa')->name;          // 'arpa'
+InfrastructureTLD::from('arpa')->isAssigned();  // true
 
 public function foo(InfrastructureTLD $infrastructureTLD) {} // Use spec as typehint to enforce valid value
 ```
@@ -876,10 +880,11 @@ public function foo(InfrastructureTLD $infrastructureTLD) {} // Use spec as type
 Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
 
 ```php
-SponsoredTLD::from('aero');        // SponsoredTLD::aero
-SponsoredTLD::arpa;                // SponsoredTLD::aero
-SponsoredTLD::from('aero')->value; // 'aero'
-SponsoredTLD::from('aero')->name;  // 'aero'
+SponsoredTLD::from('aero');                // SponsoredTLD::aero
+SponsoredTLD::arpa;                        // SponsoredTLD::aero
+SponsoredTLD::from('aero')->value;         // 'aero'
+SponsoredTLD::from('aero')->name;          // 'aero'
+SponsoredTLD::from('aero')->isAssigned();  // true
 
 public function foo(SponsoredTLD $sponsoredTLD) {} // Use spec as typehint to enforce valid value
 ```
@@ -889,10 +894,11 @@ public function foo(SponsoredTLD $sponsoredTLD) {} // Use spec as typehint to en
 All Test TLDs are always unmanaged and are thus never marked as deprecated.
 
 ```php
-TestTLD::from('テスト');        // TestTLD::tesuto
-TestTLD::tesuto;               // TestTLD::tesuto
-TestTLD::from('テスト')->value; // 'テスト'
-TestTLD::from('テスト')->name;  // 'tesuto'
+TestTLD::from('テスト');              // TestTLD::tesuto
+TestTLD::tesuto;                     // TestTLD::tesuto
+TestTLD::from('テスト')->value;       // 'テスト'
+TestTLD::from('テスト')->name;        // 'tesuto'
+TestTLD::from('テスト')->isAssigned() // false
 
 public function foo(TestTLD $testTLD) {} // Use spec as typehint to enforce valid value
 ```
