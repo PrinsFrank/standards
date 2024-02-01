@@ -237,34 +237,17 @@ jobs:
         uses: ramsey/composer-install@v2
 
       - name: Update spec
-        run: composer run update-spec-country
-
-      - name: Update spec
-        run: composer run update-spec-currency
-
-      - name: Update spec
-        run: composer run update-spec-http-methods
-
-      - name: Update spec
-        run: composer run update-spec-http-status-codes
-
-      - name: Update spec
-        run: composer run update-spec-language-extensive
-
-      - name: Update spec
-        run: composer run update-spec-language
-
-      - name: Update spec
-        run: composer run update-spec-language-subtag
-
-      - name: Update spec
-        run: composer run update-spec-scripts
-
-      - name: Update spec
-        run: composer run update-spec-tld
-
-      - name: Update spec
-        run: composer run update-spec-php-regex-script
+        run: | # We can't concatenate this scripts within PHP as the classes need to be reloaded between update from each source
+          composer run update-spec-country
+          composer run update-spec-currency
+          composer run update-spec-http-methods
+          composer run update-spec-http-status-codes
+          composer run update-spec-language-extensive
+          composer run update-spec-language
+          composer run update-spec-language-subtag
+          composer run update-spec-scripts
+          composer run update-spec-tld
+          composer run update-spec-php-regex-script
 
       - name: Check for changes
         run: git diff --exit-code
