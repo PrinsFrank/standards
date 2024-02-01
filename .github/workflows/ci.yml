@@ -237,7 +237,7 @@ jobs:
         uses: ramsey/composer-install@v2
 
       - name: Update spec
-        run: | # We can't concatenate this scripts within PHP as the classes need to be reloaded between update from each source
+        run: | # We can't concatenate these scripts within PHP because the classes need to be reloaded from each source between updates
           composer run update-spec-country
           composer run update-spec-currency
           composer run update-spec-http-methods
