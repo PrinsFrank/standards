@@ -237,7 +237,7 @@ jobs:
         uses: ramsey/composer-install@v2
 
       - name: Update spec
-        run: composer run update-spec
+        run: composer run update-specs
 
       - name: Check for changes
         run: git diff --exit-code
