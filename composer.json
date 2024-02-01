@@ -51,19 +51,7 @@
         "update-spec-language-subtag": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\LanguageSubTagMapping",
         "update-spec-scripts": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\ScriptMapping",
         "update-spec-tld": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\TopLevelDomainMapping",
-        "update-spec-php-regex-script": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\PHPRegexSupportedScriptsMapping",
-        "update-specs": [
-            "@update-spec-country",
-            "@update-spec-currency",
-            "@update-spec-http-methods",
-            "@update-spec-http-status-codes",
-            "@update-spec-language-extensive",
-            "@update-spec-language",
-            "@update-spec-language-subtag",
-            "@update-spec-scripts",
-            "@update-spec-tld",
-            "@update-spec-php-regex-script"
-        ]
+        "update-spec-php-regex-script": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\PHPRegexSupportedScriptsMapping"
     },
     "repositories": [
         {

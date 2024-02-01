@@ -237,7 +237,34 @@ jobs:
         uses: ramsey/composer-install@v2
 
       - name: Update spec
-        run: composer run update-specs
+        run: composer run update-spec-country
+
+      - name: Update spec
+        run: composer run update-spec-currency
+
+      - name: Update spec
+        run: composer run update-spec-http-methods
+
+      - name: Update spec
+        run: composer run update-spec-http-status-codes
+
+      - name: Update spec
+        run: composer run update-spec-language-extensive
+
+      - name: Update spec
+        run: composer run update-spec-language
+
+      - name: Update spec
+        run: composer run update-spec-language-subtag
+
+      - name: Update spec
+        run: composer run update-spec-scripts
+
+      - name: Update spec
+        run: composer run update-spec-tld
+
+      - name: Update spec
+        run: composer run update-spec-php-regex-script
 
       - name: Check for changes
         run: git diff --exit-code
