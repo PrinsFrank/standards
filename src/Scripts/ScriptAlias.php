@@ -408,7 +408,7 @@ enum ScriptAlias: string
      * Please note that not all Scripts are supported, only the ones that have the 'SupportedByPHPRegex' attribute.
      * For all other scripts, self::Command will be returned
      */
-    public static function forString(string $string): array
+    public static function allForString(string $string): array
     {
         if ($string === '') {
             return [];
@@ -432,5 +432,10 @@ enum ScriptAlias: string
 
         arsort($scripts);
         return array_map(fn (string $scriptString) => self::from($scriptString), array_keys($scripts));
+    }
+
+    public static function mostCommonInString(string $string): ?self
+    {
+        return self::allForString($string)[0] ?? null;
     }
 }

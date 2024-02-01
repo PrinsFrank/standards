@@ -46,18 +46,18 @@ class ScriptAliasTest extends TestCase
         static::assertFalse(ScriptAlias::Adlam->isSupportedByPHPRegex());
     }
 
-    /** @covers ::forString */
+    /** @covers ::allForString */
     public function testForString(): void
     {
         static::assertSame(
             [],
-            ScriptAlias::forString('')
+            ScriptAlias::allForString('')
         );
         static::assertSame(
             [
                 ScriptAlias::Latin
             ],
-            ScriptAlias::forString('eu')
+            ScriptAlias::allForString('eu')
         );
         static::assertSame(
             [
@@ -65,7 +65,7 @@ class ScriptAliasTest extends TestCase
                 ScriptAlias::Greek,
                 ScriptAlias::Latin,
             ],
-            ScriptAlias::forString('euеюευ')
+            ScriptAlias::allForString('euеюευ')
         );
         static::assertSame(
             [
@@ -73,7 +73,7 @@ class ScriptAliasTest extends TestCase
                 ScriptAlias::Greek,
                 ScriptAlias::Latin,
             ],
-            ScriptAlias::forString('еюeuеюευ')
+            ScriptAlias::allForString('еюeuеюευ')
         );
         static::assertSame(
             [
@@ -81,7 +81,17 @@ class ScriptAliasTest extends TestCase
                 ScriptAlias::Latin,
                 ScriptAlias::Greek,
             ],
-            ScriptAlias::forString('еюeuеюευeu')
+            ScriptAlias::allForString('еюeuеюευeu')
         );
+    }
+
+    /** @covers ::mostCommonInString */
+    public function testMostCommonInString(): void
+    {
+        static::assertNull(ScriptAlias::mostCommonInString(''));
+        static::assertSame(ScriptAlias::Latin, ScriptAlias::mostCommonInString('eu'));
+        static::assertSame(ScriptAlias::Cyrillic, ScriptAlias::mostCommonInString('euеюευ'));
+        static::assertSame(ScriptAlias::Cyrillic, ScriptAlias::mostCommonInString('еюeuеюευ'));
+        static::assertSame(ScriptAlias::Cyrillic, ScriptAlias::mostCommonInString('еюeuеюευeu'));
     }
 }
