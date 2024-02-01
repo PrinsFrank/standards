@@ -50,11 +50,13 @@ class PHPRegexSupportedScriptsMapping implements Mapping
         $scriptAliasStrings = array_map(static function (object $dataSetItem) {
             return $dataSetItem->name;
         }, $dataSet);
+        var_dump($scriptAliasStrings);
 
         $scriptAliasEnum = new EnumFile(ScriptAlias::class);
         foreach (ScriptAlias::cases() as $case) {
             $scriptAliasEnum->addCase(new EnumCase($case->name, $case->value, in_array($case->value, $scriptAliasStrings, true) ? [new EnumCaseAttribute(SupportedByPHPRegex::class)] : []));
         }
+        var_dump($scriptAliasEnum);exit;
 
         return [$scriptAliasEnum];
     }
