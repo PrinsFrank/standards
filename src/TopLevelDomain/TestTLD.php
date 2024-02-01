@@ -7,7 +7,7 @@ use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
 /** @source https://www.iana.org/domains/root/db */
-enum TestTLD: string
+enum TestTLD: string implements TLD
 {
     #[NotAssigned]
     case akhtbar = 'إختبار';

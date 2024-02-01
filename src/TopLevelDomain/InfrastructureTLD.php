@@ -7,7 +7,7 @@ use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
 /** @source https://www.iana.org/domains/root/db */
-enum InfrastructureTLD: string
+enum InfrastructureTLD: string implements TLD
 {
     case arpa = 'arpa';
 

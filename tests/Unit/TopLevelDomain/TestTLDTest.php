@@ -10,7 +10,7 @@ use PrinsFrank\Standards\TopLevelDomain\TestTLD;
 class TestTLDTest extends TestCase
 {
     /** @covers ::isRevoked */
-    public function testIsRevoked(): void
+    public function testIsAssigned(): void
     {
         static::assertFalse(TestTLD::tesuto->isAssigned());
     }

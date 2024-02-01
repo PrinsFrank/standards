@@ -7,7 +7,7 @@ use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
 /** @source https://www.iana.org/domains/root/db */
-enum SponsoredTLD: string
+enum SponsoredTLD: string implements TLD
 {
     case aero = 'aero';
     case asia = 'asia';

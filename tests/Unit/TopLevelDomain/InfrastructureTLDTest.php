@@ -10,7 +10,7 @@ use PrinsFrank\Standards\TopLevelDomain\InfrastructureTLD;
 class InfrastructureTLDTest extends TestCase
 {
     /** @covers ::isAssigned */
-    public function testIsRevoked(): void
+    public function testIsAssigned(): void
     {
         static::assertTrue(InfrastructureTLD::arpa->isAssigned());
     }

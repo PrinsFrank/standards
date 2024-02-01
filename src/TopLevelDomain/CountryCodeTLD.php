@@ -10,7 +10,7 @@ use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
 /** @source https://www.iana.org/domains/root/db */
-enum CountryCodeTLD: string
+enum CountryCodeTLD: string implements TLD
 {
     case ac = 'ac';
     case ad = 'ad';

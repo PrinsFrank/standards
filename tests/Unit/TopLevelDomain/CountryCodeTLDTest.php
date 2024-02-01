@@ -46,7 +46,7 @@ class CountryCodeTLDTest extends TestCase
     }
 
     /** @covers ::isAssigned */
-    public function testIsRevoked(): void
+    public function testIsAssigned(): void
     {
         static::assertFalse(CountryCodeTLD::an->isAssigned());
         static::assertTrue(CountryCodeTLD::nl->isAssigned());

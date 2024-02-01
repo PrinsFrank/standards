@@ -10,7 +10,7 @@ use PrinsFrank\Standards\TopLevelDomain\SponsoredTLD;
 class SponsoredTLDTest extends TestCase
 {
     /** @covers ::isAssigned */
-    public function testIsRevoked(): void
+    public function testIsAssigned(): void
     {
         static::assertTrue(SponsoredTLD::aero->isAssigned());
     }

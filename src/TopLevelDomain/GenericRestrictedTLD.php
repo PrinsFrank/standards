@@ -7,7 +7,7 @@ use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
 /** @source https://www.iana.org/domains/root/db */
-enum GenericRestrictedTLD: string
+enum GenericRestrictedTLD: string implements TLD
 {
     case biz = 'biz';
     case name = 'name';
