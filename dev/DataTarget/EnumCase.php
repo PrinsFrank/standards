@@ -50,10 +50,6 @@ class EnumCase
             $case .= PHP_EOL . $indenting . 'case ' . $key . ' = \'' . str_replace('\'', '\\\'', $this->value) . '\';';
         }
 
-        if ($isLast === false && ($this->deprecated === true || $this->attributes !== [])) {
-            $case .= PHP_EOL;
-        }
-
         return $case;
     }
 
