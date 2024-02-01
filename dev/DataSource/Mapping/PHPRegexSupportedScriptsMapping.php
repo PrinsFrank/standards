@@ -24,7 +24,7 @@ class PHPRegexSupportedScriptsMapping implements Mapping
 
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
-        $items = $crawler->filterXPath('//table[@class="doctabel table"]/tbody/tr/td/code')->getIterator();
+        $items = $crawler->filterXPath('//table[@class="doctable table"]/tbody/tr/td/code')->getIterator();
 
         $dataSet = [];
         foreach ($items as $item) {
