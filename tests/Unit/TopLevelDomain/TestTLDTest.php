@@ -12,6 +12,6 @@ class TestTLDTest extends TestCase
     /** @covers ::isRevoked */
     public function testIsRevoked(): void
     {
-        static::assertTrue(TestTLD::tesuto->isNotAssigned());
+        static::assertFalse(TestTLD::tesuto->isAssigned());
     }
 }

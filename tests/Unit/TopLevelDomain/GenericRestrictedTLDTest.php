@@ -9,9 +9,9 @@ use PrinsFrank\Standards\TopLevelDomain\GenericRestrictedTLD;
 /** @coversDefaultClass \PrinsFrank\Standards\TopLevelDomain\GenericRestrictedTLD */
 class GenericRestrictedTLDTest extends TestCase
 {
-    /** @covers ::isNotAssigned */
+    /** @covers ::isAssigned */
     public function testIsRevoked(): void
     {
-        static::assertFalse(GenericRestrictedTLD::name->isNotAssigned());
+        static::assertTrue(GenericRestrictedTLD::name->isAssigned());
     }
 }

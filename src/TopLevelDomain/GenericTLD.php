@@ -1496,8 +1496,8 @@ enum GenericTLD: string
     case zu_zhi_ji_gou = '组织机构';
     case zuerich = 'zuerich';
 
-    public function isNotAssigned(): bool
+    public function isAssigned(): bool
     {
-        return BackedEnum::hasCaseAttribute($this, NotAssigned::class);
+        return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }
 }

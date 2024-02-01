@@ -39,8 +39,8 @@ enum TestTLD: string
     #[NotAssigned]
     case tesuto = 'テスト';
 
-    public function isNotAssigned(): bool
+    public function isAssigned(): bool
     {
-        return BackedEnum::hasCaseAttribute($this, NotAssigned::class);
+        return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }
 }

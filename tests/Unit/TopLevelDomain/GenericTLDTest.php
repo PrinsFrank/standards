@@ -9,10 +9,10 @@ use PrinsFrank\Standards\TopLevelDomain\GenericTLD;
 /** @coversDefaultClass \PrinsFrank\Standards\TopLevelDomain\GenericTLD */
 class GenericTLDTest extends TestCase
 {
-    /** @covers ::isNotAssigned */
+    /** @covers ::isAssigned */
     public function testIsRevoked(): void
     {
-        static::assertTrue(GenericTLD::abarth->isNotAssigned());
-        static::assertFalse(GenericTLD::aaa->isNotAssigned());
+        static::assertFalse(GenericTLD::abarth->isAssigned());
+        static::assertTrue(GenericTLD::aaa->isAssigned());
     }
 }

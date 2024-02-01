@@ -9,9 +9,9 @@ use PrinsFrank\Standards\TopLevelDomain\InfrastructureTLD;
 /** @coversDefaultClass \PrinsFrank\Standards\TopLevelDomain\InfrastructureTLD */
 class InfrastructureTLDTest extends TestCase
 {
-    /** @covers ::isNotAssigned */
+    /** @covers ::isAssigned */
     public function testIsRevoked(): void
     {
-        static::assertFalse(InfrastructureTLD::arpa->isNotAssigned());
+        static::assertTrue(InfrastructureTLD::arpa->isAssigned());
     }
 }

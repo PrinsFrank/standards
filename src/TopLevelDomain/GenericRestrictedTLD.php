@@ -13,8 +13,8 @@ enum GenericRestrictedTLD: string
     case name = 'name';
     case pro = 'pro';
 
-    public function isNotAssigned(): bool
+    public function isAssigned(): bool
     {
-        return BackedEnum::hasCaseAttribute($this, NotAssigned::class);
+        return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }
 }

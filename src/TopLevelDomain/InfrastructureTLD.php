@@ -11,8 +11,8 @@ enum InfrastructureTLD: string
 {
     case arpa = 'arpa';
 
-    public function isNotAssigned(): bool
+    public function isAssigned(): bool
     {
-        return BackedEnum::hasCaseAttribute($this, NotAssigned::class);
+        return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }
 }

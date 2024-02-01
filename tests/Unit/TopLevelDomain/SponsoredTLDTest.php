@@ -9,9 +9,9 @@ use PrinsFrank\Standards\TopLevelDomain\SponsoredTLD;
 /** @coversDefaultClass \PrinsFrank\Standards\TopLevelDomain\SponsoredTLD */
 class SponsoredTLDTest extends TestCase
 {
-    /** @covers ::isNotAssigned */
+    /** @covers ::isAssigned */
     public function testIsRevoked(): void
     {
-        static::assertFalse(SponsoredTLD::aero->isNotAssigned());
+        static::assertTrue(SponsoredTLD::aero->isAssigned());
     }
 }

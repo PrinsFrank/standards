@@ -45,10 +45,10 @@ class CountryCodeTLDTest extends TestCase
         }
     }
 
-    /** @covers ::isNotAssigned */
+    /** @covers ::isAssigned */
     public function testIsRevoked(): void
     {
-        static::assertTrue(CountryCodeTLD::an->isNotAssigned());
-        static::assertFalse(CountryCodeTLD::nl->isNotAssigned());
+        static::assertFalse(CountryCodeTLD::an->isAssigned());
+        static::assertTrue(CountryCodeTLD::nl->isAssigned());
     }
 }
