@@ -24,7 +24,6 @@ class DataSourceMappingProvider
     public function provide(): array
     {
         return [
-            PHPRegexSupportedScriptsMapping::class,
             CountryMapping::class,
             CurrencyMapping::class,
             HttpMethodMapping::class,
@@ -34,6 +33,7 @@ class DataSourceMappingProvider
             LanguageSubTagMapping::class,
             ScriptMapping::class,
             TopLevelDomainMapping::class,
+            PHPRegexSupportedScriptsMapping::class,
         ];
     }
 }
