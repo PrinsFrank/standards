@@ -11,6 +11,7 @@ use PrinsFrank\Standards\Dev\DataSource\Mapping\HttpStatusCodeMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageSubTagMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\Mapping;
+use PrinsFrank\Standards\Dev\DataSource\Mapping\PHPRegexSupportedScriptsMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\ScriptMapping;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\TopLevelDomainMapping;
 
@@ -23,6 +24,7 @@ class DataSourceMappingProvider
     public function provide(): array
     {
         return [
+            PHPRegexSupportedScriptsMapping::class,
             CountryMapping::class,
             CurrencyMapping::class,
             HttpMethodMapping::class,

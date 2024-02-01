@@ -1,0 +1,15 @@
+name: Daily TLD update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '55 17 * * *'
+
+env:
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  update-specs:
+    uses: ./.github/workflows/reusable-update-spec.yml
+    with:
+      type: php-regex-script
