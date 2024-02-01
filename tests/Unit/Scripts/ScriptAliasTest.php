@@ -45,4 +45,43 @@ class ScriptAliasTest extends TestCase
         static::assertTrue(ScriptAlias::Arabic->isSupportedByPHPRegex());
         static::assertFalse(ScriptAlias::Adlam->isSupportedByPHPRegex());
     }
+
+    /** @covers ::forString */
+    public function testForString(): void
+    {
+        static::assertSame(
+            [],
+            ScriptAlias::forString('')
+        );
+        static::assertSame(
+            [
+                ScriptAlias::Latin
+            ],
+            ScriptAlias::forString('eu')
+        );
+        static::assertSame(
+            [
+                ScriptAlias::Cyrillic,
+                ScriptAlias::Greek,
+                ScriptAlias::Latin,
+            ],
+            ScriptAlias::forString('euеюευ')
+        );
+        static::assertSame(
+            [
+                ScriptAlias::Cyrillic,
+                ScriptAlias::Greek,
+                ScriptAlias::Latin,
+            ],
+            ScriptAlias::forString('еюeuеюευ')
+        );
+        static::assertSame(
+            [
+                ScriptAlias::Cyrillic,
+                ScriptAlias::Latin,
+                ScriptAlias::Greek,
+            ],
+            ScriptAlias::forString('еюeuеюευeu')
+        );
+    }
 }

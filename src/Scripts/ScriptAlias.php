@@ -401,4 +401,36 @@ enum ScriptAlias: string
     {
         return BackedEnum::hasCaseAttribute($this, SupportedByPHPRegex::class);
     }
+
+    /**
+     * @return array<self> in order of most matched multibyte characters
+     *
+     * Please note that not all Scripts are supported, only the ones that have the 'SupportedByPHPRegex' attribute.
+     * For all other scripts, self::Command will be returned
+     */
+    public static function forString(string $string): array
+    {
+        if ($string === '') {
+            return [];
+        }
+
+        $supportedScripts = array_filter(self::cases(), fn (self $case) => $case->isSupportedByPHPRegex());
+        $regex = '/' . implode('|', array_map(fn (self $case) => sprintf('(?P<%s>\p{%s}+)', $case->value, $case->value), $supportedScripts)) . '/u';
+        if (in_array(preg_match_all($regex, $string, $matches, PREG_UNMATCHED_AS_NULL), [0, false], true)) {
+            return [];
+        }
+
+        $scripts = [];
+        foreach ($matches as $scriptName => $scriptMatchesArray) {
+            if (is_int($scriptName) || array_diff($scriptMatchesArray, [null]) === []) {
+                continue;
+            }
+
+            $scripts[$scriptName] ??= 0;
+            $scripts[$scriptName] += array_sum(array_map(fn (string|null $scriptMatchChars) => mb_strlen($scriptMatchChars ?? ''), $scriptMatchesArray));
+        }
+
+        arsort($scripts);
+        return array_map(fn (string $scriptString) => self::from($scriptString), array_keys($scripts));
+    }
 }
