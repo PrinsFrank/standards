@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
-use Attribute;
 use BackedEnum;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
+use stdClass;
 
 /** @internal */
 class EnumCase
 {
-    /** @param array<Attribute> $attributes */
+    /** @param array<stdClass> $attributes */
     public function __construct(
         public readonly string $name,
         public readonly string|int $value,
