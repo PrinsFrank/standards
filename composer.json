@@ -40,6 +40,7 @@
             "@unit",
             "@cs"
         ],
+        "detect-drivers": "bdi detect drivers",
         "update-spec": "PrinsFrank\\Standards\\Dev\\SpecUpdater::update",
         "update-spec-country": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\CountryMapping",
         "update-spec-currency": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\CurrencyMapping",
@@ -51,7 +52,18 @@
         "update-spec-scripts": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\ScriptMapping",
         "update-spec-tld": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\TopLevelDomainMapping",
         "update-spec-php-regex-script": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\PHPRegexSupportedScriptsMapping",
-        "detect-drivers": "bdi detect drivers"
+        "update-specs": [
+            "@update-spec-country",
+            "@update-spec-currency",
+            "@update-spec-http-methods",
+            "@update-spec-http-status-codes",
+            "@update-spec-language-extensive",
+            "@update-spec-language",
+            "@update-spec-language-subtag",
+            "@update-spec-scripts",
+            "@update-spec-tld",
+            "@update-spec-php-regex-script"
+        ]
     },
     "repositories": [
         {
