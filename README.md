@@ -756,9 +756,24 @@ ScriptAlias::from('Latin')->toScriptCode();   // ScriptCode::Latin
 ScriptAlias::from('Latin')->toScriptName();   // ScriptName::Latin
 ScriptAlias::from('Latin')->toScriptNumber(); // ScriptNumber::Latin
 ScriptAlias::Latin;                           // ScriptAlias::Latin
+ScriptAlias::from('Latin')->isSupportedByPHPRegex(); // true
 
 public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
 ```
+
+PHP has regex support for detecting scripts using the following notation:
+
+Match any Arabic character
+```regexp
+\p{Arabic}
+```
+
+Match any NON-Arabic character
+```regexp
+\P{Arabic}
+```
+
+Not all scripts are supported by PHP regular expressions. An exhaustive list can be found in the [PHP documentation for Unicode character properties](https://www.php.net/manual/en/regexp.reference.unicode.php). For convenience, the information on that page is parsed daily and supplied in this package using the `isSupportedByPHPRegex` method and `SupportedByPHPRegex` attribute which is the underlying information used by the `isSupportedByPHPRegex` method.
 
 ### ScriptCode
 
