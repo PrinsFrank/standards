@@ -145,6 +145,16 @@ class CountryAlpha3Test extends TestCase
         }
     }
 
+    /** @covers ::getCountryCodeTLD */
+    public function testGetCountryCodeTLD(): void
+    {
+        foreach (CountryAlpha3::cases() as $countryAlpha3) {
+            $countryAlpha3->getCountryCodeTLD();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
     /** @covers ::formatNumber */
     public function testFormatNumber(): void
     {

@@ -177,6 +177,16 @@ class CountryNumericTest extends TestCase
         }
     }
 
+    /** @covers ::getCountryCodeTLD */
+    public function testGetCountryCodeTLD(): void
+    {
+        foreach (CountryNumeric::cases() as $countryNumeric) {
+            $countryNumeric->getCountryCodeTLD();
+
+            $this->addToAssertionCount(1);
+        }
+    }
+
     /** @covers ::formatNumber */
     public function testFormatNumber(): void
     {

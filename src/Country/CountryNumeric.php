@@ -14,6 +14,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
+use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
 use TypeError;
 use ValueError;
 
@@ -367,5 +368,10 @@ enum CountryNumeric: string
     public function getOfficialAndDeFactoLanguages(): array
     {
         return $this->toCountryAlpha2()->getOfficialAndDeFactoLanguages();
+    }
+
+    public function getCountryCodeTLD(): CountryCodeTLD
+    {
+        return $this->toCountryAlpha2()->getCountryCodeTLD();
     }
 }
