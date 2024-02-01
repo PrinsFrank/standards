@@ -28,6 +28,7 @@ enum CountryCodeTLD: string
 
     #[NotAssigned]
     case an = 'an';
+
     case ao = 'ao';
     case ao_men = '澳門';
     case aq = 'aq';
@@ -59,12 +60,14 @@ enum CountryCodeTLD: string
 
     #[NotAssigned]
     case bl = 'bl';
+
     case bm = 'bm';
     case bn = 'bn';
     case bo = 'bo';
 
     #[NotAssigned]
     case bq = 'bq';
+
     case br = 'br';
     case bs = 'bs';
     case bt = 'bt';
@@ -104,6 +107,7 @@ enum CountryCodeTLD: string
 
     #[NotAssigned]
     case eh = 'eh';
+
     case el = 'ελ';
     case er = 'er';
     case es = 'es';
@@ -192,6 +196,7 @@ enum CountryCodeTLD: string
 
     #[NotAssigned]
     case mf = 'mf';
+
     case mg = 'mg';
     case mh = 'mh';
     case mk = 'mk';
@@ -293,6 +298,7 @@ enum CountryCodeTLD: string
 
     #[NotAssigned]
     case tp = 'tp';
+
     case tr = 'tr';
     case tt = 'tt';
     case tv = 'tv';
@@ -306,6 +312,7 @@ enum CountryCodeTLD: string
 
     #[NotAssigned]
     case um = 'um';
+
     case us = 'us';
     case uy = 'uy';
     case uz = 'uz';
