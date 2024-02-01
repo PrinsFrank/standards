@@ -410,10 +410,6 @@ enum ScriptAlias: string
      */
     public static function allForString(string $string): array
     {
-        if ($string === '') {
-            return [];
-        }
-
         $supportedScripts = array_filter(self::cases(), fn (self $case) => $case->isSupportedByPHPRegex());
         $regex = '/' . implode('|', array_map(fn (self $case) => sprintf('(?P<%s>\p{%s}+)', $case->value, $case->value), $supportedScripts)) . '/u';
         if (preg_match_all($regex, $string, $matches, PREG_UNMATCHED_AS_NULL) === false) {
