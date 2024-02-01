@@ -112,20 +112,20 @@ class EnumFile
     {
         foreach ($this->methods as $method) {
             $enumContent = $this->getContent();
-            $startExistingMethod = mb_strpos($enumContent, '    public function ' . $method->name . '()');
-            $endPosMethod = mb_strpos($enumContent, PHP_EOL . '    public function', $startExistingMethod === false ? 0 : $startExistingMethod + 1);
-            if ($endPosMethod === false) {
-                $lastClosingTag = mb_strrpos($enumContent, PHP_EOL . '}');
+            $startExistingMethod = mb_strpos($enumContent, PHP_EOL . '    public function ' . $method->name . '()');
+            $endPosMethodOrLastClosingTag = mb_strpos($enumContent, PHP_EOL . '    public function', $startExistingMethod === false ? 0 : $startExistingMethod + 1);
+            if ($endPosMethodOrLastClosingTag === false) {
+                $endPosMethodOrLastClosingTag = mb_strrpos($enumContent, PHP_EOL . '}');
             }
 
-            if ($endPosMethod === false && $lastClosingTag === false) {
+            if ($endPosMethodOrLastClosingTag === false) {
                 throw new RuntimeException('Couldn\'t locate closing tag');
             }
 
             if ($startExistingMethod !== false) {
-                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $endPosMethod === false ? $lastClosingTag : $endPosMethod) . ($endPosMethod !== false ? PHP_EOL : '');
+                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
             } else {
-                $newEnumContent = mb_substr($enumContent, 0, $endPosMethod === false ? $lastClosingTag : $endPosMethod) . $method->__toString() . mb_substr($enumContent, $endPosMethod === false ? $lastClosingTag : $endPosMethod);
+                $newEnumContent = mb_substr($enumContent, 0, $endPosMethodOrLastClosingTag) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
             }
 
             $this->putContent($newEnumContent);
