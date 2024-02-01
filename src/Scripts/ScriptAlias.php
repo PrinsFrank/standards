@@ -401,4 +401,43 @@ enum ScriptAlias: string
     {
         return BackedEnum::hasCaseAttribute($this, SupportedByPHPRegex::class);
     }
+
+    /**
+     * @return ($string is non-empty-string ? non-empty-array<ScriptAlias> : array{}) in order of most matched multibyte characters
+     *
+     * Please note that not all Scripts are supported, only the ones that have the 'SupportedByPHPRegex' attribute.
+     * For all other scripts, self::Common will be returned
+     */
+    public static function allForString(string $string): array
+    {
+        $supportedScripts = array_filter(self::cases(), fn (self $case) => $case->isSupportedByPHPRegex());
+        if (preg_match_all('/' . implode('|', array_map(fn (self $case) => sprintf('(?P<%s>\p{%s}+)', $case->value, $case->value), $supportedScripts)) . '/u', $string, $matches, PREG_UNMATCHED_AS_NULL) === false) {
+            return [];
+        }
+
+        $scripts = [];
+        foreach ($matches as $scriptName => $scriptMatchesArray) {
+            if (is_int($scriptName) || array_diff($scriptMatchesArray, [null]) === []) {
+                continue;
+            }
+
+            $scripts[$scriptName] ??= 0;
+            $scripts[$scriptName] += array_sum(array_map(fn (string|null $scriptMatchChars) => mb_strlen($scriptMatchChars ?? ''), $scriptMatchesArray));
+        }
+
+        arsort($scripts);
+        return array_map(fn (string $scriptString) => self::from($scriptString), array_keys($scripts));
+    }
+
+    /** @return ($string is non-empty-string ? bool : false) */
+    public static function hasMultipleForString(string $string): bool
+    {
+        return count(self::allForString($string)) > 1;
+    }
+
+    /** @return ($string is non-empty-string ? self : null) */
+    public static function mostCommonInString(string $string): ?self
+    {
+        return self::allForString($string)[0] ?? null;
+    }
 }
