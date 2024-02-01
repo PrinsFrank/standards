@@ -113,7 +113,7 @@ class EnumFile
         foreach ($this->methods as $method) {
             $enumContent = $this->getContent();
             $startExistingMethod = mb_strpos($enumContent, '    public function ' . $method->name . '()');
-            $endPosMethodOrLastClosingTag = mb_strpos($enumContent, PHP_EOL . '    public function', $startExistingMethod === false ? 0 : $startExistingMethod + 1);
+            $endPosMethodOrLastClosingTag = mb_strpos($enumContent, '    public function', $startExistingMethod === false ? 0 : $startExistingMethod + 1);
             if ($endPosMethodOrLastClosingTag === false) {
                 $endPosMethodOrLastClosingTag = mb_strrpos($enumContent, '}');
             }
@@ -123,7 +123,7 @@ class EnumFile
             }
 
             if ($startExistingMethod !== false) {
-                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag - 1);
+                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod - 1) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag - 1);
             } else {
                 $newEnumContent = mb_substr($enumContent, 0, $endPosMethodOrLastClosingTag) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag - 1);
             }
