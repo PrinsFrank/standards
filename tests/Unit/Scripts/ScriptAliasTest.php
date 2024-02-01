@@ -94,4 +94,14 @@ class ScriptAliasTest extends TestCase
         static::assertSame(ScriptAlias::Cyrillic, ScriptAlias::mostCommonInString('еюeuеюευ'));
         static::assertSame(ScriptAlias::Cyrillic, ScriptAlias::mostCommonInString('еюeuеюευeu'));
     }
+
+    /** @covers ::hasMultipleInString */
+    public function testHasMultipleInString(): void
+    {
+        static::assertFalse(ScriptAlias::hasMultipleInString(''));
+        static::assertFalse(ScriptAlias::hasMultipleInString('eu'));
+        static::assertTrue(ScriptAlias::hasMultipleInString('euеюευ'));
+        static::assertTrue(ScriptAlias::hasMultipleInString('еюeuеюευ'));
+        static::assertTrue(ScriptAlias::hasMultipleInString('еюeuеюευeu'));
+    }
 }
