@@ -173,8 +173,8 @@ enum CountryCodeTLD: string implements TLD
     case ky = 'ky';
     case kz = 'kz';
     case la = 'la';
-    case laav = 'ລາວ';
     case lanka = 'ලංකා';
+    case lao = 'ລາວ';
     case lb = 'lb';
     case lc = 'lc';
     case li = 'li';
