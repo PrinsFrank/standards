@@ -396,4 +396,9 @@ enum ScriptAlias: string
     {
         return BackedEnum::fromName(ScriptCode::class, $this->name);
     }
+
+    public function isSupportedByPHPRegex(): bool
+    {
+        return BackedEnum::hasCaseAttribute($this, SupportedByPHPRegex::class);
+    }
 }
