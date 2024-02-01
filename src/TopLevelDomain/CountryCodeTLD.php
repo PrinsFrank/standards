@@ -6,6 +6,7 @@ namespace PrinsFrank\Standards\TopLevelDomain;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
 /** @source https://www.iana.org/domains/root/db */
 enum CountryCodeTLD: string
@@ -24,6 +25,9 @@ enum CountryCodeTLD: string
     case alswdyt = 'السعودية';
     case am = 'am';
     case amarat = 'امارات';
+
+    #[NotAssigned]
+    case an = 'an';
     case ao = 'ao';
     case ao_men = '澳門';
     case aq = 'aq';
@@ -52,9 +56,15 @@ enum CountryCodeTLD: string
     case bharota = 'भारोत';
     case bi = 'bi';
     case bj = 'bj';
+
+    #[NotAssigned]
+    case bl = 'bl';
     case bm = 'bm';
     case bn = 'bn';
     case bo = 'bo';
+
+    #[NotAssigned]
+    case bq = 'bq';
     case br = 'br';
     case bs = 'bs';
     case bt = 'bt';
@@ -91,6 +101,9 @@ enum CountryCodeTLD: string
     case ec = 'ec';
     case ee = 'ee';
     case eg = 'eg';
+
+    #[NotAssigned]
+    case eh = 'eh';
     case el = 'ελ';
     case er = 'er';
     case es = 'es';
@@ -176,6 +189,9 @@ enum CountryCodeTLD: string
     case mc = 'mc';
     case md = 'md';
     case me = 'me';
+
+    #[NotAssigned]
+    case mf = 'mf';
     case mg = 'mg';
     case mh = 'mh';
     case mk = 'mk';
@@ -274,6 +290,9 @@ enum CountryCodeTLD: string
     case tm = 'tm';
     case tn = 'tn';
     case to = 'to';
+
+    #[NotAssigned]
+    case tp = 'tp';
     case tr = 'tr';
     case tt = 'tt';
     case tv = 'tv';
@@ -284,6 +303,9 @@ enum CountryCodeTLD: string
     case ug = 'ug';
     case uk = 'uk';
     case ukr = 'укр';
+
+    #[NotAssigned]
+    case um = 'um';
     case us = 'us';
     case uy = 'uy';
     case uz = 'uz';
@@ -305,27 +327,6 @@ enum CountryCodeTLD: string
     case zhong_guo = '中国';
     case zm = 'zm';
     case zw = 'zw';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case an = 'an';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case bl = 'bl';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case bq = 'bq';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case eh = 'eh';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case mf = 'mf';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case tp = 'tp';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case um = 'um';
 
     public function getCountryAlpha2(): ?CountryAlpha2
     {
