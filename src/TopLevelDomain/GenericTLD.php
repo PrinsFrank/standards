@@ -13,7 +13,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case abarth = 'abarth';
-
     case abb = 'abb';
     case abbott = 'abbott';
     case abbvie = 'abbvie';
@@ -30,12 +29,10 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case active = 'active';
-
     case actor = 'actor';
 
     #[NotAssigned]
     case adac = 'adac';
-
     case ads = 'ads';
     case adult = 'adult';
     case aeg = 'aeg';
@@ -43,7 +40,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case afamilycompany = 'afamilycompany';
-
     case afl = 'afl';
     case africa = 'africa';
     case agakhan = 'agakhan';
@@ -52,7 +48,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case aigo = 'aigo';
-
     case airbus = 'airbus';
     case airforce = 'airforce';
     case airtel = 'airtel';
@@ -60,7 +55,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case alfaromeo = 'alfaromeo';
-
     case alibaba = 'alibaba';
     case alipay = 'alipay';
     case allfinanz = 'allfinanz';
@@ -98,7 +92,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case atsalat = 'اتصالات';
-
     case attorney = 'attorney';
     case auction = 'auction';
     case audi = 'audi';
@@ -119,7 +112,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case bananarepublic = 'bananarepublic';
-
     case band = 'band';
     case bank = 'bank';
     case bar = 'bar';
@@ -158,7 +150,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case blanco = 'blanco';
-
     case blockbuster = 'blockbuster';
     case blog = 'blog';
     case bloomberg = 'bloomberg';
@@ -168,7 +159,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case bnl = 'bnl';
-
     case bnpparibas = 'bnpparibas';
     case boats = 'boats';
     case boehringer = 'boehringer';
@@ -181,7 +171,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case boots = 'boots';
-
     case bosch = 'bosch';
     case bostik = 'bostik';
     case boston = 'boston';
@@ -200,7 +189,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case bugatti = 'bugatti';
-
     case build = 'build';
     case builders = 'builders';
     case business = 'business';
@@ -220,7 +208,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case cancerresearch = 'cancerresearch';
-
     case canon = 'canon';
     case capetown = 'capetown';
     case capital = 'capital';
@@ -235,13 +222,11 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case cartier = 'cartier';
-
     case casa = 'casa';
     case case = 'case';
 
     #[NotAssigned]
     case caseih = 'caseih';
-
     case cash = 'cash';
     case casino = 'casino';
     case catering = 'catering';
@@ -255,7 +240,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case ceb = 'ceb';
-
     case center = 'center';
     case ceo = 'ceo';
     case cern = 'cern';
@@ -271,13 +255,11 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case chloe = 'chloe';
-
     case christmas = 'christmas';
     case chrome = 'chrome';
 
     #[NotAssigned]
     case chrysler = 'chrysler';
-
     case church = 'church';
     case ci_shan = '慈善';
     case cipriani = 'cipriani';
@@ -290,7 +272,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case cityeats = 'cityeats';
-
     case claims = 'claims';
     case cleaning = 'cleaning';
     case click = 'click';
@@ -322,7 +303,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case cookingchannel = 'cookingchannel';
-
     case cool = 'cool';
     case corsica = 'corsica';
     case country = 'country';
@@ -341,7 +321,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case csc = 'csc';
-
     case cuisinella = 'cuisinella';
     case cymru = 'cymru';
     case cyou = 'cyou';
@@ -349,7 +328,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case da_zhong_qi_che = '大众汽车';
-
     case dabur = 'dabur';
     case dad = 'dad';
     case dan_ma_xi = '淡马锡';
@@ -396,17 +374,14 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case dodge = 'dodge';
-
     case dog = 'dog';
 
     #[NotAssigned]
     case doha = 'doha';
-
     case domains = 'domains';
 
     #[NotAssigned]
     case doosan = 'doosan';
-
     case dot = 'dot';
     case download = 'download';
     case drive = 'drive';
@@ -415,12 +390,10 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case duck = 'duck';
-
     case dunlop = 'dunlop';
 
     #[NotAssigned]
     case duns = 'duns';
-
     case dupont = 'dupont';
     case durban = 'durban';
     case dvag = 'dvag';
@@ -439,7 +412,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case epost = 'epost';
-
     case epson = 'epson';
     case equipment = 'equipment';
     case ericsson = 'ericsson';
@@ -452,14 +424,12 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case etisalat = 'etisalat';
-
     case eurovision = 'eurovision';
     case eus = 'eus';
     case events = 'events';
 
     #[NotAssigned]
     case everbank = 'everbank';
-
     case exchange = 'exchange';
     case expert = 'expert';
     case exposed = 'exposed';
@@ -485,7 +455,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case fiat = 'fiat';
-
     case fidelity = 'fidelity';
     case fido = 'fido';
     case film = 'film';
@@ -507,14 +476,12 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case flsmidth = 'flsmidth';
-
     case fly = 'fly';
     case foo = 'foo';
     case food = 'food';
 
     #[NotAssigned]
     case foodnetwork = 'foodnetwork';
-
     case football = 'football';
     case ford = 'ford';
     case forex = 'forex';
@@ -529,7 +496,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case frontdoor = 'frontdoor';
-
     case frontier = 'frontier';
     case ftr = 'ftr';
     case fu_shan = '佛山';
@@ -537,7 +503,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case fujixerox = 'fujixerox';
-
     case fun = 'fun';
     case fund = 'fund';
     case furniture = 'furniture';
@@ -566,7 +531,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case glade = 'glade';
-
     case glass = 'glass';
     case gle = 'gle';
     case global = 'global';
@@ -583,13 +547,11 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case gong_xing = '工行';
-
     case gong_yi = '公益';
     case goo = 'goo';
 
     #[NotAssigned]
     case goodhands = 'goodhands';
-
     case goodyear = 'goodyear';
     case goog = 'goog';
     case google = 'google';
@@ -628,7 +590,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case hgtv = 'hgtv';
-
     case hiphop = 'hiphop';
     case hisamitsu = 'hisamitsu';
     case hitachi = 'hitachi';
@@ -646,7 +607,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case honeywell = 'honeywell';
-
     case horse = 'horse';
     case hospital = 'hospital';
     case host = 'host';
@@ -655,7 +615,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case hoteles = 'hoteles';
-
     case hotels = 'hotels';
     case hotmail = 'hotmail';
     case house = 'house';
@@ -664,7 +623,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case htc = 'htc';
-
     case hughes = 'hughes';
     case hyatt = 'hyatt';
     case hyundai = 'hyundai';
@@ -677,7 +635,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case iinet = 'iinet';
-
     case ikano = 'ikano';
     case imamat = 'imamat';
     case imdb = 'imdb';
@@ -695,7 +652,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case intel = 'intel';
-
     case international = 'international';
     case intuit = 'intuit';
     case investments = 'investments';
@@ -704,7 +660,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case iselect = 'iselect';
-
     case ismaili = 'ismaili';
     case ist = 'ist';
     case istanbul = 'istanbul';
@@ -716,14 +671,12 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case iwc = 'iwc';
-
     case jaguar = 'jaguar';
     case java = 'java';
     case jcb = 'jcb';
 
     #[NotAssigned]
     case jcp = 'jcp';
-
     case jeep = 'jeep';
     case jetzt = 'jetzt';
     case jewelry = 'jewelry';
@@ -737,7 +690,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case jlc = 'jlc';
-
     case jll = 'jll';
     case jmp = 'jmp';
     case jnj = 'jnj';
@@ -763,7 +715,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case kinder = 'kinder';
-
     case kindle = 'kindle';
     case kitchen = 'kitchen';
     case kiwi = 'kiwi';
@@ -785,7 +736,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case ladbrokes = 'ladbrokes';
-
     case lamborghini = 'lamborghini';
     case lamer = 'lamer';
     case lancaster = 'lancaster';
@@ -795,7 +745,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case lancome = 'lancome';
-
     case land = 'land';
     case landrover = 'landrover';
     case lanxess = 'lanxess';
@@ -816,7 +765,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case liaison = 'liaison';
-
     case lian_tong = '联通';
     case lidl = 'lidl';
     case life = 'life';
@@ -831,7 +779,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case linde = 'linde';
-
     case link = 'link';
     case lipsy = 'lipsy';
     case live = 'live';
@@ -839,7 +786,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case lixil = 'lixil';
-
     case llc = 'llc';
     case llp = 'llp';
     case loan = 'loan';
@@ -849,7 +795,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case loft = 'loft';
-
     case lol = 'lol';
     case london = 'london';
     case lotte = 'lotte';
@@ -863,13 +808,11 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case lupin = 'lupin';
-
     case luxe = 'luxe';
     case luxury = 'luxury';
 
     #[NotAssigned]
     case macys = 'macys';
-
     case madrid = 'madrid';
     case maif = 'maif';
     case maison = 'maison';
@@ -886,7 +829,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case maserati = 'maserati';
-
     case mattel = 'mattel';
     case mba = 'mba';
 
@@ -895,7 +837,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case mcdonalds = 'mcdonalds';
-
     case mckinsey = 'mckinsey';
     case med = 'med';
     case media = 'media';
@@ -908,12 +849,10 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case meo = 'meo';
-
     case merckmsd = 'merckmsd';
 
     #[NotAssigned]
     case metlife = 'metlife';
-
     case miami = 'miami';
     case microsoft = 'microsoft';
     case min_na = 'みんな';
@@ -929,7 +868,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case mobily = 'mobily';
-
     case moda = 'moda';
     case moe = 'moe';
     case moi = 'moi';
@@ -943,7 +881,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case mopar = 'mopar';
-
     case mormon = 'mormon';
     case mortgage = 'mortgage';
     case moscow = 'moscow';
@@ -955,13 +892,11 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case movistar = 'movistar';
-
     case msd = 'msd';
     case mtn = 'mtn';
 
     #[NotAssigned]
     case mtpc = 'mtpc';
-
     case mtr = 'mtr';
     case music = 'music';
 
@@ -973,18 +908,15 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case mwbayly = 'موبايلي';
-
     case mwq = 'موقع';
     case nab = 'nab';
 
     #[NotAssigned]
     case nadex = 'nadex';
-
     case nagoya = 'nagoya';
 
     #[NotAssigned]
     case nationwide = 'nationwide';
-
     case natura = 'natura';
     case navy = 'navy';
     case nba = 'nba';
@@ -999,7 +931,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case newholland = 'newholland';
-
     case news = 'news';
     case next = 'next';
     case nextdirect = 'nextdirect';
@@ -1017,7 +948,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case northwesternmutual = 'northwesternmutual';
-
     case norton = 'norton';
     case now = 'now';
     case nowruz = 'nowruz';
@@ -1028,14 +958,12 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case nuo_ji_ya = '诺基亚';
-
     case nyc = 'nyc';
     case obi = 'obi';
     case observer = 'observer';
 
     #[NotAssigned]
     case off = 'off';
-
     case office = 'office';
     case okinawa = 'okinawa';
     case olayan = 'olayan';
@@ -1043,7 +971,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case oldnavy = 'oldnavy';
-
     case ollo = 'ollo';
     case omega = 'omega';
     case one = 'one';
@@ -1054,7 +981,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case onyourside = 'onyourside';
-
     case ooo = 'ooo';
     case open = 'open';
     case oracle = 'oracle';
@@ -1064,7 +990,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case orientexpress = 'orientexpress';
-
     case origins = 'origins';
     case osaka = 'osaka';
     case otsuka = 'otsuka';
@@ -1074,12 +999,10 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case pamperedchef = 'pamperedchef';
-
     case panasonic = 'panasonic';
 
     #[NotAssigned]
     case panerai = 'panerai';
-
     case paris = 'paris';
     case pars = 'pars';
     case partners = 'partners';
@@ -1088,7 +1011,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case passagens = 'passagens';
-
     case pay = 'pay';
     case pccw = 'pccw';
     case pet = 'pet';
@@ -1104,7 +1026,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case piaget = 'piaget';
-
     case pics = 'pics';
     case pictet = 'pictet';
     case pictures = 'pictures';
@@ -1148,14 +1069,12 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case qvc = 'qvc';
-
     case qwm = 'קום';
     case racing = 'racing';
     case radio = 'radio';
 
     #[NotAssigned]
     case raid = 'raid';
-
     case rb = 'عرب';
     case read = 'read';
     case realestate = 'realestate';
@@ -1187,7 +1106,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case rightathome = 'rightathome';
-
     case ril = 'ril';
     case rio = 'rio';
     case rip = 'rip';
@@ -1197,7 +1115,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case rocher = 'rocher';
-
     case rocks = 'rocks';
     case rodeo = 'rodeo';
     case rogers = 'rogers';
@@ -1227,7 +1144,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case sapo = 'sapo';
-
     case sarl = 'sarl';
     case sas = 'sas';
     case save = 'save';
@@ -1237,7 +1153,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case sca = 'sca';
-
     case scb = 'scb';
     case schaeffler = 'schaeffler';
     case schmidt = 'schmidt';
@@ -1252,7 +1167,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case scor = 'scor';
-
     case scot = 'scot';
     case search = 'search';
     case seat = 'seat';
@@ -1266,7 +1180,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case ses = 'ses';
-
     case seven = 'seven';
     case sew = 'sew';
     case sex = 'sex';
@@ -1291,7 +1204,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case shou_biao = '手表';
-
     case shou_ji = '手机';
     case shouji = 'shouji';
     case show = 'show';
@@ -1301,7 +1213,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case shriram = 'shriram';
-
     case shu_ji = '書籍';
     case silk = 'silk';
     case sina = 'sina';
@@ -1330,31 +1241,26 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case spiegel = 'spiegel';
-
     case sport = 'sport';
     case spot = 'spot';
 
     #[NotAssigned]
     case spreadbetting = 'spreadbetting';
-
     case srl = 'srl';
 
     #[NotAssigned]
     case srt = 'srt';
-
     case stada = 'stada';
     case staples = 'staples';
     case star = 'star';
 
     #[NotAssigned]
     case starhub = 'starhub';
-
     case statebank = 'statebank';
     case statefarm = 'statefarm';
 
     #[NotAssigned]
     case statoil = 'statoil';
-
     case stc = 'stc';
     case stcgroup = 'stcgroup';
     case stockholm = 'stockholm';
@@ -1376,13 +1282,11 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case swiftcover = 'swiftcover';
-
     case swiss = 'swiss';
     case sydney = 'sydney';
 
     #[NotAssigned]
     case symantec = 'symantec';
-
     case systems = 'systems';
     case tab = 'tab';
     case taipei = 'taipei';
@@ -1405,7 +1309,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case telefonica = 'telefonica';
-
     case temasek = 'temasek';
     case tennis = 'tennis';
     case teva = 'teva';
@@ -1419,7 +1322,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case tiffany = 'tiffany';
-
     case tips = 'tips';
     case tires = 'tires';
     case tirol = 'tirol';
@@ -1445,7 +1347,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case travelchannel = 'travelchannel';
-
     case travelers = 'travelers';
     case travelersinsurance = 'travelersinsurance';
     case trust = 'trust';
@@ -1460,7 +1361,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case uconnect = 'uconnect';
-
     case unicom = 'unicom';
     case university = 'university';
     case uno = 'uno';
@@ -1492,7 +1392,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case vistaprint = 'vistaprint';
-
     case viva = 'viva';
     case vivo = 'vivo';
     case vlaanderen = 'vlaanderen';
@@ -1500,7 +1399,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case volkswagen = 'volkswagen';
-
     case volvo = 'volvo';
     case vote = 'vote';
     case voting = 'voting';
@@ -1509,7 +1407,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case vuelos = 'vuelos';
-
     case wales = 'wales';
     case walmart = 'walmart';
     case walter = 'walter';
@@ -1522,7 +1419,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case warman = 'warman';
-
     case watch = 'watch';
     case watches = 'watches';
     case weather = 'weather';
@@ -1564,7 +1460,6 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case xperia = 'xperia';
-
     case xyz = 'xyz';
     case ya_ma_xun = '亚马逊';
     case yachts = 'yachts';
@@ -1592,12 +1487,10 @@ enum GenericTLD: string
 
     #[NotAssigned]
     case zhu_bao = '珠宝';
-
     case zip = 'zip';
 
     #[NotAssigned]
     case zippo = 'zippo';
-
     case zone = 'zone';
     case zu_zhi_ji_gou = '组织机构';
     case zuerich = 'zuerich';
