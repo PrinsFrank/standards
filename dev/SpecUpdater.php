@@ -37,7 +37,7 @@ class SpecUpdater
                 if ($enumFile->hasCases() === true) {
                     foreach ($enumFile->fqn::cases() as $existingCase) {
                         if ($enumFile->hasCaseWithValue($existingCase->value) === false) {
-                            $enumFile->addCase(new EnumCase($existingCase->name, $existingCase->value, true));
+                            $enumFile->addCase(new EnumCase($existingCase->name, $existingCase->value, [], true));
                         }
                     }
 

@@ -81,7 +81,7 @@ class LanguageSubTagMapping implements Mapping
                 continue;
             }
 
-            $languageTagVariant->addCase(new EnumCase($dataRow->Description, $dataRow->Subtag, ($dataRow->Deprecated ?? null) !== null));
+            $languageTagVariant->addCase(new EnumCase($dataRow->Description, $dataRow->Subtag, [], ($dataRow->Deprecated ?? null) !== null));
         }
 
         return [$languageTagVariant];

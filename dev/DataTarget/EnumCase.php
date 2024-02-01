@@ -3,17 +3,21 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
+use Attribute;
 use BackedEnum;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
+use Stringable;
 
 /** @internal */
 class EnumCase
 {
+    /** @param array<Attribute&Stringable> $attributes */
     public function __construct(
         public readonly string $name,
         public readonly string|int $value,
+        public readonly array $attributes = [],
         public readonly bool $deprecated = false
     ) {
     }
@@ -28,15 +32,19 @@ class EnumCase
     {
         $case = '';
         if ($this->deprecated === true) {
-            $case .= PHP_EOL . $indenting . '/** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */' . PHP_EOL;
+            $case .= PHP_EOL . $indenting . '/** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */';
+        }
+
+        foreach ($this->attributes as $attribute) {
+            $case .= PHP_EOL . $indenting . $attribute->__toString();
         }
 
         $existingKeyWithValue = $enumFQN::tryFrom($this->value);
         $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->name);
         if (is_int($this->value)) {
-            $case .= $indenting . 'case ' . $key . ' = ' . $this->value . ';';
+            $case .= PHP_EOL . $indenting . 'case ' . $key . ' = ' . $this->value . ';';
         } else {
-            $case .= $indenting . 'case ' . $key . ' = \'' . str_replace('\'', '\\\'', $this->value) . '\';';
+            $case .= PHP_EOL . $indenting . 'case ' . $key . ' = \'' . str_replace('\'', '\\\'', $this->value) . '\';';
         }
 
         return $case;

@@ -11,6 +11,7 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
 use PrinsFrank\Standards\InvalidArgumentException;
+use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
 use PrinsFrank\Standards\TopLevelDomain\GenericRestrictedTLD;
 use PrinsFrank\Standards\TopLevelDomain\GenericTLD;
@@ -74,8 +75,6 @@ class TopLevelDomainMapping implements Mapping
             ->addMethod($getCountryCodeTLD = new EnumMethod('getCountryCodeTLD', 'CountryCodeTLD', null));
         foreach ($dataSet as $dataRow) {
             $name = trim($dataRow->tld, '.');
-            $isDeprecated = $dataRow->manager === 'Not assigned';
-
             if ($dataRow->type === 'country-code' && strlen($name) === 2) {
                 $countryAlpha2 = CountryAlpha2::tryFrom(strtoupper($name));
                 if ($countryAlpha2 !== null) {
@@ -84,13 +83,14 @@ class TopLevelDomainMapping implements Mapping
                 }
             }
 
+            $attributes = $dataRow->manager === 'Not assigned' ? [new NotAssigned()] : [];
             match ($dataRow->type) {
-                'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
-                'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
-                'generic' => $genericTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
-                'infrastructure' => $infrastructureTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
-                'sponsored' => $sponsoredTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
-                'test' => $testTLD->addCase(new EnumCase($name, $name, false)), // Test TLDs are not deprecated when they don't have a manager assigned
+                'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'generic' => $genericTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'infrastructure' => $infrastructureTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'sponsored' => $sponsoredTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'test' => $testTLD->addCase(new EnumCase($name, $name, $attributes)),
                 default => throw new InvalidArgumentException('Unrecognized TLD type "' . $dataRow->type . '"'),
             };
         }
