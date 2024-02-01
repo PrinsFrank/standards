@@ -4,10 +4,13 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
+use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
+use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Scripts\Attributes\SupportedByPHPRegex;
 use PrinsFrank\Standards\Scripts\ScriptAlias;
 use PrinsFrank\Standards\Scripts\ScriptNumber;
 use PrinsFrank\Standards\Scripts\ScriptName;
@@ -72,7 +75,12 @@ class ScriptMapping implements Mapping
             $scriptName->addCase(new EnumCase($name, $dataRow->name));
             $scriptNumber->addCase(new EnumCase($name, $dataRow->number));
             if (trim($dataRow->alias) !== '' && $dataRow->number !== '241') {
-                $scriptAlias->addCase(new EnumCase($name, $dataRow->alias));
+                $attributes = [];
+                if (ScriptAlias::tryFrom($dataRow->alias) !== null && BackedEnum::hasCaseAttribute(ScriptAlias::from($dataRow->alias), SupportedByPHPRegex::class)) {
+                    $attributes[] = new EnumCaseAttribute(SupportedByPHPRegex::class);
+                }
+
+                $scriptAlias->addCase(new EnumCase($name, $dataRow->alias, $attributes));
             }
         }
 
