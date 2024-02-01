@@ -403,7 +403,7 @@ enum ScriptAlias: string
     }
 
     /**
-     * @return $string is non-empty-string ? non-empty-array<self> : [] in order of most matched multibyte characters
+     * @return ($string is non-empty-string ? non-empty-array<self> : []) in order of most matched multibyte characters
      *
      * Please note that not all Scripts are supported, only the ones that have the 'SupportedByPHPRegex' attribute.
      * For all other scripts, self::Command will be returned
@@ -429,7 +429,7 @@ enum ScriptAlias: string
         return array_map(fn (string $scriptString) => self::from($scriptString), array_keys($scripts));
     }
 
-    /** @return $string is non-empty-string ? self : null */
+    /** @return ($string is non-empty-string ? self : null) */
     public static function mostCommonInString(string $string): ?self
     {
         return self::allForString($string)[0] ?? null;
