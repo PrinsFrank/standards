@@ -11,6 +11,8 @@ use PrinsFrank\Enums\BackedEnum;
  */
 enum ScriptAlias: string
 {
+    case Adlam = 'Adlam';
+
     public function toScriptNumber(): ScriptNumber
     {
         return BackedEnum::fromName(ScriptNumber::class, $this->name);
