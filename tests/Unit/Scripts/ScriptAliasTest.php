@@ -38,4 +38,11 @@ class ScriptAliasTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
+
+    /** @covers ::isSupportedByPHPRegex */
+    public function testIsSupportedByPHPRegex(): void
+    {
+        static::assertTrue(ScriptAlias::Arabic->isSupportedByPHPRegex());
+        static::assertFalse(ScriptAlias::Adlam->isSupportedByPHPRegex());
+    }
 }

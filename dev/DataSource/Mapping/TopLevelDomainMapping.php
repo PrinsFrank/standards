@@ -8,6 +8,7 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
+use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
 use PrinsFrank\Standards\InvalidArgumentException;
@@ -83,7 +84,7 @@ class TopLevelDomainMapping implements Mapping
                 }
             }
 
-            $attributes = $dataRow->manager === 'Not assigned' ? [new NotAssigned()] : [];
+            $attributes = $dataRow->manager === 'Not assigned' ? [new EnumCaseAttribute(NotAssigned::class)] : [];
             match ($dataRow->type) {
                 'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name, $attributes)),
                 'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name, $attributes)),
