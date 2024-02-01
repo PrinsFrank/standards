@@ -404,7 +404,6 @@ enum ScriptAlias: string
     }
 
     /**
-     * @throws ShouldNotHappenException
      * @return ($string is non-empty-string ? non-empty-array<ScriptAlias> : array{}) in order of most matched multibyte characters
      *
      * Please note that not all Scripts are supported, only the ones that have the 'SupportedByPHPRegex' attribute.
