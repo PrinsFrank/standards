@@ -429,14 +429,14 @@ enum ScriptAlias: string
         return array_map(fn (string $scriptString) => self::from($scriptString), array_keys($scripts));
     }
 
+    public static function hasMultipleForString(string $string): bool
+    {
+        return count(self::allForString($string)) > 1;
+    }
+
     /** @return ($string is non-empty-string ? self : null) */
     public static function mostCommonInString(string $string): ?self
     {
         return self::allForString($string)[0] ?? null;
-    }
-
-    public static function hasMultipleInString(string $string): bool
-    {
-        return count(self::allForString($string)) > 1;
     }
 }
