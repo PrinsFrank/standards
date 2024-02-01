@@ -429,6 +429,7 @@ enum ScriptAlias: string
         return array_map(fn (string $scriptString) => self::from($scriptString), array_keys($scripts));
     }
 
+    /** @return ($string is non-empty-string ? bool : false) */
     public static function hasMultipleForString(string $string): bool
     {
         return count(self::allForString($string)) > 1;
