@@ -12,7 +12,7 @@ use Stringable;
 /** @internal */
 class EnumCase
 {
-    /** @param array<Stringable> $attributes */
+    /** @param array<EnumCaseAttribute> $attributes */
     public function __construct(
         public readonly string $name,
         public readonly string|int $value,
