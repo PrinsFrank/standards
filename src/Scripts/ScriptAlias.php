@@ -429,6 +429,7 @@ enum ScriptAlias: string
         return array_map(fn (string $scriptString) => self::from($scriptString), array_keys($scripts));
     }
 
+    /** @return $string is non-empty-string ? self : null */
     public static function mostCommonInString(string $string): ?self
     {
         return self::allForString($string)[0] ?? null;
