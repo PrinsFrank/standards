@@ -27,7 +27,7 @@ class EnumCase
      * @throws TransliterationException
      * @throws UnableToCreateTransliteratorException
      */
-    public function toString(string $enumFQN, string $indenting, bool $isFirst): string
+    public function toString(string $enumFQN, string $indenting, bool $isFirst, bool $isLast): string
     {
         $case = '';
         if ($isFirst === false && ($this->deprecated === true || $this->attributes !== [])) {
@@ -48,6 +48,10 @@ class EnumCase
             $case .= PHP_EOL . $indenting . 'case ' . $key . ' = ' . $this->value . ';';
         } else {
             $case .= PHP_EOL . $indenting . 'case ' . $key . ' = \'' . str_replace('\'', '\\\'', $this->value) . '\';';
+        }
+
+        if ($isLast === false && ($this->deprecated === true || $this->attributes !== [])) {
+            $case .= PHP_EOL;
         }
 
         return $case;

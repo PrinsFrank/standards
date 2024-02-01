@@ -96,8 +96,9 @@ class EnumFile
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1);
         $cases = array_unique($this->cases);
         usort($cases, $sorting);
+        $nrOfCases = count($cases);
         foreach ($cases as $key => $case) {
-            $newEnumContent .= $case->toString($this->fqn, '    ', $key === 0);
+            $newEnumContent .= $case->toString($this->fqn, '    ', $key === 0, $key === $nrOfCases);
         }
         $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
 
