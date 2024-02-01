@@ -123,7 +123,7 @@ class EnumFile
             }
 
             if ($startExistingMethod !== false) {
-                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag - 1);
+                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
             } else {
                 $newEnumContent = mb_substr($enumContent, 0, $endPosMethodOrLastClosingTag) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag - 1);
             }
