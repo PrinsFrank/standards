@@ -403,7 +403,7 @@ enum ScriptAlias: string
     }
 
     /**
-     * @return array<self> in order of most matched multibyte characters
+     * @return $sting is non-empty-string ? non-empty-array<self> : [] in order of most matched multibyte characters
      *
      * Please note that not all Scripts are supported, only the ones that have the 'SupportedByPHPRegex' attribute.
      * For all other scripts, self::Command will be returned
