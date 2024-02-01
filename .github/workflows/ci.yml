@@ -14,6 +14,10 @@ env:
   GH_TOKEN: ${{ github.token }}
   COMPOSER_ROOT_VERSION: dev-main # see https://getcomposer.org/doc/articles/troubleshooting.md#dependencies-on-the-root-package
 
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
 jobs:
   composer-validate:
     name: Validate composer.json
