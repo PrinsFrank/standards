@@ -21,7 +21,7 @@
         "prinsfrank/enums": "^1.2"
     },
     "require-dev": {
-        "ext-mbstring": "*",
+        "ext-dom": "*",
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpunit/phpunit": "^9.5",
         "symfony/panther": "dev-document-iterator-type",
