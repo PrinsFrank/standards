@@ -18,6 +18,8 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
+use TypeError;
+use ValueError;
 
 /**
  * @template TDataSet of object{code: string, number: string, name: string, french_name: string, alias: string, age: string, date: string}&stdClass
@@ -60,6 +62,8 @@ class ScriptMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
+     * @throws TypeError
+     * @throws ValueError
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array
