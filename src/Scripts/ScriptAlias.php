@@ -415,7 +415,7 @@ enum ScriptAlias: string
         $supportedScripts = array_filter(self::cases(), fn (self $case) => $case->isSupportedByPHPRegex());
         if (preg_match_all('/' . implode('|', array_map(fn (self $case) => sprintf('(?P<%s>\p{%s}+)', $case->value, $case->value), $supportedScripts)) . '/u', $string, $matches, PREG_UNMATCHED_AS_NULL) === false) {
             /** @codeCoverageIgnoreStart as this statement is unreachable in normal circumstances */
-            throw new ShouldNotHappenException(sprintf('preg_match_all return error code %d with message %s', preg_last_error(), preg_last_error_msg()));
+            throw new ShouldNotHappenException(sprintf('preg_match_all returned error code %d with message %s', preg_last_error(), preg_last_error_msg()));
             /** @codeCoverageIgnoreEnd */
         }
 
