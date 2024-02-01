@@ -55,7 +55,7 @@ class ScriptAliasTest extends TestCase
         );
         static::assertSame(
             [
-                ScriptAlias::Latin
+                ScriptAlias::Latin,
             ],
             ScriptAlias::allForString('eu')
         );
