@@ -17,8 +17,8 @@
     "require": {
         "php": "^8.1 || ^8.2 || ^8.3",
         "ext-intl": "*",
-        "prinsfrank/enums": "^1.2",
-        "phpstan/phpstan-strict-rules": "^1.5"
+        "ext-mbstring": "*",
+        "prinsfrank/enums": "^1.2"
     },
     "require-dev": {
         "ext-mbstring": "*",
@@ -29,7 +29,8 @@
         "dbrekelmans/bdi": "^1.0",
         "phpstan/phpstan": "^1.10.50",
         "composer/composer": "^2.3",
-        "prinsfrank/transliteration": "^0.2.3"
+        "prinsfrank/transliteration": "^0.2.3",
+        "phpstan/phpstan-strict-rules": "^1.5"
     },
     "scripts": {
         "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
