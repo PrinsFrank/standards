@@ -86,12 +86,12 @@ class TopLevelDomainMapping implements Mapping
             $notAssigned = $dataRow->manager === 'Not assigned';
             $attributes = $notAssigned === true ? [new NotAssigned()] : [];
             match ($dataRow->type) {
-                'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name, $attributes, $notAssigned)),
-                'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name, $attributes, $notAssigned)),
-                'generic' => $genericTLD->addCase(new EnumCase($name, $name, $attributes, $notAssigned)),
-                'infrastructure' => $infrastructureTLD->addCase(new EnumCase($name, $name, $attributes, $notAssigned)),
-                'sponsored' => $sponsoredTLD->addCase(new EnumCase($name, $name, $attributes, $notAssigned)),
-                'test' => $testTLD->addCase(new EnumCase($name, $name, $attributes, false)), // Test TLDs are not deprecated when they don't have a manager assigned
+                'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'generic' => $genericTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'infrastructure' => $infrastructureTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'sponsored' => $sponsoredTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'test' => $testTLD->addCase(new EnumCase($name, $name, $attributes)),
                 default => throw new InvalidArgumentException('Unrecognized TLD type "' . $dataRow->type . '"'),
             };
         }

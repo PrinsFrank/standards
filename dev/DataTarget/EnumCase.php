@@ -29,6 +29,10 @@ class EnumCase
     public function toString(string $enumFQN, string $indenting): string
     {
         $case = '';
+        if ($this->deprecated === true || $this->attributes !== []) {
+            $case .= PHP_EOL;
+        }
+
         if ($this->deprecated === true) {
             $case .= PHP_EOL . $indenting . '/** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */';
         }
