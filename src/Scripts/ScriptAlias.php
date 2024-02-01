@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Scripts;
 
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Scripts\Attributes\SupportedByPHPRegex;
+use PrinsFrank\Standards\ShouldNotHappenException;
 
 /**
  * @standard ISO-15924
@@ -403,6 +404,7 @@ enum ScriptAlias: string
     }
 
     /**
+     * @throws ShouldNotHappenException
      * @return ($string is non-empty-string ? non-empty-array<ScriptAlias> : array{}) in order of most matched multibyte characters
      *
      * Please note that not all Scripts are supported, only the ones that have the 'SupportedByPHPRegex' attribute.
@@ -413,7 +415,7 @@ enum ScriptAlias: string
         $supportedScripts = array_filter(self::cases(), fn (self $case) => $case->isSupportedByPHPRegex());
         if (preg_match_all('/' . implode('|', array_map(fn (self $case) => sprintf('(?P<%s>\p{%s}+)', $case->value, $case->value), $supportedScripts)) . '/u', $string, $matches, PREG_UNMATCHED_AS_NULL) === false) {
             /** @codeCoverageIgnoreStart as this statement is unreachable in normal circumstances */
-            return [];
+            throw new ShouldNotHappenException(sprintf('preg_match_all return error code %d with message %s', preg_last_error(), preg_last_error_msg()));
             /** @codeCoverageIgnoreEnd */
         }
 
