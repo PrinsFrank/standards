@@ -12,6 +12,6 @@ class TestTLDTest extends TestCase
     /** @covers ::isAssigned */
     public function testIsAssigned(): void
     {
-        static::assertFalse(TestTLD::tesuto->isAssigned());
+        static::assertFalse(TestTLD::tesuto_katakana->isAssigned());
     }
 }
