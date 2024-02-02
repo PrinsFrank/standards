@@ -59,14 +59,4 @@ class EnumCase
 
         return $case;
     }
-
-    /**
-     * @throws TransliterationException
-     * @throws InvalidArgumentException
-     * @throws UnableToCreateTransliteratorException
-     */
-    public function __toString(): string
-    {
-        return NameNormalizer::normalize($this->name);
-    }
 }

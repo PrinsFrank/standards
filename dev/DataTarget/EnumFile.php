@@ -7,6 +7,7 @@ use BackedEnum;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\Exception\EnumNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
+use PrinsFrank\Standards\Scripts\ScriptAlias;
 use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 use RuntimeException;
@@ -94,9 +95,14 @@ class EnumFile
 
         $firstMethodPos = mb_strpos($enumContent, ' public ');
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1);
-        $cases = $this->cases;
-        usort($cases, $sorting);
-        foreach ($cases as $key => $case) {
+        $keyedCases = [];
+        foreach ($this->cases as $case) {
+            $keyedCases[$case->name . (is_string($case->value) ? ScriptAlias::mostCommonInString($case->value)->value ?? '' : '') . $case->value] = $case;
+        }
+
+        $deduplicatedCases = array_values($keyedCases);
+        usort($deduplicatedCases, $sorting);
+        foreach ($deduplicatedCases as $key => $case) {
             $newEnumContent .= $case->toString($this->fqn, '    ', $key === 0);
         }
         $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
