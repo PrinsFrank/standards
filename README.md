@@ -731,14 +731,19 @@ public function foo(NationalCallPrefix $nationalCallPrefix) {} // Use spec as ty
 ### At a glance
 
 ```php
-ScriptAlias::from('Latin');                 // ScriptAlias::Latin
-ScriptAlias::from('Latin')->value;          // 'Latin'
-ScriptAlias::from('Latin')->name;           // 'Latin'
-ScriptAlias::Latin;                         // ScriptAlias::Latin
-ScriptAlias::from('Latin')->toScriptCode(); // ScriptCode::Latin
-ScriptCode::from('Latn');                   // ScriptCode::Latin
-ScriptName::from('Latin');                  // ScriptName::Latin
-ScriptNumber::from('215');                  // ScriptNumber::Latin
+ScriptAlias::from('Latin');                    // ScriptAlias::Latin
+ScriptAlias::from('Latin')->value;             // 'Latin'
+ScriptAlias::from('Latin')->name;              // 'Latin'
+ScriptAlias::Latin;                            // ScriptAlias::Latin
+ScriptAlias::from('Latin')->toScriptCode();    // ScriptCode::Latin
+ScriptCode::from('Latn');                      // ScriptCode::Latin
+ScriptName::from('Latin');                     // ScriptName::Latin
+ScriptNumber::from('215');                     // ScriptNumber::Latin
+
+ScriptAlias::Latin->isSupportedByPHPRegex();   // true
+ScriptAlias::allForString('еюeuеюευ');         // [ScriptAlias::Cyrillic, ScriptAlias::Greek, ScriptAlias::Latin]
+ScriptAlias::hasMultipleForString('еюeuеюευ'); // true
+ScriptAlias::mostCommonInString('еюeuеюευ');   // ScriptAlias::Cyrillic
 
 public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
 ```
@@ -749,14 +754,18 @@ public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enfo
 ### ScriptAlias
 
 ```php
-ScriptAlias::from('Latin');                   // ScriptAlias::latin
-ScriptAlias::from('Latin')->value;            // 'Latin'
-ScriptAlias::from('Latin')->name;             // 'Latin'
-ScriptAlias::from('Latin')->toScriptCode();   // ScriptCode::Latin
-ScriptAlias::from('Latin')->toScriptName();   // ScriptName::Latin
-ScriptAlias::from('Latin')->toScriptNumber(); // ScriptNumber::Latin
-ScriptAlias::Latin;                           // ScriptAlias::Latin
+ScriptAlias::from('Latin');                          // ScriptAlias::latin
+ScriptAlias::from('Latin')->value;                   // 'Latin'
+ScriptAlias::from('Latin')->name;                    // 'Latin'
+ScriptAlias::from('Latin')->toScriptCode();          // ScriptCode::Latin
+ScriptAlias::from('Latin')->toScriptName();          // ScriptName::Latin
+ScriptAlias::from('Latin')->toScriptNumber();        // ScriptNumber::Latin
+ScriptAlias::Latin;                                  // ScriptAlias::Latin
 ScriptAlias::from('Latin')->isSupportedByPHPRegex(); // true
+
+ScriptAlias::allForString('еюeuеюευ');               // [ScriptAlias::Cyrillic, ScriptAlias::Greek, ScriptAlias::Latin]
+ScriptAlias::hasMultipleForString('еюeuеюευ');       // true
+ScriptAlias::mostCommonInString('еюeuеюευ');         // ScriptAlias::Cyrillic
 
 public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
 ```
@@ -778,13 +787,17 @@ Not all scripts are supported by PHP regular expressions. An exhaustive list can
 ### ScriptCode
 
 ```php
-ScriptCode::from('Latn');                   // ScriptCode::latin
-ScriptCode::from('Latn')->value;            // 'Latin'
-ScriptCode::from('Latn')->name;             // 'Latin'
-ScriptCode::from('Latn')->toScriptAlias();  // ScriptAlias::Latin
-ScriptCode::from('Latn')->toScriptName();   // ScriptName::Latin
-ScriptCode::from('Latn')->toScriptNumber(); // ScriptNumber::Latin
-ScriptCode::Latin;                          // ScriptCode::Latin
+ScriptCode::from('Latn');                     // ScriptCode::latin
+ScriptCode::from('Latn')->value;              // 'Latin'
+ScriptCode::from('Latn')->name;               // 'Latin'
+ScriptCode::from('Latn')->toScriptAlias();    // ScriptAlias::Latin
+ScriptCode::from('Latn')->toScriptName();     // ScriptName::Latin
+ScriptCode::from('Latn')->toScriptNumber();   // ScriptNumber::Latin
+ScriptCode::Latin;                            // ScriptCode::Latin
+
+ScriptCode::allForString('еюeuеюευ');         // [ScriptCode::Cyrillic, ScriptCode::Greek, ScriptCode::Latin]
+ScriptCode::hasMultipleForString('еюeuеюευ'); // true
+ScriptCode::mostCommonInString('еюeuеюευ');   // ScriptCode::Cyrillic
 
 public function foo(ScriptCode $scriptCode) {} // Use spec as typehint to enforce valid value
 ```
@@ -792,13 +805,17 @@ public function foo(ScriptCode $scriptCode) {} // Use spec as typehint to enforc
 ### ScriptName
 
 ```php
-ScriptName::from('Latin');                   // ScriptName::latin
-ScriptName::from('Latin')->value;            // 'Latin'
-ScriptName::from('Latin')->name;             // 'Latin'
-ScriptName::from('Latin')->toScriptCode();   // ScriptCode::Latin
-ScriptName::from('Latin')->toScriptAlias();  // ScriptAlias::Latin
-ScriptName::from('Latin')->toScriptNumber(); // ScriptNumber::Latin
-ScriptName::Latin;                           // ScriptName::Latin
+ScriptName::from('Latin');                    // ScriptName::latin
+ScriptName::from('Latin')->value;             // 'Latin'
+ScriptName::from('Latin')->name;              // 'Latin'
+ScriptName::from('Latin')->toScriptCode();    // ScriptCode::Latin
+ScriptName::from('Latin')->toScriptAlias();   // ScriptAlias::Latin
+ScriptName::from('Latin')->toScriptNumber();  // ScriptNumber::Latin
+ScriptName::Latin;                            // ScriptName::Latin
+
+ScriptName::allForString('еюeuеюευ');         // [ScriptName::Cyrillic, ScriptName::Greek, ScriptName::Latin]
+ScriptName::hasMultipleForString('еюeuеюευ'); // true
+ScriptName::mostCommonInString('еюeuеюευ');   // ScriptName::Cyrillic
 
 public function foo(ScriptName $scriptName) {} // Use spec as typehint to enforce valid value
 ```
@@ -806,13 +823,17 @@ public function foo(ScriptName $scriptName) {} // Use spec as typehint to enforc
 ### ScriptNumber
 
 ```php
-ScriptNumber::from('215');                   // ScriptNumber::latin
-ScriptNumber::from('215')->value;            // 'Latin'
-ScriptNumber::from('215')->name;             // 'Latin'
-ScriptNumber::from('215')->toScriptCode();   // ScriptCode::Latin
-ScriptNumber::from('215')->toScriptName();   // ScriptName::Latin
-ScriptNumber::from('215')->toScriptAlias();  // ScriptAlias::Latin
-ScriptNumber::Latin;                         // ScriptNumber::Latin
+ScriptNumber::from('215');                      // ScriptNumber::latin
+ScriptNumber::from('215')->value;               // 'Latin'
+ScriptNumber::from('215')->name;                // 'Latin'
+ScriptNumber::from('215')->toScriptCode();      // ScriptCode::Latin
+ScriptNumber::from('215')->toScriptName();      // ScriptName::Latin
+ScriptNumber::from('215')->toScriptAlias();     // ScriptAlias::Latin
+ScriptNumber::Latin;                            // ScriptNumber::Latin
+
+ScriptNumber::allForString('еюeuеюευ');         // [ScriptNumber::Cyrillic, ScriptAlias::Greek, ScriptAlias::Latin]
+ScriptNumber::hasMultipleForString('еюeuеюευ'); // true
+ScriptNumber::mostCommonInString('еюeuеюευ');   // ScriptNumber::Cyrillic
 
 public function foo(ScriptNumber $scriptNumber) {} // Use spec as typehint to enforce valid value
 ```
