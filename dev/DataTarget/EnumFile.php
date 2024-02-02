@@ -95,11 +95,12 @@ class EnumFile
 
         $firstMethodPos = mb_strpos($enumContent, ' public ');
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1);
-        $deduplicatedCases = [];
+        $keyedCases = [];
         foreach ($this->cases as $case) {
-            $deduplicatedCases[$case->name . (is_string($case->value) ? ScriptAlias::mostCommonInString($case->value)->value : '') . $case->value] = $case;
+            $keyedCases[$case->name . (is_string($case->value) ? ScriptAlias::mostCommonInString($case->value)?->value ?? '' : '') . $case->value] = $case;
         }
 
+        $deduplicatedCases = array_values($keyedCases);
         usort($deduplicatedCases, $sorting);
         foreach ($deduplicatedCases as $key => $case) {
             $newEnumContent .= $case->toString($this->fqn, '    ', $key === 0);
