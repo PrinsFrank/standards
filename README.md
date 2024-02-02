@@ -745,7 +745,6 @@ ScriptAlias::allForString('еюeuеюευ');         // [ScriptAlias::Cyrillic, 
 ScriptAlias::hasMultipleForString('еюeuеюευ'); // true
 ScriptAlias::mostCommonInString('еюeuеюευ');   // ScriptAlias::Cyrillic
 
-
 public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
 ```
 
