@@ -44,16 +44,25 @@ enum CountryCodeTLD: string implements TLD
     case ba = 'ba';
     case banla = 'বাংলা';
     case bart = 'بارت';
+    case bart_Arabic = 'بھارت';
     case bb = 'bb';
     case bd = 'bd';
     case be = 'be';
     case bel = 'бел';
     case bf = 'bf';
     case bg = 'bg';
+    case bg_Cyrillic = 'бг';
     case bh = 'bh';
     case bharat = 'భారత్';
     case bharata = 'ಭಾರತ';
+    case bharata_Oriya = 'ଭାରତ';
+    case bharata_Bengali = 'ভাৰত';
+    case bharata_Bengali_2 = 'ভারত';
+    case bharata_Gujarati = 'ભારત';
+    case bharata_Devanagari = 'भारत';
+    case bharata_Gurmukhi = 'ਭਾਰਤ';
     case bharatam = 'भारतम्';
+    case bharatam_Malayalam = 'ഭാരതം';
     case bharota = 'भारोत';
     case bi = 'bi';
     case bj = 'bj';
@@ -110,6 +119,8 @@ enum CountryCodeTLD: string implements TLD
     case es = 'es';
     case et = 'et';
     case eu = 'eu';
+    case eu_Cyrillic = 'ею';
+    case eu_Greek = 'ευ';
     case fi = 'fi';
     case fj = 'fj';
     case fk = 'fk';
@@ -121,6 +132,7 @@ enum CountryCodeTLD: string implements TLD
     case gb = 'gb';
     case gd = 'gd';
     case ge = 'ge';
+    case ge_Georgian = 'გე';
     case gf = 'gf';
     case gg = 'gg';
     case gh = 'gh';
@@ -279,6 +291,7 @@ enum CountryCodeTLD: string implements TLD
     case sy = 'sy';
     case sz = 'sz';
     case tai_wan = '台湾';
+    case tai_wan_Han = '台灣';
     case tc = 'tc';
     case td = 'td';
     case tf = 'tf';
@@ -326,6 +339,7 @@ enum CountryCodeTLD: string implements TLD
     case yt = 'yt';
     case za = 'za';
     case zhong_guo = '中国';
+    case zhong_guo_Han = '中國';
     case zm = 'zm';
     case zw = 'zw';
 
