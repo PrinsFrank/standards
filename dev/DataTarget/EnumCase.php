@@ -47,7 +47,7 @@ class EnumCase
         if ($existingKeyWithValue === null && is_string($this->value)) {
             $mostCommonScriptInString = ScriptAlias::mostCommonInString($this->value) ?? ScriptAlias::Code_for_undetermined_script;
             if (in_array($mostCommonScriptInString, [ScriptAlias::Code_for_undetermined_script, ScriptAlias::Latin], true) !== true) {
-                $key .= '_' . $mostCommonScriptInString->value;
+                $key .= '_' . mb_strtolower($mostCommonScriptInString->value);
             }
         }
 
