@@ -22,6 +22,7 @@ class NameNormalizer
     {
         $normalizedKey = (new TransliteratorBuilder())
             ->toASCII()
+            ->replace('ǁ', '_2')
             ->IPAToEnglishApproximation()
             ->replace(' ', '_')
             ->replace('!', '_')
@@ -55,7 +56,6 @@ class NameNormalizer
             ->replace('|', '_')
             ->replace('}', '_')
             ->replace('~', '_')
-            ->replace('ǁ', '_2')
             ->replace('ලංකා', 'lanka')
             ->replace('ລາວ', 'lao')
             ->keep(
