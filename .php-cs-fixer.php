@@ -19,6 +19,7 @@ return (new PhpCsFixer\Config())->setRules(
         'phpdoc_param_order'           => true,
         'phpdoc_separation'            => ['groups' => [['deprecated', 'internal'], ['standard', 'source'], ['covers', 'coversDefaultClass'], ['template', 'implements', 'extends', 'param', 'throws', 'return']]],
         'phpdoc_trim'                  => true,
+        'concat_space'                 => ['spacing' => 'one'],
     ]
 )->setFinder(
     PhpCsFixer\Finder::create()
