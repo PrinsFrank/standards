@@ -38,4 +38,70 @@ class ScriptAliasTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
+
+    /** @covers ::isSupportedByPHPRegex */
+    public function testIsSupportedByPHPRegex(): void
+    {
+        static::assertTrue(ScriptAlias::Arabic->isSupportedByPHPRegex());
+        static::assertFalse(ScriptAlias::Adlam->isSupportedByPHPRegex());
+    }
+
+    /** @covers ::allForString */
+    public function testForString(): void
+    {
+        static::assertSame(
+            [],
+            ScriptAlias::allForString('')
+        );
+        static::assertSame(
+            [
+                ScriptAlias::Latin,
+            ],
+            ScriptAlias::allForString('eu')
+        );
+        static::assertSame(
+            [
+                ScriptAlias::Cyrillic,
+                ScriptAlias::Greek,
+                ScriptAlias::Latin,
+            ],
+            ScriptAlias::allForString('euеюευ')
+        );
+        static::assertSame(
+            [
+                ScriptAlias::Cyrillic,
+                ScriptAlias::Greek,
+                ScriptAlias::Latin,
+            ],
+            ScriptAlias::allForString('еюeuеюευ')
+        );
+        static::assertSame(
+            [
+                ScriptAlias::Cyrillic,
+                ScriptAlias::Latin,
+                ScriptAlias::Greek,
+            ],
+            ScriptAlias::allForString('еюeuеюευeu')
+        );
+    }
+
+    /** @covers ::hasMultipleForString */
+    public function testHasMultipleForString(): void
+    {
+        static::assertFalse(ScriptAlias::hasMultipleForString(''));
+        static::assertFalse(ScriptAlias::hasMultipleForString('eu'));
+        static::assertTrue(ScriptAlias::hasMultipleForString('euеюευ'));
+        static::assertTrue(ScriptAlias::hasMultipleForString('еюeuеюευ'));
+        static::assertTrue(ScriptAlias::hasMultipleForString('еюeuеюευeu'));
+    }
+
+    /** @covers ::mostCommonInString */
+    public function testMostCommonInString(): void
+    {
+        static::assertNull(ScriptAlias::mostCommonInString(''));
+        static::assertSame(ScriptAlias::Latin, ScriptAlias::mostCommonInString('eu'));
+        static::assertSame(ScriptAlias::Cyrillic, ScriptAlias::mostCommonInString('euеюευ'));
+        static::assertSame(ScriptAlias::Cyrillic, ScriptAlias::mostCommonInString('еюeuеюευ'));
+        static::assertSame(ScriptAlias::Cyrillic, ScriptAlias::mostCommonInString('еюeuеюευeu'));
+    }
 }

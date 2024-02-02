@@ -11,9 +11,11 @@ use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 /** @internal */
 class EnumCase
 {
+    /** @param array<EnumCaseAttribute> $attributes */
     public function __construct(
         public readonly string $name,
         public readonly string|int $value,
+        public readonly array $attributes = [],
         public readonly bool $deprecated = false
     ) {
     }
@@ -24,19 +26,27 @@ class EnumCase
      * @throws TransliterationException
      * @throws UnableToCreateTransliteratorException
      */
-    public function toString(string $enumFQN, string $indenting): string
+    public function toString(string $enumFQN, string $indenting, bool $isFirst): string
     {
         $case = '';
+        if ($isFirst === false && ($this->deprecated === true || $this->attributes !== [])) {
+            $case .= PHP_EOL;
+        }
+
         if ($this->deprecated === true) {
-            $case .= PHP_EOL . $indenting . '/** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */' . PHP_EOL;
+            $case .= PHP_EOL . $indenting . '/** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */';
+        }
+
+        foreach ($this->attributes as $attribute) {
+            $case .= PHP_EOL . $indenting . $attribute->__toString();
         }
 
         $existingKeyWithValue = $enumFQN::tryFrom($this->value);
         $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->name);
         if (is_int($this->value)) {
-            $case .= $indenting . 'case ' . $key . ' = ' . $this->value . ';';
+            $case .= PHP_EOL . $indenting . 'case ' . $key . ' = ' . $this->value . ';';
         } else {
-            $case .= $indenting . 'case ' . $key . ' = \'' . str_replace('\'', '\\\'', $this->value) . '\';';
+            $case .= PHP_EOL . $indenting . 'case ' . $key . ' = \'' . str_replace('\'', '\\\'', $this->value) . '\';';
         }
 
         return $case;

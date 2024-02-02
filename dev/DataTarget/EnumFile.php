@@ -96,8 +96,8 @@ class EnumFile
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1);
         $cases = array_unique($this->cases);
         usort($cases, $sorting);
-        foreach ($cases as $case) {
-            $newEnumContent .= PHP_EOL . $case->toString($this->fqn, '    ');
+        foreach ($cases as $key => $case) {
+            $newEnumContent .= $case->toString($this->fqn, '    ', $key === 0);
         }
         $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
 
@@ -113,19 +113,21 @@ class EnumFile
         foreach ($this->methods as $method) {
             $enumContent = $this->getContent();
             $startExistingMethod = mb_strpos($enumContent, '    public function ' . $method->name . '()');
-            $endPosMethodOrLastClosingTag = mb_strpos($enumContent, '    public function', $startExistingMethod === false ? 0 : $startExistingMethod + 1);
-            if ($endPosMethodOrLastClosingTag === false) {
-                $endPosMethodOrLastClosingTag = mb_strrpos($enumContent, '}');
+            $nextMethodPos = mb_strpos($enumContent, PHP_EOL . '    public function', $startExistingMethod === false ? 0 : $startExistingMethod + 1);
+            $lastClosingTagPos = false;
+            if ($nextMethodPos === false) {
+                $lastClosingTagPos = mb_strrpos($enumContent, PHP_EOL . '}');
             }
 
-            if ($endPosMethodOrLastClosingTag === false) {
+            if ($nextMethodPos === false && $lastClosingTagPos === false) {
                 throw new RuntimeException('Couldn\'t locate closing tag');
             }
 
+            $endPosMethodOrLastClosingTag = ($nextMethodPos !== false ? $nextMethodPos : $lastClosingTagPos);
             if ($startExistingMethod !== false) {
-                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
+                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . ($nextMethodPos !== false ? PHP_EOL : '') . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
             } else {
-                $newEnumContent = mb_substr($enumContent, 0, $endPosMethodOrLastClosingTag) . $method->__toString() . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
+                $newEnumContent = mb_substr($enumContent, 0, $endPosMethodOrLastClosingTag) . $method->__toString() . ($nextMethodPos !== false ? PHP_EOL : '') . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
             }
 
             $this->putContent($newEnumContent);

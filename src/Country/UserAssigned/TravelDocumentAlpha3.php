@@ -28,7 +28,6 @@ enum TravelDocumentAlpha3: string
 
     /** CARICOM */
     case Caribbean_Community_or_one_of_its_emissaries = 'XCC';
-
     case Council_of_Europe = 'XCE';
 
     /** COMESA */
@@ -45,7 +44,6 @@ enum TravelDocumentAlpha3: string
 
     /** PAM */
     case Parliamentary_Assembly_of_the_Mediterranean = 'XMP';
-
     case Sovereign_Military_Order_of_Malta_or_one_of_its_emissaries = 'XOM';
     case Southern_African_Development_Community = 'XDC';
 

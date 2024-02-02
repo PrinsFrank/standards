@@ -16,6 +16,7 @@ parameters:
             - 'SebastianBergmann\RecursionContext\InvalidArgumentException'
             - 'PrinsFrank\Enums\Exception\InvalidArgumentException'
             - 'PrinsFrank\Enums\Exception\NameNotFoundException'
+            - 'PrinsFrank\Standards\ShouldNotHappenException'
     treatPhpDocTypesAsCertain: false
 includes:
     - phar://phpstan.phar/conf/bleedingEdge.neon

@@ -8,7 +8,7 @@ return (new PhpCsFixer\Config())->setRules(
         'strict_param'                 => true,
         'blank_line_after_opening_tag' => false,
         'no_extra_blank_lines'         => true,
-        'class_attributes_separation'  => true,
+        'class_attributes_separation'  => ['elements' => ['const' => 'only_if_meta', 'method' => 'one', 'property' => 'only_if_meta', 'trait_import' => 'only_if_meta', 'case' => 'only_if_meta']],
         'array_syntax'                 => ['syntax' => 'short'],
         'binary_operator_spaces'       => ['default' => 'single_space'],
         'no_unused_imports'            => true,

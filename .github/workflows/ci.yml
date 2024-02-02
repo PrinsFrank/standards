@@ -14,6 +14,10 @@ env:
   GH_TOKEN: ${{ github.token }}
   COMPOSER_ROOT_VERSION: dev-main # see https://getcomposer.org/doc/articles/troubleshooting.md#dependencies-on-the-root-package
 
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
 jobs:
   composer-validate:
     name: Validate composer.json
@@ -223,6 +227,19 @@ jobs:
   specs-regenerate:
     name: Regenerate specs
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        spec:
+          - "country"
+          - "currency"
+          - "http-methods"
+          - "http-status-codes"
+          - "language-extensive"
+          - "language"
+          - "language-subtag"
+          - "scripts"
+          - "tld"
+          - "php-regex-script"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -230,14 +247,14 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-version }}
-          coverage: pcov
+          php-version: ${{ env.PHP_VERSION }}
+          coverage: none
 
       - name: Install dependencies
         uses: ramsey/composer-install@v2
 
       - name: Update spec
-        run: composer run update-spec
+        run: composer run update-spec-${{ matrix.spec }}
 
       - name: Check for changes
         run: git diff --exit-code

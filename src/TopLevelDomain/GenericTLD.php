@@ -3,11 +3,17 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\TopLevelDomain;
 
+use PrinsFrank\Enums\BackedEnum;
+use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
+
 /** @source https://www.iana.org/domains/root/db */
-enum GenericTLD: string
+enum GenericTLD: string implements TLD
 {
     case aaa = 'aaa';
     case aarp = 'aarp';
+
+    #[NotAssigned]
+    case abarth = 'abarth';
     case abb = 'abb';
     case abbott = 'abbott';
     case abbvie = 'abbvie';
@@ -21,20 +27,35 @@ enum GenericTLD: string
     case accountant = 'accountant';
     case accountants = 'accountants';
     case aco = 'aco';
+
+    #[NotAssigned]
+    case active = 'active';
     case actor = 'actor';
+
+    #[NotAssigned]
+    case adac = 'adac';
     case ads = 'ads';
     case adult = 'adult';
     case aeg = 'aeg';
     case aetna = 'aetna';
+
+    #[NotAssigned]
+    case afamilycompany = 'afamilycompany';
     case afl = 'afl';
     case africa = 'africa';
     case agakhan = 'agakhan';
     case agency = 'agency';
     case aig = 'aig';
+
+    #[NotAssigned]
+    case aigo = 'aigo';
     case airbus = 'airbus';
     case airforce = 'airforce';
     case airtel = 'airtel';
     case akdn = 'akdn';
+
+    #[NotAssigned]
+    case alfaromeo = 'alfaromeo';
     case alibaba = 'alibaba';
     case alipay = 'alipay';
     case allfinanz = 'allfinanz';
@@ -69,6 +90,9 @@ enum GenericTLD: string
     case asda = 'asda';
     case associates = 'associates';
     case athleta = 'athleta';
+
+    #[NotAssigned]
+    case atsalat = 'اتصالات';
     case attorney = 'attorney';
     case auction = 'auction';
     case audi = 'audi';
@@ -86,6 +110,9 @@ enum GenericTLD: string
     case baby = 'baby';
     case baidu = 'baidu';
     case banamex = 'banamex';
+
+    #[NotAssigned]
+    case bananarepublic = 'bananarepublic';
     case band = 'band';
     case bank = 'bank';
     case bar = 'bar';
@@ -121,12 +148,18 @@ enum GenericTLD: string
     case bio = 'bio';
     case black = 'black';
     case blackfriday = 'blackfriday';
+
+    #[NotAssigned]
+    case blanco = 'blanco';
     case blockbuster = 'blockbuster';
     case blog = 'blog';
     case bloomberg = 'bloomberg';
     case blue = 'blue';
     case bms = 'bms';
     case bmw = 'bmw';
+
+    #[NotAssigned]
+    case bnl = 'bnl';
     case bnpparibas = 'bnpparibas';
     case boats = 'boats';
     case boehringer = 'boehringer';
@@ -136,6 +169,9 @@ enum GenericTLD: string
     case boo = 'boo';
     case book = 'book';
     case booking = 'booking';
+
+    #[NotAssigned]
+    case boots = 'boots';
     case bosch = 'bosch';
     case bostik = 'bostik';
     case boston = 'boston';
@@ -148,6 +184,12 @@ enum GenericTLD: string
     case broker = 'broker';
     case brother = 'brother';
     case brussels = 'brussels';
+
+    #[NotAssigned]
+    case budapest = 'budapest';
+
+    #[NotAssigned]
+    case bugatti = 'bugatti';
     case build = 'build';
     case builders = 'builders';
     case business = 'business';
@@ -164,6 +206,9 @@ enum GenericTLD: string
     case camera = 'camera';
     case camp = 'camp';
     case can_ting = '餐厅';
+
+    #[NotAssigned]
+    case cancerresearch = 'cancerresearch';
     case canon = 'canon';
     case capetown = 'capetown';
     case capital = 'capital';
@@ -175,8 +220,14 @@ enum GenericTLD: string
     case career = 'career';
     case careers = 'careers';
     case cars = 'cars';
+
+    #[NotAssigned]
+    case cartier = 'cartier';
     case casa = 'casa';
     case case = 'case';
+
+    #[NotAssigned]
+    case caseih = 'caseih';
     case cash = 'cash';
     case casino = 'casino';
     case catering = 'catering';
@@ -184,6 +235,12 @@ enum GenericTLD: string
     case cba = 'cba';
     case cbn = 'cbn';
     case cbre = 'cbre';
+
+    #[NotAssigned]
+    case cbs = 'cbs';
+
+    #[NotAssigned]
+    case ceb = 'ceb';
     case center = 'center';
     case ceo = 'ceo';
     case cern = 'cern';
@@ -196,8 +253,14 @@ enum GenericTLD: string
     case chat = 'chat';
     case cheap = 'cheap';
     case chintai = 'chintai';
+
+    #[NotAssigned]
+    case chloe = 'chloe';
     case christmas = 'christmas';
     case chrome = 'chrome';
+
+    #[NotAssigned]
+    case chrysler = 'chrysler';
     case church = 'church';
     case ci_shan = '慈善';
     case cipriani = 'cipriani';
@@ -207,6 +270,9 @@ enum GenericTLD: string
     case citi = 'citi';
     case citic = 'citic';
     case city = 'city';
+
+    #[NotAssigned]
+    case cityeats = 'cityeats';
     case claims = 'claims';
     case cleaning = 'cleaning';
     case click = 'click';
@@ -235,6 +301,9 @@ enum GenericTLD: string
     case contact = 'contact';
     case contractors = 'contractors';
     case cooking = 'cooking';
+
+    #[NotAssigned]
+    case cookingchannel = 'cookingchannel';
     case cool = 'cool';
     case corsica = 'corsica';
     case country = 'country';
@@ -250,10 +319,16 @@ enum GenericTLD: string
     case crs = 'crs';
     case cruise = 'cruise';
     case cruises = 'cruises';
+
+    #[NotAssigned]
+    case csc = 'csc';
     case cuisinella = 'cuisinella';
     case cymru = 'cymru';
     case cyou = 'cyou';
     case da_na = '大拿';
+
+    #[NotAssigned]
+    case da_zhong_qi_che = '大众汽车';
     case dabur = 'dabur';
     case dad = 'dad';
     case dan_ma_xi = '淡马锡';
@@ -297,14 +372,29 @@ enum GenericTLD: string
     case dnp = 'dnp';
     case docs = 'docs';
     case doctor = 'doctor';
+
+    #[NotAssigned]
+    case dodge = 'dodge';
     case dog = 'dog';
+
+    #[NotAssigned]
+    case doha = 'doha';
     case domains = 'domains';
+
+    #[NotAssigned]
+    case doosan = 'doosan';
     case dot = 'dot';
     case download = 'download';
     case drive = 'drive';
     case dtv = 'dtv';
     case dubai = 'dubai';
+
+    #[NotAssigned]
+    case duck = 'duck';
     case dunlop = 'dunlop';
+
+    #[NotAssigned]
+    case duns = 'duns';
     case dupont = 'dupont';
     case durban = 'durban';
     case dvag = 'dvag';
@@ -320,15 +410,27 @@ enum GenericTLD: string
     case engineer = 'engineer';
     case engineering = 'engineering';
     case enterprises = 'enterprises';
+
+    #[NotAssigned]
+    case epost = 'epost';
     case epson = 'epson';
     case equipment = 'equipment';
     case ericsson = 'ericsson';
     case erni = 'erni';
     case esq = 'esq';
     case estate = 'estate';
+
+    #[NotAssigned]
+    case esurance = 'esurance';
+
+    #[NotAssigned]
+    case etisalat = 'etisalat';
     case eurovision = 'eurovision';
     case eus = 'eus';
     case events = 'events';
+
+    #[NotAssigned]
+    case everbank = 'everbank';
     case exchange = 'exchange';
     case expert = 'expert';
     case exposed = 'exposed';
@@ -351,6 +453,9 @@ enum GenericTLD: string
     case fei_li_pu = '飞利浦';
     case ferrari = 'ferrari';
     case ferrero = 'ferrero';
+
+    #[NotAssigned]
+    case fiat = 'fiat';
     case fidelity = 'fidelity';
     case fido = 'fido';
     case film = 'film';
@@ -369,9 +474,15 @@ enum GenericTLD: string
     case flir = 'flir';
     case florist = 'florist';
     case flowers = 'flowers';
+
+    #[NotAssigned]
+    case flsmidth = 'flsmidth';
     case fly = 'fly';
     case foo = 'foo';
     case food = 'food';
+
+    #[NotAssigned]
+    case foodnetwork = 'foodnetwork';
     case football = 'football';
     case ford = 'ford';
     case forex = 'forex';
@@ -383,10 +494,16 @@ enum GenericTLD: string
     case fresenius = 'fresenius';
     case frl = 'frl';
     case frogans = 'frogans';
+
+    #[NotAssigned]
+    case frontdoor = 'frontdoor';
     case frontier = 'frontier';
     case ftr = 'ftr';
     case fu_shan = '佛山';
     case fujitsu = 'fujitsu';
+
+    #[NotAssigned]
+    case fujixerox = 'fujixerox';
     case fun = 'fun';
     case fund = 'fund';
     case furniture = 'furniture';
@@ -412,6 +529,9 @@ enum GenericTLD: string
     case gifts = 'gifts';
     case gives = 'gives';
     case giving = 'giving';
+
+    #[NotAssigned]
+    case glade = 'glade';
     case glass = 'glass';
     case gle = 'gle';
     case global = 'global';
@@ -425,8 +545,14 @@ enum GenericTLD: string
     case goldpoint = 'goldpoint';
     case golf = 'golf';
     case gong_si = '公司';
+
+    #[NotAssigned]
+    case gong_xing = '工行';
     case gong_yi = '公益';
     case goo = 'goo';
+
+    #[NotAssigned]
+    case goodhands = 'goodhands';
     case goodyear = 'goodyear';
     case goog = 'goog';
     case google = 'google';
@@ -462,6 +588,9 @@ enum GenericTLD: string
     case helsinki = 'helsinki';
     case here = 'here';
     case hermes = 'hermes';
+
+    #[NotAssigned]
+    case hgtv = 'hgtv';
     case hiphop = 'hiphop';
     case hisamitsu = 'hisamitsu';
     case hitachi = 'hitachi';
@@ -476,16 +605,25 @@ enum GenericTLD: string
     case homes = 'homes';
     case homesense = 'homesense';
     case honda = 'honda';
+
+    #[NotAssigned]
+    case honeywell = 'honeywell';
     case horse = 'horse';
     case hospital = 'hospital';
     case host = 'host';
     case hosting = 'hosting';
     case hot = 'hot';
+
+    #[NotAssigned]
+    case hoteles = 'hoteles';
     case hotels = 'hotels';
     case hotmail = 'hotmail';
     case house = 'house';
     case how = 'how';
     case hsbc = 'hsbc';
+
+    #[NotAssigned]
+    case htc = 'htc';
     case hughes = 'hughes';
     case hyatt = 'hyatt';
     case hyundai = 'hyundai';
@@ -495,6 +633,9 @@ enum GenericTLD: string
     case icu = 'icu';
     case ieee = 'ieee';
     case ifm = 'ifm';
+
+    #[NotAssigned]
+    case iinet = 'iinet';
     case ikano = 'ikano';
     case imamat = 'imamat';
     case imdb = 'imdb';
@@ -509,19 +650,34 @@ enum GenericTLD: string
     case institute = 'institute';
     case insurance = 'insurance';
     case insure = 'insure';
+
+    #[NotAssigned]
+    case intel = 'intel';
     case international = 'international';
     case intuit = 'intuit';
     case investments = 'investments';
     case ipiranga = 'ipiranga';
     case irish = 'irish';
+
+    #[NotAssigned]
+    case iselect = 'iselect';
     case ismaili = 'ismaili';
     case ist = 'ist';
     case istanbul = 'istanbul';
     case itau = 'itau';
     case itv = 'itv';
+
+    #[NotAssigned]
+    case iveco = 'iveco';
+
+    #[NotAssigned]
+    case iwc = 'iwc';
     case jaguar = 'jaguar';
     case java = 'java';
     case jcb = 'jcb';
+
+    #[NotAssigned]
+    case jcp = 'jcp';
     case jeep = 'jeep';
     case jetzt = 'jetzt';
     case jewelry = 'jewelry';
@@ -532,6 +688,9 @@ enum GenericTLD: string
     case jia_li_da_jiu_dian = '嘉里大酒店';
     case jian_kang = '健康';
     case jio = 'jio';
+
+    #[NotAssigned]
+    case jlc = 'jlc';
     case jll = 'jll';
     case jmp = 'jmp';
     case jnj = 'jnj';
@@ -554,6 +713,9 @@ enum GenericTLD: string
     case kia = 'kia';
     case kids = 'kids';
     case kim = 'kim';
+
+    #[NotAssigned]
+    case kinder = 'kinder';
     case kindle = 'kindle';
     case kitchen = 'kitchen';
     case kiwi = 'kiwi';
@@ -572,9 +734,18 @@ enum GenericTLD: string
     case kwm = 'كوم';
     case kyoto = 'kyoto';
     case lacaixa = 'lacaixa';
+
+    #[NotAssigned]
+    case ladbrokes = 'ladbrokes';
     case lamborghini = 'lamborghini';
     case lamer = 'lamer';
     case lancaster = 'lancaster';
+
+    #[NotAssigned]
+    case lancia = 'lancia';
+
+    #[NotAssigned]
+    case lancome = 'lancome';
     case land = 'land';
     case landrover = 'landrover';
     case lanxess = 'lanxess';
@@ -592,6 +763,9 @@ enum GenericTLD: string
     case lego = 'lego';
     case lexus = 'lexus';
     case lgbt = 'lgbt';
+
+    #[NotAssigned]
+    case liaison = 'liaison';
     case lian_tong = '联通';
     case lidl = 'lidl';
     case life = 'life';
@@ -603,16 +777,25 @@ enum GenericTLD: string
     case limited = 'limited';
     case limo = 'limo';
     case lincoln = 'lincoln';
+
+    #[NotAssigned]
+    case linde = 'linde';
     case link = 'link';
     case lipsy = 'lipsy';
     case live = 'live';
     case living = 'living';
+
+    #[NotAssigned]
+    case lixil = 'lixil';
     case llc = 'llc';
     case llp = 'llp';
     case loan = 'loan';
     case loans = 'loans';
     case locker = 'locker';
     case locus = 'locus';
+
+    #[NotAssigned]
+    case loft = 'loft';
     case lol = 'lol';
     case london = 'london';
     case lotte = 'lotte';
@@ -623,8 +806,14 @@ enum GenericTLD: string
     case ltd = 'ltd';
     case ltda = 'ltda';
     case lundbeck = 'lundbeck';
+
+    #[NotAssigned]
+    case lupin = 'lupin';
     case luxe = 'luxe';
     case luxury = 'luxury';
+
+    #[NotAssigned]
+    case macys = 'macys';
     case madrid = 'madrid';
     case maif = 'maif';
     case maison = 'maison';
@@ -638,8 +827,17 @@ enum GenericTLD: string
     case markets = 'markets';
     case marriott = 'marriott';
     case marshalls = 'marshalls';
+
+    #[NotAssigned]
+    case maserati = 'maserati';
     case mattel = 'mattel';
     case mba = 'mba';
+
+    #[NotAssigned]
+    case mcd = 'mcd';
+
+    #[NotAssigned]
+    case mcdonalds = 'mcdonalds';
     case mckinsey = 'mckinsey';
     case med = 'med';
     case media = 'media';
@@ -649,7 +847,13 @@ enum GenericTLD: string
     case memorial = 'memorial';
     case men = 'men';
     case menu = 'menu';
+
+    #[NotAssigned]
+    case meo = 'meo';
     case merckmsd = 'merckmsd';
+
+    #[NotAssigned]
+    case metlife = 'metlife';
     case miami = 'miami';
     case microsoft = 'microsoft';
     case min_na = 'みんな';
@@ -662,6 +866,9 @@ enum GenericTLD: string
     case mma = 'mma';
     case mobi = 'mobi';
     case mobile = 'mobile';
+
+    #[NotAssigned]
+    case mobily = 'mobily';
     case moda = 'moda';
     case moe = 'moe';
     case moi = 'moi';
@@ -669,6 +876,12 @@ enum GenericTLD: string
     case monash = 'monash';
     case money = 'money';
     case monster = 'monster';
+
+    #[NotAssigned]
+    case montblanc = 'montblanc';
+
+    #[NotAssigned]
+    case mopar = 'mopar';
     case mormon = 'mormon';
     case mortgage = 'mortgage';
     case moscow = 'moscow';
@@ -677,13 +890,34 @@ enum GenericTLD: string
     case motorcycles = 'motorcycles';
     case mov = 'mov';
     case movie = 'movie';
+
+    #[NotAssigned]
+    case movistar = 'movistar';
     case msd = 'msd';
     case mtn = 'mtn';
+
+    #[NotAssigned]
+    case mtpc = 'mtpc';
     case mtr = 'mtr';
     case music = 'music';
+
+    #[NotAssigned]
+    case mutual = 'mutual';
+
+    #[NotAssigned]
+    case mutuelle = 'mutuelle';
+
+    #[NotAssigned]
+    case mwbayly = 'موبايلي';
     case mwq = 'موقع';
     case nab = 'nab';
+
+    #[NotAssigned]
+    case nadex = 'nadex';
     case nagoya = 'nagoya';
+
+    #[NotAssigned]
+    case nationwide = 'nationwide';
     case natura = 'natura';
     case navy = 'navy';
     case nba = 'nba';
@@ -695,6 +929,9 @@ enum GenericTLD: string
     case network = 'network';
     case neustar = 'neustar';
     case new = 'new';
+
+    #[NotAssigned]
+    case newholland = 'newholland';
     case news = 'news';
     case next = 'next';
     case nextdirect = 'nextdirect';
@@ -709,6 +946,9 @@ enum GenericTLD: string
     case nissan = 'nissan';
     case nissay = 'nissay';
     case nokia = 'nokia';
+
+    #[NotAssigned]
+    case northwesternmutual = 'northwesternmutual';
     case norton = 'norton';
     case now = 'now';
     case nowruz = 'nowruz';
@@ -716,13 +956,22 @@ enum GenericTLD: string
     case nra = 'nra';
     case nrw = 'nrw';
     case ntt = 'ntt';
+
+    #[NotAssigned]
+    case nuo_ji_ya = '诺基亚';
     case nyc = 'nyc';
     case obi = 'obi';
     case observer = 'observer';
+
+    #[NotAssigned]
+    case off = 'off';
     case office = 'office';
     case okinawa = 'okinawa';
     case olayan = 'olayan';
     case olayangroup = 'olayangroup';
+
+    #[NotAssigned]
+    case oldnavy = 'oldnavy';
     case ollo = 'ollo';
     case omega = 'omega';
     case one = 'one';
@@ -730,24 +979,39 @@ enum GenericTLD: string
     case onl = 'onl';
     case onlajn = 'онлайн';
     case online = 'online';
+
+    #[NotAssigned]
+    case onyourside = 'onyourside';
     case ooo = 'ooo';
     case open = 'open';
     case oracle = 'oracle';
     case orange = 'orange';
     case org = 'org';
     case organic = 'organic';
+
+    #[NotAssigned]
+    case orientexpress = 'orientexpress';
     case origins = 'origins';
     case osaka = 'osaka';
     case otsuka = 'otsuka';
     case ott = 'ott';
     case ovh = 'ovh';
     case page = 'page';
+
+    #[NotAssigned]
+    case pamperedchef = 'pamperedchef';
     case panasonic = 'panasonic';
+
+    #[NotAssigned]
+    case panerai = 'panerai';
     case paris = 'paris';
     case pars = 'pars';
     case partners = 'partners';
     case parts = 'parts';
     case party = 'party';
+
+    #[NotAssigned]
+    case passagens = 'passagens';
     case pay = 'pay';
     case pccw = 'pccw';
     case pet = 'pet';
@@ -760,6 +1024,9 @@ enum GenericTLD: string
     case photography = 'photography';
     case photos = 'photos';
     case physio = 'physio';
+
+    #[NotAssigned]
+    case piaget = 'piaget';
     case pics = 'pics';
     case pictet = 'pictet';
     case pictures = 'pictures';
@@ -800,9 +1067,15 @@ enum GenericTLD: string
     case qpon = 'qpon';
     case quebec = 'quebec';
     case quest = 'quest';
+
+    #[NotAssigned]
+    case qvc = 'qvc';
     case qwm = 'קום';
     case racing = 'racing';
     case radio = 'radio';
+
+    #[NotAssigned]
+    case raid = 'raid';
     case rb = 'عرب';
     case read = 'read';
     case realestate = 'realestate';
@@ -831,9 +1104,18 @@ enum GenericTLD: string
     case rich = 'rich';
     case richardli = 'richardli';
     case ricoh = 'ricoh';
+
+    #[NotAssigned]
+    case rightathome = 'rightathome';
     case ril = 'ril';
     case rio = 'rio';
     case rip = 'rip';
+
+    #[NotAssigned]
+    case rmit = 'rmit';
+
+    #[NotAssigned]
+    case rocher = 'rocher';
     case rocks = 'rocks';
     case rodeo = 'rodeo';
     case rogers = 'rogers';
@@ -860,12 +1142,18 @@ enum GenericTLD: string
     case sangathana = 'संगठन';
     case sanofi = 'sanofi';
     case sap = 'sap';
+
+    #[NotAssigned]
+    case sapo = 'sapo';
     case sarl = 'sarl';
     case sas = 'sas';
     case save = 'save';
     case saxo = 'saxo';
     case sbi = 'sbi';
     case sbs = 'sbs';
+
+    #[NotAssigned]
+    case sca = 'sca';
     case scb = 'scb';
     case schaeffler = 'schaeffler';
     case schmidt = 'schmidt';
@@ -874,6 +1162,12 @@ enum GenericTLD: string
     case schule = 'schule';
     case schwarz = 'schwarz';
     case science = 'science';
+
+    #[NotAssigned]
+    case scjohnson = 'scjohnson';
+
+    #[NotAssigned]
+    case scor = 'scor';
     case scot = 'scot';
     case search = 'search';
     case seat = 'seat';
@@ -884,6 +1178,9 @@ enum GenericTLD: string
     case sener = 'sener';
     case seru = 'セール';
     case services = 'services';
+
+    #[NotAssigned]
+    case ses = 'ses';
     case seven = 'seven';
     case sew = 'sew';
     case sex = 'sex';
@@ -905,9 +1202,18 @@ enum GenericTLD: string
     case shoes = 'shoes';
     case shop = 'shop';
     case shopping = 'shopping';
+
+    #[NotAssigned]
+    case shou_biao = '手表';
     case shou_ji = '手机';
     case shouji = 'shouji';
     case show = 'show';
+
+    #[NotAssigned]
+    case showtime = 'showtime';
+
+    #[NotAssigned]
+    case shriram = 'shriram';
     case shu_ji = '書籍';
     case silk = 'silk';
     case sina = 'sina';
@@ -933,14 +1239,29 @@ enum GenericTLD: string
     case soy = 'soy';
     case spa = 'spa';
     case space = 'space';
+
+    #[NotAssigned]
+    case spiegel = 'spiegel';
     case sport = 'sport';
     case spot = 'spot';
+
+    #[NotAssigned]
+    case spreadbetting = 'spreadbetting';
     case srl = 'srl';
+
+    #[NotAssigned]
+    case srt = 'srt';
     case stada = 'stada';
     case staples = 'staples';
     case star = 'star';
+
+    #[NotAssigned]
+    case starhub = 'starhub';
     case statebank = 'statebank';
     case statefarm = 'statefarm';
+
+    #[NotAssigned]
+    case statoil = 'statoil';
     case stc = 'stc';
     case stcgroup = 'stcgroup';
     case stockholm = 'stockholm';
@@ -959,8 +1280,14 @@ enum GenericTLD: string
     case sutoa = 'ストア';
     case suzuki = 'suzuki';
     case swatch = 'swatch';
+
+    #[NotAssigned]
+    case swiftcover = 'swiftcover';
     case swiss = 'swiss';
     case sydney = 'sydney';
+
+    #[NotAssigned]
+    case symantec = 'symantec';
     case systems = 'systems';
     case tab = 'tab';
     case taipei = 'taipei';
@@ -977,6 +1304,12 @@ enum GenericTLD: string
     case team = 'team';
     case tech = 'tech';
     case technology = 'technology';
+
+    #[NotAssigned]
+    case telecity = 'telecity';
+
+    #[NotAssigned]
+    case telefonica = 'telefonica';
     case temasek = 'temasek';
     case tennis = 'tennis';
     case teva = 'teva';
@@ -987,6 +1320,9 @@ enum GenericTLD: string
     case tian_zhu_jiao = '天主教';
     case tickets = 'tickets';
     case tienda = 'tienda';
+
+    #[NotAssigned]
+    case tiffany = 'tiffany';
     case tips = 'tips';
     case tires = 'tires';
     case tirol = 'tirol';
@@ -1009,6 +1345,9 @@ enum GenericTLD: string
     case trade = 'trade';
     case trading = 'trading';
     case training = 'training';
+
+    #[NotAssigned]
+    case travelchannel = 'travelchannel';
     case travelers = 'travelers';
     case travelersinsurance = 'travelersinsurance';
     case trust = 'trust';
@@ -1020,6 +1359,9 @@ enum GenericTLD: string
     case tvs = 'tvs';
     case ubank = 'ubank';
     case ubs = 'ubs';
+
+    #[NotAssigned]
+    case uconnect = 'uconnect';
     case unicom = 'unicom';
     case university = 'university';
     case uno = 'uno';
@@ -1045,15 +1387,27 @@ enum GenericTLD: string
     case virgin = 'virgin';
     case visa = 'visa';
     case vision = 'vision';
+
+    #[NotAssigned]
+    case vista = 'vista';
+
+    #[NotAssigned]
+    case vistaprint = 'vistaprint';
     case viva = 'viva';
     case vivo = 'vivo';
     case vlaanderen = 'vlaanderen';
     case vodka = 'vodka';
+
+    #[NotAssigned]
+    case volkswagen = 'volkswagen';
     case volvo = 'volvo';
     case vote = 'vote';
     case voting = 'voting';
     case voto = 'voto';
     case voyage = 'voyage';
+
+    #[NotAssigned]
+    case vuelos = 'vuelos';
     case wales = 'wales';
     case walmart = 'walmart';
     case walter = 'walter';
@@ -1063,6 +1417,9 @@ enum GenericTLD: string
     case wang_zhan = '网站';
     case wang_zhi = '网址';
     case wanggou = 'wanggou';
+
+    #[NotAssigned]
+    case warman = 'warman';
     case watch = 'watch';
     case watches = 'watches';
     case weather = 'weather';
@@ -1101,6 +1458,9 @@ enum GenericTLD: string
     case xin = 'xin';
     case xin_wen = '新闻';
     case xin_xi = '信息';
+
+    #[NotAssigned]
+    case xperia = 'xperia';
     case xyz = 'xyz';
     case ya_ma_xun = '亚马逊';
     case yachts = 'yachts';
@@ -1125,371 +1485,19 @@ enum GenericTLD: string
     case zheng_wu = '政务';
     case zhong_wen_wang = '中文网';
     case zhong_xin = '中信';
+
+    #[NotAssigned]
+    case zhu_bao = '珠宝';
     case zip = 'zip';
+
+    #[NotAssigned]
+    case zippo = 'zippo';
     case zone = 'zone';
     case zu_zhi_ji_gou = '组织机构';
     case zuerich = 'zuerich';
 
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case abarth = 'abarth';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case active = 'active';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case adac = 'adac';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case afamilycompany = 'afamilycompany';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case aigo = 'aigo';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case alfaromeo = 'alfaromeo';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case atsalat = 'اتصالات';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case bananarepublic = 'bananarepublic';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case blanco = 'blanco';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case bnl = 'bnl';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case boots = 'boots';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case budapest = 'budapest';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case bugatti = 'bugatti';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case cancerresearch = 'cancerresearch';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case cartier = 'cartier';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case caseih = 'caseih';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case cbs = 'cbs';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case ceb = 'ceb';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case chloe = 'chloe';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case chrysler = 'chrysler';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case cityeats = 'cityeats';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case cookingchannel = 'cookingchannel';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case csc = 'csc';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case da_zhong_qi_che = '大众汽车';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case dodge = 'dodge';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case doha = 'doha';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case doosan = 'doosan';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case duck = 'duck';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case duns = 'duns';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case epost = 'epost';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case esurance = 'esurance';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case etisalat = 'etisalat';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case everbank = 'everbank';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case fiat = 'fiat';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case flsmidth = 'flsmidth';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case foodnetwork = 'foodnetwork';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case frontdoor = 'frontdoor';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case fujixerox = 'fujixerox';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case glade = 'glade';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case gong_xing = '工行';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case goodhands = 'goodhands';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case hgtv = 'hgtv';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case honeywell = 'honeywell';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case hoteles = 'hoteles';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case htc = 'htc';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case iinet = 'iinet';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case intel = 'intel';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case iselect = 'iselect';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case iveco = 'iveco';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case iwc = 'iwc';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case jcp = 'jcp';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case jlc = 'jlc';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case kinder = 'kinder';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case ladbrokes = 'ladbrokes';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case lancia = 'lancia';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case lancome = 'lancome';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case liaison = 'liaison';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case linde = 'linde';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case lixil = 'lixil';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case loft = 'loft';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case lupin = 'lupin';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case macys = 'macys';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case maserati = 'maserati';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case mcd = 'mcd';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case mcdonalds = 'mcdonalds';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case meo = 'meo';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case metlife = 'metlife';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case mobily = 'mobily';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case montblanc = 'montblanc';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case mopar = 'mopar';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case movistar = 'movistar';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case mtpc = 'mtpc';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case mutual = 'mutual';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case mutuelle = 'mutuelle';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case mwbayly = 'موبايلي';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case nadex = 'nadex';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case nationwide = 'nationwide';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case newholland = 'newholland';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case northwesternmutual = 'northwesternmutual';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case nuo_ji_ya = '诺基亚';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case off = 'off';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case oldnavy = 'oldnavy';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case onyourside = 'onyourside';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case orientexpress = 'orientexpress';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case pamperedchef = 'pamperedchef';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case panerai = 'panerai';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case passagens = 'passagens';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case piaget = 'piaget';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case qvc = 'qvc';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case raid = 'raid';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case rightathome = 'rightathome';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case rmit = 'rmit';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case rocher = 'rocher';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case sapo = 'sapo';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case sca = 'sca';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case scjohnson = 'scjohnson';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case scor = 'scor';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case ses = 'ses';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case shou_biao = '手表';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case showtime = 'showtime';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case shriram = 'shriram';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case spiegel = 'spiegel';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case spreadbetting = 'spreadbetting';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case srt = 'srt';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case starhub = 'starhub';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case statoil = 'statoil';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case swiftcover = 'swiftcover';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case symantec = 'symantec';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case telecity = 'telecity';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case telefonica = 'telefonica';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case tiffany = 'tiffany';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case travelchannel = 'travelchannel';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case uconnect = 'uconnect';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case vista = 'vista';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case vistaprint = 'vistaprint';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case volkswagen = 'volkswagen';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case vuelos = 'vuelos';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case warman = 'warman';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case xperia = 'xperia';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case zhu_bao = '珠宝';
-
-    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case zippo = 'zippo';
+    public function isAssigned(): bool
+    {
+        return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
+    }
 }

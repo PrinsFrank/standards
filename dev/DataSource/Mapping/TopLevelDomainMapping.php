@@ -4,11 +4,15 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
+use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
+use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
 use PrinsFrank\Standards\InvalidArgumentException;
+use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
 use PrinsFrank\Standards\TopLevelDomain\GenericRestrictedTLD;
 use PrinsFrank\Standards\TopLevelDomain\GenericTLD;
@@ -61,28 +65,38 @@ class TopLevelDomainMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $countryCodeTLD = new EnumFile(CountryCodeTLD::class);
+        $countryCodeTLD = (new EnumFile(CountryCodeTLD::class))
+            ->addMethod($toCountryAlpha2 = new EnumMethod('getCountryAlpha2', '?CountryAlpha2', 'null'));
         $genericRestrictedTLD = new EnumFile(GenericRestrictedTLD::class);
         $genericTLD = new EnumFile(GenericTLD::class);
         $infrastructureTLD = new EnumFile(InfrastructureTLD::class);
         $sponsoredTLD = new EnumFile(SponsoredTLD::class);
         $testTLD = new EnumFile(TestTLD::class);
+        $countryAlpha2Enum = (new EnumFile(CountryAlpha2::class))
+            ->addMethod($getCountryCodeTLD = new EnumMethod('getCountryCodeTLD', 'CountryCodeTLD', null));
         foreach ($dataSet as $dataRow) {
             $name = trim($dataRow->tld, '.');
-            $isDeprecated = $dataRow->manager === 'Not assigned';
+            if ($dataRow->type === 'country-code' && strlen($name) === 2) {
+                $countryAlpha2 = CountryAlpha2::tryFrom(strtoupper($name));
+                if ($countryAlpha2 !== null) {
+                    $toCountryAlpha2->addMapping('self::' . $name, 'CountryAlpha2::' . $countryAlpha2->name);
+                    $getCountryCodeTLD->addMapping('self::' . $countryAlpha2->name, 'CountryCodeTLD::' . $name);
+                }
+            }
 
+            $attributes = $dataRow->manager === 'Not assigned' ? [new EnumCaseAttribute(NotAssigned::class)] : [];
             match ($dataRow->type) {
-                'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
-                'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
-                'generic' => $genericTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
-                'infrastructure' => $infrastructureTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
-                'sponsored' => $sponsoredTLD->addCase(new EnumCase($name, $name, $isDeprecated)),
-                'test' => $testTLD->addCase(new EnumCase($name, $name, false)), // Test TLDs are not deprecated when they don't have a manager assigned
+                'country-code' => $countryCodeTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'generic-restricted' => $genericRestrictedTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'generic' => $genericTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'infrastructure' => $infrastructureTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'sponsored' => $sponsoredTLD->addCase(new EnumCase($name, $name, $attributes)),
+                'test' => $testTLD->addCase(new EnumCase($name, $name, $attributes)),
                 default => throw new InvalidArgumentException('Unrecognized TLD type "' . $dataRow->type . '"'),
             };
         }
 
-        return [$countryCodeTLD, $genericRestrictedTLD, $genericTLD, $infrastructureTLD, $sponsoredTLD, $testTLD];
+        return [$countryCodeTLD, $genericRestrictedTLD, $genericTLD, $infrastructureTLD, $sponsoredTLD, $testTLD, $countryAlpha2Enum];
     }
 
     public static function getSorting(): SortingInterface
