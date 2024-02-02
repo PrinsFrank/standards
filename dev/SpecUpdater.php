@@ -31,6 +31,8 @@ class SpecUpdater
                 foreach ($enumFile->fqn::cases() as $existingCase) {
                     if ($enumFile->hasCaseWithValue($existingCase->value) === false) {
                         $enumFile->addCase(new EnumCase($existingCase->name, $existingCase->value, [], true));
+                    } else {
+                        throw new \Exception('We already have ' . $existingCase->name . '=' . $existingCase->value);
                     }
                 }
 
