@@ -2201,6 +2201,7 @@ enum LanguageAlpha3Extensive: string
     case Ginuman = 'gnm';
     case Gumatj = 'gnn';
     case Northern_Gondi = 'gno';
+    case Gana = 'gnq';
     case Gureng_Gureng = 'gnr';
     case Guntai = 'gnt';
     case Gnau = 'gnu';
@@ -3397,6 +3398,7 @@ enum LanguageAlpha3Extensive: string
     case Yintale_Karen = 'kvy';
     case Tsakwambo = 'kvz';
     case Daw = 'kwa';
+    case Kwa = 'kwb';
     case Likwala = 'kwc';
     case Kwaio = 'kwd';
     case Kwerba = 'kwe';
@@ -4200,6 +4202,7 @@ enum LanguageAlpha3Extensive: string
     case Mor_Bomberai_Peninsula = 'moq';
     case Moro = 'mor';
     case Mossi = 'mos';
+    case Bari = 'mot';
     case Mogum = 'mou';
     case Mohave = 'mov';
     case Moi_Congo = 'mow';
@@ -4317,6 +4320,7 @@ enum LanguageAlpha3Extensive: string
     case Munggui = 'mth';
     case Maiwa_Papua_New_Guinea = 'mti';
     case Moskona = 'mtj';
+    case Mbe = 'mtk';
     case Montol = 'mtl';
     case Mator = 'mtm';
     case Matagalpa = 'mtn';
@@ -5928,6 +5932,7 @@ enum LanguageAlpha3Extensive: string
     case Seko_Padang = 'skx';
     case Sikaiana = 'sky';
     case Sekar = 'skz';
+    case Saliba = 'slc';
     case Sissala = 'sld';
     case Sholaga = 'sle';
     case Swiss_Italian_Sign_Language = 'slf';
@@ -6955,6 +6960,7 @@ enum LanguageAlpha3Extensive: string
     case Voro = 'vor';
     case Votic = 'vot';
     case Vera_a = 'vra';
+    case Voro = 'vro';
     case Varisi = 'vrs';
     case Burmbar = 'vrt';
     case Moldova_Sign_Language = 'vsi';
@@ -6994,6 +7000,7 @@ enum LanguageAlpha3Extensive: string
     case Warao = 'wba';
     case Wabo = 'wbb';
     case Waritai = 'wbe';
+    case Wara = 'wbf';
     case Wanda = 'wbh';
     case Vwanji = 'wbi';
     case Alagwa = 'wbj';
@@ -7583,6 +7590,7 @@ enum LanguageAlpha3Extensive: string
     case Yan_nhangu_Sign_Language = 'yhs';
     case Yinggarda = 'yia';
     case Yiddish = 'yid';
+    case Ache = 'yif';
     case Wusa_Nasu = 'yig';
     case Western_Yiddish = 'yih';
     case Yidiny = 'yii';
