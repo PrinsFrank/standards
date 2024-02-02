@@ -249,4 +249,27 @@ enum ScriptNumber: string
     {
         return BackedEnum::fromName(ScriptCode::class, $this->name);
     }
+
+    /**
+     * @return ($string is non-empty-string ? non-empty-array<ScriptNumber> : array{}) in order of most matched multibyte characters
+     *
+     * Please note that not all Scripts are supported, only the ones that have the 'SupportedByPHPRegex' attribute.
+     * For all other scripts, self::Code_for_undetermined_script will be returned
+     */
+    public static function allForString(string $string): array
+    {
+        return array_map(fn (ScriptAlias $scriptAlias) => $scriptAlias->toScriptNumber(), ScriptAlias::allForString($string));
+    }
+
+    /** @return ($string is non-empty-string ? bool : false) */
+    public static function hasMultipleForString(string $string): bool
+    {
+        return ScriptAlias::hasMultipleForString($string);
+    }
+
+    /** @return ($string is non-empty-string ? self : null) */
+    public static function mostCommonInString(string $string): ?self
+    {
+        return self::allForString($string)[0] ?? null;
+    }
 }

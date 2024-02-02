@@ -407,7 +407,7 @@ enum ScriptAlias: string
      * @return ($string is non-empty-string ? non-empty-array<ScriptAlias> : array{}) in order of most matched multibyte characters
      *
      * Please note that not all Scripts are supported, only the ones that have the 'SupportedByPHPRegex' attribute.
-     * For all other scripts, self::Common will be returned
+     * For all other scripts, self::Code_for_undetermined_script will be returned
      */
     public static function allForString(string $string): array
     {
