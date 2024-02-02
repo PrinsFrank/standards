@@ -55,6 +55,7 @@ class NameNormalizer
             ->replace('|', '_')
             ->replace('}', '_')
             ->replace('~', '_')
+            ->replace('ǁ', '_2')
             ->replace('ලංකා', 'lanka')
             ->replace('ລາວ', 'lao')
             ->keep(
