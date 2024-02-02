@@ -97,7 +97,7 @@ class EnumFile
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1);
         $keyedCases = [];
         foreach ($this->cases as $case) {
-            $keyedCases[$case->name . (is_string($case->value) ? ScriptAlias::mostCommonInString($case->value)?->value ?? '' : '') . $case->value] = $case;
+            $keyedCases[$case->name . (is_string($case->value) ? ScriptAlias::mostCommonInString($case->value)->value ?? '' : '') . $case->value] = $case;
         }
 
         $deduplicatedCases = array_values($keyedCases);
