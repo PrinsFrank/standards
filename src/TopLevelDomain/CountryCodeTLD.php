@@ -342,6 +342,7 @@ enum CountryCodeTLD: string implements TLD
     case zhong_guo_han_2 = '中國';
     case zm = 'zm';
     case zw = 'zw';
+
     public function getCountryAlpha2(): ?CountryAlpha2
     {
         return match($this) {
