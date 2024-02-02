@@ -22,7 +22,7 @@ class NameNormalizer
     {
         $normalizedKey = (new TransliteratorBuilder())
             ->toASCII()
-            ->replace('ǁ', '_2')
+            ->replace('ǁ', '_2' )
             ->IPAToEnglishApproximation()
             ->replace(' ', '_')
             ->replace('!', '_')
