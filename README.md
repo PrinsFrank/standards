@@ -930,10 +930,10 @@ public function foo(SponsoredTLD $sponsoredTLD) {} // Use spec as typehint to en
 All Test TLDs are always unmanaged and are thus never marked as deprecated.
 
 ```php
-TestTLD::from('テスト');              // TestTLD::tesuto
-TestTLD::tesuto;                     // TestTLD::tesuto
+TestTLD::from('テスト');              // TestTLD::tesuto_katakana
+TestTLD::tesuto_katakana;            // TestTLD::tesuto_katakana
 TestTLD::from('テスト')->value;       // 'テスト'
-TestTLD::from('テスト')->name;        // 'tesuto'
+TestTLD::from('テスト')->name;        // 'tesuto_katakana'
 TestTLD::from('テスト')->isAssigned() // false
 
 public function foo(TestTLD $testTLD) {} // Use spec as typehint to enforce valid value
