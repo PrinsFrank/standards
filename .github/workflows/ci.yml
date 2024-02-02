@@ -124,8 +124,8 @@ jobs:
 
       - name: Clear previous version of PHPStan branch cache
         if: always() # We always delete the cache, because even if it was not 'hit', it might have been created by a commit in the meantime
-        continue-on-error: true
-        run: gh actions-cache delete phpstan-${{ github.ref_name }} -B ${{ github.ref }} --confirm
+        run: |
+          gh actions-cache delete phpstan-${{ github.ref_name }} -B ${{ github.ref }} --confirm || true
 
       - name: Push PHPStan branch cache
         if: always()
@@ -136,8 +136,8 @@ jobs:
 
       - name: Clear previous version of PHPStan main cache
         if: ${{ github.ref_name == github.event.repository.default_branch }}
-        continue-on-error: true
-        run: gh actions-cache delete phpstan -B ${{ github.ref }} --confirm
+        run: |
+          gh actions-cache delete phpstan -B ${{ github.ref }} --confirm || true
 
       - name: Push PHPStan main cache
         if: ${{ github.ref_name == github.event.repository.default_branch }}
