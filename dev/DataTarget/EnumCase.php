@@ -43,8 +43,14 @@ class EnumCase
         }
 
         $existingKeyWithValue = $enumFQN::tryFrom($this->value);
-        $scriptForValue = ScriptAlias::mostCommonInString($this->value) ?? ScriptAlias::Code_for_undetermined_script;
-        $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->name) . ($scriptForValue !== ScriptAlias::Latin ? '_' . $scriptForValue->value : '');
+        $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->name);
+        if ($existingKeyWithValue === null ?? is_string($this->value)) {
+            $mostCommonScriptInString = ScriptAlias::mostCommonInString($this->value) ?? ScriptAlias::Code_for_undetermined_script;
+            if (in_array($mostCommonScriptInString, [ScriptAlias::Code_for_undetermined_script, ScriptAlias::Latin], true) !== true) {
+                $key .= '_' . $mostCommonScriptInString->value;
+            }
+        }
+
         if (is_int($this->value)) {
             $case .= PHP_EOL . $indenting . 'case ' . $key . ' = ' . $this->value . ';';
         } else {
