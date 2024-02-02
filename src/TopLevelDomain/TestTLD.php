@@ -10,34 +10,37 @@ use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 enum TestTLD: string implements TLD
 {
     #[NotAssigned]
-    case akhtbar = 'إختبار';
+    case akhtbar_arabic = 'إختبار';
 
     #[NotAssigned]
-    case azmayshy = 'آزمایشی';
+    case azmayshy_arabic = 'آزمایشی';
 
     #[NotAssigned]
-    case ce_shi = '测试';
+    case ce_shi_han = '测试';
 
     #[NotAssigned]
-    case dokime = 'δοκιμή';
+    case ce_shi_han_2 = '測試';
 
     #[NotAssigned]
-    case ispytanie = 'испытание';
+    case dokime_greek = 'δοκιμή';
 
     #[NotAssigned]
-    case pariksa = 'परीक्षा';
+    case ispytanie_cyrillic = 'испытание';
 
     #[NotAssigned]
-    case paritcai = 'பரிட்சை';
+    case pariksa_Devanagari = 'परीक्षा';
 
     #[NotAssigned]
-    case t_st = 'טעסט';
+    case paritcai_tamil = 'பரிட்சை';
 
     #[NotAssigned]
-    case teseuteu = '테스트';
+    case t_st_hebrew = 'טעסט';
 
     #[NotAssigned]
-    case tesuto = 'テスト';
+    case teseuteu_hangul = '테스트';
+
+    #[NotAssigned]
+    case tesuto_katakana = 'テスト';
 
     public function isAssigned(): bool
     {

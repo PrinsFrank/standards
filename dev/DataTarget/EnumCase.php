@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataTarget;
 
 use BackedEnum;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
+use PrinsFrank\Standards\Scripts\ScriptAlias;
 use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 
@@ -43,6 +44,13 @@ class EnumCase
 
         $existingKeyWithValue = $enumFQN::tryFrom($this->value);
         $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->name);
+        if ($existingKeyWithValue === null && is_string($this->value)) {
+            $mostCommonScriptInString = ScriptAlias::mostCommonInString($this->value) ?? ScriptAlias::Code_for_undetermined_script;
+            if (in_array($mostCommonScriptInString, [ScriptAlias::Code_for_undetermined_script, ScriptAlias::Latin], true) !== true) {
+                $key .= '_' . mb_strtolower($mostCommonScriptInString->value);
+            }
+        }
+
         if (is_int($this->value)) {
             $case .= PHP_EOL . $indenting . 'case ' . $key . ' = ' . $this->value . ';';
         } else {

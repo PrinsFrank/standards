@@ -21,7 +21,7 @@ enum GenericTLD: string implements TLD
     case able = 'able';
     case abogado = 'abogado';
     case abudhabi = 'abudhabi';
-    case abwzby = 'ابوظبي';
+    case abwzby_arabic = 'ابوظبي';
     case academy = 'academy';
     case accenture = 'accenture';
     case accountant = 'accountant';
@@ -61,10 +61,11 @@ enum GenericTLD: string implements TLD
     case allfinanz = 'allfinanz';
     case allstate = 'allstate';
     case ally = 'ally';
-    case allyan = 'العليان';
+    case allyan_arabic = 'العليان';
     case alsace = 'alsace';
     case alstom = 'alstom';
     case amazon = 'amazon';
+    case amazon_katakana = 'アマゾン';
     case americanexpress = 'americanexpress';
     case americanfamily = 'americanfamily';
     case amex = 'amex';
@@ -82,7 +83,7 @@ enum GenericTLD: string implements TLD
     case aquarelle = 'aquarelle';
     case arab = 'arab';
     case aramco = 'aramco';
-    case aramkw = 'ارامكو';
+    case aramkw_arabic = 'ارامكو';
     case archi = 'archi';
     case army = 'army';
     case art = 'art';
@@ -92,7 +93,7 @@ enum GenericTLD: string implements TLD
     case athleta = 'athleta';
 
     #[NotAssigned]
-    case atsalat = 'اتصالات';
+    case atsalat_arabic = 'اتصالات';
     case attorney = 'attorney';
     case auction = 'auction';
     case audi = 'audi';
@@ -106,7 +107,7 @@ enum GenericTLD: string implements TLD
     case aws = 'aws';
     case axa = 'axa';
     case azure = 'azure';
-    case ba_gua = '八卦';
+    case ba_gua_han = '八卦';
     case baby = 'baby';
     case baidu = 'baidu';
     case banamex = 'banamex';
@@ -125,7 +126,7 @@ enum GenericTLD: string implements TLD
     case basketball = 'basketball';
     case bauhaus = 'bauhaus';
     case bayern = 'bayern';
-    case bazar = 'بازار';
+    case bazar_arabic = 'بازار';
     case bbc = 'bbc';
     case bbt = 'bbt';
     case bbva = 'bbva';
@@ -195,7 +196,7 @@ enum GenericTLD: string implements TLD
     case business = 'business';
     case buy = 'buy';
     case buzz = 'buzz';
-    case bytk = 'بيتك';
+    case bytk_arabic = 'بيتك';
     case bzh = 'bzh';
     case cab = 'cab';
     case cafe = 'cafe';
@@ -205,7 +206,7 @@ enum GenericTLD: string implements TLD
     case cam = 'cam';
     case camera = 'camera';
     case camp = 'camp';
-    case can_ting = '餐厅';
+    case can_ting_han = '餐厅';
 
     #[NotAssigned]
     case cancerresearch = 'cancerresearch';
@@ -262,7 +263,7 @@ enum GenericTLD: string implements TLD
     #[NotAssigned]
     case chrysler = 'chrysler';
     case church = 'church';
-    case ci_shan = '慈善';
+    case ci_shan_han = '慈善';
     case cipriani = 'cipriani';
     case circle = 'circle';
     case cisco = 'cisco';
@@ -325,16 +326,16 @@ enum GenericTLD: string implements TLD
     case cuisinella = 'cuisinella';
     case cymru = 'cymru';
     case cyou = 'cyou';
-    case da_na = '大拿';
+    case da_na_han = '大拿';
 
     #[NotAssigned]
-    case da_zhong_qi_che = '大众汽车';
+    case da_zhong_qi_che_han = '大众汽车';
     case dabur = 'dabur';
     case dad = 'dad';
-    case dan_ma_xi = '淡马锡';
+    case dan_ma_xi_han = '淡马锡';
     case dance = 'dance';
-    case daskeom = '닷컴';
-    case dasnes = '닷넷';
+    case daskeom_hangul = '닷컴';
+    case dasnes_hangul = '닷넷';
     case data = 'data';
     case date = 'date';
     case dating = 'dating';
@@ -355,12 +356,12 @@ enum GenericTLD: string implements TLD
     case dentist = 'dentist';
     case desi = 'desi';
     case design = 'design';
-    case deti = 'дети';
+    case deti_cyrillic = 'дети';
     case dev = 'dev';
     case dhl = 'dhl';
     case diamonds = 'diamonds';
-    case dian_kan = '点看';
-    case dian_xun_ying_ke = '電訊盈科';
+    case dian_kan_han = '点看';
+    case dian_xun_ying_ke_han = '電訊盈科';
     case diet = 'diet';
     case digital = 'digital';
     case direct = 'direct';
@@ -446,11 +447,11 @@ enum GenericTLD: string implements TLD
     case farm = 'farm';
     case farmers = 'farmers';
     case fashion = 'fashion';
-    case fasshon = 'ファッション';
+    case fasshon_katakana = 'ファッション';
     case fast = 'fast';
     case fedex = 'fedex';
     case feedback = 'feedback';
-    case fei_li_pu = '飞利浦';
+    case fei_li_pu_han = '飞利浦';
     case ferrari = 'ferrari';
     case ferrero = 'ferrero';
 
@@ -499,7 +500,7 @@ enum GenericTLD: string implements TLD
     case frontdoor = 'frontdoor';
     case frontier = 'frontier';
     case ftr = 'ftr';
-    case fu_shan = '佛山';
+    case fu_shan_han = '佛山';
     case fujitsu = 'fujitsu';
 
     #[NotAssigned]
@@ -544,11 +545,11 @@ enum GenericTLD: string implements TLD
     case gold = 'gold';
     case goldpoint = 'goldpoint';
     case golf = 'golf';
-    case gong_si = '公司';
+    case gong_si_han = '公司';
 
     #[NotAssigned]
-    case gong_xing = '工行';
-    case gong_yi = '公益';
+    case gong_xing_han = '工行';
+    case gong_yi_han = '公益';
     case goo = 'goo';
 
     #[NotAssigned]
@@ -558,7 +559,7 @@ enum GenericTLD: string implements TLD
     case google = 'google';
     case gop = 'gop';
     case got = 'got';
-    case gou_wu = '购物';
+    case gou_wu_han = '购物';
     case grainger = 'grainger';
     case graphics = 'graphics';
     case gratis = 'gratis';
@@ -566,12 +567,12 @@ enum GenericTLD: string implements TLD
     case gripe = 'gripe';
     case grocery = 'grocery';
     case group = 'group';
-    case gu_ge = '谷歌';
-    case guang_dong = '广东';
+    case gu_ge_han = '谷歌';
+    case guang_dong_han = '广东';
     case guardian = 'guardian';
     case gucci = 'gucci';
     case guge = 'guge';
-    case guguru = 'グーグル';
+    case guguru_katakana = 'グーグル';
     case guide = 'guide';
     case guitars = 'guitars';
     case guru = 'guru';
@@ -596,7 +597,7 @@ enum GenericTLD: string implements TLD
     case hitachi = 'hitachi';
     case hiv = 'hiv';
     case hkt = 'hkt';
-    case hmrah = 'همراه';
+    case hmrah_arabic = 'همراه';
     case hockey = 'hockey';
     case holdings = 'holdings';
     case holiday = 'holiday';
@@ -681,12 +682,12 @@ enum GenericTLD: string implements TLD
     case jeep = 'jeep';
     case jetzt = 'jetzt';
     case jewelry = 'jewelry';
-    case ji_gou = '机构';
-    case ji_tuan = '集团';
-    case jia_dian = '家電';
-    case jia_li = '嘉里';
-    case jia_li_da_jiu_dian = '嘉里大酒店';
-    case jian_kang = '健康';
+    case ji_gou_han = '机构';
+    case ji_tuan_han = '集团';
+    case jia_dian_han = '家電';
+    case jia_li_han = '嘉里';
+    case jia_li_da_jiu_dian_han = '嘉里大酒店';
+    case jian_kang_han = '健康';
     case jio = 'jio';
 
     #[NotAssigned]
@@ -701,15 +702,15 @@ enum GenericTLD: string implements TLD
     case jprs = 'jprs';
     case juegos = 'juegos';
     case juniper = 'juniper';
-    case kathwlyk = 'كاثوليك';
-    case katolik = 'католик';
+    case kathwlyk_arabic = 'كاثوليك';
+    case katolik_cyrillic = 'католик';
     case kaufen = 'kaufen';
     case kddi = 'kddi';
     case kerryhotels = 'kerryhotels';
     case kerrylogistics = 'kerrylogistics';
     case kerryproperties = 'kerryproperties';
     case kfh = 'kfh';
-    case khxm = 'คอม';
+    case khxm_thai = 'คอม';
     case kia = 'kia';
     case kids = 'kids';
     case kim = 'kim';
@@ -720,18 +721,18 @@ enum GenericTLD: string implements TLD
     case kitchen = 'kitchen';
     case kiwi = 'kiwi';
     case koeln = 'koeln';
-    case kom = 'ком';
-    case koma = 'कॉम';
+    case kom_cyrillic = 'ком';
+    case koma_devanagari = 'कॉम';
     case komatsu = 'komatsu';
-    case komu = 'コム';
+    case komu_katakana = 'コム';
     case kosher = 'kosher';
     case kpmg = 'kpmg';
     case kpn = 'kpn';
     case krd = 'krd';
     case kred = 'kred';
     case kuokgroup = 'kuokgroup';
-    case kuraudo = 'クラウド';
-    case kwm = 'كوم';
+    case kuraudo_katakana = 'クラウド';
+    case kwm_arabic = 'كوم';
     case kyoto = 'kyoto';
     case lacaixa = 'lacaixa';
 
@@ -766,7 +767,7 @@ enum GenericTLD: string implements TLD
 
     #[NotAssigned]
     case liaison = 'liaison';
-    case lian_tong = '联通';
+    case lian_tong_han = '联通';
     case lidl = 'lidl';
     case life = 'life';
     case lifeinsurance = 'lifeinsurance';
@@ -856,7 +857,7 @@ enum GenericTLD: string implements TLD
     case metlife = 'metlife';
     case miami = 'miami';
     case microsoft = 'microsoft';
-    case min_na = 'みんな';
+    case min_na_hiragana = 'みんな';
     case mini = 'mini';
     case mint = 'mint';
     case mit = 'mit';
@@ -885,7 +886,7 @@ enum GenericTLD: string implements TLD
     case mormon = 'mormon';
     case mortgage = 'mortgage';
     case moscow = 'moscow';
-    case moskva = 'москва';
+    case moskva_cyrillic = 'москва';
     case moto = 'moto';
     case motorcycles = 'motorcycles';
     case mov = 'mov';
@@ -908,8 +909,8 @@ enum GenericTLD: string implements TLD
     case mutuelle = 'mutuelle';
 
     #[NotAssigned]
-    case mwbayly = 'موبايلي';
-    case mwq = 'موقع';
+    case mwbayly_arabic = 'موبايلي';
+    case mwq_arabic = 'موقع';
     case nab = 'nab';
 
     #[NotAssigned]
@@ -923,7 +924,7 @@ enum GenericTLD: string implements TLD
     case nba = 'nba';
     case nec = 'nec';
     case net = 'net';
-    case neta = 'नेट';
+    case neta_devanagari = 'नेट';
     case netbank = 'netbank';
     case netflix = 'netflix';
     case network = 'network';
@@ -958,7 +959,7 @@ enum GenericTLD: string implements TLD
     case ntt = 'ntt';
 
     #[NotAssigned]
-    case nuo_ji_ya = '诺基亚';
+    case nuo_ji_ya_han = '诺基亚';
     case nyc = 'nyc';
     case obi = 'obi';
     case observer = 'observer';
@@ -977,7 +978,7 @@ enum GenericTLD: string implements TLD
     case one = 'one';
     case ong = 'ong';
     case onl = 'onl';
-    case onlajn = 'онлайн';
+    case onlajn_cyrillic = 'онлайн';
     case online = 'online';
 
     #[NotAssigned]
@@ -987,6 +988,7 @@ enum GenericTLD: string implements TLD
     case oracle = 'oracle';
     case orange = 'orange';
     case org = 'org';
+    case org_cyrillic = 'орг';
     case organic = 'organic';
 
     #[NotAssigned]
@@ -1043,7 +1045,7 @@ enum GenericTLD: string implements TLD
     case plus = 'plus';
     case pnc = 'pnc';
     case pohl = 'pohl';
-    case pointo = 'ポイント';
+    case pointo_katakana = 'ポイント';
     case poker = 'poker';
     case politie = 'politie';
     case porn = 'porn';
@@ -1063,20 +1065,20 @@ enum GenericTLD: string implements TLD
     case prudential = 'prudential';
     case pub = 'pub';
     case pwc = 'pwc';
-    case qi_ye = '企业';
+    case qi_ye_han = '企业';
     case qpon = 'qpon';
     case quebec = 'quebec';
     case quest = 'quest';
 
     #[NotAssigned]
     case qvc = 'qvc';
-    case qwm = 'קום';
+    case qwm_hebrew = 'קום';
     case racing = 'racing';
     case radio = 'radio';
 
     #[NotAssigned]
     case raid = 'raid';
-    case rb = 'عرب';
+    case rb_arabic = 'عرب';
     case read = 'read';
     case realestate = 'realestate';
     case realtor = 'realtor';
@@ -1124,22 +1126,22 @@ enum GenericTLD: string implements TLD
     case rugby = 'rugby';
     case ruhr = 'ruhr';
     case run = 'run';
-    case rus = 'рус';
+    case rus_cyrillic = 'рус';
     case rwe = 'rwe';
     case ryukyu = 'ryukyu';
     case saarland = 'saarland';
     case safe = 'safe';
     case safety = 'safety';
-    case sajt = 'сайт';
+    case sajt_cyrillic = 'сайт';
     case sakura = 'sakura';
     case sale = 'sale';
     case salon = 'salon';
     case samsclub = 'samsclub';
-    case samseong = '삼성';
+    case samseong_hangul = '삼성';
     case samsung = 'samsung';
     case sandvik = 'sandvik';
     case sandvikcoromant = 'sandvikcoromant';
-    case sangathana = 'संगठन';
+    case sangathana_devanagari = 'संगठन';
     case sanofi = 'sanofi';
     case sap = 'sap';
 
@@ -1176,7 +1178,7 @@ enum GenericTLD: string implements TLD
     case seek = 'seek';
     case select = 'select';
     case sener = 'sener';
-    case seru = 'セール';
+    case seru_katakana = 'セール';
     case services = 'services';
 
     #[NotAssigned]
@@ -1186,17 +1188,17 @@ enum GenericTLD: string implements TLD
     case sex = 'sex';
     case sexy = 'sexy';
     case sfr = 'sfr';
-    case shang_biao = '商标';
-    case shang_cheng = '商城';
-    case shang_dian = '商店';
+    case shang_biao_han = '商标';
+    case shang_cheng_han = '商城';
+    case shang_dian_han = '商店';
     case shangrila = 'shangrila';
     case sharp = 'sharp';
     case shaw = 'shaw';
-    case shbkt = 'شبكة';
+    case shbkt_arabic = 'شبكة';
     case shell = 'shell';
-    case shi_jie = '世界';
-    case shi_pin = '食品';
-    case shi_shang = '时尚';
+    case shi_jie_han = '世界';
+    case shi_pin_han = '食品';
+    case shi_shang_han = '时尚';
     case shia = 'shia';
     case shiksha = 'shiksha';
     case shoes = 'shoes';
@@ -1204,8 +1206,8 @@ enum GenericTLD: string implements TLD
     case shopping = 'shopping';
 
     #[NotAssigned]
-    case shou_biao = '手表';
-    case shou_ji = '手机';
+    case shou_biao_han = '手表';
+    case shou_ji_han = '手机';
     case shouji = 'shouji';
     case show = 'show';
 
@@ -1214,7 +1216,7 @@ enum GenericTLD: string implements TLD
 
     #[NotAssigned]
     case shriram = 'shriram';
-    case shu_ji = '書籍';
+    case shu_ji_han = '書籍';
     case silk = 'silk';
     case sina = 'sina';
     case singles = 'singles';
@@ -1277,7 +1279,7 @@ enum GenericTLD: string implements TLD
     case support = 'support';
     case surf = 'surf';
     case surgery = 'surgery';
-    case sutoa = 'ストア';
+    case sutoa_katakana = 'ストア';
     case suzuki = 'suzuki';
     case swatch = 'swatch';
 
@@ -1317,7 +1319,7 @@ enum GenericTLD: string implements TLD
     case theater = 'theater';
     case theatre = 'theatre';
     case tiaa = 'tiaa';
-    case tian_zhu_jiao = '天主教';
+    case tian_zhu_jiao_han = '天主教';
     case tickets = 'tickets';
     case tienda = 'tienda';
 
@@ -1332,7 +1334,7 @@ enum GenericTLD: string implements TLD
     case tmall = 'tmall';
     case today = 'today';
     case tokyo = 'tokyo';
-    case tong_fan = '通販';
+    case tong_fan_han = '通販';
     case tools = 'tools';
     case top = 'top';
     case toray = 'toray';
@@ -1412,10 +1414,10 @@ enum GenericTLD: string implements TLD
     case walmart = 'walmart';
     case walter = 'walter';
     case wang = 'wang';
-    case wang_dian = '网店';
-    case wang_luo = '网络';
-    case wang_zhan = '网站';
-    case wang_zhi = '网址';
+    case wang_dian_han = '网店';
+    case wang_luo_han = '网络';
+    case wang_zhan_han = '网站';
+    case wang_zhi_han = '网址';
     case wanggou = 'wanggou';
 
     #[NotAssigned]
@@ -1429,7 +1431,7 @@ enum GenericTLD: string implements TLD
     case website = 'website';
     case wed = 'wed';
     case wedding = 'wedding';
-    case wei_bo = '微博';
+    case wei_bo_han = '微博';
     case weibo = 'weibo';
     case weir = 'weir';
     case whoswho = 'whoswho';
@@ -1441,7 +1443,7 @@ enum GenericTLD: string implements TLD
     case wine = 'wine';
     case winners = 'winners';
     case wme = 'wme';
-    case wo_ai_ni = '我爱你';
+    case wo_ai_ni_han = '我爱你';
     case wolterskluwer = 'wolterskluwer';
     case woodside = 'woodside';
     case work = 'work';
@@ -1453,47 +1455,47 @@ enum GenericTLD: string implements TLD
     case xbox = 'xbox';
     case xerox = 'xerox';
     case xfinity = 'xfinity';
-    case xiang_ge_li_la = '香格里拉';
+    case xiang_ge_li_la_han = '香格里拉';
     case xihuan = 'xihuan';
     case xin = 'xin';
-    case xin_wen = '新闻';
-    case xin_xi = '信息';
+    case xin_wen_han = '新闻';
+    case xin_xi_han = '信息';
 
     #[NotAssigned]
     case xperia = 'xperia';
     case xyz = 'xyz';
-    case ya_ma_xun = '亚马逊';
+    case ya_ma_xun_han = '亚马逊';
     case yachts = 'yachts';
     case yahoo = 'yahoo';
     case yamaxun = 'yamaxun';
     case yandex = 'yandex';
-    case yi_dong = '移动';
+    case yi_dong_han = '移动';
     case yodobashi = 'yodobashi';
     case yoga = 'yoga';
     case yokohama = 'yokohama';
     case you = 'you';
-    case you_xi = '游戏';
+    case you_xi_han = '游戏';
     case youtube = 'youtube';
-    case yu_le = '娱乐';
+    case yu_le_han = '娱乐';
     case yun = 'yun';
-    case zai_xian = '在线';
+    case zai_xian_han = '在线';
     case zappos = 'zappos';
     case zara = 'zara';
     case zero = 'zero';
-    case zhao_pin = '招聘';
-    case zheng_fu = '政府';
-    case zheng_wu = '政务';
-    case zhong_wen_wang = '中文网';
-    case zhong_xin = '中信';
+    case zhao_pin_han = '招聘';
+    case zheng_fu_han = '政府';
+    case zheng_wu_han = '政务';
+    case zhong_wen_wang_han = '中文网';
+    case zhong_xin_han = '中信';
 
     #[NotAssigned]
-    case zhu_bao = '珠宝';
+    case zhu_bao_han = '珠宝';
     case zip = 'zip';
 
     #[NotAssigned]
     case zippo = 'zippo';
     case zone = 'zone';
-    case zu_zhi_ji_gou = '组织机构';
+    case zu_zhi_ji_gou_han = '组织机构';
     case zuerich = 'zuerich';
 
     public function isAssigned(): bool

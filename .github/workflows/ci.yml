@@ -228,6 +228,7 @@ jobs:
     name: Regenerate specs
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         spec:
           - "country"
