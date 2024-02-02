@@ -44,7 +44,7 @@ class EnumCase
 
         $existingKeyWithValue = $enumFQN::tryFrom($this->value);
         $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->name);
-        if ($existingKeyWithValue === null ?? is_string($this->value)) {
+        if ($existingKeyWithValue === null && is_string($this->value)) {
             $mostCommonScriptInString = ScriptAlias::mostCommonInString($this->value) ?? ScriptAlias::Code_for_undetermined_script;
             if (in_array($mostCommonScriptInString, [ScriptAlias::Code_for_undetermined_script, ScriptAlias::Latin], true) !== true) {
                 $key .= '_' . $mostCommonScriptInString->value;
