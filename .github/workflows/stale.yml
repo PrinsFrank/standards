@@ -5,15 +5,4 @@ on:
 
 jobs:
   stale:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/stale@v9
-        with:
-          days-before-pr-stale: 10
-          stale-pr-message: 'This PR is stale because it has been open 10 days with no activity. Remove stale label or comment or this will be closed in 5 days.'
-          days-before-pr-close: 5
-          close-pr-message: 'This PR was closed because it has been stalled for 5 days with no activity.'
-          days-before-issue-stale: 10
-          stale-issue-message: 'This issue is stale because it has been open 10 days with no activity. Remove stale label or comment or this will be closed in 5 days.'
-          days-before-issue-close: 5
-          close-issue-message: 'This issue was closed because it has been stalled for 5 days with no activity.'
+    uses: prinsfrank/CI-PHP/.github/workflows/stale.yml@main
