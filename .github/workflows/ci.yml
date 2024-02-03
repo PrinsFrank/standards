@@ -10,12 +10,9 @@ on:
   schedule:
     - cron: '55 17 * * *'
 
-env:
-  COMPOSER_ROOT_VERSION: dev-main # see https://getcomposer.org/doc/articles/troubleshooting.md#dependencies-on-the-root-package
-
 jobs:
   quality:
-    uses: prinsfrank/CI-PHP/.github/workflows/quality.yml@e35bf8e686fbbbd05ecc8c056ff3487b1b95f865
+    uses: prinsfrank/CI-PHP/.github/workflows/quality.yml@main
     with:
       PHP_VERSION: '8.3'
     secrets: inherit
