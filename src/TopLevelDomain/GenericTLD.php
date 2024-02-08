@@ -289,6 +289,8 @@ enum GenericTLD: string implements TLD
     case college = 'college';
     case cologne = 'cologne';
     case com = 'com';
+
+    #[NotAssigned]
     case comcast = 'comcast';
     case commbank = 'commbank';
     case community = 'community';
@@ -1454,6 +1456,8 @@ enum GenericTLD: string implements TLD
     case wtf = 'wtf';
     case xbox = 'xbox';
     case xerox = 'xerox';
+
+    #[NotAssigned]
     case xfinity = 'xfinity';
     case xiang_ge_li_la_han = '香格里拉';
     case xihuan = 'xihuan';
