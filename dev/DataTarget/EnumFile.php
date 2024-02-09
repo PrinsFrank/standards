@@ -9,6 +9,7 @@ use PrinsFrank\Standards\Dev\Exception\EnumNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Standards\Scripts\ScriptAlias;
 use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
+use PrinsFrank\Transliteration\Exception\RecursionException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 use RuntimeException;
 
@@ -83,6 +84,7 @@ class EnumFile
      * @throws TransliterationException
      * @throws InvalidArgumentException
      * @throws UnableToCreateTransliteratorException
+     * @throws RecursionException
      */
     public function writeCases(SortingInterface $sorting): self
     {

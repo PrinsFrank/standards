@@ -22,6 +22,7 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
 use PrinsFrank\Standards\Dev\DataTarget\NameNormalizer;
 use PrinsFrank\Standards\Dev\Exception\DomElementNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
+use PrinsFrank\Transliteration\Exception\RecursionException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 use stdClass;
 use Symfony\Component\Panther\Client;
@@ -78,6 +79,7 @@ class CurrencyMapping implements Mapping
      * @throws NameNotFoundException
      * @throws \PrinsFrank\Transliteration\Exception\InvalidArgumentException
      * @throws UnableToCreateTransliteratorException
+     * @throws RecursionException
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array

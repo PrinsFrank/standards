@@ -7,6 +7,7 @@ use BackedEnum;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Standards\Scripts\ScriptAlias;
 use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
+use PrinsFrank\Transliteration\Exception\RecursionException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 
 /** @internal */
@@ -26,6 +27,7 @@ class EnumCase
      * @throws InvalidArgumentException
      * @throws TransliterationException
      * @throws UnableToCreateTransliteratorException
+     * @throws RecursionException
      */
     public function toString(string $enumFQN, string $indenting, bool $isFirst): string
     {

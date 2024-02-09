@@ -28,7 +28,7 @@
         "dbrekelmans/bdi": "^1.0",
         "phpstan/phpstan": "^1.10.50",
         "composer/composer": "^2.3",
-        "prinsfrank/transliteration": "^0.2.3",
+        "prinsfrank/transliteration": "^1.0",
         "phpstan/phpstan-strict-rules": "^1.5"
     },
     "scripts": {
