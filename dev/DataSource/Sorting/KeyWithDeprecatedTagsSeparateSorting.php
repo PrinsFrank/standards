@@ -7,6 +7,7 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\NameNormalizer;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
+use PrinsFrank\Transliteration\Exception\RecursionException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 
 class KeyWithDeprecatedTagsSeparateSorting implements SortingInterface
@@ -15,6 +16,7 @@ class KeyWithDeprecatedTagsSeparateSorting implements SortingInterface
      * @throws InvalidArgumentException
      * @throws UnableToCreateTransliteratorException
      * @throws TransliterationException
+     * @throws RecursionException
      */
     public function __invoke(EnumCase $a, EnumCase $b): int
     {
