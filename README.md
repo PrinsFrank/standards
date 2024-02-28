@@ -28,6 +28,17 @@ Or for development only;
 
 ```composer require prinsfrank/standards --dev```
 
+## Daily updated from their source
+
+[![Country](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
+[![Currency](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
+[![HTTP method](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml)
+[![HTTP Status code](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml)
+[![Language](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
+[![Language Extensive](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml)
+[![Script](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml)
+[![TLD](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-tld.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-tld.yml)
+
 ## How this package works
 
 This package implements a bunch of specs as PHP Enums, so you can typehint them in methods. Currently, all specs are implemented as backed enums. That means that besides a name, they have also an internal 'value', either as an integer or a string.
@@ -841,6 +852,8 @@ public function foo(ScriptNumber $scriptNumber) {} // Use spec as typehint to en
 </details>
 
 ## TLDs
+
+[![Daily TLD spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-tld.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-tld.yml)
 
 There are currently 6 types of Top Level Domains:
 - CountryCode
