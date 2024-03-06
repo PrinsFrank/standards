@@ -571,6 +571,8 @@ enum GenericTLD: string implements TLD
     case group = 'group';
     case gu_ge_han = '谷歌';
     case guang_dong_han = '广东';
+
+    #[NotAssigned]
     case guardian = 'guardian';
     case gucci = 'gucci';
     case guge = 'guge';
