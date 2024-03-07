@@ -10,6 +10,7 @@ enum LanguageTagVariant: string
     case Akuapem_Twi = 'akuapem';
     case Americanist_Phonetic_Notation = 'fonnapa';
     case Anglo_Cornish = 'cornu';
+    case Anpezo_standard_of_Ladin = 'anpezo';
     case Aranese = 'aranes';
     case Arkaika_Esperanto = 'arkaika';
     case Ashanti_Twi = 'asante';
@@ -34,9 +35,12 @@ enum LanguageTagVariant: string
     case Early_Modern_English_1500_1700 = 'emodeng';
     case Early_Modern_French = '1694acad';
     case Epic_Sanskrit = 'itihasa';
+    case Fascia_standard_of_Ladin = 'fascia';
+    case Fodom_standard_of_Ladin = 'fodom';
     case Gallo = 'gallo';
     case Gascon = 'gascon';
     case German_orthography_of_1996 = '1996';
+    case Gherdeina_standard_of_Ladin = 'gherd';
     case Hepburn_romanization = 'hepburn';
     case Interlingua_de_Peano = 'peano';
     case International_Phonetic_Alphabet = 'fonipa';
@@ -64,6 +68,7 @@ enum LanguageTagVariant: string
     case Pahawh_Hmong_Second_Stage_Reduced_orthography = 'pahawh2';
     case Pahawh_Hmong_Third_Stage_Reduced_orthography = 'pahawh3';
     case Pamaka_dialect = 'pamaka';
+    case Peh_oe_ji_orthography_romanization = 'pehoeji';
     case Petrine_orthography = 'petr1708';
     case Pinyin_romanization = 'pinyin';
     case Polytonic_Greek = 'polyton';
@@ -90,6 +95,7 @@ enum LanguageTagVariant: string
     case Surmiran_idiom_of_Romansh = 'surmiran';
     case Sursilvan_idiom_of_Romansh = 'sursilv';
     case Sutsilvan_idiom_of_Romansh = 'sutsilv';
+    case Tai_lo_orthography_romanization = 'tailo';
     case The_Balanka_dialect_of_Anii = 'balanka';
     case The_Barlavento_dialect_group_of_Kabuverdianu = 'barla';
     case The_Bila_dialect_of_Resian = 'biske';
@@ -109,6 +115,7 @@ enum LanguageTagVariant: string
     case Unified_Turkic_Latin_Alphabet_Historical = 'baku1926';
     case Unifon_phonetic_alphabet = 'unifon';
     case Uralic_Phonetic_Alphabet = 'fonupa';
+    case Val_Badia_standard_of_Ladin = 'valbadia';
     case Valencian = 'valencia';
     case Vallader_idiom_of_Romansh = 'vallader';
     case Vedic_Sanskrit = 'vaidika';
