@@ -103,6 +103,8 @@ enum GenericTLD: string implements TLD
     case author = 'author';
     case auto = 'auto';
     case autos = 'autos';
+
+    #[NotAssigned]
     case avianca = 'avianca';
     case aws = 'aws';
     case axa = 'axa';
