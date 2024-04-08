@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\LanguageTag;
 
-use BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
@@ -12,7 +11,6 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 use Stringable;
-use UnitEnum;
 
 /**
  * @standard RFC5646
