@@ -39,6 +39,7 @@ class CountryMapping implements Mapping
         $client->waitFor('#onetrust-accept-btn-handler');
         $cookieButton = $crawler->filterXPath(".//button[@id='onetrust-accept-btn-handler']");
         $cookieButton->click();
+        $client->waitForStaleness('#onetrust-consent-sdk');
         $client->waitFor('.v-select-select');
         $client->waitForInvisibility('.v-loading-indicator');
         $perPageDropdown = $crawler->filterXPath(".//select[@class='v-select-select']//option[last()]");
