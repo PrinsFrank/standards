@@ -13,4 +13,4 @@ jobs:
   update-specs:
     uses: ./.github/workflows/reusable-update-spec.yml
     with:
-      type: http-status-code
+      type: http-status-codes
