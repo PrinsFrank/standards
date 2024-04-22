@@ -2680,6 +2680,7 @@ enum LanguageAlpha3Extensive: string
     case Israeli_Sign_Language = 'isr';
     case Istriot = 'ist';
     case Isu_Menchum_Division = 'isu';
+    case Interslavic = 'isv';
     case Italian = 'ita';
     case Binongan_Itneg = 'itb';
     case Southern_Tidung = 'itd';
