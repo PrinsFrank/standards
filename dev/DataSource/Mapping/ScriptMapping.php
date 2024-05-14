@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
+use Facebook\WebDriver\WebDriverElement;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
@@ -44,6 +45,10 @@ class ScriptMapping implements Mapping
         $dataSet = [];
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
+            if (count($columns) === 0) {
+                continue;
+            }
+
             if (array_key_exists(0, $columns) === false
                 || array_key_exists(1, $columns) === false
                 || array_key_exists(2, $columns) === false
