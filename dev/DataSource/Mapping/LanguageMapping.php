@@ -39,6 +39,10 @@ class LanguageMapping implements Mapping
         $dataSet = [];
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
+            if ($columns === []) {
+                continue;
+            }
+
             if (array_key_exists(0, $columns) === false
                 || array_key_exists(1, $columns) === false
                 || array_key_exists(2, $columns) === false

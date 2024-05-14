@@ -45,7 +45,7 @@ class ScriptMapping implements Mapping
         $dataSet = [];
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
-            if (count($columns) === 0) {
+            if ($columns === []) {
                 continue;
             }
 
