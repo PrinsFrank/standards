@@ -71,7 +71,7 @@ class CountryAlpha2Test extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Argument $groupFQN should be a FQN of a class that implements the groupInterface, "foo" given');
-        /** @phpstan-ignore-next-line */
+        /** @phpstan-ignore argument.type missingType.checkedException */
         CountryAlpha2::Netherlands->isMemberOf('foo');
     }
 
@@ -139,7 +139,7 @@ class CountryAlpha2Test extends TestCase
     public function testGetOfficialAndDeFactoLanguages(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
-            /** @phpstan-ignore-next-line */
+            /** @phpstan-ignore method.resultUnused */
             $countryAlpha2->getOfficialAndDeFactoLanguages();
 
             $this->addToAssertionCount(1);
@@ -150,7 +150,7 @@ class CountryAlpha2Test extends TestCase
     public function testGetCountryCodeTLD(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
-            /** @phpstan-ignore-next-line */
+            /** @phpstan-ignore method.resultUnused */
             $countryAlpha2->getCountryCodeTLD();
 
             $this->addToAssertionCount(1);

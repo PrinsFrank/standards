@@ -425,12 +425,12 @@ enum ScriptAlias: string
             }
 
             $scripts[$scriptName] ??= 0;
-            /** @phpstan-ignore-next-line */
+            /** @phpstan-ignore offsetAccess.notFound */
             $scripts[$scriptName] += array_sum(array_map(fn (string|null $scriptMatchChars) => mb_strlen($scriptMatchChars ?? ''), $scriptMatchesArray));
         }
 
         arsort($scripts);
-        /** @phpstan-ignore-next-line */
+        /** @phpstan-ignore missingType.checkedException, missingType.checkedException */
         return array_map(fn (string $scriptString) => self::from($scriptString), array_keys($scripts));
     }
 

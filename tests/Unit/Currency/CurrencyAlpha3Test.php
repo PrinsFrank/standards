@@ -57,7 +57,7 @@ class CurrencyAlpha3Test extends TestCase
     public function testGetMinorUnits(): void
     {
         foreach (CurrencyAlpha3::cases() as $currencyAlpha3) {
-            /** @phpstan-ignore-next-line */
+            /** @phpstan-ignore method.resultUnused */
             $currencyAlpha3->getMinorUnits();
 
             $this->addToAssertionCount(1);
@@ -68,7 +68,7 @@ class CurrencyAlpha3Test extends TestCase
     public function testGetCountriesAlpha2(): void
     {
         foreach (CurrencyAlpha3::cases() as $currencyAlpha3) {
-            /** @phpstan-ignore-next-line */
+            /** @phpstan-ignore method.resultUnused */
             $currencyAlpha3->getCountriesAlpha2();
 
             $this->addToAssertionCount(1);

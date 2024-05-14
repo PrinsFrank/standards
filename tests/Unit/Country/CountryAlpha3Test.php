@@ -71,7 +71,7 @@ class CountryAlpha3Test extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Argument $groupFQN should be a FQN of a class that implements the groupInterface, "foo" given');
-        /** @phpstan-ignore-next-line */
+        /** @phpstan-ignore argument.type missingType.checkedException */
         CountryAlpha3::Netherlands->isMemberOf('foo');
     }
 
