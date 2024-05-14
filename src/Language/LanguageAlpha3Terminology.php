@@ -8,6 +8,7 @@ use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\LanguageTag\LanguageTag;
 use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 use PrinsFrank\Standards\LanguageTag\PrivateUseRegionSubtag;
@@ -563,8 +564,9 @@ enum LanguageAlpha3Terminology: string
     }
 
     /**
-     * @param list<LanguageTagVariant> $variantSubtag,
+     * @param list<LanguageTagVariant> $variantSubtag ,
      * @param list<string> $extensionSubtag
+     * @throws InvalidArgumentException
      */
     public function toLanguageTag(
         LanguageAlpha3Terminology|LanguageAlpha3Extensive|null     $extendedLanguageSubtag = null,

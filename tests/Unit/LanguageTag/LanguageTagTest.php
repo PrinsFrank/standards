@@ -22,6 +22,8 @@ class LanguageTagTest extends TestCase
     /**
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testThrowsExceptionIfVariantSubTagIsOfInvalidType(): void
     {
@@ -34,6 +36,8 @@ class LanguageTagTest extends TestCase
     /**
      * @covers ::fromString
      * @covers ::__construct
+     *
+     * @throws InvalidArgumentException
      */
     public function testThrowsExceptionIfExtensionSubtagIsOfInvalidType(): void
     {
@@ -353,7 +357,11 @@ class LanguageTagTest extends TestCase
         LanguageTag::fromString('nl-nl');
     }
 
-    /** @covers ::tryFromString */
+    /**
+     * @covers ::tryFromString
+     *
+     * @throws InvalidArgumentException
+     */
     public function testTryFromString(): void
     {
         static::assertNull(LanguageTag::tryFromString('nl-nl'));

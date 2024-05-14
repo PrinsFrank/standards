@@ -22,8 +22,9 @@ class LanguageTag implements Stringable
     public const SUBTAG_SEPARATOR = '-';
 
     /**
-     * @param list<LanguageTagVariant> $variantSubtag,
+     * @param list<LanguageTagVariant> $variantSubtag
      * @param list<string> $extensionSubtag
+     * @throws InvalidArgumentException
      */
     public function __construct(
         public readonly SingleCharacterSubtag|PrivateUsePrimarySubtag|LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive $primaryLanguageSubtag,
@@ -34,9 +35,9 @@ class LanguageTag implements Stringable
         public readonly array                                                                                                          $extensionSubtag = [],
         public readonly string|null                                                                                                    $privateUseSubtag = null,
     ) {
-        /** @phpstan-ignore instanceof.alwaysTrue, missingType.checkedException (as not everyone has PHPStan to tell them not to pass something else than a LanguageTagVariant) */
+        /** @phpstan-ignore instanceof.alwaysTrue (as not everyone has PHPStan to tell them not to pass something else than a LanguageTagVariant) */
         array_map(static function (mixed $variantSubtag) { $variantSubtag instanceof LanguageTagVariant || throw new InvalidArgumentException('Param $variantSubtag should be an array of "' . LanguageTagVariant::class . '"');}, $this->variantSubtag);
-        /** @phpstan-ignore function.alreadyNarrowedType, missingType.checkedException (as not everyone has PHPStan to tell them not to pass something else than a string) */
+        /** @phpstan-ignore function.alreadyNarrowedType (as not everyone has PHPStan to tell them not to pass something else than a string) */
         array_map(static function (mixed $extensionSubtag) { is_string($extensionSubtag) || throw new InvalidArgumentException('Param $variantSubtag should be an array of strings');}, $this->extensionSubtag);
     }
 
