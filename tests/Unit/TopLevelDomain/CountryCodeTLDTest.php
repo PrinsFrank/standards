@@ -17,6 +17,7 @@ class CountryCodeTLDTest extends TestCase
     {
         static::assertSame(CountryAlpha2::Netherlands, CountryCodeTLD::nl->getCountryAlpha2());
         foreach (CountryCodeTLD::cases() as $countryCodeTLD) {
+            /** @phpstan-ignore-next-line */
             $countryCodeTLD->getCountryAlpha2();
 
             $this->addToAssertionCount(1);

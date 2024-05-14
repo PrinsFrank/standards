@@ -139,6 +139,7 @@ class CountryAlpha2Test extends TestCase
     public function testGetOfficialAndDeFactoLanguages(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            /** @phpstan-ignore-next-line */
             $countryAlpha2->getOfficialAndDeFactoLanguages();
 
             $this->addToAssertionCount(1);
@@ -149,6 +150,7 @@ class CountryAlpha2Test extends TestCase
     public function testGetCountryCodeTLD(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            /** @phpstan-ignore-next-line */
             $countryAlpha2->getCountryCodeTLD();
 
             $this->addToAssertionCount(1);

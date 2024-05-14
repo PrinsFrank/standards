@@ -429,6 +429,7 @@ enum ScriptAlias: string
         }
 
         arsort($scripts);
+        /** @phpstan-ignore-next-line */
         return array_map(fn (string $scriptString) => self::from($scriptString), array_keys($scripts));
     }
 
