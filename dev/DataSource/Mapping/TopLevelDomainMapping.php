@@ -36,8 +36,8 @@ class TopLevelDomainMapping implements Mapping
     }
 
     /**
-     * @return list<TDataSet>
      * @throws RuntimeException
+     * @return list<TDataSet>
      */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {

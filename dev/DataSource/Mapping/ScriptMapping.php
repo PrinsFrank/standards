@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
-use Facebook\WebDriver\WebDriverElement;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
@@ -35,8 +34,8 @@ class ScriptMapping implements Mapping
     }
 
     /**
-     * @return list<TDataSet>
      * @throws RuntimeException
+     * @return list<TDataSet>
      */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
