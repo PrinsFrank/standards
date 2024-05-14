@@ -14,6 +14,7 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSor
 use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use RuntimeException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -32,6 +33,7 @@ class CountryMapping implements Mapping
     /**
      * @throws NoSuchElementException
      * @throws TimeoutException
+     * @throws RuntimeException
      * @return list<TDataSet>
      */
     public static function toDataSet(Client $client, Crawler $crawler): array
@@ -51,6 +53,13 @@ class CountryMapping implements Mapping
         $dataSet = [];
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
+            if (array_key_exists(0, $columns) === false
+                || array_key_exists(1, $columns) === false
+                || array_key_exists(2, $columns) === false
+                || array_key_exists(3, $columns) === false
+                || array_key_exists(4, $columns) === false) {
+                throw new RuntimeException('Expected exactly 5 columns');
+            }
 
             $record = (object) [];
             $record->name = $columns[0]->getText();

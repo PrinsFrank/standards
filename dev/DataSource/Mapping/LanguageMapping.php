@@ -12,6 +12,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Language\LanguageName;
+use RuntimeException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -27,7 +28,10 @@ class LanguageMapping implements Mapping
         return 'https://www.loc.gov/standards/iso639-2/php/code_list.php';
     }
 
-    /** @return list<TDataSet> */
+    /**
+     * @return list<TDataSet>
+     * @throws RuntimeException
+     */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $items = $crawler->filterXPath('//table[@width="100%"]/tbody/tr')->getIterator();
@@ -35,7 +39,15 @@ class LanguageMapping implements Mapping
         $dataSet = [];
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
-            if (count($columns) !== 5 || $columns[2]->getText() === 'Reserved for local use') {
+            if (array_key_exists(0, $columns) === false
+                || array_key_exists(1, $columns) === false
+                || array_key_exists(2, $columns) === false
+                || array_key_exists(3, $columns) === false
+                || array_key_exists(4, $columns) === false) {
+                throw new RuntimeException('Expected exactly 5 columns');
+            }
+
+            if ($columns[2]->getText() === 'Reserved for local use') {
                 continue;
             }
 

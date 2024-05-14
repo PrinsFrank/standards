@@ -19,6 +19,7 @@ use PrinsFrank\Standards\TopLevelDomain\GenericTLD;
 use PrinsFrank\Standards\TopLevelDomain\InfrastructureTLD;
 use PrinsFrank\Standards\TopLevelDomain\SponsoredTLD;
 use PrinsFrank\Standards\TopLevelDomain\TestTLD;
+use RuntimeException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -34,7 +35,10 @@ class TopLevelDomainMapping implements Mapping
         return 'https://www.iana.org/domains/root/db';
     }
 
-    /** @return list<TDataSet> */
+    /**
+     * @return list<TDataSet>
+     * @throws RuntimeException
+     */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $items = $crawler->filterXPath('//table[@id="tld-table"]/tbody/tr')->getIterator();
@@ -42,8 +46,10 @@ class TopLevelDomainMapping implements Mapping
         $dataSet = [];
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
-            if (count($columns) !== 3) {
-                continue;
+            if (array_key_exists(0, $columns) === false
+                || array_key_exists(1, $columns) === false
+                || array_key_exists(2, $columns) === false) {
+                throw new RuntimeException('Expected exactly 3 columns');
             }
 
             $record = (object) [];

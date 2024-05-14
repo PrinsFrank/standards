@@ -15,6 +15,7 @@ use PrinsFrank\Standards\Scripts\ScriptAlias;
 use PrinsFrank\Standards\Scripts\ScriptNumber;
 use PrinsFrank\Standards\Scripts\ScriptName;
 use PrinsFrank\Standards\Scripts\ScriptCode;
+use RuntimeException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -32,7 +33,10 @@ class ScriptMapping implements Mapping
         return 'https://www.unicode.org/iso15924/iso15924-codes.html';
     }
 
-    /** @return list<TDataSet> */
+    /**
+     * @return list<TDataSet>
+     * @throws RuntimeException
+     */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $items = $crawler->filterXPath('//table[@class="simple"]/tbody/tr')->getIterator();
@@ -40,8 +44,14 @@ class ScriptMapping implements Mapping
         $dataSet = [];
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
-            if (count($columns) !== 7) {
-                continue;
+            if (array_key_exists(0, $columns) === false
+                || array_key_exists(1, $columns) === false
+                || array_key_exists(2, $columns) === false
+                || array_key_exists(3, $columns) === false
+                || array_key_exists(4, $columns) === false
+                || array_key_exists(5, $columns) === false
+                || array_key_exists(6, $columns) === false) {
+                throw new RuntimeException('Expected exactly 7 columns');
             }
 
             $record = (object) [];

@@ -9,6 +9,7 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Http\HttpMethod;
+use RuntimeException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -24,7 +25,10 @@ class HttpMethodMapping implements Mapping
         return 'https://www.iana.org/assignments/http-methods/http-methods.xhtml';
     }
 
-    /** @return list<TDataSet> */
+    /**
+     * @return list<TDataSet>
+     * @throws RuntimeException
+     */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
         $items = $crawler->filterXPath('//table[@id="table-methods"]/tbody/tr')->getIterator();
@@ -32,6 +36,12 @@ class HttpMethodMapping implements Mapping
         $dataSet = [];
         foreach ($items as $item) {
             $columns = $item->findElements(WebDriverBy::xpath('./td'));
+            if (array_key_exists(0, $columns) === false
+                || array_key_exists(1, $columns) === false
+                || array_key_exists(2, $columns) === false
+                || array_key_exists(3, $columns) === false) {
+                throw new RuntimeException('Expected exactly 4 columns');
+            }
 
             $record = (object) [];
             $record->name = $columns[0]->getText();
