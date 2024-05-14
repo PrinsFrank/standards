@@ -90,7 +90,9 @@ class LanguageMapping implements Mapping
                 $languageAlpha3Terminology->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
                 $languageAlpha3Bibliographic->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
             } elseif (preg_match('/(?P<bibliographic>[a-z]{3})\s+\(B\)\n(?P<terminology>[a-z]{3})\s+\(T\)/', $dataRow->alpha3, $matches) === 1) {
+                /** @phpstan-ignore-next-line */
                 $languageAlpha3Terminology->addCase(new EnumCase($dataRow->name, $matches['terminology']));
+                /** @phpstan-ignore-next-line */
                 $languageAlpha3Bibliographic->addCase(new EnumCase($dataRow->name, $matches['bibliographic']));
             }
         }
