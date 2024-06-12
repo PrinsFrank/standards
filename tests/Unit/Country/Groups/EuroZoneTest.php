@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Country\Groups;
+namespace PrinsFrank\Standards\Tests\Unit\Country\Groups;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
