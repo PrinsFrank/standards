@@ -925,6 +925,8 @@ enum GenericTLD: string implements TLD
 
     #[NotAssigned]
     case nationwide = 'nationwide';
+
+    #[NotAssigned]
     case natura = 'natura';
     case navy = 'navy';
     case nba = 'nba';
