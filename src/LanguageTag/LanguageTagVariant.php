@@ -30,7 +30,6 @@ enum LanguageTagVariant: string
     case Cisalpine = 'cisaup';
     case Classic_Volapuk = 'rigik';
     case Classical_Occitan_orthography = 'grclass';
-    case Classical_Sanskrit = 'laukika';
     case Common_Cornish_orthography_of_Revived_Cornish = 'kkcor';
     case Early_Modern_English_1500_1700 = 'emodeng';
     case Early_Modern_French = '1694acad';
@@ -118,16 +117,21 @@ enum LanguageTagVariant: string
     case Val_Badia_standard_of_Ladin = 'valbadia';
     case Valencian = 'valencia';
     case Vallader_idiom_of_Romansh = 'vallader';
-    case Vedic_Sanskrit = 'vaidika';
     case Vivaro_Alpine = 'vivaraup';
     case Wade_Giles_romanization = 'wadegile';
     case X_SAMPA_transcription = 'fonxsamp';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Classical_Sanskrit = 'laukika';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Eastern_Armenian = 'arevela';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Hepburn_romanization_Library_of_Congress_method = 'heploc';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Vedic_Sanskrit = 'vaidika';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Western_Armenian = 'arevmda';
