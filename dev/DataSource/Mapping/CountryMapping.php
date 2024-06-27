@@ -11,6 +11,7 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\Country\Subdivision\CountrySubdivision;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
@@ -20,7 +21,7 @@ use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string, subdivisions: array<string, object{category: string, code: string, name: string, local_variant: string, language_codes: list<string>, romanization_system: list<string>, parent: string}>}&stdClass
+ * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string, subdivisions: array<string, object{category: string, code: string, name: list<object{name: string, local_variant: string, language_code: string, romanization_system: string}>, parent: string}>}&stdClass
  * @implements Mapping<TDataSet>
  */
 class CountryMapping implements Mapping
@@ -36,7 +37,8 @@ class CountryMapping implements Mapping
      * @throws RuntimeException
      * @return list<TDataSet>
      */
-    public static function toDataSet(Client $client, Crawler $crawler): array {
+    public static function toDataSet(Client $client, Crawler $crawler): array
+    {
         $client->waitFor('#onetrust-accept-btn-handler');
         $cookieButton = $crawler->filterXPath(".//button[@id='onetrust-accept-btn-handler']");
         $cookieButton->click();
@@ -97,19 +99,16 @@ class CountryMapping implements Mapping
                     $existingSubdivisionWithCode = $record->subdivisions[$subdivisionColumns[1]->getText()];
                     if ($existingSubdivisionWithCode->category !== $subdivisionColumns[0]->getText()
                         || $existingSubdivisionWithCode->code !== rtrim($subdivisionColumns[1]->getText(), '*')
-                        || $existingSubdivisionWithCode->name !== $subdivisionColumns[2]->getText()
-                        || $existingSubdivisionWithCode->local_variant !== $subdivisionColumns[3]->getText()
                         || $existingSubdivisionWithCode->parent !== $subdivisionColumns[6]->getText()) {
-                        throw new RuntimeException('Attempted to merge division with previous division but the division information is different');
+                        throw new RuntimeException('Attempted to merge division with previous division but the division information (category, code or parent) is different');
                     }
 
-                    if (in_array($subdivisionColumns[4]->getText(), $existingSubdivisionWithCode->language_codes) === false) {
-                        $existingSubdivisionWithCode->language_codes[] = $subdivisionColumns[4]->getText();
-                    }
-
-                    if (in_array($subdivisionColumns[5]->getText(), $existingSubdivisionWithCode->romanization_system) === false) {
-                        $existingSubdivisionWithCode->romanization_system[] = $subdivisionColumns[5]->getText();
-                    }
+                    $existingSubdivisionWithCode->name[] = (object) [
+                        'name' => $subdivisionColumns[2]->getText(),
+                        'local_variant' => $subdivisionColumns[3]->getText(),
+                        'language_codes' => $subdivisionColumns[4]->getText(),
+                        'romanization_system' => $subdivisionColumns[5]->getText(),
+                    ];
 
                     continue;
                 }
@@ -117,10 +116,14 @@ class CountryMapping implements Mapping
                 $record->subdivisions[$subdivisionColumns[1]->getText()] = (object) [
                     'category' => $subdivisionColumns[0]->getText(),
                     'code' => rtrim($subdivisionColumns[1]->getText(), '*'),
-                    'name' => $subdivisionColumns[2]->getText(),
-                    'local_variant' => $subdivisionColumns[3]->getText(),
-                    'language_codes' => [$subdivisionColumns[4]->getText()],
-                    'romanization_system' => [$subdivisionColumns[5]->getText()],
+                    'name' => [
+                        (object) [
+                            'name' => $subdivisionColumns[2]->getText(),
+                            'local_variant' => $subdivisionColumns[3]->getText(),
+                            'language_codes' => $subdivisionColumns[4]->getText(),
+                            'romanization_system' => $subdivisionColumns[5]->getText(),
+                        ],
+                    ],
                     'parent' => $subdivisionColumns[6]->getText(),
                 ];
             }
@@ -139,13 +142,18 @@ class CountryMapping implements Mapping
         $countryAlpha2 = new EnumFile(CountryAlpha2::class, KeySorting::class);
         $countryAlpha3 = new EnumFile(CountryAlpha3::class, KeySorting::class);
         $countryNumeric = new EnumFile(CountryNumeric::class, KeySorting::class);
+        $countrySubdivision = new EnumFile(CountrySubdivision::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
             $countryName->addCase(new EnumCase($dataRow->name, $dataRow->name));
             $countryAlpha2->addCase(new EnumCase($dataRow->name, $dataRow->alpha2));
             $countryAlpha3->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
             $countryNumeric->addCase(new EnumCase($dataRow->name, $dataRow->numeric));
+
+            foreach ($dataRow->subdivisions as $subdivision) {
+                $countrySubdivision->addCase(new EnumCase(sprintf('%s, %s', $dataRow->name, $subdivision->name[0]->name), $subdivision->code));
+            }
         }
 
-        return [$countryName, $countryAlpha2, $countryAlpha3, $countryNumeric];
+        return [$countryName, $countryAlpha2, $countryAlpha3, $countryNumeric, $countrySubdivision];
     }
 }
