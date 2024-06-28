@@ -921,7 +921,10 @@ enum CountryAlpha2: string
             self::Western_Sahara => [CurrencyAlpha3::Moroccan_Dirham],
             self::Yemen => [CurrencyAlpha3::Yemeni_Rial],
             self::Zambia => [CurrencyAlpha3::Zambian_Kwacha],
-            self::Zimbabwe => [CurrencyAlpha3::Zimbabwe_Dollar],
+            self::Zimbabwe => [
+                CurrencyAlpha3::Zimbabwe_Dollar,
+                CurrencyAlpha3::Zimbabwe_Gold
+            ],
             default => []
         };
     }

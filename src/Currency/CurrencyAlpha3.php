@@ -199,6 +199,7 @@ enum CurrencyAlpha3: string
     case Yuan_Renminbi = 'CNY';
     case Zambian_Kwacha = 'ZMW';
     case Zimbabwe_Dollar = 'ZWL';
+    case Zimbabwe_Gold = 'ZWG';
     case Zloty = 'PLN';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
@@ -411,6 +412,7 @@ enum CurrencyAlpha3: string
             self::Yuan_Renminbi => 2,
             self::Zambian_Kwacha => 2,
             self::Zimbabwe_Dollar => 2,
+            self::Zimbabwe_Gold => 2,
             self::Zloty => 2,
             default => null
         };
@@ -714,6 +716,7 @@ enum CurrencyAlpha3: string
             self::Yuan_Renminbi => [CountryAlpha2::China],
             self::Zambian_Kwacha => [CountryAlpha2::Zambia],
             self::Zimbabwe_Dollar => [CountryAlpha2::Zimbabwe],
+            self::Zimbabwe_Gold => [CountryAlpha2::Zimbabwe],
             self::Zloty => [CountryAlpha2::Poland],
             default => []
         };
