@@ -198,6 +198,7 @@ enum CurrencyName: string
     case Yuan_Renminbi = 'Yuan Renminbi';
     case Zambian_Kwacha = 'Zambian Kwacha';
     case Zimbabwe_Dollar = 'Zimbabwe Dollar';
+    case Zimbabwe_Gold = 'Zimbabwe Gold';
     case Zloty = 'Zloty';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
