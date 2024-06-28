@@ -107,6 +107,7 @@ enum CurrencySymbol: string
     case Won = '₩';
     case Yen = '¥';
     case zl_With_Stroke = 'zł';
+    case ZiG = 'ZiG';
 
     public static function forCurrency(CurrencyAlpha3|CurrencyName|CurrencyNumeric $currency): ?self
     {
@@ -294,6 +295,7 @@ enum CurrencySymbol: string
             CurrencyAlpha3::Yuan_Renminbi => self::Yen,
             CurrencyAlpha3::Zambian_Kwacha => self::K,
             CurrencyAlpha3::Zimbabwe_Dollar => self::Dollar,
+            CurrencyAlpha3::Zimbabwe_Gold => self::ZiG,
             CurrencyAlpha3::Zloty => self::zl_With_Stroke,
             CurrencyAlpha3::Kuna => self::kn,
         };
