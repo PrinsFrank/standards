@@ -5,7 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Sorting;
 
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 
-class ValueWithDeprecatedTagsSeparateSorting implements SortingInterface
+class ValueSorting implements Sorting
 {
     public function __invoke(EnumCase $a, EnumCase $b): int
     {

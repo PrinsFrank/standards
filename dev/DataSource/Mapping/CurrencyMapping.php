@@ -14,8 +14,7 @@ use PrinsFrank\Standards\Country\Groups\EuroZone;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\Currency\CurrencyName;
 use PrinsFrank\Standards\Currency\CurrencyNumeric;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
@@ -84,13 +83,13 @@ class CurrencyMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $currencyNameEnum = new EnumFile(CurrencyName::class);
-        $currencyNumericEnum = new EnumFile(CurrencyNumeric::class);
-        $currencyAlpha3Enum = (new EnumFile(CurrencyAlpha3::class))
+        $currencyNameEnum = new EnumFile(CurrencyName::class, KeySorting::class);
+        $currencyNumericEnum = new EnumFile(CurrencyNumeric::class, KeySorting::class);
+        $currencyAlpha3Enum = (new EnumFile(CurrencyAlpha3::class, KeySorting::class))
             ->addMethod($getMinorUnitsMethod = new EnumMethod('getMinorUnits', '?int', 'null'))
             ->addMethod($getCountriesAlpha2Method = new EnumMethod('getCountriesAlpha2', 'array', '[]', '/** @return list<CountryAlpha2> */'));
 
-        $countryAlpha2 = (new EnumFile(CountryAlpha2::class))
+        $countryAlpha2 = (new EnumFile(CountryAlpha2::class, KeySorting::class))
             ->addMethod($getCurrenciesMethod = new EnumMethod('getCurrenciesAlpha3', 'array', '[]'));
         foreach ($dataSet as $dataRow) {
             if (($dataRow->Ccy ?? null) === null) {
@@ -131,10 +130,5 @@ class CurrencyMapping implements Mapping
         }
 
         return [$currencyAlpha3Enum, $currencyNameEnum, $currencyNumericEnum, $countryAlpha2];
-    }
-
-    public static function getSorting(): SortingInterface
-    {
-        return new KeyWithDeprecatedTagsSeparateSorting();
     }
 }

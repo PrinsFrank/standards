@@ -5,8 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Standards\Country\CountryAlpha2;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
@@ -71,14 +70,14 @@ class TopLevelDomainMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $countryCodeTLD = (new EnumFile(CountryCodeTLD::class))
+        $countryCodeTLD = (new EnumFile(CountryCodeTLD::class, KeySorting::class))
             ->addMethod($toCountryAlpha2 = new EnumMethod('getCountryAlpha2', '?CountryAlpha2', 'null'));
-        $genericRestrictedTLD = new EnumFile(GenericRestrictedTLD::class);
-        $genericTLD = new EnumFile(GenericTLD::class);
-        $infrastructureTLD = new EnumFile(InfrastructureTLD::class);
-        $sponsoredTLD = new EnumFile(SponsoredTLD::class);
-        $testTLD = new EnumFile(TestTLD::class);
-        $countryAlpha2Enum = (new EnumFile(CountryAlpha2::class))
+        $genericRestrictedTLD = new EnumFile(GenericRestrictedTLD::class, KeySorting::class);
+        $genericTLD = new EnumFile(GenericTLD::class, KeySorting::class);
+        $infrastructureTLD = new EnumFile(InfrastructureTLD::class, KeySorting::class);
+        $sponsoredTLD = new EnumFile(SponsoredTLD::class, KeySorting::class);
+        $testTLD = new EnumFile(TestTLD::class, KeySorting::class);
+        $countryAlpha2Enum = (new EnumFile(CountryAlpha2::class, KeySorting::class))
             ->addMethod($getCountryCodeTLD = new EnumMethod('getCountryCodeTLD', 'CountryCodeTLD', null));
         foreach ($dataSet as $dataRow) {
             $name = trim($dataRow->tld, '.');
@@ -103,10 +102,5 @@ class TopLevelDomainMapping implements Mapping
         }
 
         return [$countryCodeTLD, $genericRestrictedTLD, $genericTLD, $infrastructureTLD, $sponsoredTLD, $testTLD, $countryAlpha2Enum];
-    }
-
-    public static function getSorting(): SortingInterface
-    {
-        return new KeyWithDeprecatedTagsSeparateSorting();
     }
 }

@@ -10,7 +10,7 @@ use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
 use PrinsFrank\Transliteration\Exception\RecursionException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 
-class KeyWithDeprecatedTagsSeparateSorting implements SortingInterface
+class KeySorting implements Sorting
 {
     /**
      * @throws InvalidArgumentException

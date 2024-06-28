@@ -28,13 +28,13 @@ class SpecUpdater
         foreach ($mapping::toEnumMapping($mapping::toDataSet($client, $crawler)) as $enumFile) {
             $event->getIO()->writeRaw('Updating contents of enum "' . $enumFile->path . '"');
             if ($enumFile->hasCases() === true) {
-                foreach ($enumFile->fqn::cases() as $existingCase) {
+                foreach ($enumFile->enumFQN::cases() as $existingCase) {
                     if ($enumFile->hasCaseWithValue($existingCase->value) === false) {
                         $enumFile->addCase(new EnumCase($existingCase->name, $existingCase->value, [], true));
                     }
                 }
 
-                $enumFile->writeCases($mapping::getSorting());
+                $enumFile->writeCases();
             }
 
             $enumFile->writeMethods();

@@ -4,8 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Http\HttpMethod;
@@ -62,7 +61,7 @@ class HttpMethodMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $httpMethod = new EnumFile(HttpMethod::class);
+        $httpMethod = new EnumFile(HttpMethod::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
             if ($dataRow->name === '*') {
                 continue;
@@ -72,10 +71,5 @@ class HttpMethodMapping implements Mapping
         }
 
         return [$httpMethod];
-    }
-
-    public static function getSorting(): SortingInterface
-    {
-        return new KeyWithDeprecatedTagsSeparateSorting();
     }
 }
