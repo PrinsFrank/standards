@@ -4,8 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
@@ -75,10 +74,10 @@ class LanguageMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $languageAlpha2 = new EnumFile(LanguageAlpha2::class);
-        $languageName = new EnumFile(LanguageName::class);
-        $languageAlpha3Bibliographic = new EnumFile(LanguageAlpha3Bibliographic::class);
-        $languageAlpha3Terminology = new EnumFile(LanguageAlpha3Terminology::class);
+        $languageAlpha2 = new EnumFile(LanguageAlpha2::class, KeySorting::class);
+        $languageName = new EnumFile(LanguageName::class, KeySorting::class);
+        $languageAlpha3Bibliographic = new EnumFile(LanguageAlpha3Bibliographic::class, KeySorting::class);
+        $languageAlpha3Terminology = new EnumFile(LanguageAlpha3Terminology::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
             $languageName->addCase(new EnumCase($dataRow->name, $dataRow->name));
 
@@ -98,10 +97,5 @@ class LanguageMapping implements Mapping
         }
 
         return [$languageAlpha2, $languageAlpha3Bibliographic, $languageAlpha3Terminology, $languageName];
-    }
-
-    public static function getSorting(): SortingInterface
-    {
-        return new KeyWithDeprecatedTagsSeparateSorting();
     }
 }

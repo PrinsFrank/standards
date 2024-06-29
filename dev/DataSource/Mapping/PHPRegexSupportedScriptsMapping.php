@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
-use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
@@ -51,16 +50,11 @@ class PHPRegexSupportedScriptsMapping implements Mapping
             return $dataSetItem->name;
         }, $dataSet);
 
-        $scriptAliasEnum = new EnumFile(ScriptAlias::class);
+        $scriptAliasEnum = new EnumFile(ScriptAlias::class, KeySorting::class);
         foreach (ScriptAlias::cases() as $case) {
             $scriptAliasEnum->addCase(new EnumCase($case->name, $case->value, in_array($case->value, $scriptAliasStrings, true) ? [new EnumCaseAttribute(SupportedByPHPRegex::class)] : []));
         }
 
         return [$scriptAliasEnum];
-    }
-
-    public static function getSorting(): SortingInterface
-    {
-        return new KeyWithDeprecatedTagsSeparateSorting();
     }
 }

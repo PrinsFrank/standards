@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
-use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\InvalidArgumentException;
@@ -76,7 +75,7 @@ class LanguageSubTagMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $languageTagVariant = new EnumFile(LanguageTagVariant::class);
+        $languageTagVariant = new EnumFile(LanguageTagVariant::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
             /** @var TDataSet $dataRow */
             if ($dataRow->Type !== 'variant') {
@@ -87,10 +86,5 @@ class LanguageSubTagMapping implements Mapping
         }
 
         return [$languageTagVariant];
-    }
-
-    public static function getSorting(): SortingInterface
-    {
-        return new KeyWithDeprecatedTagsSeparateSorting();
     }
 }

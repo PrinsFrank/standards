@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
 use BackedEnum;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\Sorting;
 use PrinsFrank\Standards\Dev\Exception\EnumNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Standards\Scripts\ScriptAlias;
@@ -24,11 +24,15 @@ class EnumFile
     /** @var EnumMethod[] */
     private array $methods = [];
 
-    /** @param class-string<BackedEnum> $fqn */
+    /**
+     * @param class-string<BackedEnum> $enumFQN
+     * @param class-string<Sorting> $sortingFQN
+     */
     public function __construct(
-        public readonly string $fqn
+        public readonly string $enumFQN,
+        public readonly string $sortingFQN,
     ) {
-        $this->path = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace(['PrinsFrank\\Standards\\', '\\'], ['', DIRECTORY_SEPARATOR], $fqn) . '.php';
+        $this->path = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace(['PrinsFrank\\Standards\\', '\\'], ['', DIRECTORY_SEPARATOR], $enumFQN) . '.php';
     }
 
     public function addCase(EnumCase $enumCase): self
@@ -86,7 +90,7 @@ class EnumFile
      * @throws UnableToCreateTransliteratorException
      * @throws RecursionException
      */
-    public function writeCases(SortingInterface $sorting): self
+    public function writeCases(): self
     {
         $enumContent = $this->getContent();
         $startEnum = mb_strpos($enumContent, '{');
@@ -103,9 +107,9 @@ class EnumFile
         }
 
         $deduplicatedCases = array_values($keyedCases);
-        usort($deduplicatedCases, $sorting);
+        usort($deduplicatedCases, new $this->sortingFQN());
         foreach ($deduplicatedCases as $key => $case) {
-            $newEnumContent .= $case->toString($this->fqn, '    ', $key === 0);
+            $newEnumContent .= $case->toString($this->enumFQN, '    ', $key === 0);
         }
         $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
 

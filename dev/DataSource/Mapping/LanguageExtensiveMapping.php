@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
-use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueWithDeprecatedTagsSeparateSorting;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueSorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\Exception\DomElementNotFoundException;
@@ -54,7 +53,7 @@ class LanguageExtensiveMapping implements Mapping
 
     public static function toEnumMapping(array $dataSet): array
     {
-        $languageExtensive = new EnumFile(LanguageAlpha3Extensive::class);
+        $languageExtensive = new EnumFile(LanguageAlpha3Extensive::class, ValueSorting::class);
         foreach ($dataSet as $dataItem) {
             if (in_array($dataItem->RefName, ['Fa D\'ambu', 'C\'lela'], true)) {
                 continue;
@@ -64,10 +63,5 @@ class LanguageExtensiveMapping implements Mapping
         }
 
         return [$languageExtensive];
-    }
-
-    public static function getSorting(): SortingInterface
-    {
-        return new ValueWithDeprecatedTagsSeparateSorting();
     }
 }

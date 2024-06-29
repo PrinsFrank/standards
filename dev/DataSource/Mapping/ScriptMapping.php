@@ -5,8 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Enums\BackedEnum;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\KeyWithDeprecatedTagsSeparateSorting;
-use PrinsFrank\Standards\Dev\DataSource\Sorting\SortingInterface;
+use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
@@ -82,10 +81,10 @@ class ScriptMapping implements Mapping
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $scriptCode = new EnumFile(ScriptCode::class);
-        $scriptName = new EnumFile(ScriptName::class);
-        $scriptNumber = new EnumFile(ScriptNumber::class);
-        $scriptAlias = new EnumFile(ScriptAlias::class);
+        $scriptCode = new EnumFile(ScriptCode::class, KeySorting::class);
+        $scriptName = new EnumFile(ScriptName::class, KeySorting::class);
+        $scriptNumber = new EnumFile(ScriptNumber::class, KeySorting::class);
+        $scriptAlias = new EnumFile(ScriptAlias::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
             $name = preg_replace('/_+/', '_', str_replace('+', '_', preg_replace('/\p{No}/u', '', $dataRow->name) ?? '')) ?? '';
 
@@ -103,10 +102,5 @@ class ScriptMapping implements Mapping
         }
 
         return [$scriptAlias, $scriptCode, $scriptName, $scriptNumber];
-    }
-
-    public static function getSorting(): SortingInterface
-    {
-        return new KeyWithDeprecatedTagsSeparateSorting();
     }
 }
