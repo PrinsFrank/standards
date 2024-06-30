@@ -11,17 +11,20 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\Country\Subdivision\Attributes\Name;
 use PrinsFrank\Standards\Country\Subdivision\CountrySubdivision;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
+use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
 use RuntimeException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string, subdivisions: array<string, object{category: string, code: string, name: list<object{name: string, local_variant: string, language_code: string, romanization_system: string}>, parent: string}>}&stdClass
+ * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string, subdivisions: array<string, object{category: string, code: string, name: list<object{name: string, local_variant: string, language: ?LanguageAlpha2, romanization_system: string}>, parent: string}>}&stdClass
  * @implements Mapping<TDataSet>
  */
 class CountryMapping implements Mapping
@@ -103,10 +106,10 @@ class CountryMapping implements Mapping
                         throw new RuntimeException('Attempted to merge division with previous division but the division information (category, code or parent) is different');
                     }
 
-                    $existingSubdivisionWithCode->name[] = (object) [
+                    $existingSubdivisionWithCode->names[] = (object) [
                         'name' => $subdivisionColumns[2]->getText(),
                         'local_variant' => $subdivisionColumns[3]->getText(),
-                        'language_codes' => $subdivisionColumns[4]->getText(),
+                        'language' => LanguageAlpha2::tryFrom($subdivisionColumns[4]->getText()),
                         'romanization_system' => $subdivisionColumns[5]->getText(),
                     ];
 
@@ -116,11 +119,11 @@ class CountryMapping implements Mapping
                 $record->subdivisions[$subdivisionColumns[1]->getText()] = (object) [
                     'category' => $subdivisionColumns[0]->getText(),
                     'code' => rtrim($subdivisionColumns[1]->getText(), '*'),
-                    'name' => [
+                    'names' => [
                         (object) [
                             'name' => $subdivisionColumns[2]->getText(),
                             'local_variant' => $subdivisionColumns[3]->getText(),
-                            'language_codes' => $subdivisionColumns[4]->getText(),
+                            'language' => LanguageAlpha2::tryFrom($subdivisionColumns[4]->getText()),
                             'romanization_system' => $subdivisionColumns[5]->getText(),
                         ],
                     ],
@@ -150,7 +153,15 @@ class CountryMapping implements Mapping
             $countryNumeric->addCase(new EnumCase($dataRow->name, $dataRow->numeric));
 
             foreach ($dataRow->subdivisions as $subdivision) {
-                $countrySubdivision->addCase(new EnumCase(sprintf('%s, %s', $dataRow->name, $subdivision->name[0]->name), $subdivision->code));
+                $countrySubdivision->addCase(
+                    new EnumCase(
+                        sprintf('%s, %s', $dataRow->name, $subdivision->names[0]->name),
+                        $subdivision->code,
+                        array_map(static function (object $nameInfo) {
+                            return new EnumCaseAttribute(Name::class, [$nameInfo->name, $nameInfo->local_variant, $nameInfo->language, $nameInfo->romanization_system]);
+                        }, $subdivision->names)
+                    )
+                );
             }
         }
 
