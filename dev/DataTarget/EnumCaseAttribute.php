@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
 use BackedEnum;
-use InvalidArgumentException;
+use PrinsFrank\Standards\InvalidArgumentException;
 use ReflectionClass;
 use Stringable;
 use UnitEnum;
@@ -21,6 +21,7 @@ class EnumCaseAttribute implements Stringable
     ) {
     }
 
+    /** @throws InvalidArgumentException */
     public function __toString(): string
     {
         if ($this->parameters !== []) {
@@ -30,14 +31,16 @@ class EnumCaseAttribute implements Stringable
         return '#[' . (new ReflectionClass($this->fqn))->getShortName() . ']';
     }
 
+    /** @throws InvalidArgumentException */
     private function valueToString(mixed $value): string {
         if ($value instanceof UnitEnum) {
-            return substr($value::class, strrpos($value::class, '\\') + 1) . '::' . $value->name;
+            return substr($value::class, strrpos($value::class, '\\') !== false ? strrpos($value::class, '\\') + 1 : 0) . '::' . $value->name;
         }
 
         return match (gettype($value)) {
-            'string' => sprintf("'%s'", $value),
-            'null' => 'null',
+            'string' => sprintf("'%s'", str_replace('\'', '\\\'', $value)),
+            'NULL' => 'null',
+            'array' => '[' . implode(', ', array_map(fn (mixed $value) => $this->valueToString($value), $value)) . ']',
             default => throw new InvalidArgumentException(sprintf('Unsupported parameter type %s', gettype($value))),
         };
     }

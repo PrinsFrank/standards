@@ -24,7 +24,7 @@ use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string, subdivisions: array<string, object{category: string, code: string, name: list<object{name: string, local_variant: string, language: ?LanguageAlpha2, romanization_system: string}>, parent: string}>}&stdClass
+ * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string, subdivisions: array<string, object{category: string, code: string, name: list<object{name: string, note: ?string, local_variant: ?string, languages: array<LanguageAlpha2>, romanization_system: ?string}>, parent: string}>}&stdClass
  * @implements Mapping<TDataSet>
  */
 class CountryMapping implements Mapping
@@ -106,25 +106,29 @@ class CountryMapping implements Mapping
                         throw new RuntimeException('Attempted to merge division with previous division but the division information (category, code or parent) is different');
                     }
 
+                    [$name, $note] = [...explode('(see also', rtrim($subdivisionColumns[2]->getText(), ')'), 2), null];
                     $existingSubdivisionWithCode->names[] = (object) [
-                        'name' => $subdivisionColumns[2]->getText(),
-                        'local_variant' => $subdivisionColumns[3]->getText(),
-                        'language' => LanguageAlpha2::tryFrom($subdivisionColumns[4]->getText()),
-                        'romanization_system' => $subdivisionColumns[5]->getText(),
+                        'name' => $name,
+                        'note' => $note,
+                        'languages' => [LanguageAlpha2::tryFrom($subdivisionColumns[4]->getText())],
+                        'romanization_system' => $subdivisionColumns[5]->getText() !== '' ? $subdivisionColumns[5]->getText() : null,
+                        'local_variant' => $subdivisionColumns[3]->getText() !== '' ? $subdivisionColumns[3]->getText() : null,
                     ];
 
                     continue;
                 }
 
+                [$name, $note] = [...explode('(see also', rtrim($subdivisionColumns[2]->getText(), ')'), 2), null];
                 $record->subdivisions[$subdivisionColumns[1]->getText()] = (object) [
                     'category' => $subdivisionColumns[0]->getText(),
                     'code' => rtrim($subdivisionColumns[1]->getText(), '*'),
                     'names' => [
                         (object) [
-                            'name' => $subdivisionColumns[2]->getText(),
-                            'local_variant' => $subdivisionColumns[3]->getText(),
-                            'language' => LanguageAlpha2::tryFrom($subdivisionColumns[4]->getText()),
-                            'romanization_system' => $subdivisionColumns[5]->getText(),
+                            'name' => $name,
+                            'note' => $note,
+                            'languages' => [LanguageAlpha2::tryFrom($subdivisionColumns[4]->getText())],
+                            'romanization_system' => $subdivisionColumns[5]->getText() !== '' ? $subdivisionColumns[5]->getText() : null,
+                            'local_variant' => $subdivisionColumns[3]->getText() !== '' ? $subdivisionColumns[3]->getText() : null,
                         ],
                     ],
                     'parent' => $subdivisionColumns[6]->getText(),
@@ -153,12 +157,20 @@ class CountryMapping implements Mapping
             $countryNumeric->addCase(new EnumCase($dataRow->name, $dataRow->numeric));
 
             foreach ($dataRow->subdivisions as $subdivision) {
+                foreach ($subdivision->names as $key => $name) {
+                    if (array_key_exists($key + 1, $subdivision->names) && $name->name === $subdivision->names[$key + 1]->name && $name->romanization_system === $subdivision->names[$key + 1]->romanization_system && $name->local_variant === $subdivision->names[$key + 1]->local_variant) {
+                        $subdivision->names[$key + 1]->languages = [...$subdivision->names[$key + 1]->languages, ...$subdivision->names[$key]->languages];
+                        unset($subdivision->names[$key]);
+                    }
+                }
+
+                $subdivision->names = array_values(array_filter($subdivision->names));
                 $countrySubdivision->addCase(
                     new EnumCase(
-                        sprintf('%s, %s', $dataRow->name, $subdivision->names[0]->name),
+                        sprintf('%s %s %s', CountryAlpha2::from($dataRow->alpha2)->getNameInLanguage(LanguageAlpha2::English), $subdivision->category, $subdivision->names[0]->name),
                         $subdivision->code,
                         array_map(static function (object $nameInfo) {
-                            return new EnumCaseAttribute(Name::class, [$nameInfo->name, $nameInfo->local_variant, $nameInfo->language, $nameInfo->romanization_system]);
+                            return new EnumCaseAttribute(Name::class, [$nameInfo->name, array_filter($nameInfo->languages), $nameInfo->romanization_system, $nameInfo->local_variant]);
                         }, $subdivision->names)
                     )
                 );

@@ -5,8 +5,8 @@ namespace PrinsFrank\Standards\Dev\DataTarget;
 
 use BackedEnum;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
+use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Scripts\ScriptAlias;
-use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
 use PrinsFrank\Transliteration\Exception\RecursionException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 
@@ -28,6 +28,7 @@ class EnumCase
      * @throws TransliterationException
      * @throws UnableToCreateTransliteratorException
      * @throws RecursionException
+     * @throws \PrinsFrank\Transliteration\Exception\InvalidArgumentException
      */
     public function toString(string $enumFQN, string $indenting, bool $isFirst): string
     {
