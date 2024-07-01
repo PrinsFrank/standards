@@ -1602,7 +1602,7 @@ enum CountrySubdivision: string
     #[Name('Sofia', [LanguageAlpha2::Bulgarian], 'National 1999 = UN X/7 2012', null)]
     case Bulgaria_district_Sofia = 'BG-23';
 
-    #[Name('Sofia (stolitsa', [LanguageAlpha2::Bulgarian], 'National 1999 = UN X/7 2012', null)]
+    #[Name('Sofia (stolitsa)', [LanguageAlpha2::Bulgarian], 'National 1999 = UN X/7 2012', null)]
     case Bulgaria_district_Sofia_stolitsa = 'BG-22';
 
     #[Name('Stara Zagora', [LanguageAlpha2::Bulgarian], 'National 1999 = UN X/7 2012', null)]
@@ -2413,8 +2413,8 @@ enum CountrySubdivision: string
     #[Name('Sichuan Sheng', [LanguageAlpha2::Chinese], 'National 1958 = ISO 7098:2015 = UN III/8 1977', null)]
     case China_province_Sichuan_Sheng = 'CN-SC';
 
-    #[Name('Taiwan Sheng ', [LanguageAlpha2::Chinese], 'National 1958 = ISO 7098:2015 = UN III/8 1977', null)]
-    case China_province_Taiwan_Sheng = 'CN-TW';
+    #[Name('Taiwan Sheng (see also separate country code entry under TW)', [LanguageAlpha2::Chinese], 'National 1958 = ISO 7098:2015 = UN III/8 1977', null)]
+    case China_province_Taiwan_Sheng_see_also_separate_country_code_entry_under_TW = 'CN-TW';
 
     #[Name('Yunnan Sheng', [LanguageAlpha2::Chinese], 'National 1958 = ISO 7098:2015 = UN III/8 1977', null)]
     case China_province_Yunnan_Sheng = 'CN-YN';
@@ -2422,14 +2422,14 @@ enum CountrySubdivision: string
     #[Name('Zhejiang Sheng', [LanguageAlpha2::Chinese], 'National 1958 = ISO 7098:2015 = UN III/8 1977', null)]
     case China_province_Zhejiang_Sheng = 'CN-ZJ';
 
-    #[Name('Aomen Tebiexingzhengqu ', [LanguageAlpha2::Chinese], 'National 1958 = ISO 7098:2015 = UN III/8 1977', null)]
-    #[Name('Macao SAR ', [LanguageAlpha2::English], null, null)]
-    #[Name('Macau SAR ', [LanguageAlpha2::Portuguese], null, null)]
-    case China_special_administrative_region_Aomen_Tebiexingzhengqu = 'CN-MO';
+    #[Name('Aomen Tebiexingzhengqu (see also separate country code entry under MO)', [LanguageAlpha2::Chinese], 'National 1958 = ISO 7098:2015 = UN III/8 1977', null)]
+    #[Name('Macao SAR (see also separate country code entry under MO)', [LanguageAlpha2::English], null, null)]
+    #[Name('Macau SAR (see also separate country code entry under MO)', [LanguageAlpha2::Portuguese], null, null)]
+    case China_special_administrative_region_Aomen_Tebiexingzhengqu_see_also_separate_country_code_entry_under_MO = 'CN-MO';
 
-    #[Name('Hong Kong SAR ', [LanguageAlpha2::English], null, null)]
-    #[Name('Xianggang Tebiexingzhengqu ', [LanguageAlpha2::Chinese], 'National 1958 = ISO 7098:2015 = UN III/8 1977', null)]
-    case China_special_administrative_region_Hong_Kong_SAR = 'CN-HK';
+    #[Name('Hong Kong SAR (see also separate country code entry under HK)', [LanguageAlpha2::English], null, null)]
+    #[Name('Xianggang Tebiexingzhengqu (see also separate country code entry under HK)', [LanguageAlpha2::Chinese], 'National 1958 = ISO 7098:2015 = UN III/8 1977', null)]
+    case China_special_administrative_region_Hong_Kong_SAR_see_also_separate_country_code_entry_under_HK = 'CN-HK';
 
     #[Name('Distrito Capital de Bogotá', [LanguageAlpha2::Spanish_Castilian], null, 'Distrito Capital')]
     case Colombia_capital_district_Distrito_Capital_de_Bogota = 'CO-DC';
@@ -3199,7 +3199,7 @@ enum CountrySubdivision: string
     #[Name('Saint Peter', [LanguageAlpha2::English], null, null)]
     case Dominica_parish_Saint_Peter = 'DM-11';
 
-    #[Name('Distrito Nacional (Santo Domingo', [LanguageAlpha2::Spanish_Castilian], null, null)]
+    #[Name('Distrito Nacional (Santo Domingo)', [LanguageAlpha2::Spanish_Castilian], null, null)]
     case Dominican_Republic_district_Distrito_Nacional_Santo_Domingo = 'DO-01';
 
     #[Name('Azua', [LanguageAlpha2::Spanish_Castilian], null, null)]
@@ -4400,41 +4400,41 @@ enum CountrySubdivision: string
     #[Name('Provence-Alpes-Côte-d’Azur', [LanguageAlpha2::French], null, null)]
     case France_metropolitan_region_Provence_Alpes_Cote_d_Azur = 'FR-PAC';
 
-    #[Name('Polynésie française ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_collectivity_Polynesie_francaise = 'FR-PF';
+    #[Name('Polynésie française (see also separate country code entry under PF)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_collectivity_Polynesie_francaise_see_also_separate_country_code_entry_under_PF = 'FR-PF';
 
-    #[Name('Saint-Barthélemy ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_collectivity_Saint_Barthelemy = 'FR-BL';
+    #[Name('Saint-Barthélemy (see also separate country code entry under BL)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_collectivity_Saint_Barthelemy_see_also_separate_country_code_entry_under_BL = 'FR-BL';
 
-    #[Name('Saint-Martin ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_collectivity_Saint_Martin = 'FR-MF';
+    #[Name('Saint-Martin (see also separate country code entry under MF)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_collectivity_Saint_Martin_see_also_separate_country_code_entry_under_MF = 'FR-MF';
 
-    #[Name('Saint-Pierre-et-Miquelon ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_collectivity_Saint_Pierre_et_Miquelon = 'FR-PM';
+    #[Name('Saint-Pierre-et-Miquelon (see also separate country code entry under PM)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_collectivity_Saint_Pierre_et_Miquelon_see_also_separate_country_code_entry_under_PM = 'FR-PM';
 
-    #[Name('Wallis-et-Futuna ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_collectivity_Wallis_et_Futuna = 'FR-WF';
+    #[Name('Wallis-et-Futuna (see also separate country code entry under WF)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_collectivity_Wallis_et_Futuna_see_also_separate_country_code_entry_under_WF = 'FR-WF';
 
-    #[Name('Nouvelle-Calédonie ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_collectivity_with_special_status_Nouvelle_Caledonie = 'FR-NC';
+    #[Name('Nouvelle-Calédonie (see also separate country code entry under NC)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_collectivity_with_special_status_Nouvelle_Caledonie_see_also_separate_country_code_entry_under_NC = 'FR-NC';
 
-    #[Name('Guadeloupe ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_departmental_collectivity_Guadeloupe = 'FR-971';
+    #[Name('Guadeloupe (see also separate country code entry under GP)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_departmental_collectivity_Guadeloupe_see_also_separate_country_code_entry_under_GP = 'FR-971';
 
-    #[Name('La Réunion ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_departmental_collectivity_La_Reunion = 'FR-974';
+    #[Name('La Réunion (see also separate country code entry under RE)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_departmental_collectivity_La_Reunion_see_also_separate_country_code_entry_under_RE = 'FR-974';
 
-    #[Name('Mayotte ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_departmental_collectivity_Mayotte = 'FR-976';
+    #[Name('Mayotte (see also separate country code entry under YT)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_departmental_collectivity_Mayotte_see_also_separate_country_code_entry_under_YT = 'FR-976';
 
-    #[Name('Terres australes françaises ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_territory_Terres_australes_francaises = 'FR-TF';
+    #[Name('Terres australes françaises (see also separate country code entry under TF)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_territory_Terres_australes_francaises_see_also_separate_country_code_entry_under_TF = 'FR-TF';
 
-    #[Name('Guyane (française) ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_unique_territorial_collectivity_Guyane_francaise = 'FR-973';
+    #[Name('Guyane (française) (see also separate country code entry under GF)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_unique_territorial_collectivity_Guyane_francaise_see_also_separate_country_code_entry_under_GF = 'FR-973';
 
-    #[Name('Martinique ', [LanguageAlpha2::French], null, null)]
-    case France_overseas_unique_territorial_collectivity_Martinique = 'FR-972';
+    #[Name('Martinique (see also separate country code entry under MQ)', [LanguageAlpha2::French], null, null)]
+    case France_overseas_unique_territorial_collectivity_Martinique_see_also_separate_country_code_entry_under_MQ = 'FR-972';
 
     #[Name('Estuaire', [LanguageAlpha2::French], null, null)]
     case Gabon_province_Estuaire = 'GA-1';
@@ -8292,7 +8292,7 @@ enum CountrySubdivision: string
     #[Name('Yap', [LanguageAlpha2::English], null, null)]
     case Micronesia_state_Yap = 'FM-YAP';
 
-    #[Name('Găgăuzia, Unitatea teritorială autonomă (UTAG', [LanguageAlpha2::Romanian_Moldavian_Moldovan], null, null)]
+    #[Name('Găgăuzia, Unitatea teritorială autonomă (UTAG)', [LanguageAlpha2::Romanian_Moldavian_Moldovan], null, null)]
     case Moldova_autonomous_territorial_unit_Gagauzia_Unitatea_teritoriala_autonoma_UTAG = 'MD-GA';
 
     #[Name('Bălți', [LanguageAlpha2::Romanian_Moldavian_Moldovan], null, null)]
@@ -8640,10 +8640,10 @@ enum CountrySubdivision: string
     #[Name('Al Hoceïma', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Al_Hoceima = 'MA-HOC';
 
-    #[Name('Aousserd (EH', [LanguageAlpha2::Arabic], 'conventional names', null)]
+    #[Name('Aousserd (EH)', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Aousserd_EH = 'MA-AOU';
 
-    #[Name('Assa-Zag (EH-partial', [LanguageAlpha2::Arabic], 'conventional names', null)]
+    #[Name('Assa-Zag (EH-partial)', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Assa_Zag_EH_partial = 'MA-ASZ';
 
     #[Name('Azilal', [LanguageAlpha2::Arabic], 'conventional names', null)]
@@ -8661,7 +8661,7 @@ enum CountrySubdivision: string
     #[Name('Berrechid', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Berrechid = 'MA-BRR';
 
-    #[Name('Boujdour (EH', [LanguageAlpha2::Arabic], 'conventional names', null)]
+    #[Name('Boujdour (EH)', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Boujdour_EH = 'MA-BOD';
 
     #[Name('Boulemane', [LanguageAlpha2::Arabic], 'conventional names', null)]
@@ -8691,7 +8691,7 @@ enum CountrySubdivision: string
     #[Name('Errachidia', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Errachidia = 'MA-ERR';
 
-    #[Name('Es-Semara (EH-partial', [LanguageAlpha2::Arabic], 'conventional names', null)]
+    #[Name('Es-Semara (EH-partial)', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Es_Semara_EH_partial = 'MA-ESM';
 
     #[Name('Essaouira', [LanguageAlpha2::Arabic], 'conventional names', null)]
@@ -8730,7 +8730,7 @@ enum CountrySubdivision: string
     #[Name('Khouribga', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Khouribga = 'MA-KHO';
 
-    #[Name('Laâyoune (EH', [LanguageAlpha2::Arabic], 'conventional names', null)]
+    #[Name('Laâyoune (EH)', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Laayoune_EH = 'MA-LAA';
 
     #[Name('Larache', [LanguageAlpha2::Arabic], 'conventional names', null)]
@@ -8754,7 +8754,7 @@ enum CountrySubdivision: string
     #[Name('Ouarzazate', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Ouarzazate = 'MA-OUA';
 
-    #[Name('Oued Ed-Dahab (EH', [LanguageAlpha2::Arabic], 'conventional names', null)]
+    #[Name('Oued Ed-Dahab (EH)', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Oued_Ed_Dahab_EH = 'MA-OUD';
 
     #[Name('Ouezzane', [LanguageAlpha2::Arabic], 'conventional names', null)]
@@ -8784,7 +8784,7 @@ enum CountrySubdivision: string
     #[Name('Sidi Slimane', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Sidi_Slimane = 'MA-SIL';
 
-    #[Name('Tan-Tan (EH-partial', [LanguageAlpha2::Arabic], 'conventional names', null)]
+    #[Name('Tan-Tan (EH-partial)', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Tan_Tan_EH_partial = 'MA-TNT';
 
     #[Name('Taounate', [LanguageAlpha2::Arabic], 'conventional names', null)]
@@ -8793,7 +8793,7 @@ enum CountrySubdivision: string
     #[Name('Taourirt', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Taourirt = 'MA-TAI';
 
-    #[Name('Tarfaya (EH-partial', [LanguageAlpha2::Arabic], 'conventional names', null)]
+    #[Name('Tarfaya (EH-partial)', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_province_Tarfaya_EH_partial = 'MA-TAF';
 
     #[Name('Taroudannt', [LanguageAlpha2::Arabic], 'conventional names', null)]
@@ -8826,7 +8826,7 @@ enum CountrySubdivision: string
     #[Name('Casablanca-Settat', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_region_Casablanca_Settat = 'MA-06';
 
-    #[Name('Dakhla-Oued Ed-Dahab (EH', [LanguageAlpha2::Arabic], 'conventional names', null)]
+    #[Name('Dakhla-Oued Ed-Dahab (EH)', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_region_Dakhla_Oued_Ed_Dahab_EH = 'MA-12';
 
     #[Name('Drâa-Tafilalet', [LanguageAlpha2::Arabic], 'conventional names', null)]
@@ -8835,13 +8835,13 @@ enum CountrySubdivision: string
     #[Name('Fès-Meknès', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_region_Fes_Meknes = 'MA-03';
 
-    #[Name('Guelmim-Oued Noun (EH-partial', [LanguageAlpha2::Arabic], 'conventional names', null)]
+    #[Name('Guelmim-Oued Noun (EH-partial)', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_region_Guelmim_Oued_Noun_EH_partial = 'MA-10';
 
     #[Name('L\'Oriental', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_region_L_Oriental = 'MA-02';
 
-    #[Name('Laâyoune-Sakia El Hamra (EH-partial', [LanguageAlpha2::Arabic], 'conventional names', null)]
+    #[Name('Laâyoune-Sakia El Hamra (EH-partial)', [LanguageAlpha2::Arabic], 'conventional names', null)]
     case Morocco_region_Laayoune_Sakia_El_Hamra_EH_partial = 'MA-11';
 
     #[Name('Marrakech-Safi', [LanguageAlpha2::Arabic], 'conventional names', null)]
@@ -9046,14 +9046,14 @@ enum CountrySubdivision: string
     #[Name('Sudūrpashchim', [LanguageAlpha2::Nepali], 'conventional names', 'Sudūr Pashchim; Pradesh 7')]
     case Nepal_province_Sudurpashchim = 'NP-P7';
 
-    #[Name('Aruba ', [LanguageAlpha2::Dutch_Flemish], null, null)]
-    case Netherlands_country_Aruba = 'NL-AW';
+    #[Name('Aruba (see also separate country code entry under AW)', [LanguageAlpha2::Dutch_Flemish], null, null)]
+    case Netherlands_country_Aruba_see_also_separate_country_code_entry_under_AW = 'NL-AW';
 
-    #[Name('Curaçao ', [LanguageAlpha2::Dutch_Flemish], null, null)]
-    case Netherlands_country_Curacao = 'NL-CW';
+    #[Name('Curaçao (see also separate country code entry under CW)', [LanguageAlpha2::Dutch_Flemish], null, null)]
+    case Netherlands_country_Curacao_see_also_separate_country_code_entry_under_CW = 'NL-CW';
 
-    #[Name('Sint Maarten ', [LanguageAlpha2::Dutch_Flemish], null, null)]
-    case Netherlands_country_Sint_Maarten = 'NL-SX';
+    #[Name('Sint Maarten (see also separate country code entry under SX)', [LanguageAlpha2::Dutch_Flemish], null, null)]
+    case Netherlands_country_Sint_Maarten_see_also_separate_country_code_entry_under_SX = 'NL-SX';
 
     #[Name('Drenthe', [LanguageAlpha2::Dutch_Flemish], null, null)]
     case Netherlands_province_Drenthe = 'NL-DR';
@@ -9091,14 +9091,14 @@ enum CountrySubdivision: string
     #[Name('Zuid-Holland', [LanguageAlpha2::Dutch_Flemish], null, null)]
     case Netherlands_province_Zuid_Holland = 'NL-ZH';
 
-    #[Name('Bonaire ', [LanguageAlpha2::Dutch_Flemish], null, null)]
-    case Netherlands_special_municipality_Bonaire = 'NL-BQ1';
+    #[Name('Bonaire (see also separate country code entry under BQ)', [LanguageAlpha2::Dutch_Flemish], null, null)]
+    case Netherlands_special_municipality_Bonaire_see_also_separate_country_code_entry_under_BQ = 'NL-BQ1';
 
-    #[Name('Saba ', [LanguageAlpha2::Dutch_Flemish], null, null)]
-    case Netherlands_special_municipality_Saba = 'NL-BQ2';
+    #[Name('Saba (see also separate country code entry under BQ)', [LanguageAlpha2::Dutch_Flemish], null, null)]
+    case Netherlands_special_municipality_Saba_see_also_separate_country_code_entry_under_BQ = 'NL-BQ2';
 
-    #[Name('Sint Eustatius ', [LanguageAlpha2::Dutch_Flemish], null, null)]
-    case Netherlands_special_municipality_Sint_Eustatius = 'NL-BQ3';
+    #[Name('Sint Eustatius (see also separate country code entry under BQ)', [LanguageAlpha2::Dutch_Flemish], null, null)]
+    case Netherlands_special_municipality_Sint_Eustatius_see_also_separate_country_code_entry_under_BQ = 'NL-BQ3';
 
     #[Name('Auckland', [LanguageAlpha2::English], null, null)]
     #[Name('Tāmaki-Makaurau', [LanguageAlpha2::Maori], null, null)]
@@ -9643,11 +9643,11 @@ enum CountrySubdivision: string
     #[Name('Zrnovci', [LanguageAlpha2::Macedonian], 'BGN/PCGN 2013', null)]
     case North_Macedonia_municipality_Zrnovci = 'MK-204';
 
-    #[Name('Jan Mayen (Arctic Region) ', [LanguageAlpha2::Bokmal_Norwegian_Norwegian_Bokmal, LanguageAlpha2::Norwegian_Nynorsk_Nynorsk_Norwegian], null, null)]
-    case Norway_arctic_region_Jan_Mayen_Arctic_Region = 'NO-22';
+    #[Name('Jan Mayen (Arctic Region) (see also separate country code entry under SJ)', [LanguageAlpha2::Bokmal_Norwegian_Norwegian_Bokmal, LanguageAlpha2::Norwegian_Nynorsk_Nynorsk_Norwegian], null, null)]
+    case Norway_arctic_region_Jan_Mayen_Arctic_Region_see_also_separate_country_code_entry_under_SJ = 'NO-22';
 
-    #[Name('Svalbard (Arctic Region) ', [LanguageAlpha2::Bokmal_Norwegian_Norwegian_Bokmal, LanguageAlpha2::Norwegian_Nynorsk_Nynorsk_Norwegian], null, null)]
-    case Norway_arctic_region_Svalbard_Arctic_Region = 'NO-21';
+    #[Name('Svalbard (Arctic Region) (see also separate country code entry under SJ)', [LanguageAlpha2::Bokmal_Norwegian_Norwegian_Bokmal, LanguageAlpha2::Norwegian_Nynorsk_Nynorsk_Norwegian], null, null)]
+    case Norway_arctic_region_Svalbard_Arctic_Region_see_also_separate_country_code_entry_under_SJ = 'NO-21';
 
     #[Name('Agder', [LanguageAlpha2::Bokmal_Norwegian_Norwegian_Bokmal, LanguageAlpha2::Norwegian_Nynorsk_Nynorsk_Norwegian], null, null)]
     case Norway_county_Agder = 'NO-42';
@@ -9903,7 +9903,7 @@ enum CountrySubdivision: string
     #[Name('Bougainville', [LanguageAlpha2::English], null, null)]
     case Papua_New_Guinea_autonomous_region_Bougainville = 'PG-NSB';
 
-    #[Name('National Capital District (Port Moresby', [LanguageAlpha2::English], null, null)]
+    #[Name('National Capital District (Port Moresby)', [LanguageAlpha2::English], null, null)]
     case Papua_New_Guinea_district_National_Capital_District_Port_Moresby = 'PG-NCD';
 
     #[Name('Central', [LanguageAlpha2::English], null, null)]
@@ -10436,51 +10436,51 @@ enum CountrySubdivision: string
     #[Name('Zamboanga del Sur', [LanguageAlpha2::English], null, null)]
     case Philippines_province_Timog_Sambuwangga = 'PH-ZAS';
 
-    #[Name('Autonomous Region in Muslim Mindanao (ARMM', [LanguageAlpha2::English], null, null)]
+    #[Name('Autonomous Region in Muslim Mindanao (ARMM)', [LanguageAlpha2::English], null, null)]
     #[Name('Nagsasariling Rehiyon ng Muslim sa Mindanaw', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Autonomous_Region_in_Muslim_Mindanao_ARMM = 'PH-14';
 
-    #[Name('Bicol (Region V', [LanguageAlpha2::English], null, null)]
+    #[Name('Bicol (Region V)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Bikol', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Bicol_Region_V = 'PH-05';
 
-    #[Name('Cagayan Valley (Region II', [LanguageAlpha2::English], null, null)]
+    #[Name('Cagayan Valley (Region II)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Lambak ng Kagayan', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Cagayan_Valley_Region_II = 'PH-02';
 
-    #[Name('Calabarzon (Region IV-A', [LanguageAlpha2::English], null, null)]
+    #[Name('Calabarzon (Region IV-A)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Calabarzon', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Calabarzon_Region_IV_A = 'PH-40';
 
-    #[Name('Caraga (Region XIII', [LanguageAlpha2::English], null, null)]
+    #[Name('Caraga (Region XIII)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Karaga', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Caraga_Region_XIII = 'PH-13';
 
-    #[Name('Central Luzon (Region III', [LanguageAlpha2::English], null, null)]
+    #[Name('Central Luzon (Region III)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Gitnang Luson', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Central_Luzon_Region_III = 'PH-03';
 
-    #[Name('Central Visayas (Region VII', [LanguageAlpha2::English], null, null)]
+    #[Name('Central Visayas (Region VII)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Gitnang Bisaya', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Central_Visayas_Region_VII = 'PH-07';
 
-    #[Name('Cordillera Administrative Region (CAR', [LanguageAlpha2::English], null, null)]
+    #[Name('Cordillera Administrative Region (CAR)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Administratibo ng Kordilyera', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Cordillera_Administrative_Region_CAR = 'PH-15';
 
-    #[Name('Davao (Region XI', [LanguageAlpha2::English], null, null)]
+    #[Name('Davao (Region XI)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Dabaw', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Davao_Region_XI = 'PH-11';
 
-    #[Name('Eastern Visayas (Region VIII', [LanguageAlpha2::English], null, null)]
+    #[Name('Eastern Visayas (Region VIII)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Silangang Bisaya', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Eastern_Visayas_Region_VIII = 'PH-08';
 
-    #[Name('Ilocos (Region I', [LanguageAlpha2::English], null, null)]
+    #[Name('Ilocos (Region I)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Iloko', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Ilocos_Region_I = 'PH-01';
 
-    #[Name('Mimaropa (Region IV-B', [LanguageAlpha2::English], null, null)]
+    #[Name('Mimaropa (Region IV-B)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Mimaropa', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Mimaropa_Region_IV_B = 'PH-41';
 
@@ -10488,20 +10488,20 @@ enum CountrySubdivision: string
     #[Name('Pambansang Punong Rehiyon', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_National_Capital_Region = 'PH-00';
 
-    #[Name('Northern Mindanao (Region X', [LanguageAlpha2::English], null, null)]
+    #[Name('Northern Mindanao (Region X)', [LanguageAlpha2::English], null, null)]
     #[Name('Rehiyon ng Hilagang Mindanaw', [LanguageAlpha2::Tagalog], null, null)]
     case Philippines_region_Northern_Mindanao_Region_X = 'PH-10';
 
     #[Name('Rehiyon ng Kanlurang Bisaya', [LanguageAlpha2::Tagalog], null, null)]
-    #[Name('Western Visayas (Region VI', [LanguageAlpha2::English], null, null)]
+    #[Name('Western Visayas (Region VI)', [LanguageAlpha2::English], null, null)]
     case Philippines_region_Rehiyon_ng_Kanlurang_Bisaya = 'PH-06';
 
     #[Name('Rehiyon ng Soccsksargen', [LanguageAlpha2::Tagalog], null, null)]
-    #[Name('Soccsksargen (Region XII', [LanguageAlpha2::English], null, null)]
+    #[Name('Soccsksargen (Region XII)', [LanguageAlpha2::English], null, null)]
     case Philippines_region_Rehiyon_ng_Soccsksargen = 'PH-12';
 
     #[Name('Rehiyon ng Tangway ng Sambuwangga', [LanguageAlpha2::Tagalog], null, null)]
-    #[Name('Zamboanga Peninsula (Region IX', [LanguageAlpha2::English], null, null)]
+    #[Name('Zamboanga Peninsula (Region IX)', [LanguageAlpha2::English], null, null)]
     case Philippines_region_Rehiyon_ng_Tangway_ng_Sambuwangga = 'PH-09';
 
     #[Name('Dolnośląskie', [LanguageAlpha2::Polish], null, null)]
@@ -11492,7 +11492,7 @@ enum CountrySubdivision: string
     #[Name('Takamaka', [LanguageAlpha2::French, LanguageAlpha2::English], null, null)]
     case Seychelles_district_Takamaka = 'SC-23';
 
-    #[Name('Western Area (Freetown', [LanguageAlpha2::English], null, null)]
+    #[Name('Western Area (Freetown)', [LanguageAlpha2::English], null, null)]
     case Sierra_Leone_area_Western_Area_Freetown = 'SL-W';
 
     #[Name('Eastern', [LanguageAlpha2::English], null, null)]
@@ -12182,7 +12182,7 @@ enum CountrySubdivision: string
     #[Name('Velenje', [LanguageAlpha2::Slovenian], null, null)]
     case Slovenia_urban_municipality_Velenje = 'SI-133';
 
-    #[Name('Capital Territory (Honiara', [LanguageAlpha2::English], null, null)]
+    #[Name('Capital Territory (Honiara)', [LanguageAlpha2::English], null, null)]
     case Solomon_Islands_capital_territory_Capital_Territory_Honiara = 'SB-CT';
 
     #[Name('Central', [LanguageAlpha2::English], null, null)]
@@ -13676,7 +13676,7 @@ enum CountrySubdivision: string
     #[Name('Kara', [LanguageAlpha2::French], null, null)]
     case Togo_region_Kara = 'TG-K';
 
-    #[Name('Maritime (Région', [LanguageAlpha2::French], null, null)]
+    #[Name('Maritime (Région)', [LanguageAlpha2::French], null, null)]
     case Togo_region_Maritime_Region = 'TG-M';
 
     #[Name('Plateaux', [LanguageAlpha2::French], null, null)]
@@ -15314,23 +15314,23 @@ enum CountrySubdivision: string
     #[Name('District of Columbia', [LanguageAlpha2::English], null, null)]
     case United_States_district_District_of_Columbia = 'US-DC';
 
-    #[Name('American Samoa ', [LanguageAlpha2::English], null, null)]
-    case United_States_outlying_area_American_Samoa = 'US-AS';
+    #[Name('American Samoa (see also separate country code entry under AS)', [LanguageAlpha2::English], null, null)]
+    case United_States_outlying_area_American_Samoa_see_also_separate_country_code_entry_under_AS = 'US-AS';
 
-    #[Name('Guam ', [LanguageAlpha2::English], null, null)]
-    case United_States_outlying_area_Guam = 'US-GU';
+    #[Name('Guam (see also separate country code entry under GU)', [LanguageAlpha2::English], null, null)]
+    case United_States_outlying_area_Guam_see_also_separate_country_code_entry_under_GU = 'US-GU';
 
-    #[Name('Northern Mariana Islands ', [LanguageAlpha2::English], null, null)]
-    case United_States_outlying_area_Northern_Mariana_Islands = 'US-MP';
+    #[Name('Northern Mariana Islands (see also separate country code entry under MP)', [LanguageAlpha2::English], null, null)]
+    case United_States_outlying_area_Northern_Mariana_Islands_see_also_separate_country_code_entry_under_MP = 'US-MP';
 
-    #[Name('Puerto Rico ', [LanguageAlpha2::English], null, null)]
-    case United_States_outlying_area_Puerto_Rico = 'US-PR';
+    #[Name('Puerto Rico (see also separate country code entry under PR)', [LanguageAlpha2::English], null, null)]
+    case United_States_outlying_area_Puerto_Rico_see_also_separate_country_code_entry_under_PR = 'US-PR';
 
-    #[Name('United States Minor Outlying Islands ', [LanguageAlpha2::English], null, null)]
-    case United_States_outlying_area_United_States_Minor_Outlying_Islands = 'US-UM';
+    #[Name('United States Minor Outlying Islands (see also separate country code entry under UM)', [LanguageAlpha2::English], null, null)]
+    case United_States_outlying_area_United_States_Minor_Outlying_Islands_see_also_separate_country_code_entry_under_UM = 'US-UM';
 
-    #[Name('Virgin Islands, U.S. ', [LanguageAlpha2::English], null, null)]
-    case United_States_outlying_area_Virgin_Islands_U_S = 'US-VI';
+    #[Name('Virgin Islands, U.S. (see also separate country code entry under VI)', [LanguageAlpha2::English], null, null)]
+    case United_States_outlying_area_Virgin_Islands_U_S_see_also_separate_country_code_entry_under_VI = 'US-VI';
 
     #[Name('Alabama', [LanguageAlpha2::English], null, null)]
     case United_States_state_Alabama = 'US-AL';

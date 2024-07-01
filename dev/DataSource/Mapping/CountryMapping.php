@@ -18,13 +18,16 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\ShouldNotHappenException;
 use RuntimeException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
+use TypeError;
+use ValueError;
 
 /**
- * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string, subdivisions: array<string, object{category: string, code: string, name: list<object{name: string, note: ?string, local_variant: ?string, languages: array<LanguageAlpha2>, romanization_system: ?string}>, parent: string}>}&stdClass
+ * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string, subdivisions: array<string, object{category: string, code: string, parent: ?string, names: non-empty-list<object{name: string, note: ?string, languages: list<CountryAlpha2>, romanization_system: ?string, local_variant: ?string}&stdClass>}&stdClass>}&stdClass
  * @implements Mapping<TDataSet>
  */
 class CountryMapping implements Mapping
@@ -66,14 +69,15 @@ class CountryMapping implements Mapping
                 throw new RuntimeException('Expected exactly 5 columns');
             }
 
-            $record = (object) ['subdivisions' => []];
+            /** @var TDataSet $record */
+            $record = new stdClass();
+            $record->subdivisions = [];
             $record->name = $columns[0]->getText();
             $record->name_french = $columns[1]->getText();
             $record->alpha2 = $columns[2]->getText();
             $record->alpha3 = $columns[3]->getText();
             $record->numeric = $columns[4]->getText();
 
-            /** @var TDataSet $record */
             $dataSet[] = $record;
         }
 
@@ -106,7 +110,7 @@ class CountryMapping implements Mapping
                         throw new RuntimeException('Attempted to merge division with previous division but the division information (category, code or parent) is different');
                     }
 
-                    [$name, $note] = [...explode('(see also', rtrim($subdivisionColumns[2]->getText(), ')'), 2), null];
+                    [$name, $note] = self::getNameNote($subdivisionColumns[2]->getText());
                     $existingSubdivisionWithCode->names[] = (object) [
                         'name' => $name,
                         'note' => $note,
@@ -118,10 +122,11 @@ class CountryMapping implements Mapping
                     continue;
                 }
 
-                [$name, $note] = [...explode('(see also', rtrim($subdivisionColumns[2]->getText(), ')'), 2), null];
+                [$name, $note] = self::getNameNote($subdivisionColumns[2]->getText());
                 $record->subdivisions[$subdivisionColumns[1]->getText()] = (object) [
                     'category' => $subdivisionColumns[0]->getText(),
                     'code' => rtrim($subdivisionColumns[1]->getText(), '*'),
+                    'parent' => $subdivisionColumns[6]->getText(),
                     'names' => [
                         (object) [
                             'name' => $name,
@@ -131,7 +136,6 @@ class CountryMapping implements Mapping
                             'local_variant' => $subdivisionColumns[3]->getText() !== '' ? $subdivisionColumns[3]->getText() : null,
                         ],
                     ],
-                    'parent' => $subdivisionColumns[6]->getText(),
                 ];
             }
         }
@@ -141,6 +145,9 @@ class CountryMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
+     * @throws ShouldNotHappenException
+     * @throws TypeError
+     * @throws ValueError
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array
@@ -164,19 +171,29 @@ class CountryMapping implements Mapping
                     }
                 }
 
-                $subdivision->names = array_values(array_filter($subdivision->names));
+                $subdivision->names = array_values(array_filter($subdivision->names, fn (object|null $value) => $value !== null));
                 $countrySubdivision->addCase(
                     new EnumCase(
-                        sprintf('%s %s %s', CountryAlpha2::from($dataRow->alpha2)->getNameInLanguage(LanguageAlpha2::English), $subdivision->category, $subdivision->names[0]->name),
+                        sprintf('%s %s %s', CountryAlpha2::from($dataRow->alpha2)->getNameInLanguage(LanguageAlpha2::English), $subdivision->category, $subdivision->names[0]->name ?? throw new ShouldNotHappenException('This subdivision has no name(s)')),
                         $subdivision->code,
                         array_map(static function (object $nameInfo) {
-                            return new EnumCaseAttribute(Name::class, [$nameInfo->name, array_filter($nameInfo->languages), $nameInfo->romanization_system, $nameInfo->local_variant]);
-                        }, $subdivision->names)
+                            return new EnumCaseAttribute(Name::class, [$nameInfo->name, array_filter($nameInfo->languages, fn (object|null $value) => $value !== null), $nameInfo->romanization_system, $nameInfo->local_variant]);
+                        }, $subdivision->names),
                     )
                 );
             }
         }
 
         return [$countryName, $countryAlpha2, $countryAlpha3, $countryNumeric, $countrySubdivision];
+    }
+
+    /** @return array{0: string, 1: ?string} */
+    private static function getNameNote(string $text): array
+    {
+        if (($notePos = strpos('(see also', $text)) !== false) {
+            return [substr($text, 0, $notePos), rtrim(substr($text, $notePos - 1), ')')];
+        }
+
+        return [$text, null];
     }
 }

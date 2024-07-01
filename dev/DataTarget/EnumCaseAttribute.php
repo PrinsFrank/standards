@@ -13,7 +13,7 @@ class EnumCaseAttribute implements Stringable
 {
     /**
      * @param class-string<object> $fqn
-     * @param list<string|UnitEnum|BackedEnum|null> $parameters
+     * @param list<string|UnitEnum|BackedEnum|null|array<string|UnitEnum|BackedEnum|null>> $parameters
      */
     public function __construct(
         public readonly string $fqn,
@@ -32,7 +32,8 @@ class EnumCaseAttribute implements Stringable
     }
 
     /** @throws InvalidArgumentException */
-    private function valueToString(mixed $value): string {
+    private function valueToString(mixed $value): string
+    {
         if ($value instanceof UnitEnum) {
             return substr($value::class, strrpos($value::class, '\\') !== false ? strrpos($value::class, '\\') + 1 : 0) . '::' . $value->name;
         }
