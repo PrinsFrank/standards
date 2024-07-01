@@ -6,6 +6,7 @@ namespace PrinsFrank\Standards\Country;
 use NumberFormatter;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\Groups\GroupInterface;
+use PrinsFrank\Standards\Country\Subdivision\CountrySubdivision;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
@@ -1182,5 +1183,10 @@ enum CountryAlpha2: string
             self::Zambia => CountryCodeTLD::zm,
             self::Zimbabwe => CountryCodeTLD::zw,
         };
+    }
+
+    /** @return list<CountrySubdivision> */
+    public function getSubdivisions(): array {
+        return CountrySubdivision::forCountry();
     }
 }
