@@ -10,7 +10,7 @@ extend-ignore-re = [
     "\\bself::[0-9A-Z_a-z]+ +=> .+,",
     "\\b(Country|Currency)[:0-9A-Z_a-z]+,",
     "\\b(Country|Currency)[:0-9A-Z_a-z]+ +=> [:0-9A-Z_a-z]+,",
-    "\\b#\\[Name\\(.+\\[LanguageAlpha2::.+",
+    "#\\[Name\\(.+\\[LanguageAlpha2::.+",
 ]
 
 [default.extend-identifiers]
