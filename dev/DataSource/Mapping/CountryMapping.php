@@ -17,6 +17,9 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
+use PrinsFrank\Standards\Dev\DataTarget\NameNormalizer;
+use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\ShouldNotHappenException;
 use RuntimeException;
@@ -148,15 +151,18 @@ class CountryMapping implements Mapping
      * @throws ShouldNotHappenException
      * @throws TypeError
      * @throws ValueError
+     * @throws TransliterationException
+     * @throws \PrinsFrank\Transliteration\Exception\TransliterationException
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array
     {
         $countryName = new EnumFile(CountryName::class, KeySorting::class);
-        $countryAlpha2 = new EnumFile(CountryAlpha2::class, KeySorting::class);
+        $countryAlpha2 = (new EnumFile(CountryAlpha2::class, KeySorting::class))
+            ->addMethod($getSubdivisionsMethod = new EnumMethod('getSubdivisions', 'array', '[]', null));
         $countryAlpha3 = new EnumFile(CountryAlpha3::class, KeySorting::class);
         $countryNumeric = new EnumFile(CountryNumeric::class, KeySorting::class);
-        $countrySubdivision = new EnumFile(CountrySubdivision::class, KeySorting::class);
+        $countrySubdivision = (new EnumFile(CountrySubdivision::class, KeySorting::class));
         foreach ($dataSet as $dataRow) {
             $countryName->addCase(new EnumCase($dataRow->name, $dataRow->name));
             $countryAlpha2->addCase(new EnumCase($dataRow->name, $dataRow->alpha2));
@@ -174,13 +180,17 @@ class CountryMapping implements Mapping
                 $subdivision->names = array_values(array_filter($subdivision->names, fn (object|null $value) => $value !== null));
                 $countrySubdivision->addCase(
                     new EnumCase(
-                        sprintf('%s %s %s', CountryAlpha2::from($dataRow->alpha2)->getNameInLanguage(LanguageAlpha2::English), $subdivision->category, $subdivision->names[0]->name ?? throw new ShouldNotHappenException('This subdivision has no name(s)')),
+                        $name = sprintf('%s %s %s', CountryAlpha2::from($dataRow->alpha2)->getNameInLanguage(LanguageAlpha2::English), $subdivision->category, $subdivision->names[0]->name ?? throw new ShouldNotHappenException('This subdivision has no name(s)')),
                         $subdivision->code,
                         array_map(static function (object $nameInfo) {
                             return new EnumCaseAttribute(Name::class, [$nameInfo->name, array_filter($nameInfo->languages, fn (object|null $value) => $value !== null), $nameInfo->romanization_system, $nameInfo->local_variant]);
                         }, $subdivision->names),
                     )
                 );
+
+                $country = CountryAlpha2::from($dataRow->alpha2);
+                $subdivisionName = CountrySubdivision::tryFrom($subdivision->code)->name ?? NameNormalizer::normalize($name);
+                $getSubdivisionsMethod->addMapping('self::' . $country->name, 'CountrySubdivision::' . $subdivisionName);
             }
         }
 

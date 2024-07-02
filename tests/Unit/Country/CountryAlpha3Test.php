@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\Groups\EFTA;
 use PrinsFrank\Standards\Country\Groups\EU;
+use PrinsFrank\Standards\Country\Subdivision\CountrySubdivision;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
@@ -162,5 +163,23 @@ class CountryAlpha3Test extends TestCase
         static::assertSame('42,42', CountryAlpha3::Netherlands->formatNumber(42.42, LanguageAlpha2::English));
         static::assertSame('42,42', CountryAlpha3::United_States_of_America->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish));
         static::assertSame('42.42', CountryAlpha3::United_States_of_America->formatNumber(42.42, LanguageAlpha2::English));
+    }
+
+    /** @covers ::getSubdivisions */
+    public function testGetSubdivisions(): void
+    {
+        foreach (CountryAlpha3::cases() as $countryAlpha3) {
+            $countryAlpha3->getSubdivisions();
+
+            $this->addToAssertionCount(1);
+        }
+        static::assertSame(
+            [
+                CountrySubdivision::Caribbean_Netherlands_special_municipality_Bonaire,
+                CountrySubdivision::Caribbean_Netherlands_special_municipality_Saba,
+                CountrySubdivision::Caribbean_Netherlands_special_municipality_Sint_Eustatius
+            ],
+            CountryAlpha3::Bonaire_Sint_Eustatius_and_Saba->getSubdivisions(),
+        );
     }
 }
