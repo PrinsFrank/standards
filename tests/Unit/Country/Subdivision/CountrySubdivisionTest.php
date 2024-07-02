@@ -12,6 +12,7 @@ class CountrySubdivisionTest extends TestCase
 {
     /**
      * @covers ::getCountry
+     *
      * @throws TypeError
      * @throws ValueError
      */
