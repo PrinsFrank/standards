@@ -73,6 +73,9 @@ erDiagram
     CountryCallingCode {
         class CountryCallingCode
     }
+    CountrySubdivision {
+        class CountrySubdivision
+    }
     Currency {
         class CurrencyAlpha3
         class CurrencyName
@@ -122,6 +125,8 @@ erDiagram
         class TestTLD
     }
 
+    Country ||--o{ CountrySubdivision: ""
+    Country ||--o{ Country: ""
     GeographicRegion }|--o{ Country: ""
     GeographicRegion ||--o{ GeographicRegion: ""
     Language }o--o{ Country: ""
@@ -164,7 +169,7 @@ __Listing all country calling codes sorted by country name in a dropdown;__
 
 All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the other country enums. These can be converted using their corresponding methods (toAlpha2, toAlpha3 etc...).
 
-Country group membership can be checked by calling the `isMemberOf` method, supplying the FQN of a class that implements the `GroupInterface`. Several country groups are available: BRICS, EEA, EFTA etc.
+Country group membership can be checked by calling the `isMemberOf` method, supplying the FQN of a class that implements the `GroupInterface`. Several country groups are available: BRICS, EEA, EFTA etc. Countries can also have subdivisions, which can be of several types: countries, provinces, etc.
 
 ```php
 CountryAlpha2::from('NL');                                      // CountryAlpha2::Netherlands
@@ -178,6 +183,8 @@ CountryAlpha3::from('NLD')->toCountryNumeric()->value;          // '528'
 CountryAlpha3::from('NLD')->toCountryNumeric()->valueAsInt();   // 528
 CountryAlpha3::from('NLD')->isMemberOf(EU::class);              // true
 CountryAlpha2::Netherlands;                                     // CountryAlpha2::Netherlands
+
+CountryAlpha2::Vanuatu->getSubdivisions();                      // [CountrySubdivision::Vanuatu_province_Malampa, CountrySubdivision::Vanuatu_province_Penama, CountrySubdivision::Vanuatu_province_Sanma, CountrySubdivision::Vanuatu_province_Shefa, CountrySubdivision::Vanuatu_province_Tafea, CountrySubdivision::Vanuatu_province_Torba]
 
 CountryAlpha3::from('NLD')->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
 CountryAlpha3::from('NLD')->getCountryCallingCodes()[0]->value; // 31
@@ -230,6 +237,10 @@ erDiagram
     CountryName {
         Netherlands Netherlands_(Kingdom_of_the)
     }
+    
+    CountrySubdivision {
+        Caribbean_Netherlands_special_municipality_Bonaire BG-BO 
+    }
 
     CountryAlpha2 }o--o| Brics: isMemberOf
     CountryAlpha2 }o--o| EEA: isMemberOf
@@ -237,6 +248,7 @@ erDiagram
     CountryAlpha2 }o--o| EU: isMemberOf
     CountryAlpha2 }o--o| NATO: isMemberOf
     CountryAlpha2 }o--o| Schengen: isMemberOf
+    CountrySubdivision }o--|| CountryAlpha2: isPartOf
 ```
 
 ### CountryAlpha2
@@ -338,6 +350,19 @@ $valueNumeric->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
 $valueNumeric->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
 
 $valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
+```
+
+### CountrySubdivision
+
+```php
+$subdivision = CountrySubdivision::from('VU-MAP');           // CountrySubdivision::Vanuatu_province_Malampa
+$subdivision = CountrySubdivision::Vanuatu_province_Malampa; // CountrySubdivision::Vanuatu_province_Malampa
+
+$subdivision->getPartOfCountry();                            // CountryAlpha2::Vanuatu
+
+$subdivision->getNames();                                    // [new ('Malampa', [LanguageAlpha2::French, LanguageAlpha2::English], null, null)]
+
+$subdivision->getSameAsCountry();                            // null
 ```
 
 ### <s>CountryName</s> (Deprecated)
