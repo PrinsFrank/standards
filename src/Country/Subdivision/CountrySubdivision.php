@@ -2,6 +2,7 @@
 
 namespace PrinsFrank\Standards\Country\Subdivision;
 
+use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Subdivision\Attributes\Name;
 use PrinsFrank\Standards\Country\Subdivision\Attributes\SameAsCountry;
@@ -16029,9 +16030,25 @@ enum CountrySubdivision: string
     #[Name('Midlands', [LanguageAlpha2::English], null, null)]
     case Zimbabwe_province_Midlands = 'ZW-MI';
 
-    public function getCountry(): countryAlpha2
+    public function getPartOfCountry(): CountryAlpha2
     {
         /** @phpstan-ignore missingType.checkedException, missingType.checkedException */
         return CountryAlpha2::from(substr($this->value, 0, 2));
+    }
+
+    /** @return list<Name> */
+    public function getNames(): array {
+        return BackedEnum::getCaseAttributes($this, Name::class);
+    }
+
+    public function getSameAsCountry(): ?CountryAlpha2
+    {
+        /** @var array<SameAsCountry> $sameAsCountryAttributes */
+        $sameAsCountryAttributes = BackedEnum::getCaseAttributes($this, SameAsCountry::class);
+        if ($sameAsCountryAttributes === [] || count($sameAsCountryAttributes) !== 1) {
+            return null;
+        }
+
+        return $sameAsCountryAttributes[0]->country;
     }
 }
