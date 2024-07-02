@@ -16036,7 +16036,7 @@ enum CountrySubdivision: string
         return CountryAlpha2::from(substr($this->value, 0, 2));
     }
 
-    /** @return list<Name> */
+    /** @return array<Name> */
     public function getNames(): array
     {
         return BackedEnum::getCaseAttributes($this, Name::class);
@@ -16046,7 +16046,7 @@ enum CountrySubdivision: string
     {
         /** @var array<SameAsCountry> $sameAsCountryAttributes */
         $sameAsCountryAttributes = BackedEnum::getCaseAttributes($this, SameAsCountry::class);
-        if ($sameAsCountryAttributes === [] || count($sameAsCountryAttributes) !== 1) {
+        if ($sameAsCountryAttributes === [] || count($sameAsCountryAttributes) !== 1 || array_key_exists(0, $sameAsCountryAttributes) === false) {
             return null;
         }
 
