@@ -6638,4 +6638,28 @@ enum CountryAlpha2: string
             default => []
         };
     }
+
+    /** @return list<self> */
+    public function getSubCountries(): array
+    {
+        $subCountries = [];
+        foreach ($this->getSubdivisions() as $subdivision) {
+            if (($sameAsCountry = $subdivision->getSameAsCountry()) !== null && in_array($sameAsCountry, $subCountries, true) === false) {
+                $subCountries[] = $sameAsCountry;
+            }
+        }
+
+        return $subCountries;
+    }
+
+    public function getParentCountry(): ?self
+    {
+        foreach (self::cases() as $country) {
+            if (in_array($this, $country->getSubCountries(), true)) {
+                return $country;
+            }
+        }
+
+        return null;
+    }
 }

@@ -196,4 +196,32 @@ class CountryAlpha2Test extends TestCase
             CountryAlpha2::Bonaire_Sint_Eustatius_and_Saba->getSubdivisions(),
         );
     }
+
+    /** @covers ::getSubCountries */
+    public function testGetSubCountries(): void
+    {
+        foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            $countryAlpha2->getSubCountries();
+        }
+        static::assertSame(
+            [
+                CountryAlpha2::Aruba,
+                CountryAlpha2::Curacao,
+                CountryAlpha2::Sint_Maarten_Dutch_part,
+                CountryAlpha2::Bonaire_Sint_Eustatius_and_Saba,
+            ],
+            CountryAlpha2::Netherlands->getSubCountries(),
+        );
+        static::assertSame([], CountryAlpha2::Aruba->getSubCountries());
+    }
+
+    /** @covers ::getParentCountry */
+    public function testGetParentCountry(): void
+    {
+        foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            $countryAlpha2->getParentCountry();
+        }
+        static::assertNull(CountryAlpha2::Netherlands->getParentCountry());
+        static::assertSame(CountryAlpha2::Netherlands, CountryAlpha2::Aruba->getParentCountry());
+    }
 }

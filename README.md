@@ -186,6 +186,9 @@ CountryAlpha2::Netherlands;                                     // CountryAlpha2
 
 CountryAlpha2::Vanuatu->getSubdivisions();                      // [CountrySubdivision::Vanuatu_province_Malampa, CountrySubdivision::Vanuatu_province_Penama, CountrySubdivision::Vanuatu_province_Sanma, CountrySubdivision::Vanuatu_province_Shefa, CountrySubdivision::Vanuatu_province_Tafea, CountrySubdivision::Vanuatu_province_Torba]
 
+CountryAlpha2::Aruba->getParentCountry();                       // CountryAlpha2::Netherlands
+CountryAlpha2::Netherlands->getSubCountries();                  // [CountryAlpha2::Aruba, CountryAlpha2::Curacao, CountryAlpha2::Sint_Maarten_Dutch_part, CountryAlpha2::Bonaire_Sint_Eustatius_and_Saba]
+
 CountryAlpha3::from('NLD')->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
 CountryAlpha3::from('NLD')->getCountryCallingCodes()[0]->value; // 31
 
