@@ -347,11 +347,6 @@ enum CountryAlpha2: string
         return NationalCallPrefix::forCountry($this);
     }
 
-    public function getInternationalCallPrefix(): InternationalCallPrefix
-    {
-        return InternationalCallPrefix::forCountry($this);
-    }
-
     /**
      * When displaying this on web pages, keep in mind the default windows fonts don't have a representation for these.
      *
@@ -1183,6 +1178,11 @@ enum CountryAlpha2: string
             self::Zambia => CountryCodeTLD::zm,
             self::Zimbabwe => CountryCodeTLD::zw,
         };
+    }
+
+    public function getInternationalCallPrefix(): InternationalCallPrefix
+    {
+        return InternationalCallPrefix::forCountry($this);
     }
 
     /** @return list<CountrySubdivision> */
