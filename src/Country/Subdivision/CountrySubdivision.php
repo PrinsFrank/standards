@@ -5,8 +5,6 @@ namespace PrinsFrank\Standards\Country\Subdivision;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Subdivision\Attributes\Name;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
-use TypeError;
-use ValueError;
 
 enum CountrySubdivision: string
 {
@@ -16001,12 +15999,9 @@ enum CountrySubdivision: string
     #[Name('Midlands', [LanguageAlpha2::English], null, null)]
     case Zimbabwe_province_Midlands = 'ZW-MI';
 
-    /**
-     * @throws TypeError
-     * @throws ValueError
-     */
     public function getCountry(): countryAlpha2
     {
+        /** @phpstan-ignore missingType.checkedException, missingType.checkedException */
         return CountryAlpha2::from(substr($this->value, 0, 2));
     }
 }
