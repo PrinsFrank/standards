@@ -24,7 +24,7 @@ class CountrySubdivisionTest extends TestCase
     /** @covers ::getNames */
     public function testGetNames(): void
     {
-        static::assertSame(
+        static::assertEquals(
             [
                 new Name('Bonaire', [LanguageAlpha2::Dutch_Flemish, LanguageAlpha2::English], null, null),
                 new Name('Boneiru', [], null, null),
