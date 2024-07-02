@@ -169,7 +169,6 @@ class CountryAlpha3Test extends TestCase
     public function testGetSubdivisions(): void
     {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
-            /** @phpstan-ignore method.resultUnused */
             $countryAlpha3->getSubdivisions();
 
             $this->addToAssertionCount(1);

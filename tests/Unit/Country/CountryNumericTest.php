@@ -201,7 +201,6 @@ class CountryNumericTest extends TestCase
     public function testGetSubdivisions(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
-            /** @phpstan-ignore method.resultUnused */
             $countryNumeric->getSubdivisions();
 
             $this->addToAssertionCount(1);

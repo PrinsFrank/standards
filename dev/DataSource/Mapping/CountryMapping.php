@@ -19,6 +19,7 @@ use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
 use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
 use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
 use PrinsFrank\Standards\Dev\DataTarget\NameNormalizer;
+use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\ShouldNotHappenException;
 use RuntimeException;
@@ -150,6 +151,8 @@ class CountryMapping implements Mapping
      * @throws ShouldNotHappenException
      * @throws TypeError
      * @throws ValueError
+     * @throws TransliterationException
+     * @throws \PrinsFrank\Transliteration\Exception\TransliterationException
      * @return array<EnumFile>
      */
     public static function toEnumMapping(array $dataSet): array
@@ -159,8 +162,7 @@ class CountryMapping implements Mapping
             ->addMethod($getSubdivisionsMethod = new EnumMethod('getSubdivisions', 'array', '[]', '/** @return list<CountrySubdivision> */'));
         $countryAlpha3 = new EnumFile(CountryAlpha3::class, KeySorting::class);
         $countryNumeric = new EnumFile(CountryNumeric::class, KeySorting::class);
-        $countrySubdivision = (new EnumFile(CountrySubdivision::class, KeySorting::class))
-            ->addMethod($getCountryMethod = new EnumMethod('getCountry', 'countryAlpha2', null, null));
+        $countrySubdivision = (new EnumFile(CountrySubdivision::class, KeySorting::class));
         foreach ($dataSet as $dataRow) {
             $countryName->addCase(new EnumCase($dataRow->name, $dataRow->name));
             $countryAlpha2->addCase(new EnumCase($dataRow->name, $dataRow->alpha2));
@@ -187,9 +189,8 @@ class CountryMapping implements Mapping
                 );
 
                 $country = CountryAlpha2::from($dataRow->alpha2);
-                $subdivisionName = CountrySubdivision::tryFrom($subdivision->code)?->name ?? NameNormalizer::normalize($name);
+                $subdivisionName = CountrySubdivision::tryFrom($subdivision->code)->name ?? NameNormalizer::normalize($name);
                 $getSubdivisionsMethod->addMapping('self::' . $country->name, 'CountrySubdivision::' . $subdivisionName);
-                $getCountryMethod->addMapping('self::' . $subdivisionName, 'CountryAlpha2::' . $country->name);
             }
         }
 

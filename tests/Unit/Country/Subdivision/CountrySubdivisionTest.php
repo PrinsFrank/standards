@@ -4,15 +4,23 @@ namespace PrinsFrank\Standards\Tests\Unit\Country\Subdivision;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\Subdivision\CountrySubdivision;
+use TypeError;
+use ValueError;
 
 /** @coversDefaultClass \PrinsFrank\Standards\Country\Subdivision\CountrySubdivision */
 class CountrySubdivisionTest extends TestCase
 {
-    /** @covers ::getCountry */
+    /**
+     * @covers ::getCountry
+     * @throws TypeError
+     * @throws ValueError
+     */
     public function testGetCountry(): void
     {
         foreach (CountrySubdivision::cases() as $countrySubdivision) {
-            static::assertNotNull($countrySubdivision->getCountry());
+            $countrySubdivision->getCountry();
+
+            $this->addToAssertionCount(1);
         }
     }
 }

@@ -144,7 +144,6 @@ class CountryNameTest extends TestCase
     public function testGetSubdivisions(): void
     {
         foreach (CountryName::cases() as $countryName) {
-            /** @phpstan-ignore method.resultUnused */
             $countryName->getSubdivisions();
 
             $this->addToAssertionCount(1);
