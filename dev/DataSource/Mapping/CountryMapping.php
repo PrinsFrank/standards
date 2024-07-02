@@ -187,8 +187,9 @@ class CountryMapping implements Mapping
                 );
 
                 $country = CountryAlpha2::from($dataRow->alpha2);
-                $forCountryMethod->addMapping('CountryAlpha2::' . $country->name, 'self::' . NameNormalizer::normalize($name));
-                $getCountryMethod->addMapping('self::' . NameNormalizer::normalize($name), 'CountryAlpha2::' . $country->name);
+                $subdivisionName = CountrySubdivision::tryFrom($subdivision->code)?->name ?? NameNormalizer::normalize($name);
+                $forCountryMethod->addMapping('CountryAlpha2::' . $country->name, 'self::' . $subdivisionName);
+                $getCountryMethod->addMapping('self::' . $subdivisionName, 'CountryAlpha2::' . $country->name);
             }
         }
 

@@ -15997,7 +15997,9 @@ enum CountrySubdivision: string
     case Zimbabwe_province_Matabeleland_South = 'ZW-MS';
 
     #[Name('Midlands', [LanguageAlpha2::English], null, null)]
-    case Zimbabwe_province_Midlands = 'ZW-MI';    /** @return list<self> */    public function getCountry(): countryAlpha2
+    case Zimbabwe_province_Midlands = 'ZW-MI';
+
+    public function getCountry(): countryAlpha2
     {
         return match($this) {
             self::Afghanistan_province_Badakhshan => CountryAlpha2::Afghanistan,
@@ -21049,6 +21051,7 @@ enum CountrySubdivision: string
         };
     }
 
+    /** @return list<self> */
     public function forCountry(): array
     {
         return match($this) {
