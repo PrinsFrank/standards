@@ -126,6 +126,10 @@ class EnumFile
         foreach ($this->methods as $method) {
             $enumContent = $this->getContent();
             $startExistingMethod = mb_strpos($enumContent, '    public function ' . $method->name . '()');
+            if ($startExistingMethod !== false && $method->docBlock !== null) {
+                $startExistingMethod -= (strlen($method->docBlock) + 5);
+            }
+
             $nextMethodPos = mb_strpos($enumContent, PHP_EOL . '    public function', $startExistingMethod === false ? 0 : $startExistingMethod + 1);
             $lastClosingTagPos = false;
             if ($nextMethodPos === false) {
