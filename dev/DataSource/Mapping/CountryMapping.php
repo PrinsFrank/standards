@@ -155,11 +155,11 @@ class CountryMapping implements Mapping
     public static function toEnumMapping(array $dataSet): array
     {
         $countryName = new EnumFile(CountryName::class, KeySorting::class);
-        $countryAlpha2 = new EnumFile(CountryAlpha2::class, KeySorting::class);
+        $countryAlpha2 = (new EnumFile(CountryAlpha2::class, KeySorting::class))
+            ->addMethod($getSubdivisionsMethod = new EnumMethod('getSubdivisions', 'array', '[]', '/** @return list<CountrySubdivision> */'));
         $countryAlpha3 = new EnumFile(CountryAlpha3::class, KeySorting::class);
         $countryNumeric = new EnumFile(CountryNumeric::class, KeySorting::class);
         $countrySubdivision = (new EnumFile(CountrySubdivision::class, KeySorting::class))
-            ->addMethod($forCountryMethod = new EnumMethod('forCountry', 'array', '[]', '/** @return list<self> */'))
             ->addMethod($getCountryMethod = new EnumMethod('getCountry', 'countryAlpha2', null, null));
         foreach ($dataSet as $dataRow) {
             $countryName->addCase(new EnumCase($dataRow->name, $dataRow->name));
@@ -188,7 +188,7 @@ class CountryMapping implements Mapping
 
                 $country = CountryAlpha2::from($dataRow->alpha2);
                 $subdivisionName = CountrySubdivision::tryFrom($subdivision->code)?->name ?? NameNormalizer::normalize($name);
-                $forCountryMethod->addMapping('CountryAlpha2::' . $country->name, 'self::' . $subdivisionName);
+                $getSubdivisionsMethod->addMapping('self::' . $country->name, 'CountrySubdivision::' . $subdivisionName);
                 $getCountryMethod->addMapping('self::' . $subdivisionName, 'CountryAlpha2::' . $country->name);
             }
         }

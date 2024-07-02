@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\EFTA;
 use PrinsFrank\Standards\Country\Groups\EU;
+use PrinsFrank\Standards\Country\Subdivision\CountrySubdivision;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
@@ -175,5 +176,24 @@ class CountryAlpha2Test extends TestCase
         static::assertSame('42.42', CountryAlpha2::United_States_of_America->formatNumber(42.42, LanguageAlpha2::English));
         static::assertSame('42.42', CountryAlpha2::United_States_of_America->formatNumber(42.42, LanguageAlpha3Terminology::English));
         static::assertSame('42.42', CountryAlpha2::United_States_of_America->formatNumber(42.42, LanguageAlpha3Bibliographic::English));
+    }
+
+    /** @covers ::getSubdivisions */
+    public function testGetSubdivisions(): void
+    {
+        foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            /** @phpstan-ignore method.resultUnused */
+            $countryAlpha2->getSubdivisions();
+
+            $this->addToAssertionCount(1);
+        }
+        static::assertSame(
+            [
+                CountrySubdivision::Caribbean_Netherlands_special_municipality_Bonaire,
+                CountrySubdivision::Caribbean_Netherlands_special_municipality_Saba,
+                CountrySubdivision::Caribbean_Netherlands_special_municipality_Sint_Eustatius
+            ],
+            CountryAlpha2::Bonaire_Sint_Eustatius_and_Saba->getSubdivisions(),
+        );
     }
 }

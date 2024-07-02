@@ -361,7 +361,8 @@ enum CountryAlpha3: string
     }
 
     /** @return list<CountrySubdivision> */
-    public function getSubdivisions(): array {
+    public function getSubdivisions(): array
+    {
         return $this->toCountryAlpha2()->getSubdivisions();
     }
 }
