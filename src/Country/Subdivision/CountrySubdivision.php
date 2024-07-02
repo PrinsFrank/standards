@@ -16037,7 +16037,8 @@ enum CountrySubdivision: string
     }
 
     /** @return list<Name> */
-    public function getNames(): array {
+    public function getNames(): array
+    {
         return BackedEnum::getCaseAttributes($this, Name::class);
     }
 

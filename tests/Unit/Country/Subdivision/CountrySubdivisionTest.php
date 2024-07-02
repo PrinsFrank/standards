@@ -22,7 +22,8 @@ class CountrySubdivisionTest extends TestCase
     }
 
     /** @covers ::getNames */
-    public function testGetNames(): void {
+    public function testGetNames(): void
+    {
         static::assertSame(
             [
                 new Name('Bonaire', [LanguageAlpha2::Dutch_Flemish, LanguageAlpha2::English], null, null),
@@ -33,7 +34,8 @@ class CountrySubdivisionTest extends TestCase
     }
 
     /** @covers ::getSameAsCountry */
-    public function testGetSameAsCountry(): void {
+    public function testGetSameAsCountry(): void
+    {
         static::assertNull(CountrySubdivision::Netherlands_province_Fryslan->getSameAsCountry());
         static::assertSame(
             CountryAlpha2::Aruba,
