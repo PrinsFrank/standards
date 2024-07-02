@@ -2029,11 +2029,11 @@ enum CountryAlpha2: string
                 CountrySubdivision::China_province_Shandong_Sheng,
                 CountrySubdivision::China_province_Shanxi_Sheng,
                 CountrySubdivision::China_province_Sichuan_Sheng,
-                CountrySubdivision::China_province_Taiwan_Sheng_see_also_separate_country_code_entry_under_TW,
+                CountrySubdivision::China_province_Taiwan_Sheng,
                 CountrySubdivision::China_province_Yunnan_Sheng,
                 CountrySubdivision::China_province_Zhejiang_Sheng,
-                CountrySubdivision::China_special_administrative_region_Aomen_Tebiexingzhengqu_see_also_separate_country_code_entry_under_MO,
-                CountrySubdivision::China_special_administrative_region_Hong_Kong_SAR_see_also_separate_country_code_entry_under_HK
+                CountrySubdivision::China_special_administrative_region_Aomen_Tebiexingzhengqu,
+                CountrySubdivision::China_special_administrative_region_Hong_Kong_SAR
             ],
             self::Colombia => [
                 CountrySubdivision::Colombia_capital_district_Distrito_Capital_de_Bogota,
@@ -2717,18 +2717,18 @@ enum CountryAlpha2: string
                 CountrySubdivision::France_metropolitan_region_Occitanie,
                 CountrySubdivision::France_metropolitan_region_Pays_de_la_Loire,
                 CountrySubdivision::France_metropolitan_region_Provence_Alpes_Cote_d_Azur,
-                CountrySubdivision::France_overseas_collectivity_Polynesie_francaise_see_also_separate_country_code_entry_under_PF,
-                CountrySubdivision::France_overseas_collectivity_Saint_Barthelemy_see_also_separate_country_code_entry_under_BL,
-                CountrySubdivision::France_overseas_collectivity_Saint_Martin_see_also_separate_country_code_entry_under_MF,
-                CountrySubdivision::France_overseas_collectivity_Saint_Pierre_et_Miquelon_see_also_separate_country_code_entry_under_PM,
-                CountrySubdivision::France_overseas_collectivity_Wallis_et_Futuna_see_also_separate_country_code_entry_under_WF,
-                CountrySubdivision::France_overseas_collectivity_with_special_status_Nouvelle_Caledonie_see_also_separate_country_code_entry_under_NC,
-                CountrySubdivision::France_overseas_departmental_collectivity_Guadeloupe_see_also_separate_country_code_entry_under_GP,
-                CountrySubdivision::France_overseas_departmental_collectivity_La_Reunion_see_also_separate_country_code_entry_under_RE,
-                CountrySubdivision::France_overseas_departmental_collectivity_Mayotte_see_also_separate_country_code_entry_under_YT,
-                CountrySubdivision::France_overseas_territory_Terres_australes_francaises_see_also_separate_country_code_entry_under_TF,
-                CountrySubdivision::France_overseas_unique_territorial_collectivity_Guyane_francaise_see_also_separate_country_code_entry_under_GF,
-                CountrySubdivision::France_overseas_unique_territorial_collectivity_Martinique_see_also_separate_country_code_entry_under_MQ
+                CountrySubdivision::France_overseas_collectivity_Polynesie_francaise,
+                CountrySubdivision::France_overseas_collectivity_Saint_Barthelemy,
+                CountrySubdivision::France_overseas_collectivity_Saint_Martin,
+                CountrySubdivision::France_overseas_collectivity_Saint_Pierre_et_Miquelon,
+                CountrySubdivision::France_overseas_collectivity_Wallis_et_Futuna,
+                CountrySubdivision::France_overseas_collectivity_with_special_status_Nouvelle_Caledonie,
+                CountrySubdivision::France_overseas_departmental_collectivity_Guadeloupe,
+                CountrySubdivision::France_overseas_departmental_collectivity_La_Reunion,
+                CountrySubdivision::France_overseas_departmental_collectivity_Mayotte,
+                CountrySubdivision::France_overseas_territory_Terres_australes_francaises,
+                CountrySubdivision::France_overseas_unique_territorial_collectivity_Guyane_francaise,
+                CountrySubdivision::France_overseas_unique_territorial_collectivity_Martinique
             ],
             self::Gabon => [
                 CountrySubdivision::Gabon_province_Estuaire,
@@ -4351,9 +4351,9 @@ enum CountryAlpha2: string
                 CountrySubdivision::Nepal_province_Sudurpashchim
             ],
             self::Netherlands => [
-                CountrySubdivision::Netherlands_country_Aruba_see_also_separate_country_code_entry_under_AW,
-                CountrySubdivision::Netherlands_country_Curacao_see_also_separate_country_code_entry_under_CW,
-                CountrySubdivision::Netherlands_country_Sint_Maarten_see_also_separate_country_code_entry_under_SX,
+                CountrySubdivision::Netherlands_country_Aruba,
+                CountrySubdivision::Netherlands_country_Curacao,
+                CountrySubdivision::Netherlands_country_Sint_Maarten,
                 CountrySubdivision::Netherlands_province_Drenthe,
                 CountrySubdivision::Netherlands_province_Flevoland,
                 CountrySubdivision::Netherlands_province_Fryslan,
@@ -4366,9 +4366,9 @@ enum CountryAlpha2: string
                 CountrySubdivision::Netherlands_province_Utrecht,
                 CountrySubdivision::Netherlands_province_Zeeland,
                 CountrySubdivision::Netherlands_province_Zuid_Holland,
-                CountrySubdivision::Netherlands_special_municipality_Bonaire_see_also_separate_country_code_entry_under_BQ,
-                CountrySubdivision::Netherlands_special_municipality_Saba_see_also_separate_country_code_entry_under_BQ,
-                CountrySubdivision::Netherlands_special_municipality_Sint_Eustatius_see_also_separate_country_code_entry_under_BQ
+                CountrySubdivision::Netherlands_special_municipality_Bonaire,
+                CountrySubdivision::Netherlands_special_municipality_Saba,
+                CountrySubdivision::Netherlands_special_municipality_Sint_Eustatius
             ],
             self::New_Zealand => [
                 CountrySubdivision::New_Zealand_region_Auckland,
@@ -4540,8 +4540,8 @@ enum CountryAlpha2: string
                 CountrySubdivision::North_Macedonia_municipality_Zrnovci
             ],
             self::Norway => [
-                CountrySubdivision::Norway_arctic_region_Jan_Mayen_Arctic_Region_see_also_separate_country_code_entry_under_SJ,
-                CountrySubdivision::Norway_arctic_region_Svalbard_Arctic_Region_see_also_separate_country_code_entry_under_SJ,
+                CountrySubdivision::Norway_arctic_region_Jan_Mayen_Arctic_Region,
+                CountrySubdivision::Norway_arctic_region_Svalbard_Arctic_Region,
                 CountrySubdivision::Norway_county_Agder,
                 CountrySubdivision::Norway_county_Innlandet,
                 CountrySubdivision::Norway_county_More_og_Romsdal,
@@ -6388,12 +6388,12 @@ enum CountryAlpha2: string
             ],
             self::United_States_of_America => [
                 CountrySubdivision::United_States_district_District_of_Columbia,
-                CountrySubdivision::United_States_outlying_area_American_Samoa_see_also_separate_country_code_entry_under_AS,
-                CountrySubdivision::United_States_outlying_area_Guam_see_also_separate_country_code_entry_under_GU,
-                CountrySubdivision::United_States_outlying_area_Northern_Mariana_Islands_see_also_separate_country_code_entry_under_MP,
-                CountrySubdivision::United_States_outlying_area_Puerto_Rico_see_also_separate_country_code_entry_under_PR,
-                CountrySubdivision::United_States_outlying_area_United_States_Minor_Outlying_Islands_see_also_separate_country_code_entry_under_UM,
-                CountrySubdivision::United_States_outlying_area_Virgin_Islands_U_S_see_also_separate_country_code_entry_under_VI,
+                CountrySubdivision::United_States_outlying_area_American_Samoa,
+                CountrySubdivision::United_States_outlying_area_Guam,
+                CountrySubdivision::United_States_outlying_area_Northern_Mariana_Islands,
+                CountrySubdivision::United_States_outlying_area_Puerto_Rico,
+                CountrySubdivision::United_States_outlying_area_United_States_Minor_Outlying_Islands,
+                CountrySubdivision::United_States_outlying_area_Virgin_Islands_U_S,
                 CountrySubdivision::United_States_state_Alabama,
                 CountrySubdivision::United_States_state_Alaska,
                 CountrySubdivision::United_States_state_Arizona,
