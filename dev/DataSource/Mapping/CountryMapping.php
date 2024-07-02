@@ -12,6 +12,7 @@ use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Country\Subdivision\Attributes\Name;
+use PrinsFrank\Standards\Country\Subdivision\Attributes\SameAsCountry;
 use PrinsFrank\Standards\Country\Subdivision\CountrySubdivision;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
@@ -30,7 +31,7 @@ use TypeError;
 use ValueError;
 
 /**
- * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string, subdivisions: array<string, object{category: string, code: string, parent: ?string, names: non-empty-list<object{name: string, note: ?string, languages: list<CountryAlpha2>, romanization_system: ?string, local_variant: ?string}&stdClass>}&stdClass>}&stdClass
+ * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string, subdivisions: array<string, object{category: string, code: string, same_as_country: ?CountryAlpha2, parent: ?string, names: non-empty-list<object{name: string, note: ?string, languages: list<CountryAlpha2>, romanization_system: ?string, local_variant: ?string}&stdClass>}&stdClass>}&stdClass
  * @implements Mapping<TDataSet>
  */
 class CountryMapping implements Mapping
@@ -44,6 +45,8 @@ class CountryMapping implements Mapping
      * @throws NoSuchElementException
      * @throws TimeoutException
      * @throws RuntimeException
+     * @throws ValueError
+     * @throws TypeError
      * @return list<TDataSet>
      */
     public static function toDataSet(Client $client, Crawler $crawler): array
@@ -130,6 +133,7 @@ class CountryMapping implements Mapping
                     'category' => $subdivisionColumns[0]->getText(),
                     'code' => rtrim($subdivisionColumns[1]->getText(), '*'),
                     'parent' => $subdivisionColumns[6]->getText(),
+                    'same_as_country' => $note !== null && preg_match('/see also separate country code entry under (?P<countryCode>[A-Z]{2})/', $note, $matches) === 1 && array_key_exists('countryCode', $matches) ? CountryAlpha2::from($matches['countryCode']) : null,
                     'names' => [
                         (object) [
                             'name' => $name,
@@ -182,9 +186,9 @@ class CountryMapping implements Mapping
                     new EnumCase(
                         $name = sprintf('%s %s %s', CountryAlpha2::from($dataRow->alpha2)->getNameInLanguage(LanguageAlpha2::English), $subdivision->category, $subdivision->names[0]->name ?? throw new ShouldNotHappenException('This subdivision has no name(s)')),
                         $subdivision->code,
-                        array_map(static function (object $nameInfo) {
+                        [...array_map(static function (object $nameInfo) {
                             return new EnumCaseAttribute(Name::class, [$nameInfo->name, array_filter($nameInfo->languages, fn (object|null $value) => $value !== null), $nameInfo->romanization_system, $nameInfo->local_variant]);
-                        }, $subdivision->names),
+                        }, $subdivision->names), ...($subdivision->same_as_country !== null ? [new EnumCaseAttribute(SameAsCountry::class, [$subdivision->same_as_country])] : [])],
                     )
                 );
 
@@ -200,8 +204,8 @@ class CountryMapping implements Mapping
     /** @return array{0: string, 1: ?string} */
     private static function getNameNote(string $text): array
     {
-        if (($notePos = strpos('(see also', $text)) !== false) {
-            return [substr($text, 0, $notePos), rtrim(substr($text, $notePos - 1), ')')];
+        if (($notePos = strpos($text, '(see also')) !== false) {
+            return [rtrim(substr($text, 0, $notePos), ' '), ltrim(rtrim(substr($text, $notePos - 1), ')'), '(')];
         }
 
         return [$text, null];
