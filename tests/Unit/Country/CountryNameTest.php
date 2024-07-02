@@ -157,4 +157,32 @@ class CountryNameTest extends TestCase
             CountryName::Bonaire_Sint_Eustatius_and_Saba->getSubdivisions(),
         );
     }
+
+    /** @covers ::getSubCountries */
+    public function testGetSubCountries(): void
+    {
+        foreach (CountryName::cases() as $countryName) {
+            $countryName->getSubCountries();
+        }
+        static::assertSame(
+            [
+                CountryName::Aruba,
+                CountryName::Curacao,
+                CountryName::Sint_Maarten_Dutch_part,
+                CountryName::Bonaire_Sint_Eustatius_and_Saba,
+            ],
+            CountryName::Netherlands->getSubCountries(),
+        );
+        static::assertSame([], CountryName::Aruba->getSubCountries());
+    }
+
+    /** @covers ::getParentCountry */
+    public function testGetParentCountry(): void
+    {
+        foreach (CountryName::cases() as $countryName) {
+            $countryName->getParentCountry();
+        }
+        static::assertNull(CountryName::Netherlands->getParentCountry());
+        static::assertSame(CountryName::Netherlands, CountryName::Aruba->getParentCountry());
+    }
 }

@@ -214,4 +214,32 @@ class CountryNumericTest extends TestCase
             CountryNumeric::Bonaire_Sint_Eustatius_and_Saba->getSubdivisions(),
         );
     }
+
+    /** @covers ::getSubCountries */
+    public function testGetSubCountries(): void
+    {
+        foreach (CountryNumeric::cases() as $countryNumeric) {
+            $countryNumeric->getSubCountries();
+        }
+        static::assertSame(
+            [
+                CountryNumeric::Aruba,
+                CountryNumeric::Curacao,
+                CountryNumeric::Sint_Maarten_Dutch_part,
+                CountryNumeric::Bonaire_Sint_Eustatius_and_Saba,
+            ],
+            CountryNumeric::Netherlands->getSubCountries(),
+        );
+        static::assertSame([], CountryNumeric::Aruba->getSubCountries());
+    }
+
+    /** @covers ::getParentCountry */
+    public function testGetParentCountry(): void
+    {
+        foreach (CountryNumeric::cases() as $countryNumeric) {
+            $countryNumeric->getParentCountry();
+        }
+        static::assertNull(CountryNumeric::Netherlands->getParentCountry());
+        static::assertSame(CountryNumeric::Netherlands, CountryNumeric::Aruba->getParentCountry());
+    }
 }
