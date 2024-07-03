@@ -165,7 +165,7 @@ class CountryMapping implements Mapping
     {
         $countryName = new EnumFile(CountryName::class, KeySorting::class);
         $countryAlpha2 = (new EnumFile(CountryAlpha2::class, KeySorting::class))
-            ->addMethod($getSubdivisionsMethod = new EnumMethod('getSubdivisions', 'array', '[]', null));
+            ->addMethod($getSubdivisionsMethod = new EnumMethod('getSubdivisions', 'array', '[]', '/** @return list<CountrySubdivision> */'));
         $countryAlpha3 = new EnumFile(CountryAlpha3::class, KeySorting::class);
         $countryNumeric = new EnumFile(CountryNumeric::class, KeySorting::class);
         $countrySubdivision = (new EnumFile(CountrySubdivision::class, KeySorting::class));
