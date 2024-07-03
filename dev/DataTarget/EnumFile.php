@@ -125,25 +125,35 @@ class EnumFile
     {
         foreach ($this->methods as $method) {
             $enumContent = $this->getContent();
-            $startExistingMethod = mb_strpos($enumContent, '    public function ' . $method->name . '()');
-            $nextMethodPos = mb_strpos($enumContent, PHP_EOL . '    public function', $startExistingMethod === false ? 0 : $startExistingMethod + 1);
+            $startExistingMethod = $this->getMethodPos($method, $enumContent);
+            $nextMethodPos = $this->getMethodPos(null, $enumContent, $startExistingMethod !== null ? $startExistingMethod + 4 + strlen($method->name . '()' . $method->returnType) + ($method->docBlock !== null ? strlen($method->docBlock) + 4 : 0) : 0);
             $lastClosingTagPos = false;
-            if ($nextMethodPos === false) {
+            if ($nextMethodPos === null) {
                 $lastClosingTagPos = mb_strrpos($enumContent, PHP_EOL . '}');
             }
 
-            if ($nextMethodPos === false && $lastClosingTagPos === false) {
+            if ($nextMethodPos === null && $lastClosingTagPos === false) {
                 throw new RuntimeException('Couldn\'t locate closing tag');
             }
 
-            $endPosMethodOrLastClosingTag = ($nextMethodPos !== false ? $nextMethodPos : $lastClosingTagPos);
-            if ($startExistingMethod !== false) {
-                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . ($nextMethodPos !== false ? PHP_EOL : '') . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
+            $endPosMethodOrLastClosingTag = ($nextMethodPos !== null ? $nextMethodPos : $lastClosingTagPos);
+            if ($startExistingMethod !== null) {
+                $newEnumContent = mb_substr($enumContent, 0, $startExistingMethod) . $method->__toString() . ($nextMethodPos !== null ? PHP_EOL : '') . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
             } else {
-                $newEnumContent = mb_substr($enumContent, 0, $endPosMethodOrLastClosingTag) . $method->__toString() . ($nextMethodPos !== false ? PHP_EOL : '') . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
+                $newEnumContent = mb_substr($enumContent, 0, $endPosMethodOrLastClosingTag) . $method->__toString() . ($nextMethodPos !== null ? PHP_EOL : '') . mb_substr($enumContent, $endPosMethodOrLastClosingTag);
             }
 
             $this->putContent($newEnumContent);
         }
+    }
+
+    private function getMethodPos(?EnumMethod $method, string $enumContent, int $offset = 0): ?int
+    {
+        $matched = preg_match('/(\h*\/\*\*.*\n?(\h*\*.*\n?)*\h*\*\/\n){0,1}\h*(public|private|protected)?\h*(static)?\h*function\h*' . ($method->name ?? '') . '/', $enumContent, $matches, PREG_OFFSET_CAPTURE, $offset);
+        if ($matched !== 1 || array_key_exists(0, $matches) === false || array_key_exists(1, $matches[0]) === false) {
+            return null;
+        }
+
+        return (int) $matches[0][1];
     }
 }
