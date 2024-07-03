@@ -149,11 +149,11 @@ class EnumFile
 
     private function getMethodPos(?EnumMethod $method, string $enumContent, int $offset = 0): ?int
     {
-        $matched = preg_match('/(\h*\/\*\*.*\n?(\h*\*.*\n?)*\h*\*\/\n){0,1}\h*(public|private|protected)?\h*(static)?\h*function\h*' . ($method->name ?? '') . '/', $enumContent, $matches, PREG_OFFSET_CAPTURE, $offset);
+        $matched = preg_match('/(\n\h*\/\*\*.*\n?(\h*\*.*\n?)*\h*\*\/){0,1}\n\h*(public|private|protected)?\h*(static)?\h*function\h*' . ($method->name ?? '') . '/u', $enumContent, $matches, PREG_OFFSET_CAPTURE, $offset);
         if ($matched !== 1 || array_key_exists(0, $matches) === false || array_key_exists(1, $matches[0]) === false) {
             return null;
         }
 
-        return (int) $matches[0][1];
+        return (int) mb_strlen(substr($enumContent, 0, (int) $matches[0][1])); // PREG_OFFSET_CAPTURE returns the number of bytes, and doesn't have multibyte support
     }
 }
