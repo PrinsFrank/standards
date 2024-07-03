@@ -154,6 +154,6 @@ class EnumFile
             return null;
         }
 
-        return (int) mb_strlen(substr($enumContent, 0, (int) $matches[0][1])); // PREG_OFFSET_CAPTURE returns the number of bytes, and doesn't have multibyte support
+        return mb_strlen(substr($enumContent, 0, (int) $matches[0][1])); // PREG_OFFSET_CAPTURE returns the number of bytes, and doesn't have multibyte support
     }
 }
