@@ -6639,7 +6639,6 @@ enum CountryAlpha2: string
         };
     }
 
-    /** @return list<self> */
     public function getSubCountries(): array
     {
         $subCountries = [];
