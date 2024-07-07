@@ -19,7 +19,6 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
 #[CoversClass(LanguageAlpha2::class)]
 class LanguageAlpha2Test extends TestCase
 {
-
     public function testAllCasesCanBeConvertedToToLanguageAlpha3Bibliographic(): void
     {
         foreach (LanguageAlpha2::cases() as $case) {
@@ -27,14 +26,12 @@ class LanguageAlpha2Test extends TestCase
         }
     }
 
-
     public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void
     {
         foreach (LanguageAlpha2::cases() as $case) {
             static::assertNotNull($case->toLanguageAlpha3Terminology());
         }
     }
-
 
     public function testAllCasesCanBeConvertedToLanguageName(): void
     {
@@ -45,12 +42,10 @@ class LanguageAlpha2Test extends TestCase
         }
     }
 
-
     public function testUpperCaseValue(): void
     {
         static::assertSame('AB', LanguageAlpha2::Abkhazian->upperCaseValue());
     }
-
 
     public function testGetNameInLanguage(): void
     {
@@ -58,7 +53,6 @@ class LanguageAlpha2Test extends TestCase
         static::assertSame('Nederlands', LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::Dutch_Flemish));
         static::assertSame('Nederlands', LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
     }
-
 
     public function testGetNameForCountry(): void
     {
@@ -89,7 +83,6 @@ class LanguageAlpha2Test extends TestCase
             )
         );
     }
-
 
     public function testFormatNumber(): void
     {

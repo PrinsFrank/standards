@@ -10,7 +10,6 @@ use PrinsFrank\Standards\Scripts\ScriptAlias;
 #[CoversClass(ScriptAlias::class)]
 class ScriptAliasTest extends TestCase
 {
-
     public function testToScriptNumber(): void
     {
         foreach (ScriptAlias::cases() as $scriptAlias) {
@@ -19,7 +18,6 @@ class ScriptAliasTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testToScriptName(): void
     {
@@ -30,7 +28,6 @@ class ScriptAliasTest extends TestCase
         }
     }
 
-
     public function testToScriptCode(): void
     {
         foreach (ScriptAlias::cases() as $scriptAlias) {
@@ -40,13 +37,11 @@ class ScriptAliasTest extends TestCase
         }
     }
 
-
     public function testIsSupportedByPHPRegex(): void
     {
         static::assertTrue(ScriptAlias::Arabic->isSupportedByPHPRegex());
         static::assertFalse(ScriptAlias::Adlam->isSupportedByPHPRegex());
     }
-
 
     public function testForString(): void
     {
@@ -86,7 +81,6 @@ class ScriptAliasTest extends TestCase
         );
     }
 
-
     public function testHasMultipleForString(): void
     {
         static::assertFalse(ScriptAlias::hasMultipleForString(''));
@@ -95,7 +89,6 @@ class ScriptAliasTest extends TestCase
         static::assertTrue(ScriptAlias::hasMultipleForString('еюeuеюευ'));
         static::assertTrue(ScriptAlias::hasMultipleForString('еюeuеюευeu'));
     }
-
 
     public function testMostCommonInString(): void
     {

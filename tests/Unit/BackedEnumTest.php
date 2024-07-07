@@ -22,7 +22,6 @@ class BackedEnumTest extends TestCase
         static::assertSame(TestEnumBackedByInt::FOO, BackedEnum::tryFromKey(TestEnumBackedByInt::class, 'FOO'));
     }
 
-
     public function testTryFromKeyThrowsExceptionOnNonEnumValue(): void
     {
         $testClass = new class () {};
@@ -54,7 +53,6 @@ class BackedEnumTest extends TestCase
         );
     }
 
-
     public function testNamesThrowsExceptionOnNonEnumValue(): void
     {
         $testClass = new class () {};
@@ -79,7 +77,6 @@ class BackedEnumTest extends TestCase
         );
     }
 
-
     public function testValuesThrowsExceptionOnNonEnumValue(): void
     {
         $testClass = new class () {};
@@ -103,7 +100,6 @@ class BackedEnumTest extends TestCase
             ['FOO' => 42, 'FIZ' => 43],
         );
     }
-
 
     public function testToArrayThrowsExceptionOnNonEnumValue(): void
     {

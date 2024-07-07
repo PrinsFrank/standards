@@ -10,7 +10,6 @@ use PrinsFrank\Standards\TopLevelDomain\GenericRestrictedTLD;
 #[CoversClass(GenericRestrictedTLD::class)]
 class GenericRestrictedTLDTest extends TestCase
 {
-
     public function testIsAssigned(): void
     {
         static::assertTrue(GenericRestrictedTLD::name->isAssigned());

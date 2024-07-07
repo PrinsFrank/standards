@@ -20,7 +20,6 @@ use ValueError;
 #[CoversClass(CountryNumeric::class)]
 class CountryNumericTest extends TestCase
 {
-
     public function testAllCasesCanBeConvertedToCountryAlpha2(): void
     {
         foreach (CountryNumeric::cases() as $case) {
@@ -30,7 +29,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-
     public function testAllCasesCanBeConvertedToCountryAlpha3(): void
     {
         foreach (CountryNumeric::cases() as $case) {
@@ -39,7 +37,6 @@ class CountryNumericTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testAllCasesCanBeConvertedToCountryName(): void
     {
@@ -56,14 +53,12 @@ class CountryNumericTest extends TestCase
         static::assertEquals(CountryNumeric::Albania, CountryNumeric::fromInt(8));
     }
 
-    /** @throws TypeError|ValueError
-     */
+    /** @throws TypeError|ValueError */
     public function testFromIntThrowsExceptionOnNonExistingValue(): void
     {
         $this->expectException(ValueError::class);
         CountryNumeric::fromInt(1);
     }
-
 
     public function testTryFromInt(): void
     {
@@ -71,12 +66,10 @@ class CountryNumericTest extends TestCase
         static::assertNull(CountryNumeric::tryFromInt(1));
     }
 
-
     public function testValueAsInt(): void
     {
         static::assertSame(4, CountryNumeric::Afghanistan->valueAsInt());
     }
-
 
     public function testGetNameInLanguage(): void
     {
@@ -90,7 +83,6 @@ class CountryNumericTest extends TestCase
         static::assertSame('Magyarország', CountryNumeric::Hungary->getNameInLanguage(LanguageAlpha3Bibliographic::Hungarian));
         static::assertSame('Magyarország', CountryNumeric::Hungary->getNameInLanguage(LanguageAlpha3Extensive::Hungarian));
     }
-
 
     public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void
     {
@@ -107,14 +99,12 @@ class CountryNumericTest extends TestCase
         static::assertFalse(CountryNumeric::Netherlands->isMemberOf(EFTA::class));
     }
 
-
     public function testGetCountryCallingCodes(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             static::assertNotEmpty($countryNumeric->getCountryCallingCodes());
         }
     }
-
 
     public function testGetNationalCallPrefix(): void
     {
@@ -125,7 +115,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-
     public function testGetInternationalCallPrefix(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -135,12 +124,10 @@ class CountryNumericTest extends TestCase
         }
     }
 
-
     public function testGetFlagEmoji(): void
     {
         static::assertSame('🇳🇱', CountryNumeric::Netherlands->getFlagEmoji());
     }
-
 
     public function testGetCurrenciesAlpha3(): void
     {
@@ -156,7 +143,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-
     public function testGetOfficialAndDeFactoLanguages(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -165,7 +151,6 @@ class CountryNumericTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testGetCountryCodeTLD(): void
     {
@@ -176,7 +161,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-
     public function testFormatNumber(): void
     {
         static::assertSame('42,42', CountryNumeric::Netherlands->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish));
@@ -184,7 +168,6 @@ class CountryNumericTest extends TestCase
         static::assertSame('42,42', CountryNumeric::United_States_of_America->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish));
         static::assertSame('42.42', CountryNumeric::United_States_of_America->formatNumber(42.42, LanguageAlpha2::English));
     }
-
 
     public function testGetSubdivisions(): void
     {
@@ -203,7 +186,6 @@ class CountryNumericTest extends TestCase
         );
     }
 
-
     public function testGetSubCountries(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -220,7 +202,6 @@ class CountryNumericTest extends TestCase
         );
         static::assertSame([], CountryNumeric::Aruba->getSubCountries());
     }
-
 
     public function testGetParentCountry(): void
     {

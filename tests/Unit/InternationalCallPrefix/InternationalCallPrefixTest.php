@@ -14,7 +14,6 @@ use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
 #[CoversClass(InternationalCallPrefix::class)]
 class InternationalCallPrefixTest extends TestCase
 {
-
     public function testForCountryAlpha2(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
@@ -23,7 +22,6 @@ class InternationalCallPrefixTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testForCountryAlpha3(): void
     {
@@ -34,7 +32,6 @@ class InternationalCallPrefixTest extends TestCase
         }
     }
 
-
     public function testForCountryNumeric(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -44,7 +41,6 @@ class InternationalCallPrefixTest extends TestCase
         }
     }
 
-
     public function testForCountryName(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -53,7 +49,6 @@ class InternationalCallPrefixTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testGetCountriesAlpha2(): void
     {

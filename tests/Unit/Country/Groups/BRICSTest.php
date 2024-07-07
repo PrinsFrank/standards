@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Tests\Unit\Country\Groups;
 
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\BRICS;

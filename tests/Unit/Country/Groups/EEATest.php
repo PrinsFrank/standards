@@ -11,7 +11,6 @@ use PrinsFrank\Standards\Country\Groups\EEA;
 #[CoversClass(EEA::class)]
 class EEATest extends TestCase
 {
-
     public function testAllAlpha2(): void
     {
         static::assertSame(

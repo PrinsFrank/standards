@@ -16,7 +16,6 @@ use ValueError;
 #[CoversClass(CurrencyNumeric::class)]
 class CurrencyNumericTest extends TestCase
 {
-
     public function testAllCasesCanBeConvertedToCurrencyAlpha3(): void
     {
         foreach (CurrencyNumeric::cases() as $case) {
@@ -26,7 +25,6 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-
     public function testAllCasesCanBeConvertedToCurrencyName(): void
     {
         foreach (CurrencyNumeric::cases() as $case) {
@@ -35,7 +33,6 @@ class CurrencyNumericTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testAllCasesHaveAccessToSymbolOrNull(): void
     {
@@ -59,19 +56,16 @@ class CurrencyNumericTest extends TestCase
         CurrencyNumeric::fromInt(1);
     }
 
-
     public function testTryFromInt(): void
     {
         static::assertEquals(CurrencyNumeric::Lek, CurrencyNumeric::tryFromInt(8));
         static::assertNull(CurrencyNumeric::tryFromInt(1));
     }
 
-
     public function testValueAsInt(): void
     {
         static::assertSame(965, CurrencyNumeric::ADB_Unit_of_Account->valueAsInt());
     }
-
 
     public function testGetMinorUnits(): void
     {
@@ -82,7 +76,6 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-
     public function testGetCountriesAlpha2(): void
     {
         foreach (CurrencyNumeric::cases() as $currencyAlpha3) {
@@ -91,7 +84,6 @@ class CurrencyNumericTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testFormat(): void
     {

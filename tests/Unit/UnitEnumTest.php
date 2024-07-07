@@ -19,7 +19,6 @@ class UnitEnumTest extends TestCase
         static::assertSame(TestEnum::FOO, UnitEnum::tryFromKey(TestEnum::class, 'FOO'));
     }
 
-
     public function testTryFromKeyThrowsExceptionOnNonEnumValue(): void
     {
         $testClass = new class () {};
@@ -45,7 +44,6 @@ class UnitEnumTest extends TestCase
             ['FOO', 'FIZ'],
         );
     }
-
 
     public function testNamesThrowsExceptionOnNonEnumValue(): void
     {

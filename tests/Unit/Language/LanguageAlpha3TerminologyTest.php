@@ -19,7 +19,6 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
 #[CoversClass(LanguageAlpha3Terminology::class)]
 class LanguageAlpha3TerminologyTest extends TestCase
 {
-
     public function testAllCasesCanBeConvertedToLanguageAlpha2(): void
     {
         foreach (LanguageAlpha3Terminology::cases() as $case) {
@@ -28,7 +27,6 @@ class LanguageAlpha3TerminologyTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testAllCasesCanBeConvertedToLanguageAlpha3Bibliographic(): void
     {
@@ -39,7 +37,6 @@ class LanguageAlpha3TerminologyTest extends TestCase
         }
     }
 
-
     public function testAllCasesCanBeConvertedToLanguageName(): void
     {
         foreach (LanguageAlpha3Terminology::cases() as $case) {
@@ -49,12 +46,10 @@ class LanguageAlpha3TerminologyTest extends TestCase
         }
     }
 
-
     public function testUpperCaseValue(): void
     {
         static::assertSame('SQI', LanguageAlpha3Terminology::Albanian->upperCaseValue());
     }
-
 
     public function testGetNameInLanguage(): void
     {
@@ -62,7 +57,6 @@ class LanguageAlpha3TerminologyTest extends TestCase
         static::assertSame('Nederlands', LanguageAlpha3Terminology::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
         static::assertSame('Nederlands', LanguageAlpha3Terminology::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
     }
-
 
     public function testGetNameForCountry(): void
     {
@@ -93,7 +87,6 @@ class LanguageAlpha3TerminologyTest extends TestCase
             )
         );
     }
-
 
     public function testFormatNumber(): void
     {

@@ -11,7 +11,6 @@ use PrinsFrank\Standards\Country\Groups\EFTA;
 #[CoversClass(EFTA::class)]
 class EFTATest extends TestCase
 {
-
     public function testAllAlpha2(): void
     {
         static::assertSame(

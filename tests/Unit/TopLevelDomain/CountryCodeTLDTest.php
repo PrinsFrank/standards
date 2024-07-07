@@ -13,7 +13,6 @@ use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
 #[CoversClass(CountryCodeTLD::class)]
 class CountryCodeTLDTest extends TestCase
 {
-
     public function testGetCountryAlpha2(): void
     {
         static::assertSame(CountryAlpha2::Netherlands, CountryCodeTLD::nl->getCountryAlpha2());
@@ -25,7 +24,6 @@ class CountryCodeTLDTest extends TestCase
         }
     }
 
-
     public function testGetCountryAlpha3(): void
     {
         static::assertSame(CountryAlpha3::Netherlands, CountryCodeTLD::nl->getCountryAlpha3());
@@ -36,7 +34,6 @@ class CountryCodeTLDTest extends TestCase
         }
     }
 
-
     public function testGetCountryNumeric(): void
     {
         static::assertSame(CountryNumeric::Netherlands, CountryCodeTLD::nl->getCountryNumeric());
@@ -46,7 +43,6 @@ class CountryCodeTLDTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testIsAssigned(): void
     {

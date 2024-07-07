@@ -11,7 +11,6 @@ use PrinsFrank\Standards\Country\Groups\EU;
 #[CoversClass(EU::class)]
 class EUTest extends TestCase
 {
-
     public function testAllAlpha2(): void
     {
         static::assertSame(

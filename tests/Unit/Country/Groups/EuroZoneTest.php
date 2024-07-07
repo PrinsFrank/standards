@@ -11,7 +11,6 @@ use PrinsFrank\Standards\Country\Groups\EuroZone;
 #[CoversClass(EuroZone::class)]
 class EuroZoneTest extends TestCase
 {
-
     public function testAllAlpha2(): void
     {
         static::assertSame(

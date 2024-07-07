@@ -10,7 +10,6 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
 #[CoversClass(ScriptCode::class)]
 class ScriptCodeTest extends TestCase
 {
-
     public function testToScriptAlias(): void
     {
         foreach (ScriptCode::cases() as $scriptCode) {
@@ -19,7 +18,6 @@ class ScriptCodeTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testToScriptNumber(): void
     {
@@ -30,7 +28,6 @@ class ScriptCodeTest extends TestCase
         }
     }
 
-
     public function testToScriptName(): void
     {
         foreach (ScriptCode::cases() as $scriptCode) {
@@ -39,7 +36,6 @@ class ScriptCodeTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testForString(): void
     {
@@ -79,7 +75,6 @@ class ScriptCodeTest extends TestCase
         );
     }
 
-
     public function testHasMultipleForString(): void
     {
         static::assertFalse(ScriptCode::hasMultipleForString(''));
@@ -88,7 +83,6 @@ class ScriptCodeTest extends TestCase
         static::assertTrue(ScriptCode::hasMultipleForString('еюeuеюευ'));
         static::assertTrue(ScriptCode::hasMultipleForString('еюeuеюευeu'));
     }
-
 
     public function testMostCommonInString(): void
     {

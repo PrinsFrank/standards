@@ -10,7 +10,6 @@ use PrinsFrank\Standards\ShouldNotHappenException;
 #[CoversClass(ShouldNotHappenException::class)]
 class ShouldNotHappenExceptionTest extends TestCase
 {
-
     public function testConstruct(): void
     {
         $this->expectException(ShouldNotHappenException::class);

@@ -11,7 +11,6 @@ use PrinsFrank\Standards\Country\UserAssigned\TravelDocumentAlpha3;
 #[CoversClass(TravelDocumentAlpha3::class)]
 class TravelDocumentAlpha3Test extends TestCase
 {
-
     public function testToTravelDocumentAlpha2(): void
     {
         static::assertSame(TravelDocumentAlpha2::European_Union, TravelDocumentAlpha3::European_Union->toTravelDocumentAlpha2());

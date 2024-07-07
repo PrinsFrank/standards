@@ -11,7 +11,6 @@ use PrinsFrank\Standards\Country\Groups\Schengen;
 #[CoversClass(Schengen::class)]
 class SchengenTest extends TestCase
 {
-
     public function testAllAlpha2(): void
     {
         static::assertSame(

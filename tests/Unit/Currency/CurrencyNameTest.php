@@ -14,7 +14,6 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 #[CoversClass(CurrencyName::class)]
 class CurrencyNameTest extends TestCase
 {
-
     public function testAllCasesCanBeConvertedToCurrencyNumeric(): void
     {
         foreach (CurrencyName::cases() as $case) {
@@ -23,7 +22,6 @@ class CurrencyNameTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testAllCasesHaveAccessToSymbolOrNull(): void
     {
@@ -34,7 +32,6 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-
     public function testAllCasesCanBeConvertedToCurrencyAlpha3(): void
     {
         foreach (CurrencyName::cases() as $case) {
@@ -43,7 +40,6 @@ class CurrencyNameTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testGetMinorUnits(): void
     {
@@ -54,7 +50,6 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-
     public function testGetCountriesAlpha2(): void
     {
         foreach (CurrencyName::cases() as $currencyAlpha3) {
@@ -63,7 +58,6 @@ class CurrencyNameTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testFormat(): void
     {

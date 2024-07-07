@@ -15,7 +15,6 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
 #[CoversClass(LanguageAlpha3Extensive::class)]
 class LanguageAlpha3ExtensiveTest extends TestCase
 {
-
     public function testGetNameForCountry(): void
     {
         static::assertSame('Nederland', LanguageAlpha3Extensive::Dutch->getNameForCountry(CountryAlpha2::Netherlands));

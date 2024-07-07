@@ -12,7 +12,6 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 #[CoversClass(CountrySubdivision::class)]
 class CountrySubdivisionTest extends TestCase
 {
-
     public function testGetPartOfCountry(): void
     {
         foreach (CountrySubdivision::cases() as $countrySubdivision) {
@@ -21,7 +20,6 @@ class CountrySubdivisionTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testGetNames(): void
     {
@@ -33,7 +31,6 @@ class CountrySubdivisionTest extends TestCase
             CountrySubdivision::Caribbean_Netherlands_special_municipality_Bonaire->getNames()
         );
     }
-
 
     public function testGetSameAsCountry(): void
     {

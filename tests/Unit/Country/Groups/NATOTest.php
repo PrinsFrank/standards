@@ -11,7 +11,6 @@ use PrinsFrank\Standards\Country\Groups\NATO;
 #[CoversClass(NATO::class)]
 class NATOTest extends TestCase
 {
-
     public function testAllAlpha2(): void
     {
         static::assertSame(

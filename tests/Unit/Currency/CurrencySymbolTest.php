@@ -13,7 +13,6 @@ use PrinsFrank\Standards\Currency\CurrencySymbol;
 #[CoversClass(CurrencySymbol::class)]
 class CurrencySymbolTest extends TestCase
 {
-
     public function testAllAlpha3CasesHaveAccessToSymbolOrNull(): void
     {
         foreach (CurrencyAlpha3::cases() as $case) {
@@ -23,7 +22,6 @@ class CurrencySymbolTest extends TestCase
         }
     }
 
-
     public function testAllNameCasesHaveAccessToSymbolOrNull(): void
     {
         foreach (CurrencyName::cases() as $case) {
@@ -32,7 +30,6 @@ class CurrencySymbolTest extends TestCase
             $this->addToAssertionCount(1);
         }
     }
-
 
     public function testAllNumericCasesHaveAccessToSymbolOrNull(): void
     {

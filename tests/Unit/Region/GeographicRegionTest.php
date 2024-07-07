@@ -11,7 +11,6 @@ use PrinsFrank\Standards\Region\GeographicRegion;
 #[CoversClass(GeographicRegion::class)]
 class GeographicRegionTest extends TestCase
 {
-
     public function testGetDirectSubRegions(): void
     {
         static::assertSame(
@@ -22,7 +21,6 @@ class GeographicRegionTest extends TestCase
             GeographicRegion::Americas->getDirectSubRegions()
         );
     }
-
 
     public function testGetAllSubRegions(): void
     {
@@ -38,7 +36,6 @@ class GeographicRegionTest extends TestCase
         );
     }
 
-
     public function testGetDirectSubCountries(): void
     {
         static::assertSame(
@@ -53,7 +50,6 @@ class GeographicRegionTest extends TestCase
             GeographicRegion::Australia_And_New_Zealand->getDirectSubCountries()
         );
     }
-
 
     public function testGetAllSubCountries(): void
     {
