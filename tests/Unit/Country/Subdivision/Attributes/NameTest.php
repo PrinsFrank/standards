@@ -2,14 +2,14 @@
 
 namespace PrinsFrank\Standards\Tests\Unit\Country\Subdivision\Attributes;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\Subdivision\Attributes\Name;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 
-/** @coversDefaultClass \PrinsFrank\Standards\Country\Subdivision\Attributes\Name */
+#[CoversClass(Name::class)]
 class NameTest extends TestCase
 {
-    /** @covers ::__construct */
     public function testConstruct(): void
     {
         $name = new Name('foo', [LanguageAlpha2::English], 'bar', 'bop');

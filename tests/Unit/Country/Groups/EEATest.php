@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\Country\Groups;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\EEA;
 
-/** @coversDefaultClass \PrinsFrank\Standards\Country\Groups\EEA */
+#[CoversClass(EEA::class)]
 class EEATest extends TestCase
 {
-    /** @covers ::allAlpha2 */
     public function testAllAlpha2(): void
     {
         static::assertSame(

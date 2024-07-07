@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
     bootstrap="vendor/autoload.php"
     colors="true"
-    verbose="true"
-    forceCoversAnnotation="true"
     failOnWarning="true"
     failOnEmptyTestSuite="true"
     failOnIncomplete="true"
@@ -13,18 +10,17 @@
     failOnSkipped="true"
     beStrictAboutOutputDuringTests="true"
     beStrictAboutChangesToGlobalState="true"
-    beStrictAboutResourceUsageDuringSmallTests="true"
-    beStrictAboutTodoAnnotatedTests="true"
-    convertDeprecationsToExceptions="true"
+    cacheDirectory=".phpunit.cache"
+    requireCoverageMetadata="true"
 >
     <testsuites>
         <testsuite name="Unit">
             <directory>./tests/Unit</directory>
         </testsuite>
     </testsuites>
-    <coverage>
+    <source>
         <include>
             <directory>./src</directory>
         </include>
-    </coverage>
+    </source>
 </phpunit>

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\Country;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Country\Groups\EFTA;
@@ -16,10 +17,9 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use TypeError;
 use ValueError;
 
-/** @coversDefaultClass \PrinsFrank\Standards\Country\CountryNumeric */
+#[CoversClass(CountryNumeric::class)]
 class CountryNumericTest extends TestCase
 {
-    /** @covers ::toCountryAlpha2 */
     public function testAllCasesCanBeConvertedToCountryAlpha2(): void
     {
         foreach (CountryNumeric::cases() as $case) {
@@ -29,7 +29,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    /** @covers ::toCountryAlpha3 */
     public function testAllCasesCanBeConvertedToCountryAlpha3(): void
     {
         foreach (CountryNumeric::cases() as $case) {
@@ -39,7 +38,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    /** @covers ::toCountryName */
     public function testAllCasesCanBeConvertedToCountryName(): void
     {
         foreach (CountryNumeric::cases() as $case) {
@@ -49,43 +47,30 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::fromInt
-     *
-     * @throws TypeError
-     * @throws ValueError
-     */
+    /** @throws TypeError|ValueError */
     public function testFromInt(): void
     {
         static::assertEquals(CountryNumeric::Albania, CountryNumeric::fromInt(8));
     }
 
-    /**
-     * @covers ::fromInt
-     *
-     * @throws TypeError
-     * @throws ValueError
-     */
+    /** @throws TypeError|ValueError */
     public function testFromIntThrowsExceptionOnNonExistingValue(): void
     {
         $this->expectException(ValueError::class);
         CountryNumeric::fromInt(1);
     }
 
-    /** @covers ::tryFromInt */
     public function testTryFromInt(): void
     {
         static::assertEquals(CountryNumeric::Albania, CountryNumeric::tryFromInt(8));
         static::assertNull(CountryNumeric::tryFromInt(1));
     }
 
-    /** @covers ::valueAsInt */
     public function testValueAsInt(): void
     {
         static::assertSame(4, CountryNumeric::Afghanistan->valueAsInt());
     }
 
-    /** @covers ::getNameInLanguage */
     public function testGetNameInLanguage(): void
     {
         static::assertSame('Nederland', CountryNumeric::Netherlands->getNameInLanguage(LanguageAlpha2::Dutch_Flemish));
@@ -99,7 +84,6 @@ class CountryNumericTest extends TestCase
         static::assertSame('Magyarország', CountryNumeric::Hungary->getNameInLanguage(LanguageAlpha3Extensive::Hungarian));
     }
 
-    /** @covers ::isMemberOf */
     public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -108,18 +92,13 @@ class CountryNumericTest extends TestCase
         CountryNumeric::Netherlands->isMemberOf('foo');
     }
 
-    /**
-     * @covers ::isMemberOf
-     *
-     * @throws InvalidArgumentException
-     */
+    /** @throws InvalidArgumentException */
     public function testIsMemberOf(): void
     {
         static::assertTrue(CountryNumeric::Netherlands->isMemberOf(EU::class));
         static::assertFalse(CountryNumeric::Netherlands->isMemberOf(EFTA::class));
     }
 
-    /** @covers ::getCountryCallingCodes */
     public function testGetCountryCallingCodes(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -127,7 +106,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    /** @covers ::getNationalCallPrefix */
     public function testGetNationalCallPrefix(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -137,7 +115,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    /** @covers ::getInternationalCallPrefix */
     public function testGetInternationalCallPrefix(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -147,13 +124,11 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    /** @covers ::getFlagEmoji */
     public function testGetFlagEmoji(): void
     {
         static::assertSame('🇳🇱', CountryNumeric::Netherlands->getFlagEmoji());
     }
 
-    /** @covers ::getCurrenciesAlpha3 */
     public function testGetCurrenciesAlpha3(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -168,7 +143,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    /** @covers ::getOfficialAndDeFactoLanguages */
     public function testGetOfficialAndDeFactoLanguages(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -178,7 +152,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    /** @covers ::getCountryCodeTLD */
     public function testGetCountryCodeTLD(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -188,7 +161,6 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    /** @covers ::formatNumber */
     public function testFormatNumber(): void
     {
         static::assertSame('42,42', CountryNumeric::Netherlands->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish));
@@ -197,7 +169,6 @@ class CountryNumericTest extends TestCase
         static::assertSame('42.42', CountryNumeric::United_States_of_America->formatNumber(42.42, LanguageAlpha2::English));
     }
 
-    /** @covers ::getSubdivisions */
     public function testGetSubdivisions(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -215,7 +186,6 @@ class CountryNumericTest extends TestCase
         );
     }
 
-    /** @covers ::getSubCountries */
     public function testGetSubCountries(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -233,7 +203,6 @@ class CountryNumericTest extends TestCase
         static::assertSame([], CountryNumeric::Aruba->getSubCountries());
     }
 
-    /** @covers ::getParentCountry */
     public function testGetParentCountry(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {

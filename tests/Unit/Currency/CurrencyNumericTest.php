@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\Currency;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Currency\CurrencyNumeric;
@@ -12,12 +13,9 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use TypeError;
 use ValueError;
 
-/**
- * @coversDefaultClass \PrinsFrank\Standards\Currency\CurrencyNumeric
- */
+#[CoversClass(CurrencyNumeric::class)]
 class CurrencyNumericTest extends TestCase
 {
-    /** @covers ::toCurrencyAlpha3 */
     public function testAllCasesCanBeConvertedToCurrencyAlpha3(): void
     {
         foreach (CurrencyNumeric::cases() as $case) {
@@ -27,7 +25,6 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    /** @covers ::toCurrencyName */
     public function testAllCasesCanBeConvertedToCurrencyName(): void
     {
         foreach (CurrencyNumeric::cases() as $case) {
@@ -37,7 +34,6 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    /** @covers ::getSymbol */
     public function testAllCasesHaveAccessToSymbolOrNull(): void
     {
         foreach (CurrencyNumeric::cases() as $case) {
@@ -47,43 +43,30 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::fromInt
-     *
-     * @throws TypeError
-     * @throws ValueError
-     */
+    /** @throws TypeError|ValueError */
     public function testFromInt(): void
     {
         static::assertEquals(CurrencyNumeric::Lek, CurrencyNumeric::fromInt(8));
     }
 
-    /**
-     * @covers ::fromInt
-     *
-     * @throws ValueError
-     * @throws TypeError
-     */
+    /** @throws ValueError|TypeError */
     public function testFromIntThrowsExceptionOnNonExistingValue(): void
     {
         $this->expectException(ValueError::class);
         CurrencyNumeric::fromInt(1);
     }
 
-    /** @covers ::tryFromInt */
     public function testTryFromInt(): void
     {
         static::assertEquals(CurrencyNumeric::Lek, CurrencyNumeric::tryFromInt(8));
         static::assertNull(CurrencyNumeric::tryFromInt(1));
     }
 
-    /** @covers ::valueAsInt */
     public function testValueAsInt(): void
     {
         static::assertSame(965, CurrencyNumeric::ADB_Unit_of_Account->valueAsInt());
     }
 
-    /** @covers ::getMinorUnits */
     public function testGetMinorUnits(): void
     {
         foreach (CurrencyNumeric::cases() as $currencyAlpha3) {
@@ -93,7 +76,6 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    /** @covers ::getCountriesAlpha2 */
     public function testGetCountriesAlpha2(): void
     {
         foreach (CurrencyNumeric::cases() as $currencyAlpha3) {
@@ -103,7 +85,6 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    /** @covers ::format */
     public function testFormat(): void
     {
         static::assertSame('€ 42,42', CurrencyNumeric::Euro->format(42.42, LanguageAlpha2::Dutch_Flemish, CountryAlpha2::Netherlands));

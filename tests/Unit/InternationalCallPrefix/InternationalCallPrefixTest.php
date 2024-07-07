@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\InternationalCallPrefix;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
@@ -10,10 +11,9 @@ use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
 
-/** @coversDefaultClass \PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix */
+#[CoversClass(InternationalCallPrefix::class)]
 class InternationalCallPrefixTest extends TestCase
 {
-    /** @covers ::forCountry */
     public function testForCountryAlpha2(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
@@ -23,7 +23,6 @@ class InternationalCallPrefixTest extends TestCase
         }
     }
 
-    /** @covers ::forCountry */
     public function testForCountryAlpha3(): void
     {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
@@ -33,7 +32,6 @@ class InternationalCallPrefixTest extends TestCase
         }
     }
 
-    /** @covers ::forCountry */
     public function testForCountryNumeric(): void
     {
         foreach (CountryNumeric::cases() as $countryNumeric) {
@@ -43,7 +41,6 @@ class InternationalCallPrefixTest extends TestCase
         }
     }
 
-    /** @covers ::forCountry */
     public function testForCountryName(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -53,7 +50,6 @@ class InternationalCallPrefixTest extends TestCase
         }
     }
 
-    /** @covers ::getCountriesAlpha2 */
     public function testGetCountriesAlpha2(): void
     {
         foreach (InternationalCallPrefix::cases() as $internationalCallPrefix) {
