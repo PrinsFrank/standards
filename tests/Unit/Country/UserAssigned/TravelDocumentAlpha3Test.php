@@ -3,14 +3,15 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\Country\UserAssigned;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\UserAssigned\TravelDocumentAlpha2;
 use PrinsFrank\Standards\Country\UserAssigned\TravelDocumentAlpha3;
 
-/** @coversDefaultClass \PrinsFrank\Standards\Country\UserAssigned\TravelDocumentAlpha3 */
+#[CoversClass(TravelDocumentAlpha3::class)]
 class TravelDocumentAlpha3Test extends TestCase
 {
-    /** @covers ::toTravelDocumentAlpha2 */
+
     public function testToTravelDocumentAlpha2(): void
     {
         static::assertSame(TravelDocumentAlpha2::European_Union, TravelDocumentAlpha3::European_Union->toTravelDocumentAlpha2());

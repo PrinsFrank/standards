@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\ShouldNotHappenException;
 
-/** @coversDefaultClass \PrinsFrank\Standards\ShouldNotHappenException */
+#[CoversClass(ShouldNotHappenException::class)]
 class ShouldNotHappenExceptionTest extends TestCase
 {
-    /** @covers ::__construct */
+
     public function testConstruct(): void
     {
         $this->expectException(ShouldNotHappenException::class);

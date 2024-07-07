@@ -3,14 +3,15 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\Region;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Region\GeographicRegion;
 
-/** @coversDefaultClass \PrinsFrank\Standards\Region\GeographicRegion */
+#[CoversClass(GeographicRegion::class)]
 class GeographicRegionTest extends TestCase
 {
-    /** @covers ::getDirectSubRegions */
+
     public function testGetDirectSubRegions(): void
     {
         static::assertSame(
@@ -22,7 +23,7 @@ class GeographicRegionTest extends TestCase
         );
     }
 
-    /** @covers ::getAllSubRegions */
+
     public function testGetAllSubRegions(): void
     {
         static::assertSame(
@@ -37,7 +38,7 @@ class GeographicRegionTest extends TestCase
         );
     }
 
-    /** @covers ::getDirectSubCountries */
+
     public function testGetDirectSubCountries(): void
     {
         static::assertSame(
@@ -53,7 +54,7 @@ class GeographicRegionTest extends TestCase
         );
     }
 
-    /** @covers ::getAllSubCountries */
+
     public function testGetAllSubCountries(): void
     {
         static::assertSame(

@@ -2,16 +2,17 @@
 
 namespace PrinsFrank\Standards\Tests\Unit\Country\Subdivision;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Subdivision\Attributes\Name;
 use PrinsFrank\Standards\Country\Subdivision\CountrySubdivision;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 
-/** @coversDefaultClass \PrinsFrank\Standards\Country\Subdivision\CountrySubdivision */
+#[CoversClass(CountrySubdivision::class)]
 class CountrySubdivisionTest extends TestCase
 {
-    /** @covers ::getPartOfCountry */
+
     public function testGetPartOfCountry(): void
     {
         foreach (CountrySubdivision::cases() as $countrySubdivision) {
@@ -21,7 +22,7 @@ class CountrySubdivisionTest extends TestCase
         }
     }
 
-    /** @covers ::getNames */
+
     public function testGetNames(): void
     {
         static::assertEquals(
@@ -33,7 +34,7 @@ class CountrySubdivisionTest extends TestCase
         );
     }
 
-    /** @covers ::getSameAsCountry */
+
     public function testGetSameAsCountry(): void
     {
         static::assertNull(CountrySubdivision::Netherlands_province_Fryslan->getSameAsCountry());

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\CountryCallingCode;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
@@ -10,13 +11,9 @@ use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
 
-/** @coversDefaultClass \PrinsFrank\Standards\CountryCallingCode\CountryCallingCode */
+#[CoversClass(CountryCallingCode::class)]
 class CountryCallingCodeTest extends TestCase
 {
-    /**
-     * @covers ::forCountry
-     * @covers ::getCountriesAlpha2
-     */
     public function testForCountryIsReversible(): void
     {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
@@ -26,10 +23,6 @@ class CountryCallingCodeTest extends TestCase
         }
     }
 
-    /**
-     * @covers ::getCountriesAlpha2
-     * @covers ::forCountry
-     */
     public function testGetCountriesAlpha2IsReversible(): void
     {
         foreach (CountryCallingCode::cases() as $countryCallingCode) {
@@ -39,7 +32,7 @@ class CountryCallingCodeTest extends TestCase
         }
     }
 
-    /** @covers ::forCountry */
+
     public function testCanBeRetrievedForAllCountryAlpha2(): void
     {
         $missingRelations = [];
@@ -52,7 +45,7 @@ class CountryCallingCodeTest extends TestCase
         static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryAlpha2 $countryAlpha2) => $countryAlpha2->name, $missingRelations)));
     }
 
-    /** @covers ::forCountry */
+
     public function testCanBeRetrievedForAllCountryAlpha3(): void
     {
         $missingRelations = [];
@@ -65,7 +58,7 @@ class CountryCallingCodeTest extends TestCase
         static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryAlpha3 $countryAlpha3) => $countryAlpha3->name, $missingRelations)));
     }
 
-    /** @covers ::forCountry */
+
     public function testCanBeRetrievedForAllCountryNumeric(): void
     {
         $missingRelations = [];
@@ -78,7 +71,7 @@ class CountryCallingCodeTest extends TestCase
         static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryNumeric $countryNumeric) => $countryNumeric->name, $missingRelations)));
     }
 
-    /** @covers ::forCountry */
+
     public function testCanBeRetrievedForAllCountryName(): void
     {
         $missingRelations = [];

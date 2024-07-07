@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\Currency;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Currency\CurrencyName;
@@ -10,12 +11,10 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 
-/**
- * @coversDefaultClass \PrinsFrank\Standards\Currency\CurrencyName
- */
+#[CoversClass(CurrencyName::class)]
 class CurrencyNameTest extends TestCase
 {
-    /** @covers ::toCurrencyNumeric */
+
     public function testAllCasesCanBeConvertedToCurrencyNumeric(): void
     {
         foreach (CurrencyName::cases() as $case) {
@@ -25,7 +24,7 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-    /** @covers ::getSymbol */
+
     public function testAllCasesHaveAccessToSymbolOrNull(): void
     {
         foreach (CurrencyName::cases() as $case) {
@@ -35,7 +34,7 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-    /** @covers ::toCurrencyAlpha3 */
+
     public function testAllCasesCanBeConvertedToCurrencyAlpha3(): void
     {
         foreach (CurrencyName::cases() as $case) {
@@ -45,7 +44,7 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-    /** @covers ::getMinorUnits */
+
     public function testGetMinorUnits(): void
     {
         foreach (CurrencyName::cases() as $currencyAlpha3) {
@@ -55,7 +54,7 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-    /** @covers ::getCountriesAlpha2 */
+
     public function testGetCountriesAlpha2(): void
     {
         foreach (CurrencyName::cases() as $currencyAlpha3) {
@@ -65,7 +64,7 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-    /** @covers ::format */
+
     public function testFormat(): void
     {
         static::assertSame('€ 42,42', CurrencyName::Euro->format(42.42, LanguageAlpha2::Dutch_Flemish, CountryAlpha2::Netherlands));

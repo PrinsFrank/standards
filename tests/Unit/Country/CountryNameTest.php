@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\Country;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\Groups\EFTA;
@@ -14,10 +15,10 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 
-/** @coversDefaultClass \PrinsFrank\Standards\Country\CountryName */
+#[CoversClass(CountryName::class)]
 class CountryNameTest extends TestCase
 {
-    /** @covers ::toCountryAlpha2 */
+
     public function testAllCasesCanBeConvertedToCountryAlpha2(): void
     {
         foreach (CountryName::cases() as $case) {
@@ -27,7 +28,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /** @covers ::toCountryAlpha3 */
+
     public function testAllCasesCanBeConvertedToISO3166Alpha3(): void
     {
         foreach (CountryName::cases() as $case) {
@@ -37,7 +38,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /** @covers ::toCountryNumeric */
+
     public function testAllCasesCanBeConvertedToISO3166Numeric(): void
     {
         foreach (CountryName::cases() as $case) {
@@ -47,7 +48,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /** @covers ::getNameInLanguage */
+
     public function testGetNameInLanguage(): void
     {
         static::assertSame('Nederland', CountryName::Netherlands->getNameInLanguage(LanguageAlpha2::Dutch_Flemish));
@@ -61,7 +62,7 @@ class CountryNameTest extends TestCase
         static::assertSame('Magyarország', CountryName::Hungary->getNameInLanguage(LanguageAlpha3Extensive::Hungarian));
     }
 
-    /** @covers ::isMemberOf */
+
     public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -70,18 +71,14 @@ class CountryNameTest extends TestCase
         CountryName::Netherlands->isMemberOf('foo');
     }
 
-    /**
-     * @covers ::isMemberOf
-     *
-     * @throws InvalidArgumentException
-     */
+    /** @throws InvalidArgumentException */
     public function testIsMemberOf(): void
     {
         static::assertTrue(CountryName::Netherlands->isMemberOf(EU::class));
         static::assertFalse(CountryName::Netherlands->isMemberOf(EFTA::class));
     }
 
-    /** @covers ::getCountryCallingCodes */
+
     public function testGetCountryCallingCodes(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -89,7 +86,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /** @covers ::getNationalCallPrefix */
+
     public function testGetNationalCallPrefix(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -99,7 +96,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /** @covers ::getInternationalCallPrefix */
+
     public function testGetInternationalCallPrefix(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -109,13 +106,13 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /** @covers ::getFlagEmoji */
+
     public function testGetFlagEmoji(): void
     {
         static::assertSame('🇳🇱', CountryName::Netherlands->getFlagEmoji());
     }
 
-    /** @covers ::getCurrenciesAlpha3 */
+
     public function testGetCurrenciesAlpha3(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -130,7 +127,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /** @covers ::getOfficialAndDeFactoLanguages */
+
     public function testGetOfficialAndDeFactoLanguages(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -140,7 +137,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    /** @covers ::getSubdivisions */
+
     public function testGetSubdivisions(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -158,7 +155,7 @@ class CountryNameTest extends TestCase
         );
     }
 
-    /** @covers ::getSubCountries */
+
     public function testGetSubCountries(): void
     {
         foreach (CountryName::cases() as $countryName) {
@@ -176,7 +173,7 @@ class CountryNameTest extends TestCase
         static::assertSame([], CountryName::Aruba->getSubCountries());
     }
 
-    /** @covers ::getParentCountry */
+
     public function testGetParentCountry(): void
     {
         foreach (CountryName::cases() as $countryName) {

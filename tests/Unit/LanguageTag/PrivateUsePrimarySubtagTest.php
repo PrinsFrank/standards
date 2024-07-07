@@ -3,19 +3,15 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\LanguageTag;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\LanguageTag\PrivateUsePrimarySubtag;
 
-/** @coversDefaultClass \PrinsFrank\Standards\LanguageTag\PrivateUsePrimarySubtag */
+#[CoversClass(PrivateUsePrimarySubtag::class)]
 class PrivateUsePrimarySubtagTest extends TestCase
 {
-    /**
-     * @covers ::__construct
-     * @covers ::isValid
-     *
-     * @throws InvalidArgumentException
-     */
+    /** @throws InvalidArgumentException */
     public function testConstructThrowsExceptionWhenInvalidTag(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -23,12 +19,7 @@ class PrivateUsePrimarySubtagTest extends TestCase
         new PrivateUsePrimarySubtag('0');
     }
 
-    /**
-     * @covers ::tryFrom
-     * @covers ::isValid
-     *
-     * @throws InvalidArgumentException
-     */
+    /** @throws InvalidArgumentException */
     public function testTryFrom(): void
     {
         static::assertNull(PrivateUsePrimarySubtag::tryFrom('0'));

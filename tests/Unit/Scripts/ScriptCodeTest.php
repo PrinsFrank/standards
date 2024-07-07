@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\Scripts;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
-/** @coversDefaultClass \PrinsFrank\Standards\Scripts\ScriptCode */
+#[CoversClass(ScriptCode::class)]
 class ScriptCodeTest extends TestCase
 {
-    /** @covers ::toScriptAlias */
+
     public function testToScriptAlias(): void
     {
         foreach (ScriptCode::cases() as $scriptCode) {
@@ -19,7 +20,7 @@ class ScriptCodeTest extends TestCase
         }
     }
 
-    /** @covers ::toScriptNumber */
+
     public function testToScriptNumber(): void
     {
         foreach (ScriptCode::cases() as $scriptCode) {
@@ -29,7 +30,7 @@ class ScriptCodeTest extends TestCase
         }
     }
 
-    /** @covers ::toScriptName */
+
     public function testToScriptName(): void
     {
         foreach (ScriptCode::cases() as $scriptCode) {
@@ -39,7 +40,7 @@ class ScriptCodeTest extends TestCase
         }
     }
 
-    /** @covers ::allForString */
+
     public function testForString(): void
     {
         static::assertSame(
@@ -78,7 +79,7 @@ class ScriptCodeTest extends TestCase
         );
     }
 
-    /** @covers ::hasMultipleForString */
+
     public function testHasMultipleForString(): void
     {
         static::assertFalse(ScriptCode::hasMultipleForString(''));
@@ -88,7 +89,7 @@ class ScriptCodeTest extends TestCase
         static::assertTrue(ScriptCode::hasMultipleForString('еюeuеюευeu'));
     }
 
-    /** @covers ::mostCommonInString */
+
     public function testMostCommonInString(): void
     {
         static::assertNull(ScriptCode::mostCommonInString(''));

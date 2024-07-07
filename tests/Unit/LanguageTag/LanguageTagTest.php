@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\LanguageTag;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\InvalidArgumentException;
@@ -16,15 +17,10 @@ use PrinsFrank\Standards\LanguageTag\SingleCharacterSubtag;
 use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
-/** @coversDefaultClass \PrinsFrank\Standards\LanguageTag\LanguageTag */
+#[CoversClass(LanguageTag::class)]
 class LanguageTagTest extends TestCase
 {
-    /**
-     * @covers ::fromString
-     * @covers ::__construct
-     *
-     * @throws InvalidArgumentException
-     */
+    /** @throws InvalidArgumentException */
     public function testThrowsExceptionIfVariantSubTagIsOfInvalidType(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -33,12 +29,7 @@ class LanguageTagTest extends TestCase
         new LanguageTag(LanguageAlpha2::Dutch_Flemish, variantSubtag: ['foo']);
     }
 
-    /**
-     * @covers ::fromString
-     * @covers ::__construct
-     *
-     * @throws InvalidArgumentException
-     */
+    /** @throws InvalidArgumentException */
     public function testThrowsExceptionIfExtensionSubtagIsOfInvalidType(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -49,9 +40,6 @@ class LanguageTagTest extends TestCase
 
     /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
-     *
-     * @covers ::fromString
-     * @covers ::__construct
      *
      * @throws InvalidArgumentException
      */
@@ -78,9 +66,6 @@ class LanguageTagTest extends TestCase
     /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
-     * @covers ::fromString
-     * @covers ::__construct
-     *
      * @throws InvalidArgumentException
      */
     public function testFromStringLanguageSubtagPlusScriptSubtag(): void
@@ -105,9 +90,6 @@ class LanguageTagTest extends TestCase
 
     /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
-     *
-     * @covers ::fromString
-     * @covers ::__construct
      *
      * @throws InvalidArgumentException
      */
@@ -134,9 +116,6 @@ class LanguageTagTest extends TestCase
     /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
-     * @covers ::fromString
-     * @covers ::__construct
-     *
      * @throws InvalidArgumentException
      */
     public function testFromStringLanguageScriptRegion(): void
@@ -153,9 +132,6 @@ class LanguageTagTest extends TestCase
 
     /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
-     *
-     * @covers ::fromString
-     * @covers ::__construct
      *
      * @throws InvalidArgumentException
      */
@@ -178,9 +154,6 @@ class LanguageTagTest extends TestCase
     /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
-     * @covers ::fromString
-     * @covers ::__construct
-     *
      * @throws InvalidArgumentException
      */
     public function testFromStringLanguageRegionVariant(): void
@@ -198,9 +171,6 @@ class LanguageTagTest extends TestCase
     /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
-     * @covers ::fromString
-     * @covers ::__construct
-     *
      * @throws InvalidArgumentException
      */
     public function testFromStringLanguageScriptRegionVariant(): void
@@ -213,9 +183,6 @@ class LanguageTagTest extends TestCase
 
     /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
-     *
-     * @covers ::fromString
-     * @covers ::__construct
      *
      * @throws InvalidArgumentException
      */
@@ -238,9 +205,6 @@ class LanguageTagTest extends TestCase
     /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
      *
-     * @covers ::fromString
-     * @covers ::__construct
-     *
      * @throws InvalidArgumentException
      */
     public function testFromStringPrivateUseSubTags(): void
@@ -257,9 +221,6 @@ class LanguageTagTest extends TestCase
 
     /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#appendix-A
-     *
-     * @covers ::fromString
-     * @covers ::__construct
      *
      * @throws InvalidArgumentException
      */
@@ -289,9 +250,6 @@ class LanguageTagTest extends TestCase
 
     /**
      * @example https://datatracker.ietf.org/doc/html/rfc5646#section-2.2.2
-     *
-     * @covers ::fromString
-     * @covers ::__construct
      *
      * @throws InvalidArgumentException
      */
@@ -327,12 +285,7 @@ class LanguageTagTest extends TestCase
         );
     }
 
-    /**
-     * @covers ::fromString
-     * @covers ::__construct
-     *
-     * @throws InvalidArgumentException
-     */
+    /** @throws InvalidArgumentException */
     public function testFromStringWithExtensions(): void
     {
         static::assertEquals(
@@ -345,11 +298,7 @@ class LanguageTagTest extends TestCase
         );
     }
 
-    /**
-     * @covers ::fromString
-     *
-     * @throws InvalidArgumentException
-     */
+    /**  @throws InvalidArgumentException */
     public function testFromStringWithInvalidFormat(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -357,23 +306,14 @@ class LanguageTagTest extends TestCase
         LanguageTag::fromString('nl-nl');
     }
 
-    /**
-     * @covers ::tryFromString
-     *
-     * @throws InvalidArgumentException
-     */
+    /** @throws InvalidArgumentException */
     public function testTryFromString(): void
     {
         static::assertNull(LanguageTag::tryFromString('nl-nl'));
         static::assertEquals(new LanguageTag(LanguageAlpha2::Dutch_Flemish), LanguageTag::tryFromString('nl'));
     }
 
-    /**
-     * @covers ::toString
-     * @covers ::__toString
-     *
-     * @throws InvalidArgumentException
-     */
+    /** @throws InvalidArgumentException */
     public function testToString(): void
     {
         static::assertSame('de', (LanguageTag::fromString('de'))->__toString());

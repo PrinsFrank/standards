@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Tests\Unit\Scripts;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Scripts\ScriptAlias;
 
-/** @coversDefaultClass \PrinsFrank\Standards\Scripts\ScriptAlias */
+#[CoversClass(ScriptAlias::class)]
 class ScriptAliasTest extends TestCase
 {
-    /** @covers ::toScriptNumber */
+
     public function testToScriptNumber(): void
     {
         foreach (ScriptAlias::cases() as $scriptAlias) {
@@ -19,7 +20,7 @@ class ScriptAliasTest extends TestCase
         }
     }
 
-    /** @covers ::toScriptName */
+
     public function testToScriptName(): void
     {
         foreach (ScriptAlias::cases() as $scriptAlias) {
@@ -29,7 +30,7 @@ class ScriptAliasTest extends TestCase
         }
     }
 
-    /** @covers ::toScriptCode */
+
     public function testToScriptCode(): void
     {
         foreach (ScriptAlias::cases() as $scriptAlias) {
@@ -39,14 +40,14 @@ class ScriptAliasTest extends TestCase
         }
     }
 
-    /** @covers ::isSupportedByPHPRegex */
+
     public function testIsSupportedByPHPRegex(): void
     {
         static::assertTrue(ScriptAlias::Arabic->isSupportedByPHPRegex());
         static::assertFalse(ScriptAlias::Adlam->isSupportedByPHPRegex());
     }
 
-    /** @covers ::allForString */
+
     public function testForString(): void
     {
         static::assertSame(
@@ -85,7 +86,7 @@ class ScriptAliasTest extends TestCase
         );
     }
 
-    /** @covers ::hasMultipleForString */
+
     public function testHasMultipleForString(): void
     {
         static::assertFalse(ScriptAlias::hasMultipleForString(''));
@@ -95,7 +96,7 @@ class ScriptAliasTest extends TestCase
         static::assertTrue(ScriptAlias::hasMultipleForString('еюeuеюευeu'));
     }
 
-    /** @covers ::mostCommonInString */
+
     public function testMostCommonInString(): void
     {
         static::assertNull(ScriptAlias::mostCommonInString(''));
