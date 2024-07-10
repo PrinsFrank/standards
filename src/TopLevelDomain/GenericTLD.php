@@ -1201,6 +1201,8 @@ enum GenericTLD: string implements TLD
     case shang_dian_han = '商店';
     case shangrila = 'shangrila';
     case sharp = 'sharp';
+
+    #[NotAssigned]
     case shaw = 'shaw';
     case shbkt_arabic = 'شبكة';
     case shell = 'shell';
