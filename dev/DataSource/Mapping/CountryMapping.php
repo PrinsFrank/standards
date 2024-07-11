@@ -95,6 +95,7 @@ class CountryMapping implements Mapping
             $crawler = $client->refreshCrawler();
             $client->waitForElementToContain('.v-tabsheet-tabitem-selected', $record->alpha2);
             $client->waitForVisibility("table#subdivision");
+            $client->waitForInvisibility('.v-window-modalitycurtain');
             $client->waitForInvisibility('.v-loading-indicator');
             foreach ($crawler->filterXPath("//table[@id='subdivision']/tbody/tr")->getIterator() as $subdivision) {
                 /** @var RemoteWebElement $subdivision */
