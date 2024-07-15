@@ -720,7 +720,29 @@ $valueName = $valueAlpha3->name;                     // 'Dutch'
 
 ## Language Tags (RFC 5646)
 
+> :mortar-board: **Language tags always have a primary tag, and can have an extension, script, region, one or more variants, one or more extension and/or a private subtag.**
+
 ### At a glance
+
+```php
+LanguageTag::tryFromString('');            // null
+LanguageTag::fromString();                 // InvalidArgumentException
+LanguageTag::fromString('nl');             // LanguageTag(LanguageAlpha2::Dutch_Flemish);
+LanguageTag::fromString('i-enochian');     // LanguageTag(SingleCharacterSubtag::GRANDFATHERED, privateUseSubtag: 'enochian')
+LanguageTag::fromString('zh-Hant');        // LanguageTag(LanguageAlpha2::Chinese, script: ScriptSubtag::Han_Traditional_variant)
+LanguageTag::fromString('sr-Cyrl');        // LanguageTag(LanguageAlpha2::Serbian, scriptSubtag: ScriptCode::Cyrillic)
+LanguageTag::fromString('zh-cmn-Hans-CN'); // LanguageTag(LanguageAlpha2::Chinese, LanguageAlpha3Extensive::Mandarin_Chinese, ScriptCode::Han_Simplified_variant, CountryAlpha2::China)
+LanguageTag::fromString('sl-rozaj-biske'); // LanguageTag(LanguageAlpha2::Slovenian, variantSubtag: [LanguageTagVariant::Rezijan, LanguageTagVariant::The_Bila_dialect_of_Resian])
+LanguageTag::fromString('de-CH-1901');     // LanguageTag(LanguageAlpha2::German, regionSubtag: CountryAlpha2::Switzerland, variantSubtag: [LanguageTagVariant::Traditional_German_orthography])
+
+LanguageTag::fromString('de-CH-1901')->primaryLanguageSubtag; // LanguageAlpha2::German
+LanguageTag::fromString('de-CH-1901')->regionSubtag;          // CountryAlpha2::Switzerland
+
+LanguageAlpha2::Dutch_Flemish->toLanguageTag(); // 'nl'
+LanguageAlpha2::German->toLanguageTag(regionSubtag: CountryAlpha2::Switzerland, variantSubtag: [LanguageTagVariant::Traditional_German_orthography]); // 'de-CH-1901'
+
+public function foo(LanguageTag $languageTag): {} // Use spec as typehint to enforce valid value
+```
 
 ## Geographic regions (M49)
 
