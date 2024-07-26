@@ -136,7 +136,7 @@ class CountryMapping implements Mapping
                     'category' => $subdivisionColumns[0]->getText(),
                     'code' => rtrim($subdivisionColumns[1]->getText(), '*'),
                     'parent' => $subdivisionColumns[6]->getText(),
-                    'same_as_country' => $note !== null && preg_match('/see also separate country code entry under (?P<countryCode>[A-Z]{2})/', $note, $matches) === 1 && array_key_exists('countryCode', $matches) ? CountryAlpha2::from($matches['countryCode']) : null,
+                    'same_as_country' => $note !== null && preg_match('/see also separate country code entry under (?P<countryCode>[A-Z]{2})/', $note, $matches) === 1 ? CountryAlpha2::from($matches['countryCode']) : null,
                     'names' => [
                         (object) [
                             'name' => $name,
