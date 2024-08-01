@@ -14,6 +14,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
+use PrinsFrank\Standards\Name\NameOrder;
 
 #[CoversClass(CountryAlpha2::class)]
 class CountryAlpha2Test extends TestCase
@@ -203,5 +204,15 @@ class CountryAlpha2Test extends TestCase
         }
         static::assertNull(CountryAlpha2::Netherlands->getParentCountry());
         static::assertSame(CountryAlpha2::Netherlands, CountryAlpha2::Aruba->getParentCountry());
+    }
+
+    public function testGetMostCommonNameOrder(): void
+    {
+        foreach (CountryAlpha2::cases() as $countryAlpha2) {
+            /** @phpstan-ignore method.resultUnused */
+            $countryAlpha2->getMostCommonNameOrder();
+        }
+        static::assertSame(NameOrder::Western, CountryAlpha2::Netherlands->getMostCommonNameOrder());
+        static::assertSame(NameOrder::Eastern, CountryAlpha2::Japan->getMostCommonNameOrder());
     }
 }

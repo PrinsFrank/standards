@@ -15,6 +15,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
+use PrinsFrank\Standards\Name\NameOrder;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
 use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
 
@@ -345,6 +346,23 @@ enum CountryAlpha2: string
     public function getNationalCallPrefix(): NationalCallPrefix
     {
         return NationalCallPrefix::forCountry($this);
+    }
+
+    public function getMostCommonNameOrder(): NameOrder
+    {
+        return match ($this) {
+            self::Cambodia,
+            self::China,
+            self::Hungary,
+            self::Japan,
+            self::Korea_Democratic_Peoples_Republic,
+            self::Korea_Republic,
+            self::Mongolia,
+            self::Singapore,
+            self::Taiwan_Province_of_China,
+            self::Viet_Nam => NameOrder::Eastern,
+            default => NameOrder::Western,
+        };
     }
 
     /**
