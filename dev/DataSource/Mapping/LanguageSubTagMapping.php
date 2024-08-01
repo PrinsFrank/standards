@@ -41,9 +41,7 @@ class LanguageSubTagMapping implements Mapping
 
             $record = (object) [];
             foreach ($matches as $match) {
-                /** @phpstan-ignore offsetAccess.notFound */
                 $value = $match['value'];
-                /** @phpstan-ignore offsetAccess.notFound */
                 match ($match['key']) {
                     'Type' => $record->Type = $value,
                     'Subtag' => $record->Subtag = $value,
