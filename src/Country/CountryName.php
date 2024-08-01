@@ -14,6 +14,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
+use PrinsFrank\Standards\Name\NameOrder;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
 
 /**
@@ -331,6 +332,11 @@ enum CountryName: string
     public function getFlagEmoji(): string
     {
         return $this->toCountryAlpha2()->getFlagEmoji();
+    }
+
+    public function getMostCommonNameOrder(): NameOrder
+    {
+        return $this->toCountryAlpha2()->getMostCommonNameOrder();
     }
 
     /** @return list<CurrencyAlpha3> */

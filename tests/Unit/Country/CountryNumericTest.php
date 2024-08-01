@@ -14,6 +14,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
+use PrinsFrank\Standards\Name\NameOrder;
 use TypeError;
 use ValueError;
 
@@ -210,5 +211,14 @@ class CountryNumericTest extends TestCase
         }
         static::assertNull(CountryNumeric::Netherlands->getParentCountry());
         static::assertSame(CountryNumeric::Netherlands, CountryNumeric::Aruba->getParentCountry());
+    }
+
+    public function testGetMostCommonNameOrder(): void
+    {
+        foreach (CountryNumeric::cases() as $countryAlpha2) {
+            $countryAlpha2->getMostCommonNameOrder();
+        }
+        static::assertSame(NameOrder::Western, CountryNumeric::Netherlands->getMostCommonNameOrder());
+        static::assertSame(NameOrder::Eastern, CountryNumeric::Japan->getMostCommonNameOrder());
     }
 }
