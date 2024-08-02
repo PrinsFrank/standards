@@ -12,7 +12,7 @@ on:
 
 jobs:
   quality:
-    uses: prinsfrank/CI-PHP/.github/workflows/quality.yml@main
+    uses: prinsfrank/CI-PHP/.github/workflows/quality.yml@force-overwrite-cache
     with:
       PHP_VERSION: '8.3'
       PHP_VERSIONS: '["8.2", "8.3"]'
