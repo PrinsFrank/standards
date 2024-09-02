@@ -89,6 +89,12 @@ class CurrencyMapping implements Mapping
             ->addMethod($getMinorUnitsMethod = new EnumMethod('getMinorUnits', '?int', 'null'))
             ->addMethod($getCountriesAlpha2Method = new EnumMethod('getCountriesAlpha2', 'array', '[]', '/** @return list<CountryAlpha2> */'));
 
+        foreach (CurrencyAlpha3::cases() as $case) {
+            if (($minorUnits = $case->getMinorUnits()) !== null) {
+                $getMinorUnitsMethod->addMapping('self::' . $case->name, (string) $minorUnits);
+            }
+        }
+
         $countryAlpha2 = (new EnumFile(CountryAlpha2::class, KeySorting::class))
             ->addMethod($getCurrenciesMethod = new EnumMethod('getCurrenciesAlpha3', 'array', '[]', '/** @return list<CurrencyAlpha3> */'));
         foreach ($dataSet as $dataRow) {
