@@ -197,7 +197,6 @@ enum CurrencyName: string
     case Yen = 'Yen';
     case Yuan_Renminbi = 'Yuan Renminbi';
     case Zambian_Kwacha = 'Zambian Kwacha';
-    case Zimbabwe_Dollar = 'Zimbabwe Dollar';
     case Zimbabwe_Gold = 'Zimbabwe Gold';
     case Zloty = 'Zloty';
 
@@ -206,6 +205,9 @@ enum CurrencyName: string
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Leone_Old = 'Leone_Old';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Zimbabwe_Dollar = 'Zimbabwe Dollar';
 
     public function toCurrencyAlpha3(): CurrencyAlpha3
     {
