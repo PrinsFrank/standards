@@ -198,7 +198,6 @@ enum CurrencyAlpha3: string
     case Yen = 'JPY';
     case Yuan_Renminbi = 'CNY';
     case Zambian_Kwacha = 'ZMW';
-    case Zimbabwe_Dollar = 'ZWL';
     case Zimbabwe_Gold = 'ZWG';
     case Zloty = 'PLN';
 
@@ -207,6 +206,9 @@ enum CurrencyAlpha3: string
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Leone_Old = 'SLL';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Zimbabwe_Dollar = 'ZWL';
 
     public function toCurrencyNumeric(): CurrencyNumeric
     {
@@ -715,7 +717,6 @@ enum CurrencyAlpha3: string
             self::Yen => [CountryAlpha2::Japan],
             self::Yuan_Renminbi => [CountryAlpha2::China],
             self::Zambian_Kwacha => [CountryAlpha2::Zambia],
-            self::Zimbabwe_Dollar => [CountryAlpha2::Zimbabwe],
             self::Zimbabwe_Gold => [CountryAlpha2::Zimbabwe],
             self::Zloty => [CountryAlpha2::Poland],
             default => []

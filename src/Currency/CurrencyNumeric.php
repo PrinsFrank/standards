@@ -199,7 +199,6 @@ enum CurrencyNumeric: string
     case Yen = '392';
     case Yuan_Renminbi = '156';
     case Zambian_Kwacha = '967';
-    case Zimbabwe_Dollar = '932';
     case Zimbabwe_Gold = '924';
     case Zloty = '985';
 
@@ -208,6 +207,9 @@ enum CurrencyNumeric: string
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Leone_Old = '694';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Zimbabwe_Dollar = '932';
 
     public static function tryFromInt(int $from): ?self
     {
