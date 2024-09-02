@@ -31,11 +31,11 @@ class LanguageSubTagMapping implements Mapping
     {
         $dataSet = [];
         foreach (explode('%%', $client->getPageSource()) as $i => $item) {
-            if($i === 0) {
+            if ($i === 0) {
                 continue;
             }
 
-            if(preg_match_all('/(?P<key>[A-Za-z-]+): (?P<value>.+)/', $item, $matches, PREG_SET_ORDER) <= 0) {
+            if (preg_match_all('/(?P<key>[A-Za-z-]+): (?P<value>.+)/', $item, $matches, PREG_SET_ORDER) <= 0) {
                 throw new InvalidArgumentException('Invalid record encountered');
             }
 
