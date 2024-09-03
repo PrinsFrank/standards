@@ -125,7 +125,6 @@ enum LanguageName: string
     case Dinka = 'Dinka';
     case Divehi_Dhivehi_Maldivian = 'Divehi; Dhivehi; Maldivian';
     case Dogri = 'Dogri';
-    case Dogrib = 'Dogrib';
     case Dravidian_languages = 'Dravidian languages';
     case Duala = 'Duala';
     case Dutch_Flemish = 'Dutch; Flemish';
@@ -447,6 +446,7 @@ enum LanguageName: string
     case Tigrinya = 'Tigrinya';
     case Timne = 'Timne';
     case Tiv = 'Tiv';
+    case Tlicho_Dogrib = 'Tlicho, Dogrib';
     case Tlingit = 'Tlingit';
     case Tok_Pisin = 'Tok Pisin';
     case Tokelau = 'Tokelau';
@@ -500,6 +500,9 @@ enum LanguageName: string
     case Zhuang_Chuang = 'Zhuang; Chuang';
     case Zulu = 'Zulu';
     case Zuni = 'Zuni';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Dogrib = 'Dogrib';
 
     public function toLanguageAlpha2(): LanguageAlpha2|null
     {
