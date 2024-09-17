@@ -55,11 +55,11 @@ class CountryMapping implements Mapping
         $cookieButton = $crawler->filterXPath(".//button[@id='onetrust-accept-btn-handler']");
         $cookieButton->click();
 
+        $crawler = $client->refreshCrawler(); // The cookie acceptance causes a redirect, so we have to get a crawler instance for the new document
         $client->waitForVisibility('.v-select-select');
         $client->waitForInvisibility('.v-window-modalitycurtain');
         $client->waitForInvisibility('.v-app-loading');
         $client->waitForInvisibility('.v-loading-indicator');
-        $crawler = $client->refreshCrawler(); // The cookie acceptance causes a redirect, so we have to get a crawler instance for the new document
         $perPageDropdown = $crawler->filterXPath(".//select[@class='v-select-select']//option[last()]");
         $perPageDropdown->click();
         $client->waitForElementToContain('html', 'Zimbabwe');
