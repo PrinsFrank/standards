@@ -41,7 +41,6 @@ enum LanguageAlpha2: string
     case Basque = 'eu';
     case Belarusian = 'be';
     case Bengali = 'bn';
-    case Bihari_languages = 'bh';
     case Bislama = 'bi';
     case Bokmal_Norwegian_Norwegian_Bokmal = 'nb';
     case Bosnian = 'bs';
@@ -206,6 +205,9 @@ enum LanguageAlpha2: string
     case Yoruba = 'yo';
     case Zhuang_Chuang = 'za';
     case Zulu = 'zu';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Bihari_languages = 'bh';
 
     public function toLanguageAlpha3Bibliographic(): ?LanguageAlpha3Bibliographic
     {
