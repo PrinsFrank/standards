@@ -132,7 +132,6 @@ enum LanguageAlpha3Bibliographic: string
     case Dinka = 'din';
     case Divehi_Dhivehi_Maldivian = 'div';
     case Dogri = 'doi';
-    case Dogrib = 'dgr';
     case Dravidian_languages = 'dra';
     case Duala = 'dua';
     case Dutch_Flemish = 'dut';
@@ -454,6 +453,7 @@ enum LanguageAlpha3Bibliographic: string
     case Tigrinya = 'tir';
     case Timne = 'tem';
     case Tiv = 'tiv';
+    case Dogrib = 'dgr';
     case Tlingit = 'tli';
     case Tok_Pisin = 'tpi';
     case Tokelau = 'tkl';
