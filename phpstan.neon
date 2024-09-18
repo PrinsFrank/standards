@@ -1,5 +1,5 @@
 parameters:
-    tmpDir: .phpstan.result.cache
+    tmpDir: ./cache/.phpstan.result.cache
     level: 9
     paths:
         - src

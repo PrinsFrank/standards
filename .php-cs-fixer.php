@@ -25,4 +25,4 @@ return (new PhpCsFixer\Config())->setRules(
     PhpCsFixer\Finder::create()
         ->exclude('vendor')
         ->in(__DIR__)
-);
+)->setCacheFile('./cache/.php-cs-fixer.cache');

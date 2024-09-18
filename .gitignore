@@ -2,18 +2,14 @@
 /vendor/
 composer.lock
 
-# CSFixer
-.php-cs-fixer.cache
-
 # PHPUnit
-.phpunit.result.cache
 coverage.xml
 
-# PHPStan
-.phpstan.result.cache
-
-# JetBrains
+# IDE
 .idea
+
+# Local cache directory
+/cache
 
 #Gecko driver required for spec update
 /drivers
