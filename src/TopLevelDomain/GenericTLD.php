@@ -334,6 +334,8 @@ enum GenericTLD: string implements TLD
 
     #[NotAssigned]
     case da_zhong_qi_che_han = '大众汽车';
+
+    #[NotAssigned]
     case dabur = 'dabur';
     case dad = 'dad';
     case dan_ma_xi_han = '淡马锡';
