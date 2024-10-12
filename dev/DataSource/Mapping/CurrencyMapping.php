@@ -128,7 +128,35 @@ class CurrencyMapping implements Mapping
                     $getCountriesAlpha2Method->addMapping('self::' . NameNormalizer::normalize($currencyName), 'CountryAlpha2::' . $euroZoneCountry->name);
                 }
             } else {
-                $countryName = (BackedEnum::fromName(CountryAlpha2::class, str_replace(['_The', '_And_', '_Plurinational_State_Of', '_Keeling', '_Of', '_D_ivoire', '_Malvinas', 'Mcdonald', '_Islamic_Republic', 'Isle_Man', 'People_s_', '_Federated_States', 'Moldova_Republic', '_and_Tristan', '_Da_', '_Part', '_and_Grenadines', '_and_Jan', '_Province_China', '_United_Republic', 'Turkiye', '_Great_Britain_and_Northern_Ireland', 'Minor_', '_America', '_Bolivarian_Republic', '_U_s'], ['', '_and_', '', '', '', '_d_Ivoire', '', 'McDonald', '', 'Isle_of_Man', 'Peoples_', '', 'Moldova', '_Tristan', '_da_', '_part', '_and_the_Grenadines', '_Jan', '_Province_of_China', '', 'Turkey', '', '', '_of_America', '', '_U_S'], $countryName))->name);
+                $nameFixes = [
+                    '_The' => '',
+                    '_And_' => '_and_',
+                    '_Plurinational_State_Of' => '',
+                    '_Keeling' => '',
+                    '_Of' => '',
+                    '_D_ivoire' => '_d_Ivoire',
+                    '_Malvinas' => '',
+                    'Mcdonald' => 'McDonald',
+                    '_Islamic_Republic' => '',
+                    'Isle_Man' => 'Isle_of_Man',
+                    'People_s_' => 'Peoples_',
+                    '_Federated_States' => '',
+                    'Moldova_Republic' => 'Moldova',
+                    '_and_Tristan' => '_Tristan',
+                    '_Da_' => '_da_',
+                    '_Part' => '_part',
+                    '_and_Grenadines' => '_and_the_Grenadines',
+                    '_and_Jan' => '_Jan',
+                    '_Province_China' => '_Province_of_China',
+                    '_United_Republic' => '',
+                    'Turkiye' => 'Turkey',
+                    '_Great_Britain_and_Northern_Ireland' => '',
+                    'Minor_' => '',
+                    '_America' => '_of_America',
+                    '_Bolivarian_Republic' => '',
+                    '_U_s' => '_U_S',
+                ];
+                $countryName = BackedEnum::fromName(CountryAlpha2::class, str_replace(array_keys($nameFixes), array_values($nameFixes), $countryName))->name;
 
                 $getCurrenciesMethod->addMapping('self::' . $countryName, 'CurrencyAlpha3::' . NameNormalizer::normalize($currencyName));
                 $getCountriesAlpha2Method->addMapping('self::' . NameNormalizer::normalize($currencyName), 'CountryAlpha2::' . $countryName);
