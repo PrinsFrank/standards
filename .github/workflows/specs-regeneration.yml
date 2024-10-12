@@ -16,35 +16,9 @@ jobs:
   specs-regenerate:
     name: Regenerate specs
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        spec:
-          - "country"
-          - "currency"
-          - "http-methods"
-          - "http-status-codes"
-          - "language-extensive"
-          - "language"
-          - "language-subtag"
-          - "scripts"
-          - "tld"
-          - "php-regex-script"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ env.PHP_VERSION }}
-          coverage: none
-
-      - name: Install dependencies
-        uses: ramsey/composer-install@v3
-
-      - name: Update spec
-        run: composer run update-spec-${{ matrix.spec }}
-
-      - name: Check for changes
-        run: git diff --exit-code
+      - run: |
+          curl -vvv 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml'
