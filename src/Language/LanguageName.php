@@ -446,7 +446,7 @@ enum LanguageName: string
     case Tigrinya = 'Tigrinya';
     case Timne = 'Timne';
     case Tiv = 'Tiv';
-    case Dogrib = 'Tlicho, Dogrib';
+    case Dogrib = 'Tlicho; Dogrib';
     case Tlingit = 'Tlingit';
     case Tok_Pisin = 'Tok Pisin';
     case Tokelau = 'Tokelau';
