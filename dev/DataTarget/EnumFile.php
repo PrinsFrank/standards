@@ -57,7 +57,18 @@ class EnumFile
     public function hasCaseWithValue(string|int $value): bool
     {
         foreach ($this->cases as $case) {
-            if ($case->value === $value) {
+            if ($case->value === $value || $case->previousValue === $value) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function hasCaseWithName(string $name): bool
+    {
+        foreach ($this->cases as $case) {
+            if ($case->name === $name) {
                 return true;
             }
         }

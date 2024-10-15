@@ -29,7 +29,7 @@ class SpecUpdater
             $event->getIO()->writeRaw('Updating contents of enum "' . $enumFile->path . '"');
             if ($enumFile->hasCases() === true) {
                 foreach ($enumFile->enumFQN::cases() as $existingCase) {
-                    if ($enumFile->hasCaseWithValue($existingCase->value) === false) {
+                    if ($enumFile->hasCaseWithValue($existingCase->value) === false && $enumFile->hasCaseWithName($existingCase->name) === false) {
                         $enumFile->addCase(new EnumCase($existingCase->name, $existingCase->value, [], true));
                     }
                 }
