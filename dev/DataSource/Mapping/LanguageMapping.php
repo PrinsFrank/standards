@@ -22,6 +22,11 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  */
 class LanguageMapping implements Mapping
 {
+    /** @var array<string, string> where key is the new name and value is the previous name */
+    private const RENAMES = [
+        'Tlicho; Dogrib' => 'Tlicho, Dogrib',
+    ];
+
     public static function url(): string
     {
         return 'https://www.loc.gov/standards/iso639-2/php/code_list.php';
@@ -79,7 +84,7 @@ class LanguageMapping implements Mapping
         $languageAlpha3Bibliographic = new EnumFile(LanguageAlpha3Bibliographic::class, KeySorting::class);
         $languageAlpha3Terminology = new EnumFile(LanguageAlpha3Terminology::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
-            $languageName->addCase(new EnumCase($dataRow->name, $dataRow->name));
+            $languageName->addCase(new EnumCase($dataRow->name, $dataRow->name, previousValue: array_key_exists($dataRow->name, self::RENAMES) ? self::RENAMES[$dataRow->name] : null));
 
             if (trim($dataRow->alpha2) !== '') {
                 $languageAlpha2->addCase(new EnumCase($dataRow->name, $dataRow->alpha2));

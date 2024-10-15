@@ -18,7 +18,8 @@ class EnumCase
         public readonly string $name,
         public readonly string|int $value,
         public readonly array $attributes = [],
-        public readonly bool $deprecated = false
+        public readonly bool $deprecated = false,
+        public readonly string|null $previousValue = null,
     ) {
     }
 
@@ -45,7 +46,7 @@ class EnumCase
             $case .= PHP_EOL . $indenting . $attribute->__toString();
         }
 
-        $existingKeyWithValue = $enumFQN::tryFrom($this->value);
+        $existingKeyWithValue = $enumFQN::tryFrom($this->value) ?? $enumFQN::tryFrom($this->previousValue ?? '');
         $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->name);
         if ($existingKeyWithValue === null && is_string($this->value)) {
             $mostCommonScriptInString = ScriptAlias::mostCommonInString($this->value) ?? ScriptAlias::Code_for_undetermined_script;
