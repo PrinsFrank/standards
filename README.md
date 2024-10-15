@@ -178,7 +178,6 @@ Country group membership can be checked by calling the `isMemberOf` method, supp
 ```php
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
-use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\CountryNumeric;
 
 CountryAlpha2::from('NL');                                      // CountryAlpha2::Netherlands
@@ -308,6 +307,7 @@ $valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\Groups\EU;
 use PrinsFrank\Standards\Country\Groups\Brics;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
 
 $valueAlpha3 = CountryAlpha3::from('NLD');        // CountryAlpha3::Netherlands
 $value = $valueAlpha3->value;                     // 'NLD'
@@ -345,6 +345,7 @@ $valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Country\Groups\EU;
 use PrinsFrank\Standards\Country\Groups\Brics;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
 
 $valueNumeric = CountryNumeric::from('528');     // CountryNumeric::Netherlands
 $valueNumeric = CountryNumeric::fromInt(528);    // CountryNumeric::Netherlands
@@ -436,6 +437,7 @@ $valueName->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemi
 Country calling codes are quite straight forward. One country can have multiple country calling codes though, And one country calling code can span multiple countries. That's why the `forCountry` and `getCountriesAlpha2` both return an array of country calling codes/countries and not a single item.
 
 ```php
+use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
 
 CountryCallingCode::from(1);                    // CountryCallingCode::Integrated_numbering_plan
@@ -463,6 +465,7 @@ public function foo(CountryCallingCode $countryCallingCode) {} // Use spec as ty
 All the Alpha3, Numeric and Name values have a corresponding enum in the other currency enums. These can be converted using their corresponding methods (toCurrencyAlpha3, etc...). A fourth enum is available that maps all currencies to a currency symbol, that can be accessed by calling the 'getSymbol' method.
 
 ```php
+use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\Currency\CurrencyName;
 use PrinsFrank\Standards\Currency\CurrencyNumeric;
@@ -590,6 +593,7 @@ $currencyNumeric->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutc
 ### CurrencySymbol
 
 ```php
+use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\Currency\CurrencySymbol;
 
 $currencySymbol = CurrencySymbol::from('€');                        // CurrencySymbol::Euro
@@ -707,7 +711,6 @@ As you see, the Bibliographic and Terminology specifications have an identical n
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
-use PrinsFrank\Standards\Language\LanguageAlpha2;
 
 LanguageAlpha2::from('nl');                                         // LanguageAlpha2::Dutch_Flemish
 LanguageAlpha2::from('nl')->value;                                  // 'nl'
@@ -796,8 +799,10 @@ $valueName = $valueAlpha3->name;                     // 'Dutch'
 ### At a glance
 
 ```php
+use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Language\LanguageTag;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 
 LanguageTag::tryFromString('');            // null
 LanguageTag::fromString();                 // InvalidArgumentException
@@ -877,6 +882,7 @@ public function foo(NationalCallPrefix $nationalCallPrefix) {} // Use spec as ty
 use PrinsFrank\Standards\Scripts\ScriptAlias;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 use PrinsFrank\Standards\Scripts\ScriptName;
+use PrinsFrank\Standards\Scripts\ScriptNumber;
 
 ScriptAlias::from('Latin');                    // ScriptAlias::Latin
 ScriptAlias::from('Latin')->value;             // 'Latin'
