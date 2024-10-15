@@ -22,11 +22,15 @@ Daily updated from their sources, whether it is ISO or IANA directly, or a maint
 
 To start right away, run the following command in your composer project;
 
-```composer require prinsfrank/standards```
+```bash
+composer require prinsfrank/standards
+```
 
 Or for development only;
 
-```composer require prinsfrank/standards --dev```
+```bash
+composer require prinsfrank/standards --dev
+```
 
 ## Daily updated from their source
 
