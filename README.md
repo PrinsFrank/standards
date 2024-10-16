@@ -22,11 +22,15 @@ Daily updated from their sources, whether it is ISO or IANA directly, or a maint
 
 To start right away, run the following command in your composer project;
 
-```composer require prinsfrank/standards```
+```bash
+composer require prinsfrank/standards
+```
 
 Or for development only;
 
-```composer require prinsfrank/standards --dev```
+```bash
+composer require prinsfrank/standards --dev
+```
 
 ## Daily updated from their source
 
@@ -172,6 +176,10 @@ All the Alpha2, Alpha3, Numeric and Name values have a corresponding enum in the
 Country group membership can be checked by calling the `isMemberOf` method, supplying the FQN of a class that implements the `GroupInterface`. Several country groups are available: BRICS, EEA, EFTA etc. Countries can also have subdivisions, which can be of several types: countries, provinces, etc.
 
 ```php
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryNumeric;
+
 CountryAlpha2::from('NL');                                      // CountryAlpha2::Netherlands
 CountryNumeric::from('528');                                    // CountryNumeric::Netherlands
 CountryNumeric::fromInt(528);                                   // CountryNumeric::Netherlands
@@ -257,6 +265,11 @@ erDiagram
 ### CountryAlpha2
 
 ```php
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\Groups\EU;
+use PrinsFrank\Standards\Country\Groups\Brics;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+
 $valueAlpha2 = CountryAlpha2::from('NL');         // CountryAlpha2::Netherlands
 $value = $valueAlpha2->value;                     // 'NL'
 $lowerCaseValue = $valueAlpha2->lowerCaseValue(); // 'nl'
@@ -291,6 +304,11 @@ $valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 ### CountryAlpha3
 
 ```php
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\Groups\EU;
+use PrinsFrank\Standards\Country\Groups\Brics;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+
 $valueAlpha3 = CountryAlpha3::from('NLD');        // CountryAlpha3::Netherlands
 $value = $valueAlpha3->value;                     // 'NLD'
 $valueName = $valueAlpha3->name;                  // 'Netherlands'
@@ -324,6 +342,11 @@ $valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 ### CountryNumeric
 
 ```php
+use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\Country\Groups\EU;
+use PrinsFrank\Standards\Country\Groups\Brics;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+
 $valueNumeric = CountryNumeric::from('528');     // CountryNumeric::Netherlands
 $valueNumeric = CountryNumeric::fromInt(528);    // CountryNumeric::Netherlands
 $value = $valueNumeric->value;                   // '528'
@@ -358,6 +381,8 @@ $valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 ### CountrySubdivision
 
 ```php
+use PrinsFrank\Standards\Country\Subdivision\CountrySubdivision;
+
 $subdivision = CountrySubdivision::from('VU-MAP');           // CountrySubdivision::Vanuatu_province_Malampa
 $subdivision = CountrySubdivision::Vanuatu_province_Malampa; // CountrySubdivision::Vanuatu_province_Malampa
 
@@ -371,6 +396,10 @@ $subdivision->getSameAsCountry();                            // null
 ### <s>CountryName</s> (Deprecated)
 
 ```php
+use PrinsFrank\Standards\Country\CountryName;
+use PrinsFrank\Standards\Country\Groups\EU;
+use PrinsFrank\Standards\Country\Groups\Brics;
+
 $valueName = CountryName::from('Netherlands (Kingdom of the)'); // CountryName::Netherlands
 $value = $valueName->value;                                     // 'Netherlands (Kingdom of the)'
 $valueName = $valueName->name;                                  // 'Netherlands'
@@ -408,6 +437,9 @@ $valueName->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemi
 Country calling codes are quite straight forward. One country can have multiple country calling codes though, And one country calling code can span multiple countries. That's why the `forCountry` and `getCountriesAlpha2` both return an array of country calling codes/countries and not a single item.
 
 ```php
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
+
 CountryCallingCode::from(1);                    // CountryCallingCode::Integrated_numbering_plan
 CountryCallingCode::from(31);                   // CountryCallingCode::Netherlands_Kingdom_of_the
 CountryCallingCode::from(31)->value;            // 31
@@ -433,6 +465,12 @@ public function foo(CountryCallingCode $countryCallingCode) {} // Use spec as ty
 All the Alpha3, Numeric and Name values have a corresponding enum in the other currency enums. These can be converted using their corresponding methods (toCurrencyAlpha3, etc...). A fourth enum is available that maps all currencies to a currency symbol, that can be accessed by calling the 'getSymbol' method.
 
 ```php
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Currency\CurrencyAlpha3;
+use PrinsFrank\Standards\Currency\CurrencyName;
+use PrinsFrank\Standards\Currency\CurrencyNumeric;
+use PrinsFrank\Standards\Currency\CurrencySymbol;
+
 CurrencyAlpha3::from('EUR');                               // CurrencyAlpha3::Euro
 CurrencyAlpha3::from('EUR')->value;                        // 'EUR'
 CurrencyAlpha3::from('EUR')->lowercaseValue();             // 'eur'
@@ -459,7 +497,6 @@ CurrencyAlpha3::Euro->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::
 CurrencyAlpha3::Norwegian_Krone->getCountriesAlpha2();     // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
 
 public function foo(CurrencyAlpha3 $currencyAlpha3) {}     // Use spec as typehint to enforce valid value
-
 ```
 
 <details>
@@ -509,6 +546,10 @@ classDiagram
 ### CurrencyAlpha3
 
 ```php
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Currency\CurrencyAlpha3;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+
 $currencyAlpha3 = CurrencyAlpha3::from('EUR');         // CurrencyAlpha3::Euro
 $value = $currencyAlpha3->value;                       // 'EUR'
 $value = $currencyAlpha3->lowercaseValue();            // 'eur'
@@ -523,12 +564,15 @@ $countries = $currencyAlpha2->getCountriesAlpha2();    // [CountryAlpha2::Bouvet
 
 $currencyAlpha3->format(42.42, CountryAlpha2::Netherlands);                                // '€ 42,42'
 $currencyAlpha3->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutch_Flemish); // '€ 42,42'
-
 ```
 
 ### CurrencyNumeric
 
 ```php
+use PrinsFrank\Standards\Currency\CurrencyNumeric;
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+
 $currencyNumeric = CurrencyNumeric::from('978');        // CurrencyNumeric::Euro
 $currencyNumeric = CurrencyNumeric::fromInt(978);       // CurrencyNumeric::Euro
 $value = $currencyNumeric->value;                       // '978'
@@ -549,6 +593,9 @@ $currencyNumeric->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutc
 ### CurrencySymbol
 
 ```php
+use PrinsFrank\Standards\Currency\CurrencyAlpha3;
+use PrinsFrank\Standards\Currency\CurrencySymbol;
+
 $currencySymbol = CurrencySymbol::from('€');                        // CurrencySymbol::Euro
 $currencySymbol =  $currencySymbol->name;                           // 'Euro'
 $currencySymbol =  $currencySymbol->value;                          // '€'
@@ -558,6 +605,10 @@ $currencySymbol = CurrencySymbol::forCurrency(CurrencyAlpha3::Euro) // CurrencyS
 ### CurrencyName
 
 ```php
+use PrinsFrank\Standards\Currency\CurrencyName;
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+
 $currencyName = CurrencyName::from('Euro');        // CurrencyName::Euro 
 $currencyName = CurrencyName::Euro;                // CurrencyName::Euro
 $name = $currencyName->name;                       // 'Euro'
@@ -581,6 +632,8 @@ $currencyName->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutch_F
 ### At a glance
 
 ```php
+use PrinsFrank\Standards\Http\HttpMethod;
+
 HttpMethod::from('POST');        // HttpMethod::Post
 HttpMethod::from('POST')->value; // 'POST'
 HttpMethod::from('POST')->name;  // Post
@@ -596,6 +649,8 @@ public function foo(HttpMethod $httpMethod) {} // Use spec as typehint to enforc
 ### At a glance
 
 ```php
+use PrinsFrank\Standards\Http\HttpStatusCode;
+
 HttpStatusCode::from(404);       // HttpStatusCode::Not_Found
 HttpStatusCode::from(404->value; // 404
 HttpStatusCode::from(404->name;  // Not_Found
@@ -611,6 +666,12 @@ Different countries have different international call prefixes. This is a spec e
 ### At a glance
 
 ```php
+use PrinsFrank\Standards\InternationalCallPrefix\InternationalCallPrefix;
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryName;
+use PrinsFrank\Standards\Country\CountryNumeric;
+
 InternationalCallPrefix::from('0');                // InternationalCallPrefix::_0
 InternationalCallPrefix::from('0')->value;         // '0'
 InternationalCallPrefix::from('0')->name;          // '_0'
@@ -647,6 +708,10 @@ There are four language code specifications:
 As you see, the Bibliographic and Terminology specifications have an identical number of languages, so there is a one-to-one relation between these.
 
 ```php
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
+use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
+
 LanguageAlpha2::from('nl');                                         // LanguageAlpha2::Dutch_Flemish
 LanguageAlpha2::from('nl')->value;                                  // 'nl'
 LanguageAlpha2::from('nl')->name;                                   // 'Dutch_Flemish'
@@ -674,6 +739,8 @@ public function foo(LanguageAlpha2 $languageAlpha2);                // Use spec 
 ### LanguageAlpha2 (ISO 639-1)
 
 ```php
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+
 $valueAlpha2 = LanguageAlpha2::from('nl');                                 // LanguageAlpha2::Dutch_Flemish
 $value = $valueAlpha2->value;                                              // 'nl'
 $valueName = $valueAlpha2->name;                                           // 'Dutch_Flemish'
@@ -681,12 +748,14 @@ $valueAlpha3Bibliographic = $valueAlpha2->toLanguageAlpha3Bibliographic(); // La
 $valueAlpha3Terminology = $valueAlpha2->toLanguageAlpha3Terminology();     // LanguageAlpha3Terminology::Dutch_Flemish
 $valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
 $valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
-
 ```
 
 ### LanguageAlpha3Bibliographic (ISO 639-2)
 
 ```php
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
+
 $valueAlpha3 = LanguageAlpha3Bibliographic::from('dut');               // LanguageAlpha3Bibliographic::Dutch_Flemish
 $value = $valueAlpha3->value;                                          // 'dut'
 $valueName = $valueAlpha3->name;                                       // 'Dutch_Flemish'
@@ -699,6 +768,9 @@ $valueAlpha3Bibliographic->getNameInLanguage(LanguageAlpha2::English);       // 
 ### LanguageAlpha3Terminology (ISO 639-2)
 
 ```php
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
+
 $valueAlpha3 = LanguageAlpha3Terminology::from('nld');                     // LanguageAlpha3Terminology::Dutch_Flemish
 $value = $valueAlpha3->value;                                              // 'nld'
 $valueName = $valueAlpha3->name;                                           // 'Dutch_Flemish'
@@ -711,6 +783,8 @@ $valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::English);       // 'D
 ### LanguageAlpha3Extensive (ISO 639-3)
 
 ```php
+use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
+
 $valueAlpha3 = LanguageAlpha3Extensive::from('nld'); // LanguageAlpha3Extensive::Dutch
 $value = $valueAlpha3->value;                        // 'nld'
 $valueName = $valueAlpha3->name;                     // 'Dutch'
@@ -725,6 +799,11 @@ $valueName = $valueAlpha3->name;                     // 'Dutch'
 ### At a glance
 
 ```php
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Language\LanguageTag;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
+
 LanguageTag::tryFromString('');            // null
 LanguageTag::fromString();                 // InvalidArgumentException
 LanguageTag::fromString('nl');             // LanguageTag(LanguageAlpha2::Dutch_Flemish);
@@ -751,6 +830,8 @@ public function foo(LanguageTag $languageTag): {} // Use spec as typehint to enf
 ### At a glance
 
 ```php
+use PrinsFrank\Standards\Region\GeographicRegion;
+
 GeographicRegion::from('150');        // GeographicRegion::Europe
 GeographicRegion::from('150')->value; // '150'
 GeographicRegion::from('150')->name;  // Europe
@@ -772,6 +853,12 @@ Different countries have different national call prefixes;
 ### At a glance
 
 ```php
+use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
+use PrinsFrank\Standards\Country\CountryAlpha2;
+use PrinsFrank\Standards\Country\CountryAlpha3;
+use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\Country\CountryName;
+
 NationalCallPrefix::from('0');                // NationalCallPrefix::_0
 NationalCallPrefix::from('0')->value;         // '0'
 NationalCallPrefix::from('0')->name;          // '_0'
@@ -792,6 +879,11 @@ public function foo(NationalCallPrefix $nationalCallPrefix) {} // Use spec as ty
 ### At a glance
 
 ```php
+use PrinsFrank\Standards\Scripts\ScriptAlias;
+use PrinsFrank\Standards\Scripts\ScriptCode;
+use PrinsFrank\Standards\Scripts\ScriptName;
+use PrinsFrank\Standards\Scripts\ScriptNumber;
+
 ScriptAlias::from('Latin');                    // ScriptAlias::Latin
 ScriptAlias::from('Latin')->value;             // 'Latin'
 ScriptAlias::from('Latin')->name;              // 'Latin'
@@ -815,6 +907,8 @@ public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enfo
 ### ScriptAlias
 
 ```php
+use PrinsFrank\Standards\Scripts\ScriptAlias;
+
 ScriptAlias::from('Latin');                          // ScriptAlias::latin
 ScriptAlias::from('Latin')->value;                   // 'Latin'
 ScriptAlias::from('Latin')->name;                    // 'Latin'
@@ -848,6 +942,8 @@ Not all scripts are supported by PHP regular expressions. An exhaustive list can
 ### ScriptCode
 
 ```php
+use PrinsFrank\Standards\Scripts\ScriptCode;
+
 ScriptCode::from('Latn');                     // ScriptCode::latin
 ScriptCode::from('Latn')->value;              // 'Latin'
 ScriptCode::from('Latn')->name;               // 'Latin'
@@ -866,6 +962,8 @@ public function foo(ScriptCode $scriptCode) {} // Use spec as typehint to enforc
 ### ScriptName
 
 ```php
+use PrinsFrank\Standards\Scripts\ScriptName;
+
 ScriptName::from('Latin');                    // ScriptName::latin
 ScriptName::from('Latin')->value;             // 'Latin'
 ScriptName::from('Latin')->name;              // 'Latin'
@@ -884,6 +982,8 @@ public function foo(ScriptName $scriptName) {} // Use spec as typehint to enforc
 ### ScriptNumber
 
 ```php
+use PrinsFrank\Standards\Scripts\ScriptNumber;
+
 ScriptNumber::from('215');                      // ScriptNumber::latin
 ScriptNumber::from('215')->value;               // 'Latin'
 ScriptNumber::from('215')->name;                // 'Latin'
@@ -920,6 +1020,8 @@ Most of these specification have several TLDs that are 'unmanaged' and are thus 
 Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
 
 ```php
+use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
+
 CountryCodeTLD::from('nl');                      // CountryCodeTLD::nl
 CountryCodeTLD::nl;                              // CountryCodeTLD::nl
 CountryCodeTLD::from('nl')->value;               // 'nl'
@@ -937,6 +1039,8 @@ public function foo(CountryCodeTLD $countryCodeTLD) {} // Use spec as typehint t
 Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
 
 ```php
+use PrinsFrank\Standards\TopLevelDomain\GenericRestrictedTLD;
+
 GenericRestrictedTLD::from('name');                // GenericRestrictedTLD::name
 GenericRestrictedTLD::name;                        // GenericRestrictedTLD::name
 GenericRestrictedTLD::from('name')->value;         // 'name'
@@ -951,6 +1055,8 @@ public function foo(GenericRestrictedTLD $genericRestrictedTLD) {} // Use spec a
 Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
 
 ```php
+use PrinsFrank\Standards\TopLevelDomain\GenericTLD;
+
 GenericTLD::from('aaa');                // GenericTLD::aaa
 GenericTLD::aaa;                        // GenericTLD::aaa
 GenericTLD::from('aaa')->value;         // 'aaa'
@@ -965,6 +1071,8 @@ public function foo(GenericTLD $genericTLD) {} // Use spec as typehint to enforc
 Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
 
 ```php
+use PrinsFrank\Standards\TopLevelDomain\InfrastructureTLD;
+
 InfrastructureTLD::from('arpa');                // InfrastructureTLD::arpa
 InfrastructureTLD::arpa;                        // InfrastructureTLD::arpa
 InfrastructureTLD::from('arpa')->value;         // 'arpa'
@@ -979,6 +1087,8 @@ public function foo(InfrastructureTLD $infrastructureTLD) {} // Use spec as type
 Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
 
 ```php
+use PrinsFrank\Standards\TopLevelDomain\SponsoredTLD;
+
 SponsoredTLD::from('aero');                // SponsoredTLD::aero
 SponsoredTLD::arpa;                        // SponsoredTLD::aero
 SponsoredTLD::from('aero')->value;         // 'aero'
@@ -993,6 +1103,8 @@ public function foo(SponsoredTLD $sponsoredTLD) {} // Use spec as typehint to en
 All Test TLDs are always unmanaged and are thus never marked as deprecated.
 
 ```php
+use PrinsFrank\Standards\TopLevelDomain\TestTLD;
+
 TestTLD::from('テスト');              // TestTLD::tesuto_katakana
 TestTLD::tesuto_katakana;            // TestTLD::tesuto_katakana
 TestTLD::from('テスト')->value;       // 'テスト'
