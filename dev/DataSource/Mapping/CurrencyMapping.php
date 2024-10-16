@@ -23,6 +23,7 @@ use PrinsFrank\Standards\Dev\Exception\DomElementNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Transliteration\Exception\RecursionException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
+use RuntimeException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
@@ -35,17 +36,23 @@ class CurrencyMapping implements Mapping
 {
     public static function url(): string
     {
-        return 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml';
+        return 'https://www.six-group.com/en/products-services/financial-information/data-standards.html';
     }
 
     /**
-     * @throws DomElementNotFoundException
+     * @throws DomElementNotFoundException|RuntimeException
      * @return list<TDataSet>
      */
     public static function toDataSet(Client $client, Crawler $crawler): array
     {
+        $listLink = $crawler->filterXPath("//a[contains(@href, 'list-one.xml')]");
+        $listUrl = $listLink->first()->getAttribute('href');
+        if ($listUrl === null || ($specContent = file_get_contents($listUrl)) === false) {
+            throw new RuntimeException('Unable to download list contents');
+        }
+
         $domDocument = new DOMDocument();
-        $domDocument->loadXML($client->getPageSource());
+        $domDocument->loadXML($specContent);
         $xPath = new DOMXPath($domDocument);
         $items = $xPath->query('//ISO_4217/CcyTbl/CcyNtry');
         if ($items === false) {
