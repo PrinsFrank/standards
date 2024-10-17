@@ -10,6 +10,8 @@ use PrinsFrank\Standards\ShouldNotHappenException;
 /**
  * @standard ISO-15924
  * @source https://www.unicode.org/iso15924/iso15924-codes.html
+ *
+ * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\ScriptMapping
  */
 enum ScriptAlias: string
 {

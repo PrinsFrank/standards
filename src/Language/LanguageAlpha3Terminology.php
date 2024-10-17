@@ -19,6 +19,8 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
  * @standard ISO639_1
  * @source https://www.iso.org/iso-639-language-codes.html
  * @source http://www.loc.gov/standards/iso639-2/php/code_list.php
+ *
+ * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageMapping
  */
 enum LanguageAlpha3Terminology: string
 {

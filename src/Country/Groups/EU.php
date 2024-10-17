@@ -5,6 +5,11 @@ namespace PrinsFrank\Standards\Country\Groups;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
 
+/**
+ * @source https://european-union.europa.eu/principles-countries-history/eu-countries_en
+ *
+ * @manually-updated
+ */
 class EU implements GroupInterface
 {
     /** @return list<CountryAlpha2> */

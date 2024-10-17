@@ -3,6 +3,11 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Currency;
 
+/**
+ * @no-official-source
+ *
+ * @manually-updated
+ */
 enum CurrencySymbol: string
 {
     case Afghani = '؋';

@@ -2,6 +2,11 @@
 
 namespace PrinsFrank\Standards\Name;
 
+/**
+ * @no-official-source
+ *
+ * @manually-updated
+ */
 enum NameOrder: int
 {
     case Eastern = 0;

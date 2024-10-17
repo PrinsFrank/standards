@@ -5,6 +5,8 @@ namespace PrinsFrank\Standards\Http;
 
 /**
  * @source https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+ *
+ * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\HttpStatusCodeMapping
  */
 enum HttpStatusCode: int
 {

@@ -42,9 +42,9 @@ class SourceTagRule implements Rule
 
         $errors = [];
         $resolvedPhpDoc = $scope->getClassReflection()?->getResolvedPhpDoc();
-        if (($source = $this->getTagValue($resolvedPhpDoc, 'source')) === null) {
+        if (($source = $this->getTagValue($resolvedPhpDoc, 'source')) === null && $this->hasTag($resolvedPhpDoc, 'no-official-source') === false) {
             $errors[] = RuleErrorBuilder::message('Specification should have a @source tag that points to the source document')->identifier('spec.source.required')->build();
-        } elseif (str_starts_with($source, 'http://') === false && str_starts_with($source, 'https://') === false) {
+        } elseif ($source !== null && str_starts_with($source, 'http://') === false && str_starts_with($source, 'https://') === false) {
             $errors[] = RuleErrorBuilder::message('Specification should have a valid url for @source tag')->identifier('spec.source.invalid')->build();
         }
 
@@ -73,5 +73,20 @@ class SourceTagRule implements Rule
         }
 
         return null;
+    }
+
+    private function hasTag(?ResolvedPhpDocBlock $resolvedPhpDocBlock, string $tagName): bool
+    {
+        foreach ($resolvedPhpDocBlock?->getPhpDocNodes() ?? [] as $phpDocNode) {
+            foreach ($phpDocNode->getTags() as $tag) {
+                if ($tag->name !== '@' . $tagName) {
+                    continue;
+                }
+
+                return true;
+            }
+        }
+
+        return false;
     }
 }
