@@ -5,6 +5,8 @@ namespace PrinsFrank\Standards\Http;
 
 /**
  * @source https://www.iana.org/assignments/http-methods/http-methods.xhtml
+ *
+ * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\HttpMethodMapping
  */
 enum HttpMethod: string
 {

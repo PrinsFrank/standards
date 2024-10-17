@@ -5,6 +5,9 @@ namespace PrinsFrank\Standards\Country\Groups;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
 
+/**
+ * @manually-updated
+ */
 class EuroZone implements GroupInterface
 {
     public static function allAlpha2(): array

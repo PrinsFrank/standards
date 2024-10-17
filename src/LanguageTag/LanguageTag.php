@@ -15,6 +15,8 @@ use Stringable;
 /**
  * @standard RFC5646
  * @source https://datatracker.ietf.org/doc/html/rfc5646
+ *
+ * @manually-updated
  */
 class LanguageTag implements Stringable
 {

@@ -6,6 +6,8 @@ namespace PrinsFrank\Standards\LanguageTag;
 /**
  * @standard RFC5646
  * @source https://datatracker.ietf.org/doc/html/rfc5646
+ *
+ * @manually-updated
  */
 enum SingleCharacterSubtag: string
 {
