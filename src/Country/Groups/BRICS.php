@@ -5,6 +5,9 @@ namespace PrinsFrank\Standards\Country\Groups;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
 
+/**
+ * @manually-updated
+ */
 class BRICS implements GroupInterface
 {
     /** @return list<CountryAlpha2> */

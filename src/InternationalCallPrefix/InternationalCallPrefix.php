@@ -10,6 +10,8 @@ use PrinsFrank\Standards\Country\CountryNumeric;
 
 /**
  * @standard ITU-T E.164
+ *
+ * @manually-updated
  */
 enum InternationalCallPrefix: string
 {

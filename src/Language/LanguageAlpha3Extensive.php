@@ -15,6 +15,8 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
  * @standard ISO639_3
  * @source https://iso639-3.sil.org/code_tables/download_tables#Complete%20Code%20Tables
  * @source https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3_Latin1.tab
+ *
+ * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageExtensiveMapping
  */
 enum LanguageAlpha3Extensive: string
 {

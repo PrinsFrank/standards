@@ -3,6 +3,12 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\LanguageTag;
 
+/**
+ * @standard RFC5646, BCP47, Unicode LDML, Java, POSIX
+ * @source https://datatracker.ietf.org/doc/html/rfc5646
+ *
+ * @manually-updated
+ */
 enum SubtagSeparator: string
 {
     /**

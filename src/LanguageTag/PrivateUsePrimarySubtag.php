@@ -5,6 +5,12 @@ namespace PrinsFrank\Standards\LanguageTag;
 
 use PrinsFrank\Standards\InvalidArgumentException;
 
+/**
+ * @standard RFC5646
+ * @source https://datatracker.ietf.org/doc/html/rfc5646
+ *
+ * @manually-updated
+ */
 class PrivateUsePrimarySubtag
 {
     /** @throws InvalidArgumentException */

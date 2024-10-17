@@ -4,8 +4,9 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Country\UserAssigned;
 
 /**
- * @source https://www.icao.int/publications/Documents/9303_p3_cons_en.pdf
- * Page 29, chapter 5, section A-G
+ * @source https://www.icao.int/publications/Documents/9303_p3_cons_en.pdf Page 29, chapter 5, section A-G
+ *
+ * @manually-updated
  */
 enum TravelDocumentAlpha3: string
 {

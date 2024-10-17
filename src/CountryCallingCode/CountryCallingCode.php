@@ -10,6 +10,8 @@ use PrinsFrank\Standards\Country\CountryNumeric;
 
 /**
  * @source https://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-E.164D-2016-PDF-E.pdf
+ *
+ * @manually-updated
  */
 enum CountryCallingCode: int
 {

@@ -3,6 +3,11 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\LanguageTag;
 
+/**
+ * @source https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+ *
+ * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageSubTagMapping
+ */
 enum LanguageTagVariant: string
 {
     case ALA_LC_Romanization_1997_edition = 'alalc97';

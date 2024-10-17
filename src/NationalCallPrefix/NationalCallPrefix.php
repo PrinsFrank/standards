@@ -10,6 +10,8 @@ use PrinsFrank\Standards\Country\CountryNumeric;
 
 /**
  * @source https://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-E.164C-2011-PDF-E.pdf
+ *
+ * @manually-updated
  */
 enum NationalCallPrefix: string
 {

@@ -7,6 +7,8 @@ use PrinsFrank\Standards\Country\CountryNumeric;
 
 /**
  * @standard https://unstats.un.org/unsd/methodology/m49/
+ *
+ * @manually-updated
  */
 enum GeographicRegion: string
 {
