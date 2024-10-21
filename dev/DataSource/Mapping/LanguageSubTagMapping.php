@@ -5,7 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 use stdClass;
@@ -69,11 +69,11 @@ class LanguageSubTagMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
-     * @return array<EnumFile>
+     * @return array<SpecFile>
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $languageTagVariant = new EnumFile(LanguageTagVariant::class, KeySorting::class);
+        $languageTagVariant = new SpecFile(LanguageTagVariant::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
             /** @var TDataSet $dataRow */
             if ($dataRow->Type !== 'variant') {

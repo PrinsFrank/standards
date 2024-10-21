@@ -36,6 +36,7 @@ composer require prinsfrank/standards --dev
 
 [![Country](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
 [![Currency](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
+[![EU](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-eu.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-eu.yml)
 [![HTTP method](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml)
 [![HTTP Status code](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml)
 [![Language Extensive](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml)

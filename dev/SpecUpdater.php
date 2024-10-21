@@ -4,9 +4,10 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev;
 
 use Composer\Script\Event;
+use PrinsFrank\Enums\UnitEnum;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\Mapping;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
 use PrinsFrank\Standards\InvalidArgumentException;
 use Symfony\Component\Panther\Client;
 use Throwable;
@@ -24,11 +25,11 @@ class SpecUpdater
         $event->getIO()->writeRaw('Retrieving data from mapping "' . $mapping . '"');
         $crawler = ($client = Client::createFirefoxClient())->request('GET', $mapping::url());
 
-        /** @var EnumFile $enumFile */
+        /** @var SpecFile $enumFile */
         foreach ($mapping::toEnumMapping($mapping::toDataSet($client, $crawler)) as $enumFile) {
             $event->getIO()->writeRaw('Updating contents of enum "' . $enumFile->path . '"');
-            if ($enumFile->hasCases() === true) {
-                foreach ($enumFile->enumFQN::cases() as $existingCase) {
+            if (is_a($enumFile->FQN, UnitEnum::class, true) && $enumFile->hasCases() === true) {
+                foreach ($enumFile->FQN::cases() as $existingCase) {
                     if ($enumFile->hasCaseWithValue($existingCase->value) === false && $enumFile->hasCaseWithName($existingCase->name) === false) {
                         $enumFile->addCase(new EnumCase($existingCase->name, $existingCase->value, [], true));
                     }

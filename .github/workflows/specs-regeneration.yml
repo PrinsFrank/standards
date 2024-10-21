@@ -22,14 +22,15 @@ jobs:
         spec:
           - "country"
           - "currency"
+          - "eu"
           - "http-methods"
           - "http-status-codes"
-          - "language-extensive"
           - "language"
+          - "language-extensive"
           - "language-subtag"
+          - "php-regex-script"
           - "scripts"
           - "tld"
-          - "php-regex-script"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

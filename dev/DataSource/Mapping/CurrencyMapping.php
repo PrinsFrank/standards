@@ -16,8 +16,8 @@ use PrinsFrank\Standards\Currency\CurrencyName;
 use PrinsFrank\Standards\Currency\CurrencyNumeric;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
-use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
+use PrinsFrank\Standards\Dev\DataTarget\EnumMappingMethod;
 use PrinsFrank\Standards\Dev\DataTarget\NameNormalizer;
 use PrinsFrank\Standards\Dev\Exception\DomElementNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
@@ -80,21 +80,21 @@ class CurrencyMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
-     * @throws TransliterationException
-     * @throws InvalidArgumentException
+     *@throws InvalidArgumentException
      * @throws NameNotFoundException
      * @throws \PrinsFrank\Transliteration\Exception\InvalidArgumentException
      * @throws UnableToCreateTransliteratorException
      * @throws RecursionException
-     * @return array<EnumFile>
+     * @throws TransliterationException
+     * @return array<SpecFile>
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $currencyNameEnum = new EnumFile(CurrencyName::class, KeySorting::class);
-        $currencyNumericEnum = new EnumFile(CurrencyNumeric::class, KeySorting::class);
-        $currencyAlpha3Enum = (new EnumFile(CurrencyAlpha3::class, KeySorting::class))
-            ->addMethod($getMinorUnitsMethod = new EnumMethod('getMinorUnits', '?int', 'null'))
-            ->addMethod($getCountriesAlpha2Method = new EnumMethod('getCountriesAlpha2', 'array', '[]', '/** @return list<CountryAlpha2> */'));
+        $currencyNameEnum = new SpecFile(CurrencyName::class, KeySorting::class);
+        $currencyNumericEnum = new SpecFile(CurrencyNumeric::class, KeySorting::class);
+        $currencyAlpha3Enum = (new SpecFile(CurrencyAlpha3::class, KeySorting::class))
+            ->addMethod($getMinorUnitsMethod = new EnumMappingMethod('getMinorUnits', '?int', 'null'))
+            ->addMethod($getCountriesAlpha2Method = new EnumMappingMethod('getCountriesAlpha2', 'array', '[]', '/** @return list<CountryAlpha2> */'));
 
         foreach (CurrencyAlpha3::cases() as $case) {
             if (($minorUnits = $case->getMinorUnits()) !== null) {
@@ -102,8 +102,8 @@ class CurrencyMapping implements Mapping
             }
         }
 
-        $countryAlpha2 = (new EnumFile(CountryAlpha2::class, KeySorting::class))
-            ->addMethod($getCurrenciesMethod = new EnumMethod('getCurrenciesAlpha3', 'array', '[]', '/** @return list<CurrencyAlpha3> */'));
+        $countryAlpha2 = (new SpecFile(CountryAlpha2::class, KeySorting::class))
+            ->addMethod($getCurrenciesMethod = new EnumMappingMethod('getCurrenciesAlpha3', 'array', '[]', '/** @return list<CurrencyAlpha3> */'));
         foreach ($dataSet as $dataRow) {
             if (($dataRow->Ccy ?? null) === null) {
                 continue;

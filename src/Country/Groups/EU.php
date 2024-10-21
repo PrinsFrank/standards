@@ -8,7 +8,7 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 /**
  * @source https://european-union.europa.eu/principles-countries-history/eu-countries_en
  *
- * @manually-updated
+ * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\EUMapping
  */
 class EU implements GroupInterface
 {

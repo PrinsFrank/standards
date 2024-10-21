@@ -6,7 +6,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
@@ -75,14 +75,14 @@ class LanguageMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
-     * @return array<EnumFile>
+     * @return array<SpecFile>
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $languageAlpha2 = new EnumFile(LanguageAlpha2::class, KeySorting::class);
-        $languageName = new EnumFile(LanguageName::class, KeySorting::class);
-        $languageAlpha3Bibliographic = new EnumFile(LanguageAlpha3Bibliographic::class, KeySorting::class);
-        $languageAlpha3Terminology = new EnumFile(LanguageAlpha3Terminology::class, KeySorting::class);
+        $languageAlpha2 = new SpecFile(LanguageAlpha2::class, KeySorting::class);
+        $languageName = new SpecFile(LanguageName::class, KeySorting::class);
+        $languageAlpha3Bibliographic = new SpecFile(LanguageAlpha3Bibliographic::class, KeySorting::class);
+        $languageAlpha3Terminology = new SpecFile(LanguageAlpha3Terminology::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
             $languageName->addCase(new EnumCase($dataRow->name, $dataRow->name, previousValue: array_key_exists($dataRow->name, self::RENAMES) ? self::RENAMES[$dataRow->name] : null));
 

@@ -6,7 +6,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueSorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
 use PrinsFrank\Standards\Http\HttpStatusCode;
 use RuntimeException;
 use stdClass;
@@ -55,11 +55,11 @@ class HttpStatusCodeMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
-     * @return array<EnumFile>
+     * @return array<SpecFile>
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $httpMethod = new EnumFile(HttpStatusCode::class, ValueSorting::class);
+        $httpMethod = new SpecFile(HttpStatusCode::class, ValueSorting::class);
         foreach ($dataSet as $dataRow) {
             if (in_array($dataRow->description, ['Unassigned', '(Unused)'], true)) {
                 continue;

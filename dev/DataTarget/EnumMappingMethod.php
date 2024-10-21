@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
 /** @internal */
-class EnumMethod
+class EnumMappingMethod
 {
     /** @var array<int|string, list<string>> */
     private array $mapping = [];

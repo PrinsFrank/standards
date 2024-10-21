@@ -6,7 +6,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
 use PrinsFrank\Standards\Scripts\Attributes\SupportedByPHPRegex;
 use PrinsFrank\Standards\Scripts\ScriptAlias;
 use stdClass;
@@ -42,7 +42,7 @@ class PHPRegexSupportedScriptsMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
-     * @return array<EnumFile>
+     * @return array<SpecFile>
      */
     public static function toEnumMapping(array $dataSet): array
     {
@@ -50,7 +50,7 @@ class PHPRegexSupportedScriptsMapping implements Mapping
             return $dataSetItem->name;
         }, $dataSet);
 
-        $scriptAliasEnum = new EnumFile(ScriptAlias::class, KeySorting::class);
+        $scriptAliasEnum = new SpecFile(ScriptAlias::class, KeySorting::class);
         foreach (ScriptAlias::cases() as $case) {
             $scriptAliasEnum->addCase(new EnumCase($case->name, $case->value, in_array($case->value, $scriptAliasStrings, true) ? [new EnumCaseAttribute(SupportedByPHPRegex::class)] : []));
         }

@@ -8,7 +8,7 @@ use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
 use PrinsFrank\Standards\Scripts\Attributes\SupportedByPHPRegex;
 use PrinsFrank\Standards\Scripts\ScriptAlias;
 use PrinsFrank\Standards\Scripts\ScriptNumber;
@@ -75,16 +75,16 @@ class ScriptMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
+     *@throws ValueError
      * @throws TypeError
-     * @throws ValueError
-     * @return array<EnumFile>
+     * @return array<SpecFile>
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $scriptCode = new EnumFile(ScriptCode::class, KeySorting::class);
-        $scriptName = new EnumFile(ScriptName::class, KeySorting::class);
-        $scriptNumber = new EnumFile(ScriptNumber::class, KeySorting::class);
-        $scriptAlias = new EnumFile(ScriptAlias::class, KeySorting::class);
+        $scriptCode = new SpecFile(ScriptCode::class, KeySorting::class);
+        $scriptName = new SpecFile(ScriptName::class, KeySorting::class);
+        $scriptNumber = new SpecFile(ScriptNumber::class, KeySorting::class);
+        $scriptAlias = new SpecFile(ScriptAlias::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
             $name = preg_replace('/_+/', '_', str_replace('+', '_', preg_replace('/\p{No}/u', '', $dataRow->name) ?? '')) ?? '';
 
