@@ -38,8 +38,10 @@ composer require prinsfrank/standards --dev
 [![Currency](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
 [![HTTP method](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml)
 [![HTTP Status code](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml)
-[![Language](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
 [![Language Extensive](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml)
+[![Language](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
+[![Language Subtag](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-sub-tag.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-sub-tag.yml)
+[![PHP Regex script](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-php-regex-scripts.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-php-regex-scripts.yml)
 [![Script](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml)
 [![TLD](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-tld.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-tld.yml)
 
