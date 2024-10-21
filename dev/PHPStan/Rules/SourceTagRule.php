@@ -48,8 +48,7 @@ class SourceTagRule implements Rule
             $errors[] = RuleErrorBuilder::message('Specification should have a valid url for @source tag')->identifier('spec.source.invalid')->build();
         }
 
-        if (($updatedBy = $this->getTagValue($resolvedPhpDoc, 'updated-by')) === null
-           && $this->getTagValue($resolvedPhpDoc, 'manually-updated') === null) {
+        if (($updatedBy = $this->getTagValue($resolvedPhpDoc, 'updated-by')) === null && $this->getTagValue($resolvedPhpDoc, 'manually-updated') === null) {
             $errors[] = RuleErrorBuilder::message('Specification should have @manually-updated or @updated-by tag in docblock')->identifier('spec.updatedByOrManuallyUpdated.required')->build();
         }
 
