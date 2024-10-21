@@ -6,7 +6,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
 use PrinsFrank\Standards\Http\HttpMethod;
 use RuntimeException;
 use stdClass;
@@ -57,11 +57,11 @@ class HttpMethodMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
-     * @return array<EnumFile>
+     * @return array<SpecFile>
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $httpMethod = new EnumFile(HttpMethod::class, KeySorting::class);
+        $httpMethod = new SpecFile(HttpMethod::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
             if ($dataRow->name === '*') {
                 continue;

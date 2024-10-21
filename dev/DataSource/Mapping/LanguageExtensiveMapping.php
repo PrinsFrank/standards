@@ -5,7 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueSorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
 use PrinsFrank\Standards\Dev\Exception\DomElementNotFoundException;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 use stdClass;
@@ -53,7 +53,7 @@ class LanguageExtensiveMapping implements Mapping
 
     public static function toEnumMapping(array $dataSet): array
     {
-        $languageExtensive = new EnumFile(LanguageAlpha3Extensive::class, ValueSorting::class);
+        $languageExtensive = new SpecFile(LanguageAlpha3Extensive::class, ValueSorting::class);
         foreach ($dataSet as $dataItem) {
             if (in_array($dataItem->RefName, ['Fa D\'ambu', 'C\'lela'], true)) {
                 continue;

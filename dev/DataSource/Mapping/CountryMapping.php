@@ -17,8 +17,8 @@ use PrinsFrank\Standards\Country\Subdivision\CountrySubdivision;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
-use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
+use PrinsFrank\Standards\Dev\DataTarget\EnumMappingMethod;
 use PrinsFrank\Standards\Dev\DataTarget\NameNormalizer;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
@@ -155,21 +155,21 @@ class CountryMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
-     * @throws ShouldNotHappenException
-     * @throws TypeError
+     *@throws TypeError
      * @throws ValueError
      * @throws TransliterationException
      * @throws \PrinsFrank\Transliteration\Exception\TransliterationException
-     * @return array<EnumFile>
+     * @throws ShouldNotHappenException
+     * @return array<SpecFile>
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $countryName = new EnumFile(CountryName::class, KeySorting::class);
-        $countryAlpha2 = (new EnumFile(CountryAlpha2::class, KeySorting::class))
-            ->addMethod($getSubdivisionsMethod = new EnumMethod('getSubdivisions', 'array', '[]', '/** @return list<CountrySubdivision> */'));
-        $countryAlpha3 = new EnumFile(CountryAlpha3::class, KeySorting::class);
-        $countryNumeric = new EnumFile(CountryNumeric::class, KeySorting::class);
-        $countrySubdivision = (new EnumFile(CountrySubdivision::class, KeySorting::class));
+        $countryName = new SpecFile(CountryName::class, KeySorting::class);
+        $countryAlpha2 = (new SpecFile(CountryAlpha2::class, KeySorting::class))
+            ->addMethod($getSubdivisionsMethod = new EnumMappingMethod('getSubdivisions', 'array', '[]', '/** @return list<CountrySubdivision> */'));
+        $countryAlpha3 = new SpecFile(CountryAlpha3::class, KeySorting::class);
+        $countryNumeric = new SpecFile(CountryNumeric::class, KeySorting::class);
+        $countrySubdivision = (new SpecFile(CountrySubdivision::class, KeySorting::class));
         foreach ($dataSet as $dataRow) {
             $countryName->addCase(new EnumCase($dataRow->name, $dataRow->name));
             $countryAlpha2->addCase(new EnumCase($dataRow->name, $dataRow->alpha2));

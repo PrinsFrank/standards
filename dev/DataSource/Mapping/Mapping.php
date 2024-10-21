@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
@@ -19,7 +19,7 @@ interface Mapping
 
     /**
      * @param list<TDataSet> $dataSet
-     * @return array<EnumFile>
+     * @return array<SpecFile>
      */
     public static function toEnumMapping(array $dataSet): array;
 }

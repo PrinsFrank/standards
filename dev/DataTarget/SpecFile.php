@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
 use BackedEnum;
+use PrinsFrank\Standards\Country\Groups\GroupInterface;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\Sorting;
 use PrinsFrank\Standards\Dev\Exception\EnumNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
@@ -14,25 +15,25 @@ use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 use RuntimeException;
 
 /** @internal */
-class EnumFile
+class SpecFile
 {
     public readonly string $path;
 
     /** @var EnumCase[] */
     private array $cases = [];
 
-    /** @var EnumMethod[] */
+    /** @var list<EnumMappingMethod|EnumListMethod> */
     private array $methods = [];
 
     /**
-     * @param class-string<BackedEnum> $enumFQN
+     * @param class-string<BackedEnum|GroupInterface> $FQN
      * @param class-string<Sorting> $sortingFQN
      */
     public function __construct(
-        public readonly string $enumFQN,
+        public readonly string $FQN,
         public readonly string $sortingFQN,
     ) {
-        $this->path = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace(['PrinsFrank\\Standards\\', '\\'], ['', DIRECTORY_SEPARATOR], $enumFQN) . '.php';
+        $this->path = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace(['PrinsFrank\\Standards\\', '\\'], ['', DIRECTORY_SEPARATOR], $FQN) . '.php';
     }
 
     public function addCase(EnumCase $enumCase): self
@@ -42,7 +43,7 @@ class EnumFile
         return $this;
     }
 
-    public function addMethod(EnumMethod $method): self
+    public function addMethod(EnumMappingMethod|EnumListMethod $method): self
     {
         $this->methods[] = $method;
 
@@ -104,6 +105,10 @@ class EnumFile
      */
     public function writeCases(): self
     {
+        if (is_a($this->FQN, BackedEnum::class, true) === false) {
+            throw new EnumNotFoundException();
+        }
+
         $enumContent = $this->getContent();
         $startEnum = mb_strpos($enumContent, '{');
         $endEnumPos = mb_strrpos($enumContent, '}');
@@ -121,7 +126,7 @@ class EnumFile
         $deduplicatedCases = array_values($keyedCases);
         usort($deduplicatedCases, new $this->sortingFQN());
         foreach ($deduplicatedCases as $key => $case) {
-            $newEnumContent .= $case->toString($this->enumFQN, '    ', $key === 0);
+            $newEnumContent .= $case->toString($this->FQN, '    ', $key === 0);
         }
         $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
 
@@ -158,7 +163,7 @@ class EnumFile
         }
     }
 
-    private function getMethodPos(?EnumMethod $method, string $enumContent, int $offset = 0): ?int
+    private function getMethodPos(EnumMappingMethod|EnumListMethod|null $method, string $enumContent, int $offset = 0): ?int
     {
         $matched = preg_match('/(\n\h*\/\*\*.*\n?(\h*\*.*\n?)*\h*\*\/){0,1}\n\h*(public|private|protected)?\h*(static)?\h*function\h*' . ($method->name ?? '') . '/u', $enumContent, $matches, PREG_OFFSET_CAPTURE, strlen(mb_substr($enumContent, 0, $offset))); // offset does not have multibyte support
         if ($matched !== 1 || array_key_exists(0, $matches) === false) {

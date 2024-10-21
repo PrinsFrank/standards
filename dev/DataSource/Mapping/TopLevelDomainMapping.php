@@ -8,8 +8,8 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
-use PrinsFrank\Standards\Dev\DataTarget\EnumFile;
-use PrinsFrank\Standards\Dev\DataTarget\EnumMethod;
+use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
+use PrinsFrank\Standards\Dev\DataTarget\EnumMappingMethod;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
@@ -65,20 +65,20 @@ class TopLevelDomainMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
-     * @throws InvalidArgumentException
-     * @return array<EnumFile>
+     *@throws InvalidArgumentException
+     * @return array<SpecFile>
      */
     public static function toEnumMapping(array $dataSet): array
     {
-        $countryCodeTLD = (new EnumFile(CountryCodeTLD::class, KeySorting::class))
-            ->addMethod($toCountryAlpha2 = new EnumMethod('getCountryAlpha2', '?CountryAlpha2', 'null'));
-        $genericRestrictedTLD = new EnumFile(GenericRestrictedTLD::class, KeySorting::class);
-        $genericTLD = new EnumFile(GenericTLD::class, KeySorting::class);
-        $infrastructureTLD = new EnumFile(InfrastructureTLD::class, KeySorting::class);
-        $sponsoredTLD = new EnumFile(SponsoredTLD::class, KeySorting::class);
-        $testTLD = new EnumFile(TestTLD::class, KeySorting::class);
-        $countryAlpha2Enum = (new EnumFile(CountryAlpha2::class, KeySorting::class))
-            ->addMethod($getCountryCodeTLD = new EnumMethod('getCountryCodeTLD', 'CountryCodeTLD', null));
+        $countryCodeTLD = (new SpecFile(CountryCodeTLD::class, KeySorting::class))
+            ->addMethod($toCountryAlpha2 = new EnumMappingMethod('getCountryAlpha2', '?CountryAlpha2', 'null'));
+        $genericRestrictedTLD = new SpecFile(GenericRestrictedTLD::class, KeySorting::class);
+        $genericTLD = new SpecFile(GenericTLD::class, KeySorting::class);
+        $infrastructureTLD = new SpecFile(InfrastructureTLD::class, KeySorting::class);
+        $sponsoredTLD = new SpecFile(SponsoredTLD::class, KeySorting::class);
+        $testTLD = new SpecFile(TestTLD::class, KeySorting::class);
+        $countryAlpha2Enum = (new SpecFile(CountryAlpha2::class, KeySorting::class))
+            ->addMethod($getCountryCodeTLD = new EnumMappingMethod('getCountryCodeTLD', 'CountryCodeTLD', null));
         foreach ($dataSet as $dataRow) {
             $name = trim($dataRow->tld, '.');
             if ($dataRow->type === 'country-code' && strlen($name) === 2) {
