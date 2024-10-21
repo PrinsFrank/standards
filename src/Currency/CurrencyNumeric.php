@@ -19,6 +19,8 @@ use ValueError;
  * @source https://www.iso.org/iso-4217-currency-codes.html
  * @source https://www.six-group.com/en/products-services/financial-information/data-standards.html
  * @source https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list_one.xml
+ *
+ * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\CurrencyMapping
  */
 enum CurrencyNumeric: string
 {

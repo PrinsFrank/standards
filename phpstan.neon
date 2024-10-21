@@ -24,6 +24,8 @@ parameters:
     reportWrongPhpDocTypeInVarTag: true
     reportAnyTypeWideningInVarTag: true
     checkMissingOverrideMethodAttribute: true
+rules:
+    - PrinsFrank\Standards\Dev\PHPStan\Rules\SourceTagRule
 includes:
     - phar://phpstan.phar/conf/bleedingEdge.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon

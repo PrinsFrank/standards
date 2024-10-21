@@ -8,6 +8,12 @@ use PrinsFrank\Standards\Country\Subdivision\Attributes\Name;
 use PrinsFrank\Standards\Country\Subdivision\Attributes\SameAsCountry;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 
+/**
+ * @standard ISO3166_1
+ * @source https://www.iso.org/obp/ui/#search/code/
+ *
+ * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\CountryMapping
+ */
 enum CountrySubdivision: string
 {
     #[Name('Badakhshān', [LanguageAlpha2::Pushto_Pashto, LanguageAlpha2::Persian], 'BGN/PCGN 2007', null)]

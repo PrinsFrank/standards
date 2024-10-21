@@ -5,6 +5,11 @@ namespace PrinsFrank\Standards\Country\Groups;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
 
+/**
+ * @source https://www.nato.int/cps/en/natohq/topics_52044.htm
+ *
+ * @manually-updated
+ */
 class NATO implements GroupInterface
 {
     /** @return list<CountryAlpha2> */

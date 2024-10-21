@@ -5,6 +5,11 @@ namespace PrinsFrank\Standards\Country\Groups;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
 
+/**
+ * @source http://www.efta.int/about-efta/european-free-trade-association
+ *
+ * @manually-updated
+ */
 class EEA implements GroupInterface
 {
     /** @return list<CountryAlpha2> */

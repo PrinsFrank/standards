@@ -6,7 +6,11 @@ namespace PrinsFrank\Standards\TopLevelDomain;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
-/** @source https://www.iana.org/domains/root/db */
+/**
+ * @source https://www.iana.org/domains/root/db
+ *
+ * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\TopLevelDomainMapping
+ */
 enum GenericTLD: string implements TLD
 {
     case aaa = 'aaa';

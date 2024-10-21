@@ -5,6 +5,11 @@ namespace PrinsFrank\Standards\Country\Groups;
 
 use PrinsFrank\Standards\Country\CountryAlpha2;
 
+/**
+ * @source https://european-union.europa.eu/institutions-law-budget/euro/countries-using-euro_en
+ *
+ * @manually-updated
+ */
 class EuroZone implements GroupInterface
 {
     public static function allAlpha2(): array
