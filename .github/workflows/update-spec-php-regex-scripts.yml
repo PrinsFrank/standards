@@ -1,4 +1,4 @@
-name: Daily TLD update
+name: Daily PHP Regex Scripts update
 
 on:
   workflow_dispatch:
