@@ -43,6 +43,7 @@ class NATOTest extends TestCase
                 CountryAlpha2::Slovakia,
                 CountryAlpha2::Slovenia,
                 CountryAlpha2::Spain,
+                CountryAlpha2::Sweden,
                 CountryAlpha2::Turkey,
                 CountryAlpha2::United_Kingdom,
                 CountryAlpha2::United_States_of_America,
