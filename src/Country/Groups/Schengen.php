@@ -13,6 +13,7 @@ class Schengen implements GroupInterface
         return [
             CountryAlpha2::Austria,
             CountryAlpha2::Belgium,
+            CountryAlpha2::Bulgaria,
             CountryAlpha2::Croatia,
             CountryAlpha2::Czechia,
             CountryAlpha2::Denmark,
@@ -33,6 +34,7 @@ class Schengen implements GroupInterface
             CountryAlpha2::Norway,
             CountryAlpha2::Poland,
             CountryAlpha2::Portugal,
+            CountryAlpha2::Romania,
             CountryAlpha2::Slovakia,
             CountryAlpha2::Slovenia,
             CountryAlpha2::Spain,
