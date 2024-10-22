@@ -24,4 +24,7 @@ enum TravelDocumentAlpha2: string
 
     /** Used by ICAO when digitally signing a master list */
     case International_Civil_Aviation_Organization = 'IA';
+
+    /** Used by European Commission and many institutions in EU countries */
+    case Kosovo = 'XK';
 }
