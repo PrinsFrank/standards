@@ -26,10 +26,10 @@
         "phpunit/phpunit": "^11.2.6",
         "symfony/panther": "dev-main",
         "dbrekelmans/bdi": "^1.0",
-        "phpstan/phpstan": "^1.11.9",
+        "phpstan/phpstan": "^2",
         "composer/composer": "^2.3",
         "prinsfrank/transliteration": "^1.0",
-        "phpstan/phpstan-strict-rules": "^1.5"
+        "phpstan/phpstan-strict-rules": "^2"
     },
     "scripts": {
         "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
