@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev;
 
+use BackedEnum;
 use Composer\Script\Event;
-use PrinsFrank\Enums\UnitEnum;
 use PrinsFrank\Standards\Dev\DataSource\Mapping\Mapping;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
@@ -28,9 +28,10 @@ class SpecUpdater
         /** @var SpecFile $enumFile */
         foreach ($mapping::toEnumMapping($mapping::toDataSet($client, $crawler)) as $enumFile) {
             $event->getIO()->writeRaw('Updating contents of enum "' . $enumFile->path . '"');
-            if (is_a($enumFile->FQN, UnitEnum::class, true) && $enumFile->hasCases() === true) {
+            if (is_a($enumFile->FQN, BackedEnum::class, true) && $enumFile->hasCases() === true) {
                 foreach ($enumFile->FQN::cases() as $existingCase) {
-                    if ($enumFile->hasCaseWithValue($existingCase->value) === false && $enumFile->hasCaseWithName($existingCase->name) === false) {
+                    if ($enumFile->hasCaseWithValue($existingCase->value) === false
+                        && $enumFile->hasCaseWithName($existingCase->name) === false) {
                         $enumFile->addCase(new EnumCase($existingCase->name, $existingCase->value, [], true));
                     }
                 }
