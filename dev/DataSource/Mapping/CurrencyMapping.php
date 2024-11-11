@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use DOMDocument;
 use DOMElement;
+use DOMNodeList;
 use DOMXPath;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Enums\Exception\InvalidArgumentException;
@@ -63,13 +64,16 @@ class CurrencyMapping implements Mapping
         /** @var DOMElement $item */
         foreach ($items as $item) {
             $columns = $item->childNodes;
+            if ($columns instanceof DOMNodeList === false) {
+                throw new RuntimeException();
+            }
 
             $record = (object) [];
-            $record->CtryNm = $columns[1]->textContent;
-            $record->CcyNm = $columns[3]->textContent;
-            $record->Ccy = $columns[5]->textContent ?? null;
-            $record->CcyNbr = $columns[7]->textContent ?? null;
-            $record->CcyMnrUnts = $columns[9]->textContent ?? null;
+            $record->CtryNm = $columns->item(1)->textContent ?? throw new RuntimeException('Country name is required');
+            $record->CcyNm = $columns->item(3)->textContent ?? throw new RuntimeException('Currency name is required');
+            $record->Ccy = $columns->item(5)->textContent ?? null;
+            $record->CcyNbr = $columns->item(7)->textContent ?? null;
+            $record->CcyMnrUnts = $columns->item(9)->textContent ?? null;
 
             /** @var TDataSet $record */
             $dataSet[] = $record;
