@@ -1551,7 +1551,6 @@ enum LanguageAlpha3Extensive: string
     case Degema = 'deg';
     case Dehwari = 'deh';
     case Demisa = 'dei';
-    case Dek = 'dek';
     case Delaware = 'del';
     case Dem = 'dem';
     case Slave_Athapascan = 'den';
@@ -2458,6 +2457,7 @@ enum LanguageAlpha3Extensive: string
     case Ani = 'hnh';
     case Hani = 'hni';
     case Hmong_Njua = 'hnj';
+    case Hainanese = 'hnm';
     case Hanunoo = 'hnn';
     case Northern_Hindko = 'hno';
     case Caribbean_Hindustani = 'hns';
@@ -3804,6 +3804,7 @@ enum LanguageAlpha3Extensive: string
     case Luvale = 'lue';
     case Laua = 'luf';
     case Ganda = 'lug';
+    case Leizhou_Chinese = 'luh';
     case Luiseno = 'lui';
     case Luna = 'luj';
     case Lunanakha = 'luk';
@@ -4870,7 +4871,6 @@ enum LanguageAlpha3Extensive: string
     case Nasal = 'nsy';
     case Nisenan = 'nsz';
     case Northern_Tidung = 'ntd';
-    case Nathembo = 'nte';
     case Ngantangarra = 'ntg';
     case Natioro = 'nti';
     case Ngaanyatjarra = 'ntj';
@@ -5898,6 +5898,7 @@ enum LanguageAlpha3Extensive: string
     case Siwi = 'siz';
     case Epena = 'sja';
     case Sajau_Basap = 'sjb';
+    case Shaojiang_Chinese = 'sjc';
     case Kildin_Sami = 'sjd';
     case Pite_Sami = 'sje';
     case Assangori = 'sjg';
@@ -7940,6 +7941,12 @@ enum LanguageAlpha3Extensive: string
     case Zyphe_Chin = 'zyp';
     case Zaza = 'zza';
     case Zuojiang_Zhuang = 'zzj';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Dek = 'dek';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Nathembo = 'nte';
 
     public function getNameForCountry(CountryAlpha2 $country): ?string
     {
