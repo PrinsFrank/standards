@@ -9,7 +9,7 @@
 [![PHP Version Support](https://img.shields.io/packagist/php-v/prinsfrank/standards)](https://github.com/PrinsFrank/standards/blob/main/composer.json)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/prinsfrank/standards)](https://packagist.org/packages/prinsfrank/standards/stats)
 [![codecov](https://codecov.io/gh/PrinsFrank/standards/branch/main/graph/badge.svg?token=9O3VB563MU)](https://codecov.io/gh/PrinsFrank/standards)
-[![PHPStan Level](https://img.shields.io/badge/PHPStan-level%209-brightgreen.svg?style=flat)](https://github.com/PrinsFrank/standards/blob/main/phpstan.neon)
+[![PHPStan Level](https://img.shields.io/badge/PHPStan-level%2010-brightgreen.svg?style=flat)](https://github.com/PrinsFrank/standards/blob/main/phpstan.neon)
 
 **A collection of standards as PHP Enums**
 

@@ -1,6 +1,6 @@
 parameters:
     tmpDir: ./cache/.phpstan.result.cache
-    level: 9
+    level: 10
     paths:
         - src
         - tests
