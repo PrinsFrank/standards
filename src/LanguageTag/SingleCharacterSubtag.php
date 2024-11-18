@@ -9,8 +9,7 @@ namespace PrinsFrank\Standards\LanguageTag;
  *
  * @manually-updated
  */
-enum SingleCharacterSubtag: string
-{
+enum SingleCharacterSubtag: string {
     /**
      * @see https://datatracker.ietf.org/doc/html/rfc5646#section-2.2.1
      *

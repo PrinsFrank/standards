@@ -20,16 +20,13 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @template TDataSet of object{name: string}&stdClass
  * @implements Mapping<TDataSet>
  */
-class EUMapping implements Mapping
-{
-    public static function url(): string
-    {
+class EUMapping implements Mapping {
+    public static function url(): string {
         return 'https://european-union.europa.eu/principles-countries-history/eu-countries_en';
     }
 
     /** @throws NoSuchElementException|TimeoutException */
-    public static function toDataSet(Client $client, Crawler $crawler): array
-    {
+    public static function toDataSet(Client $client, Crawler $crawler): array {
         $client->waitFor('//a[contains(@class, "wt-ecl-button")]');
         $crawler->filterXPath('//a[contains(@class, "wt-ecl-button")]')->click();
 
@@ -58,8 +55,7 @@ class EUMapping implements Mapping
     }
 
     /** @throws NameNotFoundException|InvalidArgumentException */
-    public static function toEnumMapping(array $dataSet): array
-    {
+    public static function toEnumMapping(array $dataSet): array {
         $EU = (new SpecFile(EU::class, KeySorting::class))
             ->addMethod($allAlpha2 = new EnumListMethod('allAlpha2', 'array', '/** @return list<CountryAlpha2> */'));
 

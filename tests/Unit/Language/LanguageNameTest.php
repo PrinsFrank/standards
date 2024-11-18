@@ -8,24 +8,20 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Language\LanguageName;
 
 #[CoversClass(LanguageName::class)]
-class LanguageNameTest extends TestCase
-{
-    public function testAllCasesCanBeConvertedToLanguageAlpha3Bibliographic(): void
-    {
+class LanguageNameTest extends TestCase {
+    public function testAllCasesCanBeConvertedToLanguageAlpha3Bibliographic(): void {
         foreach (LanguageName::cases() as $case) {
             static::assertNotNull($case->toLanguageAlpha3Bibliographic());
         }
     }
 
-    public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void
-    {
+    public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void {
         foreach (LanguageName::cases() as $case) {
             static::assertNotNull($case->toLanguageAlpha3Terminology());
         }
     }
 
-    public function testSomeCasesCanBeConvertedToLanguageAlpha2(): void
-    {
+    public function testSomeCasesCanBeConvertedToLanguageAlpha2(): void {
         foreach (LanguageName::cases() as $case) {
             $case->toLanguageAlpha2();
 

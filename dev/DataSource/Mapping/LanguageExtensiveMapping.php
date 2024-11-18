@@ -16,16 +16,13 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @template TDataSet of object{Id: string, Part2B: string, Part2T: string, Part1: string, Scope: string, LanguageType: string, RefName: string, Comment: string}&stdClass
  * @implements Mapping<TDataSet>
  */
-class LanguageExtensiveMapping implements Mapping
-{
-    public static function url(): string
-    {
+class LanguageExtensiveMapping implements Mapping {
+    public static function url(): string {
         return 'https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3_Latin1.tab';
     }
 
     /** @throws DomElementNotFoundException */
-    public static function toDataSet(Client $client, Crawler $crawler): array
-    {
+    public static function toDataSet(Client $client, Crawler $crawler): array {
         $dataSet = [];
         foreach (explode("\n", $client->getPageSource()) as $lineNumber => $line) {
             if ($lineNumber === 0 || $line === '</pre></body></html>') {
@@ -51,8 +48,7 @@ class LanguageExtensiveMapping implements Mapping
         return $dataSet;
     }
 
-    public static function toEnumMapping(array $dataSet): array
-    {
+    public static function toEnumMapping(array $dataSet): array {
         $languageExtensive = new SpecFile(LanguageAlpha3Extensive::class, ValueSorting::class);
         foreach ($dataSet as $dataItem) {
             if (in_array($dataItem->RefName, ['Fa D\'ambu', 'C\'lela'], true)) {

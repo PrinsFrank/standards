@@ -11,6 +11,5 @@ use Attribute;
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\PHPRegexSupportedScriptsMapping
  */
 #[Attribute]
-class SupportedByPHPRegex
-{
+class SupportedByPHPRegex {
 }

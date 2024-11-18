@@ -7,10 +7,8 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Name\NameOrder;
 
 #[CoversClass(NameOrder::class)]
-class NameOrderTest extends TestCase
-{
-    public function testFormatPermutations(): void
-    {
+class NameOrderTest extends TestCase {
+    public function testFormatPermutations(): void {
         // Different permutations - three names
         static::assertSame('Foo Bar Boop', NameOrder::Western->format('Foo', 'Bar', 'Boop'));
         static::assertSame('Boop Bar Foo', NameOrder::Eastern->format('Foo', 'Bar', 'Boop'));
@@ -44,8 +42,7 @@ class NameOrderTest extends TestCase
         static::assertSame('', NameOrder::Eastern->format(null, null, null));
     }
 
-    public function testActualNames(): void
-    {
+    public function testActualNames(): void {
         // Mononyms
         static::assertSame('Teller', NameOrder::Eastern->format('Teller', null, null));
         static::assertSame('Teller', NameOrder::Western->format('Teller', null, null));

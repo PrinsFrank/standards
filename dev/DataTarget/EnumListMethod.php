@@ -4,8 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
 /** @internal */
-class EnumListMethod
-{
+class EnumListMethod {
     /** @var list<string> */
     private array $list = [];
 
@@ -16,8 +15,7 @@ class EnumListMethod
     ) {
     }
 
-    public function addItem(string $item): void
-    {
+    public function addItem(string $item): void {
         if (in_array($item, $this->list, true) === true) {
             return;
         }
@@ -25,8 +23,7 @@ class EnumListMethod
         $this->list[] = $item;
     }
 
-    public function __toString(): string
-    {
+    public function __toString(): string {
         $indentingCase = str_repeat(' ', 12);
         $mappingString = '';
         $sortedMapping = $this->list;
@@ -37,8 +34,7 @@ class EnumListMethod
         }
 
         return PHP_EOL . ($this->docBlock !== null ? ('    ' . $this->docBlock . PHP_EOL) : '') . <<<EOD
-            public static function {$this->name}(): {$this->returnType}
-            {
+            public static function {$this->name}(): {$this->returnType} {
                 return [{$mappingString}
                 ];
             }

@@ -9,10 +9,8 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\BRICS;
 
 #[CoversClass(BRICS::class)]
-class BRICSTest extends TestCase
-{
-    public function testAllAlpha2(): void
-    {
+class BRICSTest extends TestCase {
+    public function testAllAlpha2(): void {
         static::assertSame(
             [
                 CountryAlpha2::Brazil,

@@ -13,8 +13,7 @@ use PrinsFrank\Standards\Country\CountryNumeric;
  *
  * @manually-updated
  */
-enum CountryCallingCode: int
-{
+enum CountryCallingCode: int {
     case Afghanistan = 93;
     case Albania_Republic_of = 355;
     case Algeria_Peoples_Democratic_Republic_of = 213;
@@ -235,8 +234,7 @@ enum CountryCallingCode: int
     case Telecommunications_for_Disaster_Relief = 888;
 
     /** @return list<self> */
-    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): array
-    {
+    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): array {
         if ($country instanceof CountryAlpha2 === false) {
             $country = $country->toCountryAlpha2();
         }
@@ -498,8 +496,7 @@ enum CountryCallingCode: int
     }
 
     /** @return list<CountryAlpha2> */
-    public function getCountriesAlpha2(): array
-    {
+    public function getCountriesAlpha2(): array {
         return match($this) {
             self::Integrated_numbering_plan => [
                 CountryAlpha2::American_Samoa,

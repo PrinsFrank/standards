@@ -10,16 +10,14 @@ use PrinsFrank\Transliteration\Exception\InvalidArgumentException;
 use PrinsFrank\Transliteration\Exception\RecursionException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 
-class KeySorting implements Sorting
-{
+class KeySorting implements Sorting {
     /**
      * @throws InvalidArgumentException
      * @throws UnableToCreateTransliteratorException
      * @throws TransliterationException
      * @throws RecursionException
      */
-    public function __invoke(EnumCase $a, EnumCase $b): int
-    {
+    public function __invoke(EnumCase $a, EnumCase $b): int {
         return ($a->deprecated ? 1 : 0) . NameNormalizer::normalize($a->name) <=> ($b->deprecated ? 1 : 0) . NameNormalizer::normalize($b->name);
     }
 }

@@ -12,10 +12,8 @@ use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\NationalCallPrefix\NationalCallPrefix;
 
 #[CoversClass(NationalCallPrefix::class)]
-class NationalCallPrefixTest extends TestCase
-{
-    public function testForCountryAlpha2(): void
-    {
+class NationalCallPrefixTest extends TestCase {
+    public function testForCountryAlpha2(): void {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
             NationalCallPrefix::forCountry($countryAlpha2);
 
@@ -23,8 +21,7 @@ class NationalCallPrefixTest extends TestCase
         }
     }
 
-    public function testForCountryAlpha3(): void
-    {
+    public function testForCountryAlpha3(): void {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
             NationalCallPrefix::forCountry($countryAlpha3);
 
@@ -32,8 +29,7 @@ class NationalCallPrefixTest extends TestCase
         }
     }
 
-    public function testForCountryName(): void
-    {
+    public function testForCountryName(): void {
         foreach (CountryName::cases() as $countryName) {
             NationalCallPrefix::forCountry($countryName);
 
@@ -41,8 +37,7 @@ class NationalCallPrefixTest extends TestCase
         }
     }
 
-    public function testForCountryNumeric(): void
-    {
+    public function testForCountryNumeric(): void {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             NationalCallPrefix::forCountry($countryNumeric);
 

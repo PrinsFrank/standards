@@ -10,17 +10,14 @@ use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\KeyNotFoundException;
 
 #[CoversClass(UnitEnum::class)]
-class UnitEnumTest extends TestCase
-{
+class UnitEnumTest extends TestCase {
     /** @throws InvalidArgumentException */
-    public function testTryFromKey(): void
-    {
+    public function testTryFromKey(): void {
         static::assertNull(UnitEnum::tryFromKey(TestEnum::class, 'BAR'));
         static::assertSame(TestEnum::FOO, UnitEnum::tryFromKey(TestEnum::class, 'FOO'));
     }
 
-    public function testTryFromKeyThrowsExceptionOnNonEnumValue(): void
-    {
+    public function testTryFromKeyThrowsExceptionOnNonEnumValue(): void {
         $testClass = new class () {};
 
         $this->expectException(InvalidArgumentException::class);
@@ -31,22 +28,19 @@ class UnitEnumTest extends TestCase
     }
 
     /** @throws InvalidArgumentException|KeyNotFoundException */
-    public function testFromKey(): void
-    {
+    public function testFromKey(): void {
         static::assertSame(TestEnum::FOO, UnitEnum::fromKey(TestEnum::class, 'FOO'));
     }
 
     /** @throws InvalidArgumentException */
-    public function testNames(): void
-    {
+    public function testNames(): void {
         static::assertSame(
             UnitEnum::names(TestEnum::class),
             ['FOO', 'FIZ'],
         );
     }
 
-    public function testNamesThrowsExceptionOnNonEnumValue(): void
-    {
+    public function testNamesThrowsExceptionOnNonEnumValue(): void {
         $testClass = new class () {};
 
         $this->expectException(InvalidArgumentException::class);
@@ -57,15 +51,13 @@ class UnitEnumTest extends TestCase
     }
 
     /** @throws InvalidArgumentException|KeyNotFoundException */
-    public function testFromKeyThrowsExceptionNonExistingKey(): void
-    {
+    public function testFromKeyThrowsExceptionNonExistingKey(): void {
         $this->expectException(KeyNotFoundException::class);
         UnitEnum::fromKey(TestEnum::class, 'BAR');
     }
 }
 
-enum TestEnum
-{
+enum TestEnum {
     case FOO;
     case FIZ;
 }

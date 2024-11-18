@@ -20,6 +20,7 @@ return (new PhpCsFixer\Config())->setRules(
         'phpdoc_separation'            => ['groups' => [['deprecated', 'internal'], ['standard', 'source'], ['covers', 'coversDefaultClass'], ['template', 'implements', 'extends', 'param', 'throws', 'return']]],
         'phpdoc_trim'                  => true,
         'concat_space'                 => ['spacing' => 'one'],
+        'braces_position'              => ['classes_opening_brace' => 'same_line', 'control_structures_opening_brace' => 'same_line', 'functions_opening_brace' => 'same_line'],
     ]
 )->setFinder(
     PhpCsFixer\Finder::create()

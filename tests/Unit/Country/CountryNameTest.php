@@ -17,10 +17,8 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Name\NameOrder;
 
 #[CoversClass(CountryName::class)]
-class CountryNameTest extends TestCase
-{
-    public function testAllCasesCanBeConvertedToCountryAlpha2(): void
-    {
+class CountryNameTest extends TestCase {
+    public function testAllCasesCanBeConvertedToCountryAlpha2(): void {
         foreach (CountryName::cases() as $case) {
             $case->toCountryAlpha2();
 
@@ -28,8 +26,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    public function testAllCasesCanBeConvertedToISO3166Alpha3(): void
-    {
+    public function testAllCasesCanBeConvertedToISO3166Alpha3(): void {
         foreach (CountryName::cases() as $case) {
             $case->toCountryAlpha3();
 
@@ -37,8 +34,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    public function testAllCasesCanBeConvertedToISO3166Numeric(): void
-    {
+    public function testAllCasesCanBeConvertedToISO3166Numeric(): void {
         foreach (CountryName::cases() as $case) {
             $case->toCountryNumeric();
 
@@ -46,8 +42,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    public function testGetNameInLanguage(): void
-    {
+    public function testGetNameInLanguage(): void {
         static::assertSame('Nederland', CountryName::Netherlands->getNameInLanguage(LanguageAlpha2::Dutch_Flemish));
         static::assertSame('Nederland', CountryName::Netherlands->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
         static::assertSame('Nederland', CountryName::Netherlands->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
@@ -59,8 +54,7 @@ class CountryNameTest extends TestCase
         static::assertSame('Magyarország', CountryName::Hungary->getNameInLanguage(LanguageAlpha3Extensive::Hungarian));
     }
 
-    public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void
-    {
+    public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Argument $groupFQN should be a FQN of a class that implements the groupInterface, "foo" given');
         /** @phpstan-ignore argument.type, missingType.checkedException */
@@ -68,21 +62,18 @@ class CountryNameTest extends TestCase
     }
 
     /** @throws InvalidArgumentException */
-    public function testIsMemberOf(): void
-    {
+    public function testIsMemberOf(): void {
         static::assertTrue(CountryName::Netherlands->isMemberOf(EU::class));
         static::assertFalse(CountryName::Netherlands->isMemberOf(EFTA::class));
     }
 
-    public function testGetCountryCallingCodes(): void
-    {
+    public function testGetCountryCallingCodes(): void {
         foreach (CountryName::cases() as $countryName) {
             static::assertNotEmpty($countryName->getCountryCallingCodes());
         }
     }
 
-    public function testGetNationalCallPrefix(): void
-    {
+    public function testGetNationalCallPrefix(): void {
         foreach (CountryName::cases() as $countryName) {
             $countryName->getNationalCallPrefix();
 
@@ -90,8 +81,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    public function testGetInternationalCallPrefix(): void
-    {
+    public function testGetInternationalCallPrefix(): void {
         foreach (CountryName::cases() as $countryName) {
             $countryName->getInternationalCallPrefix();
 
@@ -99,13 +89,11 @@ class CountryNameTest extends TestCase
         }
     }
 
-    public function testGetFlagEmoji(): void
-    {
+    public function testGetFlagEmoji(): void {
         static::assertSame('🇳🇱', CountryName::Netherlands->getFlagEmoji());
     }
 
-    public function testGetCurrenciesAlpha3(): void
-    {
+    public function testGetCurrenciesAlpha3(): void {
         foreach (CountryName::cases() as $countryName) {
             $currencies = $countryName->getCurrenciesAlpha3();
             if (in_array($countryName, [CountryName::Antarctica, CountryName::Palestine, CountryName::South_Georgia_South_Sandwich_Islands], true)) {
@@ -118,8 +106,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    public function testGetOfficialAndDeFactoLanguages(): void
-    {
+    public function testGetOfficialAndDeFactoLanguages(): void {
         foreach (CountryName::cases() as $countryName) {
             $countryName->getOfficialAndDeFactoLanguages();
 
@@ -127,8 +114,7 @@ class CountryNameTest extends TestCase
         }
     }
 
-    public function testGetSubdivisions(): void
-    {
+    public function testGetSubdivisions(): void {
         foreach (CountryName::cases() as $countryName) {
             $countryName->getSubdivisions();
 
@@ -144,8 +130,7 @@ class CountryNameTest extends TestCase
         );
     }
 
-    public function testGetSubCountries(): void
-    {
+    public function testGetSubCountries(): void {
         foreach (CountryName::cases() as $countryName) {
             $countryName->getSubCountries();
         }
@@ -161,8 +146,7 @@ class CountryNameTest extends TestCase
         static::assertSame([], CountryName::Aruba->getSubCountries());
     }
 
-    public function testGetParentCountry(): void
-    {
+    public function testGetParentCountry(): void {
         foreach (CountryName::cases() as $countryName) {
             $countryName->getParentCountry();
         }
@@ -170,8 +154,7 @@ class CountryNameTest extends TestCase
         static::assertSame(CountryName::Netherlands, CountryName::Aruba->getParentCountry());
     }
 
-    public function testGetMostCommonNameOrder(): void
-    {
+    public function testGetMostCommonNameOrder(): void {
         foreach (CountryName::cases() as $countryAlpha2) {
             $countryAlpha2->getMostCommonNameOrder();
         }

@@ -10,11 +10,9 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
  *
  * @manually-updated
  */
-class Schengen implements GroupInterface
-{
+class Schengen implements GroupInterface {
     /** @return list<CountryAlpha2> */
-    public static function allAlpha2(): array
-    {
+    public static function allAlpha2(): array {
         return [
             CountryAlpha2::Austria,
             CountryAlpha2::Belgium,

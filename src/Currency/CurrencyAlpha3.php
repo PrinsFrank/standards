@@ -21,8 +21,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\CurrencyMapping
  */
-enum CurrencyAlpha3: string
-{
+enum CurrencyAlpha3: string {
     case ADB_Unit_of_Account = 'XUA';
     case Afghani = 'AFN';
     case Algerian_Dinar = 'DZD';
@@ -212,28 +211,23 @@ enum CurrencyAlpha3: string
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Zimbabwe_Dollar = 'ZWL';
 
-    public function toCurrencyNumeric(): CurrencyNumeric
-    {
+    public function toCurrencyNumeric(): CurrencyNumeric {
         return BackedEnum::fromName(CurrencyNumeric::class, $this->name);
     }
 
-    public function toCurrencyName(): CurrencyName
-    {
+    public function toCurrencyName(): CurrencyName {
         return BackedEnum::fromName(CurrencyName::class, $this->name);
     }
 
-    public function getSymbol(): ?CurrencySymbol
-    {
+    public function getSymbol(): ?CurrencySymbol {
         return CurrencySymbol::forCurrency($this);
     }
 
-    public function lowerCaseValue(): string
-    {
+    public function lowerCaseValue(): string {
         return strtolower($this->value);
     }
 
-    public function format(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string
-    {
+    public function format(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string {
         if ($language instanceof LanguageAlpha3Bibliographic) {
             $language = $language->toLanguageAlpha3Terminology();
         }
@@ -248,8 +242,7 @@ enum CurrencyAlpha3: string
         return $formattedCurrency === false ? null : $formattedCurrency;
     }
 
-    public function getMinorUnits(): ?int
-    {
+    public function getMinorUnits(): ?int {
         return match($this) {
             self::Afghani => 2,
             self::Algerian_Dinar => 2,
@@ -423,8 +416,7 @@ enum CurrencyAlpha3: string
     }
 
     /** @return list<CountryAlpha2> */
-    public function getCountriesAlpha2(): array
-    {
+    public function getCountriesAlpha2(): array {
         return match($this) {
             self::Afghani => [CountryAlpha2::Afghanistan],
             self::Algerian_Dinar => [CountryAlpha2::Algeria],

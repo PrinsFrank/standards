@@ -13,8 +13,7 @@ use PrinsFrank\Standards\ShouldNotHappenException;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\ScriptMapping
  */
-enum ScriptAlias: string
-{
+enum ScriptAlias: string {
     case Adlam = 'Adlam';
     case Ahom_Tai_Ahom = 'Ahom';
     case Anatolian_Hieroglyphs_Luwian_Hieroglyphs_Hittite_Hieroglyphs = 'Anatolian_Hieroglyphs';
@@ -385,23 +384,19 @@ enum ScriptAlias: string
     case Yi = 'Yi';
     case Zanabazar_Square_Zanabazarin_Dorboljin_Useg_Xewtee_Dorboljin_Bicig_Horizontal_Square_Script = 'Zanabazar_Square';
 
-    public function toScriptNumber(): ScriptNumber
-    {
+    public function toScriptNumber(): ScriptNumber {
         return BackedEnum::fromName(ScriptNumber::class, $this->name);
     }
 
-    public function toScriptName(): ScriptName
-    {
+    public function toScriptName(): ScriptName {
         return BackedEnum::fromName(ScriptName::class, $this->name);
     }
 
-    public function toScriptCode(): ScriptCode
-    {
+    public function toScriptCode(): ScriptCode {
         return BackedEnum::fromName(ScriptCode::class, $this->name);
     }
 
-    public function isSupportedByPHPRegex(): bool
-    {
+    public function isSupportedByPHPRegex(): bool {
         return BackedEnum::hasCaseAttribute($this, SupportedByPHPRegex::class);
     }
 
@@ -411,8 +406,7 @@ enum ScriptAlias: string
      * Please note that not all Scripts are supported, only the ones that have the 'SupportedByPHPRegex' attribute.
      * For all other scripts, self::Code_for_undetermined_script will be returned
      */
-    public static function allForString(string $string): array
-    {
+    public static function allForString(string $string): array {
         $supportedScripts = array_filter(self::cases(), fn (self $case) => $case->isSupportedByPHPRegex());
         if (preg_match_all('/' . implode('|', array_map(fn (self $case) => sprintf('(?P<%s>\p{%s}+)', $case->value, $case->value), $supportedScripts)) . '/u', $string, $matches, PREG_UNMATCHED_AS_NULL) === false) {
             // @codeCoverageIgnoreStart
@@ -437,14 +431,12 @@ enum ScriptAlias: string
     }
 
     /** @return ($string is non-empty-string ? bool : false) */
-    public static function hasMultipleForString(string $string): bool
-    {
+    public static function hasMultipleForString(string $string): bool {
         return count(self::allForString($string)) > 1;
     }
 
     /** @return ($string is non-empty-string ? self : null) */
-    public static function mostCommonInString(string $string): ?self
-    {
+    public static function mostCommonInString(string $string): ?self {
         return self::allForString($string)[0] ?? null;
     }
 }

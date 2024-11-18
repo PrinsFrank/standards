@@ -19,10 +19,8 @@ use TypeError;
 use ValueError;
 
 #[CoversClass(CountryNumeric::class)]
-class CountryNumericTest extends TestCase
-{
-    public function testAllCasesCanBeConvertedToCountryAlpha2(): void
-    {
+class CountryNumericTest extends TestCase {
+    public function testAllCasesCanBeConvertedToCountryAlpha2(): void {
         foreach (CountryNumeric::cases() as $case) {
             $case->toCountryAlpha2();
 
@@ -30,8 +28,7 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    public function testAllCasesCanBeConvertedToCountryAlpha3(): void
-    {
+    public function testAllCasesCanBeConvertedToCountryAlpha3(): void {
         foreach (CountryNumeric::cases() as $case) {
             $case->toCountryAlpha3();
 
@@ -39,8 +36,7 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    public function testAllCasesCanBeConvertedToCountryName(): void
-    {
+    public function testAllCasesCanBeConvertedToCountryName(): void {
         foreach (CountryNumeric::cases() as $case) {
             $case->toCountryName();
 
@@ -49,31 +45,26 @@ class CountryNumericTest extends TestCase
     }
 
     /** @throws TypeError|ValueError */
-    public function testFromInt(): void
-    {
+    public function testFromInt(): void {
         static::assertEquals(CountryNumeric::Albania, CountryNumeric::fromInt(8));
     }
 
     /** @throws TypeError|ValueError */
-    public function testFromIntThrowsExceptionOnNonExistingValue(): void
-    {
+    public function testFromIntThrowsExceptionOnNonExistingValue(): void {
         $this->expectException(ValueError::class);
         CountryNumeric::fromInt(1);
     }
 
-    public function testTryFromInt(): void
-    {
+    public function testTryFromInt(): void {
         static::assertEquals(CountryNumeric::Albania, CountryNumeric::tryFromInt(8));
         static::assertNull(CountryNumeric::tryFromInt(1));
     }
 
-    public function testValueAsInt(): void
-    {
+    public function testValueAsInt(): void {
         static::assertSame(4, CountryNumeric::Afghanistan->valueAsInt());
     }
 
-    public function testGetNameInLanguage(): void
-    {
+    public function testGetNameInLanguage(): void {
         static::assertSame('Nederland', CountryNumeric::Netherlands->getNameInLanguage(LanguageAlpha2::Dutch_Flemish));
         static::assertSame('Nederland', CountryNumeric::Netherlands->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
         static::assertSame('Nederland', CountryNumeric::Netherlands->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
@@ -85,8 +76,7 @@ class CountryNumericTest extends TestCase
         static::assertSame('Magyarország', CountryNumeric::Hungary->getNameInLanguage(LanguageAlpha3Extensive::Hungarian));
     }
 
-    public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void
-    {
+    public function testIsMemberOfThrowsExceptionIfInvalidFQNSupplied(): void {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Argument $groupFQN should be a FQN of a class that implements the groupInterface, "foo" given');
         /** @phpstan-ignore argument.type, missingType.checkedException */
@@ -94,21 +84,18 @@ class CountryNumericTest extends TestCase
     }
 
     /** @throws InvalidArgumentException */
-    public function testIsMemberOf(): void
-    {
+    public function testIsMemberOf(): void {
         static::assertTrue(CountryNumeric::Netherlands->isMemberOf(EU::class));
         static::assertFalse(CountryNumeric::Netherlands->isMemberOf(EFTA::class));
     }
 
-    public function testGetCountryCallingCodes(): void
-    {
+    public function testGetCountryCallingCodes(): void {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             static::assertNotEmpty($countryNumeric->getCountryCallingCodes());
         }
     }
 
-    public function testGetNationalCallPrefix(): void
-    {
+    public function testGetNationalCallPrefix(): void {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             $countryNumeric->getNationalCallPrefix();
 
@@ -116,8 +103,7 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    public function testGetInternationalCallPrefix(): void
-    {
+    public function testGetInternationalCallPrefix(): void {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             $countryNumeric->getInternationalCallPrefix();
 
@@ -125,13 +111,11 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    public function testGetFlagEmoji(): void
-    {
+    public function testGetFlagEmoji(): void {
         static::assertSame('🇳🇱', CountryNumeric::Netherlands->getFlagEmoji());
     }
 
-    public function testGetCurrenciesAlpha3(): void
-    {
+    public function testGetCurrenciesAlpha3(): void {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             $currencies = $countryNumeric->getCurrenciesAlpha3();
             if (in_array($countryNumeric, [CountryNumeric::Antarctica, CountryNumeric::Palestine, CountryNumeric::South_Georgia_South_Sandwich_Islands], true)) {
@@ -144,8 +128,7 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    public function testGetOfficialAndDeFactoLanguages(): void
-    {
+    public function testGetOfficialAndDeFactoLanguages(): void {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             $countryNumeric->getOfficialAndDeFactoLanguages();
 
@@ -153,8 +136,7 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    public function testGetCountryCodeTLD(): void
-    {
+    public function testGetCountryCodeTLD(): void {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             $countryNumeric->getCountryCodeTLD();
 
@@ -162,16 +144,14 @@ class CountryNumericTest extends TestCase
         }
     }
 
-    public function testFormatNumber(): void
-    {
+    public function testFormatNumber(): void {
         static::assertSame('42,42', CountryNumeric::Netherlands->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish));
         static::assertSame('42,42', CountryNumeric::Netherlands->formatNumber(42.42, LanguageAlpha2::English));
         static::assertSame('42,42', CountryNumeric::United_States_of_America->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish));
         static::assertSame('42.42', CountryNumeric::United_States_of_America->formatNumber(42.42, LanguageAlpha2::English));
     }
 
-    public function testGetSubdivisions(): void
-    {
+    public function testGetSubdivisions(): void {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             $countryNumeric->getSubdivisions();
 
@@ -187,8 +167,7 @@ class CountryNumericTest extends TestCase
         );
     }
 
-    public function testGetSubCountries(): void
-    {
+    public function testGetSubCountries(): void {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             $countryNumeric->getSubCountries();
         }
@@ -204,8 +183,7 @@ class CountryNumericTest extends TestCase
         static::assertSame([], CountryNumeric::Aruba->getSubCountries());
     }
 
-    public function testGetParentCountry(): void
-    {
+    public function testGetParentCountry(): void {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             $countryNumeric->getParentCountry();
         }
@@ -213,8 +191,7 @@ class CountryNumericTest extends TestCase
         static::assertSame(CountryNumeric::Netherlands, CountryNumeric::Aruba->getParentCountry());
     }
 
-    public function testGetMostCommonNameOrder(): void
-    {
+    public function testGetMostCommonNameOrder(): void {
         foreach (CountryNumeric::cases() as $countryAlpha2) {
             $countryAlpha2->getMostCommonNameOrder();
         }
@@ -222,8 +199,7 @@ class CountryNumericTest extends TestCase
         static::assertSame(NameOrder::Eastern, CountryNumeric::Japan->getMostCommonNameOrder());
     }
 
-    public function testIsInAssignedUserSpace(): void
-    {
+    public function testIsInAssignedUserSpace(): void {
         static::assertFalse(CountryNumeric::isInUserAssignedSpace(0));
         static::assertFalse(CountryNumeric::isInUserAssignedSpace('0'));
         static::assertFalse(CountryNumeric::isInUserAssignedSpace(899));

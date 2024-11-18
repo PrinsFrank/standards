@@ -10,11 +10,9 @@ use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\KeyNotFoundException;
 
 #[CoversClass(BackedEnum::class)]
-class BackedEnumTest extends TestCase
-{
+class BackedEnumTest extends TestCase {
     /** @throws InvalidArgumentException */
-    public function testTryFromKey(): void
-    {
+    public function testTryFromKey(): void {
         static::assertNull(BackedEnum::tryFromKey(TestEnumBackedByString::class, 'BAR'));
         static::assertSame(TestEnumBackedByString::FOO, BackedEnum::tryFromKey(TestEnumBackedByString::class, 'FOO'));
 
@@ -22,8 +20,7 @@ class BackedEnumTest extends TestCase
         static::assertSame(TestEnumBackedByInt::FOO, BackedEnum::tryFromKey(TestEnumBackedByInt::class, 'FOO'));
     }
 
-    public function testTryFromKeyThrowsExceptionOnNonEnumValue(): void
-    {
+    public function testTryFromKeyThrowsExceptionOnNonEnumValue(): void {
         $testClass = new class () {};
 
         $this->expectException(InvalidArgumentException::class);
@@ -34,15 +31,13 @@ class BackedEnumTest extends TestCase
     }
 
     /** @throws InvalidArgumentException|KeyNotFoundException */
-    public function testFromKey(): void
-    {
+    public function testFromKey(): void {
         static::assertSame(TestEnumBackedByString::FOO, BackedEnum::fromKey(TestEnumBackedByString::class, 'FOO'));
         static::assertSame(TestEnumBackedByInt::FOO, BackedEnum::fromKey(TestEnumBackedByInt::class, 'FOO'));
     }
 
     /** @throws InvalidArgumentException */
-    public function testNames(): void
-    {
+    public function testNames(): void {
         static::assertSame(
             BackedEnum::names(TestEnumBackedByString::class),
             ['FOO', 'FIZ'],
@@ -53,8 +48,7 @@ class BackedEnumTest extends TestCase
         );
     }
 
-    public function testNamesThrowsExceptionOnNonEnumValue(): void
-    {
+    public function testNamesThrowsExceptionOnNonEnumValue(): void {
         $testClass = new class () {};
 
         $this->expectException(InvalidArgumentException::class);
@@ -65,8 +59,7 @@ class BackedEnumTest extends TestCase
     }
 
     /** @throws InvalidArgumentException */
-    public function testValues(): void
-    {
+    public function testValues(): void {
         static::assertSame(
             BackedEnum::values(TestEnumBackedByString::class),
             ['foo', 'fiz'],
@@ -77,8 +70,7 @@ class BackedEnumTest extends TestCase
         );
     }
 
-    public function testValuesThrowsExceptionOnNonEnumValue(): void
-    {
+    public function testValuesThrowsExceptionOnNonEnumValue(): void {
         $testClass = new class () {};
 
         $this->expectException(InvalidArgumentException::class);
@@ -89,8 +81,7 @@ class BackedEnumTest extends TestCase
     }
 
     /** @throws InvalidArgumentException */
-    public function testToArray(): void
-    {
+    public function testToArray(): void {
         static::assertSame(
             BackedEnum::toArray(TestEnumBackedByString::class),
             ['FOO' => 'foo', 'FIZ' => 'fiz'],
@@ -101,8 +92,7 @@ class BackedEnumTest extends TestCase
         );
     }
 
-    public function testToArrayThrowsExceptionOnNonEnumValue(): void
-    {
+    public function testToArrayThrowsExceptionOnNonEnumValue(): void {
         $testClass = new class () {};
 
         $this->expectException(InvalidArgumentException::class);
@@ -113,21 +103,18 @@ class BackedEnumTest extends TestCase
     }
 
     /** @throws InvalidArgumentException|KeyNotFoundException */
-    public function testFromKeyThrowsExceptionNonExistingKey(): void
-    {
+    public function testFromKeyThrowsExceptionNonExistingKey(): void {
         $this->expectException(KeyNotFoundException::class);
         BackedEnum::fromKey(TestEnumBackedByString::class, 'BAR');
     }
 }
 
-enum TestEnumBackedByString: string
-{
+enum TestEnumBackedByString: string {
     case FOO = 'foo';
     case FIZ = 'fiz';
 }
 
-enum TestEnumBackedByInt: int
-{
+enum TestEnumBackedByInt: int {
     case FOO = 42;
     case FIZ = 43;
 }

@@ -9,10 +9,8 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\Schengen;
 
 #[CoversClass(Schengen::class)]
-class SchengenTest extends TestCase
-{
-    public function testAllAlpha2(): void
-    {
+class SchengenTest extends TestCase {
+    public function testAllAlpha2(): void {
         static::assertSame(
             [
                 CountryAlpha2::Austria,

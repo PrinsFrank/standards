@@ -14,8 +14,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\CountryMapping
  */
-enum CountrySubdivision: string
-{
+enum CountrySubdivision: string {
     #[Name('Badakhshān', [LanguageAlpha2::Pushto_Pashto, LanguageAlpha2::Persian], 'BGN/PCGN 2007', null)]
     case Afghanistan_province_Badakhshan = 'AF-BDS';
 
@@ -16036,20 +16035,17 @@ enum CountrySubdivision: string
     #[Name('Midlands', [LanguageAlpha2::English], null, null)]
     case Zimbabwe_province_Midlands = 'ZW-MI';
 
-    public function getPartOfCountry(): CountryAlpha2
-    {
+    public function getPartOfCountry(): CountryAlpha2 {
         /** @phpstan-ignore missingType.checkedException, missingType.checkedException */
         return CountryAlpha2::from(substr($this->value, 0, 2));
     }
 
     /** @return array<Name> */
-    public function getNames(): array
-    {
+    public function getNames(): array {
         return BackedEnum::getCaseAttributes($this, Name::class);
     }
 
-    public function getSameAsCountry(): ?CountryAlpha2
-    {
+    public function getSameAsCountry(): ?CountryAlpha2 {
         $sameAsCountryAttributes = BackedEnum::getCaseAttributes($this, SameAsCountry::class);
         if ($sameAsCountryAttributes === [] || count($sameAsCountryAttributes) !== 1) {
             return null;

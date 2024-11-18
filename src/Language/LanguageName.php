@@ -14,8 +14,7 @@ use PrinsFrank\Enums\BackedEnum;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageMapping
  */
-enum LanguageName: string
-{
+enum LanguageName: string {
     case Abkhazian = 'Abkhazian';
     case Achinese = 'Achinese';
     case Acoli = 'Acoli';
@@ -503,18 +502,15 @@ enum LanguageName: string
     case Zulu = 'Zulu';
     case Zuni = 'Zuni';
 
-    public function toLanguageAlpha2(): LanguageAlpha2|null
-    {
+    public function toLanguageAlpha2(): LanguageAlpha2|null {
         return BackedEnum::tryFromName(LanguageAlpha2::class, $this->name);
     }
 
-    public function toLanguageAlpha3Bibliographic(): ?LanguageAlpha3Bibliographic
-    {
+    public function toLanguageAlpha3Bibliographic(): ?LanguageAlpha3Bibliographic {
         return BackedEnum::tryFromName(LanguageAlpha3Bibliographic::class, $this->name);
     }
 
-    public function toLanguageAlpha3Terminology(): ?LanguageAlpha3Terminology
-    {
+    public function toLanguageAlpha3Terminology(): ?LanguageAlpha3Terminology {
         return BackedEnum::tryFromName(LanguageAlpha3Terminology::class, $this->name);
     }
 }

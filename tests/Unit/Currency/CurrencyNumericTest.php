@@ -14,10 +14,8 @@ use TypeError;
 use ValueError;
 
 #[CoversClass(CurrencyNumeric::class)]
-class CurrencyNumericTest extends TestCase
-{
-    public function testAllCasesCanBeConvertedToCurrencyAlpha3(): void
-    {
+class CurrencyNumericTest extends TestCase {
+    public function testAllCasesCanBeConvertedToCurrencyAlpha3(): void {
         foreach (CurrencyNumeric::cases() as $case) {
             $case->toCurrencyAlpha3();
 
@@ -25,8 +23,7 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    public function testAllCasesCanBeConvertedToCurrencyName(): void
-    {
+    public function testAllCasesCanBeConvertedToCurrencyName(): void {
         foreach (CurrencyNumeric::cases() as $case) {
             $case->toCurrencyName();
 
@@ -34,8 +31,7 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    public function testAllCasesHaveAccessToSymbolOrNull(): void
-    {
+    public function testAllCasesHaveAccessToSymbolOrNull(): void {
         foreach (CurrencyNumeric::cases() as $case) {
             $case->getSymbol();
 
@@ -44,31 +40,26 @@ class CurrencyNumericTest extends TestCase
     }
 
     /** @throws TypeError|ValueError */
-    public function testFromInt(): void
-    {
+    public function testFromInt(): void {
         static::assertEquals(CurrencyNumeric::Lek, CurrencyNumeric::fromInt(8));
     }
 
     /** @throws ValueError|TypeError */
-    public function testFromIntThrowsExceptionOnNonExistingValue(): void
-    {
+    public function testFromIntThrowsExceptionOnNonExistingValue(): void {
         $this->expectException(ValueError::class);
         CurrencyNumeric::fromInt(1);
     }
 
-    public function testTryFromInt(): void
-    {
+    public function testTryFromInt(): void {
         static::assertEquals(CurrencyNumeric::Lek, CurrencyNumeric::tryFromInt(8));
         static::assertNull(CurrencyNumeric::tryFromInt(1));
     }
 
-    public function testValueAsInt(): void
-    {
+    public function testValueAsInt(): void {
         static::assertSame(965, CurrencyNumeric::ADB_Unit_of_Account->valueAsInt());
     }
 
-    public function testGetMinorUnits(): void
-    {
+    public function testGetMinorUnits(): void {
         foreach (CurrencyNumeric::cases() as $currencyAlpha3) {
             $currencyAlpha3->getMinorUnits();
 
@@ -76,8 +67,7 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    public function testGetCountriesAlpha2(): void
-    {
+    public function testGetCountriesAlpha2(): void {
         foreach (CurrencyNumeric::cases() as $currencyAlpha3) {
             $currencyAlpha3->getCountriesAlpha2();
 
@@ -85,8 +75,7 @@ class CurrencyNumericTest extends TestCase
         }
     }
 
-    public function testFormat(): void
-    {
+    public function testFormat(): void {
         static::assertSame('€ 42,42', CurrencyNumeric::Euro->format(42.42, LanguageAlpha2::Dutch_Flemish, CountryAlpha2::Netherlands));
         static::assertSame('€ 42,42', CurrencyNumeric::Euro->format(42.42, LanguageAlpha3Bibliographic::Dutch_Flemish, CountryAlpha2::Netherlands));
         static::assertSame('€ 42,42', CurrencyNumeric::Euro->format(42.42, LanguageAlpha3Terminology::Dutch_Flemish, CountryAlpha2::Netherlands));

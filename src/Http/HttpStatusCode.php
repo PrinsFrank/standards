@@ -11,8 +11,7 @@ use PrinsFrank\Standards\Http\Attributes\TemporaryAssignment;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\HttpStatusCodeMapping
  */
-enum HttpStatusCode: int
-{
+enum HttpStatusCode: int {
     case Continue = 100;
     case Switching_Protocols = 101;
     case Processing = 102;

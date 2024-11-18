@@ -8,10 +8,8 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
 #[CoversClass(ScriptCode::class)]
-class ScriptCodeTest extends TestCase
-{
-    public function testToScriptAlias(): void
-    {
+class ScriptCodeTest extends TestCase {
+    public function testToScriptAlias(): void {
         foreach (ScriptCode::cases() as $scriptCode) {
             $scriptCode->toScriptAlias();
 
@@ -19,8 +17,7 @@ class ScriptCodeTest extends TestCase
         }
     }
 
-    public function testToScriptNumber(): void
-    {
+    public function testToScriptNumber(): void {
         foreach (ScriptCode::cases() as $scriptCode) {
             $scriptCode->toScriptNumber();
 
@@ -28,8 +25,7 @@ class ScriptCodeTest extends TestCase
         }
     }
 
-    public function testToScriptName(): void
-    {
+    public function testToScriptName(): void {
         foreach (ScriptCode::cases() as $scriptCode) {
             $scriptCode->toScriptName();
 
@@ -37,8 +33,7 @@ class ScriptCodeTest extends TestCase
         }
     }
 
-    public function testForString(): void
-    {
+    public function testForString(): void {
         static::assertSame(
             [],
             ScriptCode::allForString('')
@@ -75,8 +70,7 @@ class ScriptCodeTest extends TestCase
         );
     }
 
-    public function testHasMultipleForString(): void
-    {
+    public function testHasMultipleForString(): void {
         static::assertFalse(ScriptCode::hasMultipleForString(''));
         static::assertFalse(ScriptCode::hasMultipleForString('eu'));
         static::assertTrue(ScriptCode::hasMultipleForString('euеюευ'));
@@ -84,8 +78,7 @@ class ScriptCodeTest extends TestCase
         static::assertTrue(ScriptCode::hasMultipleForString('еюeuеюευeu'));
     }
 
-    public function testMostCommonInString(): void
-    {
+    public function testMostCommonInString(): void {
         static::assertNull(ScriptCode::mostCommonInString(''));
         static::assertSame(ScriptCode::Latin, ScriptCode::mostCommonInString('eu'));
         static::assertSame(ScriptCode::Cyrillic, ScriptCode::mostCommonInString('euеюευ'));

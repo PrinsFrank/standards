@@ -11,14 +11,12 @@ use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\TopLevelDomainMapping
  */
-enum GenericRestrictedTLD: string implements TLD
-{
+enum GenericRestrictedTLD: string implements TLD {
     case biz = 'biz';
     case name = 'name';
     case pro = 'pro';
 
-    public function isAssigned(): bool
-    {
+    public function isAssigned(): bool {
         return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }
 }

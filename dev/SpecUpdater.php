@@ -12,11 +12,9 @@ use PrinsFrank\Standards\InvalidArgumentException;
 use Symfony\Component\Panther\Client;
 use Throwable;
 
-class SpecUpdater
-{
+class SpecUpdater {
     /** @throws Throwable */
-    public static function update(Event $event): void
-    {
+    public static function update(Event $event): void {
         $mapping = $event->getArguments()[0] ?? throw new InvalidArgumentException('source should be supplied, none given');
         if (is_a($mapping, Mapping::class, true) === false) {
             throw new InvalidArgumentException('source should implement ' . Mapping::class . ', ' . $mapping . ' given');

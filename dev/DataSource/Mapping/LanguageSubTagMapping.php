@@ -16,10 +16,8 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @template TDataSet of object{Type: string, Subtag: string, Description: string, Added: string, SuppressScript: string, Scope: string, Macrolanguage: string, Comments: string, Deprecated: string, PreferredValue: string, Prefix: string, Tag: string}&stdClass
  * @implements Mapping<TDataSet>
  */
-class LanguageSubTagMapping implements Mapping
-{
-    public static function url(): string
-    {
+class LanguageSubTagMapping implements Mapping {
+    public static function url(): string {
         return 'https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry';
     }
 
@@ -27,8 +25,7 @@ class LanguageSubTagMapping implements Mapping
      * @throws InvalidArgumentException
      * @return list<TDataSet>
      */
-    public static function toDataSet(Client $client, Crawler $crawler): array
-    {
+    public static function toDataSet(Client $client, Crawler $crawler): array {
         $dataSet = [];
         foreach (explode('%%', $client->getPageSource()) as $i => $item) {
             if ($i === 0) {
@@ -71,8 +68,7 @@ class LanguageSubTagMapping implements Mapping
      * @param list<TDataSet> $dataSet
      * @return array<SpecFile>
      */
-    public static function toEnumMapping(array $dataSet): array
-    {
+    public static function toEnumMapping(array $dataSet): array {
         $languageTagVariant = new SpecFile(LanguageTagVariant::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
             /** @var TDataSet $dataRow */

@@ -18,8 +18,7 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageExtensiveMapping
  */
-enum LanguageAlpha3Extensive: string
-{
+enum LanguageAlpha3Extensive: string {
     case Ghotuo = 'aaa';
     case Alumu_Tesu = 'aab';
     case Ari = 'aac';
@@ -7948,8 +7947,7 @@ enum LanguageAlpha3Extensive: string
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Nathembo = 'nte';
 
-    public function getNameForCountry(CountryAlpha2 $country): ?string
-    {
+    public function getNameForCountry(CountryAlpha2 $country): ?string {
         return $country->getNameInLanguage($this);
     }
 

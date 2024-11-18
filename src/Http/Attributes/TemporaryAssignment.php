@@ -6,8 +6,7 @@ use Attribute;
 use DateTimeImmutable;
 
 #[Attribute]
-class TemporaryAssignment
-{
+class TemporaryAssignment {
     public function __construct(
         public readonly ?DateTimeImmutable $expiresAt,
     ) {

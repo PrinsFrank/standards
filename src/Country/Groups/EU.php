@@ -10,11 +10,9 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\EUMapping
  */
-class EU implements GroupInterface
-{
+class EU implements GroupInterface {
     /** @return list<CountryAlpha2> */
-    public static function allAlpha2(): array
-    {
+    public static function allAlpha2(): array {
         return [
             CountryAlpha2::Austria,
             CountryAlpha2::Belgium,

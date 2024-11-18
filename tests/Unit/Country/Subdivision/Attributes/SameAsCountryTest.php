@@ -8,10 +8,8 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Subdivision\Attributes\SameAsCountry;
 
 #[CoversClass(SameAsCountry::class)]
-class SameAsCountryTest extends TestCase
-{
-    public function testCoversClass(): void
-    {
+class SameAsCountryTest extends TestCase {
+    public function testCoversClass(): void {
         static::assertSame(CountryAlpha2::Netherlands, (new SameAsCountry(CountryAlpha2::Netherlands))->country);
     }
 }

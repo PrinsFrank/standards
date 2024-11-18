@@ -18,8 +18,7 @@ use Stringable;
  *
  * @manually-updated
  */
-class LanguageTag implements Stringable
-{
+class LanguageTag implements Stringable {
     /** @deprecated will be removed in v4. Use LanguageSubtagSeparator::DEFAULT instead */
     public const SUBTAG_SEPARATOR = '-';
 
@@ -43,8 +42,7 @@ class LanguageTag implements Stringable
         array_map(static function (mixed $extensionSubtag) { is_string($extensionSubtag) || throw new InvalidArgumentException('Param $variantSubtag should be an array of strings');}, $this->extensionSubtag);
     }
 
-    public static function tryFromString(string $languageTagString, SubtagSeparator $subtagSeparator = SubtagSeparator::STANDARD): ?self
-    {
+    public static function tryFromString(string $languageTagString, SubtagSeparator $subtagSeparator = SubtagSeparator::STANDARD): ?self {
         try {
             return self::fromString($languageTagString, $subtagSeparator);
         } catch (InvalidArgumentException) {
@@ -53,8 +51,7 @@ class LanguageTag implements Stringable
     }
 
     /** @throws InvalidArgumentException */
-    public static function fromString(string $languageTagString, SubtagSeparator $subtagSeparator = SubtagSeparator::STANDARD): self
-    {
+    public static function fromString(string $languageTagString, SubtagSeparator $subtagSeparator = SubtagSeparator::STANDARD): self {
         $subTags = explode($subtagSeparator->value, $languageTagString);
         $primaryLanguageSubtag = LanguageAlpha2::tryFrom($subTags[0])
             ?? LanguageAlpha3Terminology::tryFrom($subTags[0])
@@ -106,8 +103,7 @@ class LanguageTag implements Stringable
         return new self($primaryLanguageSubtag, $extendedLanguageSubtag, $scriptSubtag, $regionSubtag, $variantSubtag, $extensionSubtag, $privateUseSubtag);
     }
 
-    public function toString(SubtagSeparator $subtagSeparator = SubtagSeparator::STANDARD): string
-    {
+    public function toString(SubtagSeparator $subtagSeparator = SubtagSeparator::STANDARD): string {
         if ($this->primaryLanguageSubtag instanceof SingleCharacterSubtag) {
             return $this->primaryLanguageSubtag->value . ($this->privateUseSubtag !== null ? $subtagSeparator->value . $this->privateUseSubtag : '');
         }
@@ -122,8 +118,7 @@ class LanguageTag implements Stringable
     }
 
     /** Stringable::__toString() doesn't allow arguments, so this method redirects to toString() to allow for custom separators */
-    public function __toString(): string
-    {
+    public function __toString(): string {
         return $this->toString();
     }
 }

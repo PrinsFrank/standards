@@ -17,15 +17,12 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @template TDataSet of object{name: string}&stdClass
  * @implements Mapping<TDataSet>
  */
-class PHPRegexSupportedScriptsMapping implements Mapping
-{
-    public static function url(): string
-    {
+class PHPRegexSupportedScriptsMapping implements Mapping {
+    public static function url(): string {
         return 'https://www.php.net/manual/en/regexp.reference.unicode.php';
     }
 
-    public static function toDataSet(Client $client, Crawler $crawler): array
-    {
+    public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@class="doctable table"]/tbody/tr/td/code')->getIterator();
 
         $dataSet = [];
@@ -44,8 +41,7 @@ class PHPRegexSupportedScriptsMapping implements Mapping
      * @param list<TDataSet> $dataSet
      * @return array<SpecFile>
      */
-    public static function toEnumMapping(array $dataSet): array
-    {
+    public static function toEnumMapping(array $dataSet): array {
         $scriptAliasStrings = array_map(static function (object $dataSetItem) {
             return $dataSetItem->name;
         }, $dataSet);

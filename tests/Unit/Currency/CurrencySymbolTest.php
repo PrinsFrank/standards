@@ -11,10 +11,8 @@ use PrinsFrank\Standards\Currency\CurrencyNumeric;
 use PrinsFrank\Standards\Currency\CurrencySymbol;
 
 #[CoversClass(CurrencySymbol::class)]
-class CurrencySymbolTest extends TestCase
-{
-    public function testAllAlpha3CasesHaveAccessToSymbolOrNull(): void
-    {
+class CurrencySymbolTest extends TestCase {
+    public function testAllAlpha3CasesHaveAccessToSymbolOrNull(): void {
         foreach (CurrencyAlpha3::cases() as $case) {
             CurrencySymbol::forCurrency($case);
 
@@ -22,8 +20,7 @@ class CurrencySymbolTest extends TestCase
         }
     }
 
-    public function testAllNameCasesHaveAccessToSymbolOrNull(): void
-    {
+    public function testAllNameCasesHaveAccessToSymbolOrNull(): void {
         foreach (CurrencyName::cases() as $case) {
             CurrencySymbol::forCurrency($case);
 
@@ -31,8 +28,7 @@ class CurrencySymbolTest extends TestCase
         }
     }
 
-    public function testAllNumericCasesHaveAccessToSymbolOrNull(): void
-    {
+    public function testAllNumericCasesHaveAccessToSymbolOrNull(): void {
         foreach (CurrencyNumeric::cases() as $case) {
             CurrencySymbol::forCurrency($case);
 

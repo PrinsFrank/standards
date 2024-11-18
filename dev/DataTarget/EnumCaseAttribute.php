@@ -10,8 +10,7 @@ use ReflectionClass;
 use Stringable;
 use UnitEnum;
 
-class EnumCaseAttribute implements Stringable
-{
+class EnumCaseAttribute implements Stringable {
     /**
      * @param class-string<object> $fqn
      * @param list<string|UnitEnum|BackedEnum|DateTimeImmutable|null|array<string|UnitEnum|BackedEnum|null>> $parameters
@@ -23,8 +22,7 @@ class EnumCaseAttribute implements Stringable
     }
 
     /** @throws InvalidArgumentException */
-    public function __toString(): string
-    {
+    public function __toString(): string {
         if ($this->parameters !== []) {
             return '#[' . (new ReflectionClass($this->fqn))->getShortName() . '(' . implode(', ', array_map(fn (mixed $value) => $this->valueToString($value), $this->parameters)) . ')]';
         }
@@ -33,8 +31,7 @@ class EnumCaseAttribute implements Stringable
     }
 
     /** @throws InvalidArgumentException */
-    private function valueToString(mixed $value): string
-    {
+    private function valueToString(mixed $value): string {
         if ($value instanceof UnitEnum) {
             return substr($value::class, strrpos($value::class, '\\') !== false ? strrpos($value::class, '\\') + 1 : 0) . '::' . $value->name;
         }

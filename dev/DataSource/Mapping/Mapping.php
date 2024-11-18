@@ -10,8 +10,7 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
 /**
  * @template TDataSet
  */
-interface Mapping
-{
+interface Mapping {
     public static function url(): string;
 
     /** @return list<TDataSet> */

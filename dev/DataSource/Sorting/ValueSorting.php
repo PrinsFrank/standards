@@ -5,10 +5,8 @@ namespace PrinsFrank\Standards\Dev\DataSource\Sorting;
 
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 
-class ValueSorting implements Sorting
-{
-    public function __invoke(EnumCase $a, EnumCase $b): int
-    {
+class ValueSorting implements Sorting {
+    public function __invoke(EnumCase $a, EnumCase $b): int {
         return ($a->deprecated ? 1 : 0) . $a->value <=> ($b->deprecated ? 1 : 0) . $b->value;
     }
 }

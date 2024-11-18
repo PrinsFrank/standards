@@ -11,8 +11,7 @@ use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\TopLevelDomainMapping
  */
-enum SponsoredTLD: string implements TLD
-{
+enum SponsoredTLD: string implements TLD {
     case aero = 'aero';
     case asia = 'asia';
     case cat = 'cat';
@@ -28,8 +27,7 @@ enum SponsoredTLD: string implements TLD
     case travel = 'travel';
     case xxx = 'xxx';
 
-    public function isAssigned(): bool
-    {
+    public function isAssigned(): bool {
         return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }
 }

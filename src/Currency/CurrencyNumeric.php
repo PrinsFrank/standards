@@ -22,8 +22,7 @@ use ValueError;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\CurrencyMapping
  */
-enum CurrencyNumeric: string
-{
+enum CurrencyNumeric: string {
     case ADB_Unit_of_Account = '965';
     case Afghani = '971';
     case Algerian_Dinar = '012';
@@ -213,8 +212,7 @@ enum CurrencyNumeric: string
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Zimbabwe_Dollar = '932';
 
-    public static function tryFromInt(int $from): ?self
-    {
+    public static function tryFromInt(int $from): ?self {
         return self::tryFrom(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
     }
 
@@ -222,44 +220,36 @@ enum CurrencyNumeric: string
      * @throws TypeError
      * @throws ValueError
      */
-    public static function fromInt(int $from): self
-    {
+    public static function fromInt(int $from): self {
         return self::from(str_pad((string) $from, 3, '0', STR_PAD_LEFT));
     }
 
-    public function toCurrencyAlpha3(): CurrencyAlpha3
-    {
+    public function toCurrencyAlpha3(): CurrencyAlpha3 {
         return BackedEnum::fromName(CurrencyAlpha3::class, $this->name);
     }
 
-    public function toCurrencyName(): CurrencyName
-    {
+    public function toCurrencyName(): CurrencyName {
         return BackedEnum::fromName(CurrencyName::class, $this->name);
     }
 
-    public function getSymbol(): ?CurrencySymbol
-    {
+    public function getSymbol(): ?CurrencySymbol {
         return CurrencySymbol::forCurrency($this);
     }
 
-    public function valueAsInt(): int
-    {
+    public function valueAsInt(): int {
         return (int) $this->value;
     }
 
-    public function format(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string
-    {
+    public function format(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string {
         return $this->toCurrencyAlpha3()->format($amount, $language, $country);
     }
 
-    public function getMinorUnits(): ?int
-    {
+    public function getMinorUnits(): ?int {
         return $this->toCurrencyAlpha3()->getMinorUnits();
     }
 
     /** @return list<CountryAlpha2> */
-    public function getCountriesAlpha2(): array
-    {
+    public function getCountriesAlpha2(): array {
         return $this->toCurrencyAlpha3()->getCountriesAlpha2();
     }
 }

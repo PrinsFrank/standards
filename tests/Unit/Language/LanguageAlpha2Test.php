@@ -17,24 +17,20 @@ use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
 #[CoversClass(LanguageAlpha2::class)]
-class LanguageAlpha2Test extends TestCase
-{
-    public function testAllCasesCanBeConvertedToToLanguageAlpha3Bibliographic(): void
-    {
+class LanguageAlpha2Test extends TestCase {
+    public function testAllCasesCanBeConvertedToToLanguageAlpha3Bibliographic(): void {
         foreach (LanguageAlpha2::cases() as $case) {
             static::assertNotNull($case->toLanguageAlpha3Bibliographic());
         }
     }
 
-    public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void
-    {
+    public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void {
         foreach (LanguageAlpha2::cases() as $case) {
             static::assertNotNull($case->toLanguageAlpha3Terminology());
         }
     }
 
-    public function testAllCasesCanBeConvertedToLanguageName(): void
-    {
+    public function testAllCasesCanBeConvertedToLanguageName(): void {
         foreach (LanguageAlpha2::cases() as $case) {
             $case->toLanguageName();
 
@@ -42,26 +38,22 @@ class LanguageAlpha2Test extends TestCase
         }
     }
 
-    public function testUpperCaseValue(): void
-    {
+    public function testUpperCaseValue(): void {
         static::assertSame('AB', LanguageAlpha2::Abkhazian->upperCaseValue());
     }
 
-    public function testGetNameInLanguage(): void
-    {
+    public function testGetNameInLanguage(): void {
         static::assertSame('Dutch', LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::English));
         static::assertSame('Nederlands', LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::Dutch_Flemish));
         static::assertSame('Nederlands', LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
     }
 
-    public function testGetNameForCountry(): void
-    {
+    public function testGetNameForCountry(): void {
         static::assertSame('Nederland', LanguageAlpha2::Dutch_Flemish->getNameForCountry(CountryAlpha2::Netherlands));
     }
 
     /** @throws InvalidArgumentException */
-    public function testToLanguageTag(): void
-    {
+    public function testToLanguageTag(): void {
         static::assertEquals(new LanguageTag(LanguageAlpha2::Dutch_Flemish), LanguageAlpha2::Dutch_Flemish->toLanguageTag());
         static::assertEquals(
             new LanguageTag(
@@ -84,8 +76,7 @@ class LanguageAlpha2Test extends TestCase
         );
     }
 
-    public function testFormatNumber(): void
-    {
+    public function testFormatNumber(): void {
         static::assertSame('42,42', LanguageAlpha2::Dutch_Flemish->formatNumber(42.42));
         static::assertSame('42,42', LanguageAlpha2::Dutch_Flemish->formatNumber(42.42, CountryAlpha2::Netherlands));
         static::assertSame('42,42', LanguageAlpha2::Dutch_Flemish->formatNumber(42.42, CountryAlpha3::Netherlands));

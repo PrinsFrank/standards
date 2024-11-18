@@ -9,10 +9,8 @@ use PrinsFrank\Standards\Country\UserAssigned\TravelDocumentAlpha2;
 use PrinsFrank\Standards\Country\UserAssigned\TravelDocumentAlpha3;
 
 #[CoversClass(TravelDocumentAlpha3::class)]
-class TravelDocumentAlpha3Test extends TestCase
-{
-    public function testToTravelDocumentAlpha2(): void
-    {
+class TravelDocumentAlpha3Test extends TestCase {
+    public function testToTravelDocumentAlpha2(): void {
         static::assertSame(TravelDocumentAlpha2::European_Union, TravelDocumentAlpha3::European_Union->toTravelDocumentAlpha2());
         static::assertSame(TravelDocumentAlpha2::United_Nations, TravelDocumentAlpha3::United_Nations_Organization_or_one_of_its_officials->toTravelDocumentAlpha2());
         static::assertSame(TravelDocumentAlpha2::United_Nations, TravelDocumentAlpha3::United_Nations_specialized_agency_or_one_of_its_officials->toTravelDocumentAlpha2());

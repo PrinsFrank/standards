@@ -13,16 +13,13 @@ use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
 #[CoversClass(LanguageAlpha3Extensive::class)]
-class LanguageAlpha3ExtensiveTest extends TestCase
-{
-    public function testGetNameForCountry(): void
-    {
+class LanguageAlpha3ExtensiveTest extends TestCase {
+    public function testGetNameForCountry(): void {
         static::assertSame('Nederland', LanguageAlpha3Extensive::Dutch->getNameForCountry(CountryAlpha2::Netherlands));
     }
 
     /** @throws InvalidArgumentException */
-    public function testToLanguageTag(): void
-    {
+    public function testToLanguageTag(): void {
         static::assertEquals(new LanguageTag(LanguageAlpha3Extensive::Dutch), LanguageAlpha3Extensive::Dutch->toLanguageTag());
         static::assertEquals(
             new LanguageTag(

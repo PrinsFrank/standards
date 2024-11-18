@@ -8,10 +8,8 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\TopLevelDomain\GenericRestrictedTLD;
 
 #[CoversClass(GenericRestrictedTLD::class)]
-class GenericRestrictedTLDTest extends TestCase
-{
-    public function testIsAssigned(): void
-    {
+class GenericRestrictedTLDTest extends TestCase {
+    public function testIsAssigned(): void {
         static::assertTrue(GenericRestrictedTLD::name->isAssigned());
     }
 }

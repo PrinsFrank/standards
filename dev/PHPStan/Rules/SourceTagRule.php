@@ -13,15 +13,12 @@ use PrinsFrank\Standards\UnitEnum;
 use Throwable;
 
 /** @implements Rule<InClassNode> */
-class SourceTagRule implements Rule
-{
-    public function getNodeType(): string
-    {
+class SourceTagRule implements Rule {
+    public function getNodeType(): string {
         return InClassNode::class;
     }
 
-    public function processNode(Node $node, Scope $scope): array
-    {
+    public function processNode(Node $node, Scope $scope): array {
         $classReflection = $node->getClassReflection();
         if ($classReflection->isAnonymous()
             || $classReflection->isAbstract()
@@ -59,8 +56,7 @@ class SourceTagRule implements Rule
         return $errors;
     }
 
-    private function getTagValue(?ResolvedPhpDocBlock $resolvedPhpDocBlock, string $tagName): ?string
-    {
+    private function getTagValue(?ResolvedPhpDocBlock $resolvedPhpDocBlock, string $tagName): ?string {
         foreach ($resolvedPhpDocBlock?->getPhpDocNodes() ?? [] as $phpDocNode) {
             foreach ($phpDocNode->getTags() as $tag) {
                 if ($tag->name !== '@' . $tagName) {
@@ -74,8 +70,7 @@ class SourceTagRule implements Rule
         return null;
     }
 
-    private function hasTag(?ResolvedPhpDocBlock $resolvedPhpDocBlock, string $tagName): bool
-    {
+    private function hasTag(?ResolvedPhpDocBlock $resolvedPhpDocBlock, string $tagName): bool {
         foreach ($resolvedPhpDocBlock?->getPhpDocNodes() ?? [] as $phpDocNode) {
             foreach ($phpDocNode->getTags() as $tag) {
                 if ($tag->name !== '@' . $tagName) {

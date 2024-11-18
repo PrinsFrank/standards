@@ -15,8 +15,7 @@ use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 use RuntimeException;
 
 /** @internal */
-class SpecFile
-{
+class SpecFile {
     public readonly string $path;
 
     /** @var EnumCase[] */
@@ -36,27 +35,23 @@ class SpecFile
         $this->path = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace(['PrinsFrank\\Standards\\', '\\'], ['', DIRECTORY_SEPARATOR], $FQN) . '.php';
     }
 
-    public function addCase(EnumCase $enumCase): self
-    {
+    public function addCase(EnumCase $enumCase): self {
         $this->cases[] = $enumCase;
 
         return $this;
     }
 
-    public function addMethod(EnumMappingMethod|EnumListMethod $method): self
-    {
+    public function addMethod(EnumMappingMethod|EnumListMethod $method): self {
         $this->methods[] = $method;
 
         return $this;
     }
 
-    public function hasCases(): bool
-    {
+    public function hasCases(): bool {
         return count($this->cases) > 0;
     }
 
-    public function hasCaseWithValue(string|int $value): bool
-    {
+    public function hasCaseWithValue(string|int $value): bool {
         foreach ($this->cases as $case) {
             if ($case->value === $value || $case->previousValue === $value) {
                 return true;
@@ -66,8 +61,7 @@ class SpecFile
         return false;
     }
 
-    public function hasCaseWithName(string $name): bool
-    {
+    public function hasCaseWithName(string $name): bool {
         foreach ($this->cases as $case) {
             if ($case->name === $name) {
                 return true;
@@ -78,8 +72,7 @@ class SpecFile
     }
 
     /** @throws EnumNotFoundException */
-    private function getContent(): string
-    {
+    private function getContent(): string {
         $content = file_get_contents($this->path);
         if ($content === false) {
             throw new EnumNotFoundException();
@@ -88,8 +81,7 @@ class SpecFile
         return $content;
     }
 
-    private function putContent(string $content): self
-    {
+    private function putContent(string $content): self {
         file_put_contents($this->path, $content);
 
         return $this;
@@ -103,8 +95,7 @@ class SpecFile
      * @throws RecursionException
      * @throws \PrinsFrank\Transliteration\Exception\InvalidArgumentException
      */
-    public function writeCases(): self
-    {
+    public function writeCases(): self {
         if (is_a($this->FQN, BackedEnum::class, true) === false) {
             throw new EnumNotFoundException();
         }
@@ -137,8 +128,7 @@ class SpecFile
      * @throws EnumNotFoundException
      * @throws RuntimeException
      */
-    public function writeMethods(): void
-    {
+    public function writeMethods(): void {
         foreach ($this->methods as $method) {
             $enumContent = $this->getContent();
             $startExistingMethod = $this->getMethodPos($method, $enumContent);
@@ -163,8 +153,7 @@ class SpecFile
         }
     }
 
-    private function getMethodPos(EnumMappingMethod|EnumListMethod|null $method, string $enumContent, int $offset = 0): ?int
-    {
+    private function getMethodPos(EnumMappingMethod|EnumListMethod|null $method, string $enumContent, int $offset = 0): ?int {
         $matched = preg_match('/(\n\h*\/\*\*.*\n?(\h*\*.*\n?)*\h*\*\/){0,1}\n\h*(public|private|protected)?\h*(static)?\h*function\h*' . ($method->name ?? '') . '/u', $enumContent, $matches, PREG_OFFSET_CAPTURE, strlen(mb_substr($enumContent, 0, $offset))); // offset does not have multibyte support
         if ($matched !== 1 || array_key_exists(0, $matches) === false) {
             return null;
