@@ -46,7 +46,7 @@ class EnumCase
             $case .= PHP_EOL . $indenting . $attribute->__toString();
         }
 
-        $existingKeyWithValue = $enumFQN::tryFrom($this->value) ?? $enumFQN::tryFrom($this->previousValue ?? '');
+        $existingKeyWithValue = $enumFQN::tryFrom($this->value) ?? ($this->previousValue !== null ? $enumFQN::tryFrom($this->previousValue) : null);
         $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->name);
         if ($existingKeyWithValue === null && is_string($this->value)) {
             $mostCommonScriptInString = ScriptAlias::mostCommonInString($this->value) ?? ScriptAlias::Code_for_undetermined_script;
