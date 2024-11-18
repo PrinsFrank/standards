@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Http;
 
+use DateTimeImmutable;
+use PrinsFrank\Standards\Http\Attributes\TemporaryAssignment;
+
 /**
  * @source https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
  *
