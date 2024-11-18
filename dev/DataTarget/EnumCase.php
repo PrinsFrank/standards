@@ -11,8 +11,7 @@ use PrinsFrank\Transliteration\Exception\RecursionException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 
 /** @internal */
-class EnumCase
-{
+class EnumCase {
     /** @param array<EnumCaseAttribute> $attributes */
     public function __construct(
         public readonly string $name,
@@ -31,8 +30,7 @@ class EnumCase
      * @throws RecursionException
      * @throws \PrinsFrank\Transliteration\Exception\InvalidArgumentException
      */
-    public function toString(string $enumFQN, string $indenting, bool $isFirst): string
-    {
+    public function toString(string $enumFQN, string $indenting, bool $isFirst): string {
         $case = '';
         if ($isFirst === false && ($this->deprecated === true || $this->attributes !== [])) {
             $case .= PHP_EOL;

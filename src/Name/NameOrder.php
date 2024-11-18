@@ -7,8 +7,7 @@ namespace PrinsFrank\Standards\Name;
  *
  * @manually-updated
  */
-enum NameOrder: int
-{
+enum NameOrder: int {
     case Eastern = 0;
     case Western = 1;
 
@@ -19,8 +18,7 @@ enum NameOrder: int
      * note: $middle is optional, if supplied/stored in two fields instead of three make sure to supply a $given and a
      * $family name, and store any additional names in the $given field
      */
-    public function format(?string $given, ?string $middle, ?string $family): string
-    {
+    public function format(?string $given, ?string $middle, ?string $family): string {
         return implode(
             ' ',
             array_filter(

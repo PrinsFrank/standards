@@ -17,10 +17,8 @@ use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
 #[CoversClass(LanguageAlpha3Bibliographic::class)]
-class LanguageAlpha3BibliographicTest extends TestCase
-{
-    public function testAllCasesCanBeConvertedToLanguageAlpha2(): void
-    {
+class LanguageAlpha3BibliographicTest extends TestCase {
+    public function testAllCasesCanBeConvertedToLanguageAlpha2(): void {
         foreach (LanguageAlpha3Bibliographic::cases() as $case) {
             $case->toLanguageAlpha2();
 
@@ -28,8 +26,7 @@ class LanguageAlpha3BibliographicTest extends TestCase
         }
     }
 
-    public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void
-    {
+    public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void {
         foreach (LanguageAlpha3Bibliographic::cases() as $case) {
             $case->toLanguageAlpha3Terminology();
 
@@ -37,8 +34,7 @@ class LanguageAlpha3BibliographicTest extends TestCase
         }
     }
 
-    public function testAllCasesCanBeConvertedToLanguageName(): void
-    {
+    public function testAllCasesCanBeConvertedToLanguageName(): void {
         foreach (LanguageAlpha3Bibliographic::cases() as $case) {
             $case->toLanguageName();
 
@@ -46,26 +42,22 @@ class LanguageAlpha3BibliographicTest extends TestCase
         }
     }
 
-    public function testUpperCaseValue(): void
-    {
+    public function testUpperCaseValue(): void {
         static::assertSame('ALB', LanguageAlpha3Bibliographic::Albanian->upperCaseValue());
     }
 
-    public function testGetNameInLanguage(): void
-    {
+    public function testGetNameInLanguage(): void {
         static::assertSame('Dutch', LanguageAlpha3Bibliographic::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Bibliographic::English));
         static::assertSame('Nederlands', LanguageAlpha3Bibliographic::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Bibliographic::Dutch_Flemish));
         static::assertSame('Nederlands', LanguageAlpha3Bibliographic::Dutch_Flemish->getNameInLanguage(LanguageAlpha3Terminology::Dutch_Flemish));
     }
 
-    public function testGetNameForCountry(): void
-    {
+    public function testGetNameForCountry(): void {
         static::assertSame('Nederland', LanguageAlpha3Bibliographic::Dutch_Flemish->getNameForCountry(CountryAlpha2::Netherlands));
     }
 
     /** @throws InvalidArgumentException */
-    public function testToLanguageTag(): void
-    {
+    public function testToLanguageTag(): void {
         static::assertEquals(new LanguageTag(LanguageAlpha3Terminology::Dutch_Flemish), LanguageAlpha3Bibliographic::Dutch_Flemish->toLanguageTag());
         static::assertEquals(
             new LanguageTag(
@@ -88,8 +80,7 @@ class LanguageAlpha3BibliographicTest extends TestCase
         );
     }
 
-    public function testFormatNumber(): void
-    {
+    public function testFormatNumber(): void {
         static::assertSame('42,42', LanguageAlpha3Bibliographic::Dutch_Flemish->formatNumber(42.42));
         static::assertSame('42,42', LanguageAlpha3Bibliographic::Dutch_Flemish->formatNumber(42.42, CountryAlpha2::Netherlands));
         static::assertSame('42,42', LanguageAlpha3Bibliographic::Dutch_Flemish->formatNumber(42.42, CountryAlpha3::Netherlands));

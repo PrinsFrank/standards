@@ -11,8 +11,7 @@ use PrinsFrank\Standards\InvalidArgumentException;
  *
  * @manually-updated
  */
-class PrivateUsePrimarySubtag
-{
+class PrivateUsePrimarySubtag {
     /** @throws InvalidArgumentException */
     public function __construct(
         public readonly string $subtag,
@@ -22,8 +21,7 @@ class PrivateUsePrimarySubtag
         }
     }
 
-    public static function tryFrom(string $subtag): ?self
-    {
+    public static function tryFrom(string $subtag): ?self {
         try {
             return new self($subtag);
         } catch (InvalidArgumentException) {
@@ -31,8 +29,7 @@ class PrivateUsePrimarySubtag
         }
     }
 
-    private static function isValid(string $subtag): bool
-    {
+    private static function isValid(string $subtag): bool {
         return strlen($subtag) === 3
             && str_starts_with($subtag, 'q')
             && in_array($subtag[1], range('a', 'z'), true)

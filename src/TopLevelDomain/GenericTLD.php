@@ -11,8 +11,7 @@ use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\TopLevelDomainMapping
  */
-enum GenericTLD: string implements TLD
-{
+enum GenericTLD: string implements TLD {
     case aaa = 'aaa';
     case aarp = 'aarp';
 
@@ -1516,8 +1515,7 @@ enum GenericTLD: string implements TLD
     case zu_zhi_ji_gou_han = '组织机构';
     case zuerich = 'zuerich';
 
-    public function isAssigned(): bool
-    {
+    public function isAssigned(): bool {
         return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }
 }

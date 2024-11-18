@@ -8,16 +8,13 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Http\HttpStatusCode;
 
 #[CoversClass(HttpStatusCode::class)]
-class HttpStatusCodeTest extends TestCase
-{
-    public function testIsTemporaryAssignment(): void
-    {
+class HttpStatusCodeTest extends TestCase {
+    public function testIsTemporaryAssignment(): void {
         static::assertFalse(HttpStatusCode::OK->isTemporaryAssignment());
         static::assertTrue(HttpStatusCode::Upload_Resumption_Supported->isTemporaryAssignment());
     }
 
-    public function testGetTemporaryAssignmentExpiresAt(): void
-    {
+    public function testGetTemporaryAssignmentExpiresAt(): void {
         static::assertNull(HttpStatusCode::OK->getTemporaryAssignmentExpiresAt());
         static::assertEquals(
             new DateTimeImmutable('2025-11-13'),

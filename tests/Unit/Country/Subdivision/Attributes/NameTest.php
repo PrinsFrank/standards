@@ -8,10 +8,8 @@ use PrinsFrank\Standards\Country\Subdivision\Attributes\Name;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 
 #[CoversClass(Name::class)]
-class NameTest extends TestCase
-{
-    public function testConstruct(): void
-    {
+class NameTest extends TestCase {
+    public function testConstruct(): void {
         $name = new Name('foo', [LanguageAlpha2::English], 'bar', 'bop');
         static::assertSame('foo', $name->name);
         static::assertSame('bar', $name->romanizationSystem);

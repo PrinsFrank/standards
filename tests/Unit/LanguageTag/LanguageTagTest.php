@@ -18,11 +18,9 @@ use PrinsFrank\Standards\Region\GeographicRegion;
 use PrinsFrank\Standards\Scripts\ScriptCode;
 
 #[CoversClass(LanguageTag::class)]
-class LanguageTagTest extends TestCase
-{
+class LanguageTagTest extends TestCase {
     /** @throws InvalidArgumentException */
-    public function testThrowsExceptionIfVariantSubTagIsOfInvalidType(): void
-    {
+    public function testThrowsExceptionIfVariantSubTagIsOfInvalidType(): void {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Param $variantSubtag should be an array of "' . LanguageTagVariant::class . '"');
         /** @phpstan-ignore argument.type */
@@ -30,8 +28,7 @@ class LanguageTagTest extends TestCase
     }
 
     /** @throws InvalidArgumentException */
-    public function testThrowsExceptionIfExtensionSubtagIsOfInvalidType(): void
-    {
+    public function testThrowsExceptionIfExtensionSubtagIsOfInvalidType(): void {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Param $variantSubtag should be an array of strings');
         /** @phpstan-ignore argument.type */
@@ -43,8 +40,7 @@ class LanguageTagTest extends TestCase
      *
      * @throws InvalidArgumentException
      */
-    public function testFromStringSimpleLanguageTag(): void
-    {
+    public function testFromStringSimpleLanguageTag(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::German),
             LanguageTag::fromString('de'),
@@ -68,8 +64,7 @@ class LanguageTagTest extends TestCase
      *
      * @throws InvalidArgumentException
      */
-    public function testFromStringLanguageSubtagPlusScriptSubtag(): void
-    {
+    public function testFromStringLanguageSubtagPlusScriptSubtag(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Chinese, null, ScriptCode::Han_Traditional_variant),
             LanguageTag::fromString('zh-Hant'),
@@ -93,8 +88,7 @@ class LanguageTagTest extends TestCase
      *
      * @throws InvalidArgumentException
      */
-    public function testFromStringExtendedLanguageSubtagsAndTheirPrimaryLanguageSubtagCounterparts(): void
-    {
+    public function testFromStringExtendedLanguageSubtagsAndTheirPrimaryLanguageSubtagCounterparts(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Chinese, LanguageAlpha3Extensive::Mandarin_Chinese, ScriptCode::Han_Simplified_variant, CountryAlpha2::China),
             LanguageTag::fromString('zh-cmn-Hans-CN'),
@@ -118,8 +112,7 @@ class LanguageTagTest extends TestCase
      *
      * @throws InvalidArgumentException
      */
-    public function testFromStringLanguageScriptRegion(): void
-    {
+    public function testFromStringLanguageScriptRegion(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Chinese, scriptSubtag: ScriptCode::Han_Simplified_variant, regionSubtag: CountryAlpha2::China),
             LanguageTag::fromString('zh-Hans-CN'),
@@ -135,8 +128,7 @@ class LanguageTagTest extends TestCase
      *
      * @throws InvalidArgumentException
      */
-    public function testFromStringLanguageVariant(): void
-    {
+    public function testFromStringLanguageVariant(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Slovenian, variantSubtag: [LanguageTagVariant::Rezijan]),
             LanguageTag::fromString('sl-rozaj'),
@@ -156,8 +148,7 @@ class LanguageTagTest extends TestCase
      *
      * @throws InvalidArgumentException
      */
-    public function testFromStringLanguageRegionVariant(): void
-    {
+    public function testFromStringLanguageRegionVariant(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::German, regionSubtag: CountryAlpha2::Switzerland, variantSubtag: [LanguageTagVariant::Traditional_German_orthography]),
             LanguageTag::fromString('de-CH-1901'),
@@ -173,8 +164,7 @@ class LanguageTagTest extends TestCase
      *
      * @throws InvalidArgumentException
      */
-    public function testFromStringLanguageScriptRegionVariant(): void
-    {
+    public function testFromStringLanguageScriptRegionVariant(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Armenian, scriptSubtag: ScriptCode::Latin, regionSubtag: CountryAlpha2::Italy, variantSubtag: [LanguageTagVariant::Eastern_Armenian]),
             LanguageTag::fromString('hy-Latn-IT-arevela'),
@@ -186,8 +176,7 @@ class LanguageTagTest extends TestCase
      *
      * @throws InvalidArgumentException
      */
-    public function testFromStringLanguageRegion(): void
-    {
+    public function testFromStringLanguageRegion(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::German, regionSubtag: CountryAlpha2::Germany),
             LanguageTag::fromString('de-DE'),
@@ -207,8 +196,7 @@ class LanguageTagTest extends TestCase
      *
      * @throws InvalidArgumentException
      */
-    public function testFromStringPrivateUseSubTags(): void
-    {
+    public function testFromStringPrivateUseSubTags(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::German, regionSubtag: CountryAlpha2::Switzerland, privateUseSubtag: 'phonebk'),
             LanguageTag::fromString('de-CH-x-phonebk'),
@@ -224,8 +212,7 @@ class LanguageTagTest extends TestCase
      *
      * @throws InvalidArgumentException
      */
-    public function testFromStringPrivateUseRegistryValues(): void
-    {
+    public function testFromStringPrivateUseRegistryValues(): void {
         static::assertEquals(
             new LanguageTag(SingleCharacterSubtag::PRIVATE_USE, privateUseSubtag: 'whatever'),
             LanguageTag::fromString('x-whatever'),
@@ -253,8 +240,7 @@ class LanguageTagTest extends TestCase
      *
      * @throws InvalidArgumentException
      */
-    public function testFromStringWithLanguageExtensions(): void
-    {
+    public function testFromStringWithLanguageExtensions(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Chinese),
             LanguageTag::fromString('zh')
@@ -286,8 +272,7 @@ class LanguageTagTest extends TestCase
     }
 
     /** @throws InvalidArgumentException */
-    public function testFromStringWithExtensions(): void
-    {
+    public function testFromStringWithExtensions(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::German, extensionSubtag: ['a', 'value']),
             LanguageTag::fromString('de-a-value')
@@ -299,23 +284,20 @@ class LanguageTagTest extends TestCase
     }
 
     /**  @throws InvalidArgumentException */
-    public function testFromStringWithInvalidFormat(): void
-    {
+    public function testFromStringWithInvalidFormat(): void {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Subtag "nl" is not a valid subtag with context {"primarySubTag":"nl"}');
         LanguageTag::fromString('nl-nl');
     }
 
     /** @throws InvalidArgumentException */
-    public function testTryFromString(): void
-    {
+    public function testTryFromString(): void {
         static::assertNull(LanguageTag::tryFromString('nl-nl'));
         static::assertEquals(new LanguageTag(LanguageAlpha2::Dutch_Flemish), LanguageTag::tryFromString('nl'));
     }
 
     /** @throws InvalidArgumentException */
-    public function testToString(): void
-    {
+    public function testToString(): void {
         static::assertSame('de', (LanguageTag::fromString('de'))->__toString());
         static::assertSame('fr', (LanguageTag::fromString('fr'))->__toString());
         static::assertSame('ja', (LanguageTag::fromString('ja'))->__toString());

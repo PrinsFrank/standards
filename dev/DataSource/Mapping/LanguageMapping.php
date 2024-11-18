@@ -20,15 +20,13 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @template TDataSet of object{alpha3: string, alpha2: string, name: string, name_french: string, name_german: string}&stdClass
  * @implements Mapping<TDataSet>
  */
-class LanguageMapping implements Mapping
-{
+class LanguageMapping implements Mapping {
     /** @var array<string, string> where key is the new name and value is the previous name */
     private const RENAMES = [
         'Tlicho; Dogrib' => 'Tlicho, Dogrib',
     ];
 
-    public static function url(): string
-    {
+    public static function url(): string {
         return 'https://www.loc.gov/standards/iso639-2/php/code_list.php';
     }
 
@@ -36,8 +34,7 @@ class LanguageMapping implements Mapping
      * @throws RuntimeException
      * @return list<TDataSet>
      */
-    public static function toDataSet(Client $client, Crawler $crawler): array
-    {
+    public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@width="100%"]/tbody/tr')->getIterator();
 
         $dataSet = [];
@@ -77,8 +74,7 @@ class LanguageMapping implements Mapping
      * @param list<TDataSet> $dataSet
      * @return array<SpecFile>
      */
-    public static function toEnumMapping(array $dataSet): array
-    {
+    public static function toEnumMapping(array $dataSet): array {
         $languageAlpha2 = new SpecFile(LanguageAlpha2::class, KeySorting::class);
         $languageName = new SpecFile(LanguageName::class, KeySorting::class);
         $languageAlpha3Bibliographic = new SpecFile(LanguageAlpha3Bibliographic::class, KeySorting::class);

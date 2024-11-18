@@ -25,10 +25,8 @@ use ValueError;
  * @template TDataSet of object{code: string, number: string, name: string, french_name: string, alias: string, age: string, date: string}&stdClass
  * @implements Mapping<TDataSet>
  */
-class ScriptMapping implements Mapping
-{
-    public static function url(): string
-    {
+class ScriptMapping implements Mapping {
+    public static function url(): string {
         return 'https://www.unicode.org/iso15924/iso15924-codes.html';
     }
 
@@ -36,8 +34,7 @@ class ScriptMapping implements Mapping
      * @throws RuntimeException
      * @return list<TDataSet>
      */
-    public static function toDataSet(Client $client, Crawler $crawler): array
-    {
+    public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@class="simple"]/tbody/tr')->getIterator();
 
         $dataSet = [];
@@ -79,8 +76,7 @@ class ScriptMapping implements Mapping
      * @throws TypeError
      * @return array<SpecFile>
      */
-    public static function toEnumMapping(array $dataSet): array
-    {
+    public static function toEnumMapping(array $dataSet): array {
         $scriptCode = new SpecFile(ScriptCode::class, KeySorting::class);
         $scriptName = new SpecFile(ScriptName::class, KeySorting::class);
         $scriptNumber = new SpecFile(ScriptNumber::class, KeySorting::class);

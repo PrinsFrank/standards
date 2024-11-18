@@ -33,10 +33,8 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @template TDataSet of object{CtryNm: string, CcyNm: string, Ccy: string|null, CcyNbr: string|null, CcyMnrUnts: string|null}&stdClass
  * @implements Mapping<TDataSet>
  */
-class CurrencyMapping implements Mapping
-{
-    public static function url(): string
-    {
+class CurrencyMapping implements Mapping {
+    public static function url(): string {
         return 'https://www.six-group.com/en/products-services/financial-information/data-standards.html';
     }
 
@@ -44,8 +42,7 @@ class CurrencyMapping implements Mapping
      * @throws DomElementNotFoundException|RuntimeException
      * @return list<TDataSet>
      */
-    public static function toDataSet(Client $client, Crawler $crawler): array
-    {
+    public static function toDataSet(Client $client, Crawler $crawler): array {
         $listLink = $crawler->filterXPath("//a[contains(@href, 'list-one.xml')]");
         $listUrl = $listLink->first()->getAttribute('href');
         if ($listUrl === null || ($specContent = file_get_contents($listUrl)) === false) {
@@ -92,8 +89,7 @@ class CurrencyMapping implements Mapping
      * @throws TransliterationException
      * @return array<SpecFile>
      */
-    public static function toEnumMapping(array $dataSet): array
-    {
+    public static function toEnumMapping(array $dataSet): array {
         $currencyNameEnum = new SpecFile(CurrencyName::class, KeySorting::class);
         $currencyNumericEnum = new SpecFile(CurrencyNumeric::class, KeySorting::class);
         $currencyAlpha3Enum = (new SpecFile(CurrencyAlpha3::class, KeySorting::class))

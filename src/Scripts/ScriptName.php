@@ -11,8 +11,7 @@ use PrinsFrank\Enums\BackedEnum;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\ScriptMapping
  */
-enum ScriptName: string
-{
+enum ScriptName: string {
     case Adlam = 'Adlam';
     case Afaka = 'Afaka';
     case Ahom_Tai_Ahom = 'Ahom, Tai Ahom';
@@ -237,18 +236,15 @@ enum ScriptName: string
     case Yi = 'Yi';
     case Zanabazar_Square_Zanabazarin_Dorboljin_Useg_Xewtee_Dorboljin_Bicig_Horizontal_Square_Script = 'Zanabazar Square (Zanabazarin Dörböljin Useg, Xewtee Dörböljin Bicig, Horizontal Square Script)';
 
-    public function toScriptAlias(): ?ScriptAlias
-    {
+    public function toScriptAlias(): ?ScriptAlias {
         return BackedEnum::tryFromName(ScriptAlias::class, $this->name);
     }
 
-    public function toScriptNumber(): ScriptNumber
-    {
+    public function toScriptNumber(): ScriptNumber {
         return BackedEnum::fromName(ScriptNumber::class, $this->name);
     }
 
-    public function toScriptCode(): ScriptCode
-    {
+    public function toScriptCode(): ScriptCode {
         return BackedEnum::fromName(ScriptCode::class, $this->name);
     }
 
@@ -258,20 +254,17 @@ enum ScriptName: string
      * Please note that not all Scripts are supported, only the ones that have the 'SupportedByPHPRegex' attribute.
      * For all other scripts, self::Code_for_undetermined_script will be returned
      */
-    public static function allForString(string $string): array
-    {
+    public static function allForString(string $string): array {
         return array_map(fn (ScriptAlias $scriptAlias) => $scriptAlias->toScriptName(), ScriptAlias::allForString($string));
     }
 
     /** @return ($string is non-empty-string ? bool : false) */
-    public static function hasMultipleForString(string $string): bool
-    {
+    public static function hasMultipleForString(string $string): bool {
         return ScriptAlias::hasMultipleForString($string);
     }
 
     /** @return ($string is non-empty-string ? self : null) */
-    public static function mostCommonInString(string $string): ?self
-    {
+    public static function mostCommonInString(string $string): ?self {
         return self::allForString($string)[0] ?? null;
     }
 }

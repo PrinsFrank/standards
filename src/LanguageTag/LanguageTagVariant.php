@@ -8,8 +8,7 @@ namespace PrinsFrank\Standards\LanguageTag;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageSubTagMapping
  */
-enum LanguageTagVariant: string
-{
+enum LanguageTagVariant: string {
     case ALA_LC_Romanization_1997_edition = 'alalc97';
     case Academic_governmental_variant_of_Belarusian_as = '1959acad';
     case Akuapem_Twi = 'akuapem';

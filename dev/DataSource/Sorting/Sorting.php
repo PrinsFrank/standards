@@ -5,7 +5,6 @@ namespace PrinsFrank\Standards\Dev\DataSource\Sorting;
 
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 
-interface Sorting
-{
+interface Sorting {
     public function __invoke(EnumCase $a, EnumCase $b): int;
 }

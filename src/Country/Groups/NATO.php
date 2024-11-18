@@ -10,11 +10,9 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
  *
  * @manually-updated
  */
-class NATO implements GroupInterface
-{
+class NATO implements GroupInterface {
     /** @return list<CountryAlpha2> */
-    public static function allAlpha2(): array
-    {
+    public static function allAlpha2(): array {
         return [
             CountryAlpha2::Albania,
             CountryAlpha2::Belgium,

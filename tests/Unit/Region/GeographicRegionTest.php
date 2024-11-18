@@ -9,10 +9,8 @@ use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Region\GeographicRegion;
 
 #[CoversClass(GeographicRegion::class)]
-class GeographicRegionTest extends TestCase
-{
-    public function testGetDirectSubRegions(): void
-    {
+class GeographicRegionTest extends TestCase {
+    public function testGetDirectSubRegions(): void {
         static::assertSame(
             [
                 GeographicRegion::Latin_America_And_The_Caribbean,
@@ -22,8 +20,7 @@ class GeographicRegionTest extends TestCase
         );
     }
 
-    public function testGetAllSubRegions(): void
-    {
+    public function testGetAllSubRegions(): void {
         static::assertSame(
             [
                 GeographicRegion::Latin_America_And_The_Caribbean,
@@ -36,8 +33,7 @@ class GeographicRegionTest extends TestCase
         );
     }
 
-    public function testGetDirectSubCountries(): void
-    {
+    public function testGetDirectSubCountries(): void {
         static::assertSame(
             [
                 CountryNumeric::Australia,
@@ -51,8 +47,7 @@ class GeographicRegionTest extends TestCase
         );
     }
 
-    public function testGetAllSubCountries(): void
-    {
+    public function testGetAllSubCountries(): void {
         static::assertSame(
             [
                 CountryNumeric::Australia,

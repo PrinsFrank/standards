@@ -8,8 +8,7 @@ namespace PrinsFrank\Standards\Country\UserAssigned;
  *
  * @manually-updated
  */
-enum TravelDocumentAlpha3: string
-{
+enum TravelDocumentAlpha3: string {
     case European_Union = 'EUE';
     case United_Nations_Organization_or_one_of_its_officials = 'UNO';
     case United_Nations_specialized_agency_or_one_of_its_officials = 'UNA';
@@ -89,8 +88,7 @@ enum TravelDocumentAlpha3: string
     /** Used by ICAO when digitally signing a master list */
     case International_Civil_Aviation_Organization = 'IAO';
 
-    public function toTravelDocumentAlpha2(): ?TravelDocumentAlpha2
-    {
+    public function toTravelDocumentAlpha2(): ?TravelDocumentAlpha2 {
         return match ($this) {
             self::European_Union => TravelDocumentAlpha2::European_Union,
             self::United_Nations_Organization_or_one_of_its_officials,

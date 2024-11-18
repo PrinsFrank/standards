@@ -34,10 +34,8 @@ use ValueError;
  * @template TDataSet of object{name: string, name_french: string, alpha2: string, alpha3: string, numeric: string, subdivisions: array<string, object{category: string, code: string, same_as_country: ?CountryAlpha2, parent: ?string, names: non-empty-list<object{name: string, note: ?string, languages: list<CountryAlpha2>, romanization_system: ?string, local_variant: ?string}&stdClass>}&stdClass>}&stdClass
  * @implements Mapping<TDataSet>
  */
-class CountryMapping implements Mapping
-{
-    public static function url(): string
-    {
+class CountryMapping implements Mapping {
+    public static function url(): string {
         return 'https://www.iso.org/obp/ui/#search/code/';
     }
 
@@ -49,8 +47,7 @@ class CountryMapping implements Mapping
      * @throws TypeError
      * @return list<TDataSet>
      */
-    public static function toDataSet(Client $client, Crawler $crawler): array
-    {
+    public static function toDataSet(Client $client, Crawler $crawler): array {
         $client->waitFor('#onetrust-accept-btn-handler');
         $cookieButton = $crawler->filterXPath(".//button[@id='onetrust-accept-btn-handler']");
         $cookieButton->click();
@@ -162,8 +159,7 @@ class CountryMapping implements Mapping
      * @throws ShouldNotHappenException
      * @return array<SpecFile>
      */
-    public static function toEnumMapping(array $dataSet): array
-    {
+    public static function toEnumMapping(array $dataSet): array {
         $countryName = new SpecFile(CountryName::class, KeySorting::class);
         $countryAlpha2 = (new SpecFile(CountryAlpha2::class, KeySorting::class))
             ->addMethod($getSubdivisionsMethod = new EnumMappingMethod('getSubdivisions', 'array', '[]', '/** @return list<CountrySubdivision> */'));
@@ -205,8 +201,7 @@ class CountryMapping implements Mapping
     }
 
     /** @return array{0: string, 1: ?string} */
-    private static function getNameNote(string $text): array
-    {
+    private static function getNameNote(string $text): array {
         if (($notePos = strpos($text, '(see also')) !== false) {
             return [rtrim(substr($text, 0, $notePos), ' '), ltrim(rtrim(substr($text, $notePos - 1), ')'), '(')];
         }

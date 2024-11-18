@@ -10,8 +10,7 @@ use PrinsFrank\Standards\Country\CountryNumeric;
  *
  * @manually-updated
  */
-enum GeographicRegion: string
-{
+enum GeographicRegion: string {
     case World = '001';
     case Africa = '002';
     case Northern_Africa = '015';
@@ -48,8 +47,7 @@ enum GeographicRegion: string
     case North_America = '003';
 
     /** @return list<GeographicRegion> */
-    public function getDirectSubRegions(): array
-    {
+    public function getDirectSubRegions(): array {
         return match ($this) {
             self::World => [
                 self::Africa,
@@ -109,8 +107,7 @@ enum GeographicRegion: string
     }
 
     /** @return list<GeographicRegion> */
-    public function getAllSubRegions(): array
-    {
+    public function getAllSubRegions(): array {
         $subRegions = [];
         foreach ($this->getDirectSubRegions() as $subRegion) {
             $subRegions[] = $subRegion;
@@ -123,8 +120,7 @@ enum GeographicRegion: string
     }
 
     /** @return list<CountryNumeric> */
-    public function getDirectSubCountries(): array
-    {
+    public function getDirectSubCountries(): array {
         return match ($this) {
             self::World => [
                 CountryNumeric::Antarctica,
@@ -562,8 +558,7 @@ enum GeographicRegion: string
     }
 
     /** @return list<CountryNumeric> */
-    public function getAllSubCountries(): array
-    {
+    public function getAllSubCountries(): array {
         $subCountries = [];
         foreach ($this->getDirectSubRegions() as $subRegion) {
             $subCountries = [...$subCountries, ...$subRegion->getDirectSubCountries()];

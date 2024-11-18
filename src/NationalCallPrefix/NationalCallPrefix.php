@@ -13,8 +13,7 @@ use PrinsFrank\Standards\Country\CountryNumeric;
  *
  * @manually-updated
  */
-enum NationalCallPrefix: string
-{
+enum NationalCallPrefix: string {
     case None = '';
     case _0 = '0';
     case _0_082 = '0/082';
@@ -25,8 +24,7 @@ enum NationalCallPrefix: string
     case _1YZ = '1YZ';
     case _8 = '8';
 
-    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): self
-    {
+    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): self {
         if ($country instanceof CountryAlpha2 === false) {
             $country = $country->toCountryAlpha2();
         }

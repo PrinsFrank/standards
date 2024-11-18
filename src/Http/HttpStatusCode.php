@@ -12,8 +12,7 @@ use PrinsFrank\Standards\Http\Attributes\TemporaryAssignment;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\HttpStatusCodeMapping
  */
-enum HttpStatusCode: int
-{
+enum HttpStatusCode: int {
     case Continue = 100;
     case Switching_Protocols = 101;
     case Processing = 102;
@@ -82,13 +81,11 @@ enum HttpStatusCode: int
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Unused = 418;
 
-    public function isTemporaryAssignment(): bool
-    {
+    public function isTemporaryAssignment(): bool {
         return BackedEnum::hasCaseAttribute($this, TemporaryAssignment::class);
     }
 
-    public function getTemporaryAssignmentExpiresAt(): ?DateTimeImmutable
-    {
+    public function getTemporaryAssignmentExpiresAt(): ?DateTimeImmutable {
         $attribute = BackedEnum::getCaseAttributes($this, TemporaryAssignment::class);
         if ($attribute === [] || count($attribute) !== 1) {
             return null;

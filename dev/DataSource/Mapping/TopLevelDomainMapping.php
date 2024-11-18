@@ -27,10 +27,8 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @template TDataSet of object{tld: string, type: string, manager: string}&stdClass
  * @implements Mapping<TDataSet>
  */
-class TopLevelDomainMapping implements Mapping
-{
-    public static function url(): string
-    {
+class TopLevelDomainMapping implements Mapping {
+    public static function url(): string {
         return 'https://www.iana.org/domains/root/db';
     }
 
@@ -38,8 +36,7 @@ class TopLevelDomainMapping implements Mapping
      * @throws RuntimeException
      * @return list<TDataSet>
      */
-    public static function toDataSet(Client $client, Crawler $crawler): array
-    {
+    public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@id="tld-table"]/tbody/tr')->getIterator();
 
         $dataSet = [];
@@ -68,8 +65,7 @@ class TopLevelDomainMapping implements Mapping
      *@throws InvalidArgumentException
      * @return array<SpecFile>
      */
-    public static function toEnumMapping(array $dataSet): array
-    {
+    public static function toEnumMapping(array $dataSet): array {
         $countryCodeTLD = (new SpecFile(CountryCodeTLD::class, KeySorting::class))
             ->addMethod($toCountryAlpha2 = new EnumMappingMethod('getCountryAlpha2', '?CountryAlpha2', 'null'));
         $genericRestrictedTLD = new SpecFile(GenericRestrictedTLD::class, KeySorting::class);

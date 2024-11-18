@@ -8,8 +8,7 @@ namespace PrinsFrank\Standards\Currency;
  *
  * @manually-updated
  */
-enum CurrencySymbol: string
-{
+enum CurrencySymbol: string {
     case Afghani = '؋';
     case Ar = 'Ar';
     case Arabic_Dal_Ain_With_Dots = '.د.ع';
@@ -114,8 +113,7 @@ enum CurrencySymbol: string
     case zl_With_Stroke = 'zł';
     case ZiG = 'ZiG';
 
-    public static function forCurrency(CurrencyAlpha3|CurrencyName|CurrencyNumeric $currency): ?self
-    {
+    public static function forCurrency(CurrencyAlpha3|CurrencyName|CurrencyNumeric $currency): ?self {
         if ($currency instanceof CurrencyAlpha3 === false) {
             $currency = $currency->toCurrencyAlpha3();
         }

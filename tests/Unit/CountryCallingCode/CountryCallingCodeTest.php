@@ -12,10 +12,8 @@ use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
 
 #[CoversClass(CountryCallingCode::class)]
-class CountryCallingCodeTest extends TestCase
-{
-    public function testForCountryIsReversible(): void
-    {
+class CountryCallingCodeTest extends TestCase {
+    public function testForCountryIsReversible(): void {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
             foreach (CountryCallingCode::forCountry($countryAlpha2) as $countryCallingCode) {
                 static::assertContains($countryAlpha2, $countryCallingCode->getCountriesAlpha2(), $countryAlpha2->name . ' Has as calling code ' . $countryCallingCode->name . ', but that calling code doesn\'t return the country when calling the "getCountriesAlpha2" method.');
@@ -23,8 +21,7 @@ class CountryCallingCodeTest extends TestCase
         }
     }
 
-    public function testGetCountriesAlpha2IsReversible(): void
-    {
+    public function testGetCountriesAlpha2IsReversible(): void {
         foreach (CountryCallingCode::cases() as $countryCallingCode) {
             foreach ($countryCallingCode->getCountriesAlpha2() as $countryAlpha2) {
                 static::assertContains($countryCallingCode, $countryAlpha2->getCountryCallingCodes(), $countryCallingCode->name . ' is for a country ' . $countryAlpha2->name . ' but that country doesn\'t return this calling code when calling the "getCountryCallingCodes" method.');
@@ -32,8 +29,7 @@ class CountryCallingCodeTest extends TestCase
         }
     }
 
-    public function testCanBeRetrievedForAllCountryAlpha2(): void
-    {
+    public function testCanBeRetrievedForAllCountryAlpha2(): void {
         $missingRelations = [];
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
             $countryCallingCodes = CountryCallingCode::forCountry($countryAlpha2);
@@ -44,8 +40,7 @@ class CountryCallingCodeTest extends TestCase
         static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryAlpha2 $countryAlpha2) => $countryAlpha2->name, $missingRelations)));
     }
 
-    public function testCanBeRetrievedForAllCountryAlpha3(): void
-    {
+    public function testCanBeRetrievedForAllCountryAlpha3(): void {
         $missingRelations = [];
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
             $countryCallingCodes = CountryCallingCode::forCountry($countryAlpha3);
@@ -56,8 +51,7 @@ class CountryCallingCodeTest extends TestCase
         static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryAlpha3 $countryAlpha3) => $countryAlpha3->name, $missingRelations)));
     }
 
-    public function testCanBeRetrievedForAllCountryNumeric(): void
-    {
+    public function testCanBeRetrievedForAllCountryNumeric(): void {
         $missingRelations = [];
         foreach (CountryNumeric::cases() as $countryNumeric) {
             $countryCallingCodes = CountryCallingCode::forCountry($countryNumeric);
@@ -68,8 +62,7 @@ class CountryCallingCodeTest extends TestCase
         static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryNumeric $countryNumeric) => $countryNumeric->name, $missingRelations)));
     }
 
-    public function testCanBeRetrievedForAllCountryName(): void
-    {
+    public function testCanBeRetrievedForAllCountryName(): void {
         $missingRelations = [];
         foreach (CountryName::cases() as $countryName) {
             $countryCallingCodes = CountryCallingCode::forCountry($countryName);

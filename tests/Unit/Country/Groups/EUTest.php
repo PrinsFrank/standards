@@ -9,10 +9,8 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\EU;
 
 #[CoversClass(EU::class)]
-class EUTest extends TestCase
-{
-    public function testAllAlpha2(): void
-    {
+class EUTest extends TestCase {
+    public function testAllAlpha2(): void {
         static::assertSame(
             [
                 CountryAlpha2::Austria,

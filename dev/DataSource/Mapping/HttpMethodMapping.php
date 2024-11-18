@@ -17,10 +17,8 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @template TDataSet of object{alpha3: string, alpha2: string, name: string, name_french: string, name_german: string}&stdClass
  * @implements Mapping<TDataSet>
  */
-class HttpMethodMapping implements Mapping
-{
-    public static function url(): string
-    {
+class HttpMethodMapping implements Mapping {
+    public static function url(): string {
         return 'https://www.iana.org/assignments/http-methods/http-methods.xhtml';
     }
 
@@ -28,8 +26,7 @@ class HttpMethodMapping implements Mapping
      * @throws RuntimeException
      * @return list<TDataSet>
      */
-    public static function toDataSet(Client $client, Crawler $crawler): array
-    {
+    public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@id="table-methods"]/tbody/tr')->getIterator();
 
         $dataSet = [];
@@ -59,8 +56,7 @@ class HttpMethodMapping implements Mapping
      * @param list<TDataSet> $dataSet
      * @return array<SpecFile>
      */
-    public static function toEnumMapping(array $dataSet): array
-    {
+    public static function toEnumMapping(array $dataSet): array {
         $httpMethod = new SpecFile(HttpMethod::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
             if ($dataRow->name === '*') {

@@ -8,8 +8,7 @@ namespace PrinsFrank\Standards\Http;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\HttpMethodMapping
  */
-enum HttpMethod: string
-{
+enum HttpMethod: string {
     case Acl = 'ACL';
     case BaselineControl = 'BASELINE-CONTROL';
     case Bind = 'BIND';

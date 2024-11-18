@@ -14,8 +14,7 @@ use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\TopLevelDomainMapping
  */
-enum CountryCodeTLD: string implements TLD
-{
+enum CountryCodeTLD: string implements TLD {
     case ac = 'ac';
     case ad = 'ad';
     case ae = 'ae';
@@ -347,8 +346,7 @@ enum CountryCodeTLD: string implements TLD
     case zm = 'zm';
     case zw = 'zw';
 
-    public function getCountryAlpha2(): ?CountryAlpha2
-    {
+    public function getCountryAlpha2(): ?CountryAlpha2 {
         return match($this) {
             self::ad => CountryAlpha2::Andorra,
             self::ae => CountryAlpha2::United_Arab_Emirates,
@@ -603,18 +601,15 @@ enum CountryCodeTLD: string implements TLD
         };
     }
 
-    public function getCountryAlpha3(): ?CountryAlpha3
-    {
+    public function getCountryAlpha3(): ?CountryAlpha3 {
         return $this->getCountryAlpha2()?->toCountryAlpha3();
     }
 
-    public function getCountryNumeric(): ?CountryNumeric
-    {
+    public function getCountryNumeric(): ?CountryNumeric {
         return $this->getCountryAlpha2()?->toCountryNumeric();
     }
 
-    public function isAssigned(): bool
-    {
+    public function isAssigned(): bool {
         return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }
 }

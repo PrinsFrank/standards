@@ -12,10 +12,8 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 
 #[CoversClass(CurrencyName::class)]
-class CurrencyNameTest extends TestCase
-{
-    public function testAllCasesCanBeConvertedToCurrencyNumeric(): void
-    {
+class CurrencyNameTest extends TestCase {
+    public function testAllCasesCanBeConvertedToCurrencyNumeric(): void {
         foreach (CurrencyName::cases() as $case) {
             $case->toCurrencyNumeric();
 
@@ -23,8 +21,7 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-    public function testAllCasesHaveAccessToSymbolOrNull(): void
-    {
+    public function testAllCasesHaveAccessToSymbolOrNull(): void {
         foreach (CurrencyName::cases() as $case) {
             $case->getSymbol();
 
@@ -32,8 +29,7 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-    public function testAllCasesCanBeConvertedToCurrencyAlpha3(): void
-    {
+    public function testAllCasesCanBeConvertedToCurrencyAlpha3(): void {
         foreach (CurrencyName::cases() as $case) {
             $case->toCurrencyAlpha3();
 
@@ -41,8 +37,7 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-    public function testGetMinorUnits(): void
-    {
+    public function testGetMinorUnits(): void {
         foreach (CurrencyName::cases() as $currencyAlpha3) {
             $currencyAlpha3->getMinorUnits();
 
@@ -50,8 +45,7 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-    public function testGetCountriesAlpha2(): void
-    {
+    public function testGetCountriesAlpha2(): void {
         foreach (CurrencyName::cases() as $currencyAlpha3) {
             $currencyAlpha3->getCountriesAlpha2();
 
@@ -59,8 +53,7 @@ class CurrencyNameTest extends TestCase
         }
     }
 
-    public function testFormat(): void
-    {
+    public function testFormat(): void {
         static::assertSame('€ 42,42', CurrencyName::Euro->format(42.42, LanguageAlpha2::Dutch_Flemish, CountryAlpha2::Netherlands));
         static::assertSame('€ 42,42', CurrencyName::Euro->format(42.42, LanguageAlpha3Bibliographic::Dutch_Flemish, CountryAlpha2::Netherlands));
         static::assertSame('€ 42,42', CurrencyName::Euro->format(42.42, LanguageAlpha3Terminology::Dutch_Flemish, CountryAlpha2::Netherlands));

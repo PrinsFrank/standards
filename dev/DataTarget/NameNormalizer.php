@@ -17,16 +17,14 @@ use PrinsFrank\Transliteration\Syntax\FormalId\Components\Filter;
 use PrinsFrank\Transliteration\TransliteratorBuilder;
 
 /** @internal */
-class NameNormalizer
-{
+class NameNormalizer {
     /**
      * @throws TransliterationException
      * @throws InvalidArgumentException
      * @throws UnableToCreateTransliteratorException
      * @throws RecursionException
      */
-    public static function normalize(string $key): string
-    {
+    public static function normalize(string $key): string {
         $normalizedKey = (new TransliteratorBuilder())
             ->applyConversionSet(new ToASCII())
             ->applyConversionSet(new IPAToEnglishApproximation())

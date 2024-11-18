@@ -8,10 +8,8 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Http\Attributes\TemporaryAssignment;
 
 #[CoversClass(TemporaryAssignment::class)]
-class TemporaryAssignmentTest extends TestCase
-{
-    public function testConstructor(): void
-    {
+class TemporaryAssignmentTest extends TestCase {
+    public function testConstructor(): void {
         $expiresAt = new DateTimeImmutable();
         $attribute = new TemporaryAssignment($expiresAt);
 

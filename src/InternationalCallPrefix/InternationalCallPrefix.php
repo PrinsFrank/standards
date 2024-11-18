@@ -14,8 +14,7 @@ use PrinsFrank\Standards\Country\CountryNumeric;
  *
  * @manually-updated
  */
-enum InternationalCallPrefix: string
-{
+enum InternationalCallPrefix: string {
     case _0 = '0';
     case _00 = '00';
     case _000 = '000';
@@ -31,8 +30,7 @@ enum InternationalCallPrefix: string
     /** @deprecated Used to be used by Cuba, which now uses 00 */
     case _119 = '119';
 
-    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): self
-    {
+    public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): self {
         if ($country instanceof CountryAlpha2 === false) {
             $country = $country->toCountryAlpha2();
         }
@@ -291,8 +289,7 @@ enum InternationalCallPrefix: string
     }
 
     /** @return list<CountryAlpha2> */
-    public function getCountriesAlpha2(): array
-    {
+    public function getCountriesAlpha2(): array {
         return match($this) {
             self::_0 => [
                 CountryAlpha2::Samoa,

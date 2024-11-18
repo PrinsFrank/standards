@@ -11,10 +11,8 @@ use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
 
 #[CoversClass(CountryCodeTLD::class)]
-class CountryCodeTLDTest extends TestCase
-{
-    public function testGetCountryAlpha2(): void
-    {
+class CountryCodeTLDTest extends TestCase {
+    public function testGetCountryAlpha2(): void {
         static::assertSame(CountryAlpha2::Netherlands, CountryCodeTLD::nl->getCountryAlpha2());
         foreach (CountryCodeTLD::cases() as $countryCodeTLD) {
             /** @phpstan-ignore method.resultUnused */
@@ -24,8 +22,7 @@ class CountryCodeTLDTest extends TestCase
         }
     }
 
-    public function testGetCountryAlpha3(): void
-    {
+    public function testGetCountryAlpha3(): void {
         static::assertSame(CountryAlpha3::Netherlands, CountryCodeTLD::nl->getCountryAlpha3());
         foreach (CountryCodeTLD::cases() as $countryCodeTLD) {
             $countryCodeTLD->getCountryAlpha3();
@@ -34,8 +31,7 @@ class CountryCodeTLDTest extends TestCase
         }
     }
 
-    public function testGetCountryNumeric(): void
-    {
+    public function testGetCountryNumeric(): void {
         static::assertSame(CountryNumeric::Netherlands, CountryCodeTLD::nl->getCountryNumeric());
         foreach (CountryCodeTLD::cases() as $countryCodeTLD) {
             $countryCodeTLD->getCountryNumeric();
@@ -44,8 +40,7 @@ class CountryCodeTLDTest extends TestCase
         }
     }
 
-    public function testIsAssigned(): void
-    {
+    public function testIsAssigned(): void {
         static::assertFalse(CountryCodeTLD::an->isAssigned());
         static::assertTrue(CountryCodeTLD::nl->isAssigned());
     }

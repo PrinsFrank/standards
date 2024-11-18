@@ -20,8 +20,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\CurrencyMapping
  */
-enum CurrencyName: string
-{
+enum CurrencyName: string {
     case ADB_Unit_of_Account = 'ADB Unit of Account';
     case Afghani = 'Afghani';
     case Algerian_Dinar = 'Algerian Dinar';
@@ -211,34 +210,28 @@ enum CurrencyName: string
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Zimbabwe_Dollar = 'Zimbabwe Dollar';
 
-    public function toCurrencyAlpha3(): CurrencyAlpha3
-    {
+    public function toCurrencyAlpha3(): CurrencyAlpha3 {
         return BackedEnum::fromName(CurrencyAlpha3::class, $this->name);
     }
 
-    public function toCurrencyNumeric(): CurrencyNumeric
-    {
+    public function toCurrencyNumeric(): CurrencyNumeric {
         return BackedEnum::fromName(CurrencyNumeric::class, $this->name);
     }
 
-    public function getSymbol(): ?CurrencySymbol
-    {
+    public function getSymbol(): ?CurrencySymbol {
         return CurrencySymbol::forCurrency($this);
     }
 
-    public function format(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string
-    {
+    public function format(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string {
         return $this->toCurrencyAlpha3()->format($amount, $language, $country);
     }
 
-    public function getMinorUnits(): ?int
-    {
+    public function getMinorUnits(): ?int {
         return $this->toCurrencyAlpha3()->getMinorUnits();
     }
 
     /** @return list<CountryAlpha2> */
-    public function getCountriesAlpha2(): array
-    {
+    public function getCountriesAlpha2(): array {
         return $this->toCurrencyAlpha3()->getCountriesAlpha2();
     }
 }

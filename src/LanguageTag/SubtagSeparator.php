@@ -9,8 +9,7 @@ namespace PrinsFrank\Standards\LanguageTag;
  *
  * @manually-updated
  */
-enum SubtagSeparator: string
-{
+enum SubtagSeparator: string {
     /**
      * @standard RFC5646
      * @standard BCP47

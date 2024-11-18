@@ -22,8 +22,7 @@ use PrinsFrank\Standards\Scripts\ScriptCode;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\LanguageMapping
  */
-enum LanguageAlpha2: string
-{
+enum LanguageAlpha2: string {
     case Abkhazian = 'ab';
     case Afar = 'aa';
     case Afrikaans = 'af';
@@ -211,29 +210,24 @@ enum LanguageAlpha2: string
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Bihari_languages = 'bh';
 
-    public function toLanguageAlpha3Bibliographic(): ?LanguageAlpha3Bibliographic
-    {
+    public function toLanguageAlpha3Bibliographic(): ?LanguageAlpha3Bibliographic {
         return BackedEnum::tryFromName(LanguageAlpha3Bibliographic::class, $this->name);
     }
 
-    public function toLanguageAlpha3Terminology(): ?LanguageAlpha3Terminology
-    {
+    public function toLanguageAlpha3Terminology(): ?LanguageAlpha3Terminology {
         return BackedEnum::tryFromName(LanguageAlpha3Terminology::class, $this->name);
     }
 
     /** @deprecated Will be removed in v4. Please use ::getNameInLanguage(LanguageAlpha2::English) instead */
-    public function toLanguageName(): LanguageName
-    {
+    public function toLanguageName(): LanguageName {
         return BackedEnum::fromName(LanguageName::class, $this->name);
     }
 
-    public function upperCaseValue(): string
-    {
+    public function upperCaseValue(): string {
         return strtoupper($this->value);
     }
 
-    public function getNameInLanguage(LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string
-    {
+    public function getNameInLanguage(LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string {
         if ($language instanceof LanguageAlpha3Bibliographic) {
             $language = $language->toLanguageAlpha3Terminology();
         }
@@ -248,8 +242,7 @@ enum LanguageAlpha2: string
         return $languageNameInLanguage;
     }
 
-    public function formatNumber(float $amount, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string
-    {
+    public function formatNumber(float $amount, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string {
         if ($country !== null && $country instanceof CountryAlpha2 === false) {
             $country = $country->toCountryAlpha2();
         }
@@ -260,8 +253,7 @@ enum LanguageAlpha2: string
         return $formattedNumber === false ? null : $formattedNumber;
     }
 
-    public function getNameForCountry(CountryAlpha2 $country): ?string
-    {
+    public function getNameForCountry(CountryAlpha2 $country): ?string {
         return $country->getNameInLanguage($this);
     }
 

@@ -8,8 +8,7 @@ namespace PrinsFrank\Standards\Country\UserAssigned;
  *
  * @manually-updated
  */
-enum TravelDocumentAlpha2: string
-{
+enum TravelDocumentAlpha2: string {
     case European_Union = 'EU';
     case United_Nations = 'UN';
 

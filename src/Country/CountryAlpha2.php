@@ -25,8 +25,7 @@ use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\CountryMapping
  */
-enum CountryAlpha2: string
-{
+enum CountryAlpha2: string {
     case Afghanistan = 'AF';
     case Aland_Islands = 'AX';
     case Albania = 'AL';
@@ -277,29 +276,24 @@ enum CountryAlpha2: string
     case Zambia = 'ZM';
     case Zimbabwe = 'ZW';
 
-    public function toCountryAlpha3(): CountryAlpha3
-    {
+    public function toCountryAlpha3(): CountryAlpha3 {
         return BackedEnum::fromName(CountryAlpha3::class, $this->name);
     }
 
-    public function toCountryNumeric(): CountryNumeric
-    {
+    public function toCountryNumeric(): CountryNumeric {
         return BackedEnum::fromName(CountryNumeric::class, $this->name);
     }
 
     /** @deprecated Will be removed in v4. Please use ::getNameInLanguage(LanguageAlpha2::English) instead */
-    public function toCountryName(): CountryName
-    {
+    public function toCountryName(): CountryName {
         return BackedEnum::fromName(CountryName::class, $this->name);
     }
 
-    public function lowerCaseValue(): string
-    {
+    public function lowerCaseValue(): string {
         return strtolower($this->value);
     }
 
-    public function getNameInLanguage(LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string
-    {
+    public function getNameInLanguage(LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string {
         if ($language instanceof LanguageAlpha3Bibliographic) {
             $language = $language->toLanguageAlpha3Terminology();
         }
@@ -314,8 +308,7 @@ enum CountryAlpha2: string
         return $countryInLanguage;
     }
 
-    public function formatNumber(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string
-    {
+    public function formatNumber(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language): ?string {
         if ($language instanceof LanguageAlpha3Bibliographic) {
             $language = $language->toLanguageAlpha3Terminology();
         }
@@ -330,8 +323,7 @@ enum CountryAlpha2: string
      * @param class-string<GroupInterface> $groupFQN
      * @throws InvalidArgumentException
      */
-    public function isMemberOf(string $groupFQN): bool
-    {
+    public function isMemberOf(string $groupFQN): bool {
         if (is_a($groupFQN, GroupInterface::class, true) === false || $groupFQN === GroupInterface::class) {
             throw new InvalidArgumentException('Argument $groupFQN should be a FQN of a class that implements the groupInterface, "' . $groupFQN . '" given');
         }
@@ -340,18 +332,15 @@ enum CountryAlpha2: string
     }
 
     /** @return list<CountryCallingCode> */
-    public function getCountryCallingCodes(): array
-    {
+    public function getCountryCallingCodes(): array {
         return CountryCallingCode::forCountry($this);
     }
 
-    public function getNationalCallPrefix(): NationalCallPrefix
-    {
+    public function getNationalCallPrefix(): NationalCallPrefix {
         return NationalCallPrefix::forCountry($this);
     }
 
-    public function getMostCommonNameOrder(): NameOrder
-    {
+    public function getMostCommonNameOrder(): NameOrder {
         return match ($this) {
             self::Cambodia,
             self::China,
@@ -372,8 +361,7 @@ enum CountryAlpha2: string
      *
      * @see https://prinsfrank.nl/2021/01/25/Non-existing-flag-emojis-on-windows to make these flag emojis visible for Windows users.
      */
-    public function getFlagEmoji(): string
-    {
+    public function getFlagEmoji(): string {
         return implode(
             '',
             array_map(
@@ -386,8 +374,7 @@ enum CountryAlpha2: string
     }
 
     /** @return list<LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive> */
-    public function getOfficialAndDeFactoLanguages(): array
-    {
+    public function getOfficialAndDeFactoLanguages(): array {
         return match($this) {
             self::Afghanistan => [LanguageAlpha2::Persian, LanguageAlpha2::Pushto_Pashto],
             self::Aland_Islands => [LanguageAlpha2::Swedish],
@@ -642,8 +629,7 @@ enum CountryAlpha2: string
     }
 
     /** @return list<CurrencyAlpha3> */
-    public function getCurrenciesAlpha3(): array
-    {
+    public function getCurrenciesAlpha3(): array {
         return match($this) {
             self::Afghanistan => [CurrencyAlpha3::Afghani],
             self::Aland_Islands => [CurrencyAlpha3::Euro],
@@ -942,8 +928,7 @@ enum CountryAlpha2: string
         };
     }
 
-    public function getCountryCodeTLD(): CountryCodeTLD
-    {
+    public function getCountryCodeTLD(): CountryCodeTLD {
         return match($this) {
             self::Afghanistan => CountryCodeTLD::af,
             self::Aland_Islands => CountryCodeTLD::ax,
@@ -1197,14 +1182,12 @@ enum CountryAlpha2: string
         };
     }
 
-    public function getInternationalCallPrefix(): InternationalCallPrefix
-    {
+    public function getInternationalCallPrefix(): InternationalCallPrefix {
         return InternationalCallPrefix::forCountry($this);
     }
 
     /** @return list<CountrySubdivision> */
-    public function getSubdivisions(): array
-    {
+    public function getSubdivisions(): array {
         return match($this) {
             self::Afghanistan => [
                 CountrySubdivision::Afghanistan_province_Badakhshan,
@@ -6657,8 +6640,7 @@ enum CountryAlpha2: string
     }
 
     /** @return list<self> */
-    public function getSubCountries(): array
-    {
+    public function getSubCountries(): array {
         $subCountries = [];
         foreach ($this->getSubdivisions() as $subdivision) {
             if (($sameAsCountry = $subdivision->getSameAsCountry()) !== null && in_array($sameAsCountry, $subCountries, true) === false) {
@@ -6669,8 +6651,7 @@ enum CountryAlpha2: string
         return $subCountries;
     }
 
-    public function getParentCountry(): ?self
-    {
+    public function getParentCountry(): ?self {
         foreach (self::cases() as $country) {
             if (in_array($this, $country->getSubCountries(), true)) {
                 return $country;
@@ -6685,8 +6666,7 @@ enum CountryAlpha2: string
      *
      * @see https://www.iso.org/glossary-for-iso-3166.html
      */
-    public static function isInUserAssignedSpace(string $alpha2): bool
-    {
+    public static function isInUserAssignedSpace(string $alpha2): bool {
         if (strlen($alpha2) !== 2) {
             return false;
         }

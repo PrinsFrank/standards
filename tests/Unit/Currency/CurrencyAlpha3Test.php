@@ -14,10 +14,8 @@ use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 
 #[CoversClass(CurrencyAlpha3::class)]
-class CurrencyAlpha3Test extends TestCase
-{
-    public function testAllCasesCanBeConvertedToCurrencyNumeric(): void
-    {
+class CurrencyAlpha3Test extends TestCase {
+    public function testAllCasesCanBeConvertedToCurrencyNumeric(): void {
         foreach (CurrencyAlpha3::cases() as $case) {
             $case->toCurrencyNumeric();
 
@@ -25,8 +23,7 @@ class CurrencyAlpha3Test extends TestCase
         }
     }
 
-    public function testAllCasesCanBeConvertedToCurrencyName(): void
-    {
+    public function testAllCasesCanBeConvertedToCurrencyName(): void {
         foreach (CurrencyAlpha3::cases() as $case) {
             $case->toCurrencyName();
 
@@ -34,8 +31,7 @@ class CurrencyAlpha3Test extends TestCase
         }
     }
 
-    public function testAllCasesHaveAccessToSymbolOrNull(): void
-    {
+    public function testAllCasesHaveAccessToSymbolOrNull(): void {
         foreach (CurrencyAlpha3::cases() as $case) {
             $case->getSymbol();
 
@@ -43,13 +39,11 @@ class CurrencyAlpha3Test extends TestCase
         }
     }
 
-    public function testLowerCaseValue(): void
-    {
+    public function testLowerCaseValue(): void {
         static::assertSame('xua', CurrencyAlpha3::ADB_Unit_of_Account->lowerCaseValue());
     }
 
-    public function testGetMinorUnits(): void
-    {
+    public function testGetMinorUnits(): void {
         foreach (CurrencyAlpha3::cases() as $currencyAlpha3) {
             /** @phpstan-ignore method.resultUnused */
             $currencyAlpha3->getMinorUnits();
@@ -58,8 +52,7 @@ class CurrencyAlpha3Test extends TestCase
         }
     }
 
-    public function testGetCountriesAlpha2(): void
-    {
+    public function testGetCountriesAlpha2(): void {
         foreach (CurrencyAlpha3::cases() as $currencyAlpha3) {
             /** @phpstan-ignore method.resultUnused */
             $currencyAlpha3->getCountriesAlpha2();
@@ -68,8 +61,7 @@ class CurrencyAlpha3Test extends TestCase
         }
     }
 
-    public function testFormat(): void
-    {
+    public function testFormat(): void {
         static::assertSame('€ 42,42', CurrencyAlpha3::Euro->format(42.42, LanguageAlpha2::Dutch_Flemish, CountryAlpha2::Netherlands));
         static::assertSame('€ 42,42', CurrencyAlpha3::Euro->format(42.42, LanguageAlpha3Bibliographic::Dutch_Flemish, CountryAlpha2::Netherlands));
         static::assertSame('€ 42,42', CurrencyAlpha3::Euro->format(42.42, LanguageAlpha3Terminology::Dutch_Flemish, CountryAlpha2::Netherlands));

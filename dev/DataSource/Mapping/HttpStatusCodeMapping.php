@@ -22,10 +22,8 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @template TDataSet of object{value: string, description: string, reference: string, note: ?string}&stdClass
  * @implements Mapping<TDataSet>
  */
-class HttpStatusCodeMapping implements Mapping
-{
-    public static function url(): string
-    {
+class HttpStatusCodeMapping implements Mapping {
+    public static function url(): string {
         return 'https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml';
     }
 
@@ -33,8 +31,7 @@ class HttpStatusCodeMapping implements Mapping
      * @throws RuntimeException
      * @return list<TDataSet>
      */
-    public static function toDataSet(Client $client, Crawler $crawler): array
-    {
+    public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@id="table-http-status-codes-1"]/tbody/tr')->getIterator();
 
         $dataSet = [];
@@ -67,8 +64,7 @@ class HttpStatusCodeMapping implements Mapping
      * @throws Exception
      * @return array<SpecFile>
      */
-    public static function toEnumMapping(array $dataSet): array
-    {
+    public static function toEnumMapping(array $dataSet): array {
         $httpMethod = new SpecFile(HttpStatusCode::class, ValueSorting::class);
         foreach ($dataSet as $dataRow) {
             if (in_array($dataRow->description, ['Unassigned', '(Unused)'], true)) {

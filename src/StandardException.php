@@ -5,6 +5,5 @@ namespace PrinsFrank\Standards;
 
 use Exception;
 
-abstract class StandardException extends Exception
-{
+abstract class StandardException extends Exception {
 }

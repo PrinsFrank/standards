@@ -8,10 +8,8 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\Standards\Scripts\ScriptAlias;
 
 #[CoversClass(ScriptAlias::class)]
-class ScriptAliasTest extends TestCase
-{
-    public function testToScriptNumber(): void
-    {
+class ScriptAliasTest extends TestCase {
+    public function testToScriptNumber(): void {
         foreach (ScriptAlias::cases() as $scriptAlias) {
             $scriptAlias->toScriptNumber();
 
@@ -19,8 +17,7 @@ class ScriptAliasTest extends TestCase
         }
     }
 
-    public function testToScriptName(): void
-    {
+    public function testToScriptName(): void {
         foreach (ScriptAlias::cases() as $scriptAlias) {
             $scriptAlias->toScriptName();
 
@@ -28,8 +25,7 @@ class ScriptAliasTest extends TestCase
         }
     }
 
-    public function testToScriptCode(): void
-    {
+    public function testToScriptCode(): void {
         foreach (ScriptAlias::cases() as $scriptAlias) {
             $scriptAlias->toScriptCode();
 
@@ -37,14 +33,12 @@ class ScriptAliasTest extends TestCase
         }
     }
 
-    public function testIsSupportedByPHPRegex(): void
-    {
+    public function testIsSupportedByPHPRegex(): void {
         static::assertTrue(ScriptAlias::Arabic->isSupportedByPHPRegex());
         static::assertFalse(ScriptAlias::Adlam->isSupportedByPHPRegex());
     }
 
-    public function testForString(): void
-    {
+    public function testForString(): void {
         static::assertSame(
             [],
             ScriptAlias::allForString('')
@@ -81,8 +75,7 @@ class ScriptAliasTest extends TestCase
         );
     }
 
-    public function testHasMultipleForString(): void
-    {
+    public function testHasMultipleForString(): void {
         static::assertFalse(ScriptAlias::hasMultipleForString(''));
         static::assertFalse(ScriptAlias::hasMultipleForString('eu'));
         static::assertTrue(ScriptAlias::hasMultipleForString('euеюευ'));
@@ -90,8 +83,7 @@ class ScriptAliasTest extends TestCase
         static::assertTrue(ScriptAlias::hasMultipleForString('еюeuеюευeu'));
     }
 
-    public function testMostCommonInString(): void
-    {
+    public function testMostCommonInString(): void {
         static::assertNull(ScriptAlias::mostCommonInString(''));
         static::assertSame(ScriptAlias::Latin, ScriptAlias::mostCommonInString('eu'));
         static::assertSame(ScriptAlias::Cyrillic, ScriptAlias::mostCommonInString('euеюευ'));

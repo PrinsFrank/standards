@@ -9,8 +9,7 @@ namespace PrinsFrank\Standards\LanguageTag;
  *
  * @manually-updated
  */
-enum PrivateUseRegionSubtag: string
-{
+enum PrivateUseRegionSubtag: string {
     case AA = 'AA';
     case QM = 'QM';
     case QN = 'QN';
