@@ -16050,9 +16050,8 @@ enum CountrySubdivision: string
 
     public function getSameAsCountry(): ?CountryAlpha2
     {
-        /** @var array<SameAsCountry> $sameAsCountryAttributes */
         $sameAsCountryAttributes = BackedEnum::getCaseAttributes($this, SameAsCountry::class);
-        if ($sameAsCountryAttributes === [] || count($sameAsCountryAttributes) !== 1 || array_key_exists(0, $sameAsCountryAttributes) === false) {
+        if ($sameAsCountryAttributes === [] || count($sameAsCountryAttributes) !== 1) {
             return null;
         }
 
