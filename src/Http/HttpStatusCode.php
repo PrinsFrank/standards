@@ -14,6 +14,9 @@ enum HttpStatusCode: int
     case Switching_Protocols = 101;
     case Processing = 102;
     case Early_Hints = 103;
+
+    #[TemporaryAssignment(new DateTimeImmutable('2025-11-13'))]
+    case Upload_Resumption_Supported = 104;
     case OK = 200;
     case Created = 201;
     case Accepted = 202;
