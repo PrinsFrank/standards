@@ -81,13 +81,11 @@ enum HttpStatusCode: int {
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Unused = 418;
 
-    public function isTemporaryAssignment(): bool
-    {
+    public function isTemporaryAssignment(): bool {
         return BackedEnum::hasCaseAttribute($this, TemporaryAssignment::class);
     }
 
-    public function getTemporaryAssignmentExpiresAt(): ?DateTimeImmutable
-    {
+    public function getTemporaryAssignmentExpiresAt(): ?DateTimeImmutable {
         $attribute = BackedEnum::getCaseAttributes($this, TemporaryAssignment::class);
         if ($attribute === [] || count($attribute) !== 1) {
             return null;
