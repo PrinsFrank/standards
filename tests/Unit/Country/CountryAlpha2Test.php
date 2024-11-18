@@ -215,4 +215,18 @@ class CountryAlpha2Test extends TestCase
         static::assertSame(NameOrder::Western, CountryAlpha2::Netherlands->getMostCommonNameOrder());
         static::assertSame(NameOrder::Eastern, CountryAlpha2::Japan->getMostCommonNameOrder());
     }
+
+    public function testIsInAssignedUserSpace(): void
+    {
+        static::assertFalse(CountryAlpha2::isInUserAssignedSpace(''));
+        static::assertTrue(CountryAlpha2::isInUserAssignedSpace('AA'));
+        static::assertFalse(CountryAlpha2::isInUserAssignedSpace('QL'));
+        static::assertTrue(CountryAlpha2::isInUserAssignedSpace('QM'));
+        static::assertTrue(CountryAlpha2::isInUserAssignedSpace('QZ'));
+        static::assertTrue(CountryAlpha2::isInUserAssignedSpace('XA'));
+        static::assertTrue(CountryAlpha2::isInUserAssignedSpace('XZ'));
+        static::assertTrue(CountryAlpha2::isInUserAssignedSpace('ZZ'));
+        static::assertFalse(CountryAlpha2::isInUserAssignedSpace('AAA'));
+        static::assertFalse(CountryAlpha2::isInUserAssignedSpace('ZZZ'));
+    }
 }

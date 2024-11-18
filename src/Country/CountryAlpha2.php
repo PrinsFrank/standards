@@ -6679,4 +6679,34 @@ enum CountryAlpha2: string
 
         return null;
     }
+
+    /**
+     * If users need code elements to represent country names not included in ISO 3166-1, the series of letters AA, QM to QZ, XA to XZ, and ZZ (...) are available
+     *
+     * @see https://www.iso.org/glossary-for-iso-3166.html
+     */
+    public static function isInUserAssignedSpace(string $alpha2): bool
+    {
+        if (strlen($alpha2) !== 2) {
+            return false;
+        }
+
+        if (in_array($alpha2, ['AA', 'ZZ'], true)) {
+            return true;
+        }
+
+        $firstChar = substr($alpha2, 0, 1);
+        $secondChar = substr($alpha2, 1, 1);
+        if ($firstChar === 'Q'
+            && ord($secondChar) >= ord('M') && ord($secondChar) <= ord('Z')) {
+            return true;
+        }
+
+        if ($firstChar === 'X'
+            && ord($secondChar) >= ord('A') && ord($secondChar) <= ord('Z')) {
+            return true;
+        }
+
+        return false;
+    }
 }

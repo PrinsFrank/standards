@@ -200,4 +200,21 @@ class CountryAlpha3Test extends TestCase
         static::assertSame(NameOrder::Western, CountryAlpha3::Netherlands->getMostCommonNameOrder());
         static::assertSame(NameOrder::Eastern, CountryAlpha3::Japan->getMostCommonNameOrder());
     }
+
+    public function testIsInAssignedUserSpace(): void
+    {
+        static::assertFalse(CountryAlpha3::isInUserAssignedSpace(''));
+        static::assertFalse(CountryAlpha3::isInUserAssignedSpace('AA'));
+        static::assertTrue(CountryAlpha3::isInUserAssignedSpace('AAA'));
+        static::assertTrue(CountryAlpha3::isInUserAssignedSpace('AAZ'));
+        static::assertFalse(CountryAlpha3::isInUserAssignedSpace('BAA'));
+        static::assertFalse(CountryAlpha3::isInUserAssignedSpace('QLZ'));
+        static::assertTrue(CountryAlpha3::isInUserAssignedSpace('QMA'));
+        static::assertTrue(CountryAlpha3::isInUserAssignedSpace('QZZ'));
+        static::assertTrue(CountryAlpha3::isInUserAssignedSpace('XAA'));
+        static::assertTrue(CountryAlpha3::isInUserAssignedSpace('XZZ'));
+        static::assertFalse(CountryAlpha3::isInUserAssignedSpace('ZYZ'));
+        static::assertTrue(CountryAlpha3::isInUserAssignedSpace('ZZA'));
+        static::assertTrue(CountryAlpha3::isInUserAssignedSpace('ZZZ'));
+    }
 }

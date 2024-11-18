@@ -384,4 +384,45 @@ enum CountryAlpha3: string
     {
         return $this->toCountryAlpha2()->getParentCountry()?->toCountryAlpha3();
     }
+
+    /**
+     * If users need code elements to represent country names not included in ISO 3166-1, (...) the series AAA to AAZ, QMA to QZZ, XAA to XZZ, and ZZA to ZZZ respectively (...) are available
+     *
+     * @see https://www.iso.org/glossary-for-iso-3166.html
+     */
+    public static function isInUserAssignedSpace(string $alpha3): bool
+    {
+        if (strlen($alpha3) !== 3) {
+            return false;
+        }
+
+        $firstChar = substr($alpha3, 0, 1);
+        $secondChar = substr($alpha3, 1, 1);
+        $thirdChar = substr($alpha3, 2, 1);
+        if ($firstChar === 'A'
+            && $secondChar === 'A'
+            && ord($thirdChar) >= ord('A') && ord($thirdChar) <= ord('Z')) {
+            return true;
+        }
+
+        if ($firstChar === 'Q'
+            && ord($secondChar) >= ord('M') && ord($secondChar) <= ord('Z')
+            && ord($thirdChar) >= ord('A') && ord($thirdChar) <= ord('Z')) {
+            return true;
+        }
+
+        if ($firstChar === 'X'
+            && ord($secondChar) >= ord('A') && ord($secondChar) <= ord('Z')
+            && ord($thirdChar) >= ord('A') && ord($thirdChar) <= ord('Z')) {
+            return true;
+        }
+
+        if ($firstChar === 'Z'
+            && $secondChar === 'Z'
+            && ord($thirdChar) >= ord('A') && ord($thirdChar) <= ord('Z')) {
+            return true;
+        }
+
+        return false;
+    }
 }
