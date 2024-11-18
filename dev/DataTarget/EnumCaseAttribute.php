@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
 use BackedEnum;
+use DateTimeImmutable;
 use PrinsFrank\Standards\InvalidArgumentException;
 use ReflectionClass;
 use Stringable;
@@ -13,7 +14,7 @@ class EnumCaseAttribute implements Stringable
 {
     /**
      * @param class-string<object> $fqn
-     * @param list<string|UnitEnum|BackedEnum|null|array<string|UnitEnum|BackedEnum|null>> $parameters
+     * @param list<string|UnitEnum|BackedEnum|DateTimeImmutable|null|array<string|UnitEnum|BackedEnum|null>> $parameters
      */
     public function __construct(
         public readonly string $fqn,
@@ -36,6 +37,10 @@ class EnumCaseAttribute implements Stringable
     {
         if ($value instanceof UnitEnum) {
             return substr($value::class, strrpos($value::class, '\\') !== false ? strrpos($value::class, '\\') + 1 : 0) . '::' . $value->name;
+        }
+
+        if ($value instanceof DateTimeImmutable) {
+            return sprintf('new DateTimeImmutable(\'%s\')', $value->format('Y-m-d'));
         }
 
         return match (gettype($value)) {

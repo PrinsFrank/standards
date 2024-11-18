@@ -3,18 +3,23 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
+use DateTimeImmutable;
+use Exception;
 use Facebook\WebDriver\WebDriverBy;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueSorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
+use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
 use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
+use PrinsFrank\Standards\Http\Attributes\TemporaryAssignment;
 use PrinsFrank\Standards\Http\HttpStatusCode;
+use PrinsFrank\Standards\InvalidArgumentException;
 use RuntimeException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
- * @template TDataSet of object{value: string, description: string, reference: string}&stdClass
+ * @template TDataSet of object{value: string, description: string, reference: string, note: ?string}&stdClass
  * @implements Mapping<TDataSet>
  */
 class HttpStatusCodeMapping implements Mapping
@@ -43,7 +48,11 @@ class HttpStatusCodeMapping implements Mapping
 
             $record = (object) [];
             $record->value = $columns[0]->getText();
-            $record->description = $columns[1]->getText();
+            preg_match('/^(?<description>[^\(]*)(?<note>\(.*\))?$/', $columns[1]->getText(), $matches);
+            $description = $matches['description'] ?? '';
+            $note = $matches['note'] ?? null;
+            $record->description = $description !== '' ? $description : $note;
+            $record->note = $note !== null ? trim($note, '()') : null;
             $record->reference = $columns[2]->getText();
 
             /** @var TDataSet $record */
@@ -55,6 +64,7 @@ class HttpStatusCodeMapping implements Mapping
 
     /**
      * @param list<TDataSet> $dataSet
+     * @throws Exception
      * @return array<SpecFile>
      */
     public static function toEnumMapping(array $dataSet): array
@@ -65,7 +75,13 @@ class HttpStatusCodeMapping implements Mapping
                 continue;
             }
 
-            $httpMethod->addCase(new EnumCase($dataRow->description, (int) $dataRow->value));
+            $attributes = [];
+            if ($dataRow->note !== null && str_contains(strtolower($dataRow->note), 'temporary')) {
+                preg_match('/expires (?<expiryDate>[0-9]{4}-[0-9]{2}-[0-9]{2})/', $dataRow->note, $expiresAt);
+                $attributes[] = new EnumCaseAttribute(TemporaryAssignment::class, [new DateTimeImmutable($expiresAt['expiryDate'] ?? throw new InvalidArgumentException())]);
+            }
+
+            $httpMethod->addCase(new EnumCase($dataRow->description, (int) $dataRow->value, $attributes));
         }
 
         return [$httpMethod];
