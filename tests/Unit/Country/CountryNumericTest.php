@@ -221,4 +221,18 @@ class CountryNumericTest extends TestCase
         static::assertSame(NameOrder::Western, CountryNumeric::Netherlands->getMostCommonNameOrder());
         static::assertSame(NameOrder::Eastern, CountryNumeric::Japan->getMostCommonNameOrder());
     }
+
+    public function testIsInAssignedUserSpace(): void
+    {
+        static::assertFalse(CountryNumeric::isInUserAssignedSpace(0));
+        static::assertFalse(CountryNumeric::isInUserAssignedSpace('0'));
+        static::assertFalse(CountryNumeric::isInUserAssignedSpace(899));
+        static::assertFalse(CountryNumeric::isInUserAssignedSpace('899'));
+        static::assertTrue(CountryNumeric::isInUserAssignedSpace(900));
+        static::assertTrue(CountryNumeric::isInUserAssignedSpace('900'));
+        static::assertTrue(CountryNumeric::isInUserAssignedSpace(999));
+        static::assertTrue(CountryNumeric::isInUserAssignedSpace('999'));
+        static::assertFalse(CountryNumeric::isInUserAssignedSpace(1000));
+        static::assertFalse(CountryNumeric::isInUserAssignedSpace('1000'));
+    }
 }

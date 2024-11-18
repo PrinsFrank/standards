@@ -400,4 +400,18 @@ enum CountryNumeric: string
     {
         return $this->toCountryAlpha2()->getParentCountry()?->toCountryNumeric();
     }
+
+    /**
+     * If users need code elements to represent country names not included in ISO 3166-1, (...) the series of numbers 900 to 999 are available
+     *
+     * @see https://www.iso.org/glossary-for-iso-3166.html
+     */
+    public static function isInUserAssignedSpace(int|string $code): bool
+    {
+        if (is_string($code)) { // As this spec is backed by strings due to leading zeros, this method also accepts strings
+            $code = (int) $code;
+        }
+
+        return $code >= 900 && $code <= 999;
+    }
 }
