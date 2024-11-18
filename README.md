@@ -662,6 +662,8 @@ HttpStatusCode::Not_Found;       // HttpStatusCode::Not_Found
 public function foo(HttpStatusCode $httpStatusCode) {} // Use spec as typehint to enforce valid value
 ```
 
+There can be status codes that are temporarily assigned. Those are marked with the `TemporaryAssignment` attribute. To check if a specific case is temporarily assigned, you can use the `isTemporaryAssignment` method which returns a boolean, or `getTemporaryAssignmentExpiresAt` which returns a DateTimeImmutable or null.
+
 ## International Call Prefixes (ITU-T E.164)
 
 Different countries have different international call prefixes. This is a spec extracted from ITU-T E.164 listing all possible international call prefixes.
