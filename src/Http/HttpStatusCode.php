@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Http;
 
 use DateTimeImmutable;
+use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Http\Attributes\TemporaryAssignment;
 
 /**
@@ -80,4 +81,19 @@ enum HttpStatusCode: int
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Unused = 418;
+
+    public function isTemporaryAssignment(): bool
+    {
+        return BackedEnum::hasCaseAttribute($this, TemporaryAssignment::class);
+    }
+
+    public function getTemporaryAssignmentExpiresAt(): ?DateTimeImmutable
+    {
+        $attribute = BackedEnum::getCaseAttributes($this, TemporaryAssignment::class);
+        if ($attribute === [] || count($attribute) !== 1) {
+            return null;
+        }
+
+        return $attribute[0]->expiresAt;
+    }
 }
