@@ -12,6 +12,7 @@ enum LanguageTagVariant: string {
     case ALA_LC_Romanization_1997_edition = 'alalc97';
     case Academic_governmental_variant_of_Belarusian_as = '1959acad';
     case Akuapem_Twi = 'akuapem';
+    case Allattaasitaamut = 'kleinsch';
     case Americanist_Phonetic_Notation = 'fonnapa';
     case Anglo_Cornish = 'cornu';
     case Anpezo_standard_of_Ladin = 'anpezo';
