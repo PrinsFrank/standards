@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Country\Groups;
 
+use PHPUnit\Framework\Constraint\Count;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 
 /**
@@ -19,6 +20,10 @@ class BRICS implements GroupInterface {
             CountryAlpha2::India,
             CountryAlpha2::China,
             CountryAlpha2::South_Africa,
+            CountryAlpha2::Egypt,
+            CountryAlpha2::Ethiopia,
+            CountryAlpha2::Iran,
+            CountryAlpha2::United_Arab_Emirates,
         ];
     }
 }
