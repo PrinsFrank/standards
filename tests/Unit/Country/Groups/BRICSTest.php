@@ -18,6 +18,10 @@ class BRICSTest extends TestCase {
                 CountryAlpha2::India,
                 CountryAlpha2::China,
                 CountryAlpha2::South_Africa,
+                CountryAlpha2::Egypt,
+                CountryAlpha2::Ethiopia,
+                CountryAlpha2::Iran,
+                CountryAlpha2::United_Arab_Emirates,
             ],
             BRICS::allAlpha2()
         );
