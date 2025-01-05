@@ -36,7 +36,6 @@ enum CountryCodeTLD: string implements TLD {
     case ao_men_han = '澳門';
     case aq = 'aq';
     case ar = 'ar';
-    case art_arabic = 'ڀارت';
     case as = 'as';
     case at = 'at';
     case au = 'au';
@@ -67,6 +66,7 @@ enum CountryCodeTLD: string implements TLD {
     case bharatam_devanagari = 'भारतम्';
     case bharatam_malayalam = 'ഭാരതം';
     case bharota_devanagari = 'भारोत';
+    case art_arabic = 'ڀارت';
     case bi = 'bi';
     case bj = 'bj';
 
