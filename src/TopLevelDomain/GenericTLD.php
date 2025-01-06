@@ -696,8 +696,8 @@ enum GenericTLD: string implements TLD {
     case ji_gou_han = '机构';
     case ji_tuan_han = '集团';
     case jia_dian_han = '家電';
-    case jia_li_han = '嘉里';
     case jia_li_da_jiu_dian_han = '嘉里大酒店';
+    case jia_li_han = '嘉里';
     case jian_kang_han = '健康';
     case jio = 'jio';
 

@@ -24,6 +24,27 @@ class EnumCase {
 
     /**
      * @param class-string<BackedEnum> $enumFQN
+     * @throws TransliterationException
+     * @throws UnableToCreateTransliteratorException
+     * @throws RecursionException
+     * @throws \PrinsFrank\Transliteration\Exception\InvalidArgumentException
+     * @return string an existing name if the case already existed, otherwise the new name
+     */
+    public function getKey(string $enumFQN): string {
+        $existingKeyWithValue = $enumFQN::tryFrom($this->value) ?? ($this->previousValue !== null ? $enumFQN::tryFrom($this->previousValue) : null);
+        $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->name);
+        if ($existingKeyWithValue === null && is_string($this->value)) {
+            $mostCommonScriptInString = ScriptAlias::mostCommonInString($this->value) ?? ScriptAlias::Code_for_undetermined_script;
+            if (in_array($mostCommonScriptInString, [ScriptAlias::Code_for_undetermined_script, ScriptAlias::Latin], true) !== true) {
+                $key .= '_' . mb_strtolower($mostCommonScriptInString->value);
+            }
+        }
+
+        return $key;
+    }
+
+    /**
+     * @param class-string<BackedEnum> $enumFQN
      * @throws InvalidArgumentException
      * @throws TransliterationException
      * @throws UnableToCreateTransliteratorException
@@ -44,15 +65,7 @@ class EnumCase {
             $case .= PHP_EOL . $indenting . $attribute->__toString();
         }
 
-        $existingKeyWithValue = $enumFQN::tryFrom($this->value) ?? ($this->previousValue !== null ? $enumFQN::tryFrom($this->previousValue) : null);
-        $key = $existingKeyWithValue !== null ? $existingKeyWithValue->name : NameNormalizer::normalize($this->name);
-        if ($existingKeyWithValue === null && is_string($this->value)) {
-            $mostCommonScriptInString = ScriptAlias::mostCommonInString($this->value) ?? ScriptAlias::Code_for_undetermined_script;
-            if (in_array($mostCommonScriptInString, [ScriptAlias::Code_for_undetermined_script, ScriptAlias::Latin], true) !== true) {
-                $key .= '_' . mb_strtolower($mostCommonScriptInString->value);
-            }
-        }
-
+        $key = $this->getKey($enumFQN);
         if (is_int($this->value)) {
             $case .= PHP_EOL . $indenting . 'case ' . $key . ' = ' . $this->value . ';';
         } else {
