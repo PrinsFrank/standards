@@ -9,7 +9,6 @@ use PrinsFrank\Standards\Dev\DataSource\Sorting\Sorting;
 use PrinsFrank\Standards\Dev\Exception\EnumNotFoundException;
 use PrinsFrank\Standards\Dev\Exception\TransliterationException;
 use PrinsFrank\Standards\InvalidArgumentException;
-use PrinsFrank\Standards\Scripts\ScriptAlias;
 use PrinsFrank\Transliteration\Exception\RecursionException;
 use PrinsFrank\Transliteration\Exception\UnableToCreateTransliteratorException;
 use RuntimeException;
@@ -111,11 +110,11 @@ class SpecFile {
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1);
         $keyedCases = [];
         foreach ($this->cases as $case) {
-            $keyedCases[$case->name . (is_string($case->value) ? ScriptAlias::mostCommonInString($case->value)->value ?? '' : '') . $case->value] = $case;
+            $keyedCases[$case->getKey($this->FQN) . $case->value] = $case;
         }
 
         $deduplicatedCases = array_values($keyedCases);
-        usort($deduplicatedCases, new $this->sortingFQN());
+        usort($deduplicatedCases, new $this->sortingFQN($this->FQN));
         foreach ($deduplicatedCases as $key => $case) {
             $newEnumContent .= $case->toString($this->FQN, '    ', $key === 0);
         }

@@ -126,6 +126,7 @@ enum LanguageName: string {
     case Dinka = 'Dinka';
     case Divehi_Dhivehi_Maldivian = 'Divehi; Dhivehi; Maldivian';
     case Dogri = 'Dogri';
+    case Dogrib = 'Tlicho; Dogrib';
     case Dravidian_languages = 'Dravidian languages';
     case Duala = 'Duala';
     case Dutch_Flemish = 'Dutch; Flemish';
@@ -447,7 +448,6 @@ enum LanguageName: string {
     case Tigrinya = 'Tigrinya';
     case Timne = 'Timne';
     case Tiv = 'Tiv';
-    case Dogrib = 'Tlicho; Dogrib';
     case Tlingit = 'Tlingit';
     case Tok_Pisin = 'Tok Pisin';
     case Tokelau = 'Tokelau';

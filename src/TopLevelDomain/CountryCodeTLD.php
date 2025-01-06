@@ -57,13 +57,13 @@ enum CountryCodeTLD: string implements TLD {
     case bg_cyrillic = 'бг';
     case bh = 'bh';
     case bharat_telugu = 'భారత్';
-    case bharata_kannada = 'ಭಾರತ';
-    case bharata_oriya = 'ଭାରତ';
     case bharata_bengali = 'ভাৰত';
     case bharata_bengali_2 = 'ভারত';
-    case bharata_gujarati = 'ભારત';
     case bharata_devanagari = 'भारत';
+    case bharata_gujarati = 'ભારત';
     case bharata_gurmukhi = 'ਭਾਰਤ';
+    case bharata_kannada = 'ಭಾರತ';
+    case bharata_oriya = 'ଭାରତ';
     case bharatam_devanagari = 'भारतम्';
     case bharatam_malayalam = 'ഭാരതം';
     case bharota_devanagari = 'भारोत';
