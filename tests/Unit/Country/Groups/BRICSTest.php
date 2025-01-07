@@ -22,6 +22,7 @@ class BRICSTest extends TestCase {
                 CountryAlpha2::Ethiopia,
                 CountryAlpha2::Iran,
                 CountryAlpha2::United_Arab_Emirates,
+                CountryAlpha2::Indonesia,
             ],
             BRICS::allAlpha2()
         );
