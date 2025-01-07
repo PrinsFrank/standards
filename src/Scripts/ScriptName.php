@@ -25,6 +25,7 @@ enum ScriptName: string {
     case Bassa_Vah = 'Bassa Vah';
     case Batak = 'Batak';
     case Bengali_Bangla = 'Bengali (Bangla)';
+    case Beria_Erfe = 'Beria Erfe';
     case Bhaiksuki = 'Bhaiksuki';
     case Blissymbols = 'Blissymbols';
     case Book_Pahlavi = 'Book Pahlavi';

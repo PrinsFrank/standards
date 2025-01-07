@@ -106,6 +106,7 @@ enum ScriptAlias: string {
 
     #[SupportedByPHPRegex]
     case Ethiopic_Ge_ez = 'Ethiopic';
+    case Garay = 'Garay';
 
     #[SupportedByPHPRegex]
     case Georgian_Mkhedruli_and_Mtavruli = 'Georgian';
@@ -126,6 +127,7 @@ enum ScriptAlias: string {
 
     #[SupportedByPHPRegex]
     case Gurmukhi = 'Gurmukhi';
+    case Gurung_Khema = 'Gurung_Khema';
 
     #[SupportedByPHPRegex]
     case Han_Hanzi_Kanji_Hanja = 'Han';
@@ -178,6 +180,7 @@ enum ScriptAlias: string {
     case Khmer = 'Khmer';
     case Khojki = 'Khojki';
     case Khudawadi_Sindhi = 'Khudawadi';
+    case Kirat_Rai = 'Kirat_Rai';
 
     #[SupportedByPHPRegex]
     case Lao = 'Lao';
@@ -255,6 +258,7 @@ enum ScriptAlias: string {
 
     #[SupportedByPHPRegex]
     case Ol_Chiki_Ol_Cemet_Ol_Santali = 'Ol_Chiki';
+    case Ol_Onal = 'Ol_Onal';
     case Old_Hungarian_Hungarian_Runic = 'Old_Hungarian';
 
     #[SupportedByPHPRegex]
@@ -320,6 +324,7 @@ enum ScriptAlias: string {
 
     #[SupportedByPHPRegex]
     case Sundanese = 'Sundanese';
+    case Sunuwar = 'Sunuwar';
 
     #[SupportedByPHPRegex]
     case Syloti_Nagri = 'Syloti_Nagri';
@@ -365,7 +370,9 @@ enum ScriptAlias: string {
     #[SupportedByPHPRegex]
     case Tifinagh_Berber = 'Tifinagh';
     case Tirhuta = 'Tirhuta';
+    case Todhri = 'Todhri';
     case Toto = 'Toto';
+    case Tulu_Tigalari = 'Tulu_Tigalari';
 
     #[SupportedByPHPRegex]
     case Ugaritic = 'Ugaritic';

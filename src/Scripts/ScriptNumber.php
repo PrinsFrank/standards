@@ -25,6 +25,7 @@ enum ScriptNumber: string {
     case Bassa_Vah = '259';
     case Batak = '365';
     case Bengali_Bangla = '325';
+    case Beria_Erfe = '258';
     case Bhaiksuki = '334';
     case Blissymbols = '550';
     case Book_Pahlavi = '133';

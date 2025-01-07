@@ -25,6 +25,7 @@ enum ScriptCode: string {
     case Bassa_Vah = 'Bass';
     case Batak = 'Batk';
     case Bengali_Bangla = 'Beng';
+    case Beria_Erfe = 'Berf';
     case Bhaiksuki = 'Bhks';
     case Blissymbols = 'Blis';
     case Book_Pahlavi = 'Phlv';
