@@ -25,7 +25,7 @@ class TopLevelDomainLister
 
         $assignedTlds = array_reduce($tlds, static function ($carry, $tld) {
             if ($tld->isAssigned()) {
-                $activeTlds[] = strtoupper(idn_to_ascii($tld->value));
+                $carry[] = strtoupper(idn_to_ascii($tld->value));
             }
 
             return $carry;
