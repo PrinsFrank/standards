@@ -3,12 +3,6 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\TopLevelDomain;
 
-use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
-use PrinsFrank\Standards\TopLevelDomain\GenericRestrictedTLD;
-use PrinsFrank\Standards\TopLevelDomain\GenericTLD;
-use PrinsFrank\Standards\TopLevelDomain\InfrastructureTLD;
-use PrinsFrank\Standards\TopLevelDomain\SponsoredTLD;
-use PrinsFrank\Standards\TopLevelDomain\TestTLD;
 use ValueError;
 
 class AnyTLD {
