@@ -28,7 +28,8 @@ class TopLevelDomainLister {
 
             return $carry;
         });
+        sort($assignedTlds);
 
-        file_put_contents('./tlds.txt', implode("\n", $assignedTlds));
+        file_put_contents('./tlds.txt', implode("\n", $assignedTlds)."\n");
     }
 }
