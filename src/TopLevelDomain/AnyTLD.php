@@ -22,7 +22,7 @@ class AnyTLD {
             ?? GenericRestrictedTLD::tryFrom($string)
             ?? GenericTLD::tryFrom($string)
             ?? InfrastructureTLD::tryFrom($string)
-            ?? SponsoredTLD::tryFrom($string);
+            ?? SponsoredTLD::tryFrom($string)
             ?? TestTLD::tryFrom($string);
     }
 }
