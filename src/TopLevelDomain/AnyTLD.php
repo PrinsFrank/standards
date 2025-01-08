@@ -6,7 +6,7 @@ namespace PrinsFrank\Standards\TopLevelDomain;
 use ValueError;
 
 /**
- * @source PrinsFrank\Standards\TopLevelDomain
+ * @source https://github.com/PrinsFrank/standards/tree/main/src/TopLevelDomain
  *
  * @manually-updated
  */
