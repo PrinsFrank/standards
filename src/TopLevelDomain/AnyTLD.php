@@ -5,6 +5,11 @@ namespace PrinsFrank\Standards\TopLevelDomain;
 
 use ValueError;
 
+/**
+ * @source PrinsFrank\Standards\TopLevelDomain
+ *
+ * @manually-updated
+ */
 class AnyTLD {
     /** @throws ValueError */
     public static function from(string $string): CountryCodeTLD|GenericRestrictedTLD|GenericTLD|InfrastructureTLD|TestTLD {
