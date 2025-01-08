@@ -53,7 +53,7 @@
         "update-spec-php-regex-script": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\PHPRegexSupportedScriptsMapping",
         "update-spec-scripts": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\ScriptMapping",
         "update-spec-tld": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\TopLevelDomainMapping",
-        "create-tld-file": "PrinsFrank\\Standards\\Dev\\TopLevelDomainLister::writeFile",
+        "create-tld-file": "PrinsFrank\\Standards\\Dev\\TopLevelDomainLister::writeFile"
     },
     "extra": {
         "branch-alias": {
