@@ -10,10 +10,8 @@ use PrinsFrank\Standards\TopLevelDomain\InfrastructureTLD;
 use PrinsFrank\Standards\TopLevelDomain\SponsoredTLD;
 use PrinsFrank\Standards\TopLevelDomain\TestTLD;
 
-class TopLevelDomainLister
-{
-    public static function writeFile(): void
-    {
+class TopLevelDomainLister {
+    public static function writeFile(): void {
         $tlds = array_merge(
             CountryCodeTLD::cases(),
             GenericRestrictedTLD::cases(),
