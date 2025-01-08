@@ -30,6 +30,6 @@ class TopLevelDomainLister {
         });
         sort($assignedTlds);
 
-        file_put_contents('./tlds.txt', implode("\n", $assignedTlds)."\n");
+        file_put_contents('./tlds.txt', implode("\n", $assignedTlds) . "\n");
     }
 }
