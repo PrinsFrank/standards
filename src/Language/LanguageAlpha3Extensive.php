@@ -7656,6 +7656,7 @@ enum LanguageAlpha3Extensive: string {
     case Northern_Muji = 'ymx';
     case Muzi = 'ymz';
     case Aluo = 'yna';
+    case Yamben = 'ynb';
     case Yandruwandha = 'ynd';
     case Lang_e = 'yne';
     case Yango = 'yng';
