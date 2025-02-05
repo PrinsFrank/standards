@@ -135,7 +135,6 @@ enum CurrencyName: string {
     case Pakistan_Rupee = 'Pakistan Rupee';
     case Palladium = 'Palladium';
     case Pataca = 'Pataca';
-    case Peso_Convertible = 'Peso Convertible';
     case Peso_Uruguayo = 'Peso Uruguayo';
     case Philippine_Peso = 'Philippine Peso';
     case Platinum = 'Platinum';
@@ -206,6 +205,9 @@ enum CurrencyName: string {
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Leone_Old = 'Leone_Old';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Peso_Convertible = 'Peso Convertible';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Zimbabwe_Dollar = 'Zimbabwe Dollar';

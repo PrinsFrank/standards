@@ -137,7 +137,6 @@ enum CurrencyNumeric: string {
     case Pakistan_Rupee = '586';
     case Palladium = '964';
     case Pataca = '446';
-    case Peso_Convertible = '931';
     case Peso_Uruguayo = '858';
     case Philippine_Peso = '608';
     case Platinum = '962';
@@ -208,6 +207,9 @@ enum CurrencyNumeric: string {
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Leone_Old = '694';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Peso_Convertible = '931';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Zimbabwe_Dollar = '932';
