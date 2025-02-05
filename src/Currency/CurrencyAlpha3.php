@@ -136,7 +136,6 @@ enum CurrencyAlpha3: string {
     case Pakistan_Rupee = 'PKR';
     case Palladium = 'XPD';
     case Pataca = 'MOP';
-    case Peso_Convertible = 'CUC';
     case Peso_Uruguayo = 'UYU';
     case Philippine_Peso = 'PHP';
     case Platinum = 'XPT';
@@ -207,6 +206,9 @@ enum CurrencyAlpha3: string {
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Leone_Old = 'SLL';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Peso_Convertible = 'CUC';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Zimbabwe_Dollar = 'ZWL';
@@ -621,7 +623,6 @@ enum CurrencyAlpha3: string {
             self::Pa_anga => [CountryAlpha2::Tonga],
             self::Pakistan_Rupee => [CountryAlpha2::Pakistan],
             self::Pataca => [CountryAlpha2::Macao],
-            self::Peso_Convertible => [CountryAlpha2::Cuba],
             self::Peso_Uruguayo => [CountryAlpha2::Uruguay],
             self::Philippine_Peso => [CountryAlpha2::Philippines],
             self::Pound_Sterling => [

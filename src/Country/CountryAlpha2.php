@@ -698,10 +698,7 @@ enum CountryAlpha2: string {
             self::Costa_Rica => [CurrencyAlpha3::Costa_Rican_Colon],
             self::Cote_d_Ivoire => [CurrencyAlpha3::CFA_Franc_BCEAO],
             self::Croatia => [CurrencyAlpha3::Euro],
-            self::Cuba => [
-                CurrencyAlpha3::Cuban_Peso,
-                CurrencyAlpha3::Peso_Convertible
-            ],
+            self::Cuba => [CurrencyAlpha3::Cuban_Peso],
             self::Curacao => [CurrencyAlpha3::Netherlands_Antillean_Guilder],
             self::Cyprus => [CurrencyAlpha3::Euro],
             self::Czechia => [CurrencyAlpha3::Czech_Koruna],
