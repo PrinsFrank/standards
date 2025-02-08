@@ -14,6 +14,9 @@ enum LanguageTagVariant: string {
     case Akuapem_Twi = 'akuapem';
     case Allattaasitaamut = 'kleinsch';
     case Americanist_Phonetic_Notation = 'fonnapa';
+    case Ancient_Egyptian_hieroglyphs_encoded_in_Manuel_de_Codage = 'mdcegyp';
+    case Ancient_Egyptian_in_Leiden_Unified_Transliteration = 'leidentr';
+    case Ancient_Egyptian_transliteration_encoded_in_Manuel_de = 'mdctrans';
     case Anglo_Cornish = 'cornu';
     case Anpezo_standard_of_Ladin = 'anpezo';
     case Aranese = 'aranes';
