@@ -125,7 +125,7 @@ enum LanguageName: string {
     case Delaware = 'Delaware';
     case Dinka = 'Dinka';
     case Divehi_Dhivehi_Maldivian = 'Divehi; Dhivehi; Maldivian';
-    case Dogri = 'Dogri';
+    case Dogri_macrolanguage = 'Dogri (macrolanguage)';
     case Dogrib = 'Tlicho; Dogrib';
     case Dravidian_languages = 'Dravidian languages';
     case Duala = 'Duala';
@@ -247,7 +247,7 @@ enum LanguageName: string {
     case Klingon_tlhIngan_Hol = 'Klingon; tlhIngan-Hol';
     case Komi = 'Komi';
     case Kongo = 'Kongo';
-    case Konkani = 'Konkani';
+    case Konkani_macrolanguage = 'Konkani (macrolanguage)';
     case Korean = 'Korean';
     case Kosraean = 'Kosraean';
     case Kpelle = 'Kpelle';
@@ -286,7 +286,7 @@ enum LanguageName: string {
     case Maithili = 'Maithili';
     case Makasar = 'Makasar';
     case Malagasy = 'Malagasy';
-    case Malay = 'Malay';
+    case Malay_macrolanguage = 'Malay (macrolanguage)';
     case Malayalam = 'Malayalam';
     case Maltese = 'Maltese';
     case Manchu = 'Manchu';
@@ -325,7 +325,7 @@ enum LanguageName: string {
     case Ndonga = 'Ndonga';
     case Neapolitan = 'Neapolitan';
     case Nepal_Bhasa_Newari = 'Nepal Bhasa; Newari';
-    case Nepali = 'Nepali';
+    case Nepali_macrolanguage = 'Nepali (macrolanguage)';
     case Nias = 'Nias';
     case Niger_Kordofanian_languages = 'Niger-Kordofanian languages';
     case Nilo_Saharan_languages = 'Nilo-Saharan languages';
@@ -346,7 +346,7 @@ enum LanguageName: string {
     case Occitan_post_1500 = 'Occitan (post 1500)';
     case Official_Aramaic_700_300_BCE_Imperial_Aramaic_700_300_BCE = 'Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)';
     case Ojibwa = 'Ojibwa';
-    case Oriya = 'Oriya';
+    case Oriya_macrolanguage = 'Oriya (macrolanguage)';
     case Oromo = 'Oromo';
     case Osage = 'Osage';
     case Ossetian_Ossetic = 'Ossetian; Ossetic';
@@ -427,7 +427,7 @@ enum LanguageName: string {
     case Sumerian = 'Sumerian';
     case Sundanese = 'Sundanese';
     case Susu = 'Susu';
-    case Swahili = 'Swahili';
+    case Swahili_macrolanguage = 'Swahili (macrolanguage)';
     case Swati = 'Swati';
     case Swedish = 'Swedish';
     case Swiss_German_Alemannic_Alsatian = 'Swiss German; Alemannic; Alsatian';
@@ -501,6 +501,24 @@ enum LanguageName: string {
     case Zhuang_Chuang = 'Zhuang; Chuang';
     case Zulu = 'Zulu';
     case Zuni = 'Zuni';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Dogri = 'Dogri';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Konkani = 'Konkani';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Malay = 'Malay';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Nepali = 'Nepali';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Oriya = 'Oriya';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Swahili = 'Swahili';
 
     public function toLanguageAlpha2(): LanguageAlpha2|null {
         return BackedEnum::tryFromName(LanguageAlpha2::class, $this->name);
