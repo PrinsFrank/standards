@@ -718,6 +718,8 @@ enum GenericTLD: string implements TLD {
     case kaufen = 'kaufen';
     case kddi = 'kddi';
     case kerryhotels = 'kerryhotels';
+
+    #[NotAssigned]
     case kerrylogistics = 'kerrylogistics';
     case kerryproperties = 'kerryproperties';
     case kfh = 'kfh';
@@ -793,6 +795,8 @@ enum GenericTLD: string implements TLD {
     #[NotAssigned]
     case linde = 'linde';
     case link = 'link';
+
+    #[NotAssigned]
     case lipsy = 'lipsy';
     case live = 'live';
     case living = 'living';
