@@ -24,6 +24,12 @@ class LanguageMapping implements Mapping {
     /** @var array<string, string> where key is the new name and value is the previous name */
     private const RENAMES = [
         'Tlicho; Dogrib' => 'Tlicho, Dogrib',
+        'Dogri (macrolanguage)' => 'Dogri',
+        'Konkani (macrolanguage)' => 'Konkani',
+        'Malay (macrolanguage)' => 'Malay',
+        'Nepali (macrolanguage)' => 'Nepali',
+        'Oriya (macrolanguage)' => 'Oriya',
+        'Swahili (macrolanguage)' => 'Swahili',
     ];
 
     public static function url(): string {
