@@ -106,12 +106,15 @@ enum LanguageTagVariant: string {
     case The_Balanka_dialect_of_Anii = 'balanka';
     case The_Barlavento_dialect_group_of_Kabuverdianu = 'barla';
     case The_Bila_dialect_of_Resian = 'biske';
+    case The_Ha_Noi_variant_of_Vietnamese = 'hanoi';
+    case The_Hue_province_Thua_Thien_variant_of_Vietnamese = 'huett';
     case The_Kociewie_dialect_of_Polish = 'kociewie';
     case The_Latgalian_language_orthography_codified_in_1929 = 'ltg1929';
     case The_Latgalian_language_orthography_codified_in_the_language = 'ltg2007';
     case The_Lipovec_dialect_of_Resian = 'lipaw';
     case The_Njiva_dialect_of_Resian = 'njiva';
     case The_Osojane_dialect_of_Resian = 'osojs';
+    case The_Sai_Gon_variant_of_Vietnamese = 'saigon';
     case The_Solbica_dialect_of_Resian = 'solba';
     case The_Sotavento_dialect_group_of_Kabuverdianu = 'sotav';
     case Tongyong_Pinyin_romanization = 'tongyong';
