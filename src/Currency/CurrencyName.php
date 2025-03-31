@@ -53,6 +53,7 @@ enum CurrencyName: string {
     case CFP_Franc = 'CFP Franc';
     case Cabo_Verde_Escudo = 'Cabo Verde Escudo';
     case Canadian_Dollar = 'Canadian Dollar';
+    case Caribbean_Guilder = 'Caribbean Guilder';
     case Cayman_Islands_Dollar = 'Cayman Islands Dollar';
     case Chilean_Peso = 'Chilean Peso';
     case Codes_specifically_reserved_for_testing_purposes = 'Codes specifically reserved for testing purposes';
@@ -123,7 +124,6 @@ enum CurrencyName: string {
     case Nakfa = 'Nakfa';
     case Namibia_Dollar = 'Namibia Dollar';
     case Nepalese_Rupee = 'Nepalese Rupee';
-    case Netherlands_Antillean_Guilder = 'Netherlands Antillean Guilder';
     case New_Israeli_Sheqel = 'New Israeli Sheqel';
     case New_Taiwan_Dollar = 'New Taiwan Dollar';
     case New_Zealand_Dollar = 'New Zealand Dollar';
@@ -205,6 +205,9 @@ enum CurrencyName: string {
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Leone_Old = 'Leone_Old';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Netherlands_Antillean_Guilder = 'Netherlands Antillean Guilder';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Peso_Convertible = 'Peso Convertible';

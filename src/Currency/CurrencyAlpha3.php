@@ -54,6 +54,7 @@ enum CurrencyAlpha3: string {
     case CFP_Franc = 'XPF';
     case Cabo_Verde_Escudo = 'CVE';
     case Canadian_Dollar = 'CAD';
+    case Caribbean_Guilder = 'XCG';
     case Cayman_Islands_Dollar = 'KYD';
     case Chilean_Peso = 'CLP';
     case Codes_specifically_reserved_for_testing_purposes = 'XTS';
@@ -124,7 +125,6 @@ enum CurrencyAlpha3: string {
     case Nakfa = 'ERN';
     case Namibia_Dollar = 'NAD';
     case Nepalese_Rupee = 'NPR';
-    case Netherlands_Antillean_Guilder = 'ANG';
     case New_Israeli_Sheqel = 'ILS';
     case New_Taiwan_Dollar = 'TWD';
     case New_Zealand_Dollar = 'NZD';
@@ -208,6 +208,9 @@ enum CurrencyAlpha3: string {
     case Leone_Old = 'SLL';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Netherlands_Antillean_Guilder = 'ANG';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Peso_Convertible = 'CUC';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
@@ -273,6 +276,7 @@ enum CurrencyAlpha3: string {
             self::CFP_Franc => 0,
             self::Cabo_Verde_Escudo => 2,
             self::Canadian_Dollar => 2,
+            self::Caribbean_Guilder => 2,
             self::Cayman_Islands_Dollar => 2,
             self::Chilean_Peso => 0,
             self::Colombian_Peso => 2,
@@ -476,6 +480,10 @@ enum CurrencyAlpha3: string {
             ],
             self::Cabo_Verde_Escudo => [CountryAlpha2::Cabo_Verde],
             self::Canadian_Dollar => [CountryAlpha2::Canada],
+            self::Caribbean_Guilder => [
+                CountryAlpha2::Curacao,
+                CountryAlpha2::Sint_Maarten_Dutch_part
+            ],
             self::Cayman_Islands_Dollar => [CountryAlpha2::Cayman_Islands],
             self::Chilean_Peso => [CountryAlpha2::Chile],
             self::Colombian_Peso => [CountryAlpha2::Colombia],
@@ -599,10 +607,6 @@ enum CurrencyAlpha3: string {
             self::Nakfa => [CountryAlpha2::Eritrea],
             self::Namibia_Dollar => [CountryAlpha2::Namibia],
             self::Nepalese_Rupee => [CountryAlpha2::Nepal],
-            self::Netherlands_Antillean_Guilder => [
-                CountryAlpha2::Curacao,
-                CountryAlpha2::Sint_Maarten_Dutch_part
-            ],
             self::New_Israeli_Sheqel => [CountryAlpha2::Israel],
             self::New_Taiwan_Dollar => [CountryAlpha2::Taiwan_Province_of_China],
             self::New_Zealand_Dollar => [
