@@ -220,6 +220,10 @@ enum CurrencyName: string {
     }
 
     public function toCurrencyNumeric(): CurrencyNumeric {
+        if ($this === self::Caribbean_Guilder) {
+            return CurrencyNumeric::Netherlands_Antillean_Guilder; // Cannot be renamed to be BC
+        }
+
         return BackedEnum::fromName(CurrencyNumeric::class, $this->name);
     }
 
