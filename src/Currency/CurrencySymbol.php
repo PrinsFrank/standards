@@ -36,6 +36,7 @@ enum CurrencySymbol: string {
     case C_Dollar = 'C$';
     case Cedi = '₵';
     case CF = 'CF';
+    case Cg = 'Cg';
     case Colon = '₡';
     case com = 'сом';
     case Cyrillic_Capital_De_Small_Ie_En = 'Ден';
@@ -151,6 +152,7 @@ enum CurrencySymbol: string {
             CurrencyAlpha3::CFP_Franc => null,
             CurrencyAlpha3::Cabo_Verde_Escudo => self::Dollar,
             CurrencyAlpha3::Canadian_Dollar => self::Dollar,
+            CurrencyAlpha3::Caribbean_Guilder => self::Cg,
             CurrencyAlpha3::Cayman_Islands_Dollar => self::Dollar,
             CurrencyAlpha3::Chilean_Peso => self::Dollar,
             CurrencyAlpha3::Codes_specifically_reserved_for_testing_purposes => null,
