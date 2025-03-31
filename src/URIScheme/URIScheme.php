@@ -94,6 +94,9 @@ enum URIScheme: string {
     case bitcoincash = 'bitcoincash';
 
     #[Status(URISchemeStatus::Provisional)]
+    case bl = 'bl';
+
+    #[Status(URISchemeStatus::Provisional)]
     case blob = 'blob';
 
     #[Status(URISchemeStatus::Provisional)]
