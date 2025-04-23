@@ -4974,6 +4974,7 @@ enum LanguageAlpha3Extensive: string {
     case Nanga_Dama_Dogon = 'nzz';
     case Orok = 'oaa';
     case Oroch = 'oac';
+    case Noakhali = 'oak';
     case Old_Aramaic_up_to_700_BCE = 'oar';
     case Old_Avar = 'oav';
     case Obispeno = 'obi';
