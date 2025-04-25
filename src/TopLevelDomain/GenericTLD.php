@@ -140,6 +140,8 @@ enum GenericTLD: string implements TLD {
     case beats = 'beats';
     case beauty = 'beauty';
     case beer = 'beer';
+
+    #[NotAssigned]
     case bentley = 'bentley';
     case berlin = 'berlin';
     case best = 'best';
