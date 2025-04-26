@@ -76,6 +76,7 @@ enum ScriptNumber: string {
     case Han_Hanzi_Kanji_Hanja = '500';
     case Han_Simplified_variant = '501';
     case Han_Traditional_variant = '502';
+    case Han_Traditional_variant_with_Latin_alias_for_Hant_Latn = '504';
     case Han_with_Bopomofo_alias_for_Han_Bopomofo = '503';
     case Hangul_Hangul_Hangeul = '286';
     case Hanifi_Rohingya = '167';
@@ -192,6 +193,7 @@ enum ScriptNumber: string {
     case Sidetic = '180';
     case SignWriting = '095';
     case Sinhala = '348';
+    case Small_Seal = '590';
     case Sogdian = '141';
     case Sora_Sompeng = '398';
     case Soyombo = '329';
