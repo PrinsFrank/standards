@@ -14,8 +14,6 @@ class CountrySubdivisionTest extends TestCase {
     public function testGetPartOfCountry(): void {
         foreach (CountrySubdivision::cases() as $countrySubdivision) {
             $countrySubdivision->getPartOfCountry();
-
-            $this->addToAssertionCount(1);
         }
     }
 

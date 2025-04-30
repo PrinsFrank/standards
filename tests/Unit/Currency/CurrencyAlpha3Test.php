@@ -18,24 +18,18 @@ class CurrencyAlpha3Test extends TestCase {
     public function testAllCasesCanBeConvertedToCurrencyNumeric(): void {
         foreach (CurrencyAlpha3::cases() as $case) {
             $case->toCurrencyNumeric();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testAllCasesCanBeConvertedToCurrencyName(): void {
         foreach (CurrencyAlpha3::cases() as $case) {
             $case->toCurrencyName();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testAllCasesHaveAccessToSymbolOrNull(): void {
         foreach (CurrencyAlpha3::cases() as $case) {
             $case->getSymbol();
-
-            $this->addToAssertionCount(1);
         }
     }
 
@@ -47,8 +41,6 @@ class CurrencyAlpha3Test extends TestCase {
         foreach (CurrencyAlpha3::cases() as $currencyAlpha3) {
             /** @phpstan-ignore method.resultUnused */
             $currencyAlpha3->getMinorUnits();
-
-            $this->addToAssertionCount(1);
         }
     }
 
@@ -56,8 +48,6 @@ class CurrencyAlpha3Test extends TestCase {
         foreach (CurrencyAlpha3::cases() as $currencyAlpha3) {
             /** @phpstan-ignore method.resultUnused */
             $currencyAlpha3->getCountriesAlpha2();
-
-            $this->addToAssertionCount(1);
         }
     }
 

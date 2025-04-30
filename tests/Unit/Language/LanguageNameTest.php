@@ -24,8 +24,6 @@ class LanguageNameTest extends TestCase {
     public function testSomeCasesCanBeConvertedToLanguageAlpha2(): void {
         foreach (LanguageName::cases() as $case) {
             $case->toLanguageAlpha2();
-
-            $this->addToAssertionCount(1);
         }
     }
 }

@@ -17,8 +17,6 @@ class CountryCodeTLDTest extends TestCase {
         foreach (CountryCodeTLD::cases() as $countryCodeTLD) {
             /** @phpstan-ignore method.resultUnused */
             $countryCodeTLD->getCountryAlpha2();
-
-            $this->addToAssertionCount(1);
         }
     }
 
@@ -26,8 +24,6 @@ class CountryCodeTLDTest extends TestCase {
         static::assertSame(CountryAlpha3::Netherlands, CountryCodeTLD::nl->getCountryAlpha3());
         foreach (CountryCodeTLD::cases() as $countryCodeTLD) {
             $countryCodeTLD->getCountryAlpha3();
-
-            $this->addToAssertionCount(1);
         }
     }
 
@@ -35,8 +31,6 @@ class CountryCodeTLDTest extends TestCase {
         static::assertSame(CountryNumeric::Netherlands, CountryCodeTLD::nl->getCountryNumeric());
         foreach (CountryCodeTLD::cases() as $countryCodeTLD) {
             $countryCodeTLD->getCountryNumeric();
-
-            $this->addToAssertionCount(1);
         }
     }
 

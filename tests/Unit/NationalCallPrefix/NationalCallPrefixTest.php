@@ -16,32 +16,24 @@ class NationalCallPrefixTest extends TestCase {
     public function testForCountryAlpha2(): void {
         foreach (CountryAlpha2::cases() as $countryAlpha2) {
             NationalCallPrefix::forCountry($countryAlpha2);
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testForCountryAlpha3(): void {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
             NationalCallPrefix::forCountry($countryAlpha3);
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testForCountryName(): void {
         foreach (CountryName::cases() as $countryName) {
             NationalCallPrefix::forCountry($countryName);
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testForCountryNumeric(): void {
         foreach (CountryNumeric::cases() as $countryNumeric) {
             NationalCallPrefix::forCountry($countryNumeric);
-
-            $this->addToAssertionCount(1);
         }
     }
 }

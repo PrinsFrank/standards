@@ -11,8 +11,6 @@ class URISchemeTest extends TestCase {
     public function testAllSchemesHaveStatus(): void {
         foreach (URIScheme::cases() as $scheme) {
             $scheme->getStatus();
-
-            $this->addToAssertionCount(1);
         }
     }
 }

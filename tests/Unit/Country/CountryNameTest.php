@@ -21,24 +21,18 @@ class CountryNameTest extends TestCase {
     public function testAllCasesCanBeConvertedToCountryAlpha2(): void {
         foreach (CountryName::cases() as $case) {
             $case->toCountryAlpha2();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testAllCasesCanBeConvertedToISO3166Alpha3(): void {
         foreach (CountryName::cases() as $case) {
             $case->toCountryAlpha3();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testAllCasesCanBeConvertedToISO3166Numeric(): void {
         foreach (CountryName::cases() as $case) {
             $case->toCountryNumeric();
-
-            $this->addToAssertionCount(1);
         }
     }
 
@@ -76,16 +70,12 @@ class CountryNameTest extends TestCase {
     public function testGetNationalCallPrefix(): void {
         foreach (CountryName::cases() as $countryName) {
             $countryName->getNationalCallPrefix();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testGetInternationalCallPrefix(): void {
         foreach (CountryName::cases() as $countryName) {
             $countryName->getInternationalCallPrefix();
-
-            $this->addToAssertionCount(1);
         }
     }
 
@@ -97,8 +87,6 @@ class CountryNameTest extends TestCase {
         foreach (CountryName::cases() as $countryName) {
             $currencies = $countryName->getCurrenciesAlpha3();
             if (in_array($countryName, [CountryName::Antarctica, CountryName::Palestine, CountryName::South_Georgia_South_Sandwich_Islands], true)) {
-                $this->addToAssertionCount(1);
-
                 continue;
             }
 
@@ -109,16 +97,12 @@ class CountryNameTest extends TestCase {
     public function testGetOfficialAndDeFactoLanguages(): void {
         foreach (CountryName::cases() as $countryName) {
             $countryName->getOfficialAndDeFactoLanguages();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testGetSubdivisions(): void {
         foreach (CountryName::cases() as $countryName) {
             $countryName->getSubdivisions();
-
-            $this->addToAssertionCount(1);
         }
         static::assertSame(
             [
