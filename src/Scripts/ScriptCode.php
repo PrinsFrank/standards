@@ -76,6 +76,7 @@ enum ScriptCode: string {
     case Han_Hanzi_Kanji_Hanja = 'Hani';
     case Han_Simplified_variant = 'Hans';
     case Han_Traditional_variant = 'Hant';
+    case Han_Traditional_variant_with_Latin_alias_for_Hant_Latn = 'Hntl';
     case Han_with_Bopomofo_alias_for_Han_Bopomofo = 'Hanb';
     case Hangul_Hangul_Hangeul = 'Hang';
     case Hanifi_Rohingya = 'Rohg';
@@ -192,6 +193,7 @@ enum ScriptCode: string {
     case Sidetic = 'Sidt';
     case SignWriting = 'Sgnw';
     case Sinhala = 'Sinh';
+    case Small_Seal = 'Seal';
     case Sogdian = 'Sogd';
     case Sora_Sompeng = 'Sora';
     case Soyombo = 'Soyo';
