@@ -755,6 +755,8 @@ enum GenericTLD: string implements TLD {
     case ladbrokes = 'ladbrokes';
     case lamborghini = 'lamborghini';
     case lamer = 'lamer';
+
+    #[NotAssigned]
     case lancaster = 'lancaster';
 
     #[NotAssigned]
