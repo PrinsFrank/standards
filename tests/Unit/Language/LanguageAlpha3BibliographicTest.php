@@ -21,24 +21,18 @@ class LanguageAlpha3BibliographicTest extends TestCase {
     public function testAllCasesCanBeConvertedToLanguageAlpha2(): void {
         foreach (LanguageAlpha3Bibliographic::cases() as $case) {
             $case->toLanguageAlpha2();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testAllCasesCanBeConvertedToLanguageAlpha3Terminology(): void {
         foreach (LanguageAlpha3Bibliographic::cases() as $case) {
             $case->toLanguageAlpha3Terminology();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testAllCasesCanBeConvertedToLanguageName(): void {
         foreach (LanguageAlpha3Bibliographic::cases() as $case) {
             $case->toLanguageName();
-
-            $this->addToAssertionCount(1);
         }
     }
 

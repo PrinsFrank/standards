@@ -12,24 +12,18 @@ class ScriptNameTest extends TestCase {
     public function testToScriptAlias(): void {
         foreach (ScriptName::cases() as $scriptName) {
             $scriptName->toScriptAlias();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testToScriptNumber(): void {
         foreach (ScriptName::cases() as $scriptName) {
             $scriptName->toScriptNumber();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testToScriptCode(): void {
         foreach (ScriptName::cases() as $scriptName) {
             $scriptName->toScriptCode();
-
-            $this->addToAssertionCount(1);
         }
     }
 

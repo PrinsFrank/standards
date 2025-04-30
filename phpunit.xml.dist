@@ -12,6 +12,7 @@
     beStrictAboutChangesToGlobalState="true"
     cacheDirectory="./cache/.phpunit.result.cache"
     requireCoverageMetadata="true"
+    beStrictAboutTestsThatDoNotTestAnything="false"
 >
     <testsuites>
         <testsuite name="Unit">

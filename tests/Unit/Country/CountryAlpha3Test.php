@@ -21,24 +21,18 @@ class CountryAlpha3Test extends TestCase {
     public function testAllCasesCanBeConvertedToCountryAlpha2(): void {
         foreach (CountryAlpha3::cases() as $case) {
             $case->toCountryAlpha2();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testAllCasesCanBeConvertedToCountryNumeric(): void {
         foreach (CountryAlpha3::cases() as $case) {
             $case->toCountryNumeric();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testAllCasesCanBeConvertedToCountryName(): void {
         foreach (CountryAlpha3::cases() as $case) {
             $case->toCountryName();
-
-            $this->addToAssertionCount(1);
         }
     }
 
@@ -80,16 +74,12 @@ class CountryAlpha3Test extends TestCase {
     public function testGetNationalCallPrefix(): void {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
             $countryAlpha3->getNationalCallPrefix();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testGetInternationalCallPrefix(): void {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
             $countryAlpha3->getInternationalCallPrefix();
-
-            $this->addToAssertionCount(1);
         }
     }
 
@@ -101,8 +91,6 @@ class CountryAlpha3Test extends TestCase {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
             $currencies = $countryAlpha3->getCurrenciesAlpha3();
             if (in_array($countryAlpha3, [CountryAlpha3::Antarctica, CountryAlpha3::Palestine, CountryAlpha3::South_Georgia_South_Sandwich_Islands], true)) {
-                $this->addToAssertionCount(1);
-
                 continue;
             }
 
@@ -113,16 +101,12 @@ class CountryAlpha3Test extends TestCase {
     public function testGetOfficialAndDeFactoLanguages(): void {
         foreach (CountryAlpha3::cases() as $countryAlpha2) {
             $countryAlpha2->getOfficialAndDeFactoLanguages();
-
-            $this->addToAssertionCount(1);
         }
     }
 
     public function testGetCountryCodeTLD(): void {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
             $countryAlpha3->getCountryCodeTLD();
-
-            $this->addToAssertionCount(1);
         }
     }
 
@@ -136,8 +120,6 @@ class CountryAlpha3Test extends TestCase {
     public function testGetSubdivisions(): void {
         foreach (CountryAlpha3::cases() as $countryAlpha3) {
             $countryAlpha3->getSubdivisions();
-
-            $this->addToAssertionCount(1);
         }
         static::assertSame(
             [
