@@ -29,7 +29,8 @@
         "phpstan/phpstan": "^2",
         "composer/composer": "^2.3",
         "prinsfrank/transliteration": "^1.0",
-        "phpstan/phpstan-strict-rules": "^2"
+        "phpstan/phpstan-strict-rules": "^2",
+        "prinsfrank/pdfparser": "2.0.0-alpha.1"
     },
     "scripts": {
         "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
