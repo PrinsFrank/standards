@@ -123,6 +123,7 @@ enum CurrencySymbol: string {
             CurrencyAlpha3::ADB_Unit_of_Account => null,
             CurrencyAlpha3::Afghani => self::Afghani,
             CurrencyAlpha3::Algerian_Dinar => self::Arabic_Dal_Jeem,
+            CurrencyAlpha3::Arab_Accounting_Dinar => null,
             CurrencyAlpha3::Argentine_Peso => self::Dollar,
             CurrencyAlpha3::Armenian_Dram => self::Armenian_Dram,
             CurrencyAlpha3::Aruban_Florin => self::f_With_Hook,

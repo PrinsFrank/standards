@@ -24,6 +24,7 @@ enum CurrencyName: string {
     case ADB_Unit_of_Account = 'ADB Unit of Account';
     case Afghani = 'Afghani';
     case Algerian_Dinar = 'Algerian Dinar';
+    case Arab_Accounting_Dinar = 'Arab Accounting Dinar';
     case Argentine_Peso = 'Argentine Peso';
     case Armenian_Dram = 'Armenian Dram';
     case Aruban_Florin = 'Aruban Florin';
