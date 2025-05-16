@@ -26,6 +26,7 @@ enum CurrencyNumeric: string {
     case ADB_Unit_of_Account = '965';
     case Afghani = '971';
     case Algerian_Dinar = '012';
+    case Arab_Accounting_Dinar = '396';
     case Argentine_Peso = '032';
     case Armenian_Dram = '051';
     case Aruban_Florin = '533';

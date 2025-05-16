@@ -129,7 +129,9 @@ class CurrencyMapping implements Mapping {
                 continue;
             }
 
-            if ($countryName === 'European_Union') {
+            if ($countryName === 'Arab_Monetary_Fund') {
+                continue;
+            } elseif ($countryName === 'European_Union') {
                 foreach (EuroZone::allAlpha2() as $euroZoneCountry) {
                     $getCurrenciesMethod->addMapping('self::' . $euroZoneCountry->name, 'CurrencyAlpha3::' . NameNormalizer::normalize($currencyName));
                     $getCountriesAlpha2Method->addMapping('self::' . NameNormalizer::normalize($currencyName), 'CountryAlpha2::' . $euroZoneCountry->name);

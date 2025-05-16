@@ -25,6 +25,7 @@ enum CurrencyAlpha3: string {
     case ADB_Unit_of_Account = 'XUA';
     case Afghani = 'AFN';
     case Algerian_Dinar = 'DZD';
+    case Arab_Accounting_Dinar = 'XAD';
     case Argentine_Peso = 'ARS';
     case Armenian_Dram = 'AMD';
     case Aruban_Florin = 'AWG';
@@ -255,6 +256,7 @@ enum CurrencyAlpha3: string {
         return match($this) {
             self::Afghani => 2,
             self::Algerian_Dinar => 2,
+            self::Arab_Accounting_Dinar => 2,
             self::Argentine_Peso => 2,
             self::Armenian_Dram => 2,
             self::Aruban_Florin => 2,
