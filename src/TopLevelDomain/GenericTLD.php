@@ -1070,6 +1070,8 @@ enum GenericTLD: string implements TLD {
     case poker = 'poker';
     case politie = 'politie';
     case porn = 'porn';
+
+    #[NotAssigned]
     case pramerica = 'pramerica';
     case praxi = 'praxi';
     case press = 'press';
