@@ -1120,6 +1120,12 @@ enum URIScheme: string {
     case wais = 'wais';
 
     #[Status(URISchemeStatus::Provisional)]
+    case wasm = 'wasm';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case wasm_js = 'wasm-js';
+
+    #[Status(URISchemeStatus::Provisional)]
     case wcr = 'wcr';
 
     #[Status(URISchemeStatus::Provisional)]
