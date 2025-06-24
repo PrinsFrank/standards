@@ -117,6 +117,7 @@ enum LanguageTagVariant: string {
     case The_Sai_Gon_variant_of_Vietnamese = 'saigon';
     case The_Solbica_dialect_of_Resian = 'solba';
     case The_Sotavento_dialect_group_of_Kabuverdianu = 'sotav';
+    case The_Viennese_dialect_of_German = 'viennese';
     case Tongyong_Pinyin_romanization = 'tongyong';
     case Traditional_German_orthography = '1901';
     case Ulster_dialect_of_Scots = 'ulster';
