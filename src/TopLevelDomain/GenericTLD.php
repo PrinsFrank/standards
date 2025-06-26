@@ -418,6 +418,9 @@ enum GenericTLD: string implements TLD {
     case education = 'education';
     case email = 'email';
     case emerck = 'emerck';
+
+    #[NotAssigned]
+    case emerson = 'emerson';
     case energy = 'energy';
     case engineer = 'engineer';
     case engineering = 'engineering';
