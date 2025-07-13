@@ -1,8 +1,0 @@
-name: 'Stale PR & Issues'
-on:
-  schedule:
-    - cron: '30 1 * * *'
-
-jobs:
-  stale:
-    uses: prinsfrank/CI-PHP/.github/workflows/stale.yml@main
