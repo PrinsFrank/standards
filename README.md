@@ -37,6 +37,7 @@ composer require prinsfrank/standards --dev
 [![Country](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
 [![Currency](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
 [![EU](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-eu.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-eu.yml)
+[![WTO](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-wto.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-wto.yml)
 [![HTTP method](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml)
 [![HTTP Status code](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml)
 [![Language Extensive](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml)
@@ -74,8 +75,10 @@ erDiagram
         class EEA
         class EFTA
         class EU
+        class EuroZone
         class NATO
         class Schengen
+        class WorldTradeOrganization
     }
     CountryCallingCode {
         class CountryCallingCode
@@ -260,8 +263,10 @@ erDiagram
     CountryAlpha2 }o--o| EEA: isMemberOf
     CountryAlpha2 }o--o| EFTA: isMemberOf
     CountryAlpha2 }o--o| EU: isMemberOf
+    CountryAlpha2 }o--o| EuroZone: isMemberOf
     CountryAlpha2 }o--o| NATO: isMemberOf
     CountryAlpha2 }o--o| Schengen: isMemberOf
+    CountryAlpha2 }o--o| WorldTradeOrganization: isMemberOf
     CountrySubdivision }o--|| CountryAlpha2: isPartOf
 ```
 
