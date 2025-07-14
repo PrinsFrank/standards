@@ -7,6 +7,8 @@ use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\Currency\MinorUnits\CurrencyMinorLowerLastAlpha3;
+use PrinsFrank\Standards\Currency\MinorUnits\CurrencyMinorUpperXAlpha3;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
@@ -230,6 +232,14 @@ enum CurrencyName: string {
 
     public function getSymbol(): ?CurrencySymbol {
         return CurrencySymbol::forCurrency($this);
+    }
+
+    public function getCurrencyMinorLowerLastAlpha3(): ?CurrencyMinorLowerLastAlpha3 {
+        return $this->toCurrencyAlpha3()->getCurrencyMinorLowerLastAlpha3();
+    }
+
+    public function getCurrencyMinorUpperXAlpha3(): ?CurrencyMinorUpperXAlpha3 {
+        return $this->toCurrencyAlpha3()->getCurrencyMinorUpperXAlpha3();
     }
 
     public function format(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string {

@@ -37,6 +37,20 @@ class CurrencyAlpha3Test extends TestCase {
         static::assertSame('xua', CurrencyAlpha3::ADB_Unit_of_Account->lowerCaseValue());
     }
 
+    public function testGetCurrencyMinorLowerLastAlpha3(): void {
+        foreach (CurrencyAlpha3::cases() as $case) {
+            /** @phpstan-ignore method.resultUnused */
+            $case->getCurrencyMinorLowerLastAlpha3();
+        }
+    }
+
+    public function testGetCurrencyMinorUpperXAlpha3(): void {
+        foreach (CurrencyAlpha3::cases() as $case) {
+            /** @phpstan-ignore method.resultUnused */
+            $case->getCurrencyMinorUpperXAlpha3();
+        }
+    }
+
     public function testGetMinorUnits(): void {
         foreach (CurrencyAlpha3::cases() as $currencyAlpha3) {
             /** @phpstan-ignore method.resultUnused */
