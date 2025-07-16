@@ -5,6 +5,7 @@ parameters:
         - src
         - tests
         - dev
+        - ./cache/.phpstan.result.cache/doc-code-snippets
     phpVersion: 80100 # Lowest currently supported version
     exceptions:
         check:
@@ -29,3 +30,4 @@ rules:
 includes:
     - phar://phpstan.phar/conf/bleedingEdge.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/prinsfrank/phpstan-doc-code-analyzer/extension.neon
