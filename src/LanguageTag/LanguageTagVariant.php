@@ -11,6 +11,7 @@ namespace PrinsFrank\Standards\LanguageTag;
 enum LanguageTagVariant: string {
     case ALA_LC_Romanization_1997_edition = 'alalc97';
     case Academic_governmental_variant_of_Belarusian_as = '1959acad';
+    case Akhmimic_dialect_of_Coptic = 'akhmimic';
     case Akuapem_Twi = 'akuapem';
     case Allattaasitaamut = 'kleinsch';
     case Americanist_Phonetic_Notation = 'fonnapa';
@@ -30,6 +31,7 @@ enum LanguageTagVariant: string {
     case Belarusian_in_Taraskievica_orthography = 'tarask';
     case Biscayan_dialect_of_Basque = 'biscayan';
     case Black_American_Sign_Language_dialect = 'blasl';
+    case Bohairic_dialect_of_Coptic = 'bohairic';
     case Boni_dialect = 'aluku';
     case Boontling = 'boont';
     case Bornholmsk = 'bornholm';
@@ -43,6 +45,7 @@ enum LanguageTagVariant: string {
     case Early_Modern_French = '1694acad';
     case Epic_Sanskrit = 'itihasa';
     case Fascia_standard_of_Ladin = 'fascia';
+    case Fayyumic_dialect_of_Coptic = 'fayyumic';
     case Fodom_standard_of_Ladin = 'fodom';
     case Gallo = 'gallo';
     case Gascon = 'gascon';
@@ -60,6 +63,8 @@ enum LanguageTagVariant: string {
     case Late_Middle_French_to_1606 = '1606nict';
     case Latvian_orthography_used_before_1920s_veca_druka = 'vecdruka';
     case Limousin = 'lemosin';
+    case Lycopolitan_alias_Subakhmimic_dialect_of_Coptic = 'lycopol';
+    case Mesokemic_alias_Oxyrhynchite_dialect_of_Coptic = 'mesokem';
     case Mistralian_or_Mistralian_inspired_Occitan_orthography = 'grmistr';
     case Modern_Volapuk = 'nulik';
     case Monotonic_Greek = 'monoton';
@@ -86,6 +91,7 @@ enum LanguageTagVariant: string {
     case Puter_idiom_of_Romansh = 'puter';
     case Rezijan = 'rozaj';
     case Rumantsch_Grischun = 'rumgr';
+    case Sahidic_dialect_of_Coptic = 'sahidic';
     case Scottish_Standard_English = 'scotland';
     case Scouse = 'scouse';
     case Serbian_with_Ekavian_pronunciation = 'ekavsk';
