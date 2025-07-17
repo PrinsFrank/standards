@@ -18,7 +18,7 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  */
 class LanguageExtensiveMapping implements Mapping {
     public static function url(): string {
-        return 'https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3_Latin1.tab';
+        return 'https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3.tab';
     }
 
     /** @throws DomElementNotFoundException */
