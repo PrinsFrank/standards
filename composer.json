@@ -44,6 +44,7 @@
         "detect-drivers": "bdi detect drivers",
         "update-spec": "PrinsFrank\\Standards\\Dev\\SpecUpdater::update",
         "update-spec-country": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\CountryMapping",
+        "update-spec-country-calling-code": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\CountryCallingCodeMapping",
         "update-spec-currency": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\CurrencyMapping",
         "update-spec-eu": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\EUMapping",
         "update-spec-http-methods": "@update-spec PrinsFrank\\Standards\\Dev\\DataSource\\Mapping\\HttpMethodMapping",

@@ -35,6 +35,7 @@ composer require prinsfrank/standards --dev
 ## Daily updated from their source
 
 [![Country](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
+[![Country Calling Code](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country-calling-code.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country-calling-code.yml)
 [![Currency](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
 [![EU](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-eu.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-eu.yml)
 [![WTO](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-wto.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-wto.yml)
