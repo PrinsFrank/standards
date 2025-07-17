@@ -8,6 +8,8 @@ use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\Currency\MinorUnits\CurrencyMinorLowerLastAlpha3;
+use PrinsFrank\Standards\Currency\MinorUnits\CurrencyMinorUpperXAlpha3;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
@@ -235,6 +237,24 @@ enum CurrencyAlpha3: string {
 
     public function lowerCaseValue(): string {
         return strtolower($this->value);
+    }
+
+    public function getCurrencyMinorLowerLastAlpha3(): ?CurrencyMinorLowerLastAlpha3 {
+        return match ($this) {
+            self::Pound_Sterling => CurrencyMinorLowerLastAlpha3::Penny_Sterling,
+            self::US_Dollar => CurrencyMinorLowerLastAlpha3::US_Cent,
+            self::Euro => CurrencyMinorLowerLastAlpha3::Euro_Cent,
+            default => null,
+        };
+    }
+
+    public function getCurrencyMinorUpperXAlpha3(): ?CurrencyMinorUpperXAlpha3 {
+        return match ($this) {
+            self::Pound_Sterling => CurrencyMinorUpperXAlpha3::Penny_Sterling,
+            self::US_Dollar => CurrencyMinorUpperXAlpha3::US_Cent,
+            self::Euro => CurrencyMinorUpperXAlpha3::Euro_Cent,
+            default => null,
+        };
     }
 
     public function format(float $amount, LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Bibliographic|LanguageAlpha3Extensive $language, CountryAlpha2|CountryAlpha3|CountryNumeric|null $country = null): ?string {

@@ -65,6 +65,18 @@ class CurrencyNumericTest extends TestCase {
         }
     }
 
+    public function testGetCurrencyMinorLowerLastAlpha3(): void {
+        foreach (CurrencyNumeric::cases() as $case) {
+            $case->getCurrencyMinorLowerLastAlpha3();
+        }
+    }
+
+    public function testGetCurrencyMinorUpperXAlpha3(): void {
+        foreach (CurrencyNumeric::cases() as $case) {
+            $case->getCurrencyMinorUpperXAlpha3();
+        }
+    }
+
     public function testFormat(): void {
         static::assertSame('€ 42,42', CurrencyNumeric::Euro->format(42.42, LanguageAlpha2::Dutch_Flemish, CountryAlpha2::Netherlands));
         static::assertSame('€ 42,42', CurrencyNumeric::Euro->format(42.42, LanguageAlpha3Bibliographic::Dutch_Flemish, CountryAlpha2::Netherlands));

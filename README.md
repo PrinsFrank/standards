@@ -91,6 +91,10 @@ erDiagram
         class CurrencyName
         class CurrencyNumeric
     }
+    CurrencyMinorUnits {
+        class CurrencyMinorLowerLastAlpha3
+        class CurrencyMinorUpperXAlpha3
+    }
     CurrencySymbol {
         class CurrencySymbol
     }
@@ -146,6 +150,7 @@ erDiagram
     Country }|--o{ NationalCallPrefix: ""
     Country }|--o{ InternationalCallPrefix: ""
     Currency }|--o| CurrencySymbol: ""
+    Currency }|--o| CurrencyMinorUnits: ""
     LanguageTag ||--o{ LanguageTag: ""
     Language }|--o{ LanguageTag: ""
     Script |o--o{ LanguageTag: ""
