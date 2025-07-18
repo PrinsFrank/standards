@@ -12,6 +12,8 @@ use RuntimeException;
 use stdClass;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
+use TypeError;
+use ValueError;
 
 /**
  * @template TDataSet of object{countryCallingCode: int, countryName: string}&stdClass
@@ -55,15 +57,20 @@ class CountryCallingCodeMapping implements Mapping {
         return $dataSet;
     }
 
+    /** @throws TypeError|ValueError */
     public static function toEnumMapping(array $dataSet): array {
         $countryCallingCode = new SpecFile(CountryCallingCode::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
-            if (in_array($dataRow->countryName, ['Spare code', 'Reserved', 'Reserved - Maritime Mobile Service Applications', 'Reserved - reservation currently under investigation', 'Reserved for future global service', 'Reserved for national non-commercial purposes'], true)) {
+            if (in_array($dataRow->countryName, ['Spare code', 'Reserved - Maritime Mobile Service Applications', 'Reserved - reservation currently under investigation', 'Reserved for future global service', 'Reserved for national non-commercial purposes'], true) || $dataRow->countryCallingCode === 0) {
                 continue;
             }
 
-            if ($dataRow->countryName === 'French Polynesia (Territoire français d\'outre-mer)') {
-                $dataRow->countryName = 'French Polynesia (Territoire français doutre-mer)'; // Name was transliterated differently previously
+            foreach ([689, 970] as $renamedCountry) {
+                if ($dataRow->countryCallingCode !== $renamedCountry) {
+                    continue;
+                }
+
+                $dataRow->countryName = CountryCallingCode::from(970)->name; // Name was transliterated differently previously
             }
 
             $countryCallingCode->addCase(new EnumCase($dataRow->countryName, $dataRow->countryCallingCode, []));
