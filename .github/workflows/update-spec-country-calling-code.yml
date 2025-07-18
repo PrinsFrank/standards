@@ -1,4 +1,4 @@
-name: Daily Country update
+name: Daily Country Calling Code update
 
 on:
   workflow_dispatch:
