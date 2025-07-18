@@ -58,8 +58,12 @@ class CountryCallingCodeMapping implements Mapping {
     public static function toEnumMapping(array $dataSet): array {
         $countryCallingCode = new SpecFile(CountryCallingCode::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
-            if ($dataRow->countryName === 'Spare code') {
+            if (in_array($dataRow->countryName, ['Spare code', 'Reserved', 'Reserved - Maritime Mobile Service Applications', 'Reserved - reservation currently under investigation', 'Reserved for future global service', 'Reserved for national non-commercial purposes'], true)) {
                 continue;
+            }
+
+            if ($dataRow->countryName === 'French Polynesia (Territoire français d\'outre-mer)') {
+                $dataRow->countryName = 'French Polynesia (Territoire français doutre-mer)'; // Name was transliterated differently previously
             }
 
             $countryCallingCode->addCase(new EnumCase($dataRow->countryName, $dataRow->countryCallingCode, []));
