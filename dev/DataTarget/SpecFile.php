@@ -106,8 +106,11 @@ class SpecFile {
             throw new EnumNotFoundException();
         }
 
-        preg_match('/\n(\n\s{4}\/\*\*.*)?\n\s{4}public /u', $enumContent, $matches, PREG_OFFSET_CAPTURE, $startEnum + 1);
+        preg_match('/\n(?:\n\s{4}\/\*\*.*)?\n\s{4}public /u', $enumContent, $matches, PREG_OFFSET_CAPTURE, $startEnum + 1);
         $firstMethodPos = $matches[0][1] ?? null;
+        if ($firstMethodPos !== null) {
+            $firstMethodPos = mb_strlen(substr($enumContent, 0, $firstMethodPos)); // Convert to multibyte offset
+        }
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1);
         $keyedCases = [];
         foreach ($this->cases as $case) {
