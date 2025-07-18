@@ -106,7 +106,8 @@ class SpecFile {
             throw new EnumNotFoundException();
         }
 
-        $firstMethodPos = mb_strpos($enumContent, ' public ');
+        preg_match('/\n(\n\s{4}\/\*\*.*)?\n\s{4}public /u', $enumContent, $matches, PREG_OFFSET_CAPTURE, $startEnum + 1);
+        $firstMethodPos = $matches[0][1] ?? null;
         $newEnumContent = mb_substr($enumContent, 0, $startEnum + 1);
         $keyedCases = [];
         foreach ($this->cases as $case) {
@@ -118,7 +119,7 @@ class SpecFile {
         foreach ($deduplicatedCases as $key => $case) {
             $newEnumContent .= $case->toString($this->FQN, '    ', $key === 0);
         }
-        $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== false ? ($firstMethodPos - 5) : ($endEnumPos - 1));
+        $newEnumContent .= mb_substr($enumContent, $firstMethodPos !== null ? $firstMethodPos : ($endEnumPos - 1));
 
         return $this->putContent($newEnumContent);
     }
