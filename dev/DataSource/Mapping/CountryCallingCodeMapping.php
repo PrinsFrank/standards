@@ -2,6 +2,7 @@
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
+use PrinsFrank\PdfParser\Exception\PdfParserException;
 use PrinsFrank\PdfParser\PdfParser;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
@@ -21,6 +22,7 @@ class CountryCallingCodeMapping implements Mapping {
         return 'https://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-E.164D-2016-PDF-E.pdf';
     }
 
+    /** @throws PdfParserException|RuntimeException */
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $document = (new PdfParser())
             ->parseFile(self::url());
