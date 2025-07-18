@@ -21,6 +21,7 @@ jobs:
       matrix:
         spec:
           - "country"
+          - "country-calling-code"
           - "currency"
           - "eu"
           - "http-methods"
@@ -32,6 +33,7 @@ jobs:
           - "scripts"
           - "tld"
           - "uri-scheme"
+          - "wto"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

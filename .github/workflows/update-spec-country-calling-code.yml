@@ -1,0 +1,16 @@
+name: Daily Country Calling Code update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '55 17 * * *'
+
+env:
+  GH_TOKEN: ${{ github.token }}
+  COMPOSER_ROOT_VERSION: dev-main # see https://getcomposer.org/doc/articles/troubleshooting.md#dependencies-on-the-root-package
+
+jobs:
+  update-specs:
+    uses: ./.github/workflows/reusable-update-spec.yml
+    with:
+      type: country-calling-code

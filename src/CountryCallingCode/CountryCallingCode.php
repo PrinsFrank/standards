@@ -17,7 +17,6 @@ enum CountryCallingCode: int {
     case Afghanistan = 93;
     case Albania_Republic_of = 355;
     case Algeria_Peoples_Democratic_Republic_of = 213;
-    case Integrated_numbering_plan = 1;
     case Andorra_Principality_of = 376;
     case Angola_Republic_of = 244;
     case Argentine_Republic = 54;
@@ -35,7 +34,6 @@ enum CountryCallingCode: int {
     case Benin_Republic_of = 229;
     case Bhutan_Kingdom_of = 975;
     case Bolivia_Plurinational_State_of = 591;
-    case Curacau_Bonaire_Sint_Eustatius_and_Saba = 599;
     case Bosnia_and_Herzegovina = 387;
     case Botswana_Republic_of = 267;
     case Brazil_Federative_Republic_of = 55;
@@ -58,6 +56,7 @@ enum CountryCallingCode: int {
     case Cote_dIvoire_Republic_of = 225;
     case Croatia_Republic_of = 385;
     case Cuba = 53;
+    case Curacau_Bonaire_Sint_Eustatius_and_Saba = 599;
     case Cyprus_Republic_of = 357;
     case Czech_Republic = 420;
     case Democratic_Peoples_Republic_of_Korea = 850;
@@ -79,7 +78,7 @@ enum CountryCallingCode: int {
     case France = 33;
     case French_Departments_and_Territories_in_the_Indian_Ocean = 262;
     case French_Guiana_French_Department_of = 594;
-    case French_Polynesia_Territoire_francais_doutre_mer = 698;
+    case French_Polynesia_Territoire_francais_doutre_mer = 689;
     case Gabonese_Republic = 241;
     case Gambia_Republic_of_the = 220;
     case Georgia = 995;
@@ -92,8 +91,8 @@ enum CountryCallingCode: int {
     case Group_of_countries_shared_code = 388;
     case Guadeloupe_French_Department_of = 590;
     case Guatemala_Republic_of = 502;
-    case Guinea_Republic_of = 224;
     case Guinea_Bissau_Republic_of = 245;
+    case Guinea_Republic_of = 224;
     case Guyana = 592;
     case Haiti_Republic_of = 509;
     case Honduras_Republic_of = 504;
@@ -103,6 +102,7 @@ enum CountryCallingCode: int {
     case India_Republic_of = 91;
     case Indonesia_Republic_of = 62;
     case Inmarsat_SNAC = 870;
+    case Integrated_numbering_plan = 1;
     case International_Freephone_Service = 800;
     case International_Networks_shared_code = 882;
     case International_Networks_shared_code_2 = 883;
@@ -205,6 +205,7 @@ enum CountryCallingCode: int {
     case Taiwan_China = 886;
     case Tajikistan_Republic_of = 992;
     case Tanzania_United_Republic_of = 255;
+    case Telecommunications_for_Disaster_Relief = 888;
     case Thailand = 66;
     case The_Former_Yugoslav_Republic_of_Macedonia = 389;
     case Timor_Leste_Democratic_Republic_of = 670;
@@ -231,7 +232,6 @@ enum CountryCallingCode: int {
     case Yemen_Republic_of = 967;
     case Zambia_Republic_of = 260;
     case Zimbabwe_Republic_of = 263;
-    case Telecommunications_for_Disaster_Relief = 888;
 
     /** @return list<self> */
     public static function forCountry(CountryAlpha2|CountryAlpha3|CountryName|CountryNumeric $country): array {

@@ -152,7 +152,7 @@ class CountryMapping implements Mapping {
 
     /**
      * @param list<TDataSet> $dataSet
-     *@throws TypeError
+     * @throws TypeError
      * @throws ValueError
      * @throws TransliterationException
      * @throws \PrinsFrank\Transliteration\Exception\TransliterationException
