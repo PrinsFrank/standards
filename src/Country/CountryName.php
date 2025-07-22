@@ -42,7 +42,7 @@ enum CountryName: string {
     case Australia = 'Australia';
     case Austria = 'Austria';
     case Azerbaijan = 'Azerbaijan';
-    case Bahamas = 'Bahamas (the)';
+    case Bahamas_The = 'Bahamas (The)';
     case Bahrain = 'Bahrain';
     case Bangladesh = 'Bangladesh';
     case Barbados = 'Barbados';
@@ -275,6 +275,9 @@ enum CountryName: string {
     case Yemen = 'Yemen';
     case Zambia = 'Zambia';
     case Zimbabwe = 'Zimbabwe';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Bahamas = 'Bahamas (the)';
 
     public function toCountryAlpha2(): CountryAlpha2 {
         return BackedEnum::fromName(CountryAlpha2::class, $this->name);
