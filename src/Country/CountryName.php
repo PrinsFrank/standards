@@ -42,7 +42,7 @@ enum CountryName: string {
     case Australia = 'Australia';
     case Austria = 'Austria';
     case Azerbaijan = 'Azerbaijan';
-    case Bahamas = 'Bahamas (the)';
+    case Bahamas = 'Bahamas (The)';
     case Bahrain = 'Bahrain';
     case Bangladesh = 'Bangladesh';
     case Barbados = 'Barbados';
