@@ -706,6 +706,9 @@ enum URIScheme: string {
     case ms_useractivityset = 'ms-useractivityset';
 
     #[Status(URISchemeStatus::Provisional)]
+    case ms_uup = 'ms-uup';
+
+    #[Status(URISchemeStatus::Provisional)]
     case ms_virtualtouchpad = 'ms-virtualtouchpad';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -746,6 +749,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Permanent)]
     case mtqp = 'mtqp';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case mtrust = 'mtrust';
 
     #[Status(URISchemeStatus::Provisional)]
     case mumble = 'mumble';
