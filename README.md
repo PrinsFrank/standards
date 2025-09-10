@@ -666,8 +666,8 @@ public function foo(HttpMethod $httpMethod) {} // Use spec as typehint to enforc
 use PrinsFrank\Standards\Http\HttpStatusCode;
 
 HttpStatusCode::from(404);       // HttpStatusCode::Not_Found
-HttpStatusCode::from(404->value; // 404
-HttpStatusCode::from(404->name;  // Not_Found
+HttpStatusCode::from(404)->value; // 404
+HttpStatusCode::from(404)->name;  // Not_Found
 HttpStatusCode::Not_Found;       // HttpStatusCode::Not_Found
 
 public function foo(HttpStatusCode $httpStatusCode) {} // Use spec as typehint to enforce valid value
