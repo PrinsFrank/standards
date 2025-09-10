@@ -31,7 +31,7 @@
         "prinsfrank/transliteration": "^1.0",
         "phpstan/phpstan-strict-rules": "^2",
         "prinsfrank/pdfparser": "^2.1",
-        "prinsfrank/phpstan-doc-code-analyzer": "^0.0.2"
+        "prinsfrank/phpstan-doc-code-analyzer": "^0.0.3"
     },
     "scripts": {
         "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
