@@ -25,6 +25,13 @@ parameters:
     reportWrongPhpDocTypeInVarTag: true
     reportAnyTypeWideningInVarTag: true
     checkMissingOverrideMethodAttribute: true
+    ignoreErrors:
+        - identifier: expr.resultUnused
+          paths:
+              - ./cache/.phpstan.result.cache/doc-code-snippets/*.php
+        - identifier: method.resultUnused
+          paths:
+              - ./cache/.phpstan.result.cache/doc-code-snippets/*.php
 rules:
     - PrinsFrank\Standards\Dev\PHPStan\Rules\SourceTagRule
 includes:
