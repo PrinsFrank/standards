@@ -26,12 +26,17 @@ parameters:
     reportAnyTypeWideningInVarTag: true
     checkMissingOverrideMethodAttribute: true
     ignoreErrors:
-        - identifier: expr.resultUnused
-          paths:
-              - ./cache/.phpstan.result.cache/doc-code-snippets/*.php
-        - identifier: method.resultUnused
-          paths:
-              - ./cache/.phpstan.result.cache/doc-code-snippets/*.php
+        -
+            identifier: expr.resultUnused
+            paths:
+                - ./cache/.phpstan.result.cache/doc-code-snippets/*.php
+        -
+            identifier: method.resultUnused
+            paths:
+                - ./cache/.phpstan.result.cache/doc-code-snippets/*.php
+    docCodeAnalyzer:
+        paths:
+            - README.md
 rules:
     - PrinsFrank\Standards\Dev\PHPStan\Rules\SourceTagRule
 includes:
