@@ -222,8 +222,8 @@ CountryAlpha3::from('NLD')->getFlagEmoji();                      // '🇳🇱' (
 CountryAlpha3::from('NLD')->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 CountryAlpha3::from('NLD')->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 
-CountryAlpha3::from('NLD')->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
-CountryAlpha3::from('NLD')->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
+CountryAlpha3::from('NLD')->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederland'
+CountryAlpha3::from('NLD')->getNameInLanguage(LanguageAlpha2::English);       // 'Netherlands'
 
 CountryAlpha3::from('NLD')->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 
@@ -309,8 +309,8 @@ $valueAlpha2->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 $valueAlpha2->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 
-$valueAlpha2->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
-$valueAlpha2->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
+$valueAlpha2->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederland'
+$valueAlpha2->getNameInLanguage(LanguageAlpha2::English);       // 'Netherlands'
 
 $valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 ```
@@ -347,8 +347,8 @@ $valueAlpha3->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 $valueAlpha3->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 
-$valueAlpha3->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
-$valueAlpha3->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
+$valueAlpha3->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederland'
+$valueAlpha3->getNameInLanguage(LanguageAlpha2::English);       // 'Netherlands'
 
 $valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 ```
@@ -386,8 +386,8 @@ $valueNumeric->getCurrenciesAlpha3();               // [CurrencyAlpha3::Euro]
 
 $valueNumeric->getOfficialAndDeFactoLanguages();    // [LanguageAlpha2::Dutch_Flemish]
 
-$valueNumeric->getNameInLanguage(LanguageAlpha2::Dutch_Flemish): // 'Nederland'
-$valueNumeric->getNameInLanguage(LanguageAlpha2::English):       // 'Netherlands'
+$valueNumeric->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederland'
+$valueNumeric->getNameInLanguage(LanguageAlpha2::English);       // 'Netherlands'
 
 $valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 ```
