@@ -1111,6 +1111,8 @@ enum GenericTLD: string implements TLD {
     case realty = 'realty';
     case recipes = 'recipes';
     case red = 'red';
+
+    #[NotAssigned]
     case redstone = 'redstone';
     case redumbrella = 'redumbrella';
     case rehab = 'rehab';
