@@ -227,7 +227,7 @@ CountryAlpha3::from('NLD')->getNameInLanguage(LanguageAlpha2::English);       //
 
 CountryAlpha3::from('NLD')->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 
-public function foo(CountryAlpha2 $countryAlpha2) {}             // Use spec as typehint to enforce valid value
+function foo(CountryAlpha2 $countryAlpha2) {}             // Use spec as typehint to enforce valid value
 
 ```
 
@@ -465,7 +465,7 @@ CountryCallingCode::from(7)->getCountriesAlpha2();  // [CountryAlpha2::Kazakhsta
 
 CountryCallingCode::forCountry(CountryAlpha2::Netherlands); // [CountryCallingCode::Netherlands_Kingdom_of_the]
 
-public function foo(CountryCallingCode $countryCallingCode) {} // Use spec as typehint to enforce valid value
+function foo(CountryCallingCode $countryCallingCode) {} // Use spec as typehint to enforce valid value
 ```
 
 ## Currency (ISO4217)
@@ -510,7 +510,7 @@ CurrencyAlpha3::Euro->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::
 
 CurrencyAlpha3::Norwegian_Krone->getCountriesAlpha2();     // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
 
-public function foo(CurrencyAlpha3 $currencyAlpha3) {}     // Use spec as typehint to enforce valid value
+function foo(CurrencyAlpha3 $currencyAlpha3) {}     // Use spec as typehint to enforce valid value
 ```
 
 <details>
@@ -653,7 +653,7 @@ HttpMethod::from('POST')->value; // 'POST'
 HttpMethod::from('POST')->name;  // Post
 HttpMethod::Post;                // HttpMethod::Post
 
-public function foo(HttpMethod $httpMethod) {} // Use spec as typehint to enforce valid value
+function foo(HttpMethod $httpMethod) {} // Use spec as typehint to enforce valid value
 ```
 
 ## HTTP Status Codes
@@ -670,7 +670,7 @@ HttpStatusCode::from(404)->value; // 404
 HttpStatusCode::from(404)->name;  // Not_Found
 HttpStatusCode::Not_Found;       // HttpStatusCode::Not_Found
 
-public function foo(HttpStatusCode $httpStatusCode) {} // Use spec as typehint to enforce valid value
+function foo(HttpStatusCode $httpStatusCode) {} // Use spec as typehint to enforce valid value
 ```
 
 There can be status codes that are temporarily assigned. Those are marked with the `TemporaryAssignment` attribute. To check if a specific case is temporarily assigned, you can use the `isTemporaryAssignment` method which returns a boolean, or `getTemporaryAssignmentExpiresAt` which returns a DateTimeImmutable or null.
@@ -699,7 +699,7 @@ InternationalCallPrefix::forCountry(CountryAlpha3::Netherlands);  // Internation
 InternationalCallPrefix::forCountry(CountryNumeric::Netherlands); // InternationalCallPrefix::_00
 InternationalCallPrefix::forCountry(CountryName::Netherlands);    // InternationalCallPrefix::_00
 
-public function foo(InternationalCallPrefix $internationalCallPrefix) {} // Use spec as typehint to enforce valid value
+function foo(InternationalCallPrefix $internationalCallPrefix) {} // Use spec as typehint to enforce valid value
 ```
 
 ## Language (ISO639)
@@ -746,7 +746,7 @@ LanguageAlpha3Extensive::from('dse');                               // LanguageA
 LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
 LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
 
-public function foo(LanguageAlpha2 $languageAlpha2);                // Use spec as typehint to enforce valid value
+function foo(LanguageAlpha2 $languageAlpha2);                // Use spec as typehint to enforce valid value
 ```
 
 <details>
@@ -836,7 +836,7 @@ LanguageTag::fromString('de-CH-1901')->regionSubtag;          // CountryAlpha2::
 LanguageAlpha2::Dutch_Flemish->toLanguageTag(); // 'nl'
 LanguageAlpha2::German->toLanguageTag(regionSubtag: CountryAlpha2::Switzerland, variantSubtag: [LanguageTagVariant::Traditional_German_orthography]); // 'de-CH-1901'
 
-public function foo(LanguageTag $languageTag): {} // Use spec as typehint to enforce valid value
+function foo(LanguageTag $languageTag): {} // Use spec as typehint to enforce valid value
 ```
 
 ## Geographic regions (M49)
@@ -859,7 +859,7 @@ GeographicRegion::from('150')->getAllSubRegions();      // [GeographicRegion::Ea
 GeographicRegion::from('150')->getDirectSubCountries(); // []
 GeographicRegion::from('150')->getAllSubCountries();    // [CountryNumeric::Belarus, CountryNumeric::Bulgaria, ...]
 
-public function foo(GeographicRegion $geographicRegion) {} // Use spec as typehint to enforce valid value
+function foo(GeographicRegion $geographicRegion) {} // Use spec as typehint to enforce valid value
 ```
 
 ## National Call Prefixes (ITU-T E.164)
@@ -885,7 +885,7 @@ NationalCallPrefix::forCountry(CountryAlpha3::Netherlands);  // NationalCallPref
 NationalCallPrefix::forCountry(CountryNumeric::Netherlands); // NationalCallPrefix::_0
 NationalCallPrefix::forCountry(CountryName::Netherlands);    // NationalCallPrefix::_0
 
-public function foo(NationalCallPrefix $nationalCallPrefix) {} // Use spec as typehint to enforce valid value
+function foo(NationalCallPrefix $nationalCallPrefix) {} // Use spec as typehint to enforce valid value
 ```
 
 ## Scripts
@@ -914,7 +914,7 @@ ScriptAlias::allForString('еюeuеюευ');         // [ScriptAlias::Cyrillic, 
 ScriptAlias::hasMultipleForString('еюeuеюευ'); // true
 ScriptAlias::mostCommonInString('еюeuеюευ');   // ScriptAlias::Cyrillic
 
-public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
+function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
 ```
 
 <details>
@@ -938,7 +938,7 @@ ScriptAlias::allForString('еюeuеюευ');               // [ScriptAlias::Cyri
 ScriptAlias::hasMultipleForString('еюeuеюευ');       // true
 ScriptAlias::mostCommonInString('еюeuеюευ');         // ScriptAlias::Cyrillic
 
-public function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
+function foo(ScriptAlias $scriptAlias) {} // Use spec as typehint to enforce valid value
 ```
 
 PHP has regex support for detecting scripts using the following notation:
@@ -972,7 +972,7 @@ ScriptCode::allForString('еюeuеюευ');         // [ScriptCode::Cyrillic, Sc
 ScriptCode::hasMultipleForString('еюeuеюευ'); // true
 ScriptCode::mostCommonInString('еюeuеюευ');   // ScriptCode::Cyrillic
 
-public function foo(ScriptCode $scriptCode) {} // Use spec as typehint to enforce valid value
+function foo(ScriptCode $scriptCode) {} // Use spec as typehint to enforce valid value
 ```
 
 ### ScriptName
@@ -992,7 +992,7 @@ ScriptName::allForString('еюeuеюευ');         // [ScriptName::Cyrillic, Sc
 ScriptName::hasMultipleForString('еюeuеюευ'); // true
 ScriptName::mostCommonInString('еюeuеюευ');   // ScriptName::Cyrillic
 
-public function foo(ScriptName $scriptName) {} // Use spec as typehint to enforce valid value
+function foo(ScriptName $scriptName) {} // Use spec as typehint to enforce valid value
 ```
 
 ### ScriptNumber
@@ -1012,7 +1012,7 @@ ScriptNumber::allForString('еюeuеюευ');         // [ScriptNumber::Cyrillic
 ScriptNumber::hasMultipleForString('еюeuеюευ'); // true
 ScriptNumber::mostCommonInString('еюeuеюευ');   // ScriptNumber::Cyrillic
 
-public function foo(ScriptNumber $scriptNumber) {} // Use spec as typehint to enforce valid value
+function foo(ScriptNumber $scriptNumber) {} // Use spec as typehint to enforce valid value
 ```
 
 </details>
@@ -1047,7 +1047,7 @@ CountryCodeTLD::from('nl')->getCountryAlpha2();  // CountryAlpha2::Netherlands
 CountryCodeTLD::from('nl')->getCountryAlpha3();  // CountryAlpha3::Netherlands
 CountryCodeTLD::from('nl')->getCountryNumeric(); // CountryNumeric::Netherlands
 
-public function foo(CountryCodeTLD $countryCodeTLD) {} // Use spec as typehint to enforce valid value
+function foo(CountryCodeTLD $countryCodeTLD) {} // Use spec as typehint to enforce valid value
 ```
 
 ### GenericRestrictedTLD
@@ -1063,7 +1063,7 @@ GenericRestrictedTLD::from('name')->value;         // 'name'
 GenericRestrictedTLD::from('name')->name;          // 'name'
 GenericRestrictedTLD::from('name')->isAssigned();  // true
 
-public function foo(GenericRestrictedTLD $genericRestrictedTLD) {} // Use spec as typehint to enforce valid value
+function foo(GenericRestrictedTLD $genericRestrictedTLD) {} // Use spec as typehint to enforce valid value
 ```
 
 ### GenericTLD
@@ -1079,7 +1079,7 @@ GenericTLD::from('aaa')->value;         // 'aaa'
 GenericTLD::from('aaa')->name;          // 'aaa'
 GenericTLD::from('aaa')->isAssigned();  // true
 
-public function foo(GenericTLD $genericTLD) {} // Use spec as typehint to enforce valid value
+function foo(GenericTLD $genericTLD) {} // Use spec as typehint to enforce valid value
 ```
 
 ### InfrastructureTLD
@@ -1095,7 +1095,7 @@ InfrastructureTLD::from('arpa')->value;         // 'arpa'
 InfrastructureTLD::from('arpa')->name;          // 'arpa'
 InfrastructureTLD::from('arpa')->isAssigned();  // true
 
-public function foo(InfrastructureTLD $infrastructureTLD) {} // Use spec as typehint to enforce valid value
+function foo(InfrastructureTLD $infrastructureTLD) {} // Use spec as typehint to enforce valid value
 ```
 
 ### SponsoredTLD
@@ -1111,7 +1111,7 @@ SponsoredTLD::from('aero')->value;         // 'aero'
 SponsoredTLD::from('aero')->name;          // 'aero'
 SponsoredTLD::from('aero')->isAssigned();  // true
 
-public function foo(SponsoredTLD $sponsoredTLD) {} // Use spec as typehint to enforce valid value
+function foo(SponsoredTLD $sponsoredTLD) {} // Use spec as typehint to enforce valid value
 ```
 
 ### TestTLD
@@ -1127,5 +1127,5 @@ TestTLD::from('テスト')->value;       // 'テスト'
 TestTLD::from('テスト')->name;        // 'tesuto_katakana'
 TestTLD::from('テスト')->isAssigned() // false
 
-public function foo(TestTLD $testTLD) {} // Use spec as typehint to enforce valid value
+function foo(TestTLD $testTLD) {} // Use spec as typehint to enforce valid value
 ```
