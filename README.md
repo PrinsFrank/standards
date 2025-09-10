@@ -191,6 +191,8 @@ Country group membership can be checked by calling the `isMemberOf` method, supp
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryNumeric;
+use PrinsFrank\Standards\Country\Groups\EU;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
 
 CountryAlpha2::from('NL');                                      // CountryAlpha2::Netherlands
 CountryNumeric::from('528');                                    // CountryNumeric::Netherlands
@@ -210,7 +212,7 @@ CountryAlpha2::Aruba->getParentCountry();                       // CountryAlpha2
 CountryAlpha2::Netherlands->getSubCountries();                  // [CountryAlpha2::Aruba, CountryAlpha2::Curacao, CountryAlpha2::Sint_Maarten_Dutch_part, CountryAlpha2::Bonaire_Sint_Eustatius_and_Saba]
 
 CountryAlpha3::from('NLD')->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
-CountryAlpha3::from('NLD')->getCountryCallingCodes()[0]->value; // 31
+CountryAlpha3::from('NLD')->getCountryCallingCodes()[0]->value ?? null; // 31
 
 CountryAlpha3::from('NLD')->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 CountryAlpha3::from('NLD')->getInternationalCallPrefix()->value; // '00'
@@ -281,7 +283,7 @@ erDiagram
 ```php
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\Groups\EU;
-use PrinsFrank\Standards\Country\Groups\Brics;
+use PrinsFrank\Standards\Country\Groups\BRICS;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 
 $valueAlpha2 = CountryAlpha2::from('NL');         // CountryAlpha2::Netherlands
@@ -292,10 +294,10 @@ $valueAlpha3 = $valueAlpha2->toCountryAlpha3();   // CountryAlpha3::Netherlands
 $valueNumeric = $valueAlpha2->toCountryNumeric(); // CountryNumeric::Netherlands
 
 $isMemberOfEu = $valueAlpha2->isMemberOf(EU::class);       // true
-$isMemberOfBrics = $valueAlpha2->isMemberOf(Brics::class); // false
+$isMemberOfBRICS = $valueAlpha2->isMemberOf(BRICS::class); // false
 
 $valueAlpha2->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
-$valueAlpha2->getCountryCallingCodes()[0]->value; // 31
+$valueAlpha2->getCountryCallingCodes()[0]->value ?? null; // 31
 
 $valueAlpha2->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueAlpha2->getInternationalCallPrefix()->value; // '00'
@@ -320,7 +322,7 @@ $valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 ```php
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\Groups\EU;
-use PrinsFrank\Standards\Country\Groups\Brics;
+use PrinsFrank\Standards\Country\Groups\BRICS;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 
 $valueAlpha3 = CountryAlpha3::from('NLD');        // CountryAlpha3::Netherlands
@@ -330,10 +332,10 @@ $valueAlpha2 = $valueAlpha3->toCountryAlpha2();   // CountryAlpha2::Netherlands
 $valueNumeric = $valueAlpha3->toCountryNumeric(); // CountryNumeric::Netherlands
 
 $isMemberOfEu = $valueAlpha3->isMemberOf(EU::class);       // true
-$isMemberOfBrics = $valueAlpha3->isMemberOf(Brics::class); // false
+$isMemberOfBRICS = $valueAlpha3->isMemberOf(BRICS::class); // false
 
 $valueAlpha3->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
-$valueAlpha3->getCountryCallingCodes()[0]->value; // 31
+$valueAlpha3->getCountryCallingCodes()[0]->value ?? null; // 31
 
 $valueAlpha3->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueAlpha3->getInternationalCallPrefix()->value; // '00'
@@ -358,7 +360,7 @@ $valueAlpha2->formatNumber(42.42, LanguageAlpha2::Dutch_Flemish); // '42,42'
 ```php
 use PrinsFrank\Standards\Country\CountryNumeric;
 use PrinsFrank\Standards\Country\Groups\EU;
-use PrinsFrank\Standards\Country\Groups\Brics;
+use PrinsFrank\Standards\Country\Groups\BRICS;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
 
 $valueNumeric = CountryNumeric::from('528');     // CountryNumeric::Netherlands
@@ -369,10 +371,10 @@ $valueAlpha2 = $valueNumeric->toCountryAlpha2(); // CountryAlpha2::Netherlands
 $valueAlpha3 = $valueNumeric->toCountryAlpha3(); // CountryAlpha3::Netherlands
 
 $isMemberOfEu = $valueNumeric->isMemberOf(EU::class);       // true
-$isMemberOfBrics = $valueNumeric->isMemberOf(Brics::class); // false
+$isMemberOfBRICS = $valueNumeric->isMemberOf(BRICS::class); // false
 
 $valueNumeric->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
-$valueNumeric->getCountryCallingCodes()[0]->value; // 31
+$valueNumeric->getCountryCallingCodes()[0]->value ?? null; // 31
 
 $valueNumeric->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueNumeric->getInternationalCallPrefix()->value; // '00'
@@ -412,20 +414,20 @@ $subdivision->getSameAsCountry();                            // null
 ```php
 use PrinsFrank\Standards\Country\CountryName;
 use PrinsFrank\Standards\Country\Groups\EU;
-use PrinsFrank\Standards\Country\Groups\Brics;
+use PrinsFrank\Standards\Country\Groups\BRICS;
 
 $valueName = CountryName::from('Netherlands (Kingdom of the)'); // CountryName::Netherlands
 $value = $valueName->value;                                     // 'Netherlands (Kingdom of the)'
-$valueName = $valueName->name;                                  // 'Netherlands'
+$valueName->name;                                               // 'Netherlands'
 $valueAlpha2 = $valueName->toCountryAlpha2();                   // CountryAlpha2::Netherlands
 $valueAlpha3 = $valueName->toCountryAlpha3();                   // CountryAlpha3::Netherlands
 $valueNumeric = $valueName->toCountryNumeric();                 // CountryNumeric::Netherlands
 
 $isMemberOfEu = $valueName->isMemberOf(EU::class);       // true
-$isMemberOfBrics = $valueName->isMemberOf(Brics::class); // false
+$isMemberOfBrics = $valueName->isMemberOf(BRICS::class); // false
 
 $valueName->getCountryCallingCodes();           // [CountryCallingCode::Netherlands_Kingdom_of_the]
-$valueName->getCountryCallingCodes()[0]->value; // 31
+$valueName->getCountryCallingCodes()[0]->value ?? null; // 31
 
 $valueName->getInternationalCallPrefix();        // InternationalCallPrefix::_00
 $valueName->getInternationalCallPrefix()->value; // '00'
@@ -484,13 +486,14 @@ use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\Currency\CurrencyName;
 use PrinsFrank\Standards\Currency\CurrencyNumeric;
 use PrinsFrank\Standards\Currency\CurrencySymbol;
+use PrinsFrank\Standards\Language\LanguageAlpha2;
 
 CurrencyAlpha3::from('EUR');                               // CurrencyAlpha3::Euro
 CurrencyAlpha3::from('EUR')->value;                        // 'EUR'
-CurrencyAlpha3::from('EUR')->lowercaseValue();             // 'eur'
+CurrencyAlpha3::from('EUR')->lowerCaseValue();             // 'eur'
 CurrencyAlpha3::from('EUR')->toCurrencyName()->value;      // 'Euro'
 CurrencyAlpha3::from('EUR')->getSymbol();                  // CurrencySymbol::Euro
-CurrencyAlpha3::from('EUR')->getSymbol()->value;           // '€'
+CurrencyAlpha3::from('EUR')->getSymbol()?->value;          // '€'
 CurrencyAlpha3::from('EUR')->toCurrencyNumeric()->value;   // '978'
 CurrencyAlpha3::from('EUR')->getMinorUnits();              // 2
 CurrencyNumeric::from('978');                              // CurrencyNumeric::Euro
@@ -505,8 +508,8 @@ CurrencySymbol::forCurrency(CurrencyName::Euro);           // CurrencySymbol::Eu
 CurrencySymbol::forCurrency(CurrencyNumeric::from('978')); // CurrencySymbol::Euro
 CurrencyAlpha3::Euro;                                      // CurrencyAlpha3::Euro
 
-CurrencyAlpha3::Euro->format(42.42, CountryAlpha2::Netherlands);                                // '€ 42,42'
-CurrencyAlpha3::Euro->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutch_Flemish); // '€ 42,42'
+CurrencyAlpha3::Euro->format(42.42, LanguageAlpha2::Dutch_Flemish);                        // '€ 42,42'
+CurrencyAlpha3::Euro->format(42.42, LanguageAlpha2::Dutch_Flemish, CountryAlpha2::Netherlands); // '€ 42,42'
 
 CurrencyAlpha3::Norwegian_Krone->getCountriesAlpha2();     // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
 
@@ -566,18 +569,18 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
 
 $currencyAlpha3 = CurrencyAlpha3::from('EUR');         // CurrencyAlpha3::Euro
 $value = $currencyAlpha3->value;                       // 'EUR'
-$value = $currencyAlpha3->lowercaseValue();            // 'eur'
+$value = $currencyAlpha3->lowerCaseValue();            // 'eur'
 $valueName = $currencyAlpha3->name;                    // 'Euro'
 $minorUnits = $currencyAlpha3->getMinorUnits();        // 2
 $valueNumeric = $currencyAlpha3->toCurrencyNumeric();  // CurrencyNumeric::Euro
 $valueName = $currencyAlpha3->toCurrencyName();        // CurrencyName::Euro
 $valueName = $currencyAlpha3->toCurrencyName()->value; // 'Euro'
 $valueSymbol = $currencyAlpha3->getSymbol();           // CurrencySymbol::Euro
-$valueSymbol = $currencyAlpha3->getSymbol()->value;    // '€'
-$countries = $currencyAlpha2->getCountriesAlpha2();    // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
+$valueSymbol = $currencyAlpha3->getSymbol()?->value;    // '€'
+$countries = $currencyAlpha3->getCountriesAlpha2();    // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
 
-$currencyAlpha3->format(42.42, CountryAlpha2::Netherlands);                                // '€ 42,42'
-$currencyAlpha3->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutch_Flemish); // '€ 42,42'
+$currencyAlpha3->format(42.42, LanguageAlpha2::Dutch_Flemish);                             // '€ 42,42'
+$currencyAlpha3->format(42.42, LanguageAlpha2::Dutch_Flemish, CountryAlpha2::Netherlands); // '€ 42,42'
 ```
 
 ### CurrencyNumeric
@@ -597,11 +600,11 @@ $valueAlpha3 = $currencyNumeric->toCurrencyAlpha3();    // CurrencyAlpha3::Euro
 $valueName = $currencyNumeric->toCurrencyName();        // CurrencyName::Euro
 $valueName = $currencyNumeric->toCurrencyName()->value; // 'Euro'
 $valueSymbol = $currencyNumeric->getSymbol();           // CurrencySymbol::Euro
-$valueSymbol = $currencyNumeric->getSymbol()->value;    // '€'
+$valueSymbol = $currencyNumeric->getSymbol()?->value;   // '€'
 $countries = $currencyNumeric->getCountriesAlpha2();    // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
 
-$currencyNumeric->format(42.42, CountryAlpha2::Netherlands);                                // '€ 42,42'
-$currencyNumeric->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutch_Flemish); // '€ 42,42'
+$currencyNumeric->format(42.42, LanguageAlpha2::Dutch_Flemish);                             // '€ 42,42'
+$currencyNumeric->format(42.42, LanguageAlpha2::Dutch_Flemish, CountryAlpha2::Netherlands); // '€ 42,42'
 ```
 
 ### CurrencySymbol
@@ -610,10 +613,10 @@ $currencyNumeric->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutc
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\Currency\CurrencySymbol;
 
-$currencySymbol = CurrencySymbol::from('€');                         // CurrencySymbol::Euro
-$currencySymbol =  $currencySymbol->name;                            // 'Euro'
-$currencySymbol =  $currencySymbol->value;                           // '€'
-$currencySymbol = CurrencySymbol::forCurrency(CurrencyAlpha3::Euro); // CurrencySymbol::Euro
+$currencySymbol = CurrencySymbol::from('€');      // CurrencySymbol::Euro
+$currencySymbol->name;                            // 'Euro'
+$currencySymbol->value;                           // '€'
+CurrencySymbol::forCurrency(CurrencyAlpha3::Euro); // CurrencySymbol::Euro
 ```
 
 ### CurrencyName
@@ -632,8 +635,8 @@ $valueAlpha3 = $currencyName->toCurrencyAlpha3();  // CurrencyAlpha3::Euro
 $valueAlpha3 = $currencyName->toCurrencyNumeric(); // CurrencyNumeric::Euro
 $countries = $currencyName->getCountriesAlpha2();  // [CountryAlpha2::Bouvet_Island, CountryAlpha2::Norway, CountryAlpha2::Svalbard_Jan_Mayen]
 
-$currencyName->format(42.42, CountryAlpha2::Netherlands);                                // '€ 42,42'
-$currencyName->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutch_Flemish); // '€ 42,42'
+$currencyName->format(42.42, LanguageAlpha2::Dutch_Flemish);                                // '€ 42,42'
+$currencyName->format(42.42, LanguageAlpha2::Dutch_Flemish, CountryAlpha2::Netherlands); // '€ 42,42'
 ```
 
 
@@ -725,6 +728,7 @@ As you see, the Bibliographic and Terminology specifications have an identical n
 
 ```php
 use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\Language\LanguageAlpha3Bibliographic;
 use PrinsFrank\Standards\Language\LanguageAlpha3Terminology;
 use PrinsFrank\Standards\Language\LanguageAlpha3Extensive;
 
@@ -732,9 +736,9 @@ LanguageAlpha2::from('nl');                                         // LanguageA
 LanguageAlpha2::from('nl')->value;                                  // 'nl'
 LanguageAlpha2::from('nl')->name;                                   // 'Dutch_Flemish'
 LanguageAlpha2::from('nl')->toLanguageAlpha3Bibliographic();        // LanguageAlpha3Bibliographic::Dutch_Flemish
-LanguageAlpha2::from('nl')->toLanguageAlpha3Bibliographic()->value; // 'dut'
+LanguageAlpha2::from('nl')->toLanguageAlpha3Bibliographic()?->value; // 'dut'
 LanguageAlpha2::from('nl')->toLanguageAlpha3Terminology();          // LanguageAlpha3Terminology::Dutch_Flemish
-LanguageAlpha2::from('nl')->toLanguageAlpha3Terminology()->value;   // 'nld'
+LanguageAlpha2::from('nl')->toLanguageAlpha3Terminology()?->value;   // 'nld'
 LanguageAlpha2::from('nl')->toLanguageName()->value;                // 'Dutch; Flemish'
 
 LanguageAlpha3Terminology::from('nld');                             // LanguageAlpha3Terminology::Dutch_Flemish
@@ -762,8 +766,8 @@ $value = $valueAlpha2->value;                                              // 'n
 $valueName = $valueAlpha2->name;                                           // 'Dutch_Flemish'
 $valueAlpha3Bibliographic = $valueAlpha2->toLanguageAlpha3Bibliographic(); // LanguageAlpha3Bibliographic::Dutch_Flemish
 $valueAlpha3Terminology = $valueAlpha2->toLanguageAlpha3Terminology();     // LanguageAlpha3Terminology::Dutch_Flemish
-$valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
-$valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
+$valueAlpha3Terminology?->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
+$valueAlpha3Terminology?->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
 ```
 
 ### LanguageAlpha3Bibliographic (ISO 639-2)
@@ -777,8 +781,8 @@ $value = $valueAlpha3->value;                                          // 'dut'
 $valueName = $valueAlpha3->name;                                       // 'Dutch_Flemish'
 $valueAlpha2 = $valueAlpha3->toLanguageAlpha2();                       // LanguageAlpha2::Dutch_Flemish
 $valueAlpha3Terminology = $valueAlpha3->toLanguageAlpha3Terminology(); // LanguageAlpha3Terminology::Dutch_Flemish
-$valueAlpha3Bibliographic->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
-$valueAlpha3Bibliographic->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
+$valueAlpha3->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
+$valueAlpha3->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
 ```
 
 ### LanguageAlpha3Terminology (ISO 639-2)
@@ -792,8 +796,8 @@ $value = $valueAlpha3->value;                                              // 'n
 $valueName = $valueAlpha3->name;                                           // 'Dutch_Flemish'
 $valueAlpha2 = $valueAlpha3->toLanguageAlpha2();                           // LanguageAlpha2::Dutch_Flemish
 $valueAlpha3Bibliographic = $valueAlpha3->toLanguageAlpha3Bibliographic(); // LanguageAlpha3Bibliographic::Dutch_Flemish
-$valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
-$valueAlpha3Terminology->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
+$valueAlpha3->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
+$valueAlpha3->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
 ```
 
 ### LanguageAlpha3Extensive (ISO 639-3)
@@ -816,12 +820,12 @@ $valueName = $valueAlpha3->name;                     // 'Dutch'
 
 ```php
 use PrinsFrank\Standards\Country\CountryAlpha2;
-use PrinsFrank\Standards\Language\LanguageTag;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
+use PrinsFrank\Standards\LanguageTag\LanguageTag;
 use PrinsFrank\Standards\LanguageTag\LanguageTagVariant;
 
 LanguageTag::tryFromString('');            // null
-LanguageTag::fromString();                 // InvalidArgumentException
+LanguageTag::fromString('foo');            // InvalidArgumentException
 LanguageTag::fromString('nl');             // LanguageTag(LanguageAlpha2::Dutch_Flemish);
 LanguageTag::fromString('i-enochian');     // LanguageTag(SingleCharacterSubtag::GRANDFATHERED, privateUseSubtag: 'enochian')
 LanguageTag::fromString('zh-Hant');        // LanguageTag(LanguageAlpha2::Chinese, script: ScriptSubtag::Han_Traditional_variant)
@@ -1106,7 +1110,7 @@ Where a TLD is marked as unmanaged by IANA it is marked as deprecated.
 use PrinsFrank\Standards\TopLevelDomain\SponsoredTLD;
 
 SponsoredTLD::from('aero');                // SponsoredTLD::aero
-SponsoredTLD::arpa;                        // SponsoredTLD::aero
+SponsoredTLD::aero;                        // SponsoredTLD::aero
 SponsoredTLD::from('aero')->value;         // 'aero'
 SponsoredTLD::from('aero')->name;          // 'aero'
 SponsoredTLD::from('aero')->isAssigned();  // true
