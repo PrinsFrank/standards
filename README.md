@@ -610,10 +610,10 @@ $currencyNumeric->format(42.42, CountryAlpha2::Netherlands, LanguageAlpha2::Dutc
 use PrinsFrank\Standards\Currency\CurrencyAlpha3;
 use PrinsFrank\Standards\Currency\CurrencySymbol;
 
-$currencySymbol = CurrencySymbol::from('€');                        // CurrencySymbol::Euro
-$currencySymbol =  $currencySymbol->name;                           // 'Euro'
-$currencySymbol =  $currencySymbol->value;                          // '€'
-$currencySymbol = CurrencySymbol::forCurrency(CurrencyAlpha3::Euro) // CurrencySymbol::Euro
+$currencySymbol = CurrencySymbol::from('€');                         // CurrencySymbol::Euro
+$currencySymbol =  $currencySymbol->name;                            // 'Euro'
+$currencySymbol =  $currencySymbol->value;                           // '€'
+$currencySymbol = CurrencySymbol::forCurrency(CurrencyAlpha3::Euro); // CurrencySymbol::Euro
 ```
 
 ### CurrencyName
@@ -746,7 +746,7 @@ LanguageAlpha3Extensive::from('dse');                               // LanguageA
 LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::Dutch_Flemish); // 'Nederlands'
 LanguageAlpha2::Dutch_Flemish->getNameInLanguage(LanguageAlpha2::English);       // 'Dutch'
 
-function foo(LanguageAlpha2 $languageAlpha2);                // Use spec as typehint to enforce valid value
+function foo(LanguageAlpha2 $languageAlpha2) {}                // Use spec as typehint to enforce valid value
 ```
 
 <details>
@@ -836,7 +836,7 @@ LanguageTag::fromString('de-CH-1901')->regionSubtag;          // CountryAlpha2::
 LanguageAlpha2::Dutch_Flemish->toLanguageTag(); // 'nl'
 LanguageAlpha2::German->toLanguageTag(regionSubtag: CountryAlpha2::Switzerland, variantSubtag: [LanguageTagVariant::Traditional_German_orthography]); // 'de-CH-1901'
 
-function foo(LanguageTag $languageTag): {} // Use spec as typehint to enforce valid value
+function foo(LanguageTag $languageTag) {} // Use spec as typehint to enforce valid value
 ```
 
 ## Geographic regions (M49)
@@ -1121,11 +1121,11 @@ All Test TLDs are always unmanaged and are thus never marked as deprecated.
 ```php
 use PrinsFrank\Standards\TopLevelDomain\TestTLD;
 
-TestTLD::from('テスト');              // TestTLD::tesuto_katakana
-TestTLD::tesuto_katakana;            // TestTLD::tesuto_katakana
-TestTLD::from('テスト')->value;       // 'テスト'
-TestTLD::from('テスト')->name;        // 'tesuto_katakana'
-TestTLD::from('テスト')->isAssigned() // false
+TestTLD::from('テスト');               // TestTLD::tesuto_katakana
+TestTLD::tesuto_katakana;             // TestTLD::tesuto_katakana
+TestTLD::from('テスト')->value;        // 'テスト'
+TestTLD::from('テスト')->name;         // 'tesuto_katakana'
+TestTLD::from('テスト')->isAssigned(); // false
 
 function foo(TestTLD $testTLD) {} // Use spec as typehint to enforce valid value
 ```
