@@ -74,7 +74,6 @@ enum LanguageName: string {
     case Bislama = 'Bislama';
     case Blin_Bilin = 'Blin; Bilin';
     case Blissymbols_Blissymbolics_Bliss = 'Blissymbols; Blissymbolics; Bliss';
-    case Bokmal_Norwegian_Norwegian_Bokmal = 'Bokmål, Norwegian; Norwegian Bokmål';
     case Bosnian = 'Bosnian';
     case Braj = 'Braj';
     case Breton = 'Breton';
@@ -178,7 +177,6 @@ enum LanguageName: string {
     case Gothic = 'Gothic';
     case Grebo = 'Grebo';
     case Greek_Ancient_to_1453 = 'Greek, Ancient (to 1453)';
-    case Greek_Modern_1453 = 'Greek, Modern (1453-)';
     case Guarani = 'Guarani';
     case Gujarati = 'Gujarati';
     case Gwich_in = 'Gwich\'in';
@@ -307,6 +305,7 @@ enum LanguageName: string {
     case Mi_kmaq_Micmac = 'Mi\'kmaq; Micmac';
     case Minangkabau = 'Minangkabau';
     case Mirandese = 'Mirandese';
+    case Modern_Greek_1453 = 'Modern Greek (1453-)';
     case Mohawk = 'Mohawk';
     case Moksha = 'Moksha';
     case Mon_Khmer_languages = 'Mon-Khmer languages';
@@ -320,11 +319,9 @@ enum LanguageName: string {
     case Nahuatl_languages = 'Nahuatl languages';
     case Nauru = 'Nauru';
     case Navajo_Navaho = 'Navajo; Navaho';
-    case Ndebele_North_North_Ndebele = 'Ndebele, North; North Ndebele';
-    case Ndebele_South_South_Ndebele = 'Ndebele, South; South Ndebele';
     case Ndonga = 'Ndonga';
     case Neapolitan = 'Neapolitan';
-    case Nepal_Bhasa_Newari = 'Nepal Bhasa; Newari';
+    case Nepal_Bhasa_Newar_Newari = 'Nepal Bhasa; Newar; Newari';
     case Nepali = 'Nepali (macrolanguage)';
     case Nias = 'Nias';
     case Niger_Kordofanian_languages = 'Niger-Kordofanian languages';
@@ -334,10 +331,12 @@ enum LanguageName: string {
     case Nogai = 'Nogai';
     case Norse_Old = 'Norse, Old';
     case North_American_Indian_languages = 'North American Indian languages';
+    case North_Ndebele = 'North Ndebele';
     case Northern_Frisian = 'Northern Frisian';
     case Northern_Sami = 'Northern Sami';
     case Norwegian = 'Norwegian';
-    case Norwegian_Nynorsk_Nynorsk_Norwegian = 'Norwegian Nynorsk; Nynorsk, Norwegian';
+    case Norwegian_Bokmal = 'Norwegian Bokmål';
+    case Norwegian_Nynorsk = 'Norwegian Nynorsk';
     case Nubian_languages = 'Nubian languages';
     case Nyamwezi = 'Nyamwezi';
     case Nyankole = 'Nyankole';
@@ -418,6 +417,7 @@ enum LanguageName: string {
     case Sorbian_languages = 'Sorbian languages';
     case Sotho_Southern = 'Sotho, Southern';
     case South_American_Indian_languages = 'South American Indian languages';
+    case South_Ndebele = 'South Ndebele';
     case Southern_Altai = 'Southern Altai';
     case Southern_Sami = 'Southern Sami';
     case Spanish_Castilian = 'Spanish; Castilian';
@@ -501,6 +501,24 @@ enum LanguageName: string {
     case Zhuang_Chuang = 'Zhuang; Chuang';
     case Zulu = 'Zulu';
     case Zuni = 'Zuni';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Bokmal_Norwegian_Norwegian_Bokmal = 'Bokmål, Norwegian; Norwegian Bokmål';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Greek_Modern_1453 = 'Greek, Modern (1453-)';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Ndebele_North_North_Ndebele = 'Ndebele, North; North Ndebele';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Ndebele_South_South_Ndebele = 'Ndebele, South; South Ndebele';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Nepal_Bhasa_Newari = 'Nepal Bhasa; Newari';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Norwegian_Nynorsk_Nynorsk_Norwegian = 'Norwegian Nynorsk; Nynorsk, Norwegian';
 
     public function toLanguageAlpha2(): LanguageAlpha2|null {
         return BackedEnum::tryFromName(LanguageAlpha2::class, $this->name);
