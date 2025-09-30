@@ -363,6 +363,9 @@ enum URIScheme: string {
     #[Status(URISchemeStatus::Provisional)]
     case hyper = 'hyper';
 
+    #[Status(URISchemeStatus::Provisional)]
+    case i0 = 'i0';
+
     #[Status(URISchemeStatus::Permanent)]
     case iax = 'iax';
 
