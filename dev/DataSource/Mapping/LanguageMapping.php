@@ -30,6 +30,12 @@ class LanguageMapping implements Mapping {
         'Nepali (macrolanguage)' => 'Nepali',
         'Oriya (macrolanguage)' => 'Oriya',
         'Swahili (macrolanguage)' => 'Swahili',
+        'Norwegian Bokmål' => 'Bokmål, Norwegian; Norwegian Bokmål',
+        'Norwegian Nynorsk' => 'Norwegian Nynorsk; Nynorsk, Norwegian',
+        'North Ndebele' => 'Ndebele, North; North Ndebele',
+        'South Ndebele' => 'Ndebele, South; South Ndebele',
+        'Modern Greek (1453-)' => 'Greek, Modern (1453-)',
+        'Nepal Bhasa; Newar; Newari' => 'Nepal Bhasa; Newari',
     ];
 
     public static function url(): string {
