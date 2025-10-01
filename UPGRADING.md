@@ -38,7 +38,7 @@ A typo in the name of Global Mobile Satellite System has been fixed. If you were
 These classes should not be used outside of this package, as the method signature might change between minor versions. As such, these classes are now marked internal. If you use the classes in your code you can continue to do so at your own risk, or you might want to remove their usages.
 
 
-# Ugrading from 1.x to 2.x
+# Upgrading from 1.x to 2.x
 
 As this package is getting adopted and more people start using it, I got some valid feedback on the readability of the standards in codebases.
 - If you want to use a country code in code, you need to navigate the namespaces or know the ISO code of the spec for the country codes
