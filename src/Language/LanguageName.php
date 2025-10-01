@@ -74,7 +74,7 @@ enum LanguageName: string {
     case Bislama = 'Bislama';
     case Blin_Bilin = 'Blin; Bilin';
     case Blissymbols_Blissymbolics_Bliss = 'Blissymbols; Blissymbolics; Bliss';
-    case Bokmal_Norwegian_Norwegian_Bokmal = 'Bokmål, Norwegian; Norwegian Bokmål';
+    case Bokmal_Norwegian_Norwegian_Bokmal = 'Norwegian Bokmål';
     case Bosnian = 'Bosnian';
     case Braj = 'Braj';
     case Breton = 'Breton';
@@ -178,7 +178,7 @@ enum LanguageName: string {
     case Gothic = 'Gothic';
     case Grebo = 'Grebo';
     case Greek_Ancient_to_1453 = 'Greek, Ancient (to 1453)';
-    case Greek_Modern_1453 = 'Greek, Modern (1453-)';
+    case Greek_Modern_1453 = 'Modern Greek (1453-)';
     case Guarani = 'Guarani';
     case Gujarati = 'Gujarati';
     case Gwich_in = 'Gwich\'in';
@@ -320,11 +320,11 @@ enum LanguageName: string {
     case Nahuatl_languages = 'Nahuatl languages';
     case Nauru = 'Nauru';
     case Navajo_Navaho = 'Navajo; Navaho';
-    case Ndebele_North_North_Ndebele = 'Ndebele, North; North Ndebele';
-    case Ndebele_South_South_Ndebele = 'Ndebele, South; South Ndebele';
+    case Ndebele_North_North_Ndebele = 'North Ndebele';
+    case Ndebele_South_South_Ndebele = 'South Ndebele';
     case Ndonga = 'Ndonga';
     case Neapolitan = 'Neapolitan';
-    case Nepal_Bhasa_Newari = 'Nepal Bhasa; Newari';
+    case Nepal_Bhasa_Newari = 'Nepal Bhasa; Newar; Newari';
     case Nepali = 'Nepali (macrolanguage)';
     case Nias = 'Nias';
     case Niger_Kordofanian_languages = 'Niger-Kordofanian languages';
@@ -337,7 +337,7 @@ enum LanguageName: string {
     case Northern_Frisian = 'Northern Frisian';
     case Northern_Sami = 'Northern Sami';
     case Norwegian = 'Norwegian';
-    case Norwegian_Nynorsk_Nynorsk_Norwegian = 'Norwegian Nynorsk; Nynorsk, Norwegian';
+    case Norwegian_Nynorsk_Nynorsk_Norwegian = 'Norwegian Nynorsk';
     case Nubian_languages = 'Nubian languages';
     case Nyamwezi = 'Nyamwezi';
     case Nyankole = 'Nyankole';
