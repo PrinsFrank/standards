@@ -178,7 +178,7 @@ class CountryMapping implements Mapping {
                 $subdivision->names = array_values(array_filter($subdivision->names, fn (object|null $value) => $value !== null));
                 $countrySubdivision->addCase(
                     new EnumCase(
-                        $name = sprintf('%s %s %s', CountryAlpha2::from($dataRow->alpha2)->getNameInLanguage(LanguageAlpha2::English), $subdivision->category, $subdivision->names[0]->name ?? throw new ShouldNotHappenException('This subdivision has no name(s)')),
+                        $name = sprintf('%s %s %s', CountryAlpha2::from($dataRow->alpha2)->getNameInLanguage(LanguageAlpha2::English) ?? '', $subdivision->category, $subdivision->names[0]->name ?? throw new ShouldNotHappenException('This subdivision has no name(s)')),
                         $subdivision->code,
                         [...array_map(static function (object $nameInfo) {
                             return new EnumCaseAttribute(Name::class, [$nameInfo->name, array_filter($nameInfo->languages, fn (object|null $value) => $value !== null), $nameInfo->romanization_system, $nameInfo->local_variant]);
