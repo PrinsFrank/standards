@@ -207,6 +207,9 @@ enum URIScheme: string {
     #[Status(URISchemeStatus::Provisional)]
     case dlna_playsingle = 'dlna-playsingle';
 
+    #[Status(URISchemeStatus::Provisional)]
+    case dnp = 'dnp';
+
     #[Status(URISchemeStatus::Permanent)]
     case dns = 'dns';
 
