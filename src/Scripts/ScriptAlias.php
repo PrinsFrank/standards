@@ -428,7 +428,6 @@ enum ScriptAlias: string {
             }
 
             $scripts[$scriptName] ??= 0;
-            /** @phpstan-ignore offsetAccess.notFound */
             $scripts[$scriptName] += array_sum(array_map(fn (string|null $scriptMatchChars) => mb_strlen($scriptMatchChars ?? ''), $scriptMatchesArray));
         }
 
