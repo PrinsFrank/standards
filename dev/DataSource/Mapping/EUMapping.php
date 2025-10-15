@@ -27,6 +27,11 @@ class EUMapping implements Mapping {
 
     /** @throws NoSuchElementException|TimeoutException */
     public static function toDataSet(Client $client, Crawler $crawler): array {
+        try {
+            $client->waitFor('//a[contains(@class, "wt-ecl-button")]');
+            $crawler->filterXPath('//a[contains(@class, "wt-ecl-button")]')->click();
+        } catch (TimeoutException) {}
+
         $urls = [self::url()];
         foreach ($crawler->filterXPath('//a[contains(@class, "ecl-pagination__link")]')->getIterator() as $paginationLink) {
             if ($paginationLink->isEnabled() && (int) $paginationLink->getText() !== 0) {
