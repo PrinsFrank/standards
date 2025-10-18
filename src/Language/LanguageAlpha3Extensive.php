@@ -5038,7 +5038,6 @@ enum LanguageAlpha3Extensive: string {
     case Okpe_Northwestern_Edo = 'okx';
     case Old_Khmer = 'okz';
     case Walungge = 'ola';
-    case Oli_Bodiman = 'olb';
     case Mochi = 'old';
     case Olekha = 'ole';
     case Olkol = 'olk';
@@ -5110,7 +5109,6 @@ enum LanguageAlpha3Extensive: string {
     case Ormu = 'orz';
     case Osage = 'osa';
     case Oscan = 'osc';
-    case Digor_Ossetic = 'osd';
     case Osing = 'osi';
     case Old_Sundanese = 'osn';
     case Ososo = 'oso';
@@ -5781,7 +5779,6 @@ enum LanguageAlpha3Extensive: string {
     case Sheni = 'scv';
     case Sha = 'scw';
     case Sicel = 'scx';
-    case Shaetlan = 'scz';
     case Toraja_Sa_dan = 'sda';
     case Shabak = 'sdb';
     case Sassarese_Sardinian = 'sdc';
@@ -7675,6 +7672,7 @@ enum LanguageAlpha3Extensive: string {
     case Yogad = 'yog';
     case Yonaguni = 'yoi';
     case Yokuts = 'yok';
+    case Yola = 'yol';
     case Yombe = 'yom';
     case Yongkom = 'yon';
     case Yoruba = 'yor';
@@ -7952,7 +7950,13 @@ enum LanguageAlpha3Extensive: string {
     case Nathembo = 'nte';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
-    case Yola = 'yol';
+    case Oli_Bodiman = 'olb';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Digor_Ossetic = 'osd';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Shaetlan = 'scz';
 
     public function getNameForCountry(CountryAlpha2 $country): ?string {
         return $country->getNameInLanguage($this);
