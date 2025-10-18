@@ -469,6 +469,9 @@ enum URIScheme: string {
     case lid = 'lid';
 
     #[Status(URISchemeStatus::Provisional)]
+    case linkid = 'linkid';
+
+    #[Status(URISchemeStatus::Provisional)]
     case lorawan = 'lorawan';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -1166,6 +1169,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case wyciwyg = 'wyciwyg';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case xcompute = 'xcompute';
 
     #[Status(URISchemeStatus::Permanent)]
     case xcon = 'xcon';
