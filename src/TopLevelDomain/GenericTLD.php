@@ -403,6 +403,8 @@ enum GenericTLD: string implements TLD {
 
     #[NotAssigned]
     case duck = 'duck';
+
+    #[NotAssigned]
     case dunlop = 'dunlop';
 
     #[NotAssigned]
