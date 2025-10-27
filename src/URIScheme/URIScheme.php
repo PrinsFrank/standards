@@ -259,6 +259,9 @@ enum URIScheme: string {
     case ens = 'ens';
 
     #[Status(URISchemeStatus::Provisional)]
+    case esim = 'esim';
+
+    #[Status(URISchemeStatus::Provisional)]
     case ethereum = 'ethereum';
 
     #[Status(URISchemeStatus::Permanent)]
