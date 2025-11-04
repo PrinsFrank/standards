@@ -244,6 +244,7 @@ enum CurrencyAlpha3: string {
             self::Pound_Sterling => CurrencyMinorLowerLastAlpha3::Penny_Sterling,
             self::US_Dollar => CurrencyMinorLowerLastAlpha3::US_Cent,
             self::Euro => CurrencyMinorLowerLastAlpha3::Euro_Cent,
+            self::Rand => CurrencyMinorLowerLastAlpha3::Rand_Cent,
             default => null,
         };
     }
@@ -253,6 +254,7 @@ enum CurrencyAlpha3: string {
             self::Pound_Sterling => CurrencyMinorUpperXAlpha3::Penny_Sterling,
             self::US_Dollar => CurrencyMinorUpperXAlpha3::US_Cent,
             self::Euro => CurrencyMinorUpperXAlpha3::Euro_Cent,
+            self::Rand => CurrencyMinorUpperXAlpha3::Rand_Cent,
             default => null,
         };
     }
