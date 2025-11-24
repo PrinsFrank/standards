@@ -220,6 +220,9 @@ enum URIScheme: string {
     case doi = 'doi';
 
     #[Status(URISchemeStatus::Provisional)]
+    case donau = 'donau';
+
+    #[Status(URISchemeStatus::Provisional)]
     case dpp = 'dpp';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -530,6 +533,12 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case moz = 'moz';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case mqtt = 'mqtt';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case mqtts = 'mqtts';
 
     #[Status(URISchemeStatus::Provisional)]
     case ms_access = 'ms-access';
