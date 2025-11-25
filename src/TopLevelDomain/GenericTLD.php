@@ -1504,6 +1504,9 @@ enum GenericTLD: string implements TLD {
     case yamaxun = 'yamaxun';
     case yandex = 'yandex';
     case yi_dong_han = '移动';
+
+    #[NotAssigned]
+    case yi_hao_dian_han = '一号店';
     case yodobashi = 'yodobashi';
     case yoga = 'yoga';
     case yokohama = 'yokohama';
