@@ -1000,6 +1000,9 @@ enum URIScheme: string {
     case soldat = 'soldat';
 
     #[Status(URISchemeStatus::Provisional)]
+    case spacify = 'spacify';
+
+    #[Status(URISchemeStatus::Provisional)]
     case spiffe = 'spiffe';
 
     #[Status(URISchemeStatus::Provisional)]
