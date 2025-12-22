@@ -45,16 +45,16 @@ class EnumMappingMethod {
                 continue;
             }
 
-            $mappingString .= PHP_EOL . $indentingCase . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . $indentingCase . '    ' . implode(',' . PHP_EOL . $indentingCase . '    ', $values) . PHP_EOL . $indentingCase . ($oneOfItemsIsArray === true ? ']' : '') . ',';
+            $mappingString .= PHP_EOL . $indentingCase . $key . ' => ' . ($oneOfItemsIsArray === true ? '[' : '') . PHP_EOL . $indentingCase . '    ' . implode(',' . PHP_EOL . $indentingCase . '    ', $values) . ',' . PHP_EOL . $indentingCase . ($oneOfItemsIsArray === true ? ']' : '') . ',';
         }
 
         if ($this->default !== null) {
-            $mappingString .= PHP_EOL . $indentingCase . 'default => ' . $this->default;
+            $mappingString .= PHP_EOL . $indentingCase . 'default => ' . $this->default . ',';
         }
 
         return PHP_EOL . ($this->docBlock !== null ? ('    ' . $this->docBlock . PHP_EOL) : '') . <<<EOD
             public function {$this->name}(): {$this->returnType} {
-                return match(\$this) {{$mappingString}
+                return match (\$this) {{$mappingString}
                 };
             }
         EOD;
