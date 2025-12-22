@@ -44,7 +44,7 @@ class EEATest extends TestCase {
                 CountryAlpha2::Spain,
                 CountryAlpha2::Sweden,
             ],
-            EEA::allAlpha2()
+            EEA::allAlpha2(),
         );
     }
 }

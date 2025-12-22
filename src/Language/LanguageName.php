@@ -502,7 +502,7 @@ enum LanguageName: string {
     case Zulu = 'Zulu';
     case Zuni = 'Zuni';
 
-    public function toLanguageAlpha2(): LanguageAlpha2|null {
+    public function toLanguageAlpha2(): ?LanguageAlpha2 {
         return BackedEnum::tryFromName(LanguageAlpha2::class, $this->name);
     }
 

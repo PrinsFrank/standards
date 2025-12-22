@@ -18,7 +18,7 @@ class UnitEnumTest extends TestCase {
     }
 
     public function testTryFromKeyThrowsExceptionOnNonEnumValue(): void {
-        $testClass = new class () {};
+        $testClass = new class {};
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('It is only possible to get names of unitEnums, "' . $testClass::class . '" provided');
@@ -41,7 +41,7 @@ class UnitEnumTest extends TestCase {
     }
 
     public function testNamesThrowsExceptionOnNonEnumValue(): void {
-        $testClass = new class () {};
+        $testClass = new class {};
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('It is only possible to get names of unitEnums, "' . $testClass::class . '" provided');

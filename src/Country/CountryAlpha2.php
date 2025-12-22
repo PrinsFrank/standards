@@ -368,14 +368,14 @@ enum CountryAlpha2: string {
                 static function (string $char) {
                     return mb_chr(mb_ord($char) + (127462 - 65)); // The emoji for region letter 'A' in flags is at code point 127462, the capital letter 'A' itself is at 65
                 },
-                str_split($this->value)
-            )
+                str_split($this->value),
+            ),
         );
     }
 
     /** @return list<LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive> */
     public function getOfficialAndDeFactoLanguages(): array {
-        return match($this) {
+        return match ($this) {
             self::Afghanistan => [LanguageAlpha2::Persian, LanguageAlpha2::Pushto_Pashto],
             self::Aland_Islands => [LanguageAlpha2::Swedish],
             self::Albania => [LanguageAlpha2::Albanian],
@@ -630,7 +630,7 @@ enum CountryAlpha2: string {
 
     /** @return list<CurrencyAlpha3> */
     public function getCurrenciesAlpha3(): array {
-        return match($this) {
+        return match ($this) {
             self::Afghanistan => [CurrencyAlpha3::Afghani],
             self::Aland_Islands => [CurrencyAlpha3::Euro],
             self::Albania => [CurrencyAlpha3::Lek],
@@ -657,11 +657,11 @@ enum CountryAlpha2: string {
             self::Bermuda => [CurrencyAlpha3::Bermudian_Dollar],
             self::Bhutan => [
                 CurrencyAlpha3::Indian_Rupee,
-                CurrencyAlpha3::Ngultrum
+                CurrencyAlpha3::Ngultrum,
             ],
             self::Bolivia => [
                 CurrencyAlpha3::Boliviano,
-                CurrencyAlpha3::Mvdol
+                CurrencyAlpha3::Mvdol,
             ],
             self::Bonaire_Sint_Eustatius_and_Saba => [CurrencyAlpha3::US_Dollar],
             self::Bosnia_and_Herzegovina => [CurrencyAlpha3::Convertible_Mark],
@@ -682,14 +682,14 @@ enum CountryAlpha2: string {
             self::Chad => [CurrencyAlpha3::CFA_Franc_BEAC],
             self::Chile => [
                 CurrencyAlpha3::Chilean_Peso,
-                CurrencyAlpha3::Unidad_de_Fomento
+                CurrencyAlpha3::Unidad_de_Fomento,
             ],
             self::China => [CurrencyAlpha3::Yuan_Renminbi],
             self::Christmas_Island => [CurrencyAlpha3::Australian_Dollar],
             self::Cocos_Islands => [CurrencyAlpha3::Australian_Dollar],
             self::Colombia => [
                 CurrencyAlpha3::Colombian_Peso,
-                CurrencyAlpha3::Unidad_de_Valor_Real
+                CurrencyAlpha3::Unidad_de_Valor_Real,
             ],
             self::Comoros => [CurrencyAlpha3::Comorian_Franc],
             self::Congo => [CurrencyAlpha3::CFA_Franc_BEAC],
@@ -710,7 +710,7 @@ enum CountryAlpha2: string {
             self::Egypt => [CurrencyAlpha3::Egyptian_Pound],
             self::El_Salvador => [
                 CurrencyAlpha3::El_Salvador_Colon,
-                CurrencyAlpha3::US_Dollar
+                CurrencyAlpha3::US_Dollar,
             ],
             self::Equatorial_Guinea => [CurrencyAlpha3::CFA_Franc_BEAC],
             self::Eritrea => [CurrencyAlpha3::Nakfa],
@@ -743,7 +743,7 @@ enum CountryAlpha2: string {
             self::Guyana => [CurrencyAlpha3::Guyana_Dollar],
             self::Haiti => [
                 CurrencyAlpha3::Gourde,
-                CurrencyAlpha3::US_Dollar
+                CurrencyAlpha3::US_Dollar,
             ],
             self::Heard_Island_and_McDonald_Islands => [CurrencyAlpha3::Australian_Dollar],
             self::Holy_See => [CurrencyAlpha3::Euro],
@@ -775,7 +775,7 @@ enum CountryAlpha2: string {
             self::Lebanon => [CurrencyAlpha3::Lebanese_Pound],
             self::Lesotho => [
                 CurrencyAlpha3::Loti,
-                CurrencyAlpha3::Rand
+                CurrencyAlpha3::Rand,
             ],
             self::Liberia => [CurrencyAlpha3::Liberian_Dollar],
             self::Libya => [CurrencyAlpha3::Libyan_Dinar],
@@ -796,7 +796,7 @@ enum CountryAlpha2: string {
             self::Mayotte => [CurrencyAlpha3::Euro],
             self::Mexico => [
                 CurrencyAlpha3::Mexican_Peso,
-                CurrencyAlpha3::Mexican_Unidad_de_Inversion_UDI
+                CurrencyAlpha3::Mexican_Unidad_de_Inversion_UDI,
             ],
             self::Micronesia => [CurrencyAlpha3::US_Dollar],
             self::Moldova => [CurrencyAlpha3::Moldovan_Leu],
@@ -809,7 +809,7 @@ enum CountryAlpha2: string {
             self::Myanmar => [CurrencyAlpha3::Kyat],
             self::Namibia => [
                 CurrencyAlpha3::Namibia_Dollar,
-                CurrencyAlpha3::Rand
+                CurrencyAlpha3::Rand,
             ],
             self::Nauru => [CurrencyAlpha3::Australian_Dollar],
             self::Nepal => [CurrencyAlpha3::Nepalese_Rupee],
@@ -829,7 +829,7 @@ enum CountryAlpha2: string {
             self::Palau => [CurrencyAlpha3::US_Dollar],
             self::Panama => [
                 CurrencyAlpha3::Balboa,
-                CurrencyAlpha3::US_Dollar
+                CurrencyAlpha3::US_Dollar,
             ],
             self::Papua_New_Guinea => [CurrencyAlpha3::Kina],
             self::Paraguay => [CurrencyAlpha3::Guarani],
@@ -876,7 +876,7 @@ enum CountryAlpha2: string {
             self::Switzerland => [
                 CurrencyAlpha3::Swiss_Franc,
                 CurrencyAlpha3::WIR_Euro,
-                CurrencyAlpha3::WIR_Franc
+                CurrencyAlpha3::WIR_Franc,
             ],
             self::Syrian_Arab_Republic => [CurrencyAlpha3::Syrian_Pound],
             self::Taiwan_Province_of_China => [CurrencyAlpha3::New_Taiwan_Dollar],
@@ -900,18 +900,18 @@ enum CountryAlpha2: string {
             self::United_States_Outlying_Islands => [CurrencyAlpha3::US_Dollar],
             self::United_States_of_America => [
                 CurrencyAlpha3::US_Dollar,
-                CurrencyAlpha3::US_Dollar_Next_day
+                CurrencyAlpha3::US_Dollar_Next_day,
             ],
             self::Uruguay => [
                 CurrencyAlpha3::Peso_Uruguayo,
                 CurrencyAlpha3::Unidad_Previsional,
-                CurrencyAlpha3::Uruguay_Peso_en_Unidades_Indexadas_UI
+                CurrencyAlpha3::Uruguay_Peso_en_Unidades_Indexadas_UI,
             ],
             self::Uzbekistan => [CurrencyAlpha3::Uzbekistan_Sum],
             self::Vanuatu => [CurrencyAlpha3::Vatu],
             self::Venezuela => [
                 CurrencyAlpha3::Bolivar_Soberano,
-                CurrencyAlpha3::Bolivar_Soberano_Old
+                CurrencyAlpha3::Bolivar_Soberano_Old,
             ],
             self::Viet_Nam => [CurrencyAlpha3::Dong],
             self::Virgin_Islands_British => [CurrencyAlpha3::US_Dollar],
@@ -921,12 +921,12 @@ enum CountryAlpha2: string {
             self::Yemen => [CurrencyAlpha3::Yemeni_Rial],
             self::Zambia => [CurrencyAlpha3::Zambian_Kwacha],
             self::Zimbabwe => [CurrencyAlpha3::Zimbabwe_Gold],
-            default => []
+            default => [],
         };
     }
 
     public function getCountryCodeTLD(): CountryCodeTLD {
-        return match($this) {
+        return match ($this) {
             self::Afghanistan => CountryCodeTLD::af,
             self::Aland_Islands => CountryCodeTLD::ax,
             self::Albania => CountryCodeTLD::al,
@@ -1185,7 +1185,7 @@ enum CountryAlpha2: string {
 
     /** @return list<CountrySubdivision> */
     public function getSubdivisions(): array {
-        return match($this) {
+        return match ($this) {
             self::Afghanistan => [
                 CountrySubdivision::Afghanistan_province_Badakhshan,
                 CountrySubdivision::Afghanistan_province_Badghis,
@@ -1220,7 +1220,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Afghanistan_province_Takhar,
                 CountrySubdivision::Afghanistan_province_Uruzgan,
                 CountrySubdivision::Afghanistan_province_Wardak,
-                CountrySubdivision::Afghanistan_province_Zabul
+                CountrySubdivision::Afghanistan_province_Zabul,
             ],
             self::Albania => [
                 CountrySubdivision::Albania_county_Berat,
@@ -1234,7 +1234,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Albania_county_Lezhe,
                 CountrySubdivision::Albania_county_Shkoder,
                 CountrySubdivision::Albania_county_Tirane,
-                CountrySubdivision::Albania_county_Vlore
+                CountrySubdivision::Albania_county_Vlore,
             ],
             self::Algeria => [
                 CountrySubdivision::Algeria_province_Adrar,
@@ -1294,7 +1294,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Algeria_province_Tissemsilt,
                 CountrySubdivision::Algeria_province_Tizi_Ouzou,
                 CountrySubdivision::Algeria_province_Tlemcen,
-                CountrySubdivision::Algeria_province_Touggourt
+                CountrySubdivision::Algeria_province_Touggourt,
             ],
             self::Andorra => [
                 CountrySubdivision::Andorra_parish_Andorra_la_Vella,
@@ -1303,7 +1303,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Andorra_parish_Escaldes_Engordany,
                 CountrySubdivision::Andorra_parish_La_Massana,
                 CountrySubdivision::Andorra_parish_Ordino,
-                CountrySubdivision::Andorra_parish_Sant_Julia_de_Loria
+                CountrySubdivision::Andorra_parish_Sant_Julia_de_Loria,
             ],
             self::Angola => [
                 CountrySubdivision::Angola_province_Bengo,
@@ -1323,7 +1323,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Angola_province_Moxico,
                 CountrySubdivision::Angola_province_Namibe,
                 CountrySubdivision::Angola_province_Uige,
-                CountrySubdivision::Angola_province_Zaire
+                CountrySubdivision::Angola_province_Zaire,
             ],
             self::Antigua_and_Barbuda => [
                 CountrySubdivision::Antigua_Barbuda_dependency_Barbuda,
@@ -1333,7 +1333,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Antigua_Barbuda_parish_Saint_Mary,
                 CountrySubdivision::Antigua_Barbuda_parish_Saint_Paul,
                 CountrySubdivision::Antigua_Barbuda_parish_Saint_Peter,
-                CountrySubdivision::Antigua_Barbuda_parish_Saint_Philip
+                CountrySubdivision::Antigua_Barbuda_parish_Saint_Philip,
             ],
             self::Argentina => [
                 CountrySubdivision::Argentina_city_Ciudad_Autonoma_de_Buenos_Aires,
@@ -1359,7 +1359,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Argentina_province_Santa_Fe,
                 CountrySubdivision::Argentina_province_Santiago_del_Estero,
                 CountrySubdivision::Argentina_province_Tierra_del_Fuego,
-                CountrySubdivision::Argentina_province_Tucuman
+                CountrySubdivision::Argentina_province_Tucuman,
             ],
             self::Armenia => [
                 CountrySubdivision::Armenia_city_Erevan,
@@ -1372,7 +1372,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Armenia_region_Sirak,
                 CountrySubdivision::Armenia_region_Syunik,
                 CountrySubdivision::Armenia_region_Tavus,
-                CountrySubdivision::Armenia_region_Vayoc_Jor
+                CountrySubdivision::Armenia_region_Vayoc_Jor,
             ],
             self::Australia => [
                 CountrySubdivision::Australia_state_New_South_Wales,
@@ -1382,7 +1382,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Australia_state_Victoria,
                 CountrySubdivision::Australia_state_Western_Australia,
                 CountrySubdivision::Australia_territory_Australian_Capital_Territory,
-                CountrySubdivision::Australia_territory_Northern_Territory
+                CountrySubdivision::Australia_territory_Northern_Territory,
             ],
             self::Austria => [
                 CountrySubdivision::Austria_state_Burgenland,
@@ -1393,7 +1393,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Austria_state_Steiermark,
                 CountrySubdivision::Austria_state_Tirol,
                 CountrySubdivision::Austria_state_Vorarlberg,
-                CountrySubdivision::Austria_state_Wien
+                CountrySubdivision::Austria_state_Wien,
             ],
             self::Azerbaijan => [
                 CountrySubdivision::Azerbaijan_autonomous_republic_Naxcivan,
@@ -1473,7 +1473,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Azerbaijan_rayon_Yevlax,
                 CountrySubdivision::Azerbaijan_rayon_Zaqatala,
                 CountrySubdivision::Azerbaijan_rayon_Zngilan,
-                CountrySubdivision::Azerbaijan_rayon_Zrdab
+                CountrySubdivision::Azerbaijan_rayon_Zrdab,
             ],
             self::Bahamas => [
                 CountrySubdivision::Bahamas_district_Acklins,
@@ -1507,13 +1507,13 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Bahamas_district_South_Eleuthera,
                 CountrySubdivision::Bahamas_district_Spanish_Wells,
                 CountrySubdivision::Bahamas_district_West_Grand_Bahama,
-                CountrySubdivision::Bahamas_island_New_Providence
+                CountrySubdivision::Bahamas_island_New_Providence,
             ],
             self::Bahrain => [
                 CountrySubdivision::Bahrain_governorate_Al_Asimah,
                 CountrySubdivision::Bahrain_governorate_Al_Janubiyah,
                 CountrySubdivision::Bahrain_governorate_Al_Muharraq,
-                CountrySubdivision::Bahrain_governorate_Ash_Shamaliyah
+                CountrySubdivision::Bahrain_governorate_Ash_Shamaliyah,
             ],
             self::Bangladesh => [
                 CountrySubdivision::Bangladesh_district_Bagerhat,
@@ -1587,7 +1587,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Bangladesh_division_Mymensingh,
                 CountrySubdivision::Bangladesh_division_Rajshahi,
                 CountrySubdivision::Bangladesh_division_Rangpur,
-                CountrySubdivision::Bangladesh_division_Sylhet
+                CountrySubdivision::Bangladesh_division_Sylhet,
             ],
             self::Barbados => [
                 CountrySubdivision::Barbados_parish_Christ_Church,
@@ -1600,7 +1600,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Barbados_parish_Saint_Michael,
                 CountrySubdivision::Barbados_parish_Saint_Peter,
                 CountrySubdivision::Barbados_parish_Saint_Philip,
-                CountrySubdivision::Barbados_parish_Saint_Thomas
+                CountrySubdivision::Barbados_parish_Saint_Thomas,
             ],
             self::Belarus => [
                 CountrySubdivision::Belarus_city_Gorod_Minsk,
@@ -1609,7 +1609,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Belarus_oblast_Grodnenskaja_oblast,
                 CountrySubdivision::Belarus_oblast_Mahiliouskaja_voblasc,
                 CountrySubdivision::Belarus_oblast_Minskaja_oblast,
-                CountrySubdivision::Belarus_oblast_Viciebskaja_voblasc
+                CountrySubdivision::Belarus_oblast_Viciebskaja_voblasc,
             ],
             self::Belgium => [
                 CountrySubdivision::Belgium_province_Antwerpen,
@@ -1624,7 +1624,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Belgium_province_West_Vlaanderen,
                 CountrySubdivision::Belgium_region_Brussels_Hoofdstedelijk_Gewest,
                 CountrySubdivision::Belgium_region_Vlaams_Gewest,
-                CountrySubdivision::Belgium_region_wallonne_Region
+                CountrySubdivision::Belgium_region_wallonne_Region,
             ],
             self::Belize => [
                 CountrySubdivision::Belize_district_Belize,
@@ -1632,7 +1632,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Belize_district_Corozal,
                 CountrySubdivision::Belize_district_Orange_Walk,
                 CountrySubdivision::Belize_district_Stann_Creek,
-                CountrySubdivision::Belize_district_Toledo
+                CountrySubdivision::Belize_district_Toledo,
             ],
             self::Benin => [
                 CountrySubdivision::Benin_department_Alibori,
@@ -1646,7 +1646,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Benin_department_Mono,
                 CountrySubdivision::Benin_department_Oueme,
                 CountrySubdivision::Benin_department_Plateau,
-                CountrySubdivision::Benin_department_Zou
+                CountrySubdivision::Benin_department_Zou,
             ],
             self::Bhutan => [
                 CountrySubdivision::Bhutan_district_Bumthang,
@@ -1668,7 +1668,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Bhutan_district_Trongsa,
                 CountrySubdivision::Bhutan_district_Tsirang,
                 CountrySubdivision::Bhutan_district_Wangdue_Phodrang,
-                CountrySubdivision::Bhutan_district_Zhemgang
+                CountrySubdivision::Bhutan_district_Zhemgang,
             ],
             self::Bolivia => [
                 CountrySubdivision::Bolivia_department_Chuquisaca,
@@ -1679,17 +1679,17 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Bolivia_department_Pando,
                 CountrySubdivision::Bolivia_department_Potosi,
                 CountrySubdivision::Bolivia_department_Santa_Cruz,
-                CountrySubdivision::Bolivia_department_Tarija
+                CountrySubdivision::Bolivia_department_Tarija,
             ],
             self::Bonaire_Sint_Eustatius_and_Saba => [
                 CountrySubdivision::Caribbean_Netherlands_special_municipality_Bonaire,
                 CountrySubdivision::Caribbean_Netherlands_special_municipality_Saba,
-                CountrySubdivision::Caribbean_Netherlands_special_municipality_Sint_Eustatius
+                CountrySubdivision::Caribbean_Netherlands_special_municipality_Sint_Eustatius,
             ],
             self::Bosnia_and_Herzegovina => [
                 CountrySubdivision::Bosnia_Herzegovina_district_with_special_status_Brcko_distrikt,
                 CountrySubdivision::Bosnia_Herzegovina_entity_Federacija_Bosne_i_Hercegovine,
-                CountrySubdivision::Bosnia_Herzegovina_entity_Republika_Srpska
+                CountrySubdivision::Bosnia_Herzegovina_entity_Republika_Srpska,
             ],
             self::Botswana => [
                 CountrySubdivision::Botswana_city_Francistown,
@@ -1707,7 +1707,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Botswana_town_Jwaneng,
                 CountrySubdivision::Botswana_town_Lobatse,
                 CountrySubdivision::Botswana_town_Selibe_Phikwe,
-                CountrySubdivision::Botswana_town_Sowa_Town
+                CountrySubdivision::Botswana_town_Sowa_Town,
             ],
             self::Brazil => [
                 CountrySubdivision::Brazil_federal_district_Distrito_Federal,
@@ -1736,13 +1736,13 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Brazil_state_Santa_Catarina,
                 CountrySubdivision::Brazil_state_Sao_Paulo,
                 CountrySubdivision::Brazil_state_Sergipe,
-                CountrySubdivision::Brazil_state_Tocantins
+                CountrySubdivision::Brazil_state_Tocantins,
             ],
             self::Brunei_Darussalam => [
                 CountrySubdivision::Brunei_district_Belait,
                 CountrySubdivision::Brunei_district_Brunei_dan_Muara,
                 CountrySubdivision::Brunei_district_Temburong,
-                CountrySubdivision::Brunei_district_Tutong
+                CountrySubdivision::Brunei_district_Tutong,
             ],
             self::Bulgaria => [
                 CountrySubdivision::Bulgaria_district_Blagoevgrad,
@@ -1772,7 +1772,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Bulgaria_district_Veliko_Tarnovo,
                 CountrySubdivision::Bulgaria_district_Vidin,
                 CountrySubdivision::Bulgaria_district_Vratsa,
-                CountrySubdivision::Bulgaria_district_Yambol
+                CountrySubdivision::Bulgaria_district_Yambol,
             ],
             self::Burkina_Faso => [
                 CountrySubdivision::Burkina_Faso_province_Bale,
@@ -1832,7 +1832,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Burkina_Faso_region_Nord,
                 CountrySubdivision::Burkina_Faso_region_Plateau_Central,
                 CountrySubdivision::Burkina_Faso_region_Sahel,
-                CountrySubdivision::Burkina_Faso_region_Sud_Ouest
+                CountrySubdivision::Burkina_Faso_region_Sud_Ouest,
             ],
             self::Burundi => [
                 CountrySubdivision::Burundi_province_Bubanza,
@@ -1852,7 +1852,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Burundi_province_Ngozi,
                 CountrySubdivision::Burundi_province_Rumonge,
                 CountrySubdivision::Burundi_province_Rutana,
-                CountrySubdivision::Burundi_province_Ruyigi
+                CountrySubdivision::Burundi_province_Ruyigi,
             ],
             self::Cabo_Verde => [
                 CountrySubdivision::Cape_Verde_geographical_region_Ilhas_de_Barlavento,
@@ -1878,7 +1878,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Cape_Verde_municipality_Sao_Salvador_do_Mundo,
                 CountrySubdivision::Cape_Verde_municipality_Sao_Vicente,
                 CountrySubdivision::Cape_Verde_municipality_Tarrafal,
-                CountrySubdivision::Cape_Verde_municipality_Tarrafal_de_Sao_Nicolau
+                CountrySubdivision::Cape_Verde_municipality_Tarrafal_de_Sao_Nicolau,
             ],
             self::Cambodia => [
                 CountrySubdivision::Cambodia_autonomous_municipality_Phnom_Penh,
@@ -1905,7 +1905,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Cambodia_province_Stoeng_Treng,
                 CountrySubdivision::Cambodia_province_Svaay_Rieng,
                 CountrySubdivision::Cambodia_province_Taakaev,
-                CountrySubdivision::Cambodia_province_Tbong_Khmum
+                CountrySubdivision::Cambodia_province_Tbong_Khmum,
             ],
             self::Cameroon => [
                 CountrySubdivision::Cameroon_region_Adamaoua,
@@ -1917,7 +1917,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Cameroon_region_Nord_Ouest,
                 CountrySubdivision::Cameroon_region_Ouest,
                 CountrySubdivision::Cameroon_region_South,
-                CountrySubdivision::Cameroon_region_South_West
+                CountrySubdivision::Cameroon_region_South_West,
             ],
             self::Canada => [
                 CountrySubdivision::Canada_province_Alberta,
@@ -1932,7 +1932,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Canada_province_Saskatchewan,
                 CountrySubdivision::Canada_territory_Northwest_Territories,
                 CountrySubdivision::Canada_territory_Nunavut,
-                CountrySubdivision::Canada_territory_Yukon
+                CountrySubdivision::Canada_territory_Yukon,
             ],
             self::Central_African_Republic => [
                 CountrySubdivision::Central_African_Republic_commune_Bangui,
@@ -1951,7 +1951,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Central_African_Republic_prefecture_Ouaka,
                 CountrySubdivision::Central_African_Republic_prefecture_Ouham,
                 CountrySubdivision::Central_African_Republic_prefecture_Ouham_Pende,
-                CountrySubdivision::Central_African_Republic_prefecture_Vakaga
+                CountrySubdivision::Central_African_Republic_prefecture_Vakaga,
             ],
             self::Chad => [
                 CountrySubdivision::Chad_province_Al_Batha,
@@ -1976,7 +1976,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Chad_province_Sila,
                 CountrySubdivision::Chad_province_Tandjile,
                 CountrySubdivision::Chad_province_Tibasti,
-                CountrySubdivision::Chad_province_Wadi_Fira
+                CountrySubdivision::Chad_province_Wadi_Fira,
             ],
             self::Chile => [
                 CountrySubdivision::Chile_region_Aisen_del_General_Carlos_Ibanez_del_Campo,
@@ -1994,7 +1994,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Chile_region_Nuble,
                 CountrySubdivision::Chile_region_Region_Metropolitana_de_Santiago,
                 CountrySubdivision::Chile_region_Tarapaca,
-                CountrySubdivision::Chile_region_Valparaiso
+                CountrySubdivision::Chile_region_Valparaiso,
             ],
             self::China => [
                 CountrySubdivision::China_autonomous_region_Guangxi_Zhuangzu_Zizhiqu,
@@ -2030,7 +2030,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::China_province_Yunnan_Sheng,
                 CountrySubdivision::China_province_Zhejiang_Sheng,
                 CountrySubdivision::China_special_administrative_region_Aomen_Tebiexingzhengqu,
-                CountrySubdivision::China_special_administrative_region_Hong_Kong_SAR
+                CountrySubdivision::China_special_administrative_region_Hong_Kong_SAR,
             ],
             self::Colombia => [
                 CountrySubdivision::Colombia_capital_district_Distrito_Capital_de_Bogota,
@@ -2065,12 +2065,12 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Colombia_department_Tolima,
                 CountrySubdivision::Colombia_department_Valle_del_Cauca,
                 CountrySubdivision::Colombia_department_Vaupes,
-                CountrySubdivision::Colombia_department_Vichada
+                CountrySubdivision::Colombia_department_Vichada,
             ],
             self::Comoros => [
                 CountrySubdivision::Comoros_island_Andjazidja,
                 CountrySubdivision::Comoros_island_Andjouan,
-                CountrySubdivision::Comoros_island_Moheli
+                CountrySubdivision::Comoros_island_Moheli,
             ],
             self::Congo => [
                 CountrySubdivision::Congo_Brazzaville_department_Bouenza,
@@ -2084,7 +2084,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Congo_Brazzaville_department_Plateaux,
                 CountrySubdivision::Congo_Brazzaville_department_Pointe_Noire,
                 CountrySubdivision::Congo_Brazzaville_department_Pool,
-                CountrySubdivision::Congo_Brazzaville_department_Sangha
+                CountrySubdivision::Congo_Brazzaville_department_Sangha,
             ],
             self::Congo_Democratic_Republic => [
                 CountrySubdivision::Congo_Kinshasa_city_Kinshasa,
@@ -2112,7 +2112,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Congo_Kinshasa_province_Sud_Ubangi,
                 CountrySubdivision::Congo_Kinshasa_province_Tanganyika,
                 CountrySubdivision::Congo_Kinshasa_province_Tshopo,
-                CountrySubdivision::Congo_Kinshasa_province_Tshuapa
+                CountrySubdivision::Congo_Kinshasa_province_Tshuapa,
             ],
             self::Costa_Rica => [
                 CountrySubdivision::Costa_Rica_province_Alajuela,
@@ -2121,7 +2121,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Costa_Rica_province_Heredia,
                 CountrySubdivision::Costa_Rica_province_Limon,
                 CountrySubdivision::Costa_Rica_province_Puntarenas,
-                CountrySubdivision::Costa_Rica_province_San_Jose
+                CountrySubdivision::Costa_Rica_province_San_Jose,
             ],
             self::Cote_d_Ivoire => [
                 CountrySubdivision::Cote_d_Ivoire_autonomous_district_Abidjan,
@@ -2137,7 +2137,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Cote_d_Ivoire_district_Savanes,
                 CountrySubdivision::Cote_d_Ivoire_district_Vallee_du_Bandama,
                 CountrySubdivision::Cote_d_Ivoire_district_Woroba,
-                CountrySubdivision::Cote_d_Ivoire_district_Zanzan
+                CountrySubdivision::Cote_d_Ivoire_district_Zanzan,
             ],
             self::Croatia => [
                 CountrySubdivision::Croatia_city_Grad_Zagreb,
@@ -2160,7 +2160,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Croatia_county_Viroviticko_podravska_zupanija,
                 CountrySubdivision::Croatia_county_Vukovarsko_srijemska_zupanija,
                 CountrySubdivision::Croatia_county_Zadarska_zupanija,
-                CountrySubdivision::Croatia_county_Zagrebacka_zupanija
+                CountrySubdivision::Croatia_county_Zagrebacka_zupanija,
             ],
             self::Cuba => [
                 CountrySubdivision::Cuba_province_Artemisa,
@@ -2178,7 +2178,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Cuba_province_Sancti_Spiritus,
                 CountrySubdivision::Cuba_province_Santiago_de_Cuba,
                 CountrySubdivision::Cuba_province_Villa_Clara,
-                CountrySubdivision::Cuba_special_municipality_Isla_de_la_Juventud
+                CountrySubdivision::Cuba_special_municipality_Isla_de_la_Juventud,
             ],
             self::Cyprus => [
                 CountrySubdivision::Cyprus_district_Ammochostos,
@@ -2186,7 +2186,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Cyprus_district_Girne,
                 CountrySubdivision::Cyprus_district_Larnaka,
                 CountrySubdivision::Cyprus_district_Lefkosia,
-                CountrySubdivision::Cyprus_district_Lemesos
+                CountrySubdivision::Cyprus_district_Lemesos,
             ],
             self::Czechia => [
                 CountrySubdivision::Czechia_capital_city_Praha_Hlavni_mesto,
@@ -2278,14 +2278,14 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Czechia_region_Plzensky_kraj,
                 CountrySubdivision::Czechia_region_Stredocesky_kraj,
                 CountrySubdivision::Czechia_region_Ustecky_kraj,
-                CountrySubdivision::Czechia_region_Zlinsky_kraj
+                CountrySubdivision::Czechia_region_Zlinsky_kraj,
             ],
             self::Denmark => [
                 CountrySubdivision::Denmark_region_Hovedstaden,
                 CountrySubdivision::Denmark_region_Midtjylland,
                 CountrySubdivision::Denmark_region_Nordjylland,
                 CountrySubdivision::Denmark_region_Sjaelland,
-                CountrySubdivision::Denmark_region_Syddanmark
+                CountrySubdivision::Denmark_region_Syddanmark,
             ],
             self::Djibouti => [
                 CountrySubdivision::Djibouti_city_Djibouti,
@@ -2293,7 +2293,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Djibouti_region_Arta,
                 CountrySubdivision::Djibouti_region_Awbuk,
                 CountrySubdivision::Djibouti_region_Dikhil,
-                CountrySubdivision::Djibouti_region_Tadjourah
+                CountrySubdivision::Djibouti_region_Tadjourah,
             ],
             self::Dominica => [
                 CountrySubdivision::Dominica_parish_Saint_Andrew,
@@ -2305,7 +2305,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Dominica_parish_Saint_Mark,
                 CountrySubdivision::Dominica_parish_Saint_Patrick,
                 CountrySubdivision::Dominica_parish_Saint_Paul,
-                CountrySubdivision::Dominica_parish_Saint_Peter
+                CountrySubdivision::Dominica_parish_Saint_Peter,
             ],
             self::Dominican_Republic => [
                 CountrySubdivision::Dominican_Republic_district_Distrito_Nacional_Santo_Domingo,
@@ -2349,7 +2349,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Dominican_Republic_region_Higuamo,
                 CountrySubdivision::Dominican_Republic_region_Ozama,
                 CountrySubdivision::Dominican_Republic_region_Valdesia,
-                CountrySubdivision::Dominican_Republic_region_Yuma
+                CountrySubdivision::Dominican_Republic_region_Yuma,
             ],
             self::Ecuador => [
                 CountrySubdivision::Ecuador_province_Azuay,
@@ -2375,7 +2375,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Ecuador_province_Santo_Domingo_de_los_Tsachilas,
                 CountrySubdivision::Ecuador_province_Sucumbios,
                 CountrySubdivision::Ecuador_province_Tungurahua,
-                CountrySubdivision::Ecuador_province_Zamora_Chinchipe
+                CountrySubdivision::Ecuador_province_Zamora_Chinchipe,
             ],
             self::Egypt => [
                 CountrySubdivision::Egypt_governorate_Ad_Daqahliyah,
@@ -2404,7 +2404,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Egypt_governorate_Matruh,
                 CountrySubdivision::Egypt_governorate_Qina,
                 CountrySubdivision::Egypt_governorate_Shamal_Sina,
-                CountrySubdivision::Egypt_governorate_Suhaj
+                CountrySubdivision::Egypt_governorate_Suhaj,
             ],
             self::El_Salvador => [
                 CountrySubdivision::El_Salvador_department_Ahuachapan,
@@ -2420,7 +2420,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::El_Salvador_department_San_Vicente,
                 CountrySubdivision::El_Salvador_department_Santa_Ana,
                 CountrySubdivision::El_Salvador_department_Sonsonate,
-                CountrySubdivision::El_Salvador_department_Usulutan
+                CountrySubdivision::El_Salvador_department_Usulutan,
             ],
             self::Equatorial_Guinea => [
                 CountrySubdivision::Equatorial_Guinea_province_Annobon,
@@ -2432,7 +2432,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Equatorial_Guinea_province_Litoral,
                 CountrySubdivision::Equatorial_Guinea_province_Wele_Nzas,
                 CountrySubdivision::Equatorial_Guinea_region_Regiao_Continental,
-                CountrySubdivision::Equatorial_Guinea_region_Regiao_Insular
+                CountrySubdivision::Equatorial_Guinea_region_Regiao_Insular,
             ],
             self::Eritrea => [
                 CountrySubdivision::Eritrea_region_Al_Awsat,
@@ -2440,7 +2440,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Eritrea_region_Ansaba,
                 CountrySubdivision::Eritrea_region_Debubawi_K_eyyih_Bahri,
                 CountrySubdivision::Eritrea_region_Gash_Barka,
-                CountrySubdivision::Eritrea_region_Semienawi_K_eyyih_Bahri
+                CountrySubdivision::Eritrea_region_Semienawi_K_eyyih_Bahri,
             ],
             self::Estonia => [
                 CountrySubdivision::Estonia_county_Harjumaa,
@@ -2536,13 +2536,13 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Estonia_urban_municipality_Tallinn,
                 CountrySubdivision::Estonia_urban_municipality_Tartu,
                 CountrySubdivision::Estonia_urban_municipality_Viljandi,
-                CountrySubdivision::Estonia_urban_municipality_Voru
+                CountrySubdivision::Estonia_urban_municipality_Voru,
             ],
             self::Eswatini => [
                 CountrySubdivision::Eswatini_region_Hhohho,
                 CountrySubdivision::Eswatini_region_Lubombo,
                 CountrySubdivision::Eswatini_region_Manzini,
-                CountrySubdivision::Eswatini_region_Shiselweni
+                CountrySubdivision::Eswatini_region_Shiselweni,
             ],
             self::Ethiopia => [
                 CountrySubdivision::Ethiopia_administration_Addis_Ababa,
@@ -2557,7 +2557,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Ethiopia_regional_state_Somali,
                 CountrySubdivision::Ethiopia_regional_state_Southern_Nations_Nationalities_and_Peoples,
                 CountrySubdivision::Ethiopia_regional_state_Southwest_Ethiopia_Peoples,
-                CountrySubdivision::Ethiopia_regional_state_Tigrai
+                CountrySubdivision::Ethiopia_regional_state_Tigrai,
             ],
             self::Fiji => [
                 CountrySubdivision::Fiji_dependency_Rotuma,
@@ -2578,7 +2578,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Fiji_province_Ra,
                 CountrySubdivision::Fiji_province_Rewa,
                 CountrySubdivision::Fiji_province_Serua,
-                CountrySubdivision::Fiji_province_Tailevu
+                CountrySubdivision::Fiji_province_Tailevu,
             ],
             self::Finland => [
                 CountrySubdivision::Finland_region_Ahvenanmaan_maakunta,
@@ -2599,7 +2599,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Finland_region_Nyland,
                 CountrySubdivision::Finland_region_Paijanne_Tavastland,
                 CountrySubdivision::Finland_region_Pohjanmaa,
-                CountrySubdivision::Finland_region_Satakunta
+                CountrySubdivision::Finland_region_Satakunta,
             ],
             self::France => [
                 CountrySubdivision::France_European_collectivity_Alsace,
@@ -2725,7 +2725,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::France_overseas_departmental_collectivity_Mayotte,
                 CountrySubdivision::France_overseas_territory_Terres_australes_francaises,
                 CountrySubdivision::France_overseas_unique_territorial_collectivity_Guyane_francaise,
-                CountrySubdivision::France_overseas_unique_territorial_collectivity_Martinique
+                CountrySubdivision::France_overseas_unique_territorial_collectivity_Martinique,
             ],
             self::Gabon => [
                 CountrySubdivision::Gabon_province_Estuaire,
@@ -2736,7 +2736,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Gabon_province_Ogooue_Ivindo,
                 CountrySubdivision::Gabon_province_Ogooue_Lolo,
                 CountrySubdivision::Gabon_province_Ogooue_Maritime,
-                CountrySubdivision::Gabon_province_Woleu_Ntem
+                CountrySubdivision::Gabon_province_Woleu_Ntem,
             ],
             self::Gambia => [
                 CountrySubdivision::Gambia_city_Banjul,
@@ -2744,7 +2744,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Gambia_division_Lower_River,
                 CountrySubdivision::Gambia_division_North_Bank,
                 CountrySubdivision::Gambia_division_Upper_River,
-                CountrySubdivision::Gambia_division_Western
+                CountrySubdivision::Gambia_division_Western,
             ],
             self::Georgia => [
                 CountrySubdivision::Georgia_autonomous_republic_Abkhazia,
@@ -2758,7 +2758,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Georgia_region_Rach_a_Lechkhumi_Kvemo_Svaneti,
                 CountrySubdivision::Georgia_region_Samegrelo_Zemo_Svaneti,
                 CountrySubdivision::Georgia_region_Samtskhe_Javakheti,
-                CountrySubdivision::Georgia_region_Shida_Kartli
+                CountrySubdivision::Georgia_region_Shida_Kartli,
             ],
             self::Germany => [
                 CountrySubdivision::Germany_Land_Baden_Wurttemberg,
@@ -2776,7 +2776,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Germany_Land_Sachsen,
                 CountrySubdivision::Germany_Land_Sachsen_Anhalt,
                 CountrySubdivision::Germany_Land_Schleswig_Holstein,
-                CountrySubdivision::Germany_Land_Thuringen
+                CountrySubdivision::Germany_Land_Thuringen,
             ],
             self::Ghana => [
                 CountrySubdivision::Ghana_region_Ahafo,
@@ -2794,7 +2794,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Ghana_region_Upper_West,
                 CountrySubdivision::Ghana_region_Volta,
                 CountrySubdivision::Ghana_region_Western,
-                CountrySubdivision::Ghana_region_Western_North
+                CountrySubdivision::Ghana_region_Western_North,
             ],
             self::Greece => [
                 CountrySubdivision::Greece_administrative_region_Anatoliki_Makedonia_kai_Thraki,
@@ -2810,14 +2810,14 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Greece_administrative_region_Sterea_Ellada,
                 CountrySubdivision::Greece_administrative_region_Thessalia,
                 CountrySubdivision::Greece_administrative_region_Voreio_Aigaio,
-                CountrySubdivision::Greece_self_governed_part_Agion_Oros
+                CountrySubdivision::Greece_self_governed_part_Agion_Oros,
             ],
             self::Greenland => [
                 CountrySubdivision::Greenland_municipality_Avannaata_Kommunia,
                 CountrySubdivision::Greenland_municipality_Kommune_Kujalleq,
                 CountrySubdivision::Greenland_municipality_Kommune_Qeqertalik,
                 CountrySubdivision::Greenland_municipality_Kommuneqarfik_Sermersooq,
-                CountrySubdivision::Greenland_municipality_Qeqqata_Kommunia
+                CountrySubdivision::Greenland_municipality_Qeqqata_Kommunia,
             ],
             self::Grenada => [
                 CountrySubdivision::Grenada_dependency_Southern_Grenadine_Islands,
@@ -2826,7 +2826,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Grenada_parish_Saint_George,
                 CountrySubdivision::Grenada_parish_Saint_John,
                 CountrySubdivision::Grenada_parish_Saint_Mark,
-                CountrySubdivision::Grenada_parish_Saint_Patrick
+                CountrySubdivision::Grenada_parish_Saint_Patrick,
             ],
             self::Guatemala => [
                 CountrySubdivision::Guatemala_department_Alta_Verapaz,
@@ -2850,7 +2850,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Guatemala_department_Solola,
                 CountrySubdivision::Guatemala_department_Suchitepequez,
                 CountrySubdivision::Guatemala_department_Totonicapan,
-                CountrySubdivision::Guatemala_department_Zacapa
+                CountrySubdivision::Guatemala_department_Zacapa,
             ],
             self::Guinea => [
                 CountrySubdivision::Guinea_administrative_region_Boke,
@@ -2893,7 +2893,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Guinea_prefecture_Siguiri,
                 CountrySubdivision::Guinea_prefecture_Telimele,
                 CountrySubdivision::Guinea_prefecture_Tougue,
-                CountrySubdivision::Guinea_prefecture_Yomou
+                CountrySubdivision::Guinea_prefecture_Yomou,
             ],
             self::Guinea_Bissau => [
                 CountrySubdivision::Guinea_Bissau_autonomous_sector_Bissau,
@@ -2907,7 +2907,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Guinea_Bissau_region_Gabu,
                 CountrySubdivision::Guinea_Bissau_region_Oio,
                 CountrySubdivision::Guinea_Bissau_region_Quinara,
-                CountrySubdivision::Guinea_Bissau_region_Tombali
+                CountrySubdivision::Guinea_Bissau_region_Tombali,
             ],
             self::Guyana => [
                 CountrySubdivision::Guyana_region_Barima_Waini,
@@ -2919,7 +2919,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Guyana_region_Pomeroon_Supenaam,
                 CountrySubdivision::Guyana_region_Potaro_Siparuni,
                 CountrySubdivision::Guyana_region_Upper_Demerara_Berbice,
-                CountrySubdivision::Guyana_region_Upper_Takutu_Upper_Essequibo
+                CountrySubdivision::Guyana_region_Upper_Takutu_Upper_Essequibo,
             ],
             self::Haiti => [
                 CountrySubdivision::Haiti_department_Artibonite,
@@ -2931,7 +2931,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Haiti_department_Nord_Est,
                 CountrySubdivision::Haiti_department_Nord_Ouest,
                 CountrySubdivision::Haiti_department_Sid,
-                CountrySubdivision::Haiti_department_Sides
+                CountrySubdivision::Haiti_department_Sides,
             ],
             self::Honduras => [
                 CountrySubdivision::Honduras_department_Atlantida,
@@ -2951,7 +2951,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Honduras_department_Olancho,
                 CountrySubdivision::Honduras_department_Santa_Barbara,
                 CountrySubdivision::Honduras_department_Valle,
-                CountrySubdivision::Honduras_department_Yoro
+                CountrySubdivision::Honduras_department_Yoro,
             ],
             self::Hungary => [
                 CountrySubdivision::Hungary_capital_city_Budapest,
@@ -2996,7 +2996,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Hungary_county_Tolna,
                 CountrySubdivision::Hungary_county_Vas,
                 CountrySubdivision::Hungary_county_Veszprem,
-                CountrySubdivision::Hungary_county_Zala
+                CountrySubdivision::Hungary_county_Zala,
             ],
             self::Iceland => [
                 CountrySubdivision::Iceland_municipality_Akraneskaupstadur,
@@ -3070,7 +3070,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Iceland_region_Sudurland,
                 CountrySubdivision::Iceland_region_Sudurnes,
                 CountrySubdivision::Iceland_region_Vestfirdir,
-                CountrySubdivision::Iceland_region_Vesturland
+                CountrySubdivision::Iceland_region_Vesturland,
             ],
             self::India => [
                 CountrySubdivision::India_Union_territory_Andaman_and_Nicobar_Islands,
@@ -3108,7 +3108,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::India_state_Tripura,
                 CountrySubdivision::India_state_Uttar_Pradesh,
                 CountrySubdivision::India_state_Uttarakhand,
-                CountrySubdivision::India_state_West_Bengal
+                CountrySubdivision::India_state_West_Bengal,
             ],
             self::Indonesia => [
                 CountrySubdivision::Indonesia_capital_district_Jakarta_Raya,
@@ -3155,7 +3155,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Indonesia_province_Sumatera_Barat,
                 CountrySubdivision::Indonesia_province_Sumatera_Selatan,
                 CountrySubdivision::Indonesia_province_Sumatera_Utara,
-                CountrySubdivision::Indonesia_special_region_Yogyakarta
+                CountrySubdivision::Indonesia_special_region_Yogyakarta,
             ],
             self::Iran => [
                 CountrySubdivision::Iran_province_Alborz,
@@ -3188,7 +3188,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Iran_province_Sistan_va_Baluchestan,
                 CountrySubdivision::Iran_province_Tehran,
                 CountrySubdivision::Iran_province_Yazd,
-                CountrySubdivision::Iran_province_Zanjan
+                CountrySubdivision::Iran_province_Zanjan,
             ],
             self::Iraq => [
                 CountrySubdivision::Iraq_governorate_Al_Anbar,
@@ -3209,7 +3209,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Iraq_governorate_Ninawa,
                 CountrySubdivision::Iraq_governorate_Salah_ad_Din,
                 CountrySubdivision::Iraq_governorate_Wasit,
-                CountrySubdivision::Iraq_region_Herem_i_Kurdistan
+                CountrySubdivision::Iraq_region_Herem_i_Kurdistan,
             ],
             self::Ireland => [
                 CountrySubdivision::Ireland_county_An_Cabhan,
@@ -3241,7 +3241,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Ireland_province_An_Mhumhain,
                 CountrySubdivision::Ireland_province_Connacht,
                 CountrySubdivision::Ireland_province_Laighin,
-                CountrySubdivision::Ireland_province_Ulaidh
+                CountrySubdivision::Ireland_province_Ulaidh,
             ],
             self::Israel => [
                 CountrySubdivision::Israel_district_Al_Awsat,
@@ -3249,7 +3249,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Israel_district_Al_Quds,
                 CountrySubdivision::Israel_district_Ash_Shamali,
                 CountrySubdivision::Israel_district_Hefa,
-                CountrySubdivision::Israel_district_Tall_Abib
+                CountrySubdivision::Israel_district_Tall_Abib,
             ],
             self::Italy => [
                 CountrySubdivision::Italy_autonomous_province_Bolzano,
@@ -3377,7 +3377,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Italy_region_Puglia,
                 CountrySubdivision::Italy_region_Toscana,
                 CountrySubdivision::Italy_region_Umbria,
-                CountrySubdivision::Italy_region_Veneto
+                CountrySubdivision::Italy_region_Veneto,
             ],
             self::Jamaica => [
                 CountrySubdivision::Jamaica_parish_Clarendon,
@@ -3393,7 +3393,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Jamaica_parish_Saint_Mary,
                 CountrySubdivision::Jamaica_parish_Saint_Thomas,
                 CountrySubdivision::Jamaica_parish_Trelawny,
-                CountrySubdivision::Jamaica_parish_Westmoreland
+                CountrySubdivision::Jamaica_parish_Westmoreland,
             ],
             self::Japan => [
                 CountrySubdivision::Japan_prefecture_Aichi,
@@ -3442,7 +3442,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Japan_prefecture_Wakayama,
                 CountrySubdivision::Japan_prefecture_Yamagata,
                 CountrySubdivision::Japan_prefecture_Yamaguchi,
-                CountrySubdivision::Japan_prefecture_Yamanashi
+                CountrySubdivision::Japan_prefecture_Yamanashi,
             ],
             self::Jordan => [
                 CountrySubdivision::Jordan_governorate_Ajlun,
@@ -3456,7 +3456,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Jordan_governorate_Irbid,
                 CountrySubdivision::Jordan_governorate_Jarash,
                 CountrySubdivision::Jordan_governorate_Ma_an,
-                CountrySubdivision::Jordan_governorate_Madaba
+                CountrySubdivision::Jordan_governorate_Madaba,
             ],
             self::Kazakhstan => [
                 CountrySubdivision::Kazakhstan_city_Almaty,
@@ -3478,7 +3478,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Kazakhstan_region_Turkestankaya_oblast,
                 CountrySubdivision::Kazakhstan_region_Ulytauskaja_oblast,
                 CountrySubdivision::Kazakhstan_region_Zhambyl_oblysy,
-                CountrySubdivision::Kazakhstan_region_Zhetisu_oblysy
+                CountrySubdivision::Kazakhstan_region_Zhetisu_oblysy,
             ],
             self::Kenya => [
                 CountrySubdivision::Kenya_county_Baringo,
@@ -3527,12 +3527,12 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Kenya_county_Uasin_Gishu,
                 CountrySubdivision::Kenya_county_Vihiga,
                 CountrySubdivision::Kenya_county_Wajir,
-                CountrySubdivision::Kenya_county_West_Pokot
+                CountrySubdivision::Kenya_county_West_Pokot,
             ],
             self::Kiribati => [
                 CountrySubdivision::Kiribati_group_of_islands_20_inhabited_islands_Gilbert_Islands,
                 CountrySubdivision::Kiribati_group_of_islands_20_inhabited_islands_Line_Islands,
-                CountrySubdivision::Kiribati_group_of_islands_20_inhabited_islands_Phoenix_Islands
+                CountrySubdivision::Kiribati_group_of_islands_20_inhabited_islands_Phoenix_Islands,
             ],
             self::Korea_Democratic_Peoples_Republic => [
                 CountrySubdivision::North_Korea_capital_city_P_yongyang,
@@ -3547,7 +3547,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::North_Korea_province_P_yongan_bukto,
                 CountrySubdivision::North_Korea_province_P_yongan_namdo,
                 CountrySubdivision::North_Korea_province_Ryanggang_do,
-                CountrySubdivision::North_Korea_special_city_Raseon
+                CountrySubdivision::North_Korea_special_city_Raseon,
             ],
             self::Korea_Republic => [
                 CountrySubdivision::South_Korea_metropolitan_city_Busan_gwangyeoksi,
@@ -3566,7 +3566,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::South_Korea_special_city_Seoul_teukbyeolsi,
                 CountrySubdivision::South_Korea_special_self_governing_city_Sejong,
                 CountrySubdivision::South_Korea_special_self_governing_province_Gangwon_teukbyeoljachido,
-                CountrySubdivision::South_Korea_special_self_governing_province_Jeju_teukbyeoljachido
+                CountrySubdivision::South_Korea_special_self_governing_province_Jeju_teukbyeoljachido,
             ],
             self::Kuwait => [
                 CountrySubdivision::Kuwait_governorate_Al_Ahmadi,
@@ -3574,7 +3574,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Kuwait_governorate_Al_Farwaniyah,
                 CountrySubdivision::Kuwait_governorate_Al_Jahra,
                 CountrySubdivision::Kuwait_governorate_Hawalli,
-                CountrySubdivision::Kuwait_governorate_Mubarak_al_Kabir
+                CountrySubdivision::Kuwait_governorate_Mubarak_al_Kabir,
             ],
             self::Kyrgyzstan => [
                 CountrySubdivision::Kyrgyzstan_city_Bishkek_Shaary,
@@ -3585,7 +3585,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Kyrgyzstan_region_Issyk_Kul_skaja_oblast,
                 CountrySubdivision::Kyrgyzstan_region_Naryn,
                 CountrySubdivision::Kyrgyzstan_region_Osh,
-                CountrySubdivision::Kyrgyzstan_region_Talas
+                CountrySubdivision::Kyrgyzstan_region_Talas,
             ],
             self::Lao_Peoples_Democratic_Republic => [
                 CountrySubdivision::Laos_prefecture_Viangchan,
@@ -3605,7 +3605,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Laos_province_Xaignabouli,
                 CountrySubdivision::Laos_province_Xaisomboun,
                 CountrySubdivision::Laos_province_Xekong,
-                CountrySubdivision::Laos_province_Xiangkhouang
+                CountrySubdivision::Laos_province_Xiangkhouang,
             ],
             self::Latvia => [
                 CountrySubdivision::Latvia_municipality_Adazu_novads,
@@ -3650,7 +3650,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Latvia_state_city_Liepaja,
                 CountrySubdivision::Latvia_state_city_Rezekne,
                 CountrySubdivision::Latvia_state_city_Riga,
-                CountrySubdivision::Latvia_state_city_Ventspils
+                CountrySubdivision::Latvia_state_city_Ventspils,
             ],
             self::Lebanon => [
                 CountrySubdivision::Lebanon_governorate_Aakkar,
@@ -3660,7 +3660,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Lebanon_governorate_Ash_Shimal,
                 CountrySubdivision::Lebanon_governorate_Baalbek_Hermel,
                 CountrySubdivision::Lebanon_governorate_Bayrut,
-                CountrySubdivision::Lebanon_governorate_Jabal_Lubnan
+                CountrySubdivision::Lebanon_governorate_Jabal_Lubnan,
             ],
             self::Lesotho => [
                 CountrySubdivision::Lesotho_district_Berea,
@@ -3672,7 +3672,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Lesotho_district_Mokhotlong,
                 CountrySubdivision::Lesotho_district_Qacha_s_Nek,
                 CountrySubdivision::Lesotho_district_Quthing,
-                CountrySubdivision::Lesotho_district_Thaba_Tseka
+                CountrySubdivision::Lesotho_district_Thaba_Tseka,
             ],
             self::Liberia => [
                 CountrySubdivision::Liberia_county_Bomi,
@@ -3689,7 +3689,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Liberia_county_Nimba,
                 CountrySubdivision::Liberia_county_River_Cess,
                 CountrySubdivision::Liberia_county_River_Gee,
-                CountrySubdivision::Liberia_county_Sinoe
+                CountrySubdivision::Liberia_county_Sinoe,
             ],
             self::Libya => [
                 CountrySubdivision::Libya_popularate_Al_Butnan,
@@ -3713,7 +3713,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Libya_popularate_Surt,
                 CountrySubdivision::Libya_popularate_Tarabulus,
                 CountrySubdivision::Libya_popularate_Wadi_al_Hayat,
-                CountrySubdivision::Libya_popularate_Wadi_ash_Shati
+                CountrySubdivision::Libya_popularate_Wadi_ash_Shati,
             ],
             self::Liechtenstein => [
                 CountrySubdivision::Liechtenstein_commune_Balzers,
@@ -3726,7 +3726,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Liechtenstein_commune_Schellenberg,
                 CountrySubdivision::Liechtenstein_commune_Triesen,
                 CountrySubdivision::Liechtenstein_commune_Triesenberg,
-                CountrySubdivision::Liechtenstein_commune_Vaduz
+                CountrySubdivision::Liechtenstein_commune_Vaduz,
             ],
             self::Lithuania => [
                 CountrySubdivision::Lithuania_city_municipality_Alytaus_miestas,
@@ -3798,7 +3798,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Lithuania_municipality_Neringa,
                 CountrySubdivision::Lithuania_municipality_Pagegiai,
                 CountrySubdivision::Lithuania_municipality_Rietavas,
-                CountrySubdivision::Lithuania_municipality_Visaginas
+                CountrySubdivision::Lithuania_municipality_Visaginas,
             ],
             self::Luxembourg => [
                 CountrySubdivision::Luxembourg_canton_Capellen,
@@ -3812,7 +3812,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Luxembourg_canton_Redange,
                 CountrySubdivision::Luxembourg_canton_Remich,
                 CountrySubdivision::Luxembourg_canton_Veianen,
-                CountrySubdivision::Luxembourg_canton_Wiltz
+                CountrySubdivision::Luxembourg_canton_Wiltz,
             ],
             self::Madagascar => [
                 CountrySubdivision::Madagascar_province_Antananarivo,
@@ -3820,7 +3820,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Madagascar_province_Fianarantsoa,
                 CountrySubdivision::Madagascar_province_Mahajanga,
                 CountrySubdivision::Madagascar_province_Toamasina,
-                CountrySubdivision::Madagascar_province_Toliara
+                CountrySubdivision::Madagascar_province_Toliara,
             ],
             self::Malawi => [
                 CountrySubdivision::Malawi_district_Balaka,
@@ -3853,7 +3853,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Malawi_district_Zomba,
                 CountrySubdivision::Malawi_region_Central_Region,
                 CountrySubdivision::Malawi_region_Chakumpoto,
-                CountrySubdivision::Malawi_region_Chakumwera
+                CountrySubdivision::Malawi_region_Chakumwera,
             ],
             self::Malaysia => [
                 CountrySubdivision::Malaysia_federal_territory_Wilayah_Persekutuan_Kuala_Lumpur,
@@ -3871,7 +3871,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Malaysia_state_Sabah,
                 CountrySubdivision::Malaysia_state_Sarawak,
                 CountrySubdivision::Malaysia_state_Selangor,
-                CountrySubdivision::Malaysia_state_Terengganu
+                CountrySubdivision::Malaysia_state_Terengganu,
             ],
             self::Maldives => [
                 CountrySubdivision::Maldives_administrative_atoll_Ariatholhu_Dhekunuburi,
@@ -3894,7 +3894,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Maldives_administrative_atoll_North_Thiladhunmathi,
                 CountrySubdivision::Maldives_administrative_atoll_South_Thiladhunmathi,
                 CountrySubdivision::Maldives_city_Addu,
-                CountrySubdivision::Maldives_city_Maale
+                CountrySubdivision::Maldives_city_Maale,
             ],
             self::Mali => [
                 CountrySubdivision::Mali_district_Bamako,
@@ -3907,7 +3907,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Mali_region_Segou,
                 CountrySubdivision::Mali_region_Sikasso,
                 CountrySubdivision::Mali_region_Taoudenit,
-                CountrySubdivision::Mali_region_Tombouctou
+                CountrySubdivision::Mali_region_Tombouctou,
             ],
             self::Malta => [
                 CountrySubdivision::Malta_local_council_Attard,
@@ -3977,7 +3977,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Malta_local_council_Zebbug_Gozo,
                 CountrySubdivision::Malta_local_council_Zebbug_Malta,
                 CountrySubdivision::Malta_local_council_Zejtun,
-                CountrySubdivision::Malta_local_council_Zurrieq
+                CountrySubdivision::Malta_local_council_Zurrieq,
             ],
             self::Marshall_Islands => [
                 CountrySubdivision::Marshall_Islands_chain_of_islands_Ralik_chain,
@@ -4005,7 +4005,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Marshall_Islands_municipality_Ujae,
                 CountrySubdivision::Marshall_Islands_municipality_Utrik,
                 CountrySubdivision::Marshall_Islands_municipality_Wotho,
-                CountrySubdivision::Marshall_Islands_municipality_Wotje
+                CountrySubdivision::Marshall_Islands_municipality_Wotje,
             ],
             self::Mauritania => [
                 CountrySubdivision::Mauritania_region_Adrar,
@@ -4022,7 +4022,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Mauritania_region_Nouakchott_Sud,
                 CountrySubdivision::Mauritania_region_Tagant,
                 CountrySubdivision::Mauritania_region_Tiris_Zemmour,
-                CountrySubdivision::Mauritania_region_Trarza
+                CountrySubdivision::Mauritania_region_Trarza,
             ],
             self::Mauritius => [
                 CountrySubdivision::Mauritius_dependency_Agalega_Islands,
@@ -4036,7 +4036,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Mauritius_district_Plaines_Wilhems,
                 CountrySubdivision::Mauritius_district_Port_Louis,
                 CountrySubdivision::Mauritius_district_Riviere_du_Rempart,
-                CountrySubdivision::Mauritius_district_Savanne
+                CountrySubdivision::Mauritius_district_Savanne,
             ],
             self::Mexico => [
                 CountrySubdivision::Mexico_federal_entity_Ciudad_de_Mexico,
@@ -4070,13 +4070,13 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Mexico_state_Tlaxcala,
                 CountrySubdivision::Mexico_state_Veracruz_de_Ignacio_de_la_Llave,
                 CountrySubdivision::Mexico_state_Yucatan,
-                CountrySubdivision::Mexico_state_Zacatecas
+                CountrySubdivision::Mexico_state_Zacatecas,
             ],
             self::Micronesia => [
                 CountrySubdivision::Micronesia_state_Chuuk,
                 CountrySubdivision::Micronesia_state_Kosrae,
                 CountrySubdivision::Micronesia_state_Pohnpei,
-                CountrySubdivision::Micronesia_state_Yap
+                CountrySubdivision::Micronesia_state_Yap,
             ],
             self::Moldova => [
                 CountrySubdivision::Moldova_autonomous_territorial_unit_Gagauzia_Unitatea_teritoriala_autonoma_UTAG,
@@ -4115,7 +4115,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Moldova_district_Taraclia,
                 CountrySubdivision::Moldova_district_Telenesti,
                 CountrySubdivision::Moldova_district_Ungheni,
-                CountrySubdivision::Moldova_territorial_unit_Stinga_Nistrului_unitatea_teritoriala_din
+                CountrySubdivision::Moldova_territorial_unit_Stinga_Nistrului_unitatea_teritoriala_din,
             ],
             self::Monaco => [
                 CountrySubdivision::Monaco_quarter_Fontvieille,
@@ -4134,7 +4134,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Monaco_quarter_Saint_Roman,
                 CountrySubdivision::Monaco_quarter_Sainte_Devote,
                 CountrySubdivision::Monaco_quarter_Spelugues,
-                CountrySubdivision::Monaco_quarter_Vallon_de_la_Rousse
+                CountrySubdivision::Monaco_quarter_Vallon_de_la_Rousse,
             ],
             self::Mongolia => [
                 CountrySubdivision::Mongolia_capital_city_Ulaanbaatar,
@@ -4158,7 +4158,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Mongolia_province_Selenge,
                 CountrySubdivision::Mongolia_province_Suhbaatar,
                 CountrySubdivision::Mongolia_province_Tov,
-                CountrySubdivision::Mongolia_province_Uvs
+                CountrySubdivision::Mongolia_province_Uvs,
             ],
             self::Montenegro => [
                 CountrySubdivision::Montenegro_municipality_Andrijevica,
@@ -4185,7 +4185,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Montenegro_municipality_Tuzi,
                 CountrySubdivision::Montenegro_municipality_Ulcinj,
                 CountrySubdivision::Montenegro_municipality_Zabljak,
-                CountrySubdivision::Montenegro_municipality_Zeta
+                CountrySubdivision::Montenegro_municipality_Zeta,
             ],
             self::Morocco => [
                 CountrySubdivision::Morocco_prefecture_Agadir_Ida_Ou_Tanane,
@@ -4274,7 +4274,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Morocco_region_Marrakech_Safi,
                 CountrySubdivision::Morocco_region_Rabat_Sale_Kenitra,
                 CountrySubdivision::Morocco_region_Souss_Massa,
-                CountrySubdivision::Morocco_region_Tanger_Tetouan_Al_Hoceima
+                CountrySubdivision::Morocco_region_Tanger_Tetouan_Al_Hoceima,
             ],
             self::Mozambique => [
                 CountrySubdivision::Mozambique_city_Maputo,
@@ -4287,7 +4287,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Mozambique_province_Niassa,
                 CountrySubdivision::Mozambique_province_Sofala,
                 CountrySubdivision::Mozambique_province_Tete,
-                CountrySubdivision::Mozambique_province_Zambezia
+                CountrySubdivision::Mozambique_province_Zambezia,
             ],
             self::Myanmar => [
                 CountrySubdivision::Myanmar_Burma_region_Ayeyarwady,
@@ -4304,7 +4304,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Myanmar_Burma_state_Mon,
                 CountrySubdivision::Myanmar_Burma_state_Rakhine,
                 CountrySubdivision::Myanmar_Burma_state_Shan,
-                CountrySubdivision::Myanmar_Burma_union_territory_Nay_Pyi_Taw
+                CountrySubdivision::Myanmar_Burma_union_territory_Nay_Pyi_Taw,
             ],
             self::Namibia => [
                 CountrySubdivision::Namibia_region_Erongo,
@@ -4320,7 +4320,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Namibia_region_Oshana,
                 CountrySubdivision::Namibia_region_Oshikoto,
                 CountrySubdivision::Namibia_region_Otjozondjupa,
-                CountrySubdivision::Namibia_region_Zambezi
+                CountrySubdivision::Namibia_region_Zambezi,
             ],
             self::Nauru => [
                 CountrySubdivision::Nauru_district_Aiwo,
@@ -4336,7 +4336,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Nauru_district_Meneng,
                 CountrySubdivision::Nauru_district_Nibok,
                 CountrySubdivision::Nauru_district_Uaboe,
-                CountrySubdivision::Nauru_district_Yaren
+                CountrySubdivision::Nauru_district_Yaren,
             ],
             self::Nepal => [
                 CountrySubdivision::Nepal_province_Bagmati,
@@ -4345,7 +4345,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Nepal_province_Koshi,
                 CountrySubdivision::Nepal_province_Lumbini,
                 CountrySubdivision::Nepal_province_Madhesh,
-                CountrySubdivision::Nepal_province_Sudurpashchim
+                CountrySubdivision::Nepal_province_Sudurpashchim,
             ],
             self::Netherlands => [
                 CountrySubdivision::Netherlands_country_Aruba,
@@ -4365,7 +4365,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Netherlands_province_Zuid_Holland,
                 CountrySubdivision::Netherlands_special_municipality_Bonaire,
                 CountrySubdivision::Netherlands_special_municipality_Saba,
-                CountrySubdivision::Netherlands_special_municipality_Sint_Eustatius
+                CountrySubdivision::Netherlands_special_municipality_Sint_Eustatius,
             ],
             self::New_Zealand => [
                 CountrySubdivision::New_Zealand_region_Auckland,
@@ -4384,7 +4384,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::New_Zealand_region_Tasman,
                 CountrySubdivision::New_Zealand_region_Te_Tai_o_Poutini,
                 CountrySubdivision::New_Zealand_region_Waikato,
-                CountrySubdivision::New_Zealand_special_island_authority_Chatham_Islands_Territory
+                CountrySubdivision::New_Zealand_special_island_authority_Chatham_Islands_Territory,
             ],
             self::Nicaragua => [
                 CountrySubdivision::Nicaragua_autonomous_region_Costa_Caribe_Norte,
@@ -4403,7 +4403,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Nicaragua_department_Matagalpa,
                 CountrySubdivision::Nicaragua_department_Nueva_Segovia,
                 CountrySubdivision::Nicaragua_department_Rio_San_Juan,
-                CountrySubdivision::Nicaragua_department_Rivas
+                CountrySubdivision::Nicaragua_department_Rivas,
             ],
             self::Niger => [
                 CountrySubdivision::Niger_region_Agadez,
@@ -4413,7 +4413,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Niger_region_Tahoua,
                 CountrySubdivision::Niger_region_Tillaberi,
                 CountrySubdivision::Niger_region_Zinder,
-                CountrySubdivision::Niger_urban_community_Niamey
+                CountrySubdivision::Niger_urban_community_Niamey,
             ],
             self::Nigeria => [
                 CountrySubdivision::Nigeria_capital_territory_Abuja_Federal_Capital_Territory,
@@ -4452,7 +4452,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Nigeria_state_Sokoto,
                 CountrySubdivision::Nigeria_state_Taraba,
                 CountrySubdivision::Nigeria_state_Yobe,
-                CountrySubdivision::Nigeria_state_Zamfara
+                CountrySubdivision::Nigeria_state_Zamfara,
             ],
             self::North_Macedonia => [
                 CountrySubdivision::North_Macedonia_municipality_Aerodrom,
@@ -4534,7 +4534,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::North_Macedonia_municipality_Vrapciste,
                 CountrySubdivision::North_Macedonia_municipality_Zelenikovo,
                 CountrySubdivision::North_Macedonia_municipality_Zelino,
-                CountrySubdivision::North_Macedonia_municipality_Zrnovci
+                CountrySubdivision::North_Macedonia_municipality_Zrnovci,
             ],
             self::Norway => [
                 CountrySubdivision::Norway_arctic_region_Jan_Mayen_Arctic_Region,
@@ -4549,7 +4549,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Norway_county_Troondelage,
                 CountrySubdivision::Norway_county_Vestfold_og_Telemark,
                 CountrySubdivision::Norway_county_Vestland,
-                CountrySubdivision::Norway_county_Viken
+                CountrySubdivision::Norway_county_Viken,
             ],
             self::Oman => [
                 CountrySubdivision::Oman_governorate_Ad_Dakhiliyah,
@@ -4562,7 +4562,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Oman_governorate_Musandam,
                 CountrySubdivision::Oman_governorate_Shamal_al_Batinah,
                 CountrySubdivision::Oman_governorate_Shamal_ash_Sharqiyah,
-                CountrySubdivision::Oman_governorate_Zufar
+                CountrySubdivision::Oman_governorate_Zufar,
             ],
             self::Pakistan => [
                 CountrySubdivision::Pakistan_Pakistan_administered_area_Azad_Jammu_and_Kashmir,
@@ -4571,7 +4571,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Pakistan_province_Balochistan,
                 CountrySubdivision::Pakistan_province_Khaibar_Pakhtunkhwa,
                 CountrySubdivision::Pakistan_province_Panjab,
-                CountrySubdivision::Pakistan_province_Sindh
+                CountrySubdivision::Pakistan_province_Sindh,
             ],
             self::Palau => [
                 CountrySubdivision::Palau_state_Aimeliik,
@@ -4589,7 +4589,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Palau_state_Ngeremlengui,
                 CountrySubdivision::Palau_state_Ngiwal,
                 CountrySubdivision::Palau_state_Peleliu,
-                CountrySubdivision::Palau_state_Sonsorol
+                CountrySubdivision::Palau_state_Sonsorol,
             ],
             self::Palestine => [
                 CountrySubdivision::Palestinian_Territories_governorate_Al_Khalil,
@@ -4607,7 +4607,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Palestinian_Territories_governorate_Ramallah,
                 CountrySubdivision::Palestinian_Territories_governorate_Salfit,
                 CountrySubdivision::Palestinian_Territories_governorate_Tubas,
-                CountrySubdivision::Palestinian_Territories_governorate_Tulkarm
+                CountrySubdivision::Palestinian_Territories_governorate_Tulkarm,
             ],
             self::Panama => [
                 CountrySubdivision::Panama_indigenous_region_Embera,
@@ -4623,7 +4623,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Panama_province_Los_Santos,
                 CountrySubdivision::Panama_province_Panama,
                 CountrySubdivision::Panama_province_Panama_Oeste,
-                CountrySubdivision::Panama_province_Veraguas
+                CountrySubdivision::Panama_province_Veraguas,
             ],
             self::Papua_New_Guinea => [
                 CountrySubdivision::Papua_New_Guinea_autonomous_region_Bougainville,
@@ -4647,7 +4647,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Papua_New_Guinea_province_West_New_Britain,
                 CountrySubdivision::Papua_New_Guinea_province_West_Sepik,
                 CountrySubdivision::Papua_New_Guinea_province_Western,
-                CountrySubdivision::Papua_New_Guinea_province_Western_Highlands
+                CountrySubdivision::Papua_New_Guinea_province_Western_Highlands,
             ],
             self::Paraguay => [
                 CountrySubdivision::Paraguay_capital_Asuncion,
@@ -4667,7 +4667,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Paraguay_department_Neembucu,
                 CountrySubdivision::Paraguay_department_Paraguari,
                 CountrySubdivision::Paraguay_department_Presidente_Hayes,
-                CountrySubdivision::Paraguay_department_San_Pedro
+                CountrySubdivision::Paraguay_department_San_Pedro,
             ],
             self::Peru => [
                 CountrySubdivision::Peru_municipality_Lima_hatun_llaqta,
@@ -4695,7 +4695,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Peru_region_San_Martin,
                 CountrySubdivision::Peru_region_Tacna,
                 CountrySubdivision::Peru_region_Tumbes,
-                CountrySubdivision::Peru_region_Ucayali
+                CountrySubdivision::Peru_region_Ucayali,
             ],
             self::Philippines => [
                 CountrySubdivision::Philippines_province_Abra,
@@ -4796,7 +4796,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Philippines_region_Northern_Mindanao_Region_X,
                 CountrySubdivision::Philippines_region_Rehiyon_ng_Kanlurang_Bisaya,
                 CountrySubdivision::Philippines_region_Rehiyon_ng_Soccsksargen,
-                CountrySubdivision::Philippines_region_Rehiyon_ng_Tangway_ng_Sambuwangga
+                CountrySubdivision::Philippines_region_Rehiyon_ng_Tangway_ng_Sambuwangga,
             ],
             self::Poland => [
                 CountrySubdivision::Poland_voivodship_Dolnoslaskie,
@@ -4814,7 +4814,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Poland_voivodship_Swietokrzyskie,
                 CountrySubdivision::Poland_voivodship_Warminsko_Mazurskie,
                 CountrySubdivision::Poland_voivodship_Wielkopolskie,
-                CountrySubdivision::Poland_voivodship_Zachodniopomorskie
+                CountrySubdivision::Poland_voivodship_Zachodniopomorskie,
             ],
             self::Portugal => [
                 CountrySubdivision::Portugal_autonomous_region_Regiao_Autonoma_da_Madeira,
@@ -4836,7 +4836,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Portugal_district_Setubal,
                 CountrySubdivision::Portugal_district_Viana_do_Castelo,
                 CountrySubdivision::Portugal_district_Vila_Real,
-                CountrySubdivision::Portugal_district_Viseu
+                CountrySubdivision::Portugal_district_Viseu,
             ],
             self::Qatar => [
                 CountrySubdivision::Qatar_municipality_Ad_Dawhah,
@@ -4846,7 +4846,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Qatar_municipality_Ash_Shamal,
                 CountrySubdivision::Qatar_municipality_Ash_Shihaniyah,
                 CountrySubdivision::Qatar_municipality_Az_Za_ayin,
-                CountrySubdivision::Qatar_municipality_Umm_Salal
+                CountrySubdivision::Qatar_municipality_Umm_Salal,
             ],
             self::Romania => [
                 CountrySubdivision::Romania_department_Alba,
@@ -4890,7 +4890,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Romania_department_Valcea,
                 CountrySubdivision::Romania_department_Vaslui,
                 CountrySubdivision::Romania_department_Vrancea,
-                CountrySubdivision::Romania_municipality_Bucuresti
+                CountrySubdivision::Romania_municipality_Bucuresti,
             ],
             self::Russian_Federation => [
                 CountrySubdivision::Russia_administrative_region_Amurskaja_oblast,
@@ -4975,19 +4975,19 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Russia_republic_Severnaja_Osetija_Respublika,
                 CountrySubdivision::Russia_republic_Tatarstan_Respublika,
                 CountrySubdivision::Russia_republic_Tyva_Respublika,
-                CountrySubdivision::Russia_republic_Udmurtskaja_Respublika
+                CountrySubdivision::Russia_republic_Udmurtskaja_Respublika,
             ],
             self::Rwanda => [
                 CountrySubdivision::Rwanda_city_City_of_Kigali,
                 CountrySubdivision::Rwanda_province_Amajyaruguru,
                 CountrySubdivision::Rwanda_province_Amajyepfo,
                 CountrySubdivision::Rwanda_province_Eastern,
-                CountrySubdivision::Rwanda_province_Iburengerazuba
+                CountrySubdivision::Rwanda_province_Iburengerazuba,
             ],
             self::Saint_Helena_Ascension_Tristan_da_Cunha => [
                 CountrySubdivision::St_Helena_geographical_entity_Ascension,
                 CountrySubdivision::St_Helena_geographical_entity_Saint_Helena,
-                CountrySubdivision::St_Helena_geographical_entity_Tristan_da_Cunha
+                CountrySubdivision::St_Helena_geographical_entity_Tristan_da_Cunha,
             ],
             self::Saint_Kitts_and_Nevis => [
                 CountrySubdivision::St_Kitts_Nevis_parish_Christ_Church_Nichola_Town,
@@ -5005,7 +5005,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::St_Kitts_Nevis_parish_Saint_Thomas_Middle_Island,
                 CountrySubdivision::St_Kitts_Nevis_parish_Trinity_Palmetto_Point,
                 CountrySubdivision::St_Kitts_Nevis_state_Nevis,
-                CountrySubdivision::St_Kitts_Nevis_state_Saint_Kitts
+                CountrySubdivision::St_Kitts_Nevis_state_Saint_Kitts,
             ],
             self::Saint_Lucia => [
                 CountrySubdivision::St_Lucia_district_Anse_la_Raye,
@@ -5017,7 +5017,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::St_Lucia_district_Laborie,
                 CountrySubdivision::St_Lucia_district_Micoud,
                 CountrySubdivision::St_Lucia_district_Soufriere,
-                CountrySubdivision::St_Lucia_district_Vieux_Fort
+                CountrySubdivision::St_Lucia_district_Vieux_Fort,
             ],
             self::Saint_Vincent_and_the_Grenadines => [
                 CountrySubdivision::St_Vincent_Grenadines_parish_Charlotte,
@@ -5025,7 +5025,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::St_Vincent_Grenadines_parish_Saint_Andrew,
                 CountrySubdivision::St_Vincent_Grenadines_parish_Saint_David,
                 CountrySubdivision::St_Vincent_Grenadines_parish_Saint_George,
-                CountrySubdivision::St_Vincent_Grenadines_parish_Saint_Patrick
+                CountrySubdivision::St_Vincent_Grenadines_parish_Saint_Patrick,
             ],
             self::Samoa => [
                 CountrySubdivision::Samoa_district_A_ana,
@@ -5038,7 +5038,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Samoa_district_Satupa_itea,
                 CountrySubdivision::Samoa_district_Tuamasaga,
                 CountrySubdivision::Samoa_district_Va_a_o_Fonoti,
-                CountrySubdivision::Samoa_district_Vaisigano
+                CountrySubdivision::Samoa_district_Vaisigano,
             ],
             self::San_Marino => [
                 CountrySubdivision::San_Marino_municipality_Acquaviva,
@@ -5049,7 +5049,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::San_Marino_municipality_Faetano,
                 CountrySubdivision::San_Marino_municipality_Fiorentino,
                 CountrySubdivision::San_Marino_municipality_Montegiardino,
-                CountrySubdivision::San_Marino_municipality_Serravalle
+                CountrySubdivision::San_Marino_municipality_Serravalle,
             ],
             self::Sao_Tome_and_Principe => [
                 CountrySubdivision::Sao_Tome_Principe_autonomous_region_Principe,
@@ -5058,7 +5058,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Sao_Tome_Principe_district_Caue,
                 CountrySubdivision::Sao_Tome_Principe_district_Lemba,
                 CountrySubdivision::Sao_Tome_Principe_district_Lobata,
-                CountrySubdivision::Sao_Tome_Principe_district_Me_Zochi
+                CountrySubdivision::Sao_Tome_Principe_district_Me_Zochi,
             ],
             self::Saudi_Arabia => [
                 CountrySubdivision::Saudi_Arabia_region_Al_Bahah,
@@ -5073,7 +5073,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Saudi_Arabia_region_Jazan,
                 CountrySubdivision::Saudi_Arabia_region_Makkah_al_Mukarramah,
                 CountrySubdivision::Saudi_Arabia_region_Najran,
-                CountrySubdivision::Saudi_Arabia_region_Tabuk
+                CountrySubdivision::Saudi_Arabia_region_Tabuk,
             ],
             self::Senegal => [
                 CountrySubdivision::Senegal_region_Dakar,
@@ -5089,7 +5089,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Senegal_region_Sedhiou,
                 CountrySubdivision::Senegal_region_Tambacounda,
                 CountrySubdivision::Senegal_region_Thies,
-                CountrySubdivision::Senegal_region_Ziguinchor
+                CountrySubdivision::Senegal_region_Ziguinchor,
             ],
             self::Serbia => [
                 CountrySubdivision::Serbia_autonomous_province_Kosovo_Metohija,
@@ -5123,7 +5123,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Serbia_district_Toplicki_okrug,
                 CountrySubdivision::Serbia_district_Zajecarski_okrug,
                 CountrySubdivision::Serbia_district_Zapadnobacki_okrug,
-                CountrySubdivision::Serbia_district_Zlatiborski_okrug
+                CountrySubdivision::Serbia_district_Zlatiborski_okrug,
             ],
             self::Seychelles => [
                 CountrySubdivision::Seychelles_district_Ans_Bwalo,
@@ -5152,21 +5152,21 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Seychelles_district_Porglo,
                 CountrySubdivision::Seychelles_district_Roche_Caiman,
                 CountrySubdivision::Seychelles_district_Saint_Louis,
-                CountrySubdivision::Seychelles_district_Takamaka
+                CountrySubdivision::Seychelles_district_Takamaka,
             ],
             self::Sierra_Leone => [
                 CountrySubdivision::Sierra_Leone_area_Western_Area_Freetown,
                 CountrySubdivision::Sierra_Leone_province_Eastern,
                 CountrySubdivision::Sierra_Leone_province_North_Western,
                 CountrySubdivision::Sierra_Leone_province_Northern,
-                CountrySubdivision::Sierra_Leone_province_Southern
+                CountrySubdivision::Sierra_Leone_province_Southern,
             ],
             self::Singapore => [
                 CountrySubdivision::Singapore_district_Central_Singapore,
                 CountrySubdivision::Singapore_district_North_East,
                 CountrySubdivision::Singapore_district_North_West,
                 CountrySubdivision::Singapore_district_South_East,
-                CountrySubdivision::Singapore_district_South_West
+                CountrySubdivision::Singapore_district_South_West,
             ],
             self::Slovakia => [
                 CountrySubdivision::Slovakia_region_Banskobystricky_kraj,
@@ -5176,7 +5176,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Slovakia_region_Presovsky_kraj,
                 CountrySubdivision::Slovakia_region_Trenciansky_kraj,
                 CountrySubdivision::Slovakia_region_Trnavsky_kraj,
-                CountrySubdivision::Slovakia_region_Zilinsky_kraj
+                CountrySubdivision::Slovakia_region_Zilinsky_kraj,
             ],
             self::Slovenia => [
                 CountrySubdivision::Slovenia_municipality_Ajdovscina,
@@ -5390,7 +5390,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Slovenia_urban_municipality_Novo_Mesto,
                 CountrySubdivision::Slovenia_urban_municipality_Ptuj,
                 CountrySubdivision::Slovenia_urban_municipality_Slovenj_Gradec,
-                CountrySubdivision::Slovenia_urban_municipality_Velenje
+                CountrySubdivision::Slovenia_urban_municipality_Velenje,
             ],
             self::Solomon_Islands => [
                 CountrySubdivision::Solomon_Islands_capital_territory_Capital_Territory_Honiara,
@@ -5402,7 +5402,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Solomon_Islands_province_Malaita,
                 CountrySubdivision::Solomon_Islands_province_Rennell_and_Bellona,
                 CountrySubdivision::Solomon_Islands_province_Temotu,
-                CountrySubdivision::Solomon_Islands_province_Western
+                CountrySubdivision::Solomon_Islands_province_Western,
             ],
             self::Somalia => [
                 CountrySubdivision::Somalia_region_Awdal,
@@ -5422,7 +5422,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Somalia_region_Shabeellaha_Hoose,
                 CountrySubdivision::Somalia_region_Sool,
                 CountrySubdivision::Somalia_region_Togdheer,
-                CountrySubdivision::Somalia_region_Woqooyi_Galbeed
+                CountrySubdivision::Somalia_region_Woqooyi_Galbeed,
             ],
             self::South_Africa => [
                 CountrySubdivision::South_Africa_province_Bokone_Bophirima,
@@ -5433,7 +5433,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::South_Africa_province_Kapa_Bodikela,
                 CountrySubdivision::South_Africa_province_Kapa_Bokone,
                 CountrySubdivision::South_Africa_province_Limpopo,
-                CountrySubdivision::South_Africa_province_Mpumalanga
+                CountrySubdivision::South_Africa_province_Mpumalanga,
             ],
             self::South_Sudan => [
                 CountrySubdivision::South_Sudan_state_Central_Equatoria,
@@ -5445,7 +5445,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::South_Sudan_state_Upper_Nile,
                 CountrySubdivision::South_Sudan_state_Warrap,
                 CountrySubdivision::South_Sudan_state_Western_Bahr_el_Ghazal,
-                CountrySubdivision::South_Sudan_state_Western_Equatoria
+                CountrySubdivision::South_Sudan_state_Western_Equatoria,
             ],
             self::Spain => [
                 CountrySubdivision::Spain_autonomous_city_in_North_Africa_Ceuta,
@@ -5516,7 +5516,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Spain_province_Valencia,
                 CountrySubdivision::Spain_province_Valladolid,
                 CountrySubdivision::Spain_province_Zamora,
-                CountrySubdivision::Spain_province_Zaragoza
+                CountrySubdivision::Spain_province_Zaragoza,
             ],
             self::Sri_Lanka => [
                 CountrySubdivision::Sri_Lanka_district_Ampantottai,
@@ -5552,7 +5552,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Sri_Lanka_province_North_Central_Province,
                 CountrySubdivision::Sri_Lanka_province_North_Western_Province,
                 CountrySubdivision::Sri_Lanka_province_Northern_Province,
-                CountrySubdivision::Sri_Lanka_province_Uva_Province
+                CountrySubdivision::Sri_Lanka_province_Uva_Province,
             ],
             self::Sudan => [
                 CountrySubdivision::Sudan_state_Al_Bahr_al_Ahmar,
@@ -5572,7 +5572,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Sudan_state_Nahr_an_Nil,
                 CountrySubdivision::Sudan_state_North_Darfur,
                 CountrySubdivision::Sudan_state_North_Kordofan,
-                CountrySubdivision::Sudan_state_Sennar
+                CountrySubdivision::Sudan_state_Sennar,
             ],
             self::Suriname => [
                 CountrySubdivision::Suriname_district_Brokopondo,
@@ -5584,7 +5584,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Suriname_district_Paramaribo,
                 CountrySubdivision::Suriname_district_Saramacca,
                 CountrySubdivision::Suriname_district_Sipaliwini,
-                CountrySubdivision::Suriname_district_Wanica
+                CountrySubdivision::Suriname_district_Wanica,
             ],
             self::Sweden => [
                 CountrySubdivision::Sweden_county_Blekinge_lan_SE_10,
@@ -5607,7 +5607,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Sweden_county_Vasterbottens_lan_SE_24,
                 CountrySubdivision::Sweden_county_Vasternorrlands_lan_SE_22,
                 CountrySubdivision::Sweden_county_Vastmanlands_lan_SE_19,
-                CountrySubdivision::Sweden_county_Vastra_Gotalands_lan_SE_14
+                CountrySubdivision::Sweden_county_Vastra_Gotalands_lan_SE_14,
             ],
             self::Switzerland => [
                 CountrySubdivision::Switzerland_canton_Aargau,
@@ -5635,7 +5635,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Switzerland_canton_Valais,
                 CountrySubdivision::Switzerland_canton_Vaud,
                 CountrySubdivision::Switzerland_canton_Zug,
-                CountrySubdivision::Switzerland_canton_Zurich
+                CountrySubdivision::Switzerland_canton_Zurich,
             ],
             self::Syrian_Arab_Republic => [
                 CountrySubdivision::Syria_province_Al_Hasakah,
@@ -5651,7 +5651,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Syria_province_Hims,
                 CountrySubdivision::Syria_province_Idlib,
                 CountrySubdivision::Syria_province_Rif_Dimashq,
-                CountrySubdivision::Syria_province_Tartus
+                CountrySubdivision::Syria_province_Tartus,
             ],
             self::Taiwan_Province_of_China => [
                 CountrySubdivision::Taiwan_city_Chiayi,
@@ -5675,14 +5675,14 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Taiwan_special_municipality_Taichung,
                 CountrySubdivision::Taiwan_special_municipality_Tainan,
                 CountrySubdivision::Taiwan_special_municipality_Taipei,
-                CountrySubdivision::Taiwan_special_municipality_Taoyuan
+                CountrySubdivision::Taiwan_special_municipality_Taoyuan,
             ],
             self::Tajikistan => [
                 CountrySubdivision::Tajikistan_autonomous_region_Kuhistoni_Badakhshon,
                 CountrySubdivision::Tajikistan_capital_territory_Dushanbe,
                 CountrySubdivision::Tajikistan_districts_under_republic_administration_nohiyahoi_tobei_jumhuri,
                 CountrySubdivision::Tajikistan_region_Khatlon,
-                CountrySubdivision::Tajikistan_region_Sughd
+                CountrySubdivision::Tajikistan_region_Sughd,
             ],
             self::Tanzania => [
                 CountrySubdivision::Tanzania_region_Arusha,
@@ -5715,7 +5715,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Tanzania_region_Singida,
                 CountrySubdivision::Tanzania_region_Songwe,
                 CountrySubdivision::Tanzania_region_Tabora,
-                CountrySubdivision::Tanzania_region_Tanga
+                CountrySubdivision::Tanzania_region_Tanga,
             ],
             self::Thailand => [
                 CountrySubdivision::Thailand_metropolitan_administration_Krung_Thep_Maha_Nakhon,
@@ -5795,7 +5795,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Thailand_province_Uttaradit,
                 CountrySubdivision::Thailand_province_Yala,
                 CountrySubdivision::Thailand_province_Yasothon,
-                CountrySubdivision::Thailand_special_administrative_city_Phatthaya
+                CountrySubdivision::Thailand_special_administrative_city_Phatthaya,
             ],
             self::Timor_Leste => [
                 CountrySubdivision::Timor_Leste_municipality_Aileu,
@@ -5810,21 +5810,21 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Timor_Leste_municipality_Manatuto,
                 CountrySubdivision::Timor_Leste_municipality_Manufahi,
                 CountrySubdivision::Timor_Leste_municipality_Vikeke,
-                CountrySubdivision::Timor_Leste_special_administrative_region_Oekusi_Ambenu
+                CountrySubdivision::Timor_Leste_special_administrative_region_Oekusi_Ambenu,
             ],
             self::Togo => [
                 CountrySubdivision::Togo_region_Centrale,
                 CountrySubdivision::Togo_region_Kara,
                 CountrySubdivision::Togo_region_Maritime_Region,
                 CountrySubdivision::Togo_region_Plateaux,
-                CountrySubdivision::Togo_region_Savanes
+                CountrySubdivision::Togo_region_Savanes,
             ],
             self::Tonga => [
                 CountrySubdivision::Tonga_division_Eua,
                 CountrySubdivision::Tonga_division_Ha_apai,
                 CountrySubdivision::Tonga_division_Niuas,
                 CountrySubdivision::Tonga_division_Tongatapu,
-                CountrySubdivision::Tonga_division_Vava_u
+                CountrySubdivision::Tonga_division_Vava_u,
             ],
             self::Trinidad_and_Tobago => [
                 CountrySubdivision::Trinidad_Tobago_borough_Arima,
@@ -5841,7 +5841,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Trinidad_Tobago_region_Sangre_Grande,
                 CountrySubdivision::Trinidad_Tobago_region_Siparia,
                 CountrySubdivision::Trinidad_Tobago_region_Tunapuna_Piarco,
-                CountrySubdivision::Trinidad_Tobago_ward_Tobago
+                CountrySubdivision::Trinidad_Tobago_ward_Tobago,
             ],
             self::Tunisia => [
                 CountrySubdivision::Tunisia_governorate_Beja,
@@ -5867,7 +5867,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Tunisia_governorate_Tataouine,
                 CountrySubdivision::Tunisia_governorate_Tozeur,
                 CountrySubdivision::Tunisia_governorate_Tunis,
-                CountrySubdivision::Tunisia_governorate_Zaghouan
+                CountrySubdivision::Tunisia_governorate_Zaghouan,
             ],
             self::Turkey => [
                 CountrySubdivision::Turkiye_province_Adana,
@@ -5950,7 +5950,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Turkiye_province_Van,
                 CountrySubdivision::Turkiye_province_Yalova,
                 CountrySubdivision::Turkiye_province_Yozgat,
-                CountrySubdivision::Turkiye_province_Zonguldak
+                CountrySubdivision::Turkiye_province_Zonguldak,
             ],
             self::Turkmenistan => [
                 CountrySubdivision::Turkmenistan_city_Asgabat,
@@ -5958,7 +5958,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Turkmenistan_region_Balkan,
                 CountrySubdivision::Turkmenistan_region_Dasoguz,
                 CountrySubdivision::Turkmenistan_region_Lebap,
-                CountrySubdivision::Turkmenistan_region_Mary
+                CountrySubdivision::Turkmenistan_region_Mary,
             ],
             self::Tuvalu => [
                 CountrySubdivision::Tuvalu_island_council_Nanumaga,
@@ -5968,7 +5968,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Tuvalu_island_council_Nukufetau,
                 CountrySubdivision::Tuvalu_island_council_Nukulaelae,
                 CountrySubdivision::Tuvalu_island_council_Vaitupu,
-                CountrySubdivision::Tuvalu_town_council_Funafuti
+                CountrySubdivision::Tuvalu_town_council_Funafuti,
             ],
             self::Uganda => [
                 CountrySubdivision::Uganda_city_Kampala,
@@ -6109,7 +6109,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Uganda_geographical_region_Central,
                 CountrySubdivision::Uganda_geographical_region_Eastern,
                 CountrySubdivision::Uganda_geographical_region_Northern,
-                CountrySubdivision::Uganda_geographical_region_Western
+                CountrySubdivision::Uganda_geographical_region_Western,
             ],
             self::Ukraine => [
                 CountrySubdivision::Ukraine_city_Kyiv,
@@ -6138,7 +6138,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Ukraine_region_Zakarpatska_oblast,
                 CountrySubdivision::Ukraine_region_Zaporizka_oblast,
                 CountrySubdivision::Ukraine_region_Zhytomyrska_oblast,
-                CountrySubdivision::Ukraine_republic_Avtonomna_Respublika_Krym
+                CountrySubdivision::Ukraine_republic_Avtonomna_Respublika_Krym,
             ],
             self::United_Arab_Emirates => [
                 CountrySubdivision::United_Arab_Emirates_emirate_Abu_Zaby,
@@ -6147,7 +6147,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::United_Arab_Emirates_emirate_Ash_Shariqah,
                 CountrySubdivision::United_Arab_Emirates_emirate_Dubayy,
                 CountrySubdivision::United_Arab_Emirates_emirate_Ra_s_al_Khaymah,
-                CountrySubdivision::United_Arab_Emirates_emirate_Umm_al_Qaywayn
+                CountrySubdivision::United_Arab_Emirates_emirate_Umm_al_Qaywayn,
             ],
             self::United_Kingdom => [
                 CountrySubdivision::United_Kingdom_London_borough_Barking_and_Dagenham,
@@ -6370,7 +6370,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::United_Kingdom_unitary_authority_Windsor_and_Maidenhead,
                 CountrySubdivision::United_Kingdom_unitary_authority_Wokingham,
                 CountrySubdivision::United_Kingdom_unitary_authority_Wrexham_Wrecsam_GB_WRC,
-                CountrySubdivision::United_Kingdom_unitary_authority_York
+                CountrySubdivision::United_Kingdom_unitary_authority_York,
             ],
             self::United_States_Outlying_Islands => [
                 CountrySubdivision::U_S_Outlying_Islands_islands_groups_of_islands_Baker_Island,
@@ -6381,7 +6381,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::U_S_Outlying_Islands_islands_groups_of_islands_Midway_Islands,
                 CountrySubdivision::U_S_Outlying_Islands_islands_groups_of_islands_Navassa_Island,
                 CountrySubdivision::U_S_Outlying_Islands_islands_groups_of_islands_Palmyra_Atoll,
-                CountrySubdivision::U_S_Outlying_Islands_islands_groups_of_islands_Wake_Island
+                CountrySubdivision::U_S_Outlying_Islands_islands_groups_of_islands_Wake_Island,
             ],
             self::United_States_of_America => [
                 CountrySubdivision::United_States_district_District_of_Columbia,
@@ -6440,7 +6440,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::United_States_state_Washington,
                 CountrySubdivision::United_States_state_West_Virginia,
                 CountrySubdivision::United_States_state_Wisconsin,
-                CountrySubdivision::United_States_state_Wyoming
+                CountrySubdivision::United_States_state_Wyoming,
             ],
             self::Uruguay => [
                 CountrySubdivision::Uruguay_department_Artigas,
@@ -6461,7 +6461,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Uruguay_department_San_Jose,
                 CountrySubdivision::Uruguay_department_Soriano,
                 CountrySubdivision::Uruguay_department_Tacuarembo,
-                CountrySubdivision::Uruguay_department_Treinta_y_Tres
+                CountrySubdivision::Uruguay_department_Treinta_y_Tres,
             ],
             self::Uzbekistan => [
                 CountrySubdivision::Uzbekistan_city_Toshkent,
@@ -6477,7 +6477,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Uzbekistan_region_Surxondaryo,
                 CountrySubdivision::Uzbekistan_region_Toshkent,
                 CountrySubdivision::Uzbekistan_region_Xorazm,
-                CountrySubdivision::Uzbekistan_republic_Qoraqalpog_iston_Respublikasi
+                CountrySubdivision::Uzbekistan_republic_Qoraqalpog_iston_Respublikasi,
             ],
             self::Vanuatu => [
                 CountrySubdivision::Vanuatu_province_Malampa,
@@ -6485,7 +6485,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Vanuatu_province_Sanma,
                 CountrySubdivision::Vanuatu_province_Shefa,
                 CountrySubdivision::Vanuatu_province_Tafea,
-                CountrySubdivision::Vanuatu_province_Torba
+                CountrySubdivision::Vanuatu_province_Torba,
             ],
             self::Venezuela => [
                 CountrySubdivision::Venezuela_capital_district_Distrito_Capital,
@@ -6512,7 +6512,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Venezuela_state_Tachira,
                 CountrySubdivision::Venezuela_state_Trujillo,
                 CountrySubdivision::Venezuela_state_Yaracuy,
-                CountrySubdivision::Venezuela_state_Zulia
+                CountrySubdivision::Venezuela_state_Zulia,
             ],
             self::Viet_Nam => [
                 CountrySubdivision::Vietnam_municipality_Can_Tho,
@@ -6577,12 +6577,12 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Vietnam_province_Tuyen_Quang,
                 CountrySubdivision::Vietnam_province_Vinh_Long,
                 CountrySubdivision::Vietnam_province_Vinh_Phuc,
-                CountrySubdivision::Vietnam_province_Yen_Bai
+                CountrySubdivision::Vietnam_province_Yen_Bai,
             ],
             self::Wallis_and_Futuna => [
                 CountrySubdivision::Wallis_Futuna_administrative_precinct_Alo,
                 CountrySubdivision::Wallis_Futuna_administrative_precinct_Sigave,
-                CountrySubdivision::Wallis_Futuna_administrative_precinct_Uvea
+                CountrySubdivision::Wallis_Futuna_administrative_precinct_Uvea,
             ],
             self::Yemen => [
                 CountrySubdivision::Yemen_governorate_Abyan,
@@ -6606,7 +6606,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Yemen_governorate_San_a,
                 CountrySubdivision::Yemen_governorate_Shabwah,
                 CountrySubdivision::Yemen_governorate_Ta_izz,
-                CountrySubdivision::Yemen_municipality_Amanat_al_Asimah_city
+                CountrySubdivision::Yemen_municipality_Amanat_al_Asimah_city,
             ],
             self::Zambia => [
                 CountrySubdivision::Zambia_province_Central,
@@ -6618,7 +6618,7 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Zambia_province_North_Western,
                 CountrySubdivision::Zambia_province_Northern,
                 CountrySubdivision::Zambia_province_Southern,
-                CountrySubdivision::Zambia_province_Western
+                CountrySubdivision::Zambia_province_Western,
             ],
             self::Zimbabwe => [
                 CountrySubdivision::Zimbabwe_province_Bulawayo,
@@ -6630,9 +6630,9 @@ enum CountryAlpha2: string {
                 CountrySubdivision::Zimbabwe_province_Masvingo,
                 CountrySubdivision::Zimbabwe_province_Matabeleland_North,
                 CountrySubdivision::Zimbabwe_province_Matabeleland_South,
-                CountrySubdivision::Zimbabwe_province_Midlands
+                CountrySubdivision::Zimbabwe_province_Midlands,
             ],
-            default => []
+            default => [],
         };
     }
 

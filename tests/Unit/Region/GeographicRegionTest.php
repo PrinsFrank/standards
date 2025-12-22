@@ -14,9 +14,9 @@ class GeographicRegionTest extends TestCase {
         static::assertSame(
             [
                 GeographicRegion::Latin_America_And_The_Caribbean,
-                GeographicRegion::Northern_America
+                GeographicRegion::Northern_America,
             ],
-            GeographicRegion::Americas->getDirectSubRegions()
+            GeographicRegion::Americas->getDirectSubRegions(),
         );
     }
 
@@ -27,9 +27,9 @@ class GeographicRegionTest extends TestCase {
                 GeographicRegion::Caribbean,
                 GeographicRegion::Central_America,
                 GeographicRegion::South_America,
-                GeographicRegion::Northern_America
+                GeographicRegion::Northern_America,
             ],
-            GeographicRegion::Americas->getAllSubRegions()
+            GeographicRegion::Americas->getAllSubRegions(),
         );
     }
 
@@ -41,9 +41,9 @@ class GeographicRegionTest extends TestCase {
                 CountryNumeric::Cocos_Islands,
                 CountryNumeric::Heard_Island_and_McDonald_Islands,
                 CountryNumeric::New_Zealand,
-                CountryNumeric::Norfolk_Island
+                CountryNumeric::Norfolk_Island,
             ],
-            GeographicRegion::Australia_And_New_Zealand->getDirectSubCountries()
+            GeographicRegion::Australia_And_New_Zealand->getDirectSubCountries(),
         );
     }
 
@@ -80,7 +80,7 @@ class GeographicRegionTest extends TestCase {
                 CountryNumeric::Tuvalu,
                 CountryNumeric::Wallis_and_Futuna,
             ],
-            GeographicRegion::Oceania->getAllSubCountries()
+            GeographicRegion::Oceania->getAllSubCountries(),
         );
         static::assertSame(
             [
@@ -142,7 +142,7 @@ class GeographicRegionTest extends TestCase {
                 CountryNumeric::Saint_Pierre_and_Miquelon,
                 CountryNumeric::United_States_of_America,
             ],
-            GeographicRegion::Americas->getAllSubCountries()
+            GeographicRegion::Americas->getAllSubCountries(),
         );
     }
 }

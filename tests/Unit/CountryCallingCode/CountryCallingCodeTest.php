@@ -37,7 +37,7 @@ class CountryCallingCodeTest extends TestCase {
                 $missingRelations[] = $countryAlpha2;
             }
         }
-        static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryAlpha2 $countryAlpha2) => $countryAlpha2->name, $missingRelations)));
+        static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn(CountryAlpha2 $countryAlpha2) => $countryAlpha2->name, $missingRelations)));
     }
 
     public function testCanBeRetrievedForAllCountryAlpha3(): void {
@@ -48,7 +48,7 @@ class CountryCallingCodeTest extends TestCase {
                 $missingRelations[] = $countryAlpha3;
             }
         }
-        static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryAlpha3 $countryAlpha3) => $countryAlpha3->name, $missingRelations)));
+        static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn(CountryAlpha3 $countryAlpha3) => $countryAlpha3->name, $missingRelations)));
     }
 
     public function testCanBeRetrievedForAllCountryNumeric(): void {
@@ -59,7 +59,7 @@ class CountryCallingCodeTest extends TestCase {
                 $missingRelations[] = $countryNumeric;
             }
         }
-        static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryNumeric $countryNumeric) => $countryNumeric->name, $missingRelations)));
+        static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn(CountryNumeric $countryNumeric) => $countryNumeric->name, $missingRelations)));
     }
 
     public function testCanBeRetrievedForAllCountryName(): void {
@@ -70,6 +70,6 @@ class CountryCallingCodeTest extends TestCase {
                 $missingRelations[] = $countryName;
             }
         }
-        static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn (CountryName $countryName) => $countryName->name, $missingRelations)));
+        static::assertEmpty($missingRelations, 'It should be possible to get one or more country calling codes for all countries, none supplied for ' . implode(', ', array_map(static fn(CountryName $countryName) => $countryName->name, $missingRelations)));
     }
 }

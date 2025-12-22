@@ -35,21 +35,13 @@ class ScriptAliasTest extends TestCase {
     public function testForString(): void {
         static::assertSame(
             [],
-            ScriptAlias::allForString('')
+            ScriptAlias::allForString(''),
         );
         static::assertSame(
             [
                 ScriptAlias::Latin,
             ],
-            ScriptAlias::allForString('eu')
-        );
-        static::assertSame(
-            [
-                ScriptAlias::Cyrillic,
-                ScriptAlias::Greek,
-                ScriptAlias::Latin,
-            ],
-            ScriptAlias::allForString('euеюευ')
+            ScriptAlias::allForString('eu'),
         );
         static::assertSame(
             [
@@ -57,7 +49,15 @@ class ScriptAliasTest extends TestCase {
                 ScriptAlias::Greek,
                 ScriptAlias::Latin,
             ],
-            ScriptAlias::allForString('еюeuеюευ')
+            ScriptAlias::allForString('euеюευ'),
+        );
+        static::assertSame(
+            [
+                ScriptAlias::Cyrillic,
+                ScriptAlias::Greek,
+                ScriptAlias::Latin,
+            ],
+            ScriptAlias::allForString('еюeuеюευ'),
         );
         static::assertSame(
             [
@@ -65,7 +65,7 @@ class ScriptAliasTest extends TestCase {
                 ScriptAlias::Latin,
                 ScriptAlias::Greek,
             ],
-            ScriptAlias::allForString('еюeuеюευeu')
+            ScriptAlias::allForString('еюeuеюευeu'),
         );
     }
 

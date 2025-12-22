@@ -23,7 +23,7 @@ class CountrySubdivisionTest extends TestCase {
                 new Name('Bonaire', [LanguageAlpha2::Dutch_Flemish, LanguageAlpha2::English], null, null),
                 new Name('Boneiru', [], null, null),
             ],
-            CountrySubdivision::Caribbean_Netherlands_special_municipality_Bonaire->getNames()
+            CountrySubdivision::Caribbean_Netherlands_special_municipality_Bonaire->getNames(),
         );
     }
 
@@ -31,7 +31,7 @@ class CountrySubdivisionTest extends TestCase {
         static::assertNull(CountrySubdivision::Netherlands_province_Fryslan->getSameAsCountry());
         static::assertSame(
             CountryAlpha2::Aruba,
-            CountrySubdivision::Netherlands_country_Aruba->getSameAsCountry()
+            CountrySubdivision::Netherlands_country_Aruba->getSameAsCountry(),
         );
     }
 }

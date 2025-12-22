@@ -18,7 +18,7 @@ class EFTATest extends TestCase {
                 CountryAlpha2::Norway,
                 CountryAlpha2::Switzerland,
             ],
-            EFTA::allAlpha2()
+            EFTA::allAlpha2(),
         );
     }
 }

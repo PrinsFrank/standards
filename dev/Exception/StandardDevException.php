@@ -5,5 +5,4 @@ namespace PrinsFrank\Standards\Dev\Exception;
 
 use Exception;
 
-abstract class StandardDevException extends Exception {
-}
+abstract class StandardDevException extends Exception {}

@@ -513,7 +513,7 @@ enum LanguageAlpha3Bibliographic: string {
         return BackedEnum::fromName(LanguageAlpha3Terminology::class, $this->name);
     }
 
-    public function toLanguageAlpha2(): LanguageAlpha2|null {
+    public function toLanguageAlpha2(): ?LanguageAlpha2 {
         return BackedEnum::tryFromName(LanguageAlpha2::class, $this->name);
     }
 
@@ -556,11 +556,11 @@ enum LanguageAlpha3Bibliographic: string {
      */
     public function toLanguageTag(
         LanguageAlpha3Terminology|LanguageAlpha3Extensive|null     $extendedLanguageSubtag = null,
-        ScriptCode|null                                            $scriptSubtag = null,
+        ?ScriptCode                                            $scriptSubtag = null,
         CountryAlpha2|GeographicRegion|PrivateUseRegionSubtag|null $regionSubtag = null,
         array                                                      $variantSubtag = [],
         array                                                      $extensionSubtag = [],
-        string|null                                                $privateUseSubtag = null,
+        ?string                                                $privateUseSubtag = null,
     ): LanguageTag {
         return new LanguageTag(
             $this->toLanguageAlpha3Terminology(),

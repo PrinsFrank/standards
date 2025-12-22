@@ -243,31 +243,31 @@ class LanguageTagTest extends TestCase {
     public function testFromStringWithLanguageExtensions(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Chinese),
-            LanguageTag::fromString('zh')
+            LanguageTag::fromString('zh'),
         );
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Chinese, LanguageAlpha3Extensive::Gan_Chinese),
-            LanguageTag::fromString('zh-gan')
+            LanguageTag::fromString('zh-gan'),
         );
         static::assertEquals(
             new LanguageTag(LanguageAlpha3Extensive::Gan_Chinese),
-            LanguageTag::fromString('gan')
+            LanguageTag::fromString('gan'),
         );
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Chinese, LanguageAlpha3Extensive::Yue_Chinese),
-            LanguageTag::fromString('zh-yue')
+            LanguageTag::fromString('zh-yue'),
         );
         static::assertEquals(
             new LanguageTag(LanguageAlpha3Extensive::Yue_Chinese),
-            LanguageTag::fromString('yue')
+            LanguageTag::fromString('yue'),
         );
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::Chinese, LanguageAlpha3Extensive::Mandarin_Chinese),
-            LanguageTag::fromString('zh-cmn')
+            LanguageTag::fromString('zh-cmn'),
         );
         static::assertEquals(
             new LanguageTag(LanguageAlpha3Extensive::Mandarin_Chinese),
-            LanguageTag::fromString('cmn')
+            LanguageTag::fromString('cmn'),
         );
     }
 
@@ -275,11 +275,11 @@ class LanguageTagTest extends TestCase {
     public function testFromStringWithExtensions(): void {
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::German, extensionSubtag: ['a', 'value']),
-            LanguageTag::fromString('de-a-value')
+            LanguageTag::fromString('de-a-value'),
         );
         static::assertEquals(
             new LanguageTag(LanguageAlpha2::French, extensionSubtag: ['a', 'Latn']),
-            LanguageTag::fromString('fr-a-Latn')
+            LanguageTag::fromString('fr-a-Latn'),
         );
     }
 

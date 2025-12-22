@@ -2,7 +2,7 @@
 
 return (new PhpCsFixer\Config())->setRules(
     [
-        '@PSR12'                       => true,
+        '@PER-CS3.0'                   => true,
         'declare_strict_types'         => true,
         'strict_comparison'            => true,
         'strict_param'                 => true,

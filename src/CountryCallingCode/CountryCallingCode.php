@@ -443,7 +443,7 @@ enum CountryCallingCode: int {
             CountryAlpha2::Rwanda => [self::Rwanda_Republic_of],
             CountryAlpha2::Saint_Helena_Ascension_Tristan_da_Cunha => [
                 self::Saint_Helena_Ascension_and_Tristan_da_Cunha,
-                self::Saint_Helena_Ascension_and_Tristan_da_Cunha_2
+                self::Saint_Helena_Ascension_and_Tristan_da_Cunha_2,
             ],
             CountryAlpha2::Saint_Pierre_and_Miquelon => [self::Saint_Pierre_and_Miquelon_Collectivite_territoriale_de_la_Republique_francaise],
             CountryAlpha2::Samoa => [self::Samoa_Independent_State_of],
@@ -497,7 +497,7 @@ enum CountryCallingCode: int {
 
     /** @return list<CountryAlpha2> */
     public function getCountriesAlpha2(): array {
-        return match($this) {
+        return match ($this) {
             self::Integrated_numbering_plan => [
                 CountryAlpha2::American_Samoa,
                 CountryAlpha2::Anguilla,
@@ -545,7 +545,7 @@ enum CountryCallingCode: int {
             self::Australia => [
                 CountryAlpha2::Australia,
                 CountryAlpha2::Christmas_Island,
-                CountryAlpha2::Cocos_Islands
+                CountryAlpha2::Cocos_Islands,
             ],
             self::Australian_External_territories => [
                 CountryAlpha2::Antarctica,
@@ -603,7 +603,7 @@ enum CountryCallingCode: int {
             self::Fiji_Republic_of => [CountryAlpha2::Fiji],
             self::Finland => [
                 CountryAlpha2::Finland,
-                CountryAlpha2::Aland_Islands
+                CountryAlpha2::Aland_Islands,
             ],
             self::France => [CountryAlpha2::France],
             self::French_Guiana_French_Department_of => [CountryAlpha2::French_Guiana],
@@ -675,7 +675,7 @@ enum CountryCallingCode: int {
             self::Montenegro => [CountryAlpha2::Montenegro],
             self::Morocco_Kingdom_of => [
                 CountryAlpha2::Morocco,
-                CountryAlpha2::Western_Sahara
+                CountryAlpha2::Western_Sahara,
             ],
             self::Mozambique_Republic_of => [CountryAlpha2::Mozambique],
             self::Myanmar_the_Republic_of_the_Union_of => [CountryAlpha2::Myanmar],

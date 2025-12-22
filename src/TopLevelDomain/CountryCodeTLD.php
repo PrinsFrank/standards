@@ -347,7 +347,7 @@ enum CountryCodeTLD: string implements TLD {
     case zw = 'zw';
 
     public function getCountryAlpha2(): ?CountryAlpha2 {
-        return match($this) {
+        return match ($this) {
             self::ad => CountryAlpha2::Andorra,
             self::ae => CountryAlpha2::United_Arab_Emirates,
             self::af => CountryAlpha2::Afghanistan,
@@ -597,7 +597,7 @@ enum CountryCodeTLD: string implements TLD {
             self::za => CountryAlpha2::South_Africa,
             self::zm => CountryAlpha2::Zambia,
             self::zw => CountryAlpha2::Zimbabwe,
-            default => null
+            default => null,
         };
     }
 

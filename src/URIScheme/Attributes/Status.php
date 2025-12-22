@@ -9,6 +9,5 @@ use PrinsFrank\Standards\URIScheme\URISchemeStatus;
 class Status {
     public function __construct(
         public readonly URISchemeStatus $status,
-    ) {
-    }
+    ) {}
 }

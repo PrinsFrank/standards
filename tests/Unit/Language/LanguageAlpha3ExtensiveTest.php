@@ -29,7 +29,7 @@ class LanguageAlpha3ExtensiveTest extends TestCase {
                 CountryAlpha2::Aruba,
                 [LanguageTagVariant::Nadiza_dialect],
                 ['foo', 'bar'],
-                'boop'
+                'boop',
             ),
             LanguageAlpha3Extensive::Dutch->toLanguageTag(
                 LanguageAlpha3Extensive::Dutch_Sign_Language,
@@ -37,8 +37,8 @@ class LanguageAlpha3ExtensiveTest extends TestCase {
                 CountryAlpha2::Aruba,
                 [LanguageTagVariant::Nadiza_dialect],
                 ['foo', 'bar'],
-                'boop'
-            )
+                'boop',
+            ),
         );
     }
 }

@@ -13,8 +13,7 @@ class EnumMappingMethod {
         public readonly string $returnType,
         public readonly ?string $default,
         public readonly ?string $docBlock = null,
-    ) {
-    }
+    ) {}
 
     public function addMapping(string $from, string $to): void {
         if (array_key_exists($from, $this->mapping) && in_array($to, $this->mapping[$from], true) === true) {
@@ -34,7 +33,7 @@ class EnumMappingMethod {
             $sortedMapping,
             static function (?bool $carry, array $item) {
                 return $carry === true || count($item) > 1;
-            }
+            },
         );
 
         foreach ($sortedMapping as $key => $values) {

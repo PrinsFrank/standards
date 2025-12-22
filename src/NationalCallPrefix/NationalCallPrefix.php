@@ -30,7 +30,7 @@ enum NationalCallPrefix: string {
         }
 
         /** @var CountryAlpha2 $country */
-        return match($country) {
+        return match ($country) {
             CountryAlpha2::Afghanistan => NationalCallPrefix::_0,
             CountryAlpha2::Aland_Islands => NationalCallPrefix::_0,
             CountryAlpha2::Albania => NationalCallPrefix::_0,

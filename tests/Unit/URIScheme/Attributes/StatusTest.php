@@ -12,7 +12,7 @@ class StatusTest extends TestCase {
     public function testStatus(): void {
         static::assertSame(
             URISchemeStatus::Permanent,
-            (new Status(URISchemeStatus::Permanent))->status
+            (new Status(URISchemeStatus::Permanent))->status,
         );
     }
 }

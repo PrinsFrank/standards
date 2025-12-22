@@ -18,7 +18,7 @@ class HttpStatusCodeTest extends TestCase {
         static::assertNull(HttpStatusCode::OK->getTemporaryAssignmentExpiresAt());
         static::assertEquals(
             new DateTimeImmutable('2026-11-13'),
-            HttpStatusCode::Upload_Resumption_Supported->getTemporaryAssignmentExpiresAt()
+            HttpStatusCode::Upload_Resumption_Supported->getTemporaryAssignmentExpiresAt(),
         );
     }
 }

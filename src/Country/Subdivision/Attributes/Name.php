@@ -13,6 +13,5 @@ class Name {
         public readonly array $language = [],
         public readonly ?string $romanizationSystem = null,
         public readonly ?string $localVariant = null,
-    ) {
-    }
+    ) {}
 }

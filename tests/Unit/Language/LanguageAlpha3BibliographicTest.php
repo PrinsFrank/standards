@@ -61,7 +61,7 @@ class LanguageAlpha3BibliographicTest extends TestCase {
                 CountryAlpha2::Aruba,
                 [LanguageTagVariant::Nadiza_dialect],
                 ['foo', 'bar'],
-                'boop'
+                'boop',
             ),
             LanguageAlpha3Bibliographic::Dutch_Flemish->toLanguageTag(
                 LanguageAlpha3Extensive::Dutch_Sign_Language,
@@ -69,8 +69,8 @@ class LanguageAlpha3BibliographicTest extends TestCase {
                 CountryAlpha2::Aruba,
                 [LanguageTagVariant::Nadiza_dialect],
                 ['foo', 'bar'],
-                'boop'
-            )
+                'boop',
+            ),
         );
     }
 

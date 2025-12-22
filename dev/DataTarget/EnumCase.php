@@ -18,9 +18,8 @@ class EnumCase {
         public readonly string|int $value,
         public readonly array $attributes = [],
         public readonly bool $deprecated = false,
-        public readonly string|null $previousValue = null,
-    ) {
-    }
+        public readonly ?string $previousValue = null,
+    ) {}
 
     /**
      * @param class-string<BackedEnum> $enumFQN

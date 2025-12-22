@@ -30,11 +30,11 @@ class LanguageTag implements Stringable {
     public function __construct(
         public readonly SingleCharacterSubtag|PrivateUsePrimarySubtag|LanguageAlpha2|LanguageAlpha3Terminology|LanguageAlpha3Extensive $primaryLanguageSubtag,
         public readonly LanguageAlpha3Terminology|LanguageAlpha3Extensive|null                                                         $extendedLanguageSubtag = null,
-        public readonly ScriptCode|null                                                                                                $scriptSubtag = null,
+        public readonly ?ScriptCode                                                                                                $scriptSubtag = null,
         public readonly CountryAlpha2|GeographicRegion|PrivateUseRegionSubtag|null                                                     $regionSubtag = null,
         public readonly array                                                                                                          $variantSubtag = [],
         public readonly array                                                                                                          $extensionSubtag = [],
-        public readonly string|null                                                                                                    $privateUseSubtag = null,
+        public readonly ?string                                                                                                    $privateUseSubtag = null,
     ) {
         /** @phpstan-ignore instanceof.alwaysTrue (as not everyone has PHPStan to tell them not to pass something else than a LanguageTagVariant) */
         array_map(static function (mixed $variantSubtag) { $variantSubtag instanceof LanguageTagVariant || throw new InvalidArgumentException('Param $variantSubtag should be an array of "' . LanguageTagVariant::class . '"');}, $this->variantSubtag);
@@ -96,7 +96,7 @@ class LanguageTag implements Stringable {
 
                 break;
             } else {
-                throw new InvalidArgumentException('Subtag "' . $subTag . '" is not a valid subtag with context ' . json_encode(array_filter(['primarySubTag' => $primaryLanguageSubtag, 'extendedLanguageSubtag' => $extendedLanguageSubtag, 'scriptSubTag' => $scriptSubtag, 'regionSubtag' => $regionSubtag, 'variantSubtag' => $variantSubtag, 'extensionSubtag' => $extensionSubtag, 'privateUseSubtag' => $privateUseSubtag], fn (mixed $value) => $value !== [] && $value !== null)));
+                throw new InvalidArgumentException('Subtag "' . $subTag . '" is not a valid subtag with context ' . json_encode(array_filter(['primarySubTag' => $primaryLanguageSubtag, 'extendedLanguageSubtag' => $extendedLanguageSubtag, 'scriptSubTag' => $scriptSubtag, 'regionSubtag' => $regionSubtag, 'variantSubtag' => $variantSubtag, 'extensionSubtag' => $extensionSubtag, 'privateUseSubtag' => $privateUseSubtag], fn(mixed $value) => $value !== [] && $value !== null)));
             }
         }
 
