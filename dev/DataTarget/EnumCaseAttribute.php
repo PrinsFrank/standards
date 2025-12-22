@@ -18,13 +18,12 @@ class EnumCaseAttribute implements Stringable {
     public function __construct(
         public readonly string $fqn,
         public readonly array $parameters = [],
-    ) {
-    }
+    ) {}
 
     /** @throws InvalidArgumentException */
     public function __toString(): string {
         if ($this->parameters !== []) {
-            return '#[' . (new ReflectionClass($this->fqn))->getShortName() . '(' . implode(', ', array_map(fn (mixed $value) => $this->valueToString($value), $this->parameters)) . ')]';
+            return '#[' . (new ReflectionClass($this->fqn))->getShortName() . '(' . implode(', ', array_map(fn(mixed $value) => $this->valueToString($value), $this->parameters)) . ')]';
         }
 
         return '#[' . (new ReflectionClass($this->fqn))->getShortName() . ']';
@@ -43,7 +42,7 @@ class EnumCaseAttribute implements Stringable {
         return match (gettype($value)) {
             'string' => sprintf("'%s'", str_replace('\'', '\\\'', $value)),
             'NULL' => 'null',
-            'array' => '[' . implode(', ', array_map(fn (mixed $value) => $this->valueToString($value), $value)) . ']',
+            'array' => '[' . implode(', ', array_map(fn(mixed $value) => $this->valueToString($value), $value)) . ']',
             default => throw new InvalidArgumentException(sprintf('Unsupported parameter type %s', gettype($value))),
         };
     }

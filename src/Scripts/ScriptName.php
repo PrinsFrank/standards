@@ -258,7 +258,7 @@ enum ScriptName: string {
      * For all other scripts, self::Code_for_undetermined_script will be returned
      */
     public static function allForString(string $string): array {
-        return array_map(fn (ScriptAlias $scriptAlias) => $scriptAlias->toScriptName(), ScriptAlias::allForString($string));
+        return array_map(fn(ScriptAlias $scriptAlias) => $scriptAlias->toScriptName(), ScriptAlias::allForString($string));
     }
 
     /** @return ($string is non-empty-string ? bool : false) */

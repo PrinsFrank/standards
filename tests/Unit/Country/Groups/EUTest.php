@@ -41,7 +41,7 @@ class EUTest extends TestCase {
                 CountryAlpha2::Spain,
                 CountryAlpha2::Sweden,
             ],
-            EU::allAlpha2()
+            EU::allAlpha2(),
         );
     }
 }

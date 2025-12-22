@@ -7965,11 +7965,11 @@ enum LanguageAlpha3Extensive: string {
      */
     public function toLanguageTag(
         LanguageAlpha3Terminology|LanguageAlpha3Extensive|null     $extendedLanguageSubtag = null,
-        ScriptCode|null                                            $scriptSubtag = null,
+        ?ScriptCode                                            $scriptSubtag = null,
         CountryAlpha2|GeographicRegion|PrivateUseRegionSubtag|null $regionSubtag = null,
         array                                                      $variantSubtag = [],
         array                                                      $extensionSubtag = [],
-        string|null                                                $privateUseSubtag = null,
+        ?string                                                $privateUseSubtag = null,
     ): LanguageTag {
         return new LanguageTag(
             $this,

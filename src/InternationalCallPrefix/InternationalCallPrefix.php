@@ -35,7 +35,7 @@ enum InternationalCallPrefix: string {
             $country = $country->toCountryAlpha2();
         }
 
-        return match($country) {
+        return match ($country) {
             CountryAlpha2::Samoa => self::_0,
             CountryAlpha2::Afghanistan,
             CountryAlpha2::Aland_Islands,
@@ -290,7 +290,7 @@ enum InternationalCallPrefix: string {
 
     /** @return list<CountryAlpha2> */
     public function getCountriesAlpha2(): array {
-        return match($this) {
+        return match ($this) {
             self::_0 => [
                 CountryAlpha2::Samoa,
             ],
@@ -505,7 +505,7 @@ enum InternationalCallPrefix: string {
                 CountryAlpha2::Mongolia,
             ],
             self::_0011 => [
-                CountryAlpha2::Australia
+                CountryAlpha2::Australia,
             ],
             self::_009 => [
                 CountryAlpha2::Nigeria,

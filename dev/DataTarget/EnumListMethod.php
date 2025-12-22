@@ -12,8 +12,7 @@ class EnumListMethod {
         public readonly string $name,
         public readonly string $returnType,
         public readonly ?string $docBlock = null,
-    ) {
-    }
+    ) {}
 
     public function addItem(string $item): void {
         if (in_array($item, $this->list, true) === true) {

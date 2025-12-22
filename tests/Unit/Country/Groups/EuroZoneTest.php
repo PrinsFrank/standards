@@ -34,7 +34,7 @@ class EuroZoneTest extends TestCase {
                 CountryAlpha2::Slovenia,
                 CountryAlpha2::Spain,
             ],
-            EuroZone::allAlpha2()
+            EuroZone::allAlpha2(),
         );
     }
 }

@@ -179,7 +179,7 @@ class WorldTradeOrganizationTest extends TestCase {
                 CountryAlpha2::Zambia,
                 CountryAlpha2::Zimbabwe,
             ],
-            WorldTradeOrganization::allAlpha2()
+            WorldTradeOrganization::allAlpha2(),
         );
     }
 }

@@ -6,5 +6,4 @@ namespace PrinsFrank\Standards\TopLevelDomain\Attributes;
 use Attribute;
 
 #[Attribute]
-class NotAssigned {
-}
+class NotAssigned {}

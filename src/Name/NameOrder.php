@@ -26,8 +26,8 @@ enum NameOrder: int {
                     self::Eastern => [$family, $middle, $given],
                     self::Western => [$given, $middle, $family],
                 },
-                fn (string|null $value) => $value !== null
-            )
+                fn(?string $value) => $value !== null,
+            ),
         );
     }
 }

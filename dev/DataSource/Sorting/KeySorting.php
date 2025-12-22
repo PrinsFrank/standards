@@ -14,8 +14,7 @@ class KeySorting implements Sorting {
     /** @param class-string<BackedEnum> $enumFQN */
     public function __construct(
         private readonly string $enumFQN,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws InvalidArgumentException

@@ -275,7 +275,7 @@ enum CurrencyAlpha3: string {
     }
 
     public function getMinorUnits(): ?int {
-        return match($this) {
+        return match ($this) {
             self::Afghani => 2,
             self::Algerian_Dinar => 2,
             self::Arab_Accounting_Dinar => 2,
@@ -445,13 +445,13 @@ enum CurrencyAlpha3: string {
             self::Zimbabwe_Dollar => 2,
             self::Zimbabwe_Gold => 2,
             self::Zloty => 2,
-            default => null
+            default => null,
         };
     }
 
     /** @return list<CountryAlpha2> */
     public function getCountriesAlpha2(): array {
-        return match($this) {
+        return match ($this) {
             self::Afghani => [CountryAlpha2::Afghanistan],
             self::Algerian_Dinar => [CountryAlpha2::Algeria],
             self::Argentine_Peso => [CountryAlpha2::Argentina],
@@ -465,7 +465,7 @@ enum CurrencyAlpha3: string {
                 CountryAlpha2::Kiribati,
                 CountryAlpha2::Nauru,
                 CountryAlpha2::Norfolk_Island,
-                CountryAlpha2::Tuvalu
+                CountryAlpha2::Tuvalu,
             ],
             self::Azerbaijan_Manat => [CountryAlpha2::Azerbaijan],
             self::Bahamian_Dollar => [CountryAlpha2::Bahamas],
@@ -491,7 +491,7 @@ enum CurrencyAlpha3: string {
                 CountryAlpha2::Mali,
                 CountryAlpha2::Niger,
                 CountryAlpha2::Senegal,
-                CountryAlpha2::Togo
+                CountryAlpha2::Togo,
             ],
             self::CFA_Franc_BEAC => [
                 CountryAlpha2::Cameroon,
@@ -499,18 +499,18 @@ enum CurrencyAlpha3: string {
                 CountryAlpha2::Chad,
                 CountryAlpha2::Congo,
                 CountryAlpha2::Equatorial_Guinea,
-                CountryAlpha2::Gabon
+                CountryAlpha2::Gabon,
             ],
             self::CFP_Franc => [
                 CountryAlpha2::French_Polynesia,
                 CountryAlpha2::New_Caledonia,
-                CountryAlpha2::Wallis_and_Futuna
+                CountryAlpha2::Wallis_and_Futuna,
             ],
             self::Cabo_Verde_Escudo => [CountryAlpha2::Cabo_Verde],
             self::Canadian_Dollar => [CountryAlpha2::Canada],
             self::Caribbean_Guilder => [
                 CountryAlpha2::Curacao,
-                CountryAlpha2::Sint_Maarten_Dutch_part
+                CountryAlpha2::Sint_Maarten_Dutch_part,
             ],
             self::Cayman_Islands_Dollar => [CountryAlpha2::Cayman_Islands],
             self::Chilean_Peso => [CountryAlpha2::Chile],
@@ -526,7 +526,7 @@ enum CurrencyAlpha3: string {
             self::Danish_Krone => [
                 CountryAlpha2::Denmark,
                 CountryAlpha2::Faroe_Islands,
-                CountryAlpha2::Greenland
+                CountryAlpha2::Greenland,
             ],
             self::Denar => [CountryAlpha2::North_Macedonia],
             self::Djibouti_Franc => [CountryAlpha2::Djibouti],
@@ -541,7 +541,7 @@ enum CurrencyAlpha3: string {
                 CountryAlpha2::Montserrat,
                 CountryAlpha2::Saint_Kitts_and_Nevis,
                 CountryAlpha2::Saint_Lucia,
-                CountryAlpha2::Saint_Vincent_and_the_Grenadines
+                CountryAlpha2::Saint_Vincent_and_the_Grenadines,
             ],
             self::Egyptian_Pound => [CountryAlpha2::Egypt],
             self::El_Salvador_Colon => [CountryAlpha2::El_Salvador],
@@ -581,7 +581,7 @@ enum CurrencyAlpha3: string {
                 CountryAlpha2::San_Marino,
                 CountryAlpha2::Slovakia,
                 CountryAlpha2::Slovenia,
-                CountryAlpha2::Spain
+                CountryAlpha2::Spain,
             ],
             self::Falkland_Islands_Pound => [CountryAlpha2::Falkland_Islands],
             self::Fiji_Dollar => [CountryAlpha2::Fiji],
@@ -597,7 +597,7 @@ enum CurrencyAlpha3: string {
             self::Iceland_Krona => [CountryAlpha2::Iceland],
             self::Indian_Rupee => [
                 CountryAlpha2::Bhutan,
-                CountryAlpha2::India
+                CountryAlpha2::India,
             ],
             self::Iranian_Rial => [CountryAlpha2::Iran],
             self::Iraqi_Dinar => [CountryAlpha2::Iraq],
@@ -627,7 +627,7 @@ enum CurrencyAlpha3: string {
             self::Moldovan_Leu => [CountryAlpha2::Moldova],
             self::Moroccan_Dirham => [
                 CountryAlpha2::Morocco,
-                CountryAlpha2::Western_Sahara
+                CountryAlpha2::Western_Sahara,
             ],
             self::Mozambique_Metical => [CountryAlpha2::Mozambique],
             self::Mvdol => [CountryAlpha2::Bolivia],
@@ -642,14 +642,14 @@ enum CurrencyAlpha3: string {
                 CountryAlpha2::New_Zealand,
                 CountryAlpha2::Niue,
                 CountryAlpha2::Pitcairn,
-                CountryAlpha2::Tokelau
+                CountryAlpha2::Tokelau,
             ],
             self::Ngultrum => [CountryAlpha2::Bhutan],
             self::North_Korean_Won => [CountryAlpha2::Korea_Democratic_Peoples_Republic],
             self::Norwegian_Krone => [
                 CountryAlpha2::Bouvet_Island,
                 CountryAlpha2::Norway,
-                CountryAlpha2::Svalbard_Jan_Mayen
+                CountryAlpha2::Svalbard_Jan_Mayen,
             ],
             self::Ouguiya => [CountryAlpha2::Mauritania],
             self::Pa_anga => [CountryAlpha2::Tonga],
@@ -661,7 +661,7 @@ enum CurrencyAlpha3: string {
                 CountryAlpha2::Guernsey,
                 CountryAlpha2::Isle_of_Man,
                 CountryAlpha2::Jersey,
-                CountryAlpha2::United_Kingdom
+                CountryAlpha2::United_Kingdom,
             ],
             self::Pula => [CountryAlpha2::Botswana],
             self::Qatari_Rial => [CountryAlpha2::Qatar],
@@ -669,7 +669,7 @@ enum CurrencyAlpha3: string {
             self::Rand => [
                 CountryAlpha2::Lesotho,
                 CountryAlpha2::Namibia,
-                CountryAlpha2::South_Africa
+                CountryAlpha2::South_Africa,
             ],
             self::Rial_Omani => [CountryAlpha2::Oman],
             self::Riel => [CountryAlpha2::Cambodia],
@@ -695,7 +695,7 @@ enum CurrencyAlpha3: string {
             self::Swedish_Krona => [CountryAlpha2::Sweden],
             self::Swiss_Franc => [
                 CountryAlpha2::Liechtenstein,
-                CountryAlpha2::Switzerland
+                CountryAlpha2::Switzerland,
             ],
             self::Syrian_Pound => [CountryAlpha2::Syrian_Arab_Republic],
             self::Taka => [CountryAlpha2::Bangladesh],
@@ -727,7 +727,7 @@ enum CurrencyAlpha3: string {
                 CountryAlpha2::United_States_Outlying_Islands,
                 CountryAlpha2::United_States_of_America,
                 CountryAlpha2::Virgin_Islands_British,
-                CountryAlpha2::Virgin_Islands_U_S
+                CountryAlpha2::Virgin_Islands_U_S,
             ],
             self::US_Dollar_Next_day => [CountryAlpha2::United_States_of_America],
             self::Uganda_Shilling => [CountryAlpha2::Uganda],
@@ -746,7 +746,7 @@ enum CurrencyAlpha3: string {
             self::Zambian_Kwacha => [CountryAlpha2::Zambia],
             self::Zimbabwe_Gold => [CountryAlpha2::Zimbabwe],
             self::Zloty => [CountryAlpha2::Poland],
-            default => []
+            default => [],
         };
     }
 }

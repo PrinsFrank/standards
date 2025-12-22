@@ -414,8 +414,8 @@ enum ScriptAlias: string {
      * For all other scripts, self::Code_for_undetermined_script will be returned
      */
     public static function allForString(string $string): array {
-        $supportedScripts = array_filter(self::cases(), fn (self $case) => $case->isSupportedByPHPRegex());
-        if (preg_match_all('/' . implode('|', array_map(fn (self $case) => sprintf('(?P<%s>\p{%s}+)', $case->value, $case->value), $supportedScripts)) . '/u', $string, $matches, PREG_UNMATCHED_AS_NULL) === false) {
+        $supportedScripts = array_filter(self::cases(), fn(self $case) => $case->isSupportedByPHPRegex());
+        if (preg_match_all('/' . implode('|', array_map(fn(self $case) => sprintf('(?P<%s>\p{%s}+)', $case->value, $case->value), $supportedScripts)) . '/u', $string, $matches, PREG_UNMATCHED_AS_NULL) === false) {
             // @codeCoverageIgnoreStart
             throw new ShouldNotHappenException(sprintf('preg_match_all returned error code %d with message %s', preg_last_error(), preg_last_error_msg()));
             // @codeCoverageIgnoreEnd
@@ -428,12 +428,12 @@ enum ScriptAlias: string {
             }
 
             $scripts[$scriptName] ??= 0;
-            $scripts[$scriptName] += array_sum(array_map(fn (string|null $scriptMatchChars) => mb_strlen($scriptMatchChars ?? ''), $scriptMatchesArray));
+            $scripts[$scriptName] += array_sum(array_map(fn(?string $scriptMatchChars) => mb_strlen($scriptMatchChars ?? ''), $scriptMatchesArray));
         }
 
         arsort($scripts);
         /** @phpstan-ignore missingType.checkedException, missingType.checkedException */
-        return array_map(fn (string $scriptString) => self::from($scriptString), array_keys($scripts));
+        return array_map(fn(string $scriptString) => self::from($scriptString), array_keys($scripts));
     }
 
     /** @return ($string is non-empty-string ? bool : false) */

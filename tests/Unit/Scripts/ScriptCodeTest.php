@@ -30,21 +30,13 @@ class ScriptCodeTest extends TestCase {
     public function testForString(): void {
         static::assertSame(
             [],
-            ScriptCode::allForString('')
+            ScriptCode::allForString(''),
         );
         static::assertSame(
             [
                 ScriptCode::Latin,
             ],
-            ScriptCode::allForString('eu')
-        );
-        static::assertSame(
-            [
-                ScriptCode::Cyrillic,
-                ScriptCode::Greek,
-                ScriptCode::Latin,
-            ],
-            ScriptCode::allForString('euеюευ')
+            ScriptCode::allForString('eu'),
         );
         static::assertSame(
             [
@@ -52,7 +44,15 @@ class ScriptCodeTest extends TestCase {
                 ScriptCode::Greek,
                 ScriptCode::Latin,
             ],
-            ScriptCode::allForString('еюeuеюευ')
+            ScriptCode::allForString('euеюευ'),
+        );
+        static::assertSame(
+            [
+                ScriptCode::Cyrillic,
+                ScriptCode::Greek,
+                ScriptCode::Latin,
+            ],
+            ScriptCode::allForString('еюeuеюευ'),
         );
         static::assertSame(
             [
@@ -60,7 +60,7 @@ class ScriptCodeTest extends TestCase {
                 ScriptCode::Latin,
                 ScriptCode::Greek,
             ],
-            ScriptCode::allForString('еюeuеюευeu')
+            ScriptCode::allForString('еюeuеюευeu'),
         );
     }
 

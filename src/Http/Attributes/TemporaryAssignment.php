@@ -9,6 +9,5 @@ use DateTimeImmutable;
 class TemporaryAssignment {
     public function __construct(
         public readonly ?DateTimeImmutable $expiresAt,
-    ) {
-    }
+    ) {}
 }

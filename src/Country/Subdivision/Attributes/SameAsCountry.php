@@ -8,7 +8,6 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
 #[Attribute(Attribute::TARGET_CLASS_CONSTANT)]
 class SameAsCountry {
     public function __construct(
-        public readonly CountryAlpha2 $country
-    ) {
-    }
+        public readonly CountryAlpha2 $country,
+    ) {}
 }

@@ -43,7 +43,7 @@ class SchengenTest extends TestCase {
                 CountryAlpha2::Sweden,
                 CountryAlpha2::Switzerland,
             ],
-            Schengen::allAlpha2()
+            Schengen::allAlpha2(),
         );
     }
 }

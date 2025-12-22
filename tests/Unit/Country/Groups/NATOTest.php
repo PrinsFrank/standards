@@ -46,7 +46,7 @@ class NATOTest extends TestCase {
                 CountryAlpha2::United_Kingdom,
                 CountryAlpha2::United_States_of_America,
             ],
-            NATO::allAlpha2()
+            NATO::allAlpha2(),
         );
     }
 }

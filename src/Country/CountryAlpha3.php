@@ -359,7 +359,7 @@ enum CountryAlpha3: string {
 
     /** @return list<self> */
     public function getSubCountries(): array {
-        return array_map(fn (CountryAlpha2 $countryAlpha2) => $countryAlpha2->toCountryAlpha3(), $this->toCountryAlpha2()->getSubCountries());
+        return array_map(fn(CountryAlpha2 $countryAlpha2) => $countryAlpha2->toCountryAlpha3(), $this->toCountryAlpha2()->getSubCountries());
     }
 
     public function getParentCountry(): ?self {

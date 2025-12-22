@@ -125,7 +125,7 @@ class CountryAlpha3Test extends TestCase {
             [
                 CountrySubdivision::Caribbean_Netherlands_special_municipality_Bonaire,
                 CountrySubdivision::Caribbean_Netherlands_special_municipality_Saba,
-                CountrySubdivision::Caribbean_Netherlands_special_municipality_Sint_Eustatius
+                CountrySubdivision::Caribbean_Netherlands_special_municipality_Sint_Eustatius,
             ],
             CountryAlpha3::Bonaire_Sint_Eustatius_and_Saba->getSubdivisions(),
         );
