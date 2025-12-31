@@ -115,6 +115,9 @@ enum URIScheme: string {
     case cabal = 'cabal';
 
     #[Status(URISchemeStatus::Provisional)]
+    case caip = 'caip';
+
+    #[Status(URISchemeStatus::Provisional)]
     case calculator = 'calculator';
 
     #[Status(URISchemeStatus::Provisional)]
