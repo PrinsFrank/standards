@@ -50,7 +50,6 @@ enum CurrencyAlpha3: string {
     case Bond_Markets_Unit_European_Unit_of_Account_9_E_U_A_9 = 'XBC';
     case Brazilian_Real = 'BRL';
     case Brunei_Dollar = 'BND';
-    case Bulgarian_Lev = 'BGN';
     case Burundi_Franc = 'BIF';
     case CFA_Franc_BCEAO = 'XOF';
     case CFA_Franc_BEAC = 'XAF';
@@ -203,6 +202,9 @@ enum CurrencyAlpha3: string {
     case Zambian_Kwacha = 'ZMW';
     case Zimbabwe_Gold = 'ZWG';
     case Zloty = 'PLN';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Bulgarian_Lev = 'BGN';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Kuna = 'HRK';
@@ -481,7 +483,6 @@ enum CurrencyAlpha3: string {
             self::Boliviano => [CountryAlpha2::Bolivia],
             self::Brazilian_Real => [CountryAlpha2::Brazil],
             self::Brunei_Dollar => [CountryAlpha2::Brunei_Darussalam],
-            self::Bulgarian_Lev => [CountryAlpha2::Bulgaria],
             self::Burundi_Franc => [CountryAlpha2::Burundi],
             self::CFA_Franc_BCEAO => [
                 CountryAlpha2::Benin,
@@ -551,6 +552,7 @@ enum CurrencyAlpha3: string {
                 CountryAlpha2::Andorra,
                 CountryAlpha2::Austria,
                 CountryAlpha2::Belgium,
+                CountryAlpha2::Bulgaria,
                 CountryAlpha2::Croatia,
                 CountryAlpha2::Cyprus,
                 CountryAlpha2::Estonia,

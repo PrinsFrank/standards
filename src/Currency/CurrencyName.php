@@ -49,7 +49,6 @@ enum CurrencyName: string {
     case Bond_Markets_Unit_European_Unit_of_Account_9_E_U_A_9 = 'Bond Markets Unit European Unit of Account 9 (E.U.A.-9)';
     case Brazilian_Real = 'Brazilian Real';
     case Brunei_Dollar = 'Brunei Dollar';
-    case Bulgarian_Lev = 'Bulgarian Lev';
     case Burundi_Franc = 'Burundi Franc';
     case CFA_Franc_BCEAO = 'CFA Franc BCEAO';
     case CFA_Franc_BEAC = 'CFA Franc BEAC';
@@ -202,6 +201,9 @@ enum CurrencyName: string {
     case Zambian_Kwacha = 'Zambian Kwacha';
     case Zimbabwe_Gold = 'Zimbabwe Gold';
     case Zloty = 'Zloty';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Bulgarian_Lev = 'Bulgarian Lev';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Kuna = 'Kuna';

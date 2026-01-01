@@ -670,7 +670,7 @@ enum CountryAlpha2: string {
             self::Brazil => [CurrencyAlpha3::Brazilian_Real],
             self::British_Indian_Ocean_Territory => [CurrencyAlpha3::US_Dollar],
             self::Brunei_Darussalam => [CurrencyAlpha3::Brunei_Dollar],
-            self::Bulgaria => [CurrencyAlpha3::Bulgarian_Lev],
+            self::Bulgaria => [CurrencyAlpha3::Euro],
             self::Burkina_Faso => [CurrencyAlpha3::CFA_Franc_BCEAO],
             self::Burundi => [CurrencyAlpha3::Burundi_Franc],
             self::Cabo_Verde => [CurrencyAlpha3::Cabo_Verde_Escudo],
