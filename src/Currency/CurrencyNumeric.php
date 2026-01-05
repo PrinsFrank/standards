@@ -51,7 +51,6 @@ enum CurrencyNumeric: string {
     case Bond_Markets_Unit_European_Unit_of_Account_9_E_U_A_9 = '957';
     case Brazilian_Real = '986';
     case Brunei_Dollar = '096';
-    case Bulgarian_Lev = '975';
     case Burundi_Franc = '108';
     case CFA_Franc_BCEAO = '952';
     case CFA_Franc_BEAC = '950';
@@ -204,6 +203,9 @@ enum CurrencyNumeric: string {
     case Zambian_Kwacha = '967';
     case Zimbabwe_Gold = '924';
     case Zloty = '985';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Bulgarian_Lev = '975';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Kuna = '191';
