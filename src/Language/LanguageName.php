@@ -274,7 +274,7 @@ enum LanguageName: string {
     case Lozi = 'Lozi';
     case Luba_Katanga = 'Luba-Katanga';
     case Luba_Lulua = 'Luba-Lulua';
-    case Luiseno = 'Luiseno';
+    case Luisen_o = 'Luisen?o';
     case Lule_Sami = 'Lule Sami';
     case Lunda = 'Lunda';
     case Luo_Kenya_and_Tanzania = 'Luo (Kenya and Tanzania)';
@@ -501,6 +501,9 @@ enum LanguageName: string {
     case Zhuang_Chuang = 'Zhuang; Chuang';
     case Zulu = 'Zulu';
     case Zuni = 'Zuni';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Luiseno = 'Luiseno';
 
     public function toLanguageAlpha2(): ?LanguageAlpha2 {
         return BackedEnum::tryFromName(LanguageAlpha2::class, $this->name);
