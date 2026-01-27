@@ -1771,6 +1771,7 @@ enum LanguageAlpha3Extensive: string {
     case Dyugun = 'dyd';
     case Villa_Viciosa_Agta = 'dyg';
     case Djimini_Senoufo = 'dyi';
+    case Bhutanese_Sign_Language = 'dyl';
     case Yanda_Dom_Dogon = 'dym';
     case Dyangadi = 'dyn';
     case Jola_Fonyi = 'dyo';
@@ -3593,6 +3594,7 @@ enum LanguageAlpha3Extensive: string {
     case Lemolang = 'ley';
     case Lezghian = 'lez';
     case Lefa = 'lfa';
+    case Buu_Cameroon = 'lfb';
     case Lingua_Franca_Nova = 'lfn';
     case Lungga = 'lga';
     case Laghu = 'lgb';
