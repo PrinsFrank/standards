@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
+use Override;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
@@ -17,6 +18,7 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @implements Mapping<TDataSet>
  */
 class LanguageSubTagMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry';
     }
@@ -25,6 +27,7 @@ class LanguageSubTagMapping implements Mapping {
      * @throws InvalidArgumentException
      * @return list<TDataSet>
      */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $dataSet = [];
         foreach (explode('%%', $client->getPageSource()) as $i => $item) {
@@ -68,6 +71,7 @@ class LanguageSubTagMapping implements Mapping {
      * @param list<TDataSet> $dataSet
      * @return array<SpecFile>
      */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $languageTagVariant = new SpecFile(LanguageTagVariant::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {

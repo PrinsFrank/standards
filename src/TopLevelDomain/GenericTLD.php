@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\TopLevelDomain;
 
+use Override;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
@@ -1535,6 +1536,7 @@ enum GenericTLD: string implements TLD {
     case zu_zhi_ji_gou_han = '组织机构';
     case zuerich = 'zuerich';
 
+    #[Override]
     public function isAssigned(): bool {
         return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }

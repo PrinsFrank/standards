@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Country\Groups;
 
+use Override;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 
 /**
@@ -11,6 +12,7 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
  * @manually-updated
  */
 class EuroZone implements GroupInterface {
+    #[Override]
     public static function allAlpha2(): array {
         return [
             CountryAlpha2::Austria,

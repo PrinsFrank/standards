@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\TopLevelDomain;
 
+use Override;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
@@ -609,6 +610,7 @@ enum CountryCodeTLD: string implements TLD {
         return $this->getCountryAlpha2()?->toCountryNumeric();
     }
 
+    #[Override]
     public function isAssigned(): bool {
         return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }

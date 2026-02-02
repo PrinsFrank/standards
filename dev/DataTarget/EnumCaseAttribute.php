@@ -5,6 +5,7 @@ namespace PrinsFrank\Standards\Dev\DataTarget;
 
 use BackedEnum;
 use DateTimeImmutable;
+use Override;
 use PrinsFrank\Standards\InvalidArgumentException;
 use ReflectionClass;
 use Stringable;
@@ -21,6 +22,7 @@ class EnumCaseAttribute implements Stringable {
     ) {}
 
     /** @throws InvalidArgumentException */
+    #[Override]
     public function __toString(): string {
         if ($this->parameters !== []) {
             return '#[' . (new ReflectionClass($this->fqn))->getShortName() . '(' . implode(', ', array_map(fn(mixed $value) => $this->valueToString($value), $this->parameters)) . ')]';

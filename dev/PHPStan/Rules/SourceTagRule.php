@@ -2,6 +2,7 @@
 
 namespace PrinsFrank\Standards\Dev\PHPStan\Rules;
 
+use Override;
 use PhpParser\Node;
 use PHPStan\Analyser\Scope;
 use PHPStan\Node\InClassNode;
@@ -14,10 +15,12 @@ use Throwable;
 
 /** @implements Rule<InClassNode> */
 class SourceTagRule implements Rule {
+    #[Override]
     public function getNodeType(): string {
         return InClassNode::class;
     }
 
+    #[Override]
     public function processNode(Node $node, Scope $scope): array {
         $classReflection = $node->getClassReflection();
         if ($classReflection->isAnonymous()

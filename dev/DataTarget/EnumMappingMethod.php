@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataTarget;
 
+use Override;
+
 /** @internal */
 class EnumMappingMethod {
     /** @var array<int|string, list<string>> */
@@ -23,6 +25,7 @@ class EnumMappingMethod {
         $this->mapping[$from][] = $to;
     }
 
+    #[Override]
     public function __toString(): string {
         $indentingCase = str_repeat(' ', 12);
         $mappingString = '';

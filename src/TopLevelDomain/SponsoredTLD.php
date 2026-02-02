@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\TopLevelDomain;
 
+use Override;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
@@ -27,6 +28,7 @@ enum SponsoredTLD: string implements TLD {
     case travel = 'travel';
     case xxx = 'xxx';
 
+    #[Override]
     public function isAssigned(): bool {
         return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }

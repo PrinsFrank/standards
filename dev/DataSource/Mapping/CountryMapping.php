@@ -7,6 +7,7 @@ use Facebook\WebDriver\Exception\NoSuchElementException;
 use Facebook\WebDriver\Exception\TimeoutException;
 use Facebook\WebDriver\Remote\RemoteWebElement;
 use Facebook\WebDriver\WebDriverBy;
+use Override;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\CountryName;
@@ -35,6 +36,7 @@ use ValueError;
  * @implements Mapping<TDataSet>
  */
 class CountryMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://www.iso.org/obp/ui/#search/code/';
     }
@@ -47,6 +49,7 @@ class CountryMapping implements Mapping {
      * @throws TypeError
      * @return list<TDataSet>
      */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $client->waitForVisibility('.v-select-select');
         $client->waitForInvisibility('.v-window-modalitycurtain');
@@ -154,6 +157,7 @@ class CountryMapping implements Mapping {
      * @throws ShouldNotHappenException
      * @return array<SpecFile>
      */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $countryName = new SpecFile(CountryName::class, KeySorting::class);
         $countryAlpha2 = (new SpecFile(CountryAlpha2::class, KeySorting::class))

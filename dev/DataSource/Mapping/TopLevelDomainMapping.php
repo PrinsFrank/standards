@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
+use Override;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
@@ -28,6 +29,7 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @implements Mapping<TDataSet>
  */
 class TopLevelDomainMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://www.iana.org/domains/root/db';
     }
@@ -36,6 +38,7 @@ class TopLevelDomainMapping implements Mapping {
      * @throws RuntimeException
      * @return list<TDataSet>
      */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@id="tld-table"]/tbody/tr')->getIterator();
 
@@ -65,6 +68,7 @@ class TopLevelDomainMapping implements Mapping {
      *@throws InvalidArgumentException
      * @return array<SpecFile>
      */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $countryCodeTLD = (new SpecFile(CountryCodeTLD::class, KeySorting::class))
             ->addMethod($toCountryAlpha2 = new EnumMappingMethod('getCountryAlpha2', '?CountryAlpha2', 'null'));

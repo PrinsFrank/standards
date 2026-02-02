@@ -6,6 +6,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 use DateTimeImmutable;
 use Exception;
 use Facebook\WebDriver\WebDriverBy;
+use Override;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueSorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
@@ -23,6 +24,7 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @implements Mapping<TDataSet>
  */
 class HttpStatusCodeMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml';
     }
@@ -31,6 +33,7 @@ class HttpStatusCodeMapping implements Mapping {
      * @throws RuntimeException
      * @return list<TDataSet>
      */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@id="table-http-status-codes-1"]/tbody/tr')->getIterator();
 
@@ -64,6 +67,7 @@ class HttpStatusCodeMapping implements Mapping {
      * @throws Exception
      * @return array<SpecFile>
      */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $httpMethod = new SpecFile(HttpStatusCode::class, ValueSorting::class);
         foreach ($dataSet as $dataRow) {

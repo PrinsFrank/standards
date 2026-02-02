@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
+use Override;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
@@ -18,10 +19,12 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @implements Mapping<TDataSet>
  */
 class PHPRegexSupportedScriptsMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://www.php.net/manual/en/regexp.reference.unicode.php';
     }
 
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@class="doctable table"]/tbody/tr/td/code')->getIterator();
 
@@ -41,6 +44,7 @@ class PHPRegexSupportedScriptsMapping implements Mapping {
      * @param list<TDataSet> $dataSet
      * @return array<SpecFile>
      */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $scriptAliasStrings = array_map(static function (object $dataSetItem) {
             return $dataSetItem->name;

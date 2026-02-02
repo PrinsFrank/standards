@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\LanguageTag;
 
+use Override;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 use PrinsFrank\Standards\InvalidArgumentException;
 use PrinsFrank\Standards\Language\LanguageAlpha2;
@@ -118,6 +119,7 @@ class LanguageTag implements Stringable {
     }
 
     /** Stringable::__toString() doesn't allow arguments, so this method redirects to toString() to allow for custom separators */
+    #[Override]
     public function __toString(): string {
         return $this->toString();
     }

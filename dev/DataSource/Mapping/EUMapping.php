@@ -4,6 +4,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\Exception\NoSuchElementException;
 use Facebook\WebDriver\Exception\TimeoutException;
+use Override;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Enums\Exception\InvalidArgumentException;
 use PrinsFrank\Enums\Exception\NameNotFoundException;
@@ -21,11 +22,13 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @implements Mapping<TDataSet>
  */
 class EUMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://european-union.europa.eu/principles-countries-history/eu-countries_en';
     }
 
     /** @throws NoSuchElementException|TimeoutException */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $client->waitFor('//a[contains(@class, "wt-ecl-button")]');
         $crawler->filterXPath('//a[contains(@class, "wt-ecl-button")]')->click();
@@ -55,6 +58,7 @@ class EUMapping implements Mapping {
     }
 
     /** @throws NameNotFoundException|InvalidArgumentException */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $EU = (new SpecFile(EU::class, KeySorting::class))
             ->addMethod($allAlpha2 = new EnumListMethod('allAlpha2', 'array', '/** @return list<CountryAlpha2> */'));
