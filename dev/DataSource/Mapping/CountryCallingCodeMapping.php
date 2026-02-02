@@ -2,6 +2,7 @@
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
+use Override;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
 use PrinsFrank\PdfParser\PdfParser;
 use PrinsFrank\Standards\CountryCallingCode\CountryCallingCode;
@@ -20,11 +21,13 @@ use ValueError;
  * @implements Mapping<TDataSet>
  */
 class CountryCallingCodeMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-E.164D-2016-PDF-E.pdf';
     }
 
     /** @throws PdfParserException|RuntimeException */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $document = (new PdfParser())
             ->parseFile(self::url());
@@ -58,6 +61,7 @@ class CountryCallingCodeMapping implements Mapping {
     }
 
     /** @throws TypeError|ValueError */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $countryCallingCode = new SpecFile(CountryCallingCode::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
+use Override;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\ValueSorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
@@ -17,11 +18,13 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @implements Mapping<TDataSet>
  */
 class LanguageExtensiveMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3.tab';
     }
 
     /** @throws DomElementNotFoundException */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $dataSet = [];
         foreach (explode("\n", $client->getPageSource()) as $lineNumber => $line) {
@@ -48,6 +51,7 @@ class LanguageExtensiveMapping implements Mapping {
         return $dataSet;
     }
 
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $languageExtensive = new SpecFile(LanguageAlpha3Extensive::class, ValueSorting::class);
         foreach ($dataSet as $dataItem) {

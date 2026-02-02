@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\TopLevelDomain;
 
+use Override;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
@@ -16,6 +17,7 @@ enum GenericRestrictedTLD: string implements TLD {
     case name = 'name';
     case pro = 'pro';
 
+    #[Override]
     public function isAssigned(): bool {
         return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }

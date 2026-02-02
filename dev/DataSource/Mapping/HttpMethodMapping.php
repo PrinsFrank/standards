@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
+use Override;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
@@ -18,6 +19,7 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @implements Mapping<TDataSet>
  */
 class HttpMethodMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://www.iana.org/assignments/http-methods/http-methods.xhtml';
     }
@@ -26,6 +28,7 @@ class HttpMethodMapping implements Mapping {
      * @throws RuntimeException
      * @return list<TDataSet>
      */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@id="table-methods"]/tbody/tr')->getIterator();
 
@@ -56,6 +59,7 @@ class HttpMethodMapping implements Mapping {
      * @param list<TDataSet> $dataSet
      * @return array<SpecFile>
      */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $httpMethod = new SpecFile(HttpMethod::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
+use Override;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
@@ -39,6 +40,7 @@ class LanguageMapping implements Mapping {
         'Luiseño' => 'Luiseno',
     ];
 
+    #[Override]
     public static function url(): string {
         return 'https://www.loc.gov/standards/iso639-2/php/code_list.php';
     }
@@ -47,6 +49,7 @@ class LanguageMapping implements Mapping {
      * @throws RuntimeException
      * @return list<TDataSet>
      */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@width="100%"]/tbody/tr')->getIterator();
 
@@ -87,6 +90,7 @@ class LanguageMapping implements Mapping {
      * @param list<TDataSet> $dataSet
      * @return array<SpecFile>
      */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $languageAlpha2 = new SpecFile(LanguageAlpha2::class, KeySorting::class);
         $languageName = new SpecFile(LanguageName::class, KeySorting::class);

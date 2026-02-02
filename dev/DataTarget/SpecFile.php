@@ -106,7 +106,7 @@ class SpecFile {
             throw new EnumNotFoundException();
         }
 
-        preg_match('/\n(?:\n\s{4}\/\*\*.*)?\n\s{4}public /u', $enumContent, $matches, PREG_OFFSET_CAPTURE, $startEnum + 1);
+        preg_match('/\n(?:\n\s{4}\/\*\*.*)?(?:\n\s{4}#\[Override])?\n\s{4}public /u', $enumContent, $matches, PREG_OFFSET_CAPTURE, $startEnum + 1);
         $firstMethodPos = $matches[0][1] ?? null;
         if ($firstMethodPos !== null) {
             $firstMethodPos = mb_strlen(substr($enumContent, 0, $firstMethodPos)); // Convert to multibyte offset
@@ -157,7 +157,7 @@ class SpecFile {
     }
 
     private function getMethodPos(EnumMappingMethod|EnumListMethod|null $method, string $enumContent, int $offset = 0): ?int {
-        $matched = preg_match('/(\n\h*\/\*\*.*\n?(\h*\*.*\n?)*\h*\*\/){0,1}\n\h*(public|private|protected)?\h*(static)?\h*function\h*' . ($method->name ?? '') . '/u', $enumContent, $matches, PREG_OFFSET_CAPTURE, strlen(mb_substr($enumContent, 0, $offset))); // offset does not have multibyte support
+        $matched = preg_match('/(\n\h*\/\*\*.*\n?(\h*\*.*\n?)*\h*\*\/){0,1}(\n\h*#\[Override]){0,1}\n\h*(public|private|protected)?\h*(static)?\h*function\h*' . ($method->name ?? '') . '/u', $enumContent, $matches, PREG_OFFSET_CAPTURE, strlen(mb_substr($enumContent, 0, $offset))); // offset does not have multibyte support
         if ($matched !== 1 || array_key_exists(0, $matches) === false) {
             return null;
         }

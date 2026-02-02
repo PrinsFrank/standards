@@ -3,6 +3,7 @@
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
+use Override;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCaseAttribute;
@@ -22,6 +23,7 @@ use ValueError;
  * @implements Mapping<TDataSet>
  */
 class URISchemeMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml';
     }
@@ -30,6 +32,7 @@ class URISchemeMapping implements Mapping {
      * @throws RuntimeException
      * @return list<TDataSet>
      */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $dataSet = [];
         foreach ($crawler->filterXPath('//table[@id="table-uri-schemes-1"]/tbody/tr')->getIterator() as $item) {
@@ -69,6 +72,7 @@ class URISchemeMapping implements Mapping {
      * @throws TypeError|ValueError
      * @return array<SpecFile>
      */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $URIScheme = new SpecFile(URIScheme::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {

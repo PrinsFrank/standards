@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
+use Override;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\Dev\DataSource\Sorting\KeySorting;
 use PrinsFrank\Standards\Dev\DataTarget\EnumCase;
@@ -26,6 +27,7 @@ use ValueError;
  * @implements Mapping<TDataSet>
  */
 class ScriptMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://www.unicode.org/iso15924/iso15924-codes.html';
     }
@@ -34,6 +36,7 @@ class ScriptMapping implements Mapping {
      * @throws RuntimeException
      * @return list<TDataSet>
      */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $items = $crawler->filterXPath('//table[@class="simple"]/tbody/tr')->getIterator();
 
@@ -76,6 +79,7 @@ class ScriptMapping implements Mapping {
      * @throws TypeError
      * @return array<SpecFile>
      */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $scriptCode = new SpecFile(ScriptCode::class, KeySorting::class);
         $scriptName = new SpecFile(ScriptName::class, KeySorting::class);

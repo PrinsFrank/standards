@@ -7,6 +7,7 @@ use DOMDocument;
 use DOMElement;
 use DOMNodeList;
 use DOMXPath;
+use Override;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Enums\Exception\InvalidArgumentException;
 use PrinsFrank\Enums\Exception\NameNotFoundException;
@@ -34,6 +35,7 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  * @implements Mapping<TDataSet>
  */
 class CurrencyMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://www.six-group.com/en/products-services/financial-information/data-standards.html';
     }
@@ -42,6 +44,7 @@ class CurrencyMapping implements Mapping {
      * @throws DomElementNotFoundException|RuntimeException
      * @return list<TDataSet>
      */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $listLink = $crawler->filterXPath("//a[contains(@href, 'list-one.xml')]");
         $listUrl = $listLink->first()->getAttribute('href');
@@ -89,6 +92,7 @@ class CurrencyMapping implements Mapping {
      * @throws TransliterationException
      * @return array<SpecFile>
      */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $currencyNameEnum = new SpecFile(CurrencyName::class, KeySorting::class);
         $currencyNumericEnum = new SpecFile(CurrencyNumeric::class, KeySorting::class);

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\TopLevelDomain;
 
+use Override;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
@@ -24,6 +25,7 @@ enum ReservedTLD: string implements TLD {
     #[NotAssigned]
     case localhost = 'localhost';
 
+    #[Override]
     public function isAssigned(): bool {
         return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }

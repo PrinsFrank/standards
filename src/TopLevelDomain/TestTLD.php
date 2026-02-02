@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PrinsFrank\Standards\TopLevelDomain;
 
+use Override;
 use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
@@ -45,6 +46,7 @@ enum TestTLD: string implements TLD {
     #[NotAssigned]
     case tesuto_katakana = 'テスト';
 
+    #[Override]
     public function isAssigned(): bool {
         return BackedEnum::hasCaseAttribute($this, NotAssigned::class) === false;
     }

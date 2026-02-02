@@ -4,6 +4,7 @@ namespace PrinsFrank\Standards\Dev\DataSource\Mapping;
 
 use Facebook\WebDriver\WebDriverBy;
 use Facebook\WebDriver\WebDriverElement;
+use Override;
 use PrinsFrank\Standards\Country\CountryAlpha3;
 use PrinsFrank\Standards\Country\Groups\EU;
 use PrinsFrank\Standards\Country\Groups\WorldTradeOrganization;
@@ -22,11 +23,13 @@ use ValueError;
  * @implements Mapping<TDataSet>
  */
 class WorldTradeOrganizationMapping implements Mapping {
+    #[Override]
     public static function url(): string {
         return 'https://www.wto.org/english/thewto_e/whatis_e/tif_e/org6_e.htm';
     }
 
     /** @throws RuntimeException */
+    #[Override]
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $dataSet = [];
         foreach ($crawler->filterXPath('//div[@id="accordion"]//ul/li')->getIterator() as $item) {
@@ -49,9 +52,10 @@ class WorldTradeOrganizationMapping implements Mapping {
     }
 
     /** @throws ValueError|TypeError */
+    #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $WorldTradeOrganization = (new SpecFile(WorldTradeOrganization::class, KeySorting::class))
-            ->addMethod($allAlpha2 = new EnumListMethod('allAlpha2', 'array', '/** @return list<CountryAlpha2> */'));
+            ->addMethod($allAlpha2 = new EnumListMethod('allAlpha2', 'array', '/** @return list<CountryAlpha2> */' . PHP_EOL . '    #[Override]'));
 
         foreach ($dataSet as $dataRow) {
             $countryAlpha3String = $dataRow->countryAlpha3String;

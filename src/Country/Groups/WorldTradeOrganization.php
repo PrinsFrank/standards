@@ -2,6 +2,7 @@
 
 namespace PrinsFrank\Standards\Country\Groups;
 
+use Override;
 use PrinsFrank\Standards\Country\CountryAlpha2;
 
 /**
@@ -11,6 +12,7 @@ use PrinsFrank\Standards\Country\CountryAlpha2;
  */
 class WorldTradeOrganization implements GroupInterface {
     /** @return list<CountryAlpha2> */
+    #[Override]
     public static function allAlpha2(): array {
         return [
             CountryAlpha2::Afghanistan,
