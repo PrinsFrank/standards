@@ -55,7 +55,7 @@ class WorldTradeOrganizationMapping implements Mapping {
     #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $WorldTradeOrganization = (new SpecFile(WorldTradeOrganization::class, KeySorting::class))
-            ->addMethod($allAlpha2 = new EnumListMethod('allAlpha2', 'array', '/** @return list<CountryAlpha2> */'));
+            ->addMethod($allAlpha2 = new EnumListMethod('allAlpha2', 'array', '/** @return list<CountryAlpha2> */' . PHP_EOL . '    #[Override]'));
 
         foreach ($dataSet as $dataRow) {
             $countryAlpha3String = $dataRow->countryAlpha3String;

@@ -61,7 +61,7 @@ class EUMapping implements Mapping {
     #[Override]
     public static function toEnumMapping(array $dataSet): array {
         $EU = (new SpecFile(EU::class, KeySorting::class))
-            ->addMethod($allAlpha2 = new EnumListMethod('allAlpha2', 'array', '/** @return list<CountryAlpha2> */'));
+            ->addMethod($allAlpha2 = new EnumListMethod('allAlpha2', 'array', '/** @return list<CountryAlpha2> */' . PHP_EOL . '    #[Override]'));
 
         foreach ($dataSet as $dataRow) {
             $allAlpha2->addItem('CountryAlpha2::' . BackedEnum::fromName(CountryAlpha2::class, $dataRow->name)->name);
