@@ -36,6 +36,7 @@ class LanguageMapping implements Mapping {
         'South Ndebele' => 'Ndebele, South; South Ndebele',
         'Modern Greek (1453-)' => 'Greek, Modern (1453-)',
         'Nepal Bhasa; Newar; Newari' => 'Nepal Bhasa; Newari',
+        'Luiseño' => 'Luiseno',
     ];
 
     public static function url(): string {
