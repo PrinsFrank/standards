@@ -274,7 +274,7 @@ enum LanguageName: string {
     case Lozi = 'Lozi';
     case Luba_Katanga = 'Luba-Katanga';
     case Luba_Lulua = 'Luba-Lulua';
-    case Luiseno = 'Luiseno';
+    case Luiseno = 'Luiseño';
     case Lule_Sami = 'Lule Sami';
     case Lunda = 'Lunda';
     case Luo_Kenya_and_Tanzania = 'Luo (Kenya and Tanzania)';
