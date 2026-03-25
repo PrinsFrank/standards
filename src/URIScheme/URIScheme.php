@@ -202,6 +202,9 @@ enum URIScheme: string {
     case did = 'did';
 
     #[Status(URISchemeStatus::Provisional)]
+    case dilithium3 = 'dilithium3';
+
+    #[Status(URISchemeStatus::Provisional)]
     case dis = 'dis';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -380,6 +383,12 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Permanent)]
     case iax = 'iax';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case ibi = 'ibi';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case ibi = 'ibi-';
 
     #[Status(URISchemeStatus::Permanent)]
     case icap = 'icap';
@@ -1103,6 +1112,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case unreal = 'unreal';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case upn = 'upn';
 
     #[Status(URISchemeStatus::Historical)]
     case upt = 'upt';
