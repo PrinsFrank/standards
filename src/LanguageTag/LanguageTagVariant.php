@@ -100,6 +100,7 @@ enum LanguageTagVariant: string {
     case Slovene_in_Bohoric_alphabet = 'bohoric';
     case Slovene_in_Dajnko_alphabet = 'dajnko';
     case Slovene_in_Metelko_alphabet = 'metelko';
+    case Sorbian_dialect_of_Schleife = 'slepe';
     case South_Jutish = 'synnejyl';
     case Spanglish = 'spanglis';
     case Standard_H_system_orthographic_fallback_for_spelling = 'hsistemo';
@@ -108,6 +109,7 @@ enum LanguageTagVariant: string {
     case Surmiran_idiom_of_Romansh = 'surmiran';
     case Sursilvan_idiom_of_Romansh = 'sursilv';
     case Sutsilvan_idiom_of_Romansh = 'sutsilv';
+    case Tagalog_English_code_switching = 'taglish';
     case Tai_lo_orthography_romanization = 'tailo';
     case The_Balanka_dialect_of_Anii = 'balanka';
     case The_Barlavento_dialect_group_of_Kabuverdianu = 'barla';
@@ -123,6 +125,7 @@ enum LanguageTagVariant: string {
     case The_Sai_Gon_variant_of_Vietnamese = 'saigon';
     case The_Solbica_dialect_of_Resian = 'solba';
     case The_Sotavento_dialect_group_of_Kabuverdianu = 'sotav';
+    case The_Stadin_slangi_dialect_of_Finnish = 'stadi';
     case The_Viennese_dialect_of_German = 'viennese';
     case Tongyong_Pinyin_romanization = 'tongyong';
     case Traditional_German_orthography = '1901';
