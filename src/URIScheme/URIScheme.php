@@ -388,7 +388,7 @@ enum URIScheme: string {
     case ibi = 'ibi';
 
     #[Status(URISchemeStatus::Provisional)]
-    case ibi = 'ibi-';
+    case ibi_ = 'ibi-';
 
     #[Status(URISchemeStatus::Permanent)]
     case icap = 'icap';
