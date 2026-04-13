@@ -59,9 +59,7 @@ enum TravelDocumentAlpha3: string {
      */
     case Refugee = 'XXB';
 
-    /**
-     * Refugee, other than as defined under the code XXB above
-     */
+    /** Refugee, other than as defined under the code XXB above */
     case Refugee_other = 'XXC';
 
     /**

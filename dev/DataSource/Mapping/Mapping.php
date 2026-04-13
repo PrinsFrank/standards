@@ -7,9 +7,7 @@ use PrinsFrank\Standards\Dev\DataTarget\SpecFile;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 
-/**
- * @template TDataSet
- */
+/** @template TDataSet */
 interface Mapping {
     public static function url(): string;
 
