@@ -567,6 +567,8 @@ enum GenericTLD: string implements TLD {
     #[NotAssigned]
     case gong_xing_han = '工行';
     case gong_yi_han = '公益';
+
+    #[NotAssigned]
     case goo = 'goo';
 
     #[NotAssigned]
@@ -876,6 +878,7 @@ enum GenericTLD: string implements TLD {
 
     #[NotAssigned]
     case meo = 'meo';
+    case merck = 'merck';
     case merckmsd = 'merckmsd';
 
     #[NotAssigned]
@@ -1477,6 +1480,8 @@ enum GenericTLD: string implements TLD {
     case winners = 'winners';
     case wme = 'wme';
     case wo_ai_ni_han = '我爱你';
+
+    #[NotAssigned]
     case wolterskluwer = 'wolterskluwer';
     case woodside = 'woodside';
     case work = 'work';
