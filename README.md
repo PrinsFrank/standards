@@ -15,6 +15,8 @@
 
 Daily updated from their sources, whether it is ISO or IANA directly, or a maintaining party like the SIX Group or the US Library of Congress.
 
+*This package is actively maintained. [Sponsorship](https://github.com/sponsors/PrinsFrank) helps support ongoing maintenance and review of upstream changes.*
+
 ## Setup
 
 > **Note**
@@ -31,6 +33,12 @@ Or for development only;
 ```bash
 composer require prinsfrank/standards --dev
 ```
+
+## 💖 Sponsorship
+
+This package is regularly updated as upstream standards change. Keeping it reliable and consistent takes ongoing effort. Even though most of the standards in this package are automatically checked with upstream sources, these changes still need to be manually reviewed. When sources update the way they present their data, the parsing scripts also need to be updated.
+
+If you depend on this package and want to support its maintenance, please consider [sponsoring me](https://github.com/sponsors/PrinsFrank). I'll continue maintaining and releasing updates regardless, but sponsorships help cover the time it takes to review changes and keep everything accurate.
 
 ## Daily updated from their source
 
