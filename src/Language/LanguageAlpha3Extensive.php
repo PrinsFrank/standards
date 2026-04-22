@@ -6678,6 +6678,7 @@ enum LanguageAlpha3Extensive: string {
     case Vaghua = 'tva';
     case Tsuvadi = 'tvd';
     case Te_un = 'tve';
+    case Tugunese = 'tvg';
     case Tulai = 'tvi';
     case Southeast_Ambrym = 'tvk';
     case Tuvalu = 'tvl';
@@ -7813,6 +7814,7 @@ enum LanguageAlpha3Extensive: string {
     case Zhaba = 'zhb';
     case Dai_Zhuang = 'zhd';
     case Zhire = 'zhi';
+    case Kurdish_Sign_Language = 'zhk';
     case Nong_Zhuang = 'zhn';
     case Chinese = 'zho';
     case Zhoa = 'zhw';
