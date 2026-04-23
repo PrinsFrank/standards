@@ -89,6 +89,7 @@ enum LanguageTagVariant: string {
     case Post_1917_Russian_orthography = 'luna1918';
     case Provencal = 'provenc';
     case Puter_idiom_of_Romansh = 'puter';
+    case Radical_i_e_Nynorsk_like_spelling_variant_of_Bokmal = 'radikalt';
     case Rezijan = 'rozaj';
     case Rumantsch_Grischun = 'rumgr';
     case Sahidic_dialect_of_Coptic = 'sahidic';
@@ -127,6 +128,7 @@ enum LanguageTagVariant: string {
     case The_Sotavento_dialect_group_of_Kabuverdianu = 'sotav';
     case The_Stadin_slangi_dialect_of_Finnish = 'stadi';
     case The_Viennese_dialect_of_German = 'viennese';
+    case The_moderate_conservative_i_e_Danish_like_spelling = 'moderat';
     case Tongyong_Pinyin_romanization = 'tongyong';
     case Traditional_German_orthography = '1901';
     case Ulster_dialect_of_Scots = 'ulster';
