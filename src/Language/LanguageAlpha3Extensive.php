@@ -6678,7 +6678,6 @@ enum LanguageAlpha3Extensive: string {
     case Vaghua = 'tva';
     case Tsuvadi = 'tvd';
     case Te_un = 'tve';
-    case Tugunese = 'tvg';
     case Tulai = 'tvi';
     case Southeast_Ambrym = 'tvk';
     case Tuvalu = 'tvl';
@@ -7814,7 +7813,6 @@ enum LanguageAlpha3Extensive: string {
     case Zhaba = 'zhb';
     case Dai_Zhuang = 'zhd';
     case Zhire = 'zhi';
-    case Kurdish_Sign_Language = 'zhk';
     case Nong_Zhuang = 'zhn';
     case Chinese = 'zho';
     case Zhoa = 'zhw';
@@ -7956,7 +7954,13 @@ enum LanguageAlpha3Extensive: string {
     case Nathembo = 'nte';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Tugunese = 'tvg';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Yola = 'yol';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Kurdish_Sign_Language = 'zhk';
 
     public function getNameForCountry(CountryAlpha2 $country): ?string {
         return $country->getNameInLanguage($this);
