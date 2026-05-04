@@ -46,6 +46,9 @@ enum URIScheme: string {
     case afs = 'afs';
 
     #[Status(URISchemeStatus::Provisional)]
+    case agtp = 'agtp';
+
+    #[Status(URISchemeStatus::Provisional)]
     case aim = 'aim';
 
     #[Status(URISchemeStatus::Provisional)]
