@@ -178,6 +178,9 @@ enum URIScheme: string {
     case cstr = 'cstr';
 
     #[Status(URISchemeStatus::Provisional)]
+    case cttps = 'cttps';
+
+    #[Status(URISchemeStatus::Provisional)]
     case cvs = 'cvs';
 
     #[Status(URISchemeStatus::Provisional)]
