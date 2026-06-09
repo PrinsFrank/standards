@@ -826,6 +826,9 @@ enum URIScheme: string {
     case notes = 'notes';
 
     #[Status(URISchemeStatus::Provisional)]
+    case npamp = 'npamp';
+
+    #[Status(URISchemeStatus::Provisional)]
     case num = 'num';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -1031,6 +1034,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case ssh = 'ssh';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case sss = 'sss';
 
     #[Status(URISchemeStatus::Provisional)]
     case starknet = 'starknet';
@@ -1247,6 +1253,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Permanent)]
     case z39_50s = 'z39.50s';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case ztdnaid = 'ztdnaid';
 
     public function getStatus(): URISchemeStatus {
         $statusAttributes = BackedEnum::getCaseAttributes($this, Status::class);
