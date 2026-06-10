@@ -55,7 +55,9 @@ jobs:
         uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
 
       - name: Update spec
-        run: composer run update-spec-${{ matrix.spec }}
+        env:
+          TYPE: ${{ matrix.spec }}
+        run: composer run update-spec-$TYPE
 
       - name: Check for changes
         run: git diff --exit-code
