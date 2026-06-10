@@ -14,6 +14,7 @@ jobs:
   update-specs:
     uses: ./.github/workflows/reusable-update-spec.yml
     permissions:
-      contents: read
+      contents: write # to create pull requests
+      pull-requests: write # to create pull requests
     with:
       type: php-regex-script
