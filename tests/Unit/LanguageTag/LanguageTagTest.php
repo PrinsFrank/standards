@@ -30,7 +30,7 @@ class LanguageTagTest extends TestCase {
     /** @throws InvalidArgumentException */
     public function testThrowsExceptionIfExtensionSubtagIsOfInvalidType(): void {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Param $variantSubtag should be an array of strings');
+        $this->expectExceptionMessage('Param $extensionSubtag should be an array of strings');
         /** @phpstan-ignore argument.type */
         new LanguageTag(LanguageAlpha2::Dutch_Flemish, extensionSubtag: [42]);
     }
