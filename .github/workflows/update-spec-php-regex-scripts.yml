@@ -5,6 +5,8 @@ on:
   schedule:
     - cron: '55 17 * * *'
 
+permissions: {}
+
 env:
   GH_TOKEN: ${{ github.token }}
 

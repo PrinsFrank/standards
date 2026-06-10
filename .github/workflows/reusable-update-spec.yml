@@ -10,12 +10,19 @@ on:
 env:
   PHP_VERSION: '8.3'
 
+permissions: {}
+
 jobs:
   update-spec:
+    name: Update spec
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -27,7 +34,9 @@ jobs:
         uses: ramsey/composer-install@v4
 
       - name: Run standard update command
-        run: composer run update-spec-${{ inputs.type }}
+        env:
+          TYPE: ${{ inputs.type }}
+        run: composer run update-spec-$TYPE
 
       - name: Create Pull Request
         id: cpr

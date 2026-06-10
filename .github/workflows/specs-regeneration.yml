@@ -7,6 +7,8 @@ on:
     types: [ opened, synchronize ]
     branches: [ main ]
 
+permissions: {}
+
 env:
   PHP_VERSION: '8.3'
   GH_TOKEN: ${{ github.token }}
@@ -36,6 +38,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
