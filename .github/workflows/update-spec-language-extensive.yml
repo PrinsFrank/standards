@@ -14,5 +14,7 @@ env:
 jobs:
   update-specs:
     uses: ./.github/workflows/reusable-update-spec.yml
+    permissions:
+      contents: read
     with:
       type: language-extensive
