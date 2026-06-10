@@ -39,18 +39,28 @@ jobs:
         run: composer run update-spec-$TYPE
 
       - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v8
-        with:
-          commit-message: |
-            Automatic ${{ inputs.type }} spec update from upstream changes
-          delete-branch: true
-          title: |
-            Automatic ${{ inputs.type }} spec update
-          branch: update-spec/${{ inputs.type }}
-          body: |
-            This PR makes sure the content of this package is updated with upstream changes in the specs.
-          labels: |
-            spec-update
-            automated pr
-          reviewers: prinsfrank
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TYPE: ${{ inputs.type }}
+        run: |
+          if [[ -z $(git status --porcelain) ]]; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          BRANCH="update-spec/$TYPE"
+          git checkout -b "$BRANCH"
+          git add .
+          git commit -m "Automatic $TYPE spec update from upstream changes"
+          git push origin "$BRANCH" --force
+
+          gh pr create \
+            --title "Automatic $TYPE spec update" \
+            --body "This PR makes sure the content of this package is updated with upstream changes in the specs." \
+            --label "spec-update" \
+            --label "automated pr" \
+            --reviewer PrinsFrank \
+            || echo "PR already exists or couldn't be created"
