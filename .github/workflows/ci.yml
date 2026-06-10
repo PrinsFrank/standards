@@ -10,10 +10,15 @@ on:
   schedule:
     - cron: '55 17 * * *'
 
+permissions: {}
+
 jobs:
   quality:
-    uses: prinsfrank/CI-PHP/.github/workflows/quality.yml@main
+    uses: prinsfrank/CI-PHP/.github/workflows/quality.yml@7f532694f9ad3b0da45333d0c140b340488ac9b1 # v1.2.0
+    permissions:
+      contents: read
     with:
       PHP_VERSION: '8.3'
       PHP_VERSIONS: '["8.2", "8.3", "8.4", "8.5"]'
-    secrets: inherit
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

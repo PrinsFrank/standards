@@ -5,6 +5,8 @@ on:
   schedule:
     - cron: '55 17 * * *'
 
+permissions: {}
+
 env:
   GH_TOKEN: ${{ github.token }}
   COMPOSER_ROOT_VERSION: dev-main # see https://getcomposer.org/doc/articles/troubleshooting.md#dependencies-on-the-root-package
