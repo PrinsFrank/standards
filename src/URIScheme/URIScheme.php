@@ -283,6 +283,9 @@ enum URIScheme: string {
     case example = 'example';
 
     #[Status(URISchemeStatus::Provisional)]
+    case ez = 'ez';
+
+    #[Status(URISchemeStatus::Provisional)]
     case facetime = 'facetime';
 
     #[Status(URISchemeStatus::Historical)]
@@ -524,6 +527,12 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case matrix = 'matrix';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case mdoc = 'mdoc';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case mdoc_openid4vp = 'mdoc-openid4vp';
 
     #[Status(URISchemeStatus::Provisional)]
     case message = 'message';
@@ -797,6 +806,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Permanent)]
     case mupdate = 'mupdate';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case musik = 'musik';
 
     #[Status(URISchemeStatus::Provisional)]
     case mvn = 'mvn';
@@ -1110,6 +1122,9 @@ enum URIScheme: string {
     #[Status(URISchemeStatus::Provisional)]
     case tool = 'tool';
 
+    #[Status(URISchemeStatus::Provisional)]
+    case tttps = 'tttps';
+
     #[Status(URISchemeStatus::Permanent)]
     case turn = 'turn';
 
@@ -1135,7 +1150,13 @@ enum URIScheme: string {
     case urn = 'urn';
 
     #[Status(URISchemeStatus::Provisional)]
+    case ust = 'ust';
+
+    #[Status(URISchemeStatus::Provisional)]
     case ut2004 = 'ut2004';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case uuaid = 'uuaid';
 
     #[Status(URISchemeStatus::Provisional)]
     case uuid_in_package = 'uuid-in-package';
