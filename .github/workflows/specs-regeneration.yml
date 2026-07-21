@@ -29,6 +29,7 @@ jobs:
           - "country"
           - "country-calling-code"
           - "currency"
+          - "eu"
           - "http-methods"
           - "http-status-codes"
           - "language"
