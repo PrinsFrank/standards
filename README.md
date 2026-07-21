@@ -46,15 +46,16 @@ If you depend on this package and want to support its maintenance, please consid
 [![Country Calling Code](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country-calling-code.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country-calling-code.yml)
 [![Currency](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
 [![EU](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-eu.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-eu.yml)
-[![WTO](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-wto.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-wto.yml)
-[![HTTP method](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml)
 [![HTTP Status code](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-status-codes.yml)
-[![Language Extensive](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml)
+[![HTTP method](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-http-methods.yml)
 [![Language](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language.yml)
+[![Language Extensive](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-extensive.yml)
 [![Language Subtag](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-sub-tag.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-language-sub-tag.yml)
 [![PHP Regex script](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-php-regex-scripts.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-php-regex-scripts.yml)
 [![Script](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-scripts.yml)
 [![TLD](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-tld.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-tld.yml)
+[![URI schemes](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-uri-scheme.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-uri-schem.yml)
+[![WTO](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-wto.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-wto.yml)
 
 ## How this package works
 
