@@ -1462,6 +1462,7 @@ enum GenericTLD: string implements TLD {
     case watches = 'watches';
     case weather = 'weather';
     case weatherchannel = 'weatherchannel';
+    case web = 'web';
     case webcam = 'webcam';
     case weber = 'weber';
     case website = 'website';
