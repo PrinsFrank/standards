@@ -835,6 +835,9 @@ enum URIScheme: string {
     case nntp = 'nntp';
 
     #[Status(URISchemeStatus::Provisional)]
+    case nostr = 'nostr';
+
+    #[Status(URISchemeStatus::Provisional)]
     case notes = 'notes';
 
     #[Status(URISchemeStatus::Provisional)]
