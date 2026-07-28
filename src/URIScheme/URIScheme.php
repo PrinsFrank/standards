@@ -892,6 +892,9 @@ enum URIScheme: string {
     case pkcs11 = 'pkcs11';
 
     #[Status(URISchemeStatus::Provisional)]
+    case pkg = 'pkg';
+
+    #[Status(URISchemeStatus::Provisional)]
     case platform = 'platform';
 
     #[Status(URISchemeStatus::Permanent)]
