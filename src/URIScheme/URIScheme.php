@@ -40,6 +40,9 @@ enum URIScheme: string {
     case adt = 'adt';
 
     #[Status(URISchemeStatus::Provisional)]
+    case aet = 'aet';
+
+    #[Status(URISchemeStatus::Provisional)]
     case afp = 'afp';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -323,6 +326,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case fuchsia_pkg = 'fuchsia-pkg';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case gcx = 'gcx';
 
     #[Status(URISchemeStatus::Permanent)]
     case geo = 'geo';
