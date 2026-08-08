@@ -147,6 +147,9 @@ enum URIScheme: string {
     #[Status(URISchemeStatus::Permanent)]
     case cid = 'cid';
 
+    #[Status(URISchemeStatus::Provisional)]
+    case cm = 'cm';
+
     #[Status(URISchemeStatus::Permanent)]
     case coap = 'coap';
 
@@ -329,6 +332,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case gcx = 'gcx';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case gdsi = 'gdsi';
 
     #[Status(URISchemeStatus::Permanent)]
     case geo = 'geo';
