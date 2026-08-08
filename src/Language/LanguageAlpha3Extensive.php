@@ -4268,7 +4268,6 @@ enum LanguageAlpha3Extensive: string {
     case Mlabri = 'mra';
     case Marino = 'mrb';
     case Maricopa = 'mrc';
-    case Western_Magar = 'mrd';
     case Martha_s_Vineyard_Sign_Language = 'mre';
     case Elseng = 'mrf';
     case Mising = 'mrg';
@@ -5863,7 +5862,6 @@ enum LanguageAlpha3Extensive: string {
     case Tachelhit = 'shi';
     case Shatt = 'shj';
     case Shilluk = 'shk';
-    case Shendu = 'shl';
     case Shahrudi = 'shm';
     case Shan = 'shn';
     case Shanga = 'sho';
@@ -7953,7 +7951,13 @@ enum LanguageAlpha3Extensive: string {
     case Dek = 'dek';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Western_Magar = 'mrd';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Nathembo = 'nte';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Shendu = 'shl';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Yola = 'yol';
