@@ -48,7 +48,7 @@ class CurrencyMapping implements Mapping {
     public static function toDataSet(Client $client, Crawler $crawler): array {
         $listLink = $crawler->filterXPath("//a[contains(@href, 'list-one.xml')]");
         $listUrl = $listLink->first()->getAttribute('href');
-        if ($listUrl === null || ($specContent = file_get_contents($listUrl)) === false) {
+        if ($listUrl === null || ($specContent = file_get_contents($listUrl)) === false || $specContent === '') {
             throw new RuntimeException('Unable to download list contents');
         }
 
