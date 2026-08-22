@@ -430,6 +430,9 @@ enum URIScheme: string {
     case info = 'info';
 
     #[Status(URISchemeStatus::Provisional)]
+    case interaction = 'interaction';
+
+    #[Status(URISchemeStatus::Provisional)]
     case iotdisco = 'iotdisco';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -1229,6 +1232,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case web_ap = 'web+ap';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case web_interaction = 'web+interaction';
 
     #[Status(URISchemeStatus::Provisional)]
     case webcal = 'webcal';
