@@ -76,6 +76,9 @@ enum URIScheme: string {
     case ark = 'ark';
 
     #[Status(URISchemeStatus::Provisional)]
+    case ars = 'ars';
+
+    #[Status(URISchemeStatus::Provisional)]
     case at = 'at';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -428,6 +431,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Permanent)]
     case info = 'info';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case interaction = 'interaction';
 
     #[Status(URISchemeStatus::Provisional)]
     case iotdisco = 'iotdisco';
@@ -1229,6 +1235,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case web_ap = 'web+ap';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case web_interaction = 'web+interaction';
 
     #[Status(URISchemeStatus::Provisional)]
     case webcal = 'webcal';
