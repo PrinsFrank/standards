@@ -180,7 +180,7 @@ enum CountryName: string {
     case Mozambique = 'Mozambique';
     case Myanmar = 'Myanmar';
     case Namibia = 'Namibia';
-    case Nauru = 'Nauru';
+    case Naoero = 'Naoero';
     case Nepal = 'Nepal';
     case Netherlands = 'Netherlands (Kingdom of the)';
     case New_Caledonia = 'New Caledonia';
@@ -275,6 +275,9 @@ enum CountryName: string {
     case Yemen = 'Yemen';
     case Zambia = 'Zambia';
     case Zimbabwe = 'Zimbabwe';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Nauru = 'Nauru';
 
     public function toCountryAlpha2(): CountryAlpha2 {
         return BackedEnum::fromName(CountryAlpha2::class, $this->name);
