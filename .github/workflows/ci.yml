@@ -15,7 +15,7 @@ permissions: {}
 
 jobs:
   quality:
-    uses: prinsfrank/CI-PHP/.github/workflows/quality.yml@7f532694f9ad3b0da45333d0c140b340488ac9b1 # v1.2.0
+    uses: prinsfrank/CI-PHP/.github/workflows/quality.yml@2ffb382cac15d0b5fbe6d4915e56ede31547c824 # v1.3.1
     permissions:
       contents: read
     with:
