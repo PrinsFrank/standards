@@ -31,6 +31,9 @@ enum URIScheme: string {
     case acd = 'acd';
 
     #[Status(URISchemeStatus::Provisional)]
+    case ace = 'ace';
+
+    #[Status(URISchemeStatus::Provisional)]
     case acr = 'acr';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -990,6 +993,9 @@ enum URIScheme: string {
     #[Status(URISchemeStatus::Provisional)]
     case secret_token = 'secret-token';
 
+    #[Status(URISchemeStatus::Provisional)]
+    case seki = 'seki';
+
     #[Status(URISchemeStatus::Permanent)]
     case service = 'service';
 
@@ -1136,6 +1142,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Historical)]
     case thzp = 'thzp';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case tii = 'tii';
 
     #[Status(URISchemeStatus::Permanent)]
     case tip = 'tip';
