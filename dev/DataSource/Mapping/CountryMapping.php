@@ -36,6 +36,11 @@ use ValueError;
  * @implements Mapping<TDataSet>
  */
 class CountryMapping implements Mapping {
+    /** @var array<string, string> where key is the new name and value is the previous name */
+    private const RENAMES = [
+        'Naoero' => 'Nauru',
+    ];
+
     #[Override]
     public static function url(): string {
         return 'https://www.iso.org/obp/ui/#search/code/';
@@ -166,7 +171,7 @@ class CountryMapping implements Mapping {
         $countryNumeric = new SpecFile(CountryNumeric::class, KeySorting::class);
         $countrySubdivision = (new SpecFile(CountrySubdivision::class, KeySorting::class));
         foreach ($dataSet as $dataRow) {
-            $countryName->addCase(new EnumCase($dataRow->name, $dataRow->name));
+            $countryName->addCase(new EnumCase($dataRow->name, $dataRow->name, previousValue: array_key_exists($dataRow->name, self::RENAMES) ? self::RENAMES[$dataRow->name] : null));
             $countryAlpha2->addCase(new EnumCase($dataRow->name, $dataRow->alpha2));
             $countryAlpha3->addCase(new EnumCase($dataRow->name, $dataRow->alpha3));
             $countryNumeric->addCase(new EnumCase($dataRow->name, $dataRow->numeric));

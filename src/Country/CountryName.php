@@ -180,7 +180,7 @@ enum CountryName: string {
     case Mozambique = 'Mozambique';
     case Myanmar = 'Myanmar';
     case Namibia = 'Namibia';
-    case Nauru = 'Nauru';
+    case Nauru = 'Naoero';
     case Nepal = 'Nepal';
     case Netherlands = 'Netherlands (Kingdom of the)';
     case New_Caledonia = 'New Caledonia';

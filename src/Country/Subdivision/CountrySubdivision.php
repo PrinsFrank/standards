@@ -5612,7 +5612,7 @@ enum CountrySubdivision: string {
     #[Name('Papua Barat Daya', [LanguageAlpha2::Indonesian], null, null)]
     case Indonesia_province_Papua_Barat_Daya = 'ID-PD';
 
-    #[Name('Papua Pengunungan', [LanguageAlpha2::Indonesian], null, null)]
+    #[Name('Papua Pegunungan', [LanguageAlpha2::Indonesian], null, null)]
     case Indonesia_province_Papua_Pengunungan = 'ID-PE';
 
     #[Name('Papua Selatan', [LanguageAlpha2::Indonesian], null, null)]
