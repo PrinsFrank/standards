@@ -722,6 +722,8 @@ enum GenericTLD: string implements TLD {
     case jpmorgan = 'jpmorgan';
     case jprs = 'jprs';
     case juegos = 'juegos';
+
+    #[NotAssigned]
     case juniper = 'juniper';
     case kathwlyk_arabic = 'كاثوليك';
     case katolik_cyrillic = 'католик';
