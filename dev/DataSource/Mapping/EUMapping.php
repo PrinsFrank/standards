@@ -42,7 +42,7 @@ class EUMapping implements Mapping {
             $client->get($url);
             $crawler = $client->refreshCrawler();
 
-            foreach ($crawler->filterXPath('//div[contains(@class, "ecl-content-item-block__item")]//a')->getIterator() as $item) {
+            foreach ($crawler->filterXPath('//div[contains(@class, "ecl-content-item__content-block")]//a')->getIterator() as $item) {
                 $record = (object) [];
                 $record->name = $item->getText();
 
