@@ -76,7 +76,7 @@ class URISchemeMapping implements Mapping {
     public static function toEnumMapping(array $dataSet): array {
         $URIScheme = new SpecFile(URIScheme::class, KeySorting::class);
         foreach ($dataSet as $dataRow) {
-            $URIScheme->addCase(new EnumCase($dataRow->name, $dataRow->name, [new EnumCaseAttribute(Status::class, [URISchemeStatus::from($dataRow->status)])]));
+            $URIScheme->addCase(new EnumCase($dataRow->name, $dataRow->name, [new EnumCaseAttribute(Status::class, [URISchemeStatus::from(ucfirst($dataRow->status))])]));
         }
 
         return [$URIScheme];
