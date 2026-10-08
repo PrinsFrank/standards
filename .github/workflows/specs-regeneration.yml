@@ -26,7 +26,6 @@ jobs:
       fail-fast: false
       matrix:
         spec:
-          - "country"
           - "country-calling-code"
           - "currency"
           - "eu"
