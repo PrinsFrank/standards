@@ -12,7 +12,7 @@ use PrinsFrank\Standards\Language\LanguageAlpha2;
  * @standard ISO3166_1
  * @source https://www.iso.org/obp/ui/#search/code/
  *
- * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\CountryMapping
+ * @manually-updated
  */
 enum CountrySubdivision: string {
     #[Name('Badakhshān', [LanguageAlpha2::Pushto_Pashto, LanguageAlpha2::Persian], 'BGN/PCGN 2007', null)]
@@ -16036,7 +16036,6 @@ enum CountrySubdivision: string {
     case Zimbabwe_province_Midlands = 'ZW-MI';
 
     public function getPartOfCountry(): CountryAlpha2 {
-        /** @phpstan-ignore missingType.checkedException, missingType.checkedException */
         return CountryAlpha2::from(substr($this->value, 0, 2));
     }
 

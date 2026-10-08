@@ -31,7 +31,6 @@ composer update-spec
 
 Or any individual specification:
 ```bash
-composer update-spec-country
 composer update-spec-currency
 composer update-spec-http-methods
 composer update-spec-http-status-codes

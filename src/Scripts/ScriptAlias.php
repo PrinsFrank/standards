@@ -432,7 +432,6 @@ enum ScriptAlias: string {
         }
 
         arsort($scripts);
-        /** @phpstan-ignore missingType.checkedException, missingType.checkedException */
         return array_map(fn(string $scriptString) => self::from($scriptString), array_keys($scripts));
     }
 
