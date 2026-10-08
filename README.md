@@ -42,7 +42,6 @@ If you depend on this package and want to support its maintenance, please consid
 
 ## Daily updated from their source
 
-[![Country](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
 [![Country Calling Code](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country-calling-code.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country-calling-code.yml)
 [![Currency](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-currency.yml)
 [![EU](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-eu.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-eu.yml)
@@ -185,8 +184,6 @@ __Listing all country calling codes sorted by country name in a dropdown;__
 ![](https://github.com/PrinsFrank/standards/raw/main/docs/gifs/country-calling-code-dropdown.gif)
 
 ## Country (ISO3166-1)
-
-[![Daily country spec update](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml/badge.svg)](https://github.com/PrinsFrank/standards/actions/workflows/update-spec-country.yml)
 
 > :mortar_board: **Alpha2/3 country codes are always UPPERCASE to avoid confusion with language codes. It is recommended to use Alpha2/Alpha3 codes when exposing the specification in APIs**
 

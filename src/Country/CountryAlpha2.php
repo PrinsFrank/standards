@@ -23,7 +23,7 @@ use PrinsFrank\Standards\TopLevelDomain\CountryCodeTLD;
  * @standard ISO3166_1
  * @source https://www.iso.org/obp/ui/#search/code/
  *
- * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\CountryMapping
+ * @manually-updated
  */
 enum CountryAlpha2: string {
     case Afghanistan = 'AF';
