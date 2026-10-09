@@ -58,6 +58,9 @@ enum URIScheme: string {
     case aim = 'aim';
 
     #[Status(URISchemeStatus::Provisional)]
+    case alter = 'alter';
+
+    #[Status(URISchemeStatus::Provisional)]
     case amss = 'amss';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -80,6 +83,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case ars = 'ars';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case arv = 'arv';
 
     #[Status(URISchemeStatus::Provisional)]
     case at = 'at';
@@ -134,6 +140,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case callto = 'callto';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case canactid = 'canactid';
 
     #[Status(URISchemeStatus::Permanent)]
     case cap = 'cap';
@@ -368,6 +377,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Historical)]
     case grd = 'grd';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case gsos = 'gsos';
 
     #[Status(URISchemeStatus::Provisional)]
     case gtalk = 'gtalk';
@@ -983,6 +995,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Permanent)]
     case rtspu = 'rtspu';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case rttp = 'rttp';
 
     #[Status(URISchemeStatus::Provisional)]
     case sarif = 'sarif';
