@@ -34,6 +34,21 @@ enum URIScheme: string {
     case ace = 'ace';
 
     #[Status(URISchemeStatus::Provisional)]
+    case aceap = 'aceap';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case acedp = 'acedp';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case aceep = 'aceep';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case acelp = 'acelp';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case aceup = 'aceup';
+
+    #[Status(URISchemeStatus::Provisional)]
     case acr = 'acr';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -58,6 +73,9 @@ enum URIScheme: string {
     case aim = 'aim';
 
     #[Status(URISchemeStatus::Provisional)]
+    case alter = 'alter';
+
+    #[Status(URISchemeStatus::Provisional)]
     case amss = 'amss';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -80,6 +98,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case ars = 'ars';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case arv = 'arv';
 
     #[Status(URISchemeStatus::Provisional)]
     case at = 'at';
@@ -134,6 +155,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case callto = 'callto';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case canactid = 'canactid';
 
     #[Status(URISchemeStatus::Permanent)]
     case cap = 'cap';
@@ -370,10 +394,16 @@ enum URIScheme: string {
     case grd = 'grd';
 
     #[Status(URISchemeStatus::Provisional)]
+    case gsos = 'gsos';
+
+    #[Status(URISchemeStatus::Provisional)]
     case gtalk = 'gtalk';
 
     #[Status(URISchemeStatus::Permanent)]
     case h323 = 'h323';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case haie = 'haie';
 
     #[Status(URISchemeStatus::Provisional)]
     case ham = 'ham';
@@ -457,6 +487,9 @@ enum URIScheme: string {
     case ipps = 'ipps';
 
     #[Status(URISchemeStatus::Provisional)]
+    case iqa = 'iqa';
+
+    #[Status(URISchemeStatus::Provisional)]
     case irc = 'irc';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -518,6 +551,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case linkid = 'linkid';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case locus = 'locus';
 
     #[Status(URISchemeStatus::Provisional)]
     case lorawan = 'lorawan';
@@ -889,6 +925,15 @@ enum URIScheme: string {
     case openpgp4fpr = 'openpgp4fpr';
 
     #[Status(URISchemeStatus::Provisional)]
+    case opns = 'opns';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case ord = 'ord';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case ordmail = 'ordmail';
+
+    #[Status(URISchemeStatus::Provisional)]
     case otpauth = 'otpauth';
 
     #[Status(URISchemeStatus::Historical)]
@@ -985,6 +1030,9 @@ enum URIScheme: string {
     case rtspu = 'rtspu';
 
     #[Status(URISchemeStatus::Provisional)]
+    case rttp = 'rttp';
+
+    #[Status(URISchemeStatus::Provisional)]
     case sarif = 'sarif';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -1053,6 +1101,9 @@ enum URIScheme: string {
     #[Status(URISchemeStatus::Permanent)]
     case snmp = 'snmp';
 
+    #[Status(URISchemeStatus::Provisional)]
+    case sns = 'sns';
+
     #[Status(URISchemeStatus::Permanent)]
     case soap_beep = 'soap.beep';
 
@@ -1112,6 +1163,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case taler = 'taler';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case tcxp = 'tcxp';
 
     #[Status(URISchemeStatus::Provisional)]
     case teamspeak = 'teamspeak';
