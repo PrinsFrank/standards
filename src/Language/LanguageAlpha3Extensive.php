@@ -407,7 +407,6 @@ enum LanguageAlpha3Extensive: string {
     case Asturian = 'ast';
     case Tocantins_Asurini = 'asu';
     case Asoa = 'asv';
-    case Australian_Aborigines_Sign_Language = 'asw';
     case Muratayak = 'asx';
     case Yaosakor_Asmat = 'asy';
     case As = 'asz';
@@ -1950,6 +1949,7 @@ enum LanguageAlpha3Extensive: string {
     case Firan = 'fir';
     case Tornedalen_Finnish = 'fit';
     case Fiwaga = 'fiw';
+    case Fiji_Sign_Language = 'fjs';
     case Kirya_Konzel = 'fkk';
     case Kven_Finnish = 'fkv';
     case Kalispel_Pend_d_Oreille = 'fla';
@@ -7305,6 +7305,7 @@ enum LanguageAlpha3Extensive: string {
     case Xiriana = 'xir';
     case Kisan = 'xis';
     case Indus_Valley_Language = 'xiv';
+    case Shiwa = 'xiw';
     case Xipaya = 'xiy';
     case Minjungbal = 'xjb';
     case Jaitmatang = 'xjt';
@@ -7946,6 +7947,9 @@ enum LanguageAlpha3Extensive: string {
     case Zyphe_Chin = 'zyp';
     case Zaza = 'zza';
     case Zuojiang_Zhuang = 'zzj';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case Australian_Aborigines_Sign_Language = 'asw';
 
     /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
     case Dek = 'dek';
