@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2eb2cdd51cd4ce99fc766eee5ad1d11c",
+    "content-hash": "88542a7066480edfe3d4e834e525a903",
     "packages": [
         {
             "name": "prinsfrank/enums",
@@ -6998,7 +6998,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+        "php": "^8.2",
         "ext-intl": "*",
         "ext-mbstring": "*"
     },
