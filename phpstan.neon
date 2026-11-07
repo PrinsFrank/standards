@@ -34,12 +34,12 @@ parameters:
             identifier: method.resultUnused
             paths:
                 - ./cache/.phpstan.result.cache/doc-code-snippets/*.php
-    docCodeAnalyzer:
-        paths:
-            - README.md
+#    docCodeAnalyzer:
+#        paths:
+#            - README.md
 rules:
     - PrinsFrank\Standards\Dev\PHPStan\Rules\SourceTagRule
 includes:
     - phar://phpstan.phar/conf/bleedingEdge.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon
-    - vendor/prinsfrank/phpstan-doc-code-analyzer/extension.neon
+#    - vendor/prinsfrank/phpstan-doc-code-analyzer/extension.neon
