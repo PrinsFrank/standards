@@ -11,6 +11,8 @@ use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
  * @source https://www.iana.org/domains/root/db
  *
  * @updated-by \PrinsFrank\Standards\Dev\DataSource\Mapping\TopLevelDomainMapping
+ *
+ * @deprecated, not maintained as a separate list anymore
  */
 enum GenericRestrictedTLD: string implements TLD {
     case biz = 'biz';

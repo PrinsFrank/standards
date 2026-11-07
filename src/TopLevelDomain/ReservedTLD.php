@@ -8,9 +8,11 @@ use PrinsFrank\Enums\BackedEnum;
 use PrinsFrank\Standards\TopLevelDomain\Attributes\NotAssigned;
 
 /**
- * @source https://www.rfc-editor.org/rfc/rfc2606.html
- *
  * @manually-updated
+ *
+ * @deprecated replaced by SpecialUse
+ *
+ * @source https://www.rfc-editor.org/rfc/rfc2606.html
  */
 enum ReservedTLD: string implements TLD {
     #[NotAssigned]
