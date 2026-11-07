@@ -41,6 +41,7 @@ enum GenericTLD: string implements TLD {
     case ads = 'ads';
     case adult = 'adult';
     case aeg = 'aeg';
+    case aero = 'aero';
     case aetna = 'aetna';
 
     #[NotAssigned]
@@ -93,6 +94,7 @@ enum GenericTLD: string implements TLD {
     case art = 'art';
     case arte = 'arte';
     case asda = 'asda';
+    case asia = 'asia';
     case associates = 'associates';
     case athleta = 'athleta';
 
@@ -155,6 +157,7 @@ enum GenericTLD: string implements TLD {
     case bing = 'bing';
     case bingo = 'bingo';
     case bio = 'bio';
+    case biz = 'biz';
     case black = 'black';
     case blackfriday = 'blackfriday';
 
@@ -239,6 +242,7 @@ enum GenericTLD: string implements TLD {
     case caseih = 'caseih';
     case cash = 'cash';
     case casino = 'casino';
+    case cat = 'cat';
     case catering = 'catering';
     case catholic = 'catholic';
     case cba = 'cba';
@@ -316,6 +320,7 @@ enum GenericTLD: string implements TLD {
     #[NotAssigned]
     case cookingchannel = 'cookingchannel';
     case cool = 'cool';
+    case coop = 'coop';
     case corsica = 'corsica';
     case country = 'country';
     case coupon = 'coupon';
@@ -418,12 +423,10 @@ enum GenericTLD: string implements TLD {
     case eat = 'eat';
     case eco = 'eco';
     case edeka = 'edeka';
+    case edu = 'edu';
     case education = 'education';
     case email = 'email';
     case emerck = 'emerck';
-
-    #[NotAssigned]
-    case emerson = 'emerson';
     case energy = 'energy';
     case engineer = 'engineer';
     case engineering = 'engineering';
@@ -579,6 +582,7 @@ enum GenericTLD: string implements TLD {
     case gop = 'gop';
     case got = 'got';
     case gou_wu_han = '购物';
+    case gov = 'gov';
     case grainger = 'grainger';
     case graphics = 'graphics';
     case gratis = 'gratis';
@@ -607,6 +611,8 @@ enum GenericTLD: string implements TLD {
     case health = 'health';
     case healthcare = 'healthcare';
     case help = 'help';
+
+    #[NotAssigned]
     case helsinki = 'helsinki';
     case here = 'here';
     case hermes = 'hermes';
@@ -672,6 +678,7 @@ enum GenericTLD: string implements TLD {
     case institute = 'institute';
     case insurance = 'insurance';
     case insure = 'insure';
+    case int = 'int';
 
     #[NotAssigned]
     case intel = 'intel';
@@ -716,6 +723,7 @@ enum GenericTLD: string implements TLD {
     case jll = 'jll';
     case jmp = 'jmp';
     case jnj = 'jnj';
+    case jobs = 'jobs';
     case joburg = 'joburg';
     case jot = 'jot';
     case joy = 'joy';
@@ -887,6 +895,7 @@ enum GenericTLD: string implements TLD {
     case metlife = 'metlife';
     case miami = 'miami';
     case microsoft = 'microsoft';
+    case mil = 'mil';
     case min_na_hiragana = 'みんな';
     case mini = 'mini';
     case mint = 'mint';
@@ -930,6 +939,7 @@ enum GenericTLD: string implements TLD {
     #[NotAssigned]
     case mtpc = 'mtpc';
     case mtr = 'mtr';
+    case museum = 'museum';
     case music = 'music';
 
     #[NotAssigned]
@@ -946,6 +956,7 @@ enum GenericTLD: string implements TLD {
     #[NotAssigned]
     case nadex = 'nadex';
     case nagoya = 'nagoya';
+    case name = 'name';
 
     #[NotAssigned]
     case nationwide = 'nationwide';
@@ -1081,12 +1092,14 @@ enum GenericTLD: string implements TLD {
     case poker = 'poker';
     case politie = 'politie';
     case porn = 'porn';
+    case post = 'post';
 
     #[NotAssigned]
     case pramerica = 'pramerica';
     case praxi = 'praxi';
     case press = 'press';
     case prime = 'prime';
+    case pro = 'pro';
     case prod = 'prod';
     case productions = 'productions';
     case prof = 'prof';
@@ -1344,6 +1357,7 @@ enum GenericTLD: string implements TLD {
     case team = 'team';
     case tech = 'tech';
     case technology = 'technology';
+    case tel = 'tel';
 
     #[NotAssigned]
     case telecity = 'telecity';
@@ -1385,6 +1399,7 @@ enum GenericTLD: string implements TLD {
     case trade = 'trade';
     case trading = 'trading';
     case training = 'training';
+    case travel = 'travel';
 
     #[NotAssigned]
     case travelchannel = 'travelchannel';
@@ -1506,6 +1521,7 @@ enum GenericTLD: string implements TLD {
 
     #[NotAssigned]
     case xperia = 'xperia';
+    case xxx = 'xxx';
     case xyz = 'xyz';
     case ya_ma_xun_han = '亚马逊';
     case yachts = 'yachts';
@@ -1513,9 +1529,6 @@ enum GenericTLD: string implements TLD {
     case yamaxun = 'yamaxun';
     case yandex = 'yandex';
     case yi_dong_han = '移动';
-
-    #[NotAssigned]
-    case yi_hao_dian_han = '一号店';
     case yodobashi = 'yodobashi';
     case yoga = 'yoga';
     case yokohama = 'yokohama';
@@ -1543,6 +1556,12 @@ enum GenericTLD: string implements TLD {
     case zone = 'zone';
     case zu_zhi_ji_gou_han = '组织机构';
     case zuerich = 'zuerich';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case emerson = 'emerson';
+
+    /** @deprecated Has been removed from the specification but is maintained here for Backwards Compatibility reasons */
+    case yi_hao_dian_han = '一号店';
 
     #[Override]
     public function isAssigned(): bool {

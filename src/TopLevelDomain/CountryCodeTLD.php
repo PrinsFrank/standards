@@ -70,14 +70,10 @@ enum CountryCodeTLD: string implements TLD {
     case bharota_devanagari = 'भारोत';
     case bi = 'bi';
     case bj = 'bj';
-
-    #[NotAssigned]
     case bl = 'bl';
     case bm = 'bm';
     case bn = 'bn';
     case bo = 'bo';
-
-    #[NotAssigned]
     case bq = 'bq';
     case br = 'br';
     case bs = 'bs';
@@ -115,8 +111,6 @@ enum CountryCodeTLD: string implements TLD {
     case ec = 'ec';
     case ee = 'ee';
     case eg = 'eg';
-
-    #[NotAssigned]
     case eh = 'eh';
     case el_greek = 'ελ';
     case er = 'er';
@@ -206,8 +200,6 @@ enum CountryCodeTLD: string implements TLD {
     case mc = 'mc';
     case md = 'md';
     case me = 'me';
-
-    #[NotAssigned]
     case mf = 'mf';
     case mg = 'mg';
     case mh = 'mh';
@@ -321,8 +313,6 @@ enum CountryCodeTLD: string implements TLD {
     case ug = 'ug';
     case uk = 'uk';
     case ukr_cyrillic = 'укр';
-
-    #[NotAssigned]
     case um = 'um';
     case us = 'us';
     case uy = 'uy';
@@ -341,10 +331,16 @@ enum CountryCodeTLD: string implements TLD {
     case ye = 'ye';
     case ysr_l_hebrew = 'ישראל';
     case yt = 'yt';
+
+    #[NotAssigned]
+    case yu = 'yu';
     case za = 'za';
     case zhong_guo_han = '中国';
     case zhong_guo_han_2 = '中國';
     case zm = 'zm';
+
+    #[NotAssigned]
+    case zr = 'zr';
     case zw = 'zw';
 
     public function getCountryAlpha2(): ?CountryAlpha2 {
