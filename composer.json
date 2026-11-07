@@ -36,7 +36,10 @@
     "scripts": {
         "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
         "cs:fix": "php-cs-fixer fix --allow-risky=yes",
-        "stan": "phpstan analyse --memory-limit 4G -v",
+        "stan": [
+            "mkdir -p cache/.phpstan.result.cache/doc-code-snippets",
+            "phpstan analyse --memory-limit 4G -v"
+        ],
         "unit": "phpunit --testsuite=Unit",
         "test": [
             "@unit",
@@ -61,6 +64,11 @@
     "extra": {
         "branch-alias": {
             "dev-main": "3.x-dev"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.2"
         }
     }
 }
