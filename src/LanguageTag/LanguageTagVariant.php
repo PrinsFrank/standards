@@ -137,6 +137,8 @@ enum LanguageTagVariant: string {
     case Unified_Turkic_Latin_Alphabet_Historical = 'baku1926';
     case Unifon_phonetic_alphabet = 'unifon';
     case Uralic_Phonetic_Alphabet = 'fonupa';
+    case Uzbek_Latin_orthography_of_1995 = '1995';
+    case Uzbek_Latin_orthography_of_2026 = '2026';
     case Val_Badia_standard_of_Ladin = 'valbadia';
     case Valencian = 'valencia';
     case Vallader_idiom_of_Romansh = 'vallader';
