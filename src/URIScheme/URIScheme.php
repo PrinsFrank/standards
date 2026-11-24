@@ -637,6 +637,9 @@ enum URIScheme: string {
     case ms_calculator = 'ms-calculator';
 
     #[Status(URISchemeStatus::Provisional)]
+    case ms_clicktocommunicate = 'ms-clicktocommunicate';
+
+    #[Status(URISchemeStatus::Provisional)]
     case ms_drive_to = 'ms-drive-to';
 
     #[Status(URISchemeStatus::Provisional)]
@@ -956,6 +959,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case payto = 'payto';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case pbcp = 'pbcp';
 
     #[Status(URISchemeStatus::Permanent)]
     case pkcs11 = 'pkcs11';
@@ -1355,6 +1361,9 @@ enum URIScheme: string {
 
     #[Status(URISchemeStatus::Provisional)]
     case xri = 'xri';
+
+    #[Status(URISchemeStatus::Provisional)]
+    case xudanu = 'xudanu';
 
     #[Status(URISchemeStatus::Provisional)]
     case ymsgr = 'ymsgr';
