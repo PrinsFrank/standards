@@ -1514,6 +1514,8 @@ enum GenericTLD: string implements TLD {
     #[NotAssigned]
     case xfinity = 'xfinity';
     case xiang_ge_li_la_han = '香格里拉';
+
+    #[NotAssigned]
     case xihuan = 'xihuan';
     case xin = 'xin';
     case xin_wen_han = '新闻';
