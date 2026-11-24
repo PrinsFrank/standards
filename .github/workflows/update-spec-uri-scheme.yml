@@ -13,7 +13,7 @@ env:
 
 jobs:
   update-specs:
-    uses: ./.github/workflows/reusable-update-spec.yml
+    uses: $/.github/workflows/reusable-update-spec.yml
     permissions:
       contents: write # to create pull requests
       pull-requests: write # to create pull requests
