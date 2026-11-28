@@ -1234,6 +1234,9 @@ enum URIScheme: string {
     case udp = 'udp';
 
     #[Status(URISchemeStatus::Provisional)]
+    case una = 'una';
+
+    #[Status(URISchemeStatus::Provisional)]
     case unreal = 'unreal';
 
     #[Status(URISchemeStatus::Provisional)]
